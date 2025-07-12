@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="一、背景国内宇视p2p-relay服务CPU利用率一直很高，造成服务被liveness杀死，或者内置的P2P控件抢占不到CPU而崩溃。  P2P奔溃堆栈 12345672025-03-14 16:27:38.070 [34mINFO[0;39m [Thread-53990888] [CLoggerImpl.pFnLogFun: 45] [] - [p2p control] level: 3, me">
+<meta property="og:type" content="article">
+<meta property="og:title" content="p2p-relay服务CPU高">
+<meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/index.html">
+<meta property="og:site_name" content="艾迪的技术之路">
+<meta property="og:description" content="一、背景国内宇视p2p-relay服务CPU利用率一直很高，造成服务被liveness杀死，或者内置的P2P控件抢占不到CPU而崩溃。  P2P奔溃堆栈 12345672025-03-14 16:27:38.070 [34mINFO[0;39m [Thread-53990888] [CLoggerImpl.pFnLogFun: 45] [] - [p2p control] level: 3, me">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPJwp1Zotqx-HNASLNA9ewCHGYC1e1EGYIMMyulzeVAA_983_290.png">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPJyEEsQp-umHNAe3NA0awpXOt-G5e-agIMMy0Rr3UAA_838_493.png">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPJxAkl5-TIGHNAjrNBB6wo2BDlT7UQzsIMMy6XeGSAA_1054_570.png">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPKGcFvqLaE-HM780GJLAVVKFCK0EeRggwzMFVEBgA_1572_239.png">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPKeTTUkwXLGHNAjLNA1ywsht0Yg96qfsIMMzMp_-PAA_860_562.png">
+<meta property="og:image" content="https://static.dingtalk.com/media/lQLPJw0GDi98veHNAlTNAsqwk2HUHEB9gTEIMMzSPo05AA_714_596.png">
+<meta property="og:image" content="e:\Blogin\projects-markdown\%E5%90%8E%E7%AB%AF\Java%E6%8A%80%E6%9C%AF\b04caed56a1b9bf1e2cdc1d0555f1043.png">
+<meta property="article:published_time" content="2025-07-12T04:19:56.545Z">
+<meta property="article:modified_time" content="2025-07-12T04:22:10.254Z">
+<meta property="article:author" content="annabergite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.dingtalk.com/media/lQLPJwp1Zotqx-HNASLNA9ewCHGYC1e1EGYIMMyulzeVAA_983_290.png">
+
+
+<link rel="canonical" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/","path":"2025/07/12/开发/12.NAT打洞告警CPU较高/","title":"p2p-relay服务CPU高"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>p2p-relay服务CPU高 | 艾迪的技术之路</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">艾迪的技术之路</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录博客与成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">一、背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">二、分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E4%BF%AE%E6%94%B9%E6%95%88%E6%9E%9C"><span class="nav-number">3.</span> <span class="nav-text">三、修改效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BC%98%E5%8C%96%E6%96%B9%E5%90%91"><span class="nav-number">4.</span> <span class="nav-text">四、优化方向</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">annabergite</p>
+  <div class="site-description" itemprop="description">记录博客与成长,Java，架构</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="p2p-relay服务CPU高 | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          p2p-relay服务CPU高
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-12 12:19:56 / 修改时间：12:22:10" itemprop="dateCreated datePublished" datetime="2025-07-12T12:19:56+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>国内宇视p2p-relay服务CPU利用率一直很高，造成服务被liveness杀死，或者内置的P2P控件抢占不到CPU而崩溃。</p>
+<p><img src="https://static.dingtalk.com/media/lQLPJwp1Zotqx-HNASLNA9ewCHGYC1e1EGYIMMyulzeVAA_983_290.png" alt="img"></p>
+<p>P2P奔溃堆栈</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.070</span> [34mINFO[<span class="number">0</span>;39m [Thread-<span class="number">53990888</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f16197f0700][libcloud.c:<span class="number">7145</span>]StartStream timeout. [50396A31-<span class="number">6769</span>-5A37-<span class="number">5659</span>-626251566B6A]</span><br><span class="line"><span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.071</span> [34mINFO[<span class="number">0</span>;39m [Thread-<span class="number">53990889</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f16197f0700][libcloud.c:<span class="number">7573</span>][ConnectPeerDone] iTaskType(<span class="number">2</span>), iIsSUccess(<span class="number">0</span>), pcPeerID(50396A31-<span class="number">6769</span>-5A37-<span class="number">5659</span>-626251566B6A), pcPeerIP(<span class="number">222.222</span><span class="number">.30</span><span class="number">.55</span>), iPeerPort(<span class="number">29433</span>)<span class="number">.2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.078</span> [34mINFO[<span class="number">0</span>;39m [http-nio-<span class="number">8998</span>-exec-<span class="number">515</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f15f4dc4700][t2u_runner.c:<span class="number">265</span>]Failed to call epoll wait, ret[<span class="number">0</span>], errno[<span class="number">2</span>]<span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.079</span> [34mINFO[<span class="number">0</span>;39m [http-nio-<span class="number">8998</span>-exec-<span class="number">515</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">6</span>, message: [7f15f4dc4700][libcloud.c:<span class="number">5662</span>]MTU probe.## A fatal error has been detected by the Java Runtime Environment:##  SIGSEGV (<span class="number">0xb</span>) at pc=<span class="number">0x00007f161e0757f3</span>, pid=<span class="number">1</span>, tid=<span class="number">0x00007f15f4dc4700</span>## JRE version: Java(TM) SE Runtime <span class="title function_">Environment</span> <span class="params">(<span class="number">8.0_231</span>-b11)</span> (build <span class="number">1.8</span><span class="number">.0_231</span>-b11)# Java VM: Java <span class="title function_">HotSpot</span><span class="params">(TM)</span> <span class="number">64</span>-Bit Server <span class="title function_">VM</span> <span class="params">(<span class="number">25.231</span>-b11 mixed mode linux-amd64 compressed oops)</span># Problematic frame:# C  [libtunnel_new.so+<span class="number">0x607f3</span>]  Libcloud_CreateT2URelation+<span class="number">0x313</span>## Core dump written. Default location: <span class="comment">//core or core.1## An error report file with more information is saved as:# //hs_err_pid1.log## If you would like to submit a bug report, please visit:#    http://bugreport.java.com/bugreport/crash.jsp# The crash happened outside the Java Virtual Machine in native code.# See problematic frame for where to report the bug.#</span></span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br></pre></td></tr></table></figure>
+
+<h1 id="二、分析"><a href="#二、分析" class="headerlink" title="二、分析"></a>二、分析</h1><ol>
+<li><p>CPU高主要是pid为1的java进程占用的，也就是p2p-relay的服务</p>
+</li>
+<li><p>使用top -H，查看线程号为8&#x2F;9&#x2F;10&#x2F;11的线程CPU使用率的特别高</p>
+<p><img src="https://static.dingtalk.com/media/lQLPJyEEsQp-umHNAe3NA0awpXOt-G5e-agIMMy0Rr3UAA_838_493.png" alt="img"></p>
+</li>
+<li><p>jstack 1查看线程8&#x2F;9&#x2F;10&#x2F;11对应着四个ParalLelGC并行垃圾回收器（CPU 4核会存在4个垃圾回收器线程）；<br>垃圾回收器线程为什么会CPU高，说明有大量的对象在被创建&#x2F;没有引用&#x2F;被回收持续往复</p>
+<p><img src="https://static.dingtalk.com/media/lQLPJxAkl5-TIGHNAjrNBB6wo2BDlT7UQzsIMMy6XeGSAA_1054_570.png" alt="img"></p>
+</li>
+<li><p>使用arthas的dashboard命令查看，young gc出现了289W次，持续了8小时（进程启动了25小时)，再次确认有大量的对象在被创建</p>
+<p><img src="https://static.dingtalk.com/media/lQLPKGcFvqLaE-HM780GJLAVVKFCK0EeRggwzMFVEBgA_1572_239.png" alt="img"></p>
+</li>
+<li><p>使用jstat -gc <pid> 1000 | awk ‘{print $6}’ 观察 Eden 分配速率，发现每隔几秒采集就有大量Eden对象创建（单位是kb）；也就是说时时刻刻有2.27G的对象产生<br>大量对象产生说明业务中存在很大的并发的业务；结合p2p-relay流程，怀疑是接口&#x2F;pr&#x2F;device&#x2F;p2p&#x2F;invoke接口调用的频发；<br>但是TOMCAT的http-nio线程并不多，说明请求量并没有很大</p>
+<p><img src="https://static.dingtalk.com/media/lQLPKeTTUkwXLGHNAjLNA1ywsht0Yg96qfsIMMzMp_-PAA_860_562.png" alt="img"></p>
+</li>
+<li><p>重新梳理流程后，怀疑可能是P2P日志回调导致的问题</p>
+<p><img src="https://static.dingtalk.com/media/lQLPJw0GDi98veHNAlTNAsqwk2HUHEB9gTEIMMzSPo05AA_714_596.png" alt="img"></p>
+<p>P2P日志需要java进程给P2P配置回调接口，P2P将日志回调给java进行打印</p>
+</li>
+<li><p>线上配置的P2P日志level是0，一般不会输出到日志中；<br>但是回看这个业务，如果回调频繁，岂不是要创建大量的String对象（JNA 将原生代码（如 C&#x2F;C++的 char*）传递的字符串转换为 Java 的 String）；为了确认日志回调的量，将level设置为8，在日志采集服务中发现P2P产生的日志是其他所有服务加起来的10倍+<br>那问题基本确认就是这个造成的，将设置回调的函数注释掉，并重新部署</p>
+</li>
+</ol>
+<h1 id="三、修改效果"><a href="#三、修改效果" class="headerlink" title="三、修改效果"></a>三、修改效果</h1><p>修改后效果明显，CPU利用率下降到20%</p>
+<p><img src="E:\Blogin\projects-markdown\后端\Java技术\b04caed56a1b9bf1e2cdc1d0555f1043.png" alt="b04caed56a1b9bf1e2cdc1d0555f1043"></p>
+<h1 id="四、优化方向"><a href="#四、优化方向" class="headerlink" title="四、优化方向"></a>四、优化方向</h1><p>建议P2P库优化方向：</p>
+<p>P2P的日志level控制由P2P侧实现，云端下发日志的level；P2P库整理下日志，尽量减少日志，精简下。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/12/%E5%BC%80%E5%8F%91/9.flyway%E5%8F%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E5%88%B0%E5%BD%93%E5%89%8D%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="prev" title="flyway可否使用到当前开发环境">
+                  <i class="fa fa-angle-left"></i> flyway可否使用到当前开发环境
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/07/12/%E5%BC%80%E5%8F%91/11.Linux%E4%B8%8B%E7%81%AB%E7%84%B0%E5%9B%BE%E6%94%B6%E9%9B%86/" rel="next" title="Linux下火焰图收集">
+                  Linux下火焰图收集 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">annabergite</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

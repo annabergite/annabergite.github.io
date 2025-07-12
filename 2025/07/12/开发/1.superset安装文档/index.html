@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="1、Superset安装步骤superset官网 http:&#x2F;&#x2F;superset.apache.org&#x2F; superset对于python有版本要求，最好是最新版的python，因此需要安装python虚拟环境，方面部署。 superset有window安装方法，Linux的虚拟python环境安装方法，以及Linux的docker安装方法，一下为Linux虚拟python环境安装docker的方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="superset安装文档">
+<meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="艾迪的技术之路">
+<meta property="og:description" content="1、Superset安装步骤superset官网 http:&#x2F;&#x2F;superset.apache.org&#x2F; superset对于python有版本要求，最好是最新版的python，因此需要安装python虚拟环境，方面部署。 superset有window安装方法，Linux的虚拟python环境安装方法，以及Linux的docker安装方法，一下为Linux虚拟python环境安装docker的方">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b9605c3199d7708dda505a974ef112d4.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4c4f3a18975775fc7b110d51fec73b7e.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3132d29db8065618fdb799f25f36f28e.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/afb508620570481a83586caea1bbdf1c.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/26a4ae24279225f2d129ba2f34b562bb.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/4bbbe88a4294755ed76361f83ba37abb.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ea9311cd319820760d19e711b4b9b4cd.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3686295e79e44f4a3bcf1bb5bf5a0202.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/06d452203a3ad1a307c8f12e97daa7fa.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6e1ea02ea838fd94eb22020506f66a81.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/1a5b35e56e1c5883ec7df63c851e92b7.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/68ba13eb8481a4581fb9b9609dded6b4.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/521d43a74b06a5b5beca601866c691c8.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/d1b51f76ff440e33f231a612a0eb2c97.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/051bf5f30e070fef0e288e36d56908ca.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/192963847f13b2c8ac7b1c59e70ee7fb.jpeg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/f3ebd4622ec5bc6c93cd31f5aea421fa.jpeg">
+<meta property="article:published_time" content="2025-07-12T03:55:41.487Z">
+<meta property="article:modified_time" content="2025-07-12T04:01:26.412Z">
+<meta property="article:author" content="annabergite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/b9605c3199d7708dda505a974ef112d4.jpeg">
+
+
+<link rel="canonical" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/","path":"2025/07/12/开发/1.superset安装文档/","title":"superset安装文档"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>superset安装文档 | 艾迪的技术之路</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">艾迪的技术之路</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录博客与成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Superset%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">1、Superset安装步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-superset%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 superset安装步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%89%E8%A3%85Miniconda"><span class="nav-number">2.</span> <span class="nav-text">2、安装Miniconda</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%89%E5%8F%96%E5%AE%89%E8%A3%85%E8%84%9A%E6%9C%AC"><span class="nav-number">2.0.1.</span> <span class="nav-text">拉取安装脚本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">2.0.2.</span> <span class="nav-text">加载配置</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BApython-3-10-4%E7%8E%AF%E5%A2%83"><span class="nav-number">3.</span> <span class="nav-text">3、创建python 3.10.4环境</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEconda%E9%95%9C%E5%83%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">配置conda镜像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BApython%E7%8E%AF%E5%A2%83"><span class="nav-number">3.0.2.</span> <span class="nav-text">创建python环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BF%80%E6%B4%BB%E7%8E%AF%E5%A2%83"><span class="nav-number">3.0.3.</span> <span class="nav-text">激活环境</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85superset"><span class="nav-number">4.</span> <span class="nav-text">4、安装superset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">4.0.1.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%EF%BC%88%E6%9B%B4%E6%96%B0%EF%BC%89setuptools%E5%92%8Cpip"><span class="nav-number">4.0.2.</span> <span class="nav-text">安装（更新）setuptools和pip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85superset"><span class="nav-number">4.0.3.</span> <span class="nav-text">安装superset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96Supetset%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.0.4.</span> <span class="nav-text">初始化Supetset数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E6%88%B7"><span class="nav-number">4.0.5.</span> <span class="nav-text">创建管理员账户</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%90%AF%E5%8A%A8superset"><span class="nav-number">5.</span> <span class="nav-text">5、启动superset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85gunicorn"><span class="nav-number">5.0.1.</span> <span class="nav-text">安装gunicorn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">5.0.2.</span> <span class="nav-text">启动</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3"><span class="nav-number">6.</span> <span class="nav-text">6、遇到的问题以及解决</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%991"><span class="nav-number">6.0.0.1.</span> <span class="nav-text">报错1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%992"><span class="nav-number">6.0.0.2.</span> <span class="nav-text">报错2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%993"><span class="nav-number">6.0.0.3.</span> <span class="nav-text">报错3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%994"><span class="nav-number">6.0.0.4.</span> <span class="nav-text">报错4</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%995"><span class="nav-number">6.0.0.5.</span> <span class="nav-text">报错5</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8superset%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC%E8%BF%9B%E8%A1%8C%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%90%AF%E5%81%9C"><span class="nav-number">6.0.1.</span> <span class="nav-text">使用superset启停脚本进行项目的启停</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%8A%A9%E5%88%86%E6%9E%90%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-number"></span> <span class="nav-text">自助分析平台使用教程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E9%85%8D%E7%BD%AE%E5%B1%95%E7%A4%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">1、配置展示的数据源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2"><span class="nav-number">2.</span> <span class="nav-text">2、创建页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E5%88%9B%E5%BB%BA%E5%9B%BE%E8%A1%A8"><span class="nav-number">3.</span> <span class="nav-text">3、创建图表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1创建数据集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2%E9%80%89%E6%8B%A9%E5%9B%BE%E8%A1%A8"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2选择图表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E7%BC%96%E8%BE%91%E5%9B%BE%E8%A1%A8"><span class="nav-number">4.</span> <span class="nav-text">4、编辑图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%A1%AB%E5%85%85%E9%A1%B5%E9%9D%A2%E5%B9%B6%E4%BF%9D%E5%AD%98"><span class="nav-number">5.</span> <span class="nav-text">5、填充页面并保存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1%E6%94%B9%E5%8F%98%E5%9B%BE%E8%A1%A8%E5%A4%A7%E5%B0%8F"><span class="nav-number">5.1.</span> <span class="nav-text">5.1改变图表大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2%E5%90%84%E7%A7%8D%E5%B8%83%E5%B1%80%E5%85%83%E7%B4%A0%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">5.2.</span> <span class="nav-text">5.2各种布局元素的使用</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">annabergite</p>
+  <div class="site-description" itemprop="description">记录博客与成长,Java，架构</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="superset安装文档 | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          superset安装文档
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-12 11:55:41 / 修改时间：12:01:26" itemprop="dateCreated datePublished" datetime="2025-07-12T11:55:41+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="1、Superset安装步骤"><a href="#1、Superset安装步骤" class="headerlink" title="1、Superset安装步骤"></a>1、Superset安装步骤</h2><p>superset官网 <a target="_blank" rel="noopener" href="http://superset.apache.org/">http://superset.apache.org/</a></p>
+<p>superset对于python有版本要求，最好是最新版的python，因此需要安装python虚拟环境，方面部署。</p>
+<p>superset有window安装方法，Linux的虚拟python环境安装方法，以及Linux的docker安装方法，一下为Linux虚拟python环境安装docker的方法</p>
+<h3 id="1-1-superset安装步骤"><a href="#1-1-superset安装步骤" class="headerlink" title="1.1 superset安装步骤"></a>1.1 superset安装步骤</h3><p>安装superset的完全步骤如下：</p>
+<p>安装miniconda-&gt;在miniconda中为superset创建python虚拟环境-&gt;安装superset</p>
+<p><strong>安装过程需要全程联网</strong></p>
+<h2 id="2、安装Miniconda"><a href="#2、安装Miniconda" class="headerlink" title="2、安装Miniconda"></a>2、安装Miniconda</h2><p>为什么不用anaconda或者是conda？</p>
+<p>因为anaconda环境内容较多，安装superset不需要较多工具</p>
+<p>下载Miniconda（Python3版本）的地址为：<a target="_blank" rel="noopener" href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh">https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh</a></p>
+<p>按照以下命令进行安装，根据提示进行操作完成安装</p>
+<h4 id="拉取安装脚本"><a href="#拉取安装脚本" class="headerlink" title="拉取安装脚本"></a>拉取安装脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Miniconda3-latest-Linux-x86_64.sh </span><br></pre></td></tr></table></figure>
+
+<p>在一开始阅读协议的时候可以按空格键快速阅读</p>
+<p>笔者在使用命令安装时的安装miniconda地址为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/module/miniconda3</span><br></pre></td></tr></table></figure>
+
+<h4 id="加载配置"><a href="#加载配置" class="headerlink" title="加载配置"></a>加载配置</h4><p>加载环境变量配置文件，使之生效</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p>Miniconda安装完成后，每次打开终端都会激活其默认的base环境，我们可通过以下命令，禁止激活默认base环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda config --set auto_activate_base false</span><br></pre></td></tr></table></figure>
+
+<h2 id="3、创建python-3-10-4环境"><a href="#3、创建python-3-10-4环境" class="headerlink" title="3、创建python 3.10.4环境"></a>3、创建python 3.10.4环境</h2><h4 id="配置conda镜像"><a href="#配置conda镜像" class="headerlink" title="配置conda镜像"></a>配置conda镜像</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">conda config --set show_channel_urls yes</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建python环境"><a href="#创建python环境" class="headerlink" title="创建python环境"></a>创建python环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create --name superset python=3.10.4</span><br></pre></td></tr></table></figure>
+
+<p><strong>conda环境管理常用命令</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">创建环境：conda create -n env_name</span><br><span class="line">查看所有环境：conda info --envs</span><br><span class="line">删除一个环境：conda remove -n env_name --all</span><br></pre></td></tr></table></figure>
+
+<h4 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate superset</span><br></pre></td></tr></table></figure>
+
+<p>如果想退出当前环境，使用如下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda deactivate</span><br></pre></td></tr></table></figure>
+
+<h2 id="4、安装superset"><a href="#4、安装superset" class="headerlink" title="4、安装superset"></a>4、安装superset</h2><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y gcc gcc-c++ libffi-devel python-devel python-pip python-wheel python-setuptools openssl-devel cyrus-sasl-devel openldap-devel</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装（更新）setuptools和pip"><a href="#安装（更新）setuptools和pip" class="headerlink" title="安装（更新）setuptools和pip"></a>安装（更新）setuptools和pip</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade setuptools pip -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装superset"><a href="#安装superset" class="headerlink" title="安装superset"></a>安装superset</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-superset -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>说明：-i的作用是指定镜像，这里选择国内镜像<br>注：如果遇到网络错误导致不能下载，可尝试更换镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install apache-superset --trusted-host https://repo.huaweicloud.com -i https://repo.huaweicloud.com/repository/pypi/simple</span><br></pre></td></tr></table></figure>
+
+<h4 id="初始化Supetset数据库"><a href="#初始化Supetset数据库" class="headerlink" title="初始化Supetset数据库"></a>初始化Supetset数据库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset db upgrade</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建管理员账户"><a href="#创建管理员账户" class="headerlink" title="创建管理员账户"></a>创建管理员账户</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP=superset</span><br><span class="line">superset fab create-admin</span><br><span class="line">superset init</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改密码</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset fab reset-password --username admin --password 123456</span><br></pre></td></tr></table></figure>
+
+<p>username后面需要改成你想修改的用户的用户名，不需要修改</p>
+<p>password后面为后续想改成的密码</p>
+<p>修改完成后需要执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">superset init</span><br></pre></td></tr></table></figure>
+
+<p>重启</p>
+<h2 id="5、启动superset"><a href="#5、启动superset" class="headerlink" title="5、启动superset"></a>5、启动superset</h2><h4 id="安装gunicorn"><a href="#安装gunicorn" class="headerlink" title="安装gunicorn"></a>安装gunicorn</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install gunicorn -i https://pypi.douban.com/simple/</span><br></pre></td></tr></table></figure>
+
+<p>说明：gunicorn是一个Python Web Server，可以和java中的TomCat类比</p>
+<p>启动Superset<br>首先确保当前conda环境为superset，及下图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/b9605c3199d7708dda505a974ef112d4.jpeg" alt="https:&#x2F;&#x2F;pic.imgdb.cn&#x2F;item&#x2F;649d24da1ddac507cc198c90.jpg"></p>
+<h4 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunicorn --workers 5 --timeout 120 --bind 172.16.150.14:5000  &quot;superset.app:create_app()&quot; --daemon </span><br></pre></td></tr></table></figure>
+
+<p>说明：<br>–workers：指定进程个数,python脚本语言没有线程概念<br>–timeout：worker进程超时时间，超时会自动重启<br>–bind：绑定本机地址，即为Superset访问地址<br>–daemon：后台运行</p>
+<p>需要保证后续可以登录，需要保证防火墙关闭（不推荐）或者是开启端口并且重启防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启防火墙</span></span><br><span class="line">firewall-cmd --reload</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启防火墙</span></span><br><span class="line">systemctl start firewalld</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">防火墙版本</span></span><br><span class="line">firewall-cmd --version</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">防火墙状态</span></span><br><span class="line">systemctl status firewalld</span><br><span class="line">firewall-cmd --query-port=80/tcp</span><br><span class="line">firewall-cmd --permanent --list-ports</span><br><span class="line">firewall-cmd --permanent --add-port=8080/tcp</span><br><span class="line">firewall-cmd --permanent --add-port=8083-8085/tcp</span><br><span class="line">firewall-cmd --permanent --remove-port=8083-8085/tcp</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6、遇到的问题以及解决"><a href="#6、遇到的问题以及解决" class="headerlink" title="6、遇到的问题以及解决"></a>6、遇到的问题以及解决</h2><h5 id="报错1"><a href="#报错1" class="headerlink" title="报错1"></a>报错1</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(superset) [hyj@hadoop102 ~]$ superset db upgrade</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">然后包这些错误</span></span><br><span class="line">    from markupsafe import soft_unicode</span><br><span class="line">ImportError: cannot import name &#x27;soft_unicode&#x27; from &#x27;markupsafe&#x27; (/opt/module/miniconda3/envs/superset/lib/python3.7/site-packages/markupsafe/__init__.py)</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看markupsafe这个包是否存在</span></span><br><span class="line">(superset) [hyj@hadoop102 ~]$ pip show markupsafe</span><br><span class="line">Name: MarkupSafe</span><br><span class="line">Version: 2.1.2</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载2.0.1版本的markupsafe (pip会帮我们卸载之前版本的并下载2.0.1版本的markupsafe)</span></span><br><span class="line">(superset) [hyj@hadoop102 ~]$ pip install markupsafe==2.0.1</span><br></pre></td></tr></table></figure>
+
+<h5 id="报错2"><a href="#报错2" class="headerlink" title="报错2"></a>报错2</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(superset) [hyj@hadoop102 ~]$ superset db upgrade</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">但是会报这个错误</span></span><br><span class="line">re.compile(r&quot;&#x27;(&#x27;&#x27;|\\\\|\\|[^&#x27;])*&#x27;&quot;, sqlparse.keywords.FLAGS).match,</span><br><span class="line">AttributeError: module &#x27;sqlparse.keywords&#x27; has no attribute &#x27;FLAGS&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install sqlparse==&#x27;0.4.3&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="报错3"><a href="#报错3" class="headerlink" title="报错3"></a>报错<strong>3</strong></h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">superset db upgrade</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">报错</span></span><br><span class="line">Error: Could not locate a Flask application. </span><br><span class="line">You did not provide the &quot;FLASK_APP&quot; environment variable, and a &quot;wsgi.py&quot; or &quot;app.py&quot; module was not found in the current directory.</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export FLASK_APP=superset</span><br></pre></td></tr></table></figure>
+
+<h5 id="报错4"><a href="#报错4" class="headerlink" title="报错4"></a>报错4</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">superset db upgrade</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">但是遇到如下问题</span></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">                                    WARNING</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">A Default SECRET_KEY was detected, please use superset_config.py to override it.</span><br><span class="line">Use a strong complex alphanumeric string and use a tool to help you generate </span><br><span class="line">a sufficiently random sequence, ex: openssl rand -base64 42</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line">Refusing to start due to insecure SECRET_KEY</span><br></pre></td></tr></table></figure>
+
+<p><strong>解决方法</strong></p>
+<p>进入到miniconda3的安装路径下的envs&#x2F;superset&#x2F;lib&#x2F;python+版本号&#x2F;目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(superset) [hyj@hadoop102 ~]$ cd /opt/module/miniconda3/envs/superset/lib/python3.8/</span><br></pre></td></tr></table></figure>
+
+<p>创建superset_config.py</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim superset_config.py</span><br></pre></td></tr></table></figure>
+
+<p>添加如下行为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SECRET_KEY = &quot;ZT2uRVAMPKpVkHM/QA1QiQlMuUgAi7LLo160AHA99aihEjp03m1HR6Kg&quot; </span><br><span class="line">用命令 openssl rand -base64 42 来生成一个强密钥</span><br><span class="line">openssl rand -base64 42</span><br><span class="line">4xPjBius42o5Y/pbgRmkjKZ3im5CeHcRXM93TWm+FboEJOll0XMMgDRW</span><br><span class="line">所以SECRET_KEY =“4xPjBius42o5Y/pbgRmkjKZ3im5CeHcRXM93TWm+FboEJOll0XMMgDRW”</span><br></pre></td></tr></table></figure>
+
+<h5 id="报错5"><a href="#报错5" class="headerlink" title="报错5"></a>报错5</h5><p>yum命令无法查找到镜像mirror，下载不了文件的问题</p>
+<p><strong>解决</strong></p>
+<p>要么配置本地源（不推荐），要么网络拉取镜像源（推荐），下面有网络拉取镜像源的步骤</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">安装wget工具</span></span><br><span class="line">yum intall -y wget 	</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">转到yum源文件存放路径</span></span><br><span class="line">cd /etc/yum.repos.d/	</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">创建一个网络yum源文件备份</span></span><br><span class="line">tar zcf backup_repo.tar.gz *	</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">删除所有yum源文件</span></span><br><span class="line">rm -rf CentOS*		</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载yum源文件</span></span><br><span class="line">wget http://mirrors.aliyun.com/repo/Centos-7.repo	</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">清除缓存</span></span><br><span class="line">yum clean all </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">重新搭载yum源</span></span><br><span class="line">yum makecache </span><br></pre></td></tr></table></figure>
+
+<p>登录</p>
+<p>访问<a target="_blank" rel="noopener" href="http://hadoop102:5000/">http://hadoop102:5000</a>，并使用之前安装superset过程中设置的用户名密码登录</p>
+<p>停止superset</p>
+<p>如果想要停止superset则使用如下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | awk &#x27;/superset/ &amp;&amp; !/awk/&#123;print $2&#125;&#x27; | xargs kill -9</span><br></pre></td></tr></table></figure>
+
+<h4 id="使用superset启停脚本进行项目的启停"><a href="#使用superset启停脚本进行项目的启停" class="headerlink" title="使用superset启停脚本进行项目的启停"></a>使用superset启停脚本进行项目的启停</h4><p>其中IP地址和端口需要根据实际情况进行更改</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim superset.sh</span><br></pre></td></tr></table></figure>
+
+<p>内容如下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">superset_status()&#123;</span><br><span class="line">    result=`ps -ef | awk &#x27;/gunicorn/ &amp;&amp; !/awk/&#123;print $2&#125;&#x27; | wc -l`</span><br><span class="line">    if [[ $result -eq 0 ]]; then</span><br><span class="line">        return 0</span><br><span class="line">    else</span><br><span class="line">        return 1</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line">superset_start()&#123;</span><br><span class="line">        source ~/.bashrc</span><br><span class="line">        superset_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">        if [[ $? -eq 0 ]]; then</span><br><span class="line">            conda activate superset ; gunicorn --workers 5 --timeout 120 --bind IP地址:端口 --daemon &#x27;superset.app:create_app()&#x27;</span><br><span class="line">        else</span><br><span class="line">            echo &quot;superset正在运行&quot;</span><br><span class="line">        fi</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">superset_stop()&#123;</span><br><span class="line">    superset_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">    if [[ $? -eq 0 ]]; then</span><br><span class="line">        echo &quot;superset未在运行&quot;</span><br><span class="line">    else</span><br><span class="line">        ps -ef | awk &#x27;/gunicorn/ &amp;&amp; !/awk/&#123;print $2&#125;&#x27; | xargs kill -9</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">    start )</span><br><span class="line">        echo &quot;启动Superset&quot;</span><br><span class="line">        superset_start</span><br><span class="line">    ;;</span><br><span class="line">    stop )</span><br><span class="line">        echo &quot;停止Superset&quot;</span><br><span class="line">        superset_stop</span><br><span class="line">    ;;</span><br><span class="line">    restart )</span><br><span class="line">        echo &quot;重启Superset&quot;</span><br><span class="line">        superset_stop</span><br><span class="line">        superset_start</span><br><span class="line">    ;;</span><br><span class="line">    status )</span><br><span class="line">        superset_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">        if [[ $? -eq 0 ]]; then</span><br><span class="line">            echo &quot;superset未在运行&quot;</span><br><span class="line">        else</span><br><span class="line">            echo &quot;superset正在运行&quot;</span><br><span class="line">        fi</span><br><span class="line">esac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>加执行权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x superset.sh</span><br></pre></td></tr></table></figure>
+
+<p>怎么使用这些指令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启动superset</span></span><br><span class="line">superset.sh start</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">停止superset</span></span><br><span class="line">superset.sh stop</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">重启superset</span></span><br><span class="line">superset.sh restart</span><br></pre></td></tr></table></figure>
+
+<h1 id="自助分析平台使用教程"><a href="#自助分析平台使用教程" class="headerlink" title="自助分析平台使用教程"></a>自助分析平台使用教程</h1><p>自助分析平台自身使用软件自带的sqlite软件对于信息进行存储<br>应用效果如图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4c4f3a18975775fc7b110d51fec73b7e.jpeg"></p>
+<p>其中主要部分用于展示自制的页面列表，自助分析平台有如下几个重要的组成元素：</p>
+<ul>
+<li><strong>仪表盘（dashboard）</strong></li>
+<li><strong>各种数据图形（chart）</strong></li>
+<li><strong>数据集（dataset）</strong></li>
+<li><strong>数据源（database）</strong></li>
+</ul>
+<p>而创建一个完整的图表过程下所示</p>
+<h2 id="1、配置展示的数据源"><a href="#1、配置展示的数据源" class="headerlink" title="1、配置展示的数据源"></a>1、配置展示的数据源</h2><p>点击右上角setting，在下拉框列表中勾选database connection</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/3132d29db8065618fdb799f25f36f28e.jpeg"></p>
+<p>再点击<img src="https://img-blog.csdnimg.cn/img_convert/afb508620570481a83586caea1bbdf1c.jpeg"></p>
+<p>可以添加数据源，填写好配置后既可使用该数据源拿取数据</p>
+<h2 id="2、创建页面"><a href="#2、创建页面" class="headerlink" title="2、创建页面"></a>2、创建页面</h2><p>在主页中点击 添加database，即可添加新页面</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/26a4ae24279225f2d129ba2f34b562bb.jpeg"></p>
+<p>创建页面的页面效果如图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/4bbbe88a4294755ed76361f83ba37abb.jpeg"></p>
+<p>其中charts为可以用于填充页面的图表，需要自己制作，layout elements是布局元素，可以添加一定的预设填充页面，比如一部分markdown编辑组件，规定自制图表大小和位置的页面结构</p>
+<p>如果没有图表，需要自己创作</p>
+<h2 id="3、创建图表"><a href="#3、创建图表" class="headerlink" title="3、创建图表"></a>3、创建图表</h2><p>点击任何和图标相关的信息即可跳转到创建图表页面</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/ea9311cd319820760d19e711b4b9b4cd.jpeg"></p>
+<p>分为两步，第一步选择数据集，第二步为选择图表样式</p>
+<h4 id="3-1创建数据集"><a href="#3-1创建数据集" class="headerlink" title="3.1创建数据集"></a>3.1创建数据集</h4><p>点击add a dataset后可以跳转到安装数据源的页面，这个功能的意思就是从设置的数据源中拿到一张表，作为一个数据源</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/3686295e79e44f4a3bcf1bb5bf5a0202.jpeg"></p>
+<p>点击dataset，会让你从已经设置的数据源中选择一个作为数据源，</p>
+<p>schema则为让你在选择的数据源中选择一个schema，</p>
+<p>选择完成后会产生新的下拉框选项</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/06d452203a3ad1a307c8f12e97daa7fa.jpeg"></p>
+<p>即为选择相应的表</p>
+<p>选择后点击右下角的 create dataset and  create chart，即为创建完成</p>
+<h4 id="3-2选择图表"><a href="#3-2选择图表" class="headerlink" title="3.2选择图表"></a>3.2选择图表</h4><p><img src="https://img-blog.csdnimg.cn/img_convert/6e1ea02ea838fd94eb22020506f66a81.jpeg"></p>
+<h2 id="4、编辑图表"><a href="#4、编辑图表" class="headerlink" title="4、编辑图表"></a>4、编辑图表</h2><p>编辑图表界面如图所示</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/1a5b35e56e1c5883ec7df63c851e92b7.jpeg"></p>
+<p>主要的部分为1、2、3、4共4各部分，其中</p>
+<p>1为图表名称</p>
+<p>2为数据集的信息展示，对于此部分了解的人员可以隐藏不看该部分</p>
+<p>3为确认横坐标和纵坐标的信息</p>
+<p><strong>time</strong>与横坐标信息强绑定了，如果使用时间顺序折线图的话，必须从表中选择时间类型的属性作为横坐标，其中</p>
+<p><strong>time column</strong>为选择哪一个数据集中的属性作为x轴</p>
+<p><strong>time grain</strong>为单位，是哪一个时间维度作为单位</p>
+<p><strong>time range</strong>为查询的时间跨度是多少，可以不过滤</p>
+<p><strong>Query</strong>为y轴部分</p>
+<p><strong>METRIC</strong>可以用于选择哪一个数据集中的属性作为y轴信息，以及这个字段中数据以什么样的聚合函数形式展示，比如平均，还是求和，还是极值</p>
+<p><strong>FILTERS</strong>可以用于作为过滤条件，即对于数据进行条件判断，适合条件的才会做处理</p>
+<p>第4部分为数据的可视化展示</p>
+<p>处理完成后即可进行保存</p>
+<p><strong>值得注意的是，目前自主分析平台可以制作多种图表，已经可以满足各种类型图表的制作</strong></p>
+<h2 id="5、填充页面并保存"><a href="#5、填充页面并保存" class="headerlink" title="5、填充页面并保存"></a>5、填充页面并保存</h2><p>再次回到页面编辑界面，此时我们已经有了数个图表</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/68ba13eb8481a4581fb9b9609dded6b4.jpeg"></p>
+<p>右侧为已经创建的图表，使用鼠标拖拽即可将图标移动到网页上</p>
+<h3 id="5-1改变图表大小"><a href="#5-1改变图表大小" class="headerlink" title="5.1改变图表大小"></a>5.1改变图表大小</h3><p>鼠标移动到图表的右侧或者下侧时，鼠标会变成特殊符号，此时按住鼠标进行拖拽即可改变图表大小</p>
+<h3 id="5-2各种布局元素的使用"><a href="#5-2各种布局元素的使用" class="headerlink" title="5.2各种布局元素的使用"></a>5.2各种布局元素的使用</h3><p>除了自制图表，自助分析平台会提供6种预设布局元素，以供使用</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/521d43a74b06a5b5beca601866c691c8.jpeg"></p>
+<p>从上到下的功能依次为</p>
+<p><strong>tabs</strong>： 将其放置于页面上时会创建一行信息，这行中可以创建多个sheet页，每一页可以填充不同的图表，每一个sheet页均可命名</p>
+<p><strong>row</strong>：可以创建一行空行，通常与column元素一起使用，达到一行中有多层的效果</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/d1b51f76ff440e33f231a612a0eb2c97.jpeg"></p>
+<p><strong>Header</strong>：在页面上为单独一行，可以作为标题行使用</p>
+<p><strong>text</strong>：一块页面组件，大小初始默认和自制的图表大致相同，但是里面可以填充markdown语法，并且可以分别展示代码形式和预览形式</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/051bf5f30e070fef0e288e36d56908ca.jpeg"></p>
+<p><strong>divider</strong>：在页面中以一条直线展示，可以作为分隔符使用</p>
+<p>编辑完成后点击右上角的save按键，即可保存页面效果</p>
+<p>有一点需要注意的，成型的页面只会默认创建页面的时候拉取一次数据并展示，后期不会主动拉取数据进行分析展示，如果想要展示，则需要右上角的…，除了可以点击refresh dashboard进行一次手动刷新数据外，可以点击set auto-fresh interval按键选择自动刷新的时间间隔，选择哪一个可以根据业务需求</p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/192963847f13b2c8ac7b1c59e70ee7fb.jpeg"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/f3ebd4622ec5bc6c93cd31f5aea421fa.jpeg"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/07/12/%E5%BC%80%E5%8F%91/3.spring%E4%B8%AD%E7%9A%84async%E3%80%81schedule%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/" rel="next" title="spring中的async、schedule的线程问题">
+                  spring中的async、schedule的线程问题 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">annabergite</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>

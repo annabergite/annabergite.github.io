@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="[TOC] 1 背景前段时间新入职了一家公司，组长看我已经有点开发年头了，委任给我一个大活，想让我可以监控任务队列，以及线程池的其他参数，如果有修改、监控到异常则需要进行告警，并且支持实施修改线程池参数。 2 明确任务范围首先并不是为了强行使用动态线程池框架而使用他，使用它的原因是我们的需求就是：  实时监控线程池参数 修改实时监控线程池参数的一些状态 以及进行及时的告警 做到实时修改我们的线程池">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实际使用动态线程池框架dynamic-tp">
+<meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/index.html">
+<meta property="og:site_name" content="艾迪的技术之路">
+<meta property="og:description" content="[TOC] 1 背景前段时间新入职了一家公司，组长看我已经有点开发年头了，委任给我一个大活，想让我可以监控任务队列，以及线程池的其他参数，如果有修改、监控到异常则需要进行告警，并且支持实施修改线程池参数。 2 明确任务范围首先并不是为了强行使用动态线程池框架而使用他，使用它的原因是我们的需求就是：  实时监控线程池参数 修改实时监控线程池参数的一些状态 以及进行及时的告警 做到实时修改我们的线程池">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p0.meituan.net/travelcube/6c0091e92e90f50f89fd83f3b9eb5472135718.png">
+<meta property="og:image" content="https://p0.meituan.net/travelcube/23a44974ff68a08261fb675242b83648181953.png">
+<meta property="article:published_time" content="2025-07-12T04:33:28.459Z">
+<meta property="article:modified_time" content="2025-07-12T04:35:53.617Z">
+<meta property="article:author" content="annabergite">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p0.meituan.net/travelcube/6c0091e92e90f50f89fd83f3b9eb5472135718.png">
+
+
+<link rel="canonical" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/","path":"2025/07/12/开发/14.给公司接入了dynamic-tp，我是这么做的/","title":"实际使用动态线程池框架dynamic-tp"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>实际使用动态线程池框架dynamic-tp | 艾迪的技术之路</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">艾迪的技术之路</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录博客与成长</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">1 背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%98%8E%E7%A1%AE%E4%BB%BB%E5%8A%A1%E8%8C%83%E5%9B%B4"><span class="nav-number">2.</span> <span class="nav-text">2 明确任务范围</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 技术选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%BC%95%E5%85%A5dynamic-tp"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 引入dynamic-tp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%BC%95%E5%85%A5%E6%97%B6%E4%BA%A7%E7%94%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">2.引入时产生的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E4%B8%80%E4%BA%9B%E9%81%97%E6%86%BE"><span class="nav-number">3.1.</span> <span class="nav-text">2.1 一些遗憾</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%8F%82%E6%95%B0%E6%80%8E%E4%B9%88%E8%B7%9F%E9%9A%8F%E4%B8%9A%E5%8A%A1%E4%BF%AE%E6%94%B9%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">3.参数怎么跟随业务修改？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">参考文章：</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">annabergite</p>
+  <div class="site-description" itemprop="description">记录博客与成长,Java，架构</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="实际使用动态线程池框架dynamic-tp | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          实际使用动态线程池框架dynamic-tp
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-12 12:33:28 / 修改时间：12:35:53" itemprop="dateCreated datePublished" datetime="2025-07-12T12:33:28+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>[TOC]</p>
+<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>前段时间新入职了一家公司，组长看我已经有点开发年头了，委任给我一个大活，想让我可以监控任务队列，以及线程池的其他参数，如果有修改、监控到异常则需要进行告警，并且支持实施修改线程池参数。</p>
+<h2 id="2-明确任务范围"><a href="#2-明确任务范围" class="headerlink" title="2 明确任务范围"></a>2 明确任务范围</h2><p>首先并不是为了强行使用动态线程池框架而使用他，使用它的原因是我们的需求就是：</p>
+<ul>
+<li>实时监控线程池参数</li>
+<li>修改实时监控线程池参数的一些状态</li>
+<li>以及进行及时的告警</li>
+<li>做到实时修改我们的线程池参数</li>
+</ul>
+<p>虽然JDK8可以做到通过方法直接修改线程池参数。但是如果自己手写的话则会浪费很多时间。为了避免重复造轮子，我决定及时使用开源框架。</p>
+<h3 id="2-1-技术选型"><a href="#2-1-技术选型" class="headerlink" title="2.1 技术选型"></a>2.1 技术选型</h3><p>当然也不是非得使用dynamic-tp不可，首先我们需要看行业中有没有合适的框架或者思路供我们选择，我们发现了这个框架</p>
+<p><img src="https://p0.meituan.net/travelcube/6c0091e92e90f50f89fd83f3b9eb5472135718.png" alt="图18 动态化线程池功能架构"></p>
+<p>这个美团技术团队对动态线程池该做什么的功能架构，这刚好和我们的需求不谋而合</p>
+<p>此时行业中比较好的开源框架有这两个，dynamic-tp和hippo4j，hoppo4j架构是C&#x2F;S模式，所以需要新增一个hippo4j服务端，那么如果需要一个线上配置环境修改配置的话，那么hippo4j会好一点，我们目前没有这个需求，所以会使用dynamic-tp，直接引用即可，并且通过集成到自己的配置中心就好了（当然看业务需求是怎么样的，毕竟hippo4j在GitHub上的star数量比dynamictp多一些）</p>
+<h3 id="2-2-引入dynamic-tp"><a href="#2-2-引入dynamic-tp" class="headerlink" title="2.2 引入dynamic-tp"></a>2.2 引入dynamic-tp</h3><p>（具体请看dynamic-tp的官网操作）</p>
+<ol start="0">
+<li>我们是使用的nacos作为配置中心和服务发现中心，所以需要引入对应的nacos包</li>
+<li>dynamic-tp只能使用注解强化Java和spring的自带线程池，所以我们只使用配置文件的方式将业务需要使用的线程池放到Dtp注册器里面</li>
+<li>在原有的需要放入线程操作的代码中放一下对应的Dtp注册器里面的线程池进行替换</li>
+</ol>
+<h2 id="2-引入时产生的问题"><a href="#2-引入时产生的问题" class="headerlink" title="2.引入时产生的问题"></a>2.引入时产生的问题</h2><ol start="0">
+<li><p>我们需要自定义告警信息，如果使用自带的wechat提醒或者钉钉提醒，只是通过机器人进行提醒，我们需要使用自己的API</p>
+<p>我们使用了自己的API进行了解决，并且使用Java SPI进行了服务提供</p>
+</li>
+<li><p>使用自定义告警信息，涉及到了API，但是自己的API需要从spring的IOC容器里面获取，但是自定义的告警通知是无法拿到的</p>
+<p>一般公司都会有人对获取bean的工具类做封装，所以可以通过这种getBean()方式拿到了对应Bean</p>
+</li>
+<li><p>我们想使用自定义的拒绝策略</p>
+<p>使用Java SPI进行了拒绝策略的自定义</p>
+</li>
+<li><p>使用dynamic-tp需要考虑到一些公共的修改，比如我们的wechat自定义提醒，自定义拒绝策略，每一次都引入再添加共同的代码文件比较麻烦</p>
+<p>我们进行了二次封装，再二次封装的代码中加入了这些修改，这样其他微服务使用dynamic-tp框架时候可以直接使用我们的二次封装的框架</p>
+<p>我们并没有使用@import等注解，而是在引入后使用ComponentScan注解主动扫描的</p>
+</li>
+</ol>
+<h3 id="2-1-一些遗憾"><a href="#2-1-一些遗憾" class="headerlink" title="2.1 一些遗憾"></a>2.1 一些遗憾</h3><ol start="0">
+<li>使用的自定义告警、拒绝策略，则需要使用Java spi进行服务提供与发现，不能使用spring的自动装配</li>
+<li>只有Java或者spring自带的线程池可以被使用注解强化，用处不大，反而是如果可以使用注解在ThreadPoolExecutor的话则对我们帮助很大</li>
+</ol>
+<p>当然，dynamic-tp本身我是很喜欢的，他帮我提前造好了轮子，提升了我们的开发效率。</p>
+<h2 id="3-参数怎么跟随业务修改？"><a href="#3-参数怎么跟随业务修改？" class="headerlink" title="3.参数怎么跟随业务修改？"></a>3.参数怎么跟随业务修改？</h2><p>线程池参数并不是一成不变的，后续肯定会随着业务的需要进行修改。修改之前需要考虑一下是否有资源没有用到，有时候就是会出现资源没有使用全（如LB没有重定向好）导致的资源紧张。</p>
+<p>修改线程池参数一般只会修改核心线程数、最大线程数、任务队列这几个信息。线程池执行情况与任务类型相关性较大，IO 密集型和 CPU 密集型的任务运行起来的情况差异非常大，所以一般我们每个微服务会有两个线程池，一个用于做IO密集型，一个用于做CPU密集型任务，这两个线程池的参数调试肯定是不一样的</p>
+<p>具体的方法有这几种：</p>
+<ol start="0">
+<li><p>根据经验猜</p>
+</li>
+<li><p>此处我放一张行业内比较认可的图片</p>
+<p><img src="https://p0.meituan.net/travelcube/23a44974ff68a08261fb675242b83648181953.png" alt="img"></p>
+<p>这几种方式见仁见智</p>
+</li>
+<li><p>根据方法二的调参进行修改，同时使用动态线程池实时监控线程池负载，如果线程池逐步正常，则表明修改后的参数可以满足业务需求</p>
+</li>
+</ol>
+<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://hippo4j.cn/">Hippo4J官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">Java线程池实现原理及其在美团业务中的实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://dynamictp.cn/">dynamic-tp官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?spm=a2c6h.12873639.article-detail.7.605b2645VLJDkw&__biz=Mzg3NDA1MTgwNA==&mid=2247484615&idx=1&sn=915be23f412f987ee0b73c7ba8f4813e&chksm=ced7e574f9a06c6210d70699f1e9d2edfa8ab40851030381c8ee18b7e344fc77cfd13a27cda0&scene=21#wechat_redirect">一文读懂线程池的实现原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1323851">动态调整线程池参数实践</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/12/%E7%94%9F%E6%B4%BB/1.2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="prev" title="2024年终总结">
+                  <i class="fa fa-angle-left"></i> 2024年终总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">annabergite</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
