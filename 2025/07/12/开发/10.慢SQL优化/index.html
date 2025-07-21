@@ -19,28 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="1、背景 告警页面由APP+ H5开发转纯H5页面优化、 好处：  开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂 转成H5可以减少APP的开发压力  问题现象：   慢查询16K&#x2F;天    线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化     2、排查方式   直接使用购买MySQL实例的腾讯云上面的智能优化    查看慢sql的统计情况，发现慢sql和C">
+    <meta name="description" content="1、背景 告警页面由APP+ H5开发转纯H5页面优化 好处  开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂 转成H5可以减少APP的开发压力  1.1、问题现象   慢查询16K&#x2F;天    线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化     2、排查方式 结论先行，以下是该列表的优化流程 flowchart      A[有先查看MySQL优化建议,依">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线上慢查询优化">
 <meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/10.%E6%85%A2SQL%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="1、背景 告警页面由APP+ H5开发转纯H5页面优化、 好处：  开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂 转成H5可以减少APP的开发压力  问题现象：   慢查询16K&#x2F;天    线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化     2、排查方式   直接使用购买MySQL实例的腾讯云上面的智能优化    查看慢sql的统计情况，发现慢sql和C">
+<meta property="og:description" content="1、背景 告警页面由APP+ H5开发转纯H5页面优化 好处  开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂 转成H5可以减少APP的开发压力  1.1、问题现象   慢查询16K&#x2F;天    线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化     2、排查方式 结论先行，以下是该列表的优化流程 flowchart      A[有先查看MySQL优化建议,依">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C2e714778e23510985c77506bd312df31.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cdad9dd59dcd8a89c4f7740769393f056.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cbdb64a65f6f6b66224f0433610086d82.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C87a79fd8faf9089e282428144daccbfe.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C994a8ff4419f284e41339ad008f0d530.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C4873f5fb0e88d3f8c86bf327d2fd566e.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C22b3ee0971451c532addaba0d71b9b62.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C80f718900c5797ba180e97d6b72d6f36.png">
-<meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C557e37a6a13d48020bf13df9babd0d80.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/2e714778e23510985c77506bd312df31.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/dad9dd59dcd8a89c4f7740769393f056.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/bdb64a65f6f6b66224f0433610086d82.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/87a79fd8faf9089e282428144daccbfe.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/994a8ff4419f284e41339ad008f0d530.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/4873f5fb0e88d3f8c86bf327d2fd566e.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/22b3ee0971451c532addaba0d71b9b62.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/80f718900c5797ba180e97d6b72d6f36.png">
 <meta property="og:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cimage-20250706185239859.png">
+<meta property="og:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/b658a861b656ca8040d7f77e3f480cc7.png">
 <meta property="article:published_time" content="2025-07-12T04:14:50.380Z">
-<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
+<meta property="article:modified_time" content="2025-07-21T15:43:51.064Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="e:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C2e714778e23510985c77506bd312df31.png">
+<meta name="twitter:image" content="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/2e714778e23510985c77506bd312df31.png">
 
 
 <link rel="canonical" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/10.%E6%85%A2SQL%E4%BC%98%E5%8C%96/">
@@ -135,7 +135,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1、背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2、排查方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">解决方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">问题回溯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">后续优化：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1、背景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81%E9%97%AE%E9%A2%98%E7%8E%B0%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">1.1、问题现象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2、排查方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3、解决方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E3%80%81%E8%87%AA%E5%B7%B1%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E7%9A%84"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、自己可以修改的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E3%80%81%E9%9C%80%E8%A6%81%E9%85%8D%E5%90%88%E7%9A%84"><span class="nav-number">3.2.</span> <span class="nav-text">3.2、需要配合的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86"><span class="nav-number">3.2.1.</span> <span class="nav-text">产品经理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#app"><span class="nav-number">3.2.2.</span> <span class="nav-text">app</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4、问题回溯</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">5、优化效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">6.</span> <span class="nav-text">6、后续优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">7.</span> <span class="nav-text">7、推荐阅读</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,9 +208,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:14:50" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-07-21 23:43:51" itemprop="dateModified" datetime="2025-07-21T23:43:51+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,42 +249,44 @@
     
     
     <div class="post-body" itemprop="articleBody"><h1>1、背景</h1>
-<p>告警页面由APP+ H5开发转纯H5页面优化、</p>
-<p>好处：</p>
+<p>告警页面由APP+ H5开发转纯H5页面优化</p>
+<p>好处</p>
 <ol>
 <li>开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂</li>
 <li>转成H5可以减少APP的开发压力</li>
 </ol>
-<p>问题现象：</p>
+<h2 id="1-1、问题现象">1.1、问题现象</h2>
 <ol>
 <li>
 <p>慢查询16K/天</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C2e714778e23510985c77506bd312df31.png" alt="2e714778e23510985c77506bd312df31"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/2e714778e23510985c77506bd312df31.png" alt="2e714778e23510985c77506bd312df31"></p>
 </li>
 <li>
 <p>线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cdad9dd59dcd8a89c4f7740769393f056.png" alt="dad9dd59dcd8a89c4f7740769393f056"></p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cbdb64a65f6f6b66224f0433610086d82.png" alt="bdb64a65f6f6b66224f0433610086d82"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/dad9dd59dcd8a89c4f7740769393f056.png" alt="dad9dd59dcd8a89c4f7740769393f056"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/bdb64a65f6f6b66224f0433610086d82.png" alt="bdb64a65f6f6b66224f0433610086d82"></p>
 </li>
 </ol>
 <h1>2、排查方式</h1>
+<p>结论先行，以下是该列表的优化流程</p>
+<pre class="mermaid">flowchart 
+    A[有先查看MySQL优化建议,依据智能优化作为基础优化方式] -->B(分析慢查询与CPU关系,发现解决慢查询即可优化CPU问题)
+    B --> C[分析慢查询统计,排查该优化哪个慢查询sql,对应到Java代码]
+    C --> D[explain分析具体优化点]</pre>
 <ol>
 <li>
 <p>直接使用购买MySQL实例的腾讯云上面的智能优化</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C87a79fd8faf9089e282428144daccbfe.png" alt="87a79fd8faf9089e282428144daccbfe"></p>
+<p><strong>可以优先查看AI的优化建议进行快速修复的凭证</strong></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/87a79fd8faf9089e282428144daccbfe.png" alt="87a79fd8faf9089e282428144daccbfe"></p>
 </li>
 <li>
 <p>查看慢sql的统计情况，发现慢sql和CPU趋势较为相同</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C994a8ff4419f284e41339ad008f0d530.png" alt="994a8ff4419f284e41339ad008f0d530"></p>
+<p><strong>这说明如果优化了慢查询，则MysqlCPU较高问题也可以解决</strong></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/994a8ff4419f284e41339ad008f0d530.png" alt="994a8ff4419f284e41339ad008f0d530"></p>
 </li>
 <li>
-<p>导出慢查询日志，进行sql分析，发现其中99%以上是开发的告警信息列表查询语句</p>
-</li>
-<li>
-<p>复刻查询，发现随机抽到的10个慢查询sql中，首次超时执行失败（超时请求），第二次执行耗时2246ms，后续再执行，稳定差不多在1389ms</p>
-</li>
-<li>
-<p>随机查看其他用户，发现告警量大的用户稳定出现慢查询，告警总量大约是20W-50W，告警量少的用户，即使是跨分区也不会出现慢查询</p>
+<p>导出慢查询日志，进行sql统计分析，发现其中99%以上是开发的告警信息列表查询语句</p>
+<p><strong>这表明优化单一告警即可优化Mysql的慢查询</strong></p>
 </li>
 <li>
 <p>在线上环境使用explain对查询语句进行查看，发现以下现象：</p>
@@ -287,11 +295,14 @@
 <p>key有值——有索引</p>
 <p>rows大，且filtered较小，只有2%——扫描200条数据需要进而扫描大量条数数据，不合理，需修改查询条件</p>
 <p>extra——有Using filesort，排序未触发索引，需优化索引</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C4873f5fb0e88d3f8c86bf327d2fd566e.png" alt="4873f5fb0e88d3f8c86bf327d2fd566e"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/4873f5fb0e88d3f8c86bf327d2fd566e.png" alt="4873f5fb0e88d3f8c86bf327d2fd566e"></p>
+</li>
+<li>
+<p>随机查看其他用户，发现告警量大的用户稳定出现慢查询，告警总量大约是20W-50W，告警量少的用户，即使是跨分区也不会出现慢查询</p>
 </li>
 </ol>
-<h1>解决方式</h1>
-<p><strong>自己可以修改的：</strong></p>
+<h1>3、解决方式</h1>
+<h2 id="3-1、自己可以修改的"><strong>3.1、自己可以修改的</strong></h2>
 <ol>
 <li>
 <p>改变查询条件顺序，减少查询条件</p>
@@ -312,31 +323,29 @@
 <p>paritition删除——删除会导致线上长时间停顿20min以上，且涉及到删除过期数据逻辑，无法优化</p>
 </li>
 </ol>
-<p><strong>需要配合的：</strong></p>
-<p>产品经理：</p>
+<h2 id="3-2、需要配合的">3.2、需要配合的</h2>
+<h3 id="产品经理">产品经理</h3>
 <ol>
 <li>重构时默认查询7天，涉及多个partition，可不可以改成默认查询1天——为了在功能上对标海康，大华，不能进行修改</li>
 </ol>
-<p>app：</p>
+<h3 id="app">app</h3>
 <ol>
 <li>缺少偏移量，期望入参增加偏移量，避免后续出现的深分页问题——app暂时没人力投入，不进行修改</li>
 </ol>
-<h1>问题回溯</h1>
+<h1>4、问题回溯</h1>
 <ol>
 <li>
-<p>新问题单开发同事开发时直接在原有查询中间添加</p>
+<p>新问题单开发同事开发时直接在原有查询中间添加查询条件</p>
 </li>
 <li>
-<p>保持线上原有压测时CPU，内存无问题，推测可能是因为数据量不够导致问题</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C22b3ee0971451c532addaba0d71b9b62.png" alt="22b3ee0971451c532addaba0d71b9b62"></p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C80f718900c5797ba180e97d6b72d6f36.png" alt="80f718900c5797ba180e97d6b72d6f36"></p>
-</li>
-<li>
-<p>原有开发时耗时无问题，原因推测同上</p>
-<p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5C557e37a6a13d48020bf13df9babd0d80.png" alt="557e37a6a13d48020bf13df9babd0d80"></p>
+<p>以下为测试环境压力测试时CPU，内存图片，无问题</p>
+<p>推测可能是因为测试环境压测数据量不够导致问题</p>
+<p>为什么没有准备合适数据，原因为慢查询多为数据量较少用户</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/22b3ee0971451c532addaba0d71b9b62.png" alt="22b3ee0971451c532addaba0d71b9b62"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/80f718900c5797ba180e97d6b72d6f36.png" alt="80f718900c5797ba180e97d6b72d6f36"></p>
 </li>
 </ol>
-<p>优化效果：</p>
+<h1>5、优化效果</h1>
 <ol>
 <li>
 <p>慢查询explain优化</p>
@@ -346,19 +355,19 @@
 <p><img src="E:%5CBlogin%5Cprojects-markdown%5C%E5%90%8E%E7%AB%AF%5CJava%E6%8A%80%E6%9C%AF%5Cimage-20250706185239859.png" alt="image-20250706185239859"></p>
 </li>
 <li>
-<p>每日慢查询数量降低</p>
+<p>每日慢查询数量降低，从16k/天 -&gt; 500/天</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/b658a861b656ca8040d7f77e3f480cc7.png" alt="b658a861b656ca8040d7f77e3f480cc7"></p>
 </li>
 </ol>
-<h1>后续优化：</h1>
+<h1>6、后续优化</h1>
 <ol>
 <li>APP侧辅助修改提问题单</li>
 <li>后续排查发现告警有子模块呼叫查询，也会使用tbl_alarm表，为了减少单表压力，提单将对应查询优化到专门存储呼叫的表中进行查询</li>
 </ol>
-<p>推荐阅读</p>
+<h1>7、推荐阅读</h1>
 <ol>
 <li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/">Mysql Documentation</a></li>
 <li><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html">MySQL documentation explain</a></li>
-<li></li>
 </ol>
 
     </div>
