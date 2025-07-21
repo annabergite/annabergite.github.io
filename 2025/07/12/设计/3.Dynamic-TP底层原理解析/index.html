@@ -19,19 +19,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前言之前我有写过一篇文章，讲述的是怎么使用Dynamic-TP 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~ 我阅读的Dtp源码是1.1.9 之前使用Dynamic-TP 主要是为了使用">
+    <meta name="description" content="前言 之前我有写过一篇文章，讲述的是怎么使用Dynamic-TP 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~ 我阅读的Dtp源码是1.1.9 之前使用Dynamic-TP 主要是为了使">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dynamic-TP底层原理解析">
 <meta property="og:url" content="http://example.com/2025/07/12/%E8%AE%BE%E8%AE%A1/3.Dynamic-TP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="前言之前我有写过一篇文章，讲述的是怎么使用Dynamic-TP 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~ 我阅读的Dtp源码是1.1.9 之前使用Dynamic-TP 主要是为了使用">
+<meta property="og:description" content="前言 之前我有写过一篇文章，讲述的是怎么使用Dynamic-TP 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~ 我阅读的Dtp源码是1.1.9 之前使用Dynamic-TP 主要是为了使">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/27175151/1727972366167-615c36ba-c378-47b2-bd0f-224a3d912e3d.png">
-<meta property="og:image" content="c:\Users\zhubaiyi\Desktop\Dtp%E6%80%BB%E8%A7%88.png">
-<meta property="og:image" content="c:\Users\zhubaiyi\AppData\Roaming\Typora\typora-user-images\image-20241117155135973.png">
+<meta property="og:image" content="c:%5CUsers%5Czhubaiyi%5CDesktop%5CDtp%E6%80%BB%E8%A7%88.png">
+<meta property="og:image" content="c:%5CUsers%5Czhubaiyi%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20241117155135973.png">
 <meta property="og:image" content="https://cdn.nlark.com/yuque/0/2024/png/27175151/1727972390194-b8108b67-28ee-4f22-b6fb-094e762fc544.png">
 <meta property="article:published_time" content="2025-07-12T04:14:50.402Z">
-<meta property="article:modified_time" content="2025-07-12T04:31:48.283Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://cdn.nlark.com/yuque/0/2024/png/27175151/1727972366167-615c36ba-c378-47b2-bd0f-224a3d912e3d.png">
@@ -59,12 +59,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -126,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%8A%A8%E6%80%81%E8%B0%83%E5%8F%82"><span class="nav-number">2.</span> <span class="nav-text">1、动态调参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7"><span class="nav-number">3.</span> <span class="nav-text">2、实时监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E5%91%8A%E8%AD%A6%E7%9A%84%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">怎么进行告警的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E9%80%9A%E7%9F%A5%E5%91%8A%E8%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">3、通知告警</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%AB%98%E4%BA%AE%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">高亮是怎么实现的？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%91%8A%E8%AD%A6%E6%8B%93%E5%B1%95"><span class="nav-number">6.</span> <span class="nav-text">4、告警拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%A1%86%E6%9E%B6%E8%87%AA%E5%B8%A6%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">7.</span> <span class="nav-text">5、框架自带线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B3%A8%E5%86%8C"><span class="nav-number">8.</span> <span class="nav-text">6、线程池注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">9.</span> <span class="nav-text">7、其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1%E3%80%81%E5%AF%B9%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">9.1.</span> <span class="nav-text">7.1、对接第三方线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2%E3%80%81Dynamic-TP%E5%AF%B9%E4%BA%8ESpring%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">9.2.</span> <span class="nav-text">7.2、Dynamic-TP对于Spring的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DtpPostProcessor"><span class="nav-number">9.2.0.1.</span> <span class="nav-text">DtpPostProcessor</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AwareManager"><span class="nav-number">9.2.0.1.1.</span> <span class="nav-text">AwareManager</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DtpInterceptorRegistry"><span class="nav-number">9.2.0.1.2.</span> <span class="nav-text">DtpInterceptorRegistry</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DtpInterceptorProxyFactory"><span class="nav-number">9.2.0.1.3.</span> <span class="nav-text">DtpInterceptorProxyFactory</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number"></span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%96%87%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">引用文章</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E5%8A%A8%E6%80%81%E8%B0%83%E5%8F%82"><span class="nav-number">2.</span> <span class="nav-text">1、动态调参</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7"><span class="nav-number">3.</span> <span class="nav-text">2、实时监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%8E%E4%B9%88%E8%BF%9B%E8%A1%8C%E5%91%8A%E8%AD%A6%E7%9A%84%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">怎么进行告警的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E9%80%9A%E7%9F%A5%E5%91%8A%E8%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">3、通知告警</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%AB%98%E4%BA%AE%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="nav-number">5.0.0.0.1.</span> <span class="nav-text">高亮是怎么实现的？</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%91%8A%E8%AD%A6%E6%8B%93%E5%B1%95"><span class="nav-number">6.</span> <span class="nav-text">4、告警拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E6%A1%86%E6%9E%B6%E8%87%AA%E5%B8%A6%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">7.</span> <span class="nav-text">5、框架自带线程池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B3%A8%E5%86%8C"><span class="nav-number">8.</span> <span class="nav-text">6、线程池注册</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E3%80%81%E5%85%B6%E4%BB%96"><span class="nav-number">9.</span> <span class="nav-text">7、其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1%E3%80%81%E5%AF%B9%E6%8E%A5%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="nav-number">9.1.</span> <span class="nav-text">7.1、对接第三方线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2%E3%80%81Dynamic-TP%E5%AF%B9%E4%BA%8ESpring%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">9.2.</span> <span class="nav-text">7.2、Dynamic-TP对于Spring的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DtpPostProcessor"><span class="nav-number">9.2.0.1.</span> <span class="nav-text">DtpPostProcessor</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#AwareManager"><span class="nav-number">9.2.0.1.1.</span> <span class="nav-text">AwareManager</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DtpInterceptorRegistry"><span class="nav-number">9.2.0.1.2.</span> <span class="nav-text">DtpInterceptorRegistry</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#DtpInterceptorProxyFactory"><span class="nav-number">9.2.0.1.3.</span> <span class="nav-text">DtpInterceptorProxyFactory</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number"></span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%96%87%E7%AB%A0"><span class="nav-number">1.</span> <span class="nav-text">引用文章</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -139,12 +142,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -201,7 +204,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:31:48" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -214,6 +217,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -222,7 +232,8 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前我有写过一篇文章，讲述的是怎么使用<code>Dynamic-TP</code> 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="前言">前言</h2>
+<p>之前我有写过一篇文章，讲述的是怎么使用<code>Dynamic-TP</code> 做一些节省开发的一些问题，但是我感觉不能就直接这么算了，我还想看一下这个框架的一些内部逻辑，避免鸽太久自己以及忘了这回事情或者是还要花比较大的学习成本重新看一下源码，所以我打算花点时间狠狠的看下源码，整理一下自己认为有用的信息，毕竟要知其然更要知其所以然嘛~</p>
 <p>我阅读的Dtp源码是1.1.9</p>
 <p>之前使用<code>Dynamic-TP</code> 主要是为了使用它的以下功能：</p>
 <ol>
@@ -236,28 +247,32 @@
 </ol>
 <p>所以我也打算从以下几个方面看下相关的一些源码</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2024/png/27175151/1727972366167-615c36ba-c378-47b2-bd0f-224a3d912e3d.png" alt="img"></p>
-<p><img src="C:\Users\zhubaiyi\Desktop\Dtp总览.png" alt="Dtp总览"></p>
-<h2 id="1、动态调参"><a href="#1、动态调参" class="headerlink" title="1、动态调参"></a>1、动态调参</h2><p>虽然动态调参JDK1.8就自带的，但是实际上的<code>Dynamic-TP</code>动态调参实际上有一定的修改的</p>
+<p><img src="C:%5CUsers%5Czhubaiyi%5CDesktop%5CDtp%E6%80%BB%E8%A7%88.png" alt="Dtp总览"></p>
+<h2 id="1、动态调参">1、动态调参</h2>
+<p>虽然动态调参JDK1.8就自带的，但是实际上的<code>Dynamic-TP</code>动态调参实际上有一定的修改的</p>
 <p>据我观察<code>Dynamic-TP</code>使用的是这组代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">doRefresh</span><span class="params">(ExecutorWrapper executorWrapper, DtpExecutorProps props)</span> &#123;</span><br><span class="line">    ExecutorAdapter&lt;?&gt; executor = executorWrapper.getExecutor();</span><br><span class="line">    doRefreshPoolSize(executor, props);</span><br><span class="line">    <span class="keyword">if</span> (!Objects.equals(executor.getKeepAliveTime(props.getUnit()), props.getKeepAliveTime())) &#123;</span><br><span class="line">        executor.setKeepAliveTime(props.getKeepAliveTime(), props.getUnit());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!Objects.equals(executor.allowsCoreThreadTimeOut(), props.isAllowCoreThreadTimeOut())) &#123;</span><br><span class="line">        executor.allowCoreThreadTimeOut(props.isAllowCoreThreadTimeOut());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// update queue</span></span><br><span class="line">    updateQueueProps(executor, props);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (executorWrapper.isDtpExecutor()) &#123;</span><br><span class="line">        doRefreshDtp(executorWrapper, props);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    doRefreshCommon(executorWrapper, props);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li><code>doRefreshPoolSize()</code>方法是修改核心线程数和最大线程数，期间涉及到核心线程是是要不如最大线程数大的，不然会报问题，最终调用JDK的修改参数的方法（不过实际上ThreadPoolExecutor本身就是支持校验核心线程数和最大线程数之间比较的）</li>
 <li><code>Objects.equals(executor.getKeepAliveTime(props.getUnit()), props.getKeepAliveTime()))</code>是由于配置文件里面默认是TimeUnit是秒，所以此处的比较还是根据秒做比较，当然<code>Dynamic-TP</code>自己有自己的线程池</li>
 </ol>
 <p>由于是修改的非核心线程的最大保活信息，底层修改的时候，会使用LockSupport、CAS方式关掉线程池(JBoss)，或者是通过ReentrantLock遍历关闭对应超过最大时间的线程(Tomcat)</p>
 <ol>
-<li><p>修改queue的时候，如果是内存安全线程则会修改最大使用内存，如果不相等才会修改任务队列；此外会修改 [OrderedDtpExecutor] 的信息</p>
+<li>
+<p>修改queue的时候，如果是内存安全线程则会修改最大使用内存，如果不相等才会修改任务队列；此外会修改 [OrderedDtpExecutor] 的信息</p>
 </li>
-<li><p>方法<code>doRefreshCommon</code>修改了拒绝策略等信息，并且如果有配置事件</p>
+<li>
+<p>方法<code>doRefreshCommon</code>修改了拒绝策略等信息，并且如果有配置事件</p>
 </li>
-<li><p>AbstractDtpAdapter类监听了配置更新的事件，只有配置更新的时候才会调用以上的方法。出发方式的话，如果是nacos的话，则会通过某种方式实现的发布事件让Java程序监听。</p>
+<li>
+<p>AbstractDtpAdapter类监听了配置更新的事件，只有配置更新的时候才会调用以上的方法。出发方式的话，如果是nacos的话，则会通过某种方式实现的发布事件让Java程序监听。</p>
 <p>该方式在CloudNacosRefresher中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onApplicationEvent</span><span class="params">(<span class="meta">@NonNull</span> ApplicationEvent event)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (needRefresh(((EnvironmentChangeEvent) event).getKeys())) &#123;</span><br><span class="line">        refresh(environment);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onApplicationEvent</span><span class="params">(<span class="meta">@NonNull</span> ApplicationEvent event)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (needRefresh(((EnvironmentChangeEvent) event).getKeys())) &#123;</span><br><span class="line">        refresh(environment);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<h2 id="2、实时监控"><a href="#2、实时监控" class="headerlink" title="2、实时监控"></a>2、实时监控</h2><p>实时监控是通过DtpMonitor类实现的，此处实际上就是通过Spring的事件机制进行事件监控与触发。DtpMonitor自带一个定时任务线程池，最大线程数只有一个。DtpMonitor继承了OnceApplicationContextEventListener抽象类，这个类实现了以下方法</p>
+<h2 id="2、实时监控">2、实时监控</h2>
+<p>实时监控是通过DtpMonitor类实现的，此处实际上就是通过Spring的事件机制进行事件监控与触发。DtpMonitor自带一个定时任务线程池，最大线程数只有一个。DtpMonitor继承了OnceApplicationContextEventListener抽象类，这个类实现了以下方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> &#123;</span><br><span class="line"><span class="keyword">if</span> (isOriginalEventSource(event) &amp;&amp; event <span class="keyword">instanceof</span> ApplicationContextEvent) &#123;</span><br><span class="line">    <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextRefreshedEvent) &#123;</span><br><span class="line">        onContextRefreshedEvent((ContextRefreshedEvent) event);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStartedEvent) &#123;</span><br><span class="line">        onContextStartedEvent((ContextStartedEvent) event);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextStoppedEvent) &#123;</span><br><span class="line">        onContextStoppedEvent((ContextStoppedEvent) event);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> ContextClosedEvent) &#123;</span><br><span class="line">        onContextClosedEvent((ContextClosedEvent) event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>onContextRefreshedEvent、onContextStartedEvent、onContextStoppedEvent、onContextClosedEvent是Dynamic-TP需要的事件，不过DtpMonitor只实现了onContextRefreshedEvent方法</p>
 <ol>
 <li>onContextRefreshedEvent会起一个0秒后启动的定时任务，这个任务会给全部的注册在DtpRegistry的线程池发告警消息，AlarmManager会使用自己对象中的线程池ALARM_EXECUTOR进行发布告警消息，告警消息我看只有查看线程活度和任务队列容量，遍历进行告警。</li>
@@ -268,23 +283,22 @@
 <li>言归正传，实际上就是起一个任务分别发布告警和监控的事件</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">    Set&lt;String&gt; executorNames = DtpRegistry.getAllExecutorNames();</span><br><span class="line">    checkAlarm(executorNames);</span><br><span class="line">    collectMetrics(executorNames);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">checkAlarm</span><span class="params">(Set&lt;String&gt; executorNames)</span> &#123;</span><br><span class="line">    executorNames.forEach(name -&gt; &#123;</span><br><span class="line">        <span class="type">ExecutorWrapper</span> <span class="variable">wrapper</span> <span class="operator">=</span> DtpRegistry.getExecutorWrapper(name);</span><br><span class="line">        AlarmManager.tryAlarmAsync(wrapper, SCHEDULE_NOTIFY_ITEMS);</span><br><span class="line">    &#125;);</span><br><span class="line">    publishAlarmCheckEvent();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">collectMetrics</span><span class="params">(Set&lt;String&gt; executorNames)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!dtpProperties.isEnabledCollect()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    executorNames.forEach(x -&gt; &#123;</span><br><span class="line">        <span class="type">ExecutorWrapper</span> <span class="variable">wrapper</span> <span class="operator">=</span> DtpRegistry.getExecutorWrapper(x);</span><br><span class="line">        doCollect(ExecutorConverter.toMetrics(wrapper));</span><br><span class="line">    &#125;);</span><br><span class="line">    publishCollectEvent();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>我们分别查看，发出的监控和告警都会到达DtpAdapterListener类，该类会在以下方法中监听对应事件</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onApplicationEvent</span><span class="params">(<span class="meta">@NonNull</span> ApplicationEvent event)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (event <span class="keyword">instanceof</span> RefreshEvent) &#123;</span><br><span class="line">            doRefresh(((RefreshEvent) event).getDtpProperties());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> CollectEvent) &#123;</span><br><span class="line">            doCollect(((CollectEvent) event).getDtpProperties());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (event <span class="keyword">instanceof</span> AlarmCheckEvent) &#123;</span><br><span class="line">            doAlarmCheck(((AlarmCheckEvent) event).getDtpProperties());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;DynamicTp adapter, event handle failed.&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>处理时会先看是否有DtpAdapter的实现类对于对应的线程池，发送对应的告警，注意DtpAdapter只会对告警做发送，筛选什么的还是在alarm模块里面做。</p>
 <p>数据采集会有一个专门的类CollectorHandler用于处理数据采集，这个数据采集也是调用一个类，遍历collectorTypeList的时候调用该方法，会有具体实现类进行实现的。</p>
-<h2 id="怎么进行告警的？"><a href="#怎么进行告警的？" class="headerlink" title="怎么进行告警的？"></a>怎么进行告警的？</h2><p>通过eventBus（虽然据说是做出来给Android用的，发布者需要使用post()，然后需要一个接收的，通过使用@subscirbe进行event类型的获取，怎么看是否是拿到了合适的，需要通过实现applicationevent后，接受提需要入参是对应类型的event类才能拿到，这种方法一般是void方法）</p>
+<h2 id="怎么进行告警的？">怎么进行告警的？</h2>
+<p>通过eventBus（虽然据说是做出来给Android用的，发布者需要使用post()，然后需要一个接收的，通过使用@subscirbe进行event类型的获取，怎么看是否是拿到了合适的，需要通过实现applicationevent后，接受提需要入参是对应类型的event类才能拿到，这种方法一般是void方法）</p>
 <p>dynamic-tp中自定义event是这么写的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CustomContextRefreshedEvent</span> <span class="keyword">extends</span> <span class="title class_">EventObject</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">CustomContextRefreshedEvent</span><span class="params">(Object source)</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>(source);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在dtpMonitor中，会获取刷新配置的时间，通过这种方式（我才创建的时候会在lifecycle里面先创建时间与事件监听，再发布一个刷新配置的事件）会DtpMonitor中创建一个定时任务，这个定时任务会发布一个AlarmCheckEvent的事件</p>
-<p><img src="C:\Users\zhubaiyi\AppData\Roaming\Typora\typora-user-images\image-20241117155135973.png" alt="image-20241117155135973"></p>
+<p><img src="C:%5CUsers%5Czhubaiyi%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20241117155135973.png" alt="image-20241117155135973"></p>
 <p>此处会发现它指向了这个context -&gt;相关的代码段，在这个代码段中，会获取全部的dtpadpter（因为第三方组件也会可能使用dtp组件），获取全部dtpadpter的全部线程池wrapper（通常存放着线程池的信息以及一些通知平台和告警项），接着会对全部线程池wrapper查看liveness和capacity，如果到了时间且出发了liveness和capacity，则会进行通知告警，走通知告警的逻辑。</p>
 <p>liveness的判断逻辑就是单纯的除法</p>
-<h2 id="3、通知告警"><a href="#3、通知告警" class="headerlink" title="3、通知告警"></a>3、通知告警</h2><p>告警主要是看AbstractNotifier、AlarmManager这两个Java类。</p>
+<h2 id="3、通知告警">3、通知告警</h2>
+<p>告警主要是看AbstractNotifier、AlarmManager这两个Java类。</p>
 <ol>
 <li>AbstractNotifier用于处理发送功能，该方式解决了通过send()方法实现发送调参通知、发送告警通知、创建告警内容、创建通知内容、通过MDC获取trace信息、配置receiver的信息（发送调参通知、发送告警通知会使用）、高亮、获取Const类里面的文本信息。</li>
 </ol>
@@ -294,8 +308,7 @@
 </ol>
 <p>值得学习的事情是，遍历该告警那些平台选择过滤条件的时候是从末往前遍历，在更细化一层的时候拿到的信息如果没有的话，会优先使用上一层的信息。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SafeVarargs</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span>&lt;T&gt; InvokerChain&lt;T&gt; <span class="title function_">buildInvokerChain</span><span class="params">(Invoker&lt;T&gt; target, Filter&lt;T&gt;... filters)</span> &#123;</span><br><span class="line"></span><br><span class="line">    InvokerChain&lt;T&gt; invokerChain = <span class="keyword">new</span> <span class="title class_">InvokerChain</span>&lt;&gt;();</span><br><span class="line">    Invoker&lt;T&gt; last = target;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> filters.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        Invoker&lt;T&gt; next = last;</span><br><span class="line">        Filter&lt;T&gt; filter = filters[i];</span><br><span class="line">        last = context -&gt; filter.doFilter(context, next);</span><br><span class="line">    &#125;</span><br><span class="line">    invokerChain.setHead(last);</span><br><span class="line">    <span class="keyword">return</span> invokerChain;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>是在<code>InvokerChainFactory</code>类中做的过滤，常见的过滤方式存储在AlarmBaseFilter&#x2F;NoticeBaseFilter&#x2F;NotifyRedisRateLimiterFilter中，我们当前只看AlarmBaseFilter。</p>
+<p>是在<code>InvokerChainFactory</code>类中做的过滤，常见的过滤方式存储在AlarmBaseFilter/NoticeBaseFilter/NotifyRedisRateLimiterFilter中，我们当前只看AlarmBaseFilter。</p>
 <p>AlarmBaseFilter做过滤操作的时候，会需要ALarm的上下文信息(AlarmCtx，就是存储通知信息以及哪个线程池需要做通知)、Alarm的触发器(AlarmInvoker会配置对应的上下文信息，发送对应alarm信息，重置告警的触发条件，告警信息存储在ConcurrentHashMap，是线程安全的。AlarmCounter)，</p>
 <p>一开始就会调用invoke方法？</p>
 <p>本身是实现了一个链表的invoke的实现，最终创建了一个invokeChain</p>
@@ -310,39 +323,43 @@
 <li><strong>拒绝策略告警</strong>出发是AwareManager通过<strong>beforeReject</strong>方法让AlarmManager进行通知。DtpExecutor线程池用到的RejectedExecutionHandler是经过动态代理包装过的</li>
 <li><strong>任务队列超时告警、任务执行超时告警</strong>官网上说是通过重写重写ThreadPoolExecutor的execute()方法和beforeExecute()方法实现的。当然现在新版本代码是通过Timer时间轮实现的，在AlarmManager中统一进行查看修改。并且Dtp线程池在创建线程等操作的时候会通过AwareManager主动开启一个任务</li>
 </ol>
-<h6 id="高亮是怎么实现的？"><a href="#高亮是怎么实现的？" class="headerlink" title="高亮是怎么实现的？"></a>高亮是怎么实现的？</h6><p>如告警过程中，通过buildAlarmContent方法创建内容时候，会执行高亮API</p>
+<h6 id="高亮是怎么实现的？">高亮是怎么实现的？</h6>
+<p>如告警过程中，通过buildAlarmContent方法创建内容时候，会执行高亮API</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String <span class="title function_">highlightAlarmContent</span><span class="params">(String content, NotifyItemEnum notifyItemEnum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(content) || Objects.isNull(getColors())) &#123;</span><br><span class="line">            <span class="keyword">return</span> content;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;String&gt; colorKeys = getAlarmKeys(notifyItemEnum);</span><br><span class="line">        Pair&lt;String, String&gt; pair = getColors();</span><br><span class="line">        <span class="keyword">for</span> (String field : colorKeys) &#123;</span><br><span class="line">            content = content.replace(field, pair.getLeft());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (String field : getAllAlarmKeys()) &#123;</span><br><span class="line">            content = content.replace(field, pair.getRight());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <p>会将获取需要高亮的信息（存储在NotifyItemEnum中），进行颜色替换</p>
-<h2 id="4、告警拓展"><a href="#4、告警拓展" class="headerlink" title="4、告警拓展"></a>4、告警拓展</h2><ol>
+<h2 id="4、告警拓展">4、告警拓展</h2>
+<ol>
 <li>告警拓展具体来讲就是自己写了个新告警，但是新告警需要使用JDK SPI机制，JDK SPI是因为我们传输的Alarm信息不能被IOC容器管理，因为我们是一个告警需要产生一个类的，Spring SPI靠的是将JDK SPI的类加载IOC容器中实现的可加载模式的。</li>
 <li>为什么是使用JDK SPI？因为使用Spring SPI是需要托管到IOC容器的，但是NotifierHandler本身会处理告警通知，但是如果如果要做到动态修改配置与个数，则需要做到实时的创建与删除，变成Bean是不够合理的，所以才会使用JDK SPI方式，通过以下方式实现</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(BaseNotifyCtx context)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            DtpNotifyCtxHolder.set(context);</span><br><span class="line">            <span class="type">val</span> <span class="variable">noticeCtx</span> <span class="operator">=</span> (NoticeCtx) context;</span><br><span class="line">            NotifierHandler.getInstance().sendNotice(noticeCtx.getOldFields(), noticeCtx.getDiffs());</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            DtpNotifyCtxHolder.remove();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> NotifierHandler <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> NotifierHandlerHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NotifierHandlerHolder</span> &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">NotifierHandler</span> <span class="variable">INSTANCE</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">NotifierHandler</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">NotifierHandler</span><span class="params">()</span> &#123;</span><br><span class="line">        List&lt;DtpNotifier&gt; loadedNotifiers = ExtensionServiceLoader.get(DtpNotifier.class);</span><br><span class="line">        loadedNotifiers.forEach(notifier -&gt; NOTIFIERS.put(notifier.platform(), notifier));</span><br><span class="line"></span><br><span class="line">        <span class="type">DtpNotifier</span> <span class="variable">dingNotifier</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DtpDingNotifier</span>(<span class="keyword">new</span> <span class="title class_">DingNotifier</span>());</span><br><span class="line">        <span class="type">DtpNotifier</span> <span class="variable">wechatNotifier</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DtpWechatNotifier</span>(<span class="keyword">new</span> <span class="title class_">WechatNotifier</span>());</span><br><span class="line">        <span class="type">DtpNotifier</span> <span class="variable">larkNotifier</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DtpLarkNotifier</span>(<span class="keyword">new</span> <span class="title class_">LarkNotifier</span>());</span><br><span class="line">        NOTIFIERS.put(dingNotifier.platform(), dingNotifier);</span><br><span class="line">        NOTIFIERS.put(wechatNotifier.platform(), wechatNotifier);</span><br><span class="line">        NOTIFIERS.put(larkNotifier.platform(), larkNotifier);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 <p>可以看到实际上是通过创建一个NotifierHandler进行通知，每次创建都会通过获取通过任何方式提供的DtpNotifier服务，后将其注册到这个创建的NotifierHandler的Map中。</p>
-<h2 id="5、框架自带线程池"><a href="#5、框架自带线程池" class="headerlink" title="5、框架自带线程池"></a>5、框架自带线程池</h2><p>框架自带线程池均继承自<code>DtpExecutor</code>,<code>DtpExecutor</code>继承自<code>ThreadPoolExecutor</code>，顺便实现了SpringExecutor, TaskEnhanceAware, ExecutorAdapter<ThreadPoolExecutor>，具体原理是在<strong>execute</strong>、<strong>beforeExecute</strong>、<strong>afterExecute</strong>上面做了增强，包装成了DtpExecutor自己的</p>
+<h2 id="5、框架自带线程池">5、框架自带线程池</h2>
+<p>框架自带线程池均继承自<code>DtpExecutor</code>,<code>DtpExecutor</code>继承自<code>ThreadPoolExecutor</code>，顺便实现了SpringExecutor, TaskEnhanceAware, ExecutorAdapter<ThreadPoolExecutor>，具体原理是在<strong>execute</strong>、<strong>beforeExecute</strong>、<strong>afterExecute</strong>上面做了增强，包装成了DtpExecutor自己的</p>
 <p>源码中，除了Tomcat第三方线程池有不同外，其他的都是如下</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void beforeExecute(Thread t, Runnable r) &#123;</span><br><span class="line">    super.beforeExecute(t, r);</span><br><span class="line">    AwareManager.beforeExecute(this, t, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>可以看到是总是会先调用ThreadPoolExecutor的beforeExecute方法，然后会使用AwareManager.beforeExecute()方法，这个方法会先删除掉原先的Runnable，然后在开启一个新的Runnable，因为要设置线程的期限运行时间，所以会使用Timer时间轮做定时关掉的任务</p>
 <p>执行execute方法时候，则必定会调用AwareManager.execute方法，只有被DynamicTp增强后的任务才会被DTP自己加载监控等信息，然后再开启任务。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void afterExecute(Executor executor, Runnable r, Throwable t) &#123;</span><br><span class="line">    Optional.ofNullable(statProviders.get(executor)).ifPresent(p -&gt; p.completeTask(r));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>可见也是先调用ThreadPoolExecutor的afterExecute方法，再看对应Executor是否存储在DTP里面，有的话再调用该Executor删除掉对应任务。</p>
-<h2 id="6、线程池注册"><a href="#6、线程池注册" class="headerlink" title="6、线程池注册"></a>6、线程池注册</h2><p>虽然看起来线程池注册是在整个框架中比较不常见的，但是这个也非常的重要，值得我们学习与阅读。DtpRegistry也继承了OnceApplicationContextEventListener，这代表</p>
+<h2 id="6、线程池注册">6、线程池注册</h2>
+<p>虽然看起来线程池注册是在整个框架中比较不常见的，但是这个也非常的重要，值得我们学习与阅读。DtpRegistry也继承了OnceApplicationContextEventListener，这代表</p>
 <ol>
-<li><p>线程池注册在DtpRegistry里面，里面的话是一个ConcurrentHashMap</p>
-<p>public class DtpPostProcessor implements BeanPostProcessor, BeanFactoryAware, PriorityOrdered </p>
+<li>
+<p>线程池注册在DtpRegistry里面，里面的话是一个ConcurrentHashMap</p>
+<p>public class DtpPostProcessor implements BeanPostProcessor, BeanFactoryAware, PriorityOrdered</p>
 <p>b. 另外就是会将获取DtpRegistry中线程池的一些操作API给放这个类里面了；监听事件刷线配置的操作也存放在这个类里面了。这个刷新方法会同时刷新Dtp线程池和不是Dtp但是托管给了Dtp的线程池。</p>
 </li>
 </ol>
-<h2 id="7、其他"><a href="#7、其他" class="headerlink" title="7、其他"></a>7、其他</h2><h3 id="7-1、对接第三方线程池"><a href="#7-1、对接第三方线程池" class="headerlink" title="7.1、对接第三方线程池"></a>7.1、对接第三方线程池</h3><p>adapter模块目前已经接入了SpringBoot内置的三大WebServer（Tomcat、Jetty、Undertow）的线程池管理，实现层面也是和核心模块做了解耦，利用spring的事件机制进行通知监听处理。通过initialize()方法拿到webServer的线程池</p>
+<h2 id="7、其他">7、其他</h2>
+<h3 id="7-1、对接第三方线程池">7.1、对接第三方线程池</h3>
+<p>adapter模块目前已经接入了SpringBoot内置的三大WebServer（Tomcat、Jetty、Undertow）的线程池管理，实现层面也是和核心模块做了解耦，利用spring的事件机制进行通知监听处理。通过initialize()方法拿到webServer的线程池</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">initialize</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.initialize();</span><br><span class="line">    <span class="keyword">if</span> (executors.get(getTpName()) == <span class="literal">null</span>) &#123;</span><br><span class="line">        <span class="type">ApplicationContext</span> <span class="variable">applicationContext</span> <span class="operator">=</span> ApplicationContextHolder.getInstance();</span><br><span class="line">        <span class="type">WebServer</span> <span class="variable">webServer</span> <span class="operator">=</span> ((WebServerApplicationContext) applicationContext).getWebServer();</span><br><span class="line">        doEnhance(webServer);</span><br><span class="line">        log.info(<span class="string">&quot;DynamicTp adapter, web server &#123;&#125; executor init end, executor: &#123;&#125;&quot;</span>,</span><br><span class="line">                getTpName(), ExecutorConverter.toMainFields(executors.get(getTpName())));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在这个方法中，doEnhance()方法会修改WebServer的线程池为Dtp自己的线程池，且该线程池会受到对应webserver线程池参数的影响</p>
 <p>其他的则和我们在项目中使用的Dtp线程池具体代码实现相差无几</p>
-<h3 id="7-2、Dynamic-TP对于Spring的使用"><a href="#7-2、Dynamic-TP对于Spring的使用" class="headerlink" title="7.2、Dynamic-TP对于Spring的使用"></a>7.2、Dynamic-TP对于Spring的使用</h3><h5 id="DtpPostProcessor"><a href="#DtpPostProcessor" class="headerlink" title="DtpPostProcessor"></a>DtpPostProcessor</h5><p>具体来讲这个类就是在单例化Bean的时候，如果发现不是ThreadPoolTaskExecutor、ThreadPoolExecutor就不做操作，如果是DtpExecutor或者是ThreadPoolTaskExecutor、ThreadPoolExecutor就做一组操作进行包装。</p>
+<h3 id="7-2、Dynamic-TP对于Spring的使用">7.2、Dynamic-TP对于Spring的使用</h3>
+<h5 id="DtpPostProcessor">DtpPostProcessor</h5>
+<p>具体来讲这个类就是在单例化Bean的时候，如果发现不是ThreadPoolTaskExecutor、ThreadPoolExecutor就不做操作，如果是DtpExecutor或者是ThreadPoolTaskExecutor、ThreadPoolExecutor就做一组操作进行包装。</p>
 <p>@1:如果bean不是ThreadPoolExecutor或者ThreadPoolTaskExecutor，那么就不对bean做任何处理，直接返回</p>
 <p>@2:如果bean是DtpExecutor,调用registerDtp方法填充DTP_REGISTRY这个map</p>
 <p>@3:如果说bean上面的DynamicTp注解，使用注解的值作为线程池的名称，没有的话就使用bean的名称</p>
@@ -350,13 +367,17 @@
 <p>到这里执行完，就针对所有线程池对象完成了增强</p>
 <p>看起来复杂实际上简单</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2024/png/27175151/1727972390194-b8108b67-28ee-4f22-b6fb-094e762fc544.png" alt="img"></p>
-<h6 id="AwareManager"><a href="#AwareManager" class="headerlink" title="AwareManager"></a>AwareManager</h6><ol>
+<h6 id="AwareManager">AwareManager</h6>
+<ol>
 <li>这个其实是相当重要的一块，涉及到了以关闭线程池、终止线程池、执行一个任务、注册、添加、更新线程池、拒绝策略为切面实现了一组操作</li>
 <li>涉及到监控、触发拒绝等问题，因为线程池是实时在变化的，参数调整、任务的创建和完成等操作，都会涉及到监控指标，拒绝策略的修改，因此为了更好地使用资源，所以才会有AwareManager。</li>
 </ol>
-<h6 id="DtpInterceptorRegistry"><a href="#DtpInterceptorRegistry" class="headerlink" title="DtpInterceptorRegistry"></a>DtpInterceptorRegistry</h6><p>根据注解@DtpInterceptor获取对应拦截器信息，基于此提供了对应的API</p>
-<h6 id="DtpInterceptorProxyFactory"><a href="#DtpInterceptorProxyFactory" class="headerlink" title="DtpInterceptorProxyFactory"></a>DtpInterceptorProxyFactory</h6><p>存储着一些动态代理的方法，如getSignatureMap获取注解的信息修改</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>笔者看了下美团的动态线程池实践，发现了JDK8的线程池的内部维护的逻辑，看起来还是很不错的</p>
+<h6 id="DtpInterceptorRegistry">DtpInterceptorRegistry</h6>
+<p>根据注解@DtpInterceptor获取对应拦截器信息，基于此提供了对应的API</p>
+<h6 id="DtpInterceptorProxyFactory">DtpInterceptorProxyFactory</h6>
+<p>存储着一些动态代理的方法，如getSignatureMap获取注解的信息修改</p>
+<h1>总结</h1>
+<p>笔者看了下美团的动态线程池实践，发现了JDK8的线程池的内部维护的逻辑，看起来还是很不错的</p>
 <p>内部有个worker，这个worker里面有thread和runnable，所以既有任务又有线程去维护，本身线程池是 内部有很多信息 的</p>
 <p>线程池本身有五种状态，其他四种是为了结束线程池而特意准备的</p>
 <p>线程有线程状态和线程数量 这俩状态，在高并发的情况下，使用两个变量去存储则会比较麻烦，不如使用一个AotmicInteger，高三位存储线程池中线程状态，低26位存储线程数量。</p>
@@ -369,7 +390,8 @@
 <li>execute没有返回值，submit有返回值。</li>
 <li>如果提交任务不需要结果的话则不需要使用submit，execute更快</li>
 </ul>
-<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><ol>
+<h2 id="引用文章">引用文章</h2>
+<ol>
 <li><a target="_blank" rel="noopener" href="https://dynamictp.cn/">dynamictp官网</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7069581808932749348">动态线程池框架（DynamicTp），监控及源码解析篇</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46119575/article/details/129740247">SpringBoot：Bean生命周期介绍</a></li>
@@ -456,9 +478,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

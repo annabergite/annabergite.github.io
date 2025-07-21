@@ -52,12 +52,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -131,12 +134,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -162,7 +165,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%942.%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%A7%86%E8%A7%92/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +183,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/" class="post-title-link" itemprop="url">实际使用动态线程池框架dynamic-tp</a>
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%942.%E6%9E%B6%E6%9E%84%E5%B8%88%E7%9A%84%E8%A7%86%E8%A7%92/" class="post-title-link" itemprop="url">凤凰架构——架构师的视角</a>
         </h2>
 
         <div class="post-meta-container">
@@ -192,7 +195,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:33:28 / 修改时间：12:35:53" itemprop="dateCreated datePublished" datetime="2025-07-12T12:33:28+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-21 22:46:50 / 修改时间：22:50:23" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:50+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -200,7 +203,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
         </span>
     </span>
 
@@ -214,66 +217,139 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>[TOC]</p>
-<h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1 背景"></a>1 背景</h2><p>前段时间新入职了一家公司，组长看我已经有点开发年头了，委任给我一个大活，想让我可以监控任务队列，以及线程池的其他参数，如果有修改、监控到异常则需要进行告警，并且支持实施修改线程池参数。</p>
-<h2 id="2-明确任务范围"><a href="#2-明确任务范围" class="headerlink" title="2 明确任务范围"></a>2 明确任务范围</h2><p>首先并不是为了强行使用动态线程池框架而使用他，使用它的原因是我们的需求就是：</p>
-<ul>
-<li>实时监控线程池参数</li>
-<li>修改实时监控线程池参数的一些状态</li>
-<li>以及进行及时的告警</li>
-<li>做到实时修改我们的线程池参数</li>
-</ul>
-<p>虽然JDK8可以做到通过方法直接修改线程池参数。但是如果自己手写的话则会浪费很多时间。为了避免重复造轮子，我决定及时使用开源框架。</p>
-<h3 id="2-1-技术选型"><a href="#2-1-技术选型" class="headerlink" title="2.1 技术选型"></a>2.1 技术选型</h3><p>当然也不是非得使用dynamic-tp不可，首先我们需要看行业中有没有合适的框架或者思路供我们选择，我们发现了这个框架</p>
-<p><img src="https://p0.meituan.net/travelcube/6c0091e92e90f50f89fd83f3b9eb5472135718.png" alt="图18 动态化线程池功能架构"></p>
-<p>这个美团技术团队对动态线程池该做什么的功能架构，这刚好和我们的需求不谋而合</p>
-<p>此时行业中比较好的开源框架有这两个，dynamic-tp和hippo4j，hoppo4j架构是C&#x2F;S模式，所以需要新增一个hippo4j服务端，那么如果需要一个线上配置环境修改配置的话，那么hippo4j会好一点，我们目前没有这个需求，所以会使用dynamic-tp，直接引用即可，并且通过集成到自己的配置中心就好了（当然看业务需求是怎么样的，毕竟hippo4j在GitHub上的star数量比dynamictp多一些）</p>
-<h3 id="2-2-引入dynamic-tp"><a href="#2-2-引入dynamic-tp" class="headerlink" title="2.2 引入dynamic-tp"></a>2.2 引入dynamic-tp</h3><p>（具体请看dynamic-tp的官网操作）</p>
-<ol start="0">
-<li>我们是使用的nacos作为配置中心和服务发现中心，所以需要引入对应的nacos包</li>
-<li>dynamic-tp只能使用注解强化Java和spring的自带线程池，所以我们只使用配置文件的方式将业务需要使用的线程池放到Dtp注册器里面</li>
-<li>在原有的需要放入线程操作的代码中放一下对应的Dtp注册器里面的线程池进行替换</li>
-</ol>
-<h2 id="2-引入时产生的问题"><a href="#2-引入时产生的问题" class="headerlink" title="2.引入时产生的问题"></a>2.引入时产生的问题</h2><ol start="0">
-<li><p>我们需要自定义告警信息，如果使用自带的wechat提醒或者钉钉提醒，只是通过机器人进行提醒，我们需要使用自己的API</p>
-<p>我们使用了自己的API进行了解决，并且使用Java SPI进行了服务提供</p>
-</li>
-<li><p>使用自定义告警信息，涉及到了API，但是自己的API需要从spring的IOC容器里面获取，但是自定义的告警通知是无法拿到的</p>
-<p>一般公司都会有人对获取bean的工具类做封装，所以可以通过这种getBean()方式拿到了对应Bean</p>
-</li>
-<li><p>我们想使用自定义的拒绝策略</p>
-<p>使用Java SPI进行了拒绝策略的自定义</p>
-</li>
-<li><p>使用dynamic-tp需要考虑到一些公共的修改，比如我们的wechat自定义提醒，自定义拒绝策略，每一次都引入再添加共同的代码文件比较麻烦</p>
-<p>我们进行了二次封装，再二次封装的代码中加入了这些修改，这样其他微服务使用dynamic-tp框架时候可以直接使用我们的二次封装的框架</p>
-<p>我们并没有使用@import等注解，而是在引入后使用ComponentScan注解主动扫描的</p>
-</li>
-</ol>
-<h3 id="2-1-一些遗憾"><a href="#2-1-一些遗憾" class="headerlink" title="2.1 一些遗憾"></a>2.1 一些遗憾</h3><ol start="0">
-<li>使用的自定义告警、拒绝策略，则需要使用Java spi进行服务提供与发现，不能使用spring的自动装配</li>
-<li>只有Java或者spring自带的线程池可以被使用注解强化，用处不大，反而是如果可以使用注解在ThreadPoolExecutor的话则对我们帮助很大</li>
-</ol>
-<p>当然，dynamic-tp本身我是很喜欢的，他帮我提前造好了轮子，提升了我们的开发效率。</p>
-<h2 id="3-参数怎么跟随业务修改？"><a href="#3-参数怎么跟随业务修改？" class="headerlink" title="3.参数怎么跟随业务修改？"></a>3.参数怎么跟随业务修改？</h2><p>线程池参数并不是一成不变的，后续肯定会随着业务的需要进行修改。修改之前需要考虑一下是否有资源没有用到，有时候就是会出现资源没有使用全（如LB没有重定向好）导致的资源紧张。</p>
-<p>修改线程池参数一般只会修改核心线程数、最大线程数、任务队列这几个信息。线程池执行情况与任务类型相关性较大，IO 密集型和 CPU 密集型的任务运行起来的情况差异非常大，所以一般我们每个微服务会有两个线程池，一个用于做IO密集型，一个用于做CPU密集型任务，这两个线程池的参数调试肯定是不一样的</p>
-<p>具体的方法有这几种：</p>
-<ol start="0">
-<li><p>根据经验猜</p>
-</li>
-<li><p>此处我放一张行业内比较认可的图片</p>
-<p><img src="https://p0.meituan.net/travelcube/23a44974ff68a08261fb675242b83648181953.png" alt="img"></p>
-<p>这几种方式见仁见智</p>
-</li>
-<li><p>根据方法二的调参进行修改，同时使用动态线程池实时监控线程池负载，如果线程池逐步正常，则表明修改后的参数可以满足业务需求</p>
-</li>
-</ol>
-<h2 id="参考文章："><a href="#参考文章：" class="headerlink" title="参考文章："></a>参考文章：</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://hippo4j.cn/">Hippo4J官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">Java线程池实现原理及其在美团业务中的实践</a></li>
-<li><a target="_blank" rel="noopener" href="https://dynamictp.cn/">dynamic-tp官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?spm=a2c6h.12873639.article-detail.7.605b2645VLJDkw&__biz=Mzg3NDA1MTgwNA==&mid=2247484615&idx=1&sn=915be23f412f987ee0b73c7ba8f4813e&chksm=ced7e574f9a06c6210d70699f1e9d2edfa8ab40851030381c8ee18b7e344fc77cfd13a27cda0&scene=21#wechat_redirect">一文读懂线程池的实现原理</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1323851">动态调整线程池参数实践</a></li>
-</ul>
+          <h1>1、远程服务</h1>
+<p>远程服务调用使得返回信息变成了成功，失败和超时，后续的远程服务调用都是基于这方面的开发。</p>
+<p>RPC的基本用处如下：1、怎么表示数据；2、怎么传递数据；3、如何表示方法</p>
+<p>统一的RPC：简单、普适、高性能这三点，似乎真的很难同时满足。</p>
+<p>分裂的RPC：1、朝着面向对象发展，不满足于RPC将面向过程的编码方式带到分布式，希望在分布式系统中也能够进行跨进程的面向对象编程，代表为RMI；2、朝着性能发展，代表为gRPC和Thrift。决定RPC性能的主要因素有两个：序列化效率和信息密度；3、朝着简化发展，代表为JSON-RPC，说要选功能最强、速度最快的RPC可能会很有争议，但选功能弱的、速度慢的，JSON-RPC肯定会是候选人之一。</p>
+<p>REST需要满足如下信息：1.客户端与服务端分离(Client-Server)；2.无状态(Stateless)（最重要，这是高性能分布式系统的基石之一）；3.可缓存(Cacheability)；4.分层系统(Layered System)（类似计算机网络的分层）5.统一接口(Uniform Interface)6.按需代码(Code-On-Demand)</p>
+<p>RPC和rest区别是，虽然RPC和REST都可以表示远程调用，但是实际上是思想的不同；REST面向资源变成；PRC面向过程变成（其他的如面向对象编程，面向接口编程，也有其各自的意义）</p>
+<p>REST的不足：1、面向资源的编程思想只适合做CRUD，面向过程、面向对象编程才能处理真正复杂的业务逻辑。2、REST与HTTP完全绑定，不适合应用于要求高性能传输的场景中。3、REST不利于事务支持。（如果“事务”只是指希望保障数据的最终一致性，说明你已经放弃刚性事务了，这才是分布式系统中的正常交互方式，使用REST肯定不会有什么阻碍，更谈不上“不利于）4、REST没有传输可靠性支持。（在支付等情况下可能面临更多挑战）5、REST缺乏对资源进行“部分”和“批量”处理的能力。（这技能通过新增接口实现，同一个接口频繁调用会导致限制频率）</p>
+<h1>2、事务处理</h1>
+<h2 id="2-1本地事务">2.1本地事务</h2>
+<p>在本地事务（局部事务）还是要求ACID</p>
+<h3 id="2-1-1实现原子性">2.1.1实现原子性</h3>
+<p>事务的实现原理基于ARISE理论</p>
+<p>实现原子性和持久性的最大困难是“写入磁盘”这个操作并不是原子的，不仅有“写入”与“未写入”状态，还客观存在着“正在写”的中间状态。由于写入中间状态与崩溃都是无法避免的，为了保证原子性和持久性，就只能在崩溃后采取恢复的补救措施，这种数据恢复操作被称为“崩溃恢复”。</p>
+<p>为了能够顺利地完成崩溃恢复，在磁盘中写入数据就不能像程序修改内存中的变量值那样，直接改变某表某行某列的某个值，而是必须将修改数据这个操作所需的全部信息，包括修改什么数据、数据物理上位于哪个内存页和磁盘块中、从什么值改成什么值，等等，以日志的形式——即以仅进行顺序追加的文件写入的形式（这是最高效的写入方式）先记录到磁盘中。只有在日志记录全部安全落盘，数据库在日志中看到代表事务成功提交的“提交记录”(Commit Record)后，才会根据日志上的信息对真正的数据进行修改，修改完成后，再在日志中加入一条“结束记录”(End Record)表示事务已完成持久化，这种事务实现方法被称为“提交日志”(Commit Logging)。</p>
+<p><strong>日志实现事务</strong>只是事务是实现的方法之一，其他如影子分页（shadow paging）被SQLite使用</p>
+<p>Write-Ahead Logging按照事务提交时点，将何时写入变动数据划分为FORCE和STEAL两类情况。</p>
+<p>·FORCE：当事务提交后，要求变动数据必须同时完成写入则称为FORCE，如果不强制变动数据必须同时完成写入则称为NO-FORCE。现实中绝大多数数据库采用的都是NO-FORCE策略，因为只要有了日志，变动数据随时可以持久化，从优化磁盘I/O性能考虑，没有必要强制数据写入时立即进行。</p>
+<p>·STEAL：在事务提交前，允许变动数据提前写入则称为STEAL，不允许则称为NO-STEAL。从优化磁盘I/O性能考虑，允许数据提前写入，有利于利用空闲I/O资源，也有利于节省数据库缓存区的内存。Commit Logging允许NO-FORCE，但不允许STEAL。因为假如事务提交前就有部分变动数据写入磁盘，那一旦事务要回滚，或者发生了崩溃，这些提前写入的变动数据就都成了错误。</p>
+<p>Write-Ahead Logging允许NO-FORCE，也允许STEAL，它给出的解决办法是增加了另一种被称为Undo Log的日志类型，当变动数据写入磁盘前，必须先记录Undo Log，注明修改了哪个位置的数据、从什么值改成什么值等，以便在事务回滚或者崩溃恢复时根据Undo Log对提前写入的数据变动进行擦除。</p>
+<p>Write-Ahead Logging在崩溃恢复时会经历以下三个阶段：</p>
+<p>分析阶段(Analysis)：该阶段从最后一次检查点（Checkpoint，可理解为在这个点之前所有应该持久化的变动都已安全落盘）开始扫描日志，找出所有没有End Record的事务，组成待恢复的事务集合，这个集合至少会包括事务表(Transaction Table)和脏页表(Dirty Page Table)两个组成部分。·重做阶段(Redo)：该阶段依据分析阶段中产生的待恢复的事务集合来重演历史(RepeatHistory)，具体操作是找出所有包含Commit Record的日志，将这些日志修改的数据写入磁盘，写入完成后在日志中增加一条End Record，然后移出待恢复事务集合。·回滚阶段(Undo)：该阶段处理经过分析、重做阶段后剩余的恢复事务集合，此时剩下的都是需要回滚的事务，它们被称为Loser，根据Undo Log中的信息，将已经提前写入磁盘的信息重新改写回去，以达到回滚这些Loser事务的目的。</p>
+<p>以上三个阶段都是幂等的</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20250720161648127.png" alt="image-20250720161648127"></p>
+<h3 id="2-1-2实现隔离性">2.1.2实现隔离性</h3>
+<p>范围锁指的是一定范围内的数据不允许变更，增删改数据行都不允许出现</p>
+<table>
+<thead>
+<tr>
+<th>锁\事务中是否存在</th>
+<th>串行化</th>
+<th>可重复读</th>
+<th>读已提交</th>
+<th>读未提交</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读锁（S-LOCK）</td>
+<td>操作串行执行</td>
+<td>√</td>
+<td>√</td>
+<td>×</td>
+</tr>
+<tr>
+<td>写锁（x-Lock）</td>
+<td>操作串行执行</td>
+<td>√</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>范围锁（range-lock）</td>
+<td>操作串行执行</td>
+<td>×</td>
+<td>×</td>
+<td>×</td>
+</tr>
+<tr>
+<td>造成问题</td>
+<td>慢</td>
+<td>幻读</td>
+<td>不可重复读</td>
+<td>脏读</td>
+</tr>
+</tbody>
+</table>
+<p>MVCC也是为了隔离性出现的，怎么实现的</p>
+<p>·插入数据时：CREATE_VERSION记录插入数据的事务ID，DELETE_VERSION为空</p>
+<p>·删除数据时：DELETE_VERSION记录删除数据的事务ID，CREATE_VERSION为空。</p>
+<p>·修改数据时：将修改数据视为“删除旧数据，插入新数据”的组合，即先将原有数据复制一份，原有数据的DELETE_VERSION记录修改数据的事务ID，CREATE_VERSION为空。复制后的新数据的CREATE_VERSION记录修改数据的事务ID，DELETE_VERSION为空。</p>
+<table>
+<thead>
+<tr>
+<th>字段使用\隔离级别</th>
+<th>可重复读</th>
+<th>读已提交</th>
+<th>读未提交</th>
+<th>串行化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREATE_VERSION</td>
+<td>总是读取CREATE_VERSION小于或等于当前事务ID的记录，在这个前提下，如果数据仍有多个版本，则取最新（事务ID最大）的</td>
+<td>总是取最新的版本即可，即最近被提交的那个版本的数据记录。</td>
+<td>不相关</td>
+<td>不相关</td>
+</tr>
+<tr>
+<td>DELETE_VERSION</td>
+<td>无</td>
+<td>总是取最新的版本即可，即最近被提交的那个版本的数据记录。</td>
+<td>不相关</td>
+<td>不相关</td>
+</tr>
+</tbody>
+</table>
+<p>MVCC是只针对“读+写”场景的优化，如果是两个事务同时修改数据，即“写+写”的情况，那就没有多少优化的空间了，此时加锁几乎是唯一可行的解决方案，稍微有点讨论余地的是加锁策略是选“乐观加锁”(Optimistic Locking)还是选“悲观加锁”(Pessimistic Locking)。</p>
+<h2 id="2-2全局事务">2.2全局事务</h2>
+<p>（XA事务时对事务调度器和资源调度的整合）</p>
+<pre class="mermaid">graph TD
+A[共识协议层] --> A1(2PC/3PC)
+A --> A2(Paxos/Raft/ZAB) --> B[协调器高可用]
+A --> A3(Gossip) --> C[最终一致系统]
+
+D[事务模型层] --> D1(XA) --> A1
+D --> D2(TCC) --> B
+D --> D3(SAGA) --> E[消息中间件] --> A2
+D --> D4(AT) --> F[事务协调器TC] --> A2</pre>
+<h2 id="2-3共享事务">2.3共享事务</h2>
+<p>共享事务”的提法和这里所列的两种处理方式在实际应用中并不值得提倡，鲜有采用这种方式的成功案例，能够查询到的资料几乎都发源于十余年前Spring的核心开发者Dave Syer撰写的文章“Distributed Transactions in Spring,with and without XA”[插图]。笔者把共享事务列为本章介绍的四种事务类型之一只是为了叙述逻辑的完备，尽管拆分微服务后仍然共享数据库的情况在现实中并不少见，但笔者个人不赞同将共享事务作为一种常规的解决方案来考量。</p>
+<h2 id="2-4分布式事务">2.4分布式事务</h2>
+<p>ACID与CAP与BASE</p>
+<pre class="mermaid">flowchart LR
+    A[CAP理论] --> B1(CP模式)
+    B1[CP模式] --> B2(强一致性)
+    B2[强一致性] --> B3(ACID事务)
+    B3[ACID事务] --> B4(刚性事务)
+    A[CAP理论] --> C1(AP模式)
+    C1[CAP理论] --> C2(最终一致性,弱一致性)
+    C2[CAP理论] --> C3(BASE事务)
+    C3[CAP理论] --> C4(柔性事务)</pre>
+<h1>3、透明多级分流系统与架构安全性</h1>
+<p>四层负载均衡的优势是性能高，七层负载均衡的优势是功能强。</p>
+<p>做多级混合负载均衡，通常应是低层负载均衡在前，高层负载均衡在后。</p>
+<p>以Guava Cache为代表的同步处理机制，即在访问数据时一并完成缓存淘汰、统计、失效等状态变更操作，通过分段加锁等优化手段来尽量减少竞争。另一种是以Caffeine为代表的异步日志提交机制，这种机制参考了经典的数据库设计理论，将数据的读、写过程看作日志（即对数据的操作指令）的提交过程</p>
+<p>缓存虽然是典型以空间换时间来提升性能的手段，但它的出发点是缓解CPU和I/O资源在峰值流量下的压力，“顺带”而非“专门”地提升响应性能。这里的言外之意是如果可以通过增强CPU、I/O本身的性能（譬如扩展服务器的数量）来满足需要的话，那升级硬件往往是更好的解决方案，即使需要一些额外的投入成本，也通常要优于引入缓存后可能带来的风险。</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20250720171227413.png" alt="image-20250720171227413"></p>
+<p>命中率与淘汰策略：FIFO；LRU；LFU；TinyLFU；W-TinyLFU；</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20250720171353869.png" alt="image-20250720171353869"></p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20250720171410196.png" alt="image-20250720171410196"></p>
+<p>架构安全性包括：认证、授权、凭证、保密、传输、验证</p>
 
       
     </div>
@@ -300,7 +376,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E7%94%9F%E6%B4%BB/1.2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%941.%E6%BC%94%E8%BF%9B%E4%B8%AD%E7%9A%84%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -318,7 +394,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E7%94%9F%E6%B4%BB/1.2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">2024年终总结</a>
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%941.%E6%BC%94%E8%BF%9B%E4%B8%AD%E7%9A%84%E6%9E%B6%E6%9E%84/" class="post-title-link" itemprop="url">凤凰架构——演进中的架构</a>
         </h2>
 
         <div class="post-meta-container">
@@ -330,7 +406,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:28:06 / 修改时间：12:32:21" itemprop="dateCreated datePublished" datetime="2025-07-12T12:28:06+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-21 22:46:50 / 修改时间：22:50:49" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:50+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -338,7 +414,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index"><span itemprop="name">生活</span></a>
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
         </span>
     </span>
 
@@ -352,702 +428,37 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我当前是一名普通的 Java 技术开发。人在杭州，目前的行业是安防行业，最近这段时间有想润的想法，有空位的可以加我投递与被投递。喜欢出去玩的同好也可以来找我，我比较喜欢读书，骑行，长跑，羽毛球，探店，其他的爱好我还在持续探索中。</p>
-<h2 id="复盘"><a href="#复盘" class="headerlink" title="复盘"></a>复盘</h2><p>今年年初还没有学习过目标管理，所以很多目标都没有实现。不过今年学习了，之后肯定可以更好的指定目标与实现目标</p>
-<h2 id="跳槽"><a href="#跳槽" class="headerlink" title="跳槽"></a>跳槽</h2><p>之前我在杭州某G端产品的企业中工作，22年毕业后一直在那边工作，但是这份工作其实更接近于项目外包，都是在重复重复，对于我而言完全没有什么提升的空间；这让我想到了之前在大学哲学课上老师讲的事情，人的一切发展都是有比较而来的，有近就有远，有宇宙之大就会有原子之小，看到了和我一个学校毕业的人有了很大的成就后，也开始催促我进行成长。因此我在24年4月成功跳槽到当前公司B，期间当然也投递了一些比较知名的厂子。不过因为大厂进不去，也越能证明我的离开的想法是正确的，是应当做的，在面试过程中，多因为我扒股准备的还</p>
-<p>行，但是基本上没有很厉害的实战经验。因此在进入新的公司后，有了专业的软件开发流程，我通过积极参与工作，也有学到更多。公司中有了专门的运维团队和测试团队，并且也有同事准备专门的教案进行教课。DBA和ELK专门的同事也有，不像原先的公司，这些岗位要么没有，要么在某一个身兼多职的人身上。</p>
-<p>后续只拿了 2 个滨江区的 offer，一个是电商行业的，一个是安防行业的，电商行业的其实是和一个子公司签合同，感觉有点怪，并且人还很少，只有 200 人的一个小公司，安防行业的那个有大概 5k 人，所以选择了入职安防厂子。</p>
-<p>2024年基本上也就做了这几个事情：</p>
-<ul>
-<li>事件业务进行了重构改版高并发查询，出现了慢查询，修复了慢查询</li>
-<li>套餐支持不同类型订阅人使用不同订阅设备</li>
-<li>服务新增线程池监控告警，使用开源组件基础上又做了一层封装</li>
-<li>新增事件呼叫业务，新增时间业务的高并发场景下的异步操作与回调操作</li>
-<li>修复几十个已知的线上bug</li>
-</ul>
-<p>整个开发过程不是开发困难，而是需要走标准化的流程，导致需要做很多归档，以至于我的组长都嫌弃我慢吞吞的 😢 。基本上每天都要加班，我粗略算了下，每个月都要至少加班 45h，感觉长久以来不是好事，我的健康都受到了影响，头发都掉了 1&#x2F;4 了，可能干一年我就走了。</p>
-<p>公司里面使用的是内网电脑，且是B端业务，基本上不能有使用AI直接生成满足业务的代码，但是使用AI生成存储过程进行辅助还是可以的。</p>
-<p>新公司使用的技术栈个人认为不是很新，并且如果想要改版，得先让运维、测试、自动化脚本部门服从你的安排进行打通，否则只是个人单纯的使用新功能不能让其他人信服。在新公司中学到了一些其他的知识。今年业务是有所长进，但是技术的话基本上没长进，甚至可能还不如去年，我很喜欢的一个 B 站 up原子能讲过，如果一年下来可以记录在简历里面的东西很少，那代表可能需要离开了，不过当前我学到的东西还是有一些的，我打算先苟上一段时间。</p>
-<h1 id="尝试副业"><a href="#尝试副业" class="headerlink" title="尝试副业"></a>尝试副业</h1><p>只做程序员是不行的，所以我也打算开启自己的副业之旅，不过当前营收额是0，今年上旬打算是通过写博客赚钱，现在只获得了26个粉丝，csdn上面有200个粉丝，距离可以靠写作赚钱还剩不到9800个。我打算是通过做自己喜欢的事情作为副业进行赚钱，我打算继续把这个事情作为我25年的目标。之前在休闲的公司的时候，一个月可以产出4篇，现在不行了，就算有灵感也没有很多时间查找资料进行整理思考产出了，7月的时候参加了活动，拿了个小小奖。有需要这个打折券的可以找我。</p>
-<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/1d879a3efc5fd6ddcb7bf1e2007e6211.png" alt="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/27175151/1737724416443-81635160-6982-41a8-b9e8-384d9e2ab4c1.png" alt="img"></p>
-<p>当然还是有几篇稍微有一点人看，我先截个图在这里。</p>
-<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20241221223204733.png" alt="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/27175151/1737724421381-3c5af002-93d0-4867-9431-ed871378bd36.png" alt="img"></p>
-<p>后续我打算不只是做一个只写博客的人，后续我也得通过技术外包等方向发展自己的副业才行。</p>
-<h2 id="学习"><a href="#学习" class="headerlink" title="学习"></a>学习</h2><p>之前在前东家完全么有什么成长，但是在新公司还是比较培养人的，我也在其他新同事的影响下有了很多个人成长。</p>
-<p>自从毕业后，22、23年我也没看过书（技术社科博客会看一点），但是24年我也有学到很多，也看了很多书。今年看了《领域驱动设计》、《优势谈判》、《高效能人士的7个习惯》、《Spring源码深度解析（第二版）》，这些书除了《领域驱动设计》，其他的书对我思想上帮助很大，同时也对于我在实际工作生活中也有很大帮助（《领域驱动设计》有些地方讲的太模糊，对于我的思维构建有点差距，后续我打算看下六边形架构和Cola架构）。我打算后续也多看一些书，帮助自己更好的工作学习生活。纸质书没读多少，但是电子书倒是一本接着一本的看，我现在只要是在地铁上或者是在路上都会看一眼电子书。后续我可能会开一个专栏专门记录一下阅读了哪些书籍，且应用了哪些，取得了什么成果，有什么失败的经历值得回溯。</p>
-<p>本来打算今年11月参加高级软考，但是因为工作太忙忘记了，后续我打算学习一下精力管理，保证自己可以在工作之后可以学有余力的进行其他有用的社会活动。</p>
-<p>算法做题有做一些，但是没有参加比赛，基本上是拿着大学学到的知识在练习（大学时候主要使用C++写算法，现在却主要在用java写代码），并且主要目的还是为了面试求职。</p>
-<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/d5755ca60f4a6834081a9a3d76cf681f.png" alt="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/27175151/1737724429352-1baff242-2e91-497a-aec1-06cce4753ced.png" alt="img"></p>
-<p>今年我开始参加各种会议，也浅浅的认识了一些开发者，有些人很谦虚，有些人很开放，这些人都是我可以学习的榜样。参加会议和沙龙，今年主题最多的就是AIGC和cursor，也有人真正的把一些AIGC产品给落地了。</p>
-<p>为了通勤我买了辆山地自行车，周末也会骑车到钱塘，滨江，萧山这边走走，平常去的多的地方是湘湖，今年的骑行虽然没让我减少很多体重，但是至少让我对于工作地方有了更好的认识与了解，好吃的地方我也变得一目了然了。 自从进了新公司后，我也搬家了，从快到苕溪的余杭那边搬到了滨江浦沿，从1300能租到30平的朝南带阳台的大房间到现在只有15平的1600的小房间，我都基本上没地方做饭了，一些炒菜我也不方便做，没地方施展拳脚，后面我就只买一些鸡肉和虾这类方便一点的食物来凑活，做饭频率虽然降低了，但是做饭厨具现在减少了很多，变相的让我不需要再去维护很多使用频率低的家具了。</p>
-<h2 id="娱乐"><a href="#娱乐" class="headerlink" title="娱乐"></a>娱乐</h2><p>我的一个爱好是玩点单机游戏，因此今年玩了1、赛博朋克2077：往日之影（DLC）2024年4月27日、2、艾尔登法环：黄金树之影（DLC） 2024年6月23日 3、黑神话悟空 2024年9月15日</p>
-<p>目前有点想玩下永劫无间，不知道最近也没有额外的时间可以用于打游戏了。之前从朋友那边收了个PS5，也买了个血源诅咒的光盘，但是也没玩很长时间就放在那边吃灰了。最近血源诅咒还出了 PC 模拟器，羡煞我也，现在 PS5 的用处就只有 25 年游玩道德与法治 6 了。</p>
-<p>最近除了玩游戏，其他时候我也会出去旅个游，在朋友圈里面不方便发，我就发在掘金了。每次出去旅游完我都会算一下花了多少钱，果然发现为什么女生都喜欢去旅游了。今年主要是去了黄山，宁波，苏州和杭州的一些地方，有些是自己去的，有些是和家人一起去的，不论怎么样，天大地大，家人最大。</p>
-<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20241221224342438.png" alt="null"><img src="https://cdn.nlark.com/yuque/0/2025/png/27175151/1737724438198-cea3070b-1552-47cf-98e2-735c417399fc.png" alt="img"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>我感觉2024年就是一个持续迭代的过程，当然在我这个年龄只要耐*就有无限可以尝试的机会，我还算年轻，还好年轻。</p>
-<p>所以我在2025年制定了以下几个目标，方便我做目标管理，最终做到以终为始，有始有终。</p>
-<ul>
-<li>学习篇：1、学习dubbo源码、spring boot源码，赋能原有公司的框架开发，做到有落地项目；2、学会C#&#x2F;nodejs，至少可以做到能进行一些简单界面开发3、继续输出技术文档，可以做到2025年发布12篇4、看书：非开发：《小米创业思考》、《态度改变与社会影响》、《精力管理》、《金字塔原理》、《Personal development for smart people》、《原则》、《学会提问》开发：《quarkus CookBook》、《重构：改善既有代码的设计》、《编程珠玑》、《穷爸爸富爸爸》、《人月神话》、《高性能MySQL》、《架构整洁之道》争取做到一个月可以阅读完一本书，且可以真正的将书中看到的学到的进行实践，记录下来效果。5、挑一个开源项目，或者自己维护一个开源项目（既然学习完源码，不仅能在工作中有效果，也要在副业上有效果）</li>
-<li>工作篇：1、考证书，公司内提供了一些行业级别证书，5月参加考试2、软考高级架构师拿下</li>
-<li>生活篇：1、跑步300km，每周至少4次运动，明确一个对当前体重合适有效的训练方式。2、去华南旅游一次，去西北旅游一次，去西南旅游一次（当然在我有点钱的情况下）3、入手一辆好一点的公路自行车，准备一下全年的骑行计划。4、多去视频网站上面学习一下英语，具体精确到可以看一些海外技术书籍基本无压力5、多接触其他人，拓宽自己的社交圈子。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/5.easy%20excel%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%BB%BB%E6%84%8F%E8%A1%A8%E7%9A%84Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/5.easy%20excel%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%BB%BB%E6%84%8F%E8%A1%A8%E7%9A%84Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/" class="post-title-link" itemprop="url">Spring boot整合easy excel实现低代码量的Excel导入导出</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:24:05 / 修改时间：12:25:08" itemprop="dateCreated datePublished" datetime="2025-07-12T12:24:05+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Java的web开发需要excel的导入导出工具，所以需要一定的工具类实现，如果是使用easypoi、Hutool导入导出excel，会非常的损耗内存，因此可以尝试使用easyexcel解决大数据量的数据的导入导出，且可以通过Java8的函数式编程解决该问题。</p>
-<p>使用easyexcel，虽然不太会出现OOM的问题，但是如果是大数据量的情况下也会有一定量的内存溢出的风险，所以我打算从以下几个方面优化这个问题：</p>
-<ul>
-<li>使用Java8的函数式编程实现低代码量的数据导入</li>
-<li>使用反射等特性实现单个接口导入任意excel</li>
-<li>使用线程池实现大数据量的excel导入</li>
-</ul>
-<!---->
-
-<ul>
-<li>通过泛型实现数据导出</li>
-</ul>
-<h2 id="maven导入"><a href="#maven导入" class="headerlink" title="maven导入"></a>maven导入</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--EasyExcel相关依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>easyexcel<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.0.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用泛型实现对象的单个Sheet导入"><a href="#使用泛型实现对象的单个Sheet导入" class="headerlink" title="使用泛型实现对象的单个Sheet导入"></a>使用泛型实现对象的单个Sheet导入</h2><h3 id="先实现一个类，用来指代导入的特定的对象"><a href="#先实现一个类，用来指代导入的特定的对象" class="headerlink" title="先实现一个类，用来指代导入的特定的对象"></a>先实现一个类，用来指代导入的特定的对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@TableName(&quot;stu_info&quot;)</span></span><br><span class="line"><span class="meta">@ApiModel(&quot;学生信息&quot;)</span></span><br><span class="line"><span class="comment">//@ExcelIgnoreUnannotated 没有注解的字段都不转换</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StuInfo</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 姓名</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">// 设置字体，此处代表使用斜体</span></span><br><span class="line"><span class="comment">//    @ContentFontStyle(italic = BooleanEnum.TRUE)</span></span><br><span class="line">    <span class="comment">// 设置列宽度的注解,注解中只有一个参数value，value的单位是字符长度，最大可以设置255个字符</span></span><br><span class="line">    <span class="meta">@ColumnWidth(10)</span></span><br><span class="line">    <span class="comment">// @ExcelProperty 注解中有三个参数value,index,converter分别代表表名，列序号，数据转换方式</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;姓名&quot;)</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;姓名&quot;,order = 0)</span></span><br><span class="line">    <span class="meta">@ExportHeader(value = &quot;姓名&quot;,index = 1)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 年龄</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"><span class="comment">//    @ExcelIgnore不将该字段转换成Excel</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;年龄&quot;,order = 1)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;年龄&quot;)</span></span><br><span class="line">    <span class="meta">@ExportHeader(value = &quot;年龄&quot;,index = 2)</span></span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 身高</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//自定义格式-位数</span></span><br><span class="line"><span class="comment">//    @NumberFormat(&quot;#.##%&quot;)</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;身高&quot;,order = 2)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;身高&quot;)</span></span><br><span class="line">    <span class="meta">@ExportHeader(value = &quot;身高&quot;,index = 4)</span></span><br><span class="line">    <span class="keyword">private</span> Double tall;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 自我介绍</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;自我介绍&quot;,order = 3)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;自我介绍&quot;)</span></span><br><span class="line">    <span class="meta">@ExportHeader(value = &quot;自我介绍&quot;,index = 3,ignore = true)</span></span><br><span class="line">    <span class="keyword">private</span> String selfIntroduce;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 图片信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;图片信息&quot;,order = 4)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;图片信息&quot;)</span></span><br><span class="line">    <span class="meta">@ExportHeader(value = &quot;图片信息&quot;,ignore = true)</span></span><br><span class="line">    <span class="keyword">private</span> Blob picture;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 性别</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;性别&quot;,order = 5)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;性别&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer gender;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 入学时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">//自定义格式-时间格式</span></span><br><span class="line">    <span class="meta">@DateTimeFormat(&quot;yyyy-MM-dd HH:mm:ss:&quot;)</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;入学时间&quot;,order = 6)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;入学时间&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String intake;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 出生日期</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExcelProperty(value = &quot;出生日期&quot;,order = 7)</span></span><br><span class="line">    <span class="meta">@ApiModelProperty(&quot;出生日期&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String birthday;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="重写ReadListener接口"><a href="#重写ReadListener接口" class="headerlink" title="重写ReadListener接口"></a>重写ReadListener接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UploadDataListener</span>&lt;T&gt; <span class="keyword">implements</span> <span class="title class_">ReadListener</span>&lt;T&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每隔5条存储数据库，实际使用中可以100条，然后清理list ，方便内存回收</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">BATCH_COUNT</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 缓存的数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;T&gt; cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Predicate用于过滤数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Predicate&lt;T&gt; predicate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用持久层批量保存</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Consumer&lt;Collection&lt;T&gt;&gt; consumer;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UploadDataListener</span><span class="params">(Predicate&lt;T&gt; predicate, Consumer&lt;Collection&lt;T&gt;&gt; consumer)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.predicate = predicate;</span><br><span class="line">        <span class="built_in">this</span>.consumer = consumer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">UploadDataListener</span><span class="params">(Consumer&lt;Collection&lt;T&gt;&gt; consumer)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.consumer = consumer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 如果使用了spring,请使用这个构造方法。每次创建Listener的时候需要把spring管理的类传进来</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> demoDAO</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个每一条数据解析都会来调用</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> data    one row value. Is is same as &#123;<span class="doctag">@link</span> AnalysisContext#readRowHolder()&#125;</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(T data, AnalysisContext context)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (predicate != <span class="literal">null</span> &amp;&amp; !predicate.test(data)) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cachedDataList.add(data);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 达到BATCH_COUNT了，需要去存储一次数据库，防止数据几万条数据在内存，容易OOM</span></span><br><span class="line">        <span class="keyword">if</span> (cachedDataList.size() &gt;= BATCH_COUNT) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 执行具体消费逻辑</span></span><br><span class="line">                consumer.accept(cachedDataList);</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">                log.error(<span class="string">&quot;Failed to upload data!data=&#123;&#125;&quot;</span>, cachedDataList);</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizException</span>(<span class="string">&quot;导入失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 存储完成清理 list</span></span><br><span class="line">            cachedDataList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 所有数据解析完成了 都会来调用</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterAllAnalysed</span><span class="params">(AnalysisContext context)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 这里也要保存数据，确保最后遗留的数据也存储到数据库</span></span><br><span class="line">        <span class="keyword">if</span> (CollUtil.isNotEmpty(cachedDataList)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="comment">// 执行具体消费逻辑</span></span><br><span class="line">                consumer.accept(cachedDataList);</span><br><span class="line">                log.info(<span class="string">&quot;所有数据解析完成！&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">                log.error(<span class="string">&quot;Failed to upload data!data=&#123;&#125;&quot;</span>, cachedDataList);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 抛出自定义的提示信息</span></span><br><span class="line">                <span class="keyword">if</span> (e <span class="keyword">instanceof</span> BizException) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> e;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizException</span>(<span class="string">&quot;导入失败&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Controller层的实现"><a href="#Controller层的实现" class="headerlink" title="Controller层的实现"></a>Controller层的实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiOperation(&quot;只需要一个readListener，解决全部的问题&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;String&gt; <span class="title function_">aListener4AllExcel</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            EasyExcel.read(file.getInputStream(),</span><br><span class="line">                            StuInfo.class,</span><br><span class="line">                            <span class="keyword">new</span> <span class="title class_">UploadDataListener</span>&lt;StuInfo&gt;(</span><br><span class="line">                                    list -&gt; &#123;</span><br><span class="line">                                        <span class="comment">// 校验数据</span></span><br><span class="line"><span class="comment">//                                        ValidationUtils.validate(list);</span></span><br><span class="line">                                        <span class="comment">// dao 保存···</span></span><br><span class="line">                                        <span class="comment">//最好是手写一个，不要使用mybatis-plus的一条条新增的逻辑</span></span><br><span class="line">                                        service.saveBatch(list);</span><br><span class="line">                                        log.info(<span class="string">&quot;从Excel导入数据一共 &#123;&#125; 行 &quot;</span>, list.size());</span><br><span class="line">                                    &#125;))</span><br><span class="line">                    .sheet()</span><br><span class="line">                    .doRead();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line"></span><br><span class="line">            log.error(<span class="string">&quot;导入失败&quot;</span>, e);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizException</span>(<span class="string">&quot;导入失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;SUCCESS&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是这种方式只能实现已存对象的功能实现，如果要新增一种数据的导入，那我们需要怎么做呢？</p>
-<p>可以通过读取成Map，根据顺序导入到数据库中。</p>
-<h2 id="通过实现单个Sheet中任意一种数据的导入"><a href="#通过实现单个Sheet中任意一种数据的导入" class="headerlink" title="通过实现单个Sheet中任意一种数据的导入"></a>通过实现单个Sheet中任意一种数据的导入</h2><h3 id="Controller层的实现-1"><a href="#Controller层的实现-1" class="headerlink" title="Controller层的实现"></a>Controller层的实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@ApiOperation(&quot;只需要一个readListener，解决全部的问题&quot;)</span></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/listenMapDara&quot;)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;String&gt; <span class="title function_">listenMapDara</span><span class="params">(<span class="meta">@ApiParam(value = &quot;表编码&quot;, required = true)</span></span></span><br><span class="line"><span class="params">                                   <span class="meta">@NotBlank(message = &quot;表编码不能为空&quot;)</span></span></span><br><span class="line"><span class="params">                                   <span class="meta">@RequestParam(&quot;tableCode&quot;)</span> String tableCode,</span></span><br><span class="line"><span class="params">                                   <span class="meta">@ApiParam(value = &quot;上传的文件&quot;, required = true)</span></span></span><br><span class="line"><span class="params">                                   <span class="meta">@NotNull(message = &quot;上传文件不能为空&quot;)</span> MultipartFile file)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//根据tableCode获取这张表的字段，可以作为insert与剧中的信息</span></span><br><span class="line">            EasyExcel.read(file.getInputStream(),</span><br><span class="line">                            <span class="keyword">new</span> <span class="title class_">NonClazzOrientedListener</span>(</span><br><span class="line">                                    list -&gt; &#123;</span><br><span class="line">                                        <span class="comment">// 校验数据</span></span><br><span class="line"><span class="comment">//                                        ValidationUtils.validate(list);</span></span><br><span class="line"></span><br><span class="line">                                        <span class="comment">// dao 保存···</span></span><br><span class="line">                                        log.info(<span class="string">&quot;从Excel导入数据一共 &#123;&#125; 行 &quot;</span>, list.size());</span><br><span class="line">                                    &#125;))</span><br><span class="line">                    .sheet()</span><br><span class="line">                    .doRead();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;导入失败&quot;</span>, e);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizException</span>(<span class="string">&quot;导入失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> R.success(<span class="string">&quot;SUCCESS&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="重写ReadListener接口-1"><a href="#重写ReadListener接口-1" class="headerlink" title="重写ReadListener接口"></a>重写ReadListener接口</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">NonClazzOrientedListener</span> <span class="keyword">implements</span> <span class="title class_">ReadListener</span>&lt;Map&lt;Integer, String&gt;&gt; &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每隔5条存储数据库，实际使用中可以100条，然后清理list ，方便内存回收</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">BATCH_COUNT</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;List&lt;Object&gt;&gt; rowsList = ListUtils.newArrayListWithExpectedSize(BATCH_COUNT);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;Object&gt; rowList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Predicate用于过滤数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Predicate&lt;Map&lt;Integer, String&gt;&gt; predicate;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 调用持久层批量保存</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> Consumer&lt;List&gt; consumer;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">NonClazzOrientedListener</span><span class="params">(Predicate&lt;Map&lt;Integer, String&gt;&gt; predicate, Consumer&lt;List&gt; consumer)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.predicate = predicate;</span><br><span class="line">        <span class="built_in">this</span>.consumer = consumer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">NonClazzOrientedListener</span><span class="params">(Consumer&lt;List&gt; consumer)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.consumer = consumer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加deviceName标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invoke</span><span class="params">(Map&lt;Integer, String&gt; row, AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        consumer.accept(rowsList);</span><br><span class="line">        rowList.clear();</span><br><span class="line">        row.forEach((k, v) -&gt; &#123;</span><br><span class="line">            log.debug(<span class="string">&quot;key is &#123;&#125;,value is &#123;&#125;&quot;</span>, k, v);</span><br><span class="line">            rowList.add(v == <span class="literal">null</span> ? <span class="string">&quot;&quot;</span> : v);</span><br><span class="line">        &#125;);</span><br><span class="line">        rowsList.add(rowList);</span><br><span class="line">        <span class="keyword">if</span> (rowsList.size() &gt; BATCH_COUNT) &#123;</span><br><span class="line">            log.debug(<span class="string">&quot;执行存储程序&quot;</span>);</span><br><span class="line">            log.info(<span class="string">&quot;rowsList is &#123;&#125;&quot;</span>, rowsList);</span><br><span class="line">            rowsList.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doAfterAllAnalysed</span><span class="params">(AnalysisContext analysisContext)</span> &#123;</span><br><span class="line">        consumer.accept(rowsList);</span><br><span class="line">        <span class="keyword">if</span> (CollUtil.isNotEmpty(rowsList)) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                log.debug(<span class="string">&quot;执行最后的程序&quot;</span>);</span><br><span class="line">                log.info(<span class="string">&quot;rowsList is &#123;&#125;&quot;</span>, rowsList);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">                log.error(<span class="string">&quot;Failed to upload data!data=&#123;&#125;&quot;</span>, rowsList);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 抛出自定义的提示信息</span></span><br><span class="line">                <span class="keyword">if</span> (e <span class="keyword">instanceof</span> BizException) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> e;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">BizException</span>(<span class="string">&quot;导入失败&quot;</span>);</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                rowsList.clear();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这种方式可以通过把表中的字段顺序存储起来，通过配置数据和字段的位置实现数据的新增，那么如果出现了导出数据模板&#x2F;手写excel的时候顺序和导入的时候顺序不一样怎么办？</p>
-<p>可以通过读取header进行实现，通过表头读取到的字段，和数据库中表的字段进行比对，只取其中存在的数据进行排序添加</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这里会一行行的返回头</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> headMap</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> context</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">invokeHead</span><span class="params">(Map&lt;Integer, ReadCellData&lt;?&gt;&gt; headMap, AnalysisContext context)</span> &#123;</span><br><span class="line">        <span class="comment">//该方法必然会在读取数据之前进行</span></span><br><span class="line">        Map&lt;Integer, String&gt; columMap = ConverterUtils.convertToStringMap(headMap, context);</span><br><span class="line">        <span class="comment">//通过数据交互拿到这个表的表头</span></span><br><span class="line"><span class="comment">//        Map&lt;String,String&gt; columnList=dao.xxxx();</span></span><br><span class="line">        Map&lt;String, String&gt; columnList = <span class="keyword">new</span> <span class="title class_">HashMap</span>();</span><br><span class="line">        columMap.forEach((key, value) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (columnList.containsKey(value)) &#123;</span><br><span class="line">                filterList.add(key);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//过滤到了只存在表里面的数据，顺序就不用担心了，可以直接把filterList的数据用于排序，可以根据mybatis做一个动态sql进行应用</span></span><br><span class="line"></span><br><span class="line">        log.info(<span class="string">&quot;解析到一条头数据:&#123;&#125;&quot;</span>, JSON.toJSONString(columMap));</span><br><span class="line">        <span class="comment">// 如果想转成成 Map&lt;Integer,String&gt;</span></span><br><span class="line">        <span class="comment">// 方案1： 不要implements ReadListener 而是 extends AnalysisEventListener</span></span><br><span class="line">        <span class="comment">// 方案2： 调用 ConverterUtils.convertToStringMap(headMap, context) 自动会转换</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>那么这些问题都解决了，如果出现大数据量的情况，如果要极大的使用到cpu，该怎么做呢？</p>
-<p>可以尝试使用线程池进行实现</p>
-<h2 id="使用线程池进行多线程导入大量数据"><a href="#使用线程池进行多线程导入大量数据" class="headerlink" title="使用线程池进行多线程导入大量数据"></a>使用线程池进行多线程导入大量数据</h2><p>Java中线程池的开发与使用与原理我可以单独写一篇文章进行讲解，但是在这边为了进行好的开发我先给出一套固定一点的方法。</p>
-<p>由于ReadListener不能被注册到IOC容器里面，所以需要在外面开启</p>
-<p>详情可见<a target="_blank" rel="noopener" href="https://juejin.cn/post/7251566038524133436?searchId=2024041212522037CB9A6B24BDAA8953E7">Spring Boot通过EasyExcel异步多线程实现大数据量Excel导入,百万数据30秒</a></p>
-<h2 id="通过泛型实现对象类型的导出"><a href="#通过泛型实现对象类型的导出" class="headerlink" title="通过泛型实现对象类型的导出"></a>通过泛型实现对象类型的导出</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="keyword">void</span> <span class="title function_">commonExport</span><span class="params">(String fileName, List&lt;T&gt; data, Class&lt;T&gt; clazz, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="keyword">if</span> (CollectionUtil.isEmpty(data)) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置标题</span></span><br><span class="line">    fileName = URLEncoder.encode(fileName, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    response.setContentType(<span class="string">&quot;application/vnd.ms-excel&quot;</span>);</span><br><span class="line">    response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">    response.setHeader(<span class="string">&quot;Content-disposition&quot;</span>, <span class="string">&quot;attachment;filename=&quot;</span> + fileName + <span class="string">&quot;.xlsx&quot;</span>);</span><br><span class="line">    EasyExcel.write(response.getOutputStream()).head(clazz).sheet(<span class="string">&quot;sheet1&quot;</span>).doWrite(data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>直接使用该方法可以作为公共的数据的导出接口</p>
-<p>如果想要动态的下载任意一组数据怎么办呢？可以使用这个方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exportFreely</span><span class="params">(String fileName, List&lt;List&lt;Object&gt;&gt; data, List&lt;List&lt;String&gt;&gt; head, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="keyword">if</span> (CollectionUtil.isEmpty(data)) &#123;</span><br><span class="line">            data = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//设置标题</span></span><br><span class="line">        fileName = URLEncoder.encode(fileName, <span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        response.setContentType(<span class="string">&quot;application/vnd.ms-excel&quot;</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">        response.setHeader(<span class="string">&quot;Content-disposition&quot;</span>, <span class="string">&quot;attachment;filename=&quot;</span> + fileName + <span class="string">&quot;.xlsx&quot;</span>);</span><br><span class="line">        EasyExcel.write(response.getOutputStream()).head(head).sheet(<span class="string">&quot;sheet1&quot;</span>).doWrite(data);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>什么？不仅想一个接口展示全部的数据与信息，还要增加筛选条件？这个后期我可以单独写一篇文章解决这个问题。</p>
-<p>今天的分享就到这里了。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/13.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E9%80%A0%E6%88%90%E7%9A%84OOM%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/13.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E9%80%A0%E6%88%90%E7%9A%84OOM%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">cos因为数据库表造成的OOM问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:20:06 / 修改时间：12:22:45" itemprop="dateCreated datePublished" datetime="2025-07-12T12:20:06+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>在测试环境海外白牌eu环境中，cos服务一直不健康；原因是pod.yml中没有配置liveness，导致服务没有被容器重启；</p>
-<p>随后查看日志发现服务触发了OOM异常。</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJwkt-3sYPN3NAv_NBSuwP6Lr6wzoGM0HYUowtB8sAA_1323_767.png" alt="img"></p>
-<h1 id="二、原因"><a href="#二、原因" class="headerlink" title="二、原因"></a>二、原因</h1><p>使用jmap命令（jmap -dump:format&#x3D;b,file&#x3D;heapdump.hprof 1）打印出服务的内存dump文件；</p>
-<p>使用MemoryAnalyzer分析dump文件；</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJxEH9zQMXN3NAtnNA9SwjIXJL9jlMBcHYUowtFc_AA_980_729.png" alt="img"></p>
-<p>发现大对象是ShardingSphereDataSource，查看这个对象的外引用发现是数据库表实例；</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJxgi9H2ZXN3NAyTNA16wzlRt4EUlGQIHYUowtFc_Ag_862_804.png" alt="img"></p>
-<p><img src="https://static.dingtalk.com/media/lQLPKGSIMFdt7N3NA0fNBSOw7xsuYxHtBBYHYUowtFc_AQ_1315_839.png" alt="img"></p>
-<p><img src="https://static.dingtalk.com/media/lQLPJwVFicXXfN3NAubNBaWwH2qLo6haV6wHYUowtFc_Aw_1445_742.png" alt="img"></p>
-<p>最终发现table元数据存在47256个结点；查看node中的value发现数据是表名，但是环境内的表最多存在2567+12830&#x3D;5632张表，很明显47256是异常的；</p>
-<p>查看数据库表中对应的cos_video库，发现其中存在50000+的表（没截图了），应该是环境内每日清理过期表的任务执行失败或者没有执行导致的；</p>
-<p>删除cos_video库中过期的表问题解决。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/11.Linux%E4%B8%8B%E7%81%AB%E7%84%B0%E5%9B%BE%E6%94%B6%E9%9B%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/11.Linux%E4%B8%8B%E7%81%AB%E7%84%B0%E5%9B%BE%E6%94%B6%E9%9B%86/" class="post-title-link" itemprop="url">Linux下火焰图收集</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:19:56 / 修改时间：12:22:26" itemprop="dateCreated datePublished" datetime="2025-07-12T12:19:56+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Linux下火焰图收集"><a href="#Linux下火焰图收集" class="headerlink" title="Linux下火焰图收集"></a>Linux下火焰图收集</h1><p>java进程</p>
-<p>可以选择使用arthas的jprofile命令</p>
-<p>linux</p>
-<p>使用perf</p>
-<p>以centos为例，安装yum install perf</p>
-<p>使用perf record -F 99 -g -p 1 — sleep 30采集30秒进程1，每秒采集99次</p>
-<p>perf script -i perf.data &gt; perf.script 将火焰图数据转化成解析文件</p>
-<p>操作进程中下载FlameGraph，git clone <a target="_blank" rel="noopener" href="https://github.com/brendangregg/FlameGraph.git%EF%BC%9B">https://github.com/brendangregg/FlameGraph.git；</a></p>
-<p>进入FlameGraph文件夹后，执行.&#x2F;stackcollapse-perf.pl &#x2F;var&#x2F;mount&#x2F;eu&#x2F;tcpdump_file&#x2F;perf.script &gt; perf.folded折叠堆栈信息</p>
-<p>使用.&#x2F;flamegraph.pl perf.folded &gt; flamegraph.svg生成火焰图</p>
-<p>svg文件在浏览器中打开可以查看CPU开销</p>
-<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/image-20250712122131284.png" alt="image-20250712122131284"></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/" class="post-title-link" itemprop="url">p2p-relay服务CPU高</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:19:56 / 修改时间：12:22:10" itemprop="dateCreated datePublished" datetime="2025-07-12T12:19:56+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h1><p>国内宇视p2p-relay服务CPU利用率一直很高，造成服务被liveness杀死，或者内置的P2P控件抢占不到CPU而崩溃。</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJwp1Zotqx-HNASLNA9ewCHGYC1e1EGYIMMyulzeVAA_983_290.png" alt="img"></p>
-<p>P2P奔溃堆栈</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.070</span> [34mINFO[<span class="number">0</span>;39m [Thread-<span class="number">53990888</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f16197f0700][libcloud.c:<span class="number">7145</span>]StartStream timeout. [50396A31-<span class="number">6769</span>-5A37-<span class="number">5659</span>-626251566B6A]</span><br><span class="line"><span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.071</span> [34mINFO[<span class="number">0</span>;39m [Thread-<span class="number">53990889</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f16197f0700][libcloud.c:<span class="number">7573</span>][ConnectPeerDone] iTaskType(<span class="number">2</span>), iIsSUccess(<span class="number">0</span>), pcPeerID(50396A31-<span class="number">6769</span>-5A37-<span class="number">5659</span>-626251566B6A), pcPeerIP(<span class="number">222.222</span><span class="number">.30</span><span class="number">.55</span>), iPeerPort(<span class="number">29433</span>)<span class="number">.2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.078</span> [34mINFO[<span class="number">0</span>;39m [http-nio-<span class="number">8998</span>-exec-<span class="number">515</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">3</span>, message: [7f15f4dc4700][t2u_runner.c:<span class="number">265</span>]Failed to call epoll wait, ret[<span class="number">0</span>], errno[<span class="number">2</span>]<span class="number">2025</span>-<span class="number">03</span>-<span class="number">14</span> <span class="number">16</span>:<span class="number">27</span>:<span class="number">38.079</span> [34mINFO[<span class="number">0</span>;39m [http-nio-<span class="number">8998</span>-exec-<span class="number">515</span>] [CLoggerImpl.pFnLogFun: <span class="number">45</span>] [] - [p2p control] level: <span class="number">6</span>, message: [7f15f4dc4700][libcloud.c:<span class="number">5662</span>]MTU probe.## A fatal error has been detected by the Java Runtime Environment:##  SIGSEGV (<span class="number">0xb</span>) at pc=<span class="number">0x00007f161e0757f3</span>, pid=<span class="number">1</span>, tid=<span class="number">0x00007f15f4dc4700</span>## JRE version: Java(TM) SE Runtime <span class="title function_">Environment</span> <span class="params">(<span class="number">8.0_231</span>-b11)</span> (build <span class="number">1.8</span><span class="number">.0_231</span>-b11)# Java VM: Java <span class="title function_">HotSpot</span><span class="params">(TM)</span> <span class="number">64</span>-Bit Server <span class="title function_">VM</span> <span class="params">(<span class="number">25.231</span>-b11 mixed mode linux-amd64 compressed oops)</span># Problematic frame:# C  [libtunnel_new.so+<span class="number">0x607f3</span>]  Libcloud_CreateT2URelation+<span class="number">0x313</span>## Core dump written. Default location: <span class="comment">//core or core.1## An error report file with more information is saved as:# //hs_err_pid1.log## If you would like to submit a bug report, please visit:#    http://bugreport.java.com/bugreport/crash.jsp# The crash happened outside the Java Virtual Machine in native code.# See problematic frame for where to report the bug.#</span></span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br><span class="line">[error occurred during error reporting , id <span class="number">0xb</span>]</span><br></pre></td></tr></table></figure>
-
-<h1 id="二、分析"><a href="#二、分析" class="headerlink" title="二、分析"></a>二、分析</h1><ol>
-<li><p>CPU高主要是pid为1的java进程占用的，也就是p2p-relay的服务</p>
-</li>
-<li><p>使用top -H，查看线程号为8&#x2F;9&#x2F;10&#x2F;11的线程CPU使用率的特别高</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJyEEsQp-umHNAe3NA0awpXOt-G5e-agIMMy0Rr3UAA_838_493.png" alt="img"></p>
-</li>
-<li><p>jstack 1查看线程8&#x2F;9&#x2F;10&#x2F;11对应着四个ParalLelGC并行垃圾回收器（CPU 4核会存在4个垃圾回收器线程）；<br>垃圾回收器线程为什么会CPU高，说明有大量的对象在被创建&#x2F;没有引用&#x2F;被回收持续往复</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJxAkl5-TIGHNAjrNBB6wo2BDlT7UQzsIMMy6XeGSAA_1054_570.png" alt="img"></p>
-</li>
-<li><p>使用arthas的dashboard命令查看，young gc出现了289W次，持续了8小时（进程启动了25小时)，再次确认有大量的对象在被创建</p>
-<p><img src="https://static.dingtalk.com/media/lQLPKGcFvqLaE-HM780GJLAVVKFCK0EeRggwzMFVEBgA_1572_239.png" alt="img"></p>
-</li>
-<li><p>使用jstat -gc <pid> 1000 | awk ‘{print $6}’ 观察 Eden 分配速率，发现每隔几秒采集就有大量Eden对象创建（单位是kb）；也就是说时时刻刻有2.27G的对象产生<br>大量对象产生说明业务中存在很大的并发的业务；结合p2p-relay流程，怀疑是接口&#x2F;pr&#x2F;device&#x2F;p2p&#x2F;invoke接口调用的频发；<br>但是TOMCAT的http-nio线程并不多，说明请求量并没有很大</p>
-<p><img src="https://static.dingtalk.com/media/lQLPKeTTUkwXLGHNAjLNA1ywsht0Yg96qfsIMMzMp_-PAA_860_562.png" alt="img"></p>
-</li>
-<li><p>重新梳理流程后，怀疑可能是P2P日志回调导致的问题</p>
-<p><img src="https://static.dingtalk.com/media/lQLPJw0GDi98veHNAlTNAsqwk2HUHEB9gTEIMMzSPo05AA_714_596.png" alt="img"></p>
-<p>P2P日志需要java进程给P2P配置回调接口，P2P将日志回调给java进行打印</p>
-</li>
-<li><p>线上配置的P2P日志level是0，一般不会输出到日志中；<br>但是回看这个业务，如果回调频繁，岂不是要创建大量的String对象（JNA 将原生代码（如 C&#x2F;C++的 char*）传递的字符串转换为 Java 的 String）；为了确认日志回调的量，将level设置为8，在日志采集服务中发现P2P产生的日志是其他所有服务加起来的10倍+<br>那问题基本确认就是这个造成的，将设置回调的函数注释掉，并重新部署</p>
-</li>
-</ol>
-<h1 id="三、修改效果"><a href="#三、修改效果" class="headerlink" title="三、修改效果"></a>三、修改效果</h1><p>修改后效果明显，CPU利用率下降到20%</p>
-<p><img src="E:\Blogin\projects-markdown\后端\Java技术\b04caed56a1b9bf1e2cdc1d0555f1043.png" alt="b04caed56a1b9bf1e2cdc1d0555f1043"></p>
-<h1 id="四、优化方向"><a href="#四、优化方向" class="headerlink" title="四、优化方向"></a>四、优化方向</h1><p>建议P2P库优化方向：</p>
-<p>P2P的日志level控制由P2P侧实现，云端下发日志的level；P2P库整理下日志，尽量减少日志，精简下。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/9.flyway%E5%8F%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E5%88%B0%E5%BD%93%E5%89%8D%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/9.flyway%E5%8F%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E5%88%B0%E5%BD%93%E5%89%8D%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">flyway可否使用到当前开发环境</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:18:30" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>Flyway是什么？</p>
-</blockquote>
-<p>Flyway是一款开源的数据库版本管理工具，可以实现管理并跟踪数据库变更，支持数据库版本自动升级，而且不需要复杂的配置，能够帮助团队更加方便、合理的管理数据库变更。<br>例：创建两个sql变更文件，项目启动后会将两个文件中的sql语句全部执行。</p>
-<h1 id="1、痛点"><a href="#1、痛点" class="headerlink" title="1、痛点"></a>1、痛点</h1><ol>
-<li>每次封板都要执行一次数据库，很久没更新的环境中，数据库都需要做到到处找sql文件进行执行，很麻烦</li>
-</ol>
-<h1 id="2、优点"><a href="#2、优点" class="headerlink" title="2、优点"></a>2、优点</h1><p>Flyway可以在微服务上线时自动执行SQL脚本，不需要再执行工单</p>
-<h1 id="3、为什么不用Flyway"><a href="#3、为什么不用Flyway" class="headerlink" title="3、为什么不用Flyway"></a>3、为什么不用Flyway</h1><h2 id="3-1、对于开发"><a href="#3-1、对于开发" class="headerlink" title="3.1、对于开发"></a>3.1、对于开发</h2><ol>
-<li>有些微服务提早上线，但是也会同时更新在主干分支中，所以用一个修改会存在于多个版本中，上线到同一个环境中时会出问题</li>
-<li>分库分表虽然支持Flyway，但是复杂度高，容易出问题，开发与拓展均较难完全验证</li>
-<li>每个涉及到数据库的微服务都要配置一组Flyway的参数，对于运维也不友好</li>
-<li>微服务拆分与合并，flyway则需要额外投入人力进行开发</li>
-</ol>
-<h2 id="3-2、对于运维"><a href="#3-2、对于运维" class="headerlink" title="3.2、对于运维"></a>3.2、对于运维</h2><ol>
-<li>Flyway本质上是使用微服务自己的资源执行SQL语句，在<strong>常规场景</strong>下对微服务和MySQL的资源消耗可控，但在<strong>大规模数据迁移或复杂DDL操作</strong>时需重点优化，这在使用DMS的时候，只需要运维保证不影响线上环境的MySQL即可</li>
-<li>虽然Flyway也有版本工具，如果线上出问题，DMS可以直接提工单进行执行，但是Flyway则需要重新配置执行规则，走上线流程，比较消耗人力</li>
-<li>如果是pod集群使用，则需要额外配置Kubernetes Job，这才能保证多个pod启动时避免出问题</li>
-</ol>
-<h2 id="4、原有痛点解决方式"><a href="#4、原有痛点解决方式" class="headerlink" title="4、原有痛点解决方式"></a>4、原有痛点解决方式</h2><p>删除对应环境对应数据库的表，重新使用ddl进行创建</p>
-<h2 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jiao1225/article/details/129590660">Flyway详解（使用说明及避坑指南、一文搞懂flyway）</a></li>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7308219677805051955">数据库&#x2F;SQL 版本管理工具选型指北：Flyway、Liquibase、Bytebase、阿里 DMS</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.red-gate.com/products/flyway/community/">flyway官网</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Flying_Fish_roe/article/details/142418042">Flyway 常见问题与解决方案</a></li>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1489916">【SpringBoot系列】微服务集成Flyway</a></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/8.%E6%97%A5%E5%BF%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E6%89%93%EF%BC%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/8.%E6%97%A5%E5%BF%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E6%89%93%EF%BC%9F/" class="post-title-link" itemprop="url">日志到底该怎么打？</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:25:35" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>[TOC]</p>
-<p>一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用<strong>slf4j</strong>作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。</p>
-<p>且slf4j有以下的一个日志等级</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误)</span><br></pre></td></tr></table></figure>
-
-<p>背景为：在开发过程中，组长认为我写的日志不是很好</p>
-<p>目的为：期望我可以使用比较好的开发习惯，在开发过程中，期望我使用最少的精力写出方便开发者做调试，以及线上进行查看的日志。</p>
-<p>因此我打算使用以下配置作为开发者的一个习惯配置做培养</p>
-<h1 id="1、logback-xml配置"><a href="#1、logback-xml配置" class="headerlink" title="1、logback.xml配置"></a>1、logback.xml配置</h1><p>这个文件用于存储具体日志打印的配置。当然也有第三方日志打印&#x2F;暴露endpoint以别的配置文件打印到别的目录下。基本上不会修改这个文件中的配置，除非出现问题，要求修改第三方包的日志的等级等情况才会进行修改。</p>
-<h1 id="2、是否该打印日志"><a href="#2、是否该打印日志" class="headerlink" title="2、是否该打印日志"></a>2、是否该打印日志</h1><p>打印日志主要是为了一下几种原因：</p>
-<ol>
-<li><p><strong>调试：</strong></p>
-<p>开发过程中需要实时看到参数信息、业务流程分支等信息，在spring中，一些异步调用，生命周期、事件、队列消费等信息不会主动触发到，顾需要日志来显式展示配置信息、或者定位信息</p>
-<p>开发过程中遇到用户出现了业务上的失败流程，但是不会影响整个业务，不会影响进程安全的信息，也会需要打印出来，用于辅助调试</p>
-</li>
-<li><p><strong>排查问题：</strong></p>
-<p>业务上出现了问题，则会要求打印重要参数信息，用于查看配置</p>
-</li>
-<li><p><strong>数据处理</strong>：</p>
-<p>如果项目上了新特性，则需要打印对应信息，用于查看用户使用UV、PV，业务路径等信息，这个就是买点上报+数据处理上的流程。</p>
-</li>
-</ol>
-<h1 id="3、打印日志的级别等级"><a href="#3、打印日志的级别等级" class="headerlink" title="3、打印日志的级别等级"></a>3、打印日志的级别等级</h1><p>打印过程中需要日志足够简洁足够重要。</p>
-<p>打印过程中如要打印比较重要的参数，如数据库影响行数，入参等信息</p>
-<p>以下是几个比较重要的打印等级的信息</p>
-<ol>
-<li><p>debug：</p>
-<p>一般会打印一些调试参数，方便开发者查看业务会走到哪里，在线上一般不会打开这个等级的日志打印。</p>
-<p>一些异步调用，生命周期、事件、队列消费等信息不会主动触发，所以也需要debug等级日志打印。</p>
-<p>arthas和debug等级日志很大程度上功能重合了，所以为了避免日志冗余，也可以通过使用arthas调试代码。</p>
-</li>
-<li><p>info：</p>
-<p>如果是埋点上报信息，则会打印用户id，用户后续的业务点击点等信息。</p>
-</li>
-<li><p>warn：</p>
-<p>如果用户在走业务流程时候出现了错误，但是不影响后续的业务流程，则打印这个等级的日志</p>
-</li>
-<li><p>error：</p>
-<p>用户在业务流程中出现了严重技术或者业务错误，导致无法继续进行业务，则需要打印这个等级的日志。</p>
-</li>
-</ol>
-<h1 id="4、怎么依据日志做调试排查"><a href="#4、怎么依据日志做调试排查" class="headerlink" title="4、怎么依据日志做调试排查"></a>4、怎么依据日志做调试排查</h1><h1 id="0、禁忌："><a href="#0、禁忌：" class="headerlink" title="0、禁忌："></a>0、禁忌：</h1><ol>
-<li>不要把list直接打印出来，尽量只打印，对外内存容易出现OOM、且虽然是异步打印日志，但是打印大量日志会导致不必要的消耗资源。</li>
-<li>很多小伙伴可能用docker、k8s、ELK进行日志收集，所以为了兼容性，只能打印英语日志，打印中文日志很容易会导致乱码</li>
-<li>打印日志要保证安全性不能名，不能明文打印敏感信息</li>
-<li>不要打印exception对象，要打印e.getMessage()</li>
-<li>遇到异常，打印log.error()后就不要在抛出异常了，再抛出异常可能会导致多余日志的打印</li>
-</ol>
+          <h1>背景</h1>
+<p>uuid: 114da021-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 111970c0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 10e2f770-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 10aea100-6642-11f0-8b79-d5da912b10d4<br>
+如果你是一个做开发的人，不论是web开发还是前端开发，抑或是数据分析师，我都非常建议你看下这本书。</p>
+<p>互联网的基石是分布式系统，一个通过系统设计极大降低系统复杂度的系统，作为开发设计</p>
+<p>使用这本书厘清一系列概念是非常重要的，了解一系列技术的发展历程，变化关系，才能更好的做开发与架构设计</p>
+<p>（虚拟化相关的设计没特别关注）</p>
+<h1>演进式架构：</h1>
+<pre class="mermaid">flowchart LR
+    A[原始分布式时代] -->B(单体系统时代)
+    B[单体系统时代] -->C(SOA时代)
+    C[SOA时代] -->D(微服务时代)
+    D[微服务时代] -->E(后微服务时代)
+    E[后微服务时代] -->F(无服务时代)</pre>
+<p>容错性设计会承认服务会出错，演进式设计则策划给承认服务会被报废淘汰</p>
+<p>技术设计者的第一职责是决策权哼，有利有弊才需要决策，有取有舍才需要权衡，因此要求设计者本身的知识面需要完全覆盖需要决策的内容，清楚其中的利弊</p>
+<p>简单优先原则，即“Worse is Better”。避免过度设计</p>
+<p>对于单体系统，在对程序升级、修改时往往需要制定专门的停机更新计划，做灰度发布、A/B测试也相对更复杂。切换成微服务后，单独的微服务可以独立启动，独立行使功能，升级，AB测试，技术与业务迭代更新也更方便。</p>
+<p>但在微服务下，要求开发团队中每个人都具有产品化思维，关心整个产品的全部方面是具有可行性的；顺带提一下,SOA和微服务的区别在于SOA只是将服务分成多个可以独立启动的程序，使用的数据库还是同一个，不如微服务解耦的彻底。</p>
+<p>后微服务时代，指的是如服务调度工具kubernetes的使用，不再需要HPA，熔断，远程调用，服务注册与发现等服务治理的手动配置与维护：</p>
+<p><img src="https://hexo-1304698044.cos.ap-shanghai.myqcloud.com/blog/30b4916d17ee354031a7fcb0ef8378e1.png" alt="30b4916d17ee354031a7fcb0ef8378e1"></p>
+<p>无服务时代则通过更细致化的环境适配，免去一切业务不相关的代码开发，也不再需要手动实现日志记录，资源手动配置等行为；如Amazon的Faas平台，通过写Lambda函数就可以部署自己的一套业务，免去硬件和软件的复杂配置。</p>
 <p>推荐阅读：</p>
 <ol>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Dream_Weave/article/details/139592062"> 别在 Java 代码里乱打日志了，项目中这样打印日志才足够优雅！</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1432451">详解云计算网络底层技术——虚拟网络设备 tap/tun 原理解析</a></li>
+<li><a target="_blank" rel="noopener" href="https://gitbook.fantasticmao.cn/tech/shu-ju-ku/mysql">FantasticMao 技术笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://geekdaxue.co/read/renshen052@ibook/ycis36">《凤凰架构》</a></li>
+<li><a target="_blank" rel="noopener" href="https://mermaid.nodejs.cn/syntax/flowchart.html#direction">mermaid中文网</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_78385600/article/details/132080555">分布式系统的 38 个知识点</a></li>
 </ol>
 
       
@@ -1075,7 +486,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/7.code%20review%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%943.%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%9F%B3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1093,7 +504,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/7.code%20review%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F/" class="post-title-link" itemprop="url">code review 怎么做？</a>
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%943.%E5%88%86%E5%B8%83%E5%BC%8F%E5%9F%BA%E7%9F%B3/" class="post-title-link" itemprop="url">凤凰架构——分布式基石</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1105,7 +516,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:25:32" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-21 22:46:50 / 修改时间：22:50:30" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:50+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1113,7 +524,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
         </span>
     </span>
 
@@ -1127,16 +538,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <ol>
-<li>提交合入请求后，仍然需要查看git上面的差异报告，总有一些想不到的地方是有问题的</li>
-<li>代码，配置文件，sql需要保证对应的上此次修改，因为要交付给运维使用</li>
-<li>尽量使用原有代码逻辑，如单个操作接口转批量操作接口，为避免过度优化，建议调用单个操作接口对应的API实现批量操作接口</li>
-<li>sql语句会出现多次修改，需要更新最后修改到何如文件上面；如以下例子，新增一个叫做taskId的字段，并且增加了taskId的索引，但是因为taskId不符合一般的字段明明，所以会将字段改为task_id，但是如果忘记修改新的索引，会导致上线时SQL语句报错</li>
-<li>因为是持续交付项目，所以为了保证代码可以持续性，如果要修改某个配置文件的名称，如果像是修改redis-time直接修改为alarm-redis-time，那么旧微服务在更新为新版本微服务时，会出现一段时间的该字段是小问题；正确做法应当是新增一个alarm-redis-time属性供新版本微服务在未来使用，redis-time则备注在下一个迭代删除</li>
-<li>配置文件尽量不新增，减少运维工作量</li>
-<li>日志尽量少打，因为大量日志会导致检索服务花费大，且导致过度消耗CPU；打印日志时，需要将入参，当前业务涉及对象进行打印，避免线上出问题导致无法排查</li>
-<li>进行业务开发，需要将大的业务步骤之间进用空格分隔，并且使用备注表明逻辑；整个的逻辑链路需要做到口述出来</li>
-</ol>
+          <h1>1、分布式共识</h1>
+<p>以同步为代表的数据复制方法，被称为状态转移(State Transfer)，是较符合人类思维的可靠性保障手段，但通常要以牺牲可用性为代价。</p>
+<h1>虚拟化</h1>
+<p>状态机：只需要将状态A编程状态B，就需要一组操作集C，只要完成C就能将状态A变成B，因此会出现kubernetes这种对调度器将数据变成</p>
+<p>服务演进：</p>
+<p>后期开发趋势是，一小部分的设计者与大量的普通代码开发民工；马太效应在计算机行业内部也体现的越来越明显。</p>
+<p>系统的腐化是必然的，正如人有自己的生老病死一样，</p>
 
       
     </div>
@@ -1163,7 +571,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/6.redisson%E4%BD%BF%E7%94%A8lock%E5%AF%BC%E8%87%B4%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/7.%E6%B2%A7%E6%B5%AA%E4%B9%8B%E6%B0%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -1181,7 +589,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/6.redisson%E4%BD%BF%E7%94%A8lock%E5%AF%BC%E8%87%B4%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">redisson使用lock导致死锁问题</a>
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/7.%E6%B2%A7%E6%B5%AA%E4%B9%8B%E6%B0%B4/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -1193,7 +601,688 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:17:10" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:58:29" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>uuid: 29a1b1b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 296da960-6643-11f0-b2e2-11538cb13019<br>
+uuid: 293952f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 29054aa0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 28d14250-6643-11f0-b2e2-11538cb13019<br>
+uuid: 289d3a00-6643-11f0-b2e2-11538cb13019<br>
+uuid: 286931b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 28348d20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2800d2f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 27ccf1b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2798c250-6643-11f0-b2e2-11538cb13019<br>
+uuid: 27650820-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2730d8c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 26fcf780-6643-11f0-b2e2-11538cb13019<br>
+uuid: 26c8ef30-6643-11f0-b2e2-11538cb13019<br>
+uuid: 26944aa0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 26601b40-6643-11f0-b2e2-11538cb13019<br>
+uuid: 262bebe0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 25f7bc80-6643-11f0-b2e2-11538cb13019<br>
+uuid: 25c3b430-6643-11f0-b2e2-11538cb13019<br>
+uuid: 258f36b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 255ae040-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2526d7f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 24f2f6b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 24bea040-6643-11f0-b2e2-11538cb13019<br>
+uuid: 248a97f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 24568fa0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 24221220-6643-11f0-b2e2-11538cb13019<br>
+uuid: 23ee30e0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 23ba0180-6643-11f0-b2e2-11538cb13019<br>
+uuid: 23855cf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2350b860-6643-11f0-b2e2-11538cb13019<br>
+uuid: 231c61f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 22e80b80-6643-11f0-b2e2-11538cb13019<br>
+uuid: 22b3dc20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 227fd3d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 224c19a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 22181150-6643-11f0-b2e2-11538cb13019<br>
+uuid: 21e3e1f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 21af6470-6643-11f0-b2e2-11538cb13019<br>
+uuid: 217abfe0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2146b790-6643-11f0-b2e2-11538cb13019<br>
+uuid: 21025b90-6643-11f0-b2e2-11538cb13019<br>
+uuid: 20ce2c30-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2099d5c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2065cd70-6643-11f0-b2e2-11538cb13019<br>
+uuid: 2031c520-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1ffde3e0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1fc96660-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1f950ff0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1f6107a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1f2cff50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1ef94520-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1ec4c7a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1e907130-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1e5c41d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1e286090-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1df47f50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1dc07700-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1d8c47a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1d583f50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1d1f2df0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1ce6dfe0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1cb2d790-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1c7ea830-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1c4a51c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1c162260-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1be21a10-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1badeab0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1b79bb50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1b45b300-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1b11aab0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1add5440-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1aa94bf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1a751c90-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1a418970-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1a0d3300-6643-11f0-b2e2-11538cb13019<br>
+uuid: 19d86760-6643-11f0-b2e2-11538cb13019<br>
+uuid: 19a43800-6643-11f0-b2e2-11538cb13019<br>
+uuid: 19702fb0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 193c2760-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1907d0f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 18d3a190-6643-11f0-b2e2-11538cb13019<br>
+uuid: 189f9940-6643-11f0-b2e2-11538cb13019<br>
+uuid: 186c0620-6643-11f0-b2e2-11538cb13019<br>
+uuid: 18384bf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 18041c90-6643-11f0-b2e2-11538cb13019<br>
+uuid: 17cfed30-6643-11f0-b2e2-11538cb13019<br>
+uuid: 179bbdd0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 17676760-6643-11f0-b2e2-11538cb13019<br>
+uuid: 17229630-6643-11f0-b2e2-11538cb13019<br>
+uuid: 16ee3fc0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 16b9c240-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1685b9f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1651b1a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 161d8240-6643-11f0-b2e2-11538cb13019<br>
+uuid: 15e979f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 15b5bfc0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1581b770-6643-11f0-b2e2-11538cb13019<br>
+uuid: 154d39f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 151931a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 14e55060-6643-11f0-b2e2-11538cb13019<br>
+uuid: 14b0f9f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 147cf1a0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 14491060-6643-11f0-b2e2-11538cb13019<br>
+uuid: 14152f20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 13e126d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 13acf770-6643-11f0-b2e2-11538cb13019<br>
+uuid: 13793d40-6643-11f0-b2e2-11538cb13019<br>
+uuid: 13349320-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1300d8f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 12cca990-6643-11f0-b2e2-11538cb13019<br>
+uuid: 12985320-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1263fcb0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 122fcd50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 11fbc500-6643-11f0-b2e2-11538cb13019<br>
+uuid: 11c74780-6643-11f0-b2e2-11538cb13019<br>
+uuid: 11931820-6643-11f0-b2e2-11538cb13019<br>
+uuid: 115ec1b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 112a9250-6643-11f0-b2e2-11538cb13019<br>
+uuid: 10f63be0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 10c19750-6643-11f0-b2e2-11538cb13019<br>
+uuid: 108d8f00-6643-11f0-b2e2-11538cb13019<br>
+uuid: 10593890-6643-11f0-b2e2-11538cb13019<br>
+uuid: 1024e220-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0ff08bb0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0fbcaa70-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0f887b10-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0f5499d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0f20b890-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0eecb040-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0eb94430-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0e84edc0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0e513390-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0e1d0430-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0de8fbe0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0db4a570-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0d8027f0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0d4c1fa0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0d181750-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0ce43610-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0cafb890-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0c7b8930-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0c481d20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0c13c6b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0bdf4930-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0bab8f00-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0b775fa0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0b42e220-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0b0eb2c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0ada3540-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0aa605e0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0a71af70-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0a3d8010-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0a0a1400-6643-11f0-b2e2-11538cb13019<br>
+uuid: 09d60bb0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 09a22a70-6643-11f0-b2e2-11538cb13019<br>
+uuid: 096e2220-6643-11f0-b2e2-11538cb13019<br>
+uuid: 093a19d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 09059c50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 08d16cf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 089db2c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0868c010-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0833a650-6643-11f0-b2e2-11538cb13019<br>
+uuid: 07f787b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 07c33140-6643-11f0-b2e2-11538cb13019<br>
+uuid: 077e3900-6643-11f0-b2e2-11538cb13019<br>
+uuid: 074a57c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 07169d90-6643-11f0-b2e2-11538cb13019<br>
+uuid: 06e2bc50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 06ae8cf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 067ad2c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0646a360-6643-11f0-b2e2-11538cb13019<br>
+uuid: 06124cf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 05de92c0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 05a0ed80-6643-11f0-b2e2-11538cb13019<br>
+uuid: 056cbe20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0528b040-6643-11f0-b2e2-11538cb13019<br>
+uuid: 04e73a70-6643-11f0-b2e2-11538cb13019<br>
+uuid: 04b2bcf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 04631650-6643-11f0-b2e2-11538cb13019<br>
+uuid: 042c27d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 03f7f870-6643-11f0-b2e2-11538cb13019<br>
+uuid: 03c3c910-6643-11f0-b2e2-11538cb13019<br>
+uuid: 038f99b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 035b9160-6643-11f0-b2e2-11538cb13019<br>
+uuid: 03273af0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 02f30b90-6643-11f0-b2e2-11538cb13019<br>
+uuid: 02bf2a50-6643-11f0-b2e2-11538cb13019<br>
+uuid: 028afaf0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 02578ee0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0223d4b0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 01ef7e40-6643-11f0-b2e2-11538cb13019<br>
+uuid: 01bb27d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0167fec0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 01341d80-6643-11f0-b2e2-11538cb13019<br>
+uuid: 00ffc710-6643-11f0-b2e2-11538cb13019<br>
+uuid: 00cbe5d0-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0097b670-6643-11f0-b2e2-11538cb13019<br>
+uuid: 0063ae20-6643-11f0-b2e2-11538cb13019<br>
+uuid: 002f7ec0-6643-11f0-b2e2-11538cb13019<br>
+uuid: ffeafbb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ffb6cc50-6642-11f0-b2e2-11538cb13019<br>
+uuid: ff82eb10-6642-11f0-b2e2-11538cb13019<br>
+uuid: ff4e6d90-6642-11f0-b2e2-11538cb13019<br>
+uuid: ff1a8c50-6642-11f0-b2e2-11538cb13019<br>
+uuid: fee65cf0-6642-11f0-b2e2-11538cb13019<br>
+uuid: feb254a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fe7e2540-6642-11f0-b2e2-11538cb13019<br>
+uuid: fe4959a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fe159f70-6642-11f0-b2e2-11538cb13019<br>
+uuid: fde19720-6642-11f0-b2e2-11538cb13019<br>
+uuid: fdad19a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fd793860-6642-11f0-b2e2-11538cb13019<br>
+uuid: fd455720-6642-11f0-b2e2-11538cb13019<br>
+uuid: fd114ed0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fcdd6d90-6642-11f0-b2e2-11538cb13019<br>
+uuid: fca98c50-6642-11f0-b2e2-11538cb13019<br>
+uuid: fc75d220-6642-11f0-b2e2-11538cb13019<br>
+uuid: fc4217f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fc0de890-6642-11f0-b2e2-11538cb13019<br>
+uuid: fbc98c90-6642-11f0-b2e2-11538cb13019<br>
+uuid: fb958440-6642-11f0-b2e2-11538cb13019<br>
+uuid: fb61a300-6642-11f0-b2e2-11538cb13019<br>
+uuid: fb2d9ab0-6642-11f0-b2e2-11538cb13019<br>
+uuid: faf96b50-6642-11f0-b2e2-11538cb13019<br>
+uuid: fac53bf0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fa9181c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: fa5d7970-6642-11f0-b2e2-11538cb13019<br>
+uuid: fa294a10-6642-11f0-b2e2-11538cb13019<br>
+uuid: f9f541c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f9c18790-6642-11f0-b2e2-11538cb13019<br>
+uuid: f98d3120-6642-11f0-b2e2-11538cb13019<br>
+uuid: f95901c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f924ab50-6642-11f0-b2e2-11538cb13019<br>
+uuid: f8f0f120-6642-11f0-b2e2-11538cb13019<br>
+uuid: f8bd0fe0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f8897cc0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f8557470-6642-11f0-b2e2-11538cb13019<br>
+uuid: f820f6f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f7ed15b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f7a892a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f7741520-6642-11f0-b2e2-11538cb13019<br>
+uuid: f7405af0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f70c79b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f6d87160-6642-11f0-b2e2-11538cb13019<br>
+uuid: f6a4b730-6642-11f0-b2e2-11538cb13019<br>
+uuid: f67087d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f63c7f80-6642-11f0-b2e2-11538cb13019<br>
+uuid: f6082910-6642-11f0-b2e2-11538cb13019<br>
+uuid: f5d46ee0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f5a01870-6642-11f0-b2e2-11538cb13019<br>
+uuid: f56b9af0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f5376b90-6642-11f0-b2e2-11538cb13019<br>
+uuid: f5038a50-6642-11f0-b2e2-11538cb13019<br>
+uuid: f4cfa910-6642-11f0-b2e2-11538cb13019<br>
+uuid: f49bc7d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f4685bc0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f434a190-6642-11f0-b2e2-11538cb13019<br>
+uuid: f400e760-6642-11f0-b2e2-11538cb13019<br>
+uuid: f3ccdf10-6642-11f0-b2e2-11538cb13019<br>
+uuid: f39924e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f3651c90-6642-11f0-b2e2-11538cb13019<br>
+uuid: f331b080-6642-11f0-b2e2-11538cb13019<br>
+uuid: f2fd5a10-6642-11f0-b2e2-11538cb13019<br>
+uuid: f2c951c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f2954970-6642-11f0-b2e2-11538cb13019<br>
+uuid: f2614120-6642-11f0-b2e2-11538cb13019<br>
+uuid: f22d38d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f1f89440-6642-11f0-b2e2-11538cb13019<br>
+uuid: f1c4b300-6642-11f0-b2e2-11538cb13019<br>
+uuid: f190f8d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f15d1790-6642-11f0-b2e2-11538cb13019<br>
+uuid: f128e830-6642-11f0-b2e2-11538cb13019<br>
+uuid: f0f52e00-6642-11f0-b2e2-11538cb13019<br>
+uuid: f0c0fea0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f08c8120-6642-11f0-b2e2-11538cb13019<br>
+uuid: f05851c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: f0244970-6642-11f0-b2e2-11538cb13019<br>
+uuid: eff06830-6642-11f0-b2e2-11538cb13019<br>
+uuid: efbbeab0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ef880970-6642-11f0-b2e2-11538cb13019<br>
+uuid: ef547650-6642-11f0-b2e2-11538cb13019<br>
+uuid: ef206e00-6642-11f0-b2e2-11538cb13019<br>
+uuid: eeecdae0-6642-11f0-b2e2-11538cb13019<br>
+uuid: eeb920b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ee856680-6642-11f0-b2e2-11538cb13019<br>
+uuid: ee515e30-6642-11f0-b2e2-11538cb13019<br>
+uuid: ee1d55e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ede99bb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: edb5e180-6642-11f0-b2e2-11538cb13019<br>
+uuid: ed80eed0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ed3ce0f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ed086370-6642-11f0-b2e2-11538cb13019<br>
+uuid: ecd40d00-6642-11f0-b2e2-11538cb13019<br>
+uuid: ec904d40-6642-11f0-b2e2-11538cb13019<br>
+uuid: ec5c1de0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ec27c770-6642-11f0-b2e2-11538cb13019<br>
+uuid: ebe5dc70-6642-11f0-b2e2-11538cb13019<br>
+uuid: ebb1d420-6642-11f0-b2e2-11538cb13019<br>
+uuid: eb7df2e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: eb4a86d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: eb160950-6642-11f0-b2e2-11538cb13019<br>
+uuid: eae20100-6642-11f0-b2e2-11538cb13019<br>
+uuid: eaae46d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ea79f060-6642-11f0-b2e2-11538cb13019<br>
+uuid: ea45c100-6642-11f0-b2e2-11538cb13019<br>
+uuid: ea1191a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e9dcc600-6642-11f0-b2e2-11538cb13019<br>
+uuid: e9a8bdb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e974b560-6642-11f0-b2e2-11538cb13019<br>
+uuid: e940ad10-6642-11f0-b2e2-11538cb13019<br>
+uuid: e90ccbd0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e8d8c380-6642-11f0-b2e2-11538cb13019<br>
+uuid: e8a49420-6642-11f0-b2e2-11538cb13019<br>
+uuid: e870d9f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e83caa90-6642-11f0-b2e2-11538cb13019<br>
+uuid: e8080600-6642-11f0-b2e2-11538cb13019<br>
+uuid: e7d3fdb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e79fa740-6642-11f0-b2e2-11538cb13019<br>
+uuid: e76b9ef0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e737bdb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e6f5aba0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e6c15530-6642-11f0-b2e2-11538cb13019<br>
+uuid: e68d4ce0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e659b9c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e6258a60-6642-11f0-b2e2-11538cb13019<br>
+uuid: e5f15b00-6642-11f0-b2e2-11538cb13019<br>
+uuid: e5bd2ba0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e5897170-6642-11f0-b2e2-11538cb13019<br>
+uuid: e5554210-6642-11f0-b2e2-11538cb13019<br>
+uuid: e520c490-6642-11f0-b2e2-11538cb13019<br>
+uuid: e4ed3170-6642-11f0-b2e2-11538cb13019<br>
+uuid: e4b9ec70-6642-11f0-b2e2-11538cb13019<br>
+uuid: e47409d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e43fb360-6642-11f0-b2e2-11538cb13019<br>
+uuid: e40b5cf0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e3d77bb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e3a37360-6642-11f0-b2e2-11538cb13019<br>
+uuid: e36f6b10-6642-11f0-b2e2-11538cb13019<br>
+uuid: e33b62c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e3075a70-6642-11f0-b2e2-11538cb13019<br>
+uuid: e2d30400-6642-11f0-b2e2-11538cb13019<br>
+uuid: e29ed4a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e26b1a70-6642-11f0-b2e2-11538cb13019<br>
+uuid: e2378750-6642-11f0-b2e2-11538cb13019<br>
+uuid: e20330e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e1cfc4d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e19c0aa0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e152cca0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e11e7630-6642-11f0-b2e2-11538cb13019<br>
+uuid: e0ea46d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: e0b5f060-6642-11f0-b2e2-11538cb13019<br>
+uuid: e081e810-6642-11f0-b2e2-11538cb13019<br>
+uuid: e04d4380-6642-11f0-b2e2-11538cb13019<br>
+uuid: e0189ef0-6642-11f0-b2e2-11538cb13019<br>
+uuid: dfe496a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: dfb06740-6642-11f0-b2e2-11538cb13019<br>
+uuid: df7c10d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: df480880-6642-11f0-b2e2-11538cb13019<br>
+uuid: df138b00-6642-11f0-b2e2-11538cb13019<br>
+uuid: dedff7e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: deac16a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: de777210-6642-11f0-b2e2-11538cb13019<br>
+uuid: de4342b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: de0f1350-6642-11f0-b2e2-11538cb13019<br>
+uuid: dddb3210-6642-11f0-b2e2-11538cb13019<br>
+uuid: dda750d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: dd732170-6642-11f0-b2e2-11538cb13019<br>
+uuid: dd3f1920-6642-11f0-b2e2-11538cb13019<br>
+uuid: dd0a9ba0-6642-11f0-b2e2-11538cb13019<br>
+uuid: dcd6ba60-6642-11f0-b2e2-11538cb13019<br>
+uuid: dc925e60-6642-11f0-b2e2-11538cb13019<br>
+uuid: dc2a26b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: dbf61e60-6642-11f0-b2e2-11538cb13019<br>
+uuid: dbc28b40-6642-11f0-b2e2-11538cb13019<br>
+uuid: db8eaa00-6642-11f0-b2e2-11538cb13019<br>
+uuid: db5b6500-6642-11f0-b2e2-11538cb13019<br>
+uuid: db170900-6642-11f0-b2e2-11538cb13019<br>
+uuid: dad2ad00-6642-11f0-b2e2-11538cb13019<br>
+uuid: da9ea4b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: da6a9c60-6642-11f0-b2e2-11538cb13019<br>
+uuid: da25cb30-6642-11f0-b2e2-11538cb13019<br>
+uuid: d9f0ff90-6642-11f0-b2e2-11538cb13019<br>
+uuid: d9bd1e50-6642-11f0-b2e2-11538cb13019<br>
+uuid: d988c7e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d954e6a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d9209030-6642-11f0-b2e2-11538cb13019<br>
+uuid: d8ecd600-6642-11f0-b2e2-11538cb13019<br>
+uuid: d8b8cdb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d8849e50-6642-11f0-b2e2-11538cb13019<br>
+uuid: d8409070-6642-11f0-b2e2-11538cb13019<br>
+uuid: d80c12f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d7d858c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d7a3db40-6642-11f0-b2e2-11538cb13019<br>
+uuid: d76fabe0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d73bcaa0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d707c250-6642-11f0-b2e2-11538cb13019<br>
+uuid: d6d392f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d69f8aa0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d66b3430-6642-11f0-b2e2-11538cb13019<br>
+uuid: d6272650-6642-11f0-b2e2-11538cb13019<br>
+uuid: d5f2cfe0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d5aee910-6642-11f0-b2e2-11538cb13019<br>
+uuid: d57a4480-6642-11f0-b2e2-11538cb13019<br>
+uuid: d5468a50-6642-11f0-b2e2-11538cb13019<br>
+uuid: d512d020-6642-11f0-b2e2-11538cb13019<br>
+uuid: d4dec7d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d4ab82d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d4775370-6642-11f0-b2e2-11538cb13019<br>
+uuid: d443e760-6642-11f0-b2e2-11538cb13019<br>
+uuid: d4000090-6642-11f0-b2e2-11538cb13019<br>
+uuid: d3cc1f50-6642-11f0-b2e2-11538cb13019<br>
+uuid: d387ea60-6642-11f0-b2e2-11538cb13019<br>
+uuid: d343dc80-6642-11f0-b2e2-11538cb13019<br>
+uuid: d2ff8080-6642-11f0-b2e2-11538cb13019<br>
+uuid: d2c90730-6642-11f0-b2e2-11538cb13019<br>
+uuid: d294fee0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d2600c30-6642-11f0-b2e2-11538cb13019<br>
+uuid: d22c7910-6642-11f0-b2e2-11538cb13019<br>
+uuid: d1f822a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d1c41a50-6642-11f0-b2e2-11538cb13019<br>
+uuid: d17fe560-6642-11f0-b2e2-11538cb13019<br>
+uuid: d14b67e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d1175f90-6642-11f0-b2e2-11538cb13019<br>
+uuid: d0e30920-6642-11f0-b2e2-11538cb13019<br>
+uuid: d0aeb2b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: d06a0890-6642-11f0-b2e2-11538cb13019<br>
+uuid: d0356400-6642-11f0-b2e2-11538cb13019<br>
+uuid: d0015bb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cfcd5360-6642-11f0-b2e2-11538cb13019<br>
+uuid: cf98d5e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cf64a680-6642-11f0-b2e2-11538cb13019<br>
+uuid: cf202370-6642-11f0-b2e2-11538cb13019<br>
+uuid: ceebcd00-6642-11f0-b2e2-11538cb13019<br>
+uuid: ceb7ebc0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ce83e370-6642-11f0-b2e2-11538cb13019<br>
+uuid: ce4f17d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ce1a9a50-6642-11f0-b2e2-11538cb13019<br>
+uuid: cdd63e50-6642-11f0-b2e2-11538cb13019<br>
+uuid: cda20ef0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cd5e0110-6642-11f0-b2e2-11538cb13019<br>
+uuid: cd295c80-6642-11f0-b2e2-11538cb13019<br>
+uuid: ccf55430-6642-11f0-b2e2-11538cb13019<br>
+uuid: ccb0f830-6642-11f0-b2e2-11538cb13019<br>
+uuid: cc7ca1c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cc484b50-6642-11f0-b2e2-11538cb13019<br>
+uuid: cc144300-6642-11f0-b2e2-11538cb13019<br>
+uuid: cbdfc580-6642-11f0-b2e2-11538cb13019<br>
+uuid: cbab6f10-6642-11f0-b2e2-11538cb13019<br>
+uuid: cb773fb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cb429b20-6642-11f0-b2e2-11538cb13019<br>
+uuid: cb0e92d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: cada3c60-6642-11f0-b2e2-11538cb13019<br>
+uuid: caa5bee0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ca711a50-6642-11f0-b2e2-11538cb13019<br>
+uuid: ca3d3910-6642-11f0-b2e2-11538cb13019<br>
+uuid: ca08bb90-6642-11f0-b2e2-11538cb13019<br>
+uuid: c9d4b340-6642-11f0-b2e2-11538cb13019<br>
+uuid: c9a035c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c96c0660-6642-11f0-b2e2-11538cb13019<br>
+uuid: c937fe10-6642-11f0-b2e2-11538cb13019<br>
+uuid: c9038090-6642-11f0-b2e2-11538cb13019<br>
+uuid: c8bed670-6642-11f0-b2e2-11538cb13019<br>
+uuid: c889e3c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c8556640-6642-11f0-b2e2-11538cb13019<br>
+uuid: c8215df0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c7ed2e90-6642-11f0-b2e2-11538cb13019<br>
+uuid: c7b8b110-6642-11f0-b2e2-11538cb13019<br>
+uuid: c784a8c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c7507960-6642-11f0-b2e2-11538cb13019<br>
+uuid: c71c22f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c6e7cc80-6642-11f0-b2e2-11538cb13019<br>
+uuid: c6b39d20-6642-11f0-b2e2-11538cb13019<br>
+uuid: c67fbbe0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c64bb390-6642-11f0-b2e2-11538cb13019<br>
+uuid: c6178430-6642-11f0-b2e2-11538cb13019<br>
+uuid: c5e306b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c5ae6220-6642-11f0-b2e2-11538cb13019<br>
+uuid: c579bd90-6642-11f0-b2e2-11538cb13019<br>
+uuid: c545b540-6642-11f0-b2e2-11538cb13019<br>
+uuid: c51137c0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c4dce150-6642-11f0-b2e2-11538cb13019<br>
+uuid: c4a88ae0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c4743470-6642-11f0-b2e2-11538cb13019<br>
+uuid: c4402c20-6642-11f0-b2e2-11538cb13019<br>
+uuid: c40b8790-6642-11f0-b2e2-11538cb13019<br>
+uuid: c3d77f40-6642-11f0-b2e2-11538cb13019<br>
+uuid: c392d520-6642-11f0-b2e2-11538cb13019<br>
+uuid: c35e7eb0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c31a70d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c2e5f350-6642-11f0-b2e2-11538cb13019<br>
+uuid: c2b19ce0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c27d9490-6642-11f0-b2e2-11538cb13019<br>
+uuid: c248f000-6642-11f0-b2e2-11538cb13019<br>
+uuid: c214e7b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c1e09140-6642-11f0-b2e2-11538cb13019<br>
+uuid: c1acd710-6642-11f0-b2e2-11538cb13019<br>
+uuid: c178cec0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c134c0e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: c0ef7a80-6642-11f0-b2e2-11538cb13019<br>
+uuid: c0bbc050-6642-11f0-b2e2-11538cb13019<br>
+uuid: c0882d30-6642-11f0-b2e2-11538cb13019<br>
+uuid: c043d130-6642-11f0-b2e2-11538cb13019<br>
+uuid: c00f7ac0-6642-11f0-b2e2-11538cb13019<br>
+uuid: bfdad630-6642-11f0-b2e2-11538cb13019<br>
+uuid: bfa6f4f0-6642-11f0-b2e2-11538cb13019<br>
+uuid: bf6271e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: bf2da640-6642-11f0-b2e2-11538cb13019<br>
+uuid: bef9c500-6642-11f0-b2e2-11538cb13019<br>
+uuid: bec60ad0-6642-11f0-b2e2-11538cb13019<br>
+uuid: be91db70-6642-11f0-b2e2-11538cb13019<br>
+uuid: be4da680-6642-11f0-b2e2-11538cb13019<br>
+uuid: be094a80-6642-11f0-b2e2-11538cb13019<br>
+uuid: bdc4a060-6642-11f0-b2e2-11538cb13019<br>
+uuid: bd909810-6642-11f0-b2e2-11538cb13019<br>
+uuid: bd4c6320-6642-11f0-b2e2-11538cb13019<br>
+uuid: bd082e30-6642-11f0-b2e2-11538cb13019<br>
+uuid: bcd3b0b0-6642-11f0-b2e2-11538cb13019<br>
+uuid: bc9f5a40-6642-11f0-b2e2-11538cb13019<br>
+uuid: bc6b7900-6642-11f0-b2e2-11538cb13019<br>
+uuid: bc372290-6642-11f0-b2e2-11538cb13019<br>
+uuid: bc038f70-6642-11f0-b2e2-11538cb13019<br>
+uuid: bbbf8190-6642-11f0-b2e2-11538cb13019<br>
+uuid: bb7b9ac0-6642-11f0-b2e2-11538cb13019<br>
+uuid: bb474450-6642-11f0-b2e2-11538cb13019<br>
+uuid: bb133c00-6642-11f0-b2e2-11538cb13019<br>
+uuid: bacee000-6642-11f0-b2e2-11538cb13019<br>
+uuid: ba9b25d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ba66f670-6642-11f0-b2e2-11538cb13019<br>
+uuid: ba222540-6642-11f0-b2e2-11538cb13019<br>
+uuid: b9dd7b20-6642-11f0-b2e2-11538cb13019<br>
+uuid: b9a972d0-6642-11f0-b2e2-11538cb13019<br>
+uuid: b9756a80-6642-11f0-b2e2-11538cb13019<br>
+uuid: b941fe70-6642-11f0-b2e2-11538cb13019<br>
+uuid: b90e1d30-6642-11f0-b2e2-11538cb13019<br>
+uuid: b8dab120-6642-11f0-b2e2-11538cb13019<br>
+uuid: b8a65ab0-6642-11f0-b2e2-11538cb13019<br>
+uuid: b8727970-6642-11f0-b2e2-11538cb13019<br>
+uuid: b83e2300-6642-11f0-b2e2-11538cb13019<br>
+uuid: b809f3a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: b7d57620-6642-11f0-b2e2-11538cb13019<br>
+uuid: b7a0f8a0-6642-11f0-b2e2-11538cb13019<br>
+uuid: b76c7b20-6642-11f0-b2e2-11538cb13019<br>
+uuid: b7384bc0-6642-11f0-b2e2-11538cb13019<br>
+uuid: b703f550-6642-11f0-b2e2-11538cb13019<br>
+uuid: b6bfe770-6642-11f0-b2e2-11538cb13019<br>
+uuid: b66df6e0-6642-11f0-b2e2-11538cb13019<br>
+uuid: ab5451f0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: ab2049a0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: aaec1a40-6642-11f0-8b79-d5da912b10d4<br>
+uuid: aab811f0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: aa8430b0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: aa4fda40-6642-11f0-8b79-d5da912b10d4<br>
+uuid: aa1c6e30-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a9e8b400-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a9b4abb0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a9700190-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a93bd230-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a907f0f0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a8c36de0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a88f3e80-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a84b57b0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a81812b0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a7e45880-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a7a098c0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a76c9070-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a7388820-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a6f45330-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a6bffcc0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a68bf470-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a65776f0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a622ab50-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a5eea300-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a5ba9ab0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a576daf0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a5425d70-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a50e0700-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a4ca2030-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a4966600-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a462d2e0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a41ec500-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a3dade30-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a3a660b0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a372cd90-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a33eec50-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a30ae400-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a2d46ab0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a29fc620-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a25b1c00-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a2273ac0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a1f3ceb0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a1bda380-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a1899b30-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a15592e0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a121b1a0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a0eda950-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a0b92bd0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a0852380-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a050a600-6642-11f0-8b79-d5da912b10d4<br>
+uuid: a01cc4c0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9fe8e380-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9fb52950-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9f80f9f0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9f3c76e0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9f07f960-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9ed43f30-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9e9f7390-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9e6b6b40-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9e373be0-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9e030c80-6642-11f0-8b79-d5da912b10d4<br>
+uuid: 9dcf0430-6642-11f0-8b79-d5da912b10d4</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/5.%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/5.%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">金字塔原理笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:52:34" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1201,11 +1290,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/" itemprop="url" rel="index"><span itemprop="name">问题处理</span></a>
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
         </span>
     </span>
 
@@ -1219,38 +1304,694 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：</p>
+          <h1>金字塔原理笔记</h1>
+<p>2025年1月18日</p>
+<p>作者：艾迪</p>
+<p>你是否饱受自己说的话和别人认为的不一样的，将工作中大量时间用于相互扯皮，对其观念上？你是否是经常被人批评说说话没有重点，让人摸不着头脑？你是否经常遇到无法做到对重要的事情做归纳总结？那《金字塔原理》这本书可以很好的帮你组织好你的语言，这是一个可复制的方法论。</p>
+<p>“没有什么比一套好的 理论更有用了”</p>
+<p>结论先行，以上统下，归类分组，逻辑递进；</p>
+<p>思想是“向受众发送新信息且引发思考的东西”</p>
+<p>学习金字塔原理的原因是：</p>
 <ol>
-<li>当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查</li>
-<li>线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题</li>
-<li>因为任务队列容量较多，导致大量agora设备下发agora都是在初始化的5-6h以后了，涉及设备面广，影响较大</li>
+<li>可以优化表达的逻辑</li>
+<li>优化思考的逻辑</li>
+<li>优化操作的逻辑</li>
+<li>优化展示的逻辑</li>
 </ol>
-<h2 id="2、排查方式"><a href="#2、排查方式" class="headerlink" title="2、排查方式"></a>2、排查方式</h2><ol>
-<li>使用 jstack 1查看当前的线程池开头的线程状态与堆栈</li>
-<li>发现全部的线程池的线程状态都是WATING状态，查看堆栈，都是在等待Redisson的锁释放</li>
-<li>查看了下对应线程池设计的流程，发现在下发license时确实会tongguolock方法加锁</li>
-<li>查看 腾讯云 日志，发现同一台设备在日志中频繁向设备下发agora license，10s一次，正常流程应当至少2min才初始化下发一次</li>
-</ol>
-<h3 id="经过逻辑分析后发现原因："><a href="#经过逻辑分析后发现原因：" class="headerlink" title="经过逻辑分析后发现原因："></a>经过逻辑分析后发现原因：</h3><p>多个设备出故障频繁注册+redisson.lock() 强制等待锁释放造成线程池资源耗尽</p>
+<h1>表达的逻辑</h1>
+<h2 id="自上而下，结论先行">自上而下，结论先行</h2>
+<p>虽然思考可能是时间维度的、可能是重要程度的、可能是演绎逻辑的、可能是归纳逻辑的，但是最终表达给其他的人应当是优先表达。写作是一个思考的过程，一篇文章应当体现出来思维逻辑，而不是单纯的堆砌词汇。</p>
+<p>在将自己的思考输出前，需要将其做成金字塔的结构，每一层必须是其下一层的概括与总结；同层次之间，相邻的数据必须是相同的范畴，且符合组织思考的逻辑</p>
+<p>具体讲故事的逻辑：背景、冲突、疑问、解答</p>
+<h1>思考的逻辑</h1>
+<p>拿到了文本后（做成事之前的信息形式）</p>
+<p>“人的记忆点有7个”，因此需要基于这个原则确定好表达思想的金字塔逻辑</p>
+<p>MECE原则，需要做到不同的结构之间相互独立，且所有部分要做到完全穷尽</p>
+<p>要为自己的论据找到合适的逻辑组织结构，比如说，通过演绎、归纳、空间结构、重要性、因果、时间等顺序对自己的信息进行分组归纳</p>
+<p>金字塔原理需要对每一层进行总结，每一层是其下一层的总结，这代表如果要满足MECE原则，需要看总结是否具体精确，下一层内容是否围绕这一主题（方式可以通过剔除无关词汇，找到最重要的词汇进行查看）</p>
+<p>做思考时需要做到确定问题边界</p>
+<h1>解决问题的逻辑</h1>
+<p>界定问题。</p>
+<p>通过每一层的总结，以及剔除无关词汇，找到关键操作后，生成金字塔的树状结构。通过生成决策树（根据原始信息生成金字塔信息，通过诊断框架判断哪些有问题，需要优先解决哪些问题，这个倾向于是预测学的范畴；基于决策树的不确定点作为决策点，做到正确的预测，）</p>
+<p>诊断框架，也是被称为是非问题分析，这个是用于做诊断框架的更好的方法，相对来讲，可以做到</p>
+<h1>演示的逻辑</h1>
+<p>展示方式：</p>
 <ol>
-<li><p>以设备20252025为例，当下发设备license时，第一次会创建一个20252025的锁，但是这个设备也有其他在线程池的进程进行下发，因为使用的是lock，是无限期等待锁，所以线程池资源来利用不起来，导致触发拒绝策略</p>
-<p>redisson创建分布式锁的lua脚本是</p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Lua 脚本（原子执行）</span></span><br><span class="line"><span class="keyword">if</span> (redis.call(<span class="string">&#x27;exists&#x27;</span>, KEYS[<span class="number">1</span>]) == <span class="number">0</span>) <span class="keyword">then</span></span><br><span class="line">    redis.call(<span class="string">&#x27;hset&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>], <span class="number">1</span>);</span><br><span class="line">    redis.call(<span class="string">&#x27;pexpire&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">if</span> (redis.call(<span class="string">&#x27;hexists&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>]) == <span class="number">1</span>) <span class="keyword">then</span></span><br><span class="line">    redis.call(<span class="string">&#x27;hincrby&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>], <span class="number">1</span>);</span><br><span class="line">    redis.call(<span class="string">&#x27;pexpire&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">return</span> redis.call(<span class="string">&#x27;pttl&#x27;</span>, KEYS[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
+<li>多级标题</li>
+<li>下划线</li>
+<li>数字编号</li>
+<li>行首缩进法</li>
+<li>项目符号发</li>
+</ol>
+<p>每一级别的标题不可能只有一个；相同的思想应当使用相同的句型；不要滥用标题；总要有“下一步措施”；承上启下；总结个部分内容；得出完整结论；说明下一步已经行动了；</p>
+<h1>金字塔怎么搭建起来</h1>
+<ol>
+<li>画出主题方框</li>
+<li>设想主要疑问</li>
+<li>写出对该疑问的解答</li>
+<li>说明背景</li>
+<li>指出冲突</li>
+<li>检查主要疑问和答案</li>
+</ol>
+<p>要构建起金字塔结构，需要做有序言，且序言中需要有背景，优先展示受众理解的背景与冲突，以及一个受众认可的事实，从而引出主要疑问；序言有多长，需要足够到受众可以在最短的时间内和你站在同一个视角/水平上。背景-担忧-冲突-答案，这四个观点基本上都需要有，但是需要做到至少是背景-冲突-答案，这几个的顺序没有特定要求，但是优先展示哪个可以优先体现出重点，且通过如果要让受众有信心，则需要做到就至少这四个点进行论述。</p>
+<ul>
+<li>
+<p>在无结构情况下解决问题的方法</p>
+<p>无结构很有可能是无法解释，有坑那是因为结构不存在、结构不可见，只能通过特性反推、结构不能解释结果</p>
+<p>解决方法：分析性外展推理；推理需要规则、情况、结果，外展推理和演绎推理，归纳推理同步，外展推理是结果-&gt;规则-&gt;情况；归纳是情况-&gt;结果-&gt;规则；演绎推理是规则-&gt;情况&gt;结果</p>
+<p>需要让外向推理做的更加科学；基本上是问题是什么、问题在哪里、问题原因、我梦能做什么、我们应做什么</p>
+</li>
+<li>
+<p>序言结构范例</p>
+<p>我们应该做什么、我们是否应该按计划做、我们应该如何做、问题发生原因是什么</p>
+</li>
+<li>
+<p>要点汇总</p>
+<p>金字塔结构的3个基本原则</p>
+<ul>
+<li>结论先行：每篇文章只有一个中心思想，且应放在文章的最前面。</li>
+<li>以上统下：每一层次的思想必须是对下一层次思想的总结概括。</li>
+<li>归类分组：每一组中的思想必须属于同一逻辑范畴。</li>
+<li>逻辑递进：每一组中的思想必须按照逻辑顺序排列。</li>
+</ul>
+</li>
+</ul>
+<h1>实际操作篇</h1>
 
-<p>可以看到value值（Value）的结构：<br>锁的值存储的是一个字符串（String），内容为锁<br>持有者的唯一标识符和可重入计数，格式为：<br><UUID>:<ThreadID>:<Count><br>·UUID：Redisson客户端实例的唯一标识符（每个客户端启动时生成）<br>·ThreadID：持有锁的线程ID（支持可重入锁 同一线程多次加锁）<br>·Count：锁的可重入次数（初始为1，每次重入加1，释放时减1)</p>
-<p>uuid为啥不变 估摸着是服务pod没被杀 自己拉起来时候 这个客户端id不变导致的</p>
-</li>
-<li><p>在某一次的k8s滚动更新时，可能因为未在对应时间内执行完线程池任务（如最后30s等待关闭时间内，虽然没有新任务进，但是进程1在最后1s释放了锁，进程2在此时拿到了锁），导致finally代码块的解锁逻辑并未执行，导致该锁一直被占用，新pod启动后又给redLock续期导致该锁一直没有被释放</p>
-</li>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/4.%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/4.%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE/" class="post-title-link" itemprop="url">学会提问</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:54:37" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>2025年5月4日</p>
+<h1><strong>学会提问后半部分</strong></h1>
+<p>作为记录，后续使用还是推荐看书这本书的目的：1)意识到一整套环环相扣的批判性问题；2)有能力在适当时机以适当方式提出并回答这些问题；3)有积极主动地使用这些批判性问题的强烈渴望。</p>
+<h1><strong>1、思维模式</strong></h1>
+<p>世界上有海绵式思维，也有淘金式思维；有快思维，也有慢思维模式有强势批判思维模式，也有弱批判思维模式</p>
+<p>人不能成为接触到的最新的思想的奴隶；人对思考的体现应当是在交流过程中摒弃掉对方的不合理部分，或是和对方在该议题上钻研到更具体原本的推论，共同吸收有价值的那部分信息。</p>
+<p>任何话都是有立场的，任何话都是有必要说的，对自己没有必要的话，对别人很有可能有必要</p>
+<p>学会提问本身也包含批判性思考，但是批判性思考不能让别人认为是社会博弈，交流不是为了对抗，而是为了解决问题。对话本身就是一项社会活动。</p>
+<p>第一章是最重要的思路，剩下的全是技巧</p>
+<ul>
+<li>很多人并不喜欢别人对他们的思考过程逐一提问，他们常把别人的提问当成不怀好意，没事找碴。</li>
+</ul>
+<p>批判性思维者拥有的主要价值观：</p>
+<ol>
+<li>自主决断</li>
+<li>好奇心</li>
+<li>谦逊有礼</li>
+<li>发自内心地尊重严密的论证</li>
 </ol>
-<p>因为这两个原因导致线上出现问题</p>
-<h2 id="3、解决方式"><a href="#3、解决方式" class="headerlink" title="3、解决方式"></a>3、解决方式</h2><ol>
-<li>不能使用lock方法而是tryLock，等待一段时间后释放掉锁；并依据业务重要程度业务补救（如本次获取不到锁，很可能是因为当前有正在下发的任务，顾不需要延时任务或者持久化这种补救代码逻辑）</li>
-<li>推广一下，其他组件如ReentrantLock也有lock和trylock方法，在开发时也尽量使用tryLock</li>
+<h1><strong>论题和结论</strong></h1>
+<p>论题分为描述性论题（描述性论题是指关于各种对过去、现在或将来的描述准确与否的问题。）和规定性论题（规定性论题是指关于什么该做、什么不该做、什么是对、什么是错、什么是好、什么是坏的问题。）</p>
+<p>也就是说论题分为是什么的问题和应该是什么的问题</p>
+<p>寻找论题和寻找结论都很重要；但是想要找到论题，就需要优先找到结论，可能有多个结论，那就在对应多个论题。所谓结论，即写作者或发言者希望你接收的信息。</p>
+<p>找到结论的5条线索：问问论题是什么；寻找指示词；在可能的位置查看一下；记住结论不是什么；检查下交流的语境和作者的背景。</p>
+<h1><strong>理由是什么</strong></h1>
+<p>注意：理由是指我们相信某个结论的原因或原理。</p>
+<p>注意：证据是指证明理由的真实性的事实。</p>
+<p>论证必有其目的。人们之所以展开论证，是因为希望说服我们相信某些事或按照某些特定的方式行事。</p>
+<p>（一个）论证=（一个或多个）理由+（一个）结论</p>
+<p>论证的质量有高低之分。我们需要依赖批判性思维来判定一个论证的质量高低。</p>
+<p>为什么相信这个结论</p>
+<p>对每一个论证都要保持怀疑态度</p>
+<p>找理由的方法</p>
+<p>通过提示词</p>
+<p>让理由和结论一目了然：使用这个批判性问题（薄弱的理由必然导致薄弱的论证！），谨防操控型论证（操控型论证就是指以一个结论开始的论证。然后提供论证者选择理由和证据，它们发挥着特定的作用。=&gt;先射箭后画靶，不同于结论先行）</p>
+<p>在我们自己的写作和发言中，什么是一个好的论题？什么是一个好的结论？</p>
+<p>·清晰而有趣的问题；·重点突出、阐述明确的结论；·有理由和证据支撑的结论，而且大多数人会觉得理由和证据有说服力；·回应论题的结论；·容易让读者或听众找到的结论。</p>
+<p>》 要实现清晰晓畅，得具有几个要素</p>
+<p>1)指示词；2)经过研究并聚焦主旨的话题；3)明确支撑结论的理由；4)文章合理的结构和清晰的布局。</p>
+<p>相应的也要评估下自己是否有写作该领域知识的储备</p>
+<p>虽然组织一篇文章或一篇发言的方法有很多，但是一些一般规则能为我们提供帮助。</p>
+<p>1)把论点放在引言里，用指示词突出，并在文章的结尾部分重复一下这个论点，稍微修改一下论点的措辞。2)确保每条理由都能回答“为什么”这个问题。前文中我们曾经指出，身为读者的我们应该不停地问“为什么写作者或发言者相信那个观点”，而作为写作者或发言者，我们可以对自己的作品提出这样的问题：为什么我们相信自己的论点？如果我们所陈述的理由无法回答这个问题，我们就应该舍弃它，或者我们需要更充分地展开陈述，这样理由就能回答这个问题了。3)使用指示词来介绍我们的理由和证据（本章的前面提供了一个列表）。可以把论题、结论和理由看作论点的骨架。骨架越坚固，论据越有力。</p>
+<h1><strong>意义不明确的词语</strong></h1>
+<p>1)意识到大多数字词有多重含义。2)说明在批判性地评价一个论点之前，发现字词意图表达的精确意思的重要性。3)展示如何说明模糊性亟待澄清。</p>
+<p>怎么找准关键词</p>
+<p>1、检查论题中有没有关键词2、在理由和结论中寻找3、抽象的词或者短语4、通过反串成与对方相反的立场(reverse role-playing)来找出潜在的重要又有歧义的词或短语。</p>
+<p>明确模糊的词语、找准关键词、判定歧义、根据上下文找出真正含义、字典里的定义不一定适合文章里的情境、谁想说服你，谁就要负责解释清楚、像批判性思维者那样写作和发言</p>
+<p>为了降低模棱两可的词或短语影响到我们的正常交流的可能性，我们可以做以下几点：</p>
+<p>1)在论题和结论中找到关键词或短语，并定义和/或解释它们。2)在理由中找到关键词或短语，并定义和/或解释它们。3)识别核心论点中的抽象词，一个词越抽象，我们就越有必要澄清它。4)问一问：“那些与我持不同意见的人，可能会如何用不同方式来定义这些术语以支持他们自己的论点？”</p>
+<h1><strong>（重要）价值观假设和描述性假设是什么</strong></h1>
+<p>1)解释找出隐含在论证中的假设的重要性。2)识别论证中的价值观假设。3)区别价值观假设与描述性假设之间的异同。4)理解典型的价值观冲突。</p>
+<p>在所有的论证中，都有一些写作者认为理所当然的特定信念</p>
+<p>假设具有下面这些特征：</p>
+<p>1)隐藏或没有明说出来（大多数情况下如此）；2)论证者认为是理所当然的；3)对决定结论有较大的影响；4)可能具有欺骗性。</p>
+<p>到哪儿去找假设</p>
+<p>你需要关心的只有影响到论证结构的质量的假设。其一，在理由和结论之间，寻找理由要证明结论所必不可少的假设（连接假设）；其二，在理由中，寻找理由成立所必不可少的假设。也就是在理由和结论之间寻找价值观假设和描述性假设。</p>
+<h2 id="在理由和结论之间寻找价值观假设和描述性假设。"><strong>在理由和结论之间寻找价值观假设和描述性假设。</strong></h2>
+<p>存在不同结论的一个最重要的原因，就是价值观的冲突，或者说由不同参照系衍生出来的不同价值观。</p>
+<p>当写作者对社会论争采取了一种立场，他们通常都会选择一种价值观而排斥另一种价值观，因为他们有自己的价值倾向(value priority)或者说价值偏好(value preference)</p>
+<p>一个人常常不会明说对特定价值观的偏好，但是这个价值偏好一定会对他的结论产生重大影响，同时也会影响他为这一结论辩护的方式。</p>
+<p>当你在一个论证中发现了一个人的价值偏好时，不应该期待这个人在讨论不同的争议话题时还会持有相同的价值倾向。</p>
+<h2 id="典型的价值观冲突"><strong>典型的价值观冲突</strong></h2>
+<p>1、忠诚-诚实2、竞争-合作3、媒体自由-国家安全4、秩序-言论自由5、理性-冲动</p>
+<p>价值观假设的线索</p>
+<p>1、提出结论的人的背景2、可能发生的后果3、反串成相反的立场</p>
+<p>所谓描述性假设，是指对这个世界过去、现在或未来是什么样的信念；而规定性假设或者说价值观假设，你应该还记得，是指对这个世界应该是什么样的信念。</p>
+<p>找到假设的线索</p>
+<p>1、站在自己的立场上用批判性思考考虑下自己的论证2、站在自己的反对者立场上考虑</p>
+<p>你遇到的话题可能非常棘手且复杂，所以对识别价值观和描述性假设的过程加以总结也许非常有用，你可以将此过程融入自己的写作或发言中</p>
+<p>1)检查所提出论题的潜在结论背后的价值观假设。2)选择最符合我们价值观的结论。3)在选择了一个结论之后，我们需要确定支持该结论的潜在理由背后的价值观假设。4)选择与我们所选中结论，以及与当前语境中我们所偏好的价值观假设一致的理由。5)如果无法找到与我们所选择的结论背后的价值观假设一致的理由，那么我们就得回到所有潜在的结论中，重新进行评判。发现描述性假设的一些线索：1)不断思考理由和结论之间的鸿沟。2)寻找支持理由的观点。3)把自己放到反对立场。4)对论题进一步学习了解。</p>
+<h1><strong>找到论证的谬误</strong></h1>
+<h2 id="通过评判假设发现谬误"><strong>通过评判假设发现谬误</strong></h2>
+<p>1)论题和结论是什么？2)理由是什么？3)哪些词或短语意思不明确？4)价值观假设和描述性假设是什么？</p>
+<p>想清楚这几个问题，就能做好评判</p>
+<h2 id="熟悉几个重要的逻辑谬误"><strong>熟悉几个重要的逻辑谬误</strong></h2>
+<p>叙述谬误：错误地假设因为我们能讲出一个貌似可以解释一系列正在发生的事实的故事，所以我们已认识到事实和现象之间的全部联系。</p>
+<p>滑坡谬误：假设采取某种做法会引发一连串不可控的不利事件，而实际上有现成的程序可用来防止此类连锁事件的发生。</p>
+<p>追求完美解决方案谬误：错误地认为如果尝试某种解决方案后</p>
+<p>诉诸公众谬误：试图通过引述很多人都持有这一观点，以证明某个断言有道理。错误地以为很多人支持的事就是可取的。</p>
+<p>诉诸可疑权威谬误：引用某一权威的话来证明结论，而该权威对这一论题并没有特别的专门知识。</p>
+<p>诉诸感情谬误：使用带有强烈感情色彩的语言来分散读者或听众的注意力，让他们忽视相关的理由和证据。常被用来加以利用的情感有：恐惧、希望、爱国主义、怜悯和同情。</p>
+<p>稻草人谬误：歪曲对方的观点，使其容易受到攻击，进而攻击事实上根本就不存在的观点。</p>
+<p>虚假的两难选择谬误：在现实中存在两种以上的选择时，却假想只有两种选择。</p>
+<p>乱扣帽子谬误：错误地以为因为你给某个特定事件或行为起了个名字，所以你合理解释了这一事件。</p>
+<p>计划谬误：人们或者机构倾向于低估他们完成一项工作所需的时间，尽管有很多过去的经验显示他们曾一直低估完成某件事所</p>
+<p>粉饰谬误：使用模糊、引发人们强烈情感认同的描述品行的词语，使我们倾向于同意某件事而不去细查其理由。</p>
+<p>转移话题谬误：插入一个不相干的话题，以将人们的注意力从原来的论题上转移开，通过将注意力从当前的论证转移到另一个论题上以赢得论证。</p>
+<p>循环论证谬误：在论证过程中假设自己的结论成立的论证。</p>
+<p>以偏概全谬误：一个人仅根据群体中极小部分人的经历就得出有关整个群体的结论。</p>
+<p>强求确定性谬误：认为一个研究结论如果不是百分百确定，就应该被抛弃。</p>
+<p>过度简化因果关系谬误：依赖并不足以解释整个事件的因果因素来解释一个事件，或者过分强调这些因素中的一个或多个因素的作用。</p>
+<p>因果混淆谬误：将事件的起因和结果相混淆，或未能认识到两件事之间可能是相互影响的关系。</p>
+<p>忽略共同原因谬误：未能认识到两件事之间之所以有联系，是因为第三种因素在起作用。</p>
+<p>事后归因谬误：假设乙事件是由甲事件所引发的，仅仅因为乙在时间上紧随甲之后发生。</p>
+<h1><strong>证据的效力</strong></h1>
+<p>证据一部分基于已有的信息（个人经历、典型案例、当事人证言和专家陈述），另一部分基于逻辑推理（个人观察和调查研究）</p>
+<p>事实和见解有区别。见解常常与事实形成对比，本该如此。见解没什么价值，发表见解是不费吹灰之力的。“</p>
+<p>·你的证据是什么？·你怎么知道它是真的？·证据在哪里？·你为什么相信它？·你确信它是真的吗？·你能证明吗？</p>
+<p>证据的来源：1)当这个断言看起来是无可置疑的常识时，比如“举重有助于增肌”这个断言；2)当这个断言是从无懈可击的论证中得出的结论时；3)当这个断言得到有证据支持的理由充分的支撑时。</p>
+<p>科学研究是否是可靠的依据</p>
+<p>报告的资料来源的质量怎么样？报告中有没有其他线索显示这项研究完成的出色？研究实施的时间距离现在有多久，有没有理由让人相信研究发现可能会随着时间的流逝而发生改变？这项研究的发现有没有被其他研究重复过？立论者在选择研究的时候是否有选择性？有没有什么强势批判性思维的证据？有没有理由让人蓄意歪曲这项研究？研究的条件是不是人工制造的并因此遭到扭曲？根据研究样本，我们概括的范围到底有多大？研究人员所使用的调查报告、问卷调查、等级评定或其他测量结果有没有偏见或者歪曲的现象存在？</p>
+<h2 id="批判性思维者那样写作和发言"><strong>批判性思维者那样写作和发言</strong></h2>
+<p>1)证据是立论者为支持一项主张而提供的明确信息。2)所有说服力强的论证都需要高质量的证据。高质量的证据具有相关性、充分性和代表性。3)假设也需要证据支持。4)几乎没有证据是完美的，我们希望找到有更好证据的论证。5)大多数个人证据，无论是证词、案例研究还是直觉，都需要额外的支持才能令人信服。6)科学证据最有可能是较好的证据。7)小心使用旨在引起读者注意的证据，而是要用有效的证据。</p>
+<h1><strong>有没有替代原因</strong></h1>
+<p>学习目标1)提高对替代原因普遍性的认识。2)强化对如何发现替代原因的理解。3)培养对混淆相关性和因果关系这一现象的频发和危险的敏感意识。)了解在讨论替代原因时，如何与他人有效互动。</p>
+<p>找出替代原因有助于我们更好地对自己遇到的关于因果关系的结论进行回应，遇到这类结论的情况主要有三种：1）我们日常的人际交往；2）以往或现在的世界大事；3）科学研究的结果。</p>
+<p>归隐谬误额外花一章讲解</p>
+<p>学会的教训1)很多类型的事件都可以由各种替代原因来解释。2)专家可能检查同一个证据并发现不同的原因来对它加以解释。3)大部分立论者都只提供那些他们偏好的原因，具备批判性思维的读者或听众必须自己找出替代原因。4)想出替代原因是个创造性的过程，通常情况下，这类原因不会一目了然。5)最后，一个因果断言的确定性和言之成理的替代原因的数量成反比。因此，找到多个替代原因，可以让批判性思维者获得适当的理智上的谦逊。</p>
+<h2 id="互动"><strong>互动</strong></h2>
+<h1><strong>数据有没有欺骗性</strong></h1>
+<h1><strong>是否遗漏重要信息</strong></h1>
+<h1><strong>能得出哪些合理结论</strong></h1>
+<ol>
+<li>二分式思维：妨碍我们考虑多种可能性</li>
 </ol>
-<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904152850497543">Java程序员必备：jstack命令解析</a></li>
+<p>结论提出以下问题：1)结论在什么时候是准确的？2)结论在什么地方是准确的？3)结论为什么或为了什么目的是准确的？</p>
+<ol>
+<li>灰度思维：两面还是多面</li>
 </ol>
+<p>使用条件句特别有助于为评价型的论证（例如评价音乐、艺术、大学或者总统演说的质量如何的论证）找到合理的结论，因为这些论证需要我们对使用什么标准来进行评价选定立场。</p>
+<p>虽然我们对于逻辑和事实怀有极大的敬意，但我们不能过分夸大它们作为形成结论的先导的价值。它们只能引导我们走到一定地步，然后我们就不得不借助逻辑和事实提供的帮助，自己走完通往确定看法的剩余道路。</p>
+<h1><strong>干扰批判性思维的障碍</strong></h1>
+<p><img src="https://cdn.nlark.com/yuque/0/2025/png/27175151/1748179150793-f76b6f83-f816-40aa-86c6-fab91ff1aeda.png" alt="img"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/3.%E5%B0%8F%E7%B1%B3%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/3.%E5%B0%8F%E7%B1%B3%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/" class="post-title-link" itemprop="url">小米创业思考</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:51:53" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>小米创始人雷军主要在做的创业事情，以及他在创业过程中产生的思考。</p>
+<h2 id="技术为本，性价比为纲，做最酷的产品">技术为本，性价比为纲，做最酷的产品</h2>
+<p>小米的思想是“技术为本，性价比为纲，做最酷的产品”，这个对于小米而言是很重要的价值观与方法论；我个人认为这是一套阳谋方法论，非常适合以透明开源为目的的互联网行业，因此通过互联网思维以及科学的目标管理可以做到有技术的拿下一个行业，目前看来比较有效的是摄像头以及汽车行业，小米因为移动互联网的发展建起了手机厂与小米生态链，现在通过这种模式可以做到很快的业务增量，现在我感觉小米已经可以被认为是“行业xx”了。</p>
+<p>小米怎么实现技术为本，是因为小米作为科技公司，需要做持续的技术投入；雷军本人也是恰好趁着互联网兴起的东风，因为自身的能力出众，在互联网思维的方针下，创立的小米公司。</p>
+<p>怎么实现性价比为纲，最开始是通过大量的出货、摊平成本，后续也是集成到了小米的“新零售”方向上面，通过和物流方面合作，降低从制造到到消费者手上的流程，减少该部分流程造成的资源浪费，提升效率，达到降低成本，提高利润，这是我认为“新零售”在做的事情。</p>
+<p>因此，我认为“爆品模式”和“生态链模式”也是性价比为纲的延申，爆品模式基于高效的工业化大生产、适合大众的消费能力的定价、产品体验导向的创新得到的。这些都是需要在合适的时机创造合适的时机出现，且爆品需要做到长周期的增量，而不是短期的效益，也不是足够便宜才叫做爆款，那这样的话就只有红米手机而没有其他手机了。</p>
+<p>“生态链模式”是通过不断的扩充粉丝的使用小米的途径，做到引流，树立自身的品牌形象；另外就是小米如果要打造爆品，许多产品有自己的细分市场，如摄像头、热水壶、扫地机，这些都是使用频率和范围远低于小米，如果小米持续的在过于细分的领域上过度投入资金，则会导致无法按照自身的商业模式做到盈利，需要做到细分领域上的相互连通，才能做到事半功倍的效果，复制小米手机的成功，个人浅薄的看法。</p>
+<p>“做最酷的产品”，我认为小米和苹果一样，是在做减法，与其什么功能都加上不如在资源消耗、产品功能和用户体验上权衡，做到三角形最优。</p>
+<h2 id="互联网到底是什么">互联网到底是什么</h2>
+<p>雷军认为，宽泛意义上的互联网有以下意义：</p>
+<p>“作为技术基础建设的互联网：操作系统，互联网协议与信息通信技术；作为应用的互联网：如IM系统、ERP系统、社交媒体系统、电子商务系统等；作为价值取向的互联网：高效、透明、公平、普惠的文化和沟通、实现方法。”</p>
+<p>通过阅读，雷军认为“互联网行业”不是一个单纯的行业，而是一个更先进的思想，互联网思想可以让一个行业更新迭代，如果一个思想可以让多个行业更新迭代，那么很容易就可以得出结论，根据最小共性原理，互联网思维可以让很多行业焕发新生，创造更多就业岗位，至少可以做到可以依托于已经成功的互联网化的行业案例（物联网、商业、消费、政府项目信息化等），复制他们的成功。</p>
+<p>小米立足于C端，很多都是基于社区上的配置，所以小米也是基于发烧友的社区发展而来的。</p>
+<p>互联网七字诀：专注、极致、口碑、快；</p>
+<h2 id="小米思想">小米思想</h2>
+<p>小米在运行过程中要求有高效率，追求极致的成本控制和运营效率，确保以最低成本实现最高价值传递给消费者。也有足够的用户思维，雷军在第一次推出产品时，就通过发烧友社区实现的盈利，后续也是用户为导向，把用户作为自己的朋友，通过粉丝社区找到自己的目标用户，并且面向目标用实现功能。</p>
+<p>雷军在创立小米的时候，就有一个自身的思考“需要让人感受到生活带来的便利中”，如果没有这么理想的价值观，我想小米不会有今天的成就。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/2.%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/2.%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/" class="post-title-link" itemprop="url">高效能人士的7个习惯</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:52:49" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1>高效能人士的7个习惯</h1>
+<p>书中有具体实践方法，有兴趣可以看下</p>
+<p>人需要先做到依赖，在做到独立，但是最后需要做到互赖；这样才能做到个人领域的成功到公共领域的成功</p>
+<p>优先实现个人领域的成功，才能实现公共领域的成功，个人领域的成功依托于前三条，公共领域的成功依托于第4条到第6条。最后一条要求我们不断迭代。</p>
+<h2 id="积极主动">积极主动</h2>
+<p>人在社会上有关注圈和影响圈；很多人很被动，是因为只把精力放在了影响圈，但是忽略的比这个更大的关注圈，如果想要积极主动，则需要将自己的影响力增大到关注圈中。</p>
+<p>人有四个特质：良心，想象，自由意志和独立意识，因此人们需要做到承担责任,主动解决问题,接纳并履行责任。</p>
+<h2 id="以终为始">以终为始</h2>
+<p>想象到你在最后变成一个小盒子，你期望别人怎么评价你？要从结果倒推到你的现在，你需要做什么来达到你的目的？人在一生中有好多个角色，有没有对不同的角色的盖棺定论？是否需要为此做不同的以终为始？</p>
+<h2 id="要事第一">要事第一</h2>
+<p>有一种对人物分类的方式，叫做时间四象限，根据任务</p>
+<p>任务有四个象限，最重要的是把人生过的有序，需要处理好第2象限的任务，才能把人生做得更好。对于低价值的行为一定不要做，一定要拒绝掉。有人会陷入误区，如果完全按照计划去做，那么会导致没有时间休息，反而会使得效率不如不对任务做轻重缓急的区分时做的好做的多。人生有不同的角色，不同的角色也有自己的任务，也有自己的四象限，需要根据不同的角色区分出不同的任务，哪些角色更重要，相应的哪些角色的任务也越重要。</p>
+<p>人生有自己的中心，有人以自己为中心，有以伙伴为中心，有以工作为中心，单纯的关注一个方面为中心，无法做到长久发展。而最终，需要你的原则为中心。以什么为中心，必然会影响 智慧、力量、人生方向、安全感。对此一定要养成习惯，要以此为原则行事</p>
+<h2 id="双赢思维">双赢思维</h2>
+<p>人生需要和他人产生联系，不和其他人交流的人在深山老林，因此需要人生需要关注双赢，或者完全不合作，双输或者单赢必然不利于长期发展。我们以敢做敢为/善解人意 这两个作为和人合作的时候输赢的影响标准四象限。很多时候有人会默认世界上只有零和博弈。但是很多时候都是受成长环境影响，如教育、家庭等因素。双赢思路、双赢关系可遇不可求，所以双赢关系需要积极去维护，怎么维护一个双赢关系，则需要使用对人有效的办法，而不是更有效率的办法。</p>
+<p>和人合作，如果双方等级不一样，肯定会出现指令型领导/思路型领导，指令型领导布置任务时，会说xxx做一步，xxx做一步，而思路型领导布置任务时，会依照“按照xxx思路做任务就好，目的就是为了。。。”的方式布置任务，可以看到思路型领导在合作良好的情况下，反而可以做到更好。</p>
+<p>双赢协议有以下明确规定：预期结果，指导方针，可用资源，任务考核，奖惩制度；保证双赢必须要管理好自己的情感账户，在情感账户上有英语的情况下，才能开启双赢合作模式，为了确保该种方式下合作的有效性，需要通过协议书，明确双方于其，确保承诺一致等方式确保。</p>
+<h2 id="知彼解己">知彼解己</h2>
+<p>知彼解己需要依托于情感账户，如果情感账户上面有赤字，那么就不能做好沟通，不能做好了解彼此。倾听交流也有很多阶段，阶段从浅到深，又没有倾听，到有倾听，到有来有回，到移情倾听。在倾听的时候最好有移情倾听，此时需要避免自传式回应.移情也有对象，可能是你的老板，家人，有些人确实需要你花时间精力进行倾听.</p>
+<h2 id="统合综效">统合综效</h2>
+<p>统合综效是创造性合作的原则。在团队合作中，但是需要确保做到统合宗效，通过团队协作，发挥集体智慧，创造协同效应，激发不同参与者的多样性优势。</p>
+<p>只有信任度和沟通层次逐渐深入，才能逐渐了解，做到从相互提防，相互尊重，统合综效。</p>
+<h2 id="不断更新">不断更新</h2>
+<p>以上6个习惯已经是比较自洽闭环的方法论了，但是通过以下方面可以做到自身发展的更好。</p>
+<p>最好身体保养，通过锻炼维持健康，通过健康的生活方式，保证自己体力的充沛。</p>
+<p>学习完《高效能人士的7个习惯》后，需要继续保持自己的心智成长，需要持续学习新知识，提升思考能力。</p>
+<p>注重情感调节，维护良好人际关系，使得自己在意的人之间的情感账户有盈余。</p>
+<p>注重精神修养，追求内心平静，建立正确的价值观引导，使用正常的处世原则，尽量不要用单一的方面（如金钱亲情等）作为自己的处事原则。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/21/%E8%AF%BB%E4%B9%A6/1.%E4%BC%98%E5%8A%BF%E8%B0%88%E5%88%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/1.%E4%BC%98%E5%8A%BF%E8%B0%88%E5%88%A4/" class="post-title-link" itemprop="url">优势谈判</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-21 22:46:36 / 修改时间：22:48:01" itemprop="dateCreated datePublished" datetime="2025-07-21T22:46:36+08:00">2025-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">阅读笔记</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1>优势谈判</h1>
+<p>2024年10月1日</p>
+<h2 id="投入">投入</h2>
+<p>思想准备：一个谈判是要双赢的，至少需要让对手这么认为；进行一场谈判，需要看到对面是否真的愿意和你谈判</p>
+<h2 id="谈判技巧">谈判技巧</h2>
+<p>永远不要接受首次报份；如果对方临时变更了要求，则可以通过立刻要求对方做补偿等方式解决</p>
+<p>谈判至少很多时候不会进入死胡同，不要在一个地方上寸步不让，尽可能引入谈判筹码；很多时候需要在这方面让让对方，但是一定要在另一个方面补回来</p>
+<p>不要让对方觉得你可以完全管理你的资源。就算可以管理全部自己的资源，也要让对方确信你有一个更高层的人管理你的资源，方便拒绝对方的过分要求。</p>
+<p>相比于更明显实际的资源，临时给对方小一点的服务性价比会更高。但是提供额外服务后必须立刻转化为自己的谈判筹码，服务只会随着时间推移不断贬值。</p>
+<p>找到对方的压力点，施压得到更有利的资源；</p>
+<p>如果你想要一个东西，那就不要显示出你的喜爱；就算你很喜欢，你也要挑三拣四。对于你卖东西也同理，透露出急切的心情反而卖不出去。因为很多时候并不是非这个不可，所以在谈判时，必要的时候表现出退缩的样子。</p>
+<p>拥有更多选择的一方底气越足，越是不需要妥协；你的要求必须要比实际想要得到的更高给对方一个谈价格的空间；</p>
+<p>如果一定要妥协则你的妥协限度需要指数级递减。如果你一次便宜两块分五次便宜、或者很爽快的降价，对方则訑學闶療砣喜得你可以降低更多；如果你打算便宜10块你第一次要便宜3块，再一次便宜5毛后续就不便宜了；如果对方要求你妥协更多你需要让对方也付出代价。</p>
+<h2 id="收益">收益</h2>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/16.%E9%AA%8C%E8%AF%81plantuml/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="annabergite">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="艾迪的技术之路">
+      <meta itemprop="description" content="记录博客与成长,Java，架构">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | 艾迪的技术之路">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/12/%E5%BC%80%E5%8F%91/16.%E9%AA%8C%E8%AF%81plantuml/" class="post-title-link" itemprop="url">验证plantuml</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-07-12 22:53:40 / 修改时间：23:54:17" itemprop="dateCreated datePublished" datetime="2025-07-12T22:53:40+08:00">2025-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <pre>
+<code class="mermaid">
+graph TD
+A[Hard] --&gt;|Text| B(Round)
+B --&gt; C{Decision}
+C --&gt;|One| D[Result 1]
+C --&gt;|Two| E[Result 2]
+</code>
+</pre>
+<p>sequenceDiagram<br>
+Alice-&gt;&gt;John: Hello John, how are you?<br>
+loop HealthCheck<br>
+John-&gt;&gt;John: Fight against hypochondria<br>
+end<br>
+Note right of John: Rational thoughts!<br>
+John–&gt;&gt;Alice: Great!<br>
+John-&gt;&gt;Bob: How about you?<br>
+Bob–&gt;&gt;John: Jolly good!</p>
+<pre>
+<code class="mermaid">
+sequenceDiagram
+
+ sequenceDiagram
+Alice-&gt;&gt;John: Hello John, how are you?
+loop HealthCheck
+    John-&gt;&gt;John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John--&gt;&gt;Alice: Great!
+John-&gt;&gt;Bob: How about you?
+Bob--&gt;&gt;John: Jolly good!
+
+</code>
+</pre>
+<pre class="mermaid">sequenceDiagram
+Alice->>John: Hello John, how are you?
+loop HealthCheck
+    John->>John: Fight against hypochondria
+end
+Note right of John: Rational thoughts!
+John-->>Alice: Great!
+John->>Bob: How about you?
+Bob-->>John: Jolly good!</pre>
 
       
     </div>
@@ -1270,7 +2011,7 @@
 
 
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1287,9 +2028,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

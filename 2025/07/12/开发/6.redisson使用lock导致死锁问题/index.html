@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="1、背景我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：  当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查 线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题 因为任务队列容量较多，导致大量">
+    <meta name="description" content="1、背景 我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：  当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查 线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题 因为任务队列容量较多，导致大">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redisson使用lock导致死锁问题">
 <meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/6.redisson%E4%BD%BF%E7%94%A8lock%E5%AF%BC%E8%87%B4%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="1、背景我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：  当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查 线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题 因为任务队列容量较多，导致大量">
+<meta property="og:description" content="1、背景 我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：  当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查 线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题 因为任务队列容量较多，导致大">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-12T04:14:50.417Z">
-<meta property="article:modified_time" content="2025-07-12T04:17:10.980Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
 
@@ -54,12 +54,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -134,12 +137,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -196,7 +199,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:17:10" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -213,6 +216,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -221,36 +231,48 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h2><p>我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="1、背景">1、背景</h2>
+<p>我们是做物联网设备的公司，设备初始化会向设备发送API接口下发agora license，当时当时一个环境的全部agora设备都下发出现了问题，具体表现为：</p>
 <ol>
 <li>当前的线程池告警持续触发拒绝策略（调度线程处理任务），导致运维要求我们进行排查</li>
 <li>线程池资源告警则增加资源，环境中agora微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题</li>
 <li>因为任务队列容量较多，导致大量agora设备下发agora都是在初始化的5-6h以后了，涉及设备面广，影响较大</li>
 </ol>
-<h2 id="2、排查方式"><a href="#2、排查方式" class="headerlink" title="2、排查方式"></a>2、排查方式</h2><ol>
+<h2 id="2、排查方式">2、排查方式</h2>
+<ol>
 <li>使用 jstack 1查看当前的线程池开头的线程状态与堆栈</li>
 <li>发现全部的线程池的线程状态都是WATING状态，查看堆栈，都是在等待Redisson的锁释放</li>
 <li>查看了下对应线程池设计的流程，发现在下发license时确实会tongguolock方法加锁</li>
 <li>查看 腾讯云 日志，发现同一台设备在日志中频繁向设备下发agora license，10s一次，正常流程应当至少2min才初始化下发一次</li>
 </ol>
-<h3 id="经过逻辑分析后发现原因："><a href="#经过逻辑分析后发现原因：" class="headerlink" title="经过逻辑分析后发现原因："></a>经过逻辑分析后发现原因：</h3><p>多个设备出故障频繁注册+redisson.lock() 强制等待锁释放造成线程池资源耗尽</p>
+<h3 id="经过逻辑分析后发现原因：">经过逻辑分析后发现原因：</h3>
+<p>多个设备出故障频繁注册+redisson.lock() 强制等待锁释放造成线程池资源耗尽</p>
 <ol>
-<li><p>以设备20252025为例，当下发设备license时，第一次会创建一个20252025的锁，但是这个设备也有其他在线程池的进程进行下发，因为使用的是lock，是无限期等待锁，所以线程池资源来利用不起来，导致触发拒绝策略</p>
+<li>
+<p>以设备20252025为例，当下发设备license时，第一次会创建一个20252025的锁，但是这个设备也有其他在线程池的进程进行下发，因为使用的是lock，是无限期等待锁，所以线程池资源来利用不起来，导致触发拒绝策略</p>
 <p>redisson创建分布式锁的lua脚本是</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- Lua 脚本（原子执行）</span></span><br><span class="line"><span class="keyword">if</span> (redis.call(<span class="string">&#x27;exists&#x27;</span>, KEYS[<span class="number">1</span>]) == <span class="number">0</span>) <span class="keyword">then</span></span><br><span class="line">    redis.call(<span class="string">&#x27;hset&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>], <span class="number">1</span>);</span><br><span class="line">    redis.call(<span class="string">&#x27;pexpire&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">if</span> (redis.call(<span class="string">&#x27;hexists&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>]) == <span class="number">1</span>) <span class="keyword">then</span></span><br><span class="line">    redis.call(<span class="string">&#x27;hincrby&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">2</span>], <span class="number">1</span>);</span><br><span class="line">    redis.call(<span class="string">&#x27;pexpire&#x27;</span>, KEYS[<span class="number">1</span>], ARGV[<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">nil</span>;</span><br><span class="line"><span class="keyword">end</span>;</span><br><span class="line"><span class="keyword">return</span> redis.call(<span class="string">&#x27;pttl&#x27;</span>, KEYS[<span class="number">1</span>]);</span><br></pre></td></tr></table></figure>
-
-<p>可以看到value值（Value）的结构：<br>锁的值存储的是一个字符串（String），内容为锁<br>持有者的唯一标识符和可重入计数，格式为：<br><UUID>:<ThreadID>:<Count><br>·UUID：Redisson客户端实例的唯一标识符（每个客户端启动时生成）<br>·ThreadID：持有锁的线程ID（支持可重入锁 同一线程多次加锁）<br>·Count：锁的可重入次数（初始为1，每次重入加1，释放时减1)</p>
+<p>可以看到value值（Value）的结构：<br>
+锁的值存储的是一个字符串（String），内容为锁<br>
+持有者的唯一标识符和可重入计数，格式为：<br>
+<UUID>:<ThreadID>:<Count><br>
+·UUID：Redisson客户端实例的唯一标识符（每个客户端启动时生成）<br>
+·ThreadID：持有锁的线程ID（支持可重入锁 同一线程多次加锁）<br>
+·Count：锁的可重入次数（初始为1，每次重入加1，释放时减1)</p>
 <p>uuid为啥不变 估摸着是服务pod没被杀 自己拉起来时候 这个客户端id不变导致的</p>
 </li>
-<li><p>在某一次的k8s滚动更新时，可能因为未在对应时间内执行完线程池任务（如最后30s等待关闭时间内，虽然没有新任务进，但是进程1在最后1s释放了锁，进程2在此时拿到了锁），导致finally代码块的解锁逻辑并未执行，导致该锁一直被占用，新pod启动后又给redLock续期导致该锁一直没有被释放</p>
+<li>
+<p>在某一次的k8s滚动更新时，可能因为未在对应时间内执行完线程池任务（如最后30s等待关闭时间内，虽然没有新任务进，但是进程1在最后1s释放了锁，进程2在此时拿到了锁），导致finally代码块的解锁逻辑并未执行，导致该锁一直被占用，新pod启动后又给redLock续期导致该锁一直没有被释放</p>
 </li>
 </ol>
 <p>因为这两个原因导致线上出现问题</p>
-<h2 id="3、解决方式"><a href="#3、解决方式" class="headerlink" title="3、解决方式"></a>3、解决方式</h2><ol>
+<h2 id="3、解决方式">3、解决方式</h2>
+<ol>
 <li>不能使用lock方法而是tryLock，等待一段时间后释放掉锁；并依据业务重要程度业务补救（如本次获取不到锁，很可能是因为当前有正在下发的任务，顾不需要延时任务或者持久化这种补救代码逻辑）</li>
 <li>推广一下，其他组件如ReentrantLock也有lock和trylock方法，在开发时也尽量使用tryLock</li>
 </ol>
-<h2 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h2><ol>
+<h2 id="扩展阅读">扩展阅读</h2>
+<ol>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904152850497543">Java程序员必备：jstack命令解析</a></li>
 </ol>
 
@@ -299,9 +321,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

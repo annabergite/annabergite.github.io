@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="增强 guava 的 Maps. uniqueIndex方法guava 的 Maps. uniqueIndex方法可以实现： 将 list 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定本方法实现了：将 list 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定其中K不能重复，若重复，则会报错Params:values – 需要转换的集合 可以是任">
+    <meta name="description" content="增强 guava 的 Maps. uniqueIndex方法 guava 的 Maps. uniqueIndex方法可以实现： 将 list 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定 本方法实现了： 将 list 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定 其中K不能重复，若重复，则会报错 Params: values – 需要转换的集">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java的Map增强">
 <meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/2.Java%E7%9A%84Map%E5%A2%9E%E5%BC%BA/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="增强 guava 的 Maps. uniqueIndex方法guava 的 Maps. uniqueIndex方法可以实现： 将 list 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定本方法实现了：将 list 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定其中K不能重复，若重复，则会报错Params:values – 需要转换的集合 可以是任">
+<meta property="og:description" content="增强 guava 的 Maps. uniqueIndex方法 guava 的 Maps. uniqueIndex方法可以实现： 将 list 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定 本方法实现了： 将 list 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定 其中K不能重复，若重复，则会报错 Params: values – 需要转换的集">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-12T04:05:20.964Z">
-<meta property="article:modified_time" content="2025-07-12T04:05:50.547Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
 
@@ -54,12 +54,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -133,12 +136,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -195,7 +198,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:05:20 / 修改时间：12:05:50" itemprop="dateCreated datePublished" datetime="2025-07-12T12:05:20+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:05:20 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:05:20+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -208,6 +211,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -216,25 +226,40 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>增强 guava 的 Maps. uniqueIndex方法<br>guava 的 Maps. uniqueIndex方法可以实现： 将 list<V> 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定<br>本方法实现了：<br>将 list<V> 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定<br>其中K不能重复，若重复，则会报错<br>Params:<br>values – 需要转换的集合 可以是任何实现了 Iterable 接口的集合(如List, Set, Collection) keyFunction – 转换后Map的键的转换方式 valueFunction – 转换后Map的值的转换方式<br>Returns:<br>唯一的map</p>
+    <div class="post-body" itemprop="articleBody"><p>增强 guava 的 Maps. uniqueIndex方法<br>
+guava 的 Maps. uniqueIndex方法可以实现： 将 list<V> 转成 Map&lt;K , V&gt; K 需要自己指定， V不能指定<br>
+本方法实现了：<br>
+将 list<V> 转成 Map&lt;K , M&gt; K 需要自己指定， M需要自己指定<br>
+其中K不能重复，若重复，则会报错<br>
+Params:<br>
+values – 需要转换的集合 可以是任何实现了 Iterable 接口的集合(如List, Set, Collection) keyFunction – 转换后Map的键的转换方式 valueFunction – 转换后Map的值的转换方式<br>
+Returns:<br>
+唯一的map</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;K, V, M&gt; ImmutableMap&lt;K, M&gt; <span class="title function_">uniqueIndex</span><span class="params">(Iterable&lt;V&gt; values, Function&lt;? <span class="built_in">super</span> V, K&gt; keyFunction, Function&lt;? <span class="built_in">super</span> V, M&gt; valueFunction)</span> &#123;</span><br><span class="line">        Iterator&lt;V&gt; iterator = values.iterator();</span><br><span class="line">        checkNotNull(keyFunction);</span><br><span class="line">        checkNotNull(valueFunction);</span><br><span class="line">        ImmutableMap.Builder&lt;K, M&gt; builder = ImmutableMap.builder();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="type">V</span> <span class="variable">value</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">            builder.put(keyFunction.apply(value), valueFunction.apply(value));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> builder.build();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalArgumentException duplicateKeys) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(</span><br><span class="line">                    duplicateKeys.getMessage()</span><br><span class="line">                            + <span class="string">&quot;.若要在键下索引多个值，请使用: Multimaps.index.&quot;</span>, duplicateKeys);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个key 对应多个值的map 结构： key -&gt; [value1, value2, …]<br>Params:<br>values – 需要转换的集合 可以是任何实现了 Iterable 接口的集合(如List, Set, Collection) keyFunction – 转换后Map的键的转换方式 valueFunction – 转换后Map的值的转换方式<br>Returns:<br>唯一的map</p>
+<p>一个key 对应多个值的map 结构： key -&gt; [value1, value2, …]<br>
+Params:<br>
+values – 需要转换的集合 可以是任何实现了 Iterable 接口的集合(如List, Set, Collection) keyFunction – 转换后Map的键的转换方式 valueFunction – 转换后Map的值的转换方式<br>
+Returns:<br>
+唯一的map</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;K, V, M&gt; Multimap&lt;K, M&gt; <span class="title function_">iterableToMultiMap</span><span class="params">(Iterable&lt;V&gt; values, Function&lt;? <span class="built_in">super</span> V, K&gt; keyFunction, Function&lt;? <span class="built_in">super</span> V, M&gt; valueFunction)</span> &#123;</span><br><span class="line">        Iterator&lt;V&gt; iterator = values.iterator();</span><br><span class="line">        checkNotNull(keyFunction);</span><br><span class="line">        checkNotNull(valueFunction);</span><br><span class="line"></span><br><span class="line">        Multimap&lt;K, M&gt; builder = ArrayListMultimap.create();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            <span class="type">V</span> <span class="variable">value</span> <span class="operator">=</span> iterator.next();</span><br><span class="line">            builder.put(keyFunction.apply(value), valueFunction.apply(value));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> builder;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalArgumentException duplicateKeys) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">IllegalArgumentException</span>(</span><br><span class="line">                    duplicateKeys.getMessage()</span><br><span class="line">                            + <span class="string">&quot;.若要在键下索引多个值，请使用: Multimaps.index.&quot;</span>, duplicateKeys);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>转换 Map 的 K 和 V<br>Params:<br>map – map<br>Returns:<br>反转的map</p>
+<p>转换 Map 的 K 和 V<br>
+Params:<br>
+map – map<br>
+Returns:<br>
+反转的map</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;K, V&gt; Map&lt;V, K&gt; <span class="title function_">inverse</span><span class="params">(Map&lt;K, V&gt; map)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (MapUtil.isEmpty(map)) &#123;</span><br><span class="line">            <span class="keyword">return</span> Collections.emptyMap();</span><br><span class="line">        &#125;</span><br><span class="line">        HashBiMap&lt;K, V&gt; biMap = HashBiMap.create();</span><br><span class="line">        map.forEach(biMap::forcePut);</span><br><span class="line">        <span class="keyword">return</span> biMap.inverse();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>按照分隔符切割list<br>Params:<br>list – 集合 function – 转换器 separator – 分隔符<br>Returns:<br>分割后的集合</p>
+<p>按照分隔符切割list<br>
+Params:<br>
+list – 集合 function – 转换器 separator – 分隔符<br>
+Returns:<br>
+分割后的集合</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; List&lt;String&gt; <span class="title function_">split</span><span class="params">(Collection&lt;T&gt; list, Function&lt;? <span class="built_in">super</span> T, ?&gt; function, CharSequence separator)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (CollUtil.isEmpty(list)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.parallelStream().map(function).map(item -&gt; StrUtil.splitToArray(String.valueOf(item), separator))</span><br><span class="line">                .flatMap(Arrays::stream).filter(ObjectUtil::isNotEmpty).distinct().collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>按照分隔符切割list<br>Params:<br>list – 集合 separator – 分隔符<br>Returns:<br>分割后的集合</p>
+<p>按照分隔符切割list<br>
+Params:<br>
+list – 集合 separator – 分隔符<br>
+Returns:<br>
+分割后的集合</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; List&lt;String&gt; <span class="title function_">split</span><span class="params">(Collection&lt;String&gt; list, CharSequence separator)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (CollUtil.isEmpty(list)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.parallelStream().map(item -&gt; StrUtil.splitToArray(item, separator))</span><br><span class="line">                .flatMap(Arrays::stream).filter(ObjectUtil::isNotEmpty).distinct().collect(Collectors.toList());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
 
     </div>
 
@@ -281,9 +306,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

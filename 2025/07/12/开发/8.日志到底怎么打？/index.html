@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="[TOC] 一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用slf4j作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。 且slf4j有以下的一个日志等级 1debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误)  背景为：">
+    <meta name="description" content="[TOC] 一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用slf4j作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。 且slf4j有以下的一个日志等级 1debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误) 背景为：在">
 <meta property="og:type" content="article">
 <meta property="og:title" content="日志到底该怎么打？">
 <meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/8.%E6%97%A5%E5%BF%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E6%89%93%EF%BC%9F/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="[TOC] 一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用slf4j作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。 且slf4j有以下的一个日志等级 1debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误)  背景为：">
+<meta property="og:description" content="[TOC] 一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用slf4j作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。 且slf4j有以下的一个日志等级 1debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误) 背景为：在">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-12T04:14:50.433Z">
-<meta property="article:modified_time" content="2025-07-12T04:25:35.198Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
 
@@ -54,12 +54,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -121,7 +124,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81logback-xml%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">1、logback.xml配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E6%98%AF%E5%90%A6%E8%AF%A5%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97"><span class="nav-number">2.</span> <span class="nav-text">2、是否该打印日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E6%89%93%E5%8D%B0%E6%97%A5%E5%BF%97%E7%9A%84%E7%BA%A7%E5%88%AB%E7%AD%89%E7%BA%A7"><span class="nav-number">3.</span> <span class="nav-text">3、打印日志的级别等级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E6%80%8E%E4%B9%88%E4%BE%9D%E6%8D%AE%E6%97%A5%E5%BF%97%E5%81%9A%E8%B0%83%E8%AF%95%E6%8E%92%E6%9F%A5"><span class="nav-number">4.</span> <span class="nav-text">4、怎么依据日志做调试排查</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#0%E3%80%81%E7%A6%81%E5%BF%8C%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">0、禁忌：</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">1、logback.xml配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">2、是否该打印日志</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">3、打印日志的级别等级</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">4、怎么依据日志做调试排查</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">5.</span> <span class="nav-text">0、禁忌：</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -134,12 +137,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -196,7 +199,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：12:25:35" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:14:50 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:14:50+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -209,6 +212,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -221,44 +231,55 @@
 <p>一般写Java服务端的基本上都使用spring框架，使用spring项目则代表一般会用<strong>slf4j</strong>作为打印日志的配置标准。很多时候不是在开发中直接打印日志就好了，日志还兼具着调试，线上排查问题等功能。</p>
 <p>且slf4j有以下的一个日志等级</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">debug(调试 ) &lt; info(消息) &lt; warn(警告) &lt; error(错误) &lt; fatal(严重错误)</span><br></pre></td></tr></table></figure>
-
 <p>背景为：在开发过程中，组长认为我写的日志不是很好</p>
 <p>目的为：期望我可以使用比较好的开发习惯，在开发过程中，期望我使用最少的精力写出方便开发者做调试，以及线上进行查看的日志。</p>
 <p>因此我打算使用以下配置作为开发者的一个习惯配置做培养</p>
-<h1 id="1、logback-xml配置"><a href="#1、logback-xml配置" class="headerlink" title="1、logback.xml配置"></a>1、logback.xml配置</h1><p>这个文件用于存储具体日志打印的配置。当然也有第三方日志打印&#x2F;暴露endpoint以别的配置文件打印到别的目录下。基本上不会修改这个文件中的配置，除非出现问题，要求修改第三方包的日志的等级等情况才会进行修改。</p>
-<h1 id="2、是否该打印日志"><a href="#2、是否该打印日志" class="headerlink" title="2、是否该打印日志"></a>2、是否该打印日志</h1><p>打印日志主要是为了一下几种原因：</p>
+<h1>1、logback.xml配置</h1>
+<p>这个文件用于存储具体日志打印的配置。当然也有第三方日志打印/暴露endpoint以别的配置文件打印到别的目录下。基本上不会修改这个文件中的配置，除非出现问题，要求修改第三方包的日志的等级等情况才会进行修改。</p>
+<h1>2、是否该打印日志</h1>
+<p>打印日志主要是为了一下几种原因：</p>
 <ol>
-<li><p><strong>调试：</strong></p>
+<li>
+<p><strong>调试：</strong></p>
 <p>开发过程中需要实时看到参数信息、业务流程分支等信息，在spring中，一些异步调用，生命周期、事件、队列消费等信息不会主动触发到，顾需要日志来显式展示配置信息、或者定位信息</p>
 <p>开发过程中遇到用户出现了业务上的失败流程，但是不会影响整个业务，不会影响进程安全的信息，也会需要打印出来，用于辅助调试</p>
 </li>
-<li><p><strong>排查问题：</strong></p>
+<li>
+<p><strong>排查问题：</strong></p>
 <p>业务上出现了问题，则会要求打印重要参数信息，用于查看配置</p>
 </li>
-<li><p><strong>数据处理</strong>：</p>
+<li>
+<p><strong>数据处理</strong>：</p>
 <p>如果项目上了新特性，则需要打印对应信息，用于查看用户使用UV、PV，业务路径等信息，这个就是买点上报+数据处理上的流程。</p>
 </li>
 </ol>
-<h1 id="3、打印日志的级别等级"><a href="#3、打印日志的级别等级" class="headerlink" title="3、打印日志的级别等级"></a>3、打印日志的级别等级</h1><p>打印过程中需要日志足够简洁足够重要。</p>
+<h1>3、打印日志的级别等级</h1>
+<p>打印过程中需要日志足够简洁足够重要。</p>
 <p>打印过程中如要打印比较重要的参数，如数据库影响行数，入参等信息</p>
 <p>以下是几个比较重要的打印等级的信息</p>
 <ol>
-<li><p>debug：</p>
+<li>
+<p>debug：</p>
 <p>一般会打印一些调试参数，方便开发者查看业务会走到哪里，在线上一般不会打开这个等级的日志打印。</p>
 <p>一些异步调用，生命周期、事件、队列消费等信息不会主动触发，所以也需要debug等级日志打印。</p>
 <p>arthas和debug等级日志很大程度上功能重合了，所以为了避免日志冗余，也可以通过使用arthas调试代码。</p>
 </li>
-<li><p>info：</p>
+<li>
+<p>info：</p>
 <p>如果是埋点上报信息，则会打印用户id，用户后续的业务点击点等信息。</p>
 </li>
-<li><p>warn：</p>
+<li>
+<p>warn：</p>
 <p>如果用户在走业务流程时候出现了错误，但是不影响后续的业务流程，则打印这个等级的日志</p>
 </li>
-<li><p>error：</p>
+<li>
+<p>error：</p>
 <p>用户在业务流程中出现了严重技术或者业务错误，导致无法继续进行业务，则需要打印这个等级的日志。</p>
 </li>
 </ol>
-<h1 id="4、怎么依据日志做调试排查"><a href="#4、怎么依据日志做调试排查" class="headerlink" title="4、怎么依据日志做调试排查"></a>4、怎么依据日志做调试排查</h1><h1 id="0、禁忌："><a href="#0、禁忌：" class="headerlink" title="0、禁忌："></a>0、禁忌：</h1><ol>
+<h1>4、怎么依据日志做调试排查</h1>
+<h1>0、禁忌：</h1>
+<ol>
 <li>不要把list直接打印出来，尽量只打印，对外内存容易出现OOM、且虽然是异步打印日志，但是打印大量日志会导致不必要的消耗资源。</li>
 <li>很多小伙伴可能用docker、k8s、ELK进行日志收集，所以为了兼容性，只能打印英语日志，打印中文日志很容易会导致乱码</li>
 <li>打印日志要保证安全性不能名，不能明文打印敏感信息</li>
@@ -315,9 +336,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

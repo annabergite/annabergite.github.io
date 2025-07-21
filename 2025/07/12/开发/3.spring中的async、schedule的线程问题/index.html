@@ -19,19 +19,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="除了Java自带默认线程池，基于Java的spring框架也有很多自带的默认线程池，有时候我们的一些需要线程池的操作可能通过提供的api和注解隐藏掉了，不熟悉的话会出现线程相关的问题  1 Future和CompletableFutureFuture和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特定">
+    <meta name="description" content="除了Java自带默认线程池，基于Java的spring框架也有很多自带的默认线程池，有时候我们的一些需要线程池的操作可能通过提供的api和注解隐藏掉了，不熟悉的话会出现线程相关的问题  1 Future和CompletableFuture Future和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring中的async、schedule的线程问题">
 <meta property="og:url" content="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/3.spring%E4%B8%AD%E7%9A%84async%E3%80%81schedule%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="除了Java自带默认线程池，基于Java的spring框架也有很多自带的默认线程池，有时候我们的一些需要线程池的操作可能通过提供的api和注解隐藏掉了，不熟悉的话会出现线程相关的问题  1 Future和CompletableFutureFuture和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特定">
+<meta property="og:description" content="除了Java自带默认线程池，基于Java的spring框架也有很多自带的默认线程池，有时候我们的一些需要线程池的操作可能通过提供的api和注解隐藏掉了，不熟悉的话会出现线程相关的问题  1 Future和CompletableFuture Future和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:\Users\zhubaiyi\AppData\Roaming\Typora\typora-user-images\image-20240818161541264.png">
+<meta property="og:image" content="c:%5CUsers%5Czhubaiyi%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240818161541264.png">
 <meta property="article:published_time" content="2025-07-12T03:59:29.459Z">
-<meta property="article:modified_time" content="2025-07-12T04:03:28.310Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:\Users\zhubaiyi\AppData\Roaming\Typora\typora-user-images\image-20240818161541264.png">
+<meta name="twitter:image" content="c:%5CUsers%5Czhubaiyi%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240818161541264.png">
 
 
 <link rel="canonical" href="http://example.com/2025/07/12/%E5%BC%80%E5%8F%91/3.spring%E4%B8%AD%E7%9A%84async%E3%80%81schedule%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/">
@@ -56,12 +56,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -136,12 +139,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -198,7 +201,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 11:59:29 / 修改时间：12:03:28" itemprop="dateCreated datePublished" datetime="2025-07-12T11:59:29+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 11:59:29 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T11:59:29+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -211,6 +214,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -222,36 +232,45 @@
     <div class="post-body" itemprop="articleBody"><ul>
 <li>除了Java自带默认线程池，基于Java的spring框架也有很多自带的默认线程池，有时候我们的一些需要线程池的操作可能通过提供的api和注解隐藏掉了，不熟悉的话会出现线程相关的问题</li>
 </ul>
-<h2 id="1-Future和CompletableFuture"><a href="#1-Future和CompletableFuture" class="headerlink" title="1 Future和CompletableFuture"></a>1 Future和CompletableFuture</h2><p>Future和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特定线程池。</p>
+<h2 id="1-Future和CompletableFuture">1 Future和CompletableFuture</h2>
+<p>Future和CompletableFuture都是Java提供的用来执行异步方法的情况。其中，Future只能包装一个异步任务，最后还是要把这个任务提交给特定线程池。</p>
 <p>CompletableFuture则会使用默认线程池，但是比较复杂：</p>
 <ul>
-<li><p>无JVM参数前提下：</p>
+<li>
+<p>无JVM参数前提下：</p>
 <p>若服务器的核心数小于等于2，commonParallelism 则为1，即useCommonPool 为false，new 一个线程池ThreadPerTaskExecutor 。</p>
 <p>若服务器的核心数大于2，commonParallelism 则为 核心数 - 1，即useCommonPool 为true，使用ForkJoinPool线程池。</p>
 </li>
-<li><p>有JVM参数情况下：</p>
+<li>
+<p>有JVM参数情况下：</p>
 <p>以设置参数为准。大于1小于等于32767。和上面判断一致</p>
 </li>
 </ul>
 <p>以上CompletableFuture的总结来自 这篇文章 <a target="_blank" rel="noopener" href="https://blog.csdn.net/belongtocode/article/details/139218832">从用法到源码再到应用场景：全方位了解CompletableFuture及其线程池</a> 有兴趣深挖一下的可以看下</p>
 <p>综上我们推荐使用CompletableFuture时候也需要主动指定线程池，没有指定线程池的情况下，CompletableFuture要么使用ForkJoinPool，要么不使用线程池，ForkJoinPool做CPU密集型任务好用，我们有时候做IO密集型任务则不需要他，需要指定IO型线程池。</p>
-<h2 id="2-hutool的异步任务"><a href="#2-hutool的异步任务" class="headerlink" title="2 hutool的异步任务"></a>2 hutool的异步任务</h2><p>hutool在提交任务的时候，会自动提交到一个默认的ExecutorService对象中，这个对象会使用如下的类的builder(0方法，这个对象的参数如下</p>
+<h2 id="2-hutool的异步任务">2 hutool的异步任务</h2>
+<p>hutool在提交任务的时候，会自动提交到一个默认的ExecutorService对象中，这个对象会使用如下的类的builder(0方法，这个对象的参数如下</p>
 <p>一些小项目直接使用OK的，但是如果大项目使用的话，风险会较大，他的最大线程数是最大值，任务队列也是1024，不一定满足业务需要，核心线程数是0</p>
-<p><img src="C:\Users\zhubaiyi\AppData\Roaming\Typora\typora-user-images\image-20240818161541264.png" alt="image-20240818161541264"></p>
-<h2 id="3-Async"><a href="#3-Async" class="headerlink" title="3 @Async"></a>3 @Async</h2><p>springboot 2.1.0 之前：simpleasynctaskexecutor，这个线程池会是不安全的线程池，很容易出现OOM，因为他创建新线程、无限、不重用</p>
+<p><img src="C:%5CUsers%5Czhubaiyi%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240818161541264.png" alt="image-20240818161541264"></p>
+<h2 id="3-Async">3 @Async</h2>
+<p>springboot 2.1.0 之前：simpleasynctaskexecutor，这个线程池会是不安全的线程池，很容易出现OOM，因为他创建新线程、无限、不重用</p>
 <p>springboot 2.1.0 之后：taskexecutor这个是springboot的一个自带bean，类型是TaskExecutor，一般是有的，如果没有才会找simpleasynctaskexecutor</p>
-<h2 id="4-Schedule"><a href="#4-Schedule" class="headerlink" title="4 @Schedule"></a>4 @Schedule</h2><p>在Spring Boot中，@Scheduled注解是基f于Java的ThreadPoolExecutor和ScheduledThreadPoolExecutor实现的。当我们配置了一个定时任务后，Spring Boot会首先创建一个ScheduledThreadPoolExecutor线程池，并将定时任务添加到该线程池中等待执行。然后，在指定的时间到来之后，线程池会为该定时任务分配一个线程来执行。如果该定时任务还未执行完毕，在下一个周期到达时，线程池会为该任务再次分配一个线程来执行。通过这种方式，@Scheduled可以非常方便地实现周期性的定时任务f于Java的ThreadPoolExecutor和ScheduledThreadPoolExecutor实现的。</p>
+<h2 id="4-Schedule">4 @Schedule</h2>
+<p>在Spring Boot中，@Scheduled注解是基f于Java的ThreadPoolExecutor和ScheduledThreadPoolExecutor实现的。当我们配置了一个定时任务后，Spring Boot会首先创建一个ScheduledThreadPoolExecutor线程池，并将定时任务添加到该线程池中等待执行。然后，在指定的时间到来之后，线程池会为该定时任务分配一个线程来执行。如果该定时任务还未执行完毕，在下一个周期到达时，线程池会为该任务再次分配一个线程来执行。通过这种方式，@Scheduled可以非常方便地实现周期性的定时任务f于Java的ThreadPoolExecutor和ScheduledThreadPoolExecutor实现的。</p>
 <p>当然schedule注解可以指定线程池，需要实现SchedulingConfigurer 方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@DependOn(&quot;executor&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ScheduleConfig</span> <span class="keyword">implements</span> <span class="title class_">SchedulingConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> ThreadPoolExecutor executor;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureTasks</span><span class="params">(ScheduledTaskRegistrar taskRegistrar)</span> &#123;</span><br><span class="line">        <span class="comment">//具体逻辑需要自己写</span></span><br><span class="line">        <span class="type">ThreadPoolTaskScheduler</span> <span class="variable">threadPoolTaskScheduler</span> <span class="operator">=</span> executor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>或者可以再schedule注解上再加一个 @Async注解，做到异步线程中去做。</p>
-<h2 id="5-stream-Parallel"><a href="#5-stream-Parallel" class="headerlink" title="5 stream Parallel"></a>5 stream Parallel</h2><p>parallelStream不能使用自定义线程池，默认情况下，Stream使用的是<code>ForkJoinPool.commonPool()</code>，这是一个公用的线程池，被整个程序所使用。</p>
-<p>但是stream parallel本身就符合ForkJoinPool的Fork&#x2F;Join思想，一般不会去进行修改。但是如果有需要，我们可以单独给并行流创建一个线程池供他们使用。</p>
+<h2 id="5-stream-Parallel">5 stream Parallel</h2>
+<p>parallelStream不能使用自定义线程池，默认情况下，Stream使用的是<code>ForkJoinPool.commonPool()</code>，这是一个公用的线程池，被整个程序所使用。</p>
+<p>但是stream parallel本身就符合ForkJoinPool的Fork/Join思想，一般不会去进行修改。但是如果有需要，我们可以单独给并行流创建一个线程池供他们使用。</p>
 <p>如创建一个并行度为4的ForkJoinPool，通过给该ForkJoinPool提交lambda表达式任务来解决这个问题</p>
-<h2 id="6-ForkJoinPool"><a href="#6-ForkJoinPool" class="headerlink" title="6 ForkJoinPool"></a>6 ForkJoinPool</h2><p>详情可以参照该文章 <a target="_blank" rel="noopener" href="https://javakk.com/215.html">线程池ForkJoinPool简介</a></p>
-<h2 id="7-Transactional"><a href="#7-Transactional" class="headerlink" title="7 @Transactional"></a>7 @Transactional</h2><p>使用该注解时不能做和多线程&#x2F;异步线程相关的事情，否则事务容易失效，详情请见 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37284798/article/details/129164113">注解@Transactional 原理和常见的坑</a></p>
+<h2 id="6-ForkJoinPool">6 ForkJoinPool</h2>
+<p>详情可以参照该文章 <a target="_blank" rel="noopener" href="https://javakk.com/215.html">线程池ForkJoinPool简介</a></p>
+<h2 id="7-Transactional">7 @Transactional</h2>
+<p>使用该注解时不能做和多线程/异步线程相关的事情，否则事务容易失效，详情请见 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37284798/article/details/129164113">注解@Transactional 原理和常见的坑</a></p>
 <p>引用文章：</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://maimai.cn/article/detail?fid=1505153744&efid=rQBm3tkC-gPFkpO886YBcg">Spring中异步注解@Async的使用、原理及使用时可能导致的问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://maimai.cn/article/detail?fid=1505153744&amp;efid=rQBm3tkC-gPFkpO886YBcg">Spring中异步注解@Async的使用、原理及使用时可能导致的问题</a></li>
 <li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jE421w732/">Async注解不指定线程池？默认用的又是什么？</a></li>
 <li><a target="_blank" rel="noopener" href="https://doc.hutool.cn/">hutool官网</a></li>
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/belongtocode/article/details/139218832">从用法到源码再到应用场景：全方位了解CompletableFuture及其线程池</a></li>
@@ -309,9 +328,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 

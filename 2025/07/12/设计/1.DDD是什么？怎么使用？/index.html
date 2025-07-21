@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="前言随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。 另外不可能将DDD用于任何一处代码，原因如下：  成本不允许，一般">
+    <meta name="description" content="前言 随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。 另外不可能将DDD用于任何一处代码，原因如下：   成本不允许，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDD是什么？怎么使用？">
 <meta property="og:url" content="http://example.com/2025/07/12/%E8%AE%BE%E8%AE%A1/1.DDD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8%EF%BC%9F/index.html">
 <meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="前言随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。 另外不可能将DDD用于任何一处代码，原因如下：  成本不允许，一般">
+<meta property="og:description" content="前言 随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。 另外不可能将DDD用于任何一处代码，原因如下：   成本不允许，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-07-12T04:06:44.513Z">
-<meta property="article:modified_time" content="2025-07-12T04:12:41.258Z">
+<meta property="article:modified_time" content="2025-07-12T15:16:11.646Z">
 <meta property="article:author" content="annabergite">
 <meta name="twitter:card" content="summary">
 
@@ -54,12 +54,15 @@
 
   
 
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
+  <script src="/js/third-party/tags/mermaid.js" defer></script>
 
 
 
 
 
   
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -134,12 +137,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span>
       </div>
   </nav>
@@ -196,7 +199,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2025-07-12 12:06:44 / 修改时间：12:12:41" itemprop="dateCreated datePublished" datetime="2025-07-12T12:06:44+08:00">2025-07-12</time>
+      <time title="创建时间：2025-07-12 12:06:44 / 修改时间：23:16:11" itemprop="dateCreated datePublished" datetime="2025-07-12T12:06:44+08:00">2025-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -209,6 +212,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -217,48 +227,62 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="前言">前言</h2>
+<p>随着业务的不断拓展，一个项目再也不是只需要运行一段时间就可以了，也不是一个很小的项目，随着业务的增长，最终开发的代码会变成一个很大的项目，此时如果不能做好很好的重构，会造成越来越难的拓展，最后导致无法拓展。所以DDD（Domain Driven Design，领域驱动设计）就是从领域业务这个方面对代码做重构与设计的方法论之一。</p>
 <p>另外不可能将DDD用于任何一处代码，原因如下：</p>
 <ol>
-<li><p>成本不允许，一般只有项目的核心领域才会考虑使用DDD重构，培养DDD团队会消耗比较长的时间，且整个时间成本是需要持续投入的。</p>
+<li>
+<p>成本不允许，一般只有项目的核心领域才会考虑使用DDD重构，培养DDD团队会消耗比较长的时间，且整个时间成本是需要持续投入的。</p>
 </li>
-<li><p>因为DDD无法使用于任何一个环境，只使用DDD无法做到满足全部的业务场景，比如G端企业做数据化，很多时候是只需要从数仓查询数据；但是DDD只是一个业务思想，单纯的数据也无法做到成为业务领域</p>
+<li>
+<p>因为DDD无法使用于任何一个环境，只使用DDD无法做到满足全部的业务场景，比如G端企业做数据化，很多时候是只需要从数仓查询数据；但是DDD只是一个业务思想，单纯的数据也无法做到成为业务领域</p>
 </li>
-<li><p>DDD要求可以将业务分的很清晰，需要一个“聚合根”将一组业务模型组起来，这要求需要一组业务专家作为开发主力，这通常意味着需要将团队中比较聪明的几位来将项目解构成DDD的模型，很多时候这群人的工作重点不在这里。</p>
+<li>
+<p>DDD要求可以将业务分的很清晰，需要一个“聚合根”将一组业务模型组起来，这要求需要一组业务专家作为开发主力，这通常意味着需要将团队中比较聪明的几位来将项目解构成DDD的模型，很多时候这群人的工作重点不在这里。</p>
 </li>
-<li><p>就算使用DDD也不可能将其全部的教条应用在代码中，因为工作主要是为了盈利，如果使用DDD会帮助提升代码价值，全使用DDD会降低代码价值。在这种情况下，必然是只会使用一部分的DDD思想。</p>
+<li>
+<p>就算使用DDD也不可能将其全部的教条应用在代码中，因为工作主要是为了盈利，如果使用DDD会帮助提升代码价值，全使用DDD会降低代码价值。在这种情况下，必然是只会使用一部分的DDD思想。</p>
 </li>
 </ol>
-<h2 id="Model-Driven-Design"><a href="#Model-Driven-Design" class="headerlink" title="Model-Driven Design"></a>Model-Driven Design</h2><p>好的模型可以反应真实的业务情况</p>
+<h2 id="Model-Driven-Design">Model-Driven Design</h2>
+<p>好的模型可以反应真实的业务情况</p>
 <ol>
-<li><p>好的模型需要统一的语言，在一个开发团队中，需要让每个开发者对同一个术语的概念是了解一致的，且需要业务专家将对应信息传达下去。</p>
+<li>
+<p>好的模型需要统一的语言，在一个开发团队中，需要让每个开发者对同一个术语的概念是了解一致的，且需要业务专家将对应信息传达下去。</p>
 <p>如“数据资产”，数据专家和一个应届生想到的肯定是不一样的。</p>
 </li>
-<li><p>模型类与其他非DDD层的POJO需要分离开来，尤其需要和数据库的POJO分离开来，DDD是软件设计思想，与数据库、技术组件、远程调用是完全不相关的。</p>
+<li>
+<p>模型类与其他非DDD层的POJO需要分离开来，尤其需要和数据库的POJO分离开来，DDD是软件设计思想，与数据库、技术组件、远程调用是完全不相关的。</p>
 </li>
-<li><p>除了核心组件外，其他组件，如MVC的DAO层，因为其确实是需要做到和固定数据库做好对接，所以面向结果编程是完全值得提倡的。</p>
+<li>
+<p>除了核心组件外，其他组件，如MVC的DAO层，因为其确实是需要做到和固定数据库做好对接，所以面向结果编程是完全值得提倡的。</p>
 </li>
-<li><p>DDD中一组很重要的思想是Entity和Value Object，Entity可以被认为是数据库中一张表的自增主键，具有连续性和唯一性，Value Object相当于是一个更关注其数据属性的一个组件，因此只能依附于一个Entity</p>
+<li>
+<p>DDD中一组很重要的思想是Entity和Value Object，Entity可以被认为是数据库中一张表的自增主键，具有连续性和唯一性，Value Object相当于是一个更关注其数据属性的一个组件，因此只能依附于一个Entity</p>
 </li>
-<li><p>Entity和Value Object只是提供了一组事物信息，如广告转化率、广告使用地区等。但是另外还需要非“事物”的部分引入到模型中，如行为，如一组模型相关的业务，如广告投放业务中，如果需要对广告相关的信息做校验，其中就包括业务校验和技术校验，如果将这两个模块混淆了，则会导致业务层被“腐化”，无法实现很好的解耦与以后的拓展，因此需要将业务操作和技术操作分离出来，我们可以将基于Entity和Value Object的操作称之为“Service”。</p>
+<li>
+<p>Entity和Value Object只是提供了一组事物信息，如广告转化率、广告使用地区等。但是另外还需要非“事物”的部分引入到模型中，如行为，如一组模型相关的业务，如广告投放业务中，如果需要对广告相关的信息做校验，其中就包括业务校验和技术校验，如果将这两个模块混淆了，则会导致业务层被“腐化”，无法实现很好的解耦与以后的拓展，因此需要将业务操作和技术操作分离出来，我们可以将基于Entity和Value Object的操作称之为“Service”。</p>
 <p>模型中的Service有应用层面的Service、领域层面的Service（因为需要将真实业务层和技术实现层解耦，在Java的开发中可以使用依赖反转实现）、技术层的Service，应用层面的Service、领域层面的Service无法很好的区分，有时候可能不需要做区分，但是一旦涉及到业务领域核心，且不已不同应用场景为变更，则可能需要区分。</p>
 <p>以下有一个例子：</p>
 <p>在C端进行广告投放业务，会需要做到以下代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AdvertisementService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    OnlineRetailersFeign onlineRetailersFeign;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    AdvertisementDAO advertisementDAO;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    AdvertisementDomainService advertisementDomainService;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Result&lt;AdvertisementDTO&gt; <span class="title function_">showAdvertisementInfo</span><span class="params">(AdvertisementRequestAO advertisementRequestAO)</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">reginId</span> <span class="operator">=</span> advertisementRequestAO.getReginId();</span><br><span class="line">        <span class="comment">//查看广告校验是否有效</span></span><br><span class="line">        <span class="keyword">if</span> (checkAdvertisementDisable(reginId)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>&lt;AdvertisementDTO&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//进行本业务相关操作</span></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 1.查看投放地域、用户信息，查看用户所处环境（APP、Web等）</span></span><br><span class="line"><span class="comment">         * 2.从数据库中取出用户个人画像、当地广告服务商提供的服务</span></span><br><span class="line"><span class="comment">         * 3.通过算法取得合适的投放信息，并且按照需要从电商微服务等服务获取信息包装</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        advertisementDomainService.domainOperate();</span><br><span class="line">        <span class="comment">//最后进行写入数据库操作</span></span><br><span class="line">        advertisementDAO.insert();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//给其他微服务发送对应消息</span></span><br><span class="line">        onlineRetailersFeign.notify();</span><br><span class="line">        <span class="comment">//最后返回信息</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Result</span>&lt;AdvertisementDTO&gt;();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 校验广告地址信息</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> reginId</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">checkAdvertisementDisable</span><span class="params">(String reginId)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>其中最重要的是advertisementDomainService.domainOperate()，这个可以认为是领域相关Service，不能算作是应用Service，应用Serivce可以是advertisementDomainService.domainOperate()中的实现，通过状态模式&#x2F;策略模式，实现具体逻辑。因为取得服务可能因为地区、用户不同、具体的实现逻辑是不一样的，调用的组件是不一样的，所以细节上的实现需要应用层去协调和跟技术层Service实现，但是总的来说，投放一个广告就是需要这几步，因此这一组需要作为领域层的Service。</p>
+<p>其中最重要的是advertisementDomainService.domainOperate()，这个可以认为是领域相关Service，不能算作是应用Service，应用Serivce可以是advertisementDomainService.domainOperate()中的实现，通过状态模式/策略模式，实现具体逻辑。因为取得服务可能因为地区、用户不同、具体的实现逻辑是不一样的，调用的组件是不一样的，所以细节上的实现需要应用层去协调和跟技术层Service实现，但是总的来说，投放一个广告就是需要这几步，因此这一组需要作为领域层的Service。</p>
 <p>Service是当需要Entity和Value Object做一组操作时候出现的，且Service最好是无状态的。</p>
 </li>
-<li><p>最后的Entity和Value Object应当以一组模块的形式出现。</p>
+<li>
+<p>最后的Entity和Value Object应当以一组模块的形式出现。</p>
 </li>
 </ol>
-<h2 id="业务域"><a href="#业务域" class="headerlink" title="业务域"></a>业务域</h2><ol>
+<h2 id="业务域">业务域</h2>
+<ol>
 <li>设计好模型后就需要将模型组合成为领域，那么就需要一个model作为聚合根实现聚合。其中占主导作用的，和外部做主要交互的model作为聚合根，是这个领域存在的前提条件。</li>
 <li>开发一个领域就是为了让隐性概念显性化，让隐形上下文显性化，配置多对象行为。</li>
 <li>需要根据业务需要将领域划分为核心子域、支撑子域、通用子域。这些领域之间需要做到可以使用限界上下文、通用语言、上下文映射图做好划分。</li>
 <li>限界上下文是当一个领域形成时候，需要将业务与其他业务进行物理隔离，只能通过几个固定方式进行交互，这个边界就是限界上下文</li>
 </ol>
-<h2 id="战略战术"><a href="#战略战术" class="headerlink" title="战略战术"></a>战略战术</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ol>
+<h2 id="战略战术">战略战术</h2>
+<h2 id="总结">总结</h2>
+<ol>
 <li>只学习DDD并不能帮你更好的架构与设计，更好的方式应当是学习软件常见的架构设计模式、自己使用的编程语言的基本特性、然后再积极的使用</li>
 <li>（另外就是Eric Evans的软件驱动设计：软件核心复杂性应对之道不推荐看，因为翻译比较捉襟见肘，很多时候不知道在讲什么）</li>
 <li>DDD思想知易行难，期间需要花大量精力打通多个团队，是个人硬实力与软实力的体现，另外就是需要正确的构建出模型，需要可以满足实际的需要。实践DDD思想是一项风险收益都较高的事情。</li>
@@ -279,7 +303,8 @@
 <li>聚合根、限界上下文</li>
 <li>value Object与Domain Service</li>
 </ul>
-<h2 id="引用文章"><a href="#引用文章" class="headerlink" title="引用文章"></a>引用文章</h2><ol>
+<h2 id="引用文章">引用文章</h2>
+<ol>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/703520265">DDD在软件开发实践中的应用(一）- Ubiquitous Language</a></li>
 </ol>
 
@@ -328,9 +353,42 @@
     </span>
     <span class="author" itemprop="copyrightHolder">annabergite</span>
   </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 
+  <script type="text/javascript" src='https://unpkg.com/mermaid@9.0.0/dist/mermaid.min.js'></script>
+  <script>
+  if (window.mermaid) {
+        var mermaid_config = {
+            startOnLoad: true,
+            theme: '[object Object]',
+            flowchart:{
+                useMaxWidth: false,
+                htmlLabels: true
+            }                
+        }
+        mermaid.initialize(mermaid_config);
+  }
+  </script>
+  
     </div>
   </footer>
 
