@@ -1,0 +1,7 @@
+
+User-agent: *
+Disallow: /search.xml
+Disallow: /page/
+Disallow: /archives/
+Disallow: /categories/
+Disallow: /tags/

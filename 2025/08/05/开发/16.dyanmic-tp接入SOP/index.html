@@ -1,375 +1,538 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Dynamic-TP动态线程池部署SOP" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
 
-<link rel="stylesheet" href="/css/main.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
 
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
 
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"annabergite.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.23.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false,"border_radius":3},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false,"trigger":"auto"}}</script><script src="/js/config.js" defer></script>
-
-    <meta name="description" content="1、背景A组在最近遇到线程池相关问题：设备在凌晨2点自己重启，设备上线后下发大量任务给cos，导致触发拒绝策略海外AP环境带宽不够，导致大量设备断连建连，下发大量任务给cos，导致触发拒绝策略我们目前使用的JUC线程池内部状态是个黑盒，难以及时排查线程池情况，也无法根据调参去准确判断线程池状态因此为了更好的感知线程池运行过程中的信息，及时将信息推送到开发人员，我们需要引入动态线程池框架动态线程池框">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dynamic-TP动态线程池部署SOP">
-<meta property="og:url" content="https://annabergite.github.io/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/">
-<meta property="og:site_name" content="艾迪的技术之路">
-<meta property="og:description" content="1、背景A组在最近遇到线程池相关问题：设备在凌晨2点自己重启，设备上线后下发大量任务给cos，导致触发拒绝策略海外AP环境带宽不够，导致大量设备断连建连，下发大量任务给cos，导致触发拒绝策略我们目前使用的JUC线程池内部状态是个黑盒，难以及时排查线程池情况，也无法根据调参去准确判断线程池状态因此为了更好的感知线程池运行过程中的信息，及时将信息推送到开发人员，我们需要引入动态线程池框架动态线程池框">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/7ea62b7f09cd56d30cef3644094f4a0861d8447b770042b8fb8ab08b3a9b0f91.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/f70d406d12af50cf1a1ef09bb6e5f7fe9da3283dabbc2d60aed77c4e8fba3b36.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/e3f56decace2c5f14dffb4d63e001b765db45b746a212ebb985029cf9793bbb4.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/f66c8a7ffc5e9d7448a373f8ba61fd753fed55d7530070a38f3eeee03c113877.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/bfd81499e61b4d16956f5ecd748867f82754cd9ec46881df86f9220666c58601.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/8421851986c3ac0aa144f1be645143a89442ec87fbe35437ae217a408c00731e.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/81c82f5e2bc383c797c9a0a8ac923313a1e743f9cef061f6fd762eafeeced505.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/54d1a093eef548fd180ab05a6929bc27cb54ac788a733068530a54034035b6fc.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/b0be815c7ce46ea9ab9e8e7ace3ec2bcacb2ff77c2053a5555aa811e591451f3.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/d35216a63355143c7cdc5d9662f690dcaa96dd83bec4a27acdd6f8030a841227.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png">
-<meta property="og:image" content="https://annabergite.github.io/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png">
-<meta property="article:published_time" content="2025-08-05T04:19:13.000Z">
-<meta property="article:modified_time" content="2025-08-05T04:22:55.000Z">
-<meta property="article:author" content="annabergite">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://annabergite.github.io/images/recovered/7ea62b7f09cd56d30cef3644094f4a0861d8447b770042b8fb8ab08b3a9b0f91.png">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
 
 
-<link rel="canonical" href="https://annabergite.github.io/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/">
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://annabergite.github.io/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/","path":"/2025/08/05/开发/16.dyanmic-tp接入SOP/","title":"Dynamic-TP动态线程池部署SOP"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Dynamic-TP动态线程池部署SOP | 艾迪的技术之路</title>
-  
-
-
-
-
-
-
-
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
-<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.5.0/search.js" integrity="sha256-xFC6PJ82SL9b3WkGjFavNiA9gm5z6UBxWPiu4CYjptg=" crossorigin="anonymous" defer></script>
-<script src="/js/third-party/search/local-search.js" defer></script>
-
-
-  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.7.0/mermaid.min.js","integrity":"sha256-4+IKDqhZ/sXjc8Wtl2/MsxI4e0s1KpEVdbEP7V/Lz8U="}}</script>
-  <script src="/js/third-party/tags/mermaid.js" defer></script>
-
-
-
-
-
-  
-  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <div class="column">
-      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">艾迪的技术之路</p>
-      <i class="logo-line"></i>
-    </a>
-      <p class="site-subtitle" itemprop="description">记录博客与成长</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger" aria-label="搜索" role="button">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-      <div class="search-header">
-        <span class="search-icon">
-          <i class="fa fa-search"></i>
-        </span>
-        <div class="search-input-container">
-          <input autocomplete="off" autocapitalize="off" maxlength="80"
-                placeholder="搜索..." spellcheck="false"
-                type="search" class="search-input">
-        </div>
-        <span class="popup-btn-close" role="button">
-          <i class="fa fa-times-circle"></i>
-        </span>
-      </div>
-      <div class="search-result-container">
-        <div class="search-result-icon">
-          <i class="fa fa-spinner fa-pulse fa-5x"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</header>
+    
         
-  
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1%E3%80%81%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">1、背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2%E3%80%81%E4%BC%98%E7%82%B9%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.</span> <span class="nav-text">2、优点介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1%E3%80%81dynamic-tp%E6%A1%86%E6%9E%B6%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BC%98%E7%82%B9%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%88%91%E5%9C%A8%E5%BC%95%E5%85%A5%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%89%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">1.1、dynamic-tp框架有以下优点，其中我在引入时使用的有：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2%E3%80%81%E5%85%B6%E4%BB%96%E4%BC%98%E7%82%B9%E5%B9%B6%E6%9C%AA%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E5%85%B4%E8%B6%A3%E8%AF%B7%E5%89%8D%E5%BE%80%E5%AE%98%E7%BD%91%E6%9F%A5%E7%9C%8B%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">1.2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3%E3%80%81%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5"><span class="nav-number">3.</span> <span class="nav-text">3、如何接入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E3%80%81%E6%8E%A5%E5%85%A5%E6%AD%A5%E9%AA%A4%EF%BC%9A%EF%BC%88%E4%BB%A5cos%E6%9C%8D%E5%8A%A1%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">3.1、接入步骤：（以cos服务为例）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C"><span class="nav-number">4.</span> <span class="nav-text">4、使用效果</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">5.</span> <span class="nav-text">5、注意事项</span></a></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="annabergite"
-      src="/images/avatar.gif">
-  <p class="site-author-name" itemprop="name">annabergite</p>
-  <div class="site-description" itemprop="description">记录博客与成长,Java，架构</div>
-</div>
-<div class="site-state-wrap animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">29</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">5</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author animated">
-  </div>
-
-        </div>
-      </div>
-    </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
 
     
-  </aside>
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
 
 
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
     </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
 
-    <div class="main-inner post posts-expand">
+                    
+                    
 
+                    
+                    
 
-  
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
 
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://annabergite.github.io/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="annabergite">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="艾迪的技术之路">
-      <meta itemprop="description" content="记录博客与成长,Java，架构">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Dynamic-TP动态线程池部署SOP | 艾迪的技术之路">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          Dynamic-TP动态线程池部署SOP
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Dynamic-TP动态线程池部署SOP
+                </div>
+            
+        
       
-
-      <time title="创建时间：2025-08-05 12:19:13 / 修改时间：12:22:55" itemprop="dateCreated datePublished" datetime="2025-08-05T12:19:13+08:00">2025-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%BC%80%E5%8F%91/" itemprop="url" rel="index"><span itemprop="name">开发</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
+    
 
     
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-08-05</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：7分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
     
-    
-    <div class="post-body" itemprop="articleBody"><h1 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h1><p>A组在最近遇到线程池相关问题：<br>设备在凌晨2点自己重启，设备上线后下发大量任务给cos，导致触发拒绝策略海外AP环境带宽不够，导致大量设备断连建连，下发大量任务给cos，导致触发拒绝策略我们目前使用的JUC线程池内部状态是个黑盒，难以及时排查线程池情况，也无法根据调参去准确判断线程池状态<br>因此为了更好的感知线程池运行过程中的信息，及时将信息推送到开发人员，我们需要引入动态线程池框架<br>动态线程池框架目前使用比较多的是 dynamic-tp和hippo4J，这两者都是使用了美团的动态线程池思想，不同点有：<br>dynamic-tp是单体应用，可以直接使用在微服务上；<br>hippo4J是C&#x2F;S架构，如果要使用，不仅需要在微服务中引用，也要单独设置一个server端，较为复杂dynamic-tp在社区中活跃度较高，在一些开发者社区上也是dynamic-tp的文章偏多，dynamic-tp官网上也有较多知识分享文档；<br>hippo4J的交流群不活跃，文档少，且有问题只能去github上面提issue<br>因此在开发过程中选择使用dynamic-tp</p>
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1%E3%80%81%E8%83%8C%E6%99%AF"><span class="post-toc-text">1、背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2%E3%80%81%E4%BC%98%E7%82%B9%E4%BB%8B%E7%BB%8D"><span class="post-toc-text">2、优点介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-1%E3%80%81dynamic-tp%E6%A1%86%E6%9E%B6%E6%9C%89%E4%BB%A5%E4%B8%8B%E4%BC%98%E7%82%B9%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%88%91%E5%9C%A8%E5%BC%95%E5%85%A5%E6%97%B6%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%89%EF%BC%9A"><span class="post-toc-text">1.1、dynamic-tp框架有以下优点，其中我在引入时使用的有：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-2%E3%80%81%E5%85%B6%E4%BB%96%E4%BC%98%E7%82%B9%E5%B9%B6%E6%9C%AA%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9C%89%E5%85%B4%E8%B6%A3%E8%AF%B7%E5%89%8D%E5%BE%80%E5%AE%98%E7%BD%91%E6%9F%A5%E7%9C%8B%E8%AF%A6%E7%BB%86%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="post-toc-text">1.2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3%E3%80%81%E5%A6%82%E4%BD%95%E6%8E%A5%E5%85%A5"><span class="post-toc-text">3、如何接入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-1%E3%80%81%E6%8E%A5%E5%85%A5%E6%AD%A5%E9%AA%A4%EF%BC%9A%EF%BC%88%E4%BB%A5cos%E6%9C%8D%E5%8A%A1%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="post-toc-text">3.1、接入步骤：（以cos服务为例）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4%E3%80%81%E4%BD%BF%E7%94%A8%E6%95%88%E6%9E%9C"><span class="post-toc-text">4、使用效果</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5%E3%80%81%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">5、注意事项</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="1、背景"><a href="#1、背景" class="headerlink" title="1、背景"></a>1、背景</h1><p>A组在最近遇到线程池相关问题：<br>设备在凌晨2点自己重启，设备上线后下发大量任务给cos，导致触发拒绝策略海外AP环境带宽不够，导致大量设备断连建连，下发大量任务给cos，导致触发拒绝策略我们目前使用的JUC线程池内部状态是个黑盒，难以及时排查线程池情况，也无法根据调参去准确判断线程池状态<br>因此为了更好的感知线程池运行过程中的信息，及时将信息推送到开发人员，我们需要引入动态线程池框架<br>动态线程池框架目前使用比较多的是 dynamic-tp和hippo4J，这两者都是使用了美团的动态线程池思想，不同点有：<br>dynamic-tp是单体应用，可以直接使用在微服务上；<br>hippo4J是C&#x2F;S架构，如果要使用，不仅需要在微服务中引用，也要单独设置一个server端，较为复杂dynamic-tp在社区中活跃度较高，在一些开发者社区上也是dynamic-tp的文章偏多，dynamic-tp官网上也有较多知识分享文档；<br>hippo4J的交流群不活跃，文档少，且有问题只能去github上面提issue<br>因此在开发过程中选择使用dynamic-tp</p>
 <h1 id="2、优点介绍"><a href="#2、优点介绍" class="headerlink" title="2、优点介绍"></a>2、优点介绍</h1><h2 id="1-1、dynamic-tp框架有以下优点，其中我在引入时使用的有："><a href="#1-1、dynamic-tp框架有以下优点，其中我在引入时使用的有：" class="headerlink" title="1.1、dynamic-tp框架有以下优点，其中我在引入时使用的有："></a>1.1、dynamic-tp框架有以下优点，其中我在引入时使用的有：</h2><p>动态调参：使用该框架后，不需要手写修改参数的方法进行调参;代码零侵入：我们改变了线程池以往的使用姿势，所有配置均放在配置中心，服务启动时会从配置中心拉取配置生成线程池对象放到 Spring 容器中，使用时直接从 Spring 容器中获取，对业务代码零侵入；轻量简单：使用起来极其简单，引入相应依赖，接入只需简单 4 步就可完成，顺利 3 分钟搞定，相当丝滑；框架开发者使用JMH验证过，损耗很小，可以忽略不计。线程池监控与通知告警：提供多种通知告警维度（配置变更通知、活性报警、队列容量阈值报警、拒绝触发报警、任务执行或等待超时报警），触发配置阈值实时推送告警信息，已支持企微、钉钉、飞书、邮件、云之家报警，同时提供 SPI 接口可自定义扩展实现。本次接入还增加了接入到运维平台通知的方式。多配置中心支持：支持多种主流配置中心，包括 Nacos、Apollo、Zookeeper、Consul、Etcd、Polaris、ServiceComb，同时也提供 SPI 接口可自定义扩展实现；<br>在本次开发中我们使用的是nacos接入可靠性：依靠 Spring 生命周期管理，可以做到优雅关闭线程池，在 Spring 容器关闭前尽可能多的处理队列中的任务；<br>具体体现在配置中，默认启动。高可扩展：框架核心功能都提供 SPI 接口供用户自定义个性化实现（配置中心、配置文件解析、通知告警、监控数据采集、任务包装、拒绝策略等等）</p>
 <h2 id="1-2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式："><a href="#1-2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式：" class="headerlink" title="1.2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式："></a>1.2、其他优点并未使用，如果有兴趣请前往官网查看详细使用方式：</h2><p>运行监控：定时采集线程池指标数据（20 多种指标，包含线程池维度、队列维度、任务维度、tps、tpxx 等），支持通过 MicroMeter、JsonLog、JMX 三种方式定时获取，也可以通过 SpringBoot Endpoint 端点实时获取最新指标数据，同时提供 SPI 接口可自定义扩展实现任务增强：提供任务包装功能（比 Spring 线程池任务包装更强大），实现 TaskWrapper 接口即可，如 MdcTaskWrapper、TtlTaskWrapper、SwTraceTaskWrapper、OpenTelemetryWrapper，可以支持线程池上下文信息传递<br>多模式：提供了增强线程池 DtpExecutor，IO 密集型场景使用的线程池 EagerDtpExecutor，调度线程池 ScheduledDtpExecutor，有序线程池 OrderedDtpExecutor，可以根据业务场景选择合适的线程池<br>兼容性：JUC 普通线程池和 Spring 中的 ThreadPoolTaskExecutor 也可以被框架管理，只需@Bean 定义时加 @DynamicTp 注解即可中间件线程池管理：集成管理常用第三方组件的线程池，已集成 Tomcat、Jetty、Undertow、Dubbo、RocketMq、Hystrix、Grpc、Motan、Okhttp3、Brpc、Tars、SofaRpc、RabbitMq、Liteflow 等组件的线程池管理（动态调参、监控、报警）</p>
-<h1 id="3、如何接入"><a href="#3、如何接入" class="headerlink" title="3、如何接入"></a>3、如何接入</h1><p>本人在common中增加了一个maven工程，集成了Dynamic-TP的一些基本配置<br><img src="/images/recovered/7ea62b7f09cd56d30cef3644094f4a0861d8447b770042b8fb8ab08b3a9b0f91.png" alt="img"></p>
-<h2 id="3-1、接入步骤：（以cos服务为例）"><a href="#3-1、接入步骤：（以cos服务为例）" class="headerlink" title="3.1、接入步骤：（以cos服务为例）"></a>3.1、接入步骤：（以cos服务为例）</h2><p>需要注意的是，由于线上已经验证OK，所以新旧线程池不需要切换，新旧线程池开关可以关掉，旧线程池配置可以删除<br>pom文件新增引用复制team.ucsdynamic-thread-pool1.18.2.0compile<br><img src="/images/recovered/f70d406d12af50cf1a1ef09bb6e5f7fe9da3283dabbc2d60aed77c4e8fba3b36.png" alt="img"><br>启动类加上@EnableDynamicTp@ComponentScan加上”team.ucs.dynamicthreadpool”,“team.ucs.entity”,”team.ucs.kafka”的扫描<br><img src="/images/recovered/e3f56decace2c5f14dffb4d63e001b765db45b746a212ebb985029cf9793bbb4.png" alt="img"><br>线上配置文件加上对应配置，以cos服务为例<br>（dynamic-tp配置较多，如果想学习或者是使用其他配置，则需要到dynamic-tp官网查看，当前引入的时候只保留我们需要的，一些配置默认是true但是我们不需要的话，也要显式的标为false）<br>接入后启动，日志中打印如下则代表创建成功<br><img src="/images/recovered/f66c8a7ffc5e9d7448a373f8ba61fd753fed55d7530070a38f3eeee03c113877.png" alt="img"><br>3.2、配置文件怎么配置？接入时具体怎么配置？<br>以cos服务为例<br>配置文件可以看做以下4个部分：线程池参数配置、通知平台的配置、告警阈值配置、杂项旧线程池和新线程池配置时需要一一对应，此时可以通过线程池名称对应实现。可以看到在cos服务中旧线程池和新线程池名称一样<br><img src="/images/recovered/bfd81499e61b4d16956f5ecd748867f82754cd9ec46881df86f9220666c58601.png" alt="img"><br>线程池开关，上面的开关enableCosDTP是为了可以走不同逻辑，下面的开关enabled是为了开关线程池框架，节省资源通知平台，其中可以配置多个平台，平台可以通过platform对应配置文件中通知平台和框架内通知平台的联系，platformId为了方便告警项、线程池中配置对应的通知平台线程池配置，executors可以配置多个动态线程池，通过threadPoolName和旧线程池进行配对，其他请看 配置文件中告警项，可以在notifyItems配置，每个线程池都需要加上，具体配置请看配置文件解释。cos服务中动态线程池配置 目前只是一些需要的配置，其他的配置可以在dyanmic-tp官网上进行查看~<br>接入动态线程池时需要做到新旧线程池一一对应，方面接入以及后续删除旧线程池。<br>3.3、怎么在代码中使用引入的动态线程池？<br>以cos服务为例<br>按照上述步骤接入动态线程池按照上述步骤配置好线程池配置（推荐）目前可以通过工具类进行实现，以cos为例，如果合适可以直接放进dynamic-thread-pool中，如下<br><img src="/images/recovered/8421851986c3ac0aa144f1be645143a89442ec87fbe35437ae217a408c00731e.png" alt="img"><br><img src="/images/recovered/81c82f5e2bc383c797c9a0a8ac923313a1e743f9cef061f6fd762eafeeced505.png" alt="img"></p>
-<h1 id="4、使用效果"><a href="#4、使用效果" class="headerlink" title="4、使用效果"></a>4、使用效果</h1><p>使用后触发配置文件中的告警阈值，如果使用的是刚刚的devops通知平台通知，会在群中打印对应信息，且可以看到使用详情，其中详情页面需要鼠标左键按住才能上下滑动查看信息。<br><img src="/images/recovered/54d1a093eef548fd180ab05a6929bc27cb54ac788a733068530a54034035b6fc.png" alt="img"><br>释义写一下<br><img src="/images/recovered/b0be815c7ce46ea9ab9e8e7ace3ec2bcacb2ff77c2053a5555aa811e591451f3.png" alt="img"><br><img src="/images/recovered/d35216a63355143c7cdc5d9662f690dcaa96dd83bec4a27acdd6f8030a841227.png" alt="img"><br>使用后进行参数调整，会立刻生效，且可以被通知到<br><img src="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" alt="img"><br><img src="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" alt="img"><br>使用后调整通知平台和告警项的相关信息，会立刻生效，但不会通过平台通知到</p>
+<h1 id="3、如何接入"><a href="#3、如何接入" class="headerlink" title="3、如何接入"></a>3、如何接入</h1><p>本人在common中增加了一个maven工程，集成了Dynamic-TP的一些基本配置<br><a href="/images/recovered/7ea62b7f09cd56d30cef3644094f4a0861d8447b770042b8fb8ab08b3a9b0f91.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/7ea62b7f09cd56d30cef3644094f4a0861d8447b770042b8fb8ab08b3a9b0f91.png" alt="img"></a></p>
+<h2 id="3-1、接入步骤：（以cos服务为例）"><a href="#3-1、接入步骤：（以cos服务为例）" class="headerlink" title="3.1、接入步骤：（以cos服务为例）"></a>3.1、接入步骤：（以cos服务为例）</h2><p>需要注意的是，由于线上已经验证OK，所以新旧线程池不需要切换，新旧线程池开关可以关掉，旧线程池配置可以删除<br>pom文件新增引用复制team.ucsdynamic-thread-pool1.18.2.0compile<br><a href="/images/recovered/f70d406d12af50cf1a1ef09bb6e5f7fe9da3283dabbc2d60aed77c4e8fba3b36.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/f70d406d12af50cf1a1ef09bb6e5f7fe9da3283dabbc2d60aed77c4e8fba3b36.png" alt="img"></a><br>启动类加上@EnableDynamicTp@ComponentScan加上”team.ucs.dynamicthreadpool”,“team.ucs.entity”,”team.ucs.kafka”的扫描<br><a href="/images/recovered/e3f56decace2c5f14dffb4d63e001b765db45b746a212ebb985029cf9793bbb4.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/e3f56decace2c5f14dffb4d63e001b765db45b746a212ebb985029cf9793bbb4.png" alt="img"></a><br>线上配置文件加上对应配置，以cos服务为例<br>（dynamic-tp配置较多，如果想学习或者是使用其他配置，则需要到dynamic-tp官网查看，当前引入的时候只保留我们需要的，一些配置默认是true但是我们不需要的话，也要显式的标为false）<br>接入后启动，日志中打印如下则代表创建成功<br><a href="/images/recovered/f66c8a7ffc5e9d7448a373f8ba61fd753fed55d7530070a38f3eeee03c113877.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/f66c8a7ffc5e9d7448a373f8ba61fd753fed55d7530070a38f3eeee03c113877.png" alt="img"></a><br>3.2、配置文件怎么配置？接入时具体怎么配置？<br>以cos服务为例<br>配置文件可以看做以下4个部分：线程池参数配置、通知平台的配置、告警阈值配置、杂项旧线程池和新线程池配置时需要一一对应，此时可以通过线程池名称对应实现。可以看到在cos服务中旧线程池和新线程池名称一样<br><a href="/images/recovered/bfd81499e61b4d16956f5ecd748867f82754cd9ec46881df86f9220666c58601.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/bfd81499e61b4d16956f5ecd748867f82754cd9ec46881df86f9220666c58601.png" alt="img"></a><br>线程池开关，上面的开关enableCosDTP是为了可以走不同逻辑，下面的开关enabled是为了开关线程池框架，节省资源通知平台，其中可以配置多个平台，平台可以通过platform对应配置文件中通知平台和框架内通知平台的联系，platformId为了方便告警项、线程池中配置对应的通知平台线程池配置，executors可以配置多个动态线程池，通过threadPoolName和旧线程池进行配对，其他请看 配置文件中告警项，可以在notifyItems配置，每个线程池都需要加上，具体配置请看配置文件解释。cos服务中动态线程池配置 目前只是一些需要的配置，其他的配置可以在dyanmic-tp官网上进行查看~<br>接入动态线程池时需要做到新旧线程池一一对应，方面接入以及后续删除旧线程池。<br>3.3、怎么在代码中使用引入的动态线程池？<br>以cos服务为例<br>按照上述步骤接入动态线程池按照上述步骤配置好线程池配置（推荐）目前可以通过工具类进行实现，以cos为例，如果合适可以直接放进dynamic-thread-pool中，如下<br><a href="/images/recovered/8421851986c3ac0aa144f1be645143a89442ec87fbe35437ae217a408c00731e.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/8421851986c3ac0aa144f1be645143a89442ec87fbe35437ae217a408c00731e.png" alt="img"></a><br><a href="/images/recovered/81c82f5e2bc383c797c9a0a8ac923313a1e743f9cef061f6fd762eafeeced505.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/81c82f5e2bc383c797c9a0a8ac923313a1e743f9cef061f6fd762eafeeced505.png" alt="img"></a></p>
+<h1 id="4、使用效果"><a href="#4、使用效果" class="headerlink" title="4、使用效果"></a>4、使用效果</h1><p>使用后触发配置文件中的告警阈值，如果使用的是刚刚的devops通知平台通知，会在群中打印对应信息，且可以看到使用详情，其中详情页面需要鼠标左键按住才能上下滑动查看信息。<br><a href="/images/recovered/54d1a093eef548fd180ab05a6929bc27cb54ac788a733068530a54034035b6fc.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/54d1a093eef548fd180ab05a6929bc27cb54ac788a733068530a54034035b6fc.png" alt="img"></a><br>释义写一下<br><a href="/images/recovered/b0be815c7ce46ea9ab9e8e7ace3ec2bcacb2ff77c2053a5555aa811e591451f3.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/b0be815c7ce46ea9ab9e8e7ace3ec2bcacb2ff77c2053a5555aa811e591451f3.png" alt="img"></a><br><a href="/images/recovered/d35216a63355143c7cdc5d9662f690dcaa96dd83bec4a27acdd6f8030a841227.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/d35216a63355143c7cdc5d9662f690dcaa96dd83bec4a27acdd6f8030a841227.png" alt="img"></a><br>使用后进行参数调整，会立刻生效，且可以被通知到<br><a href="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" alt="img"></a><br><a href="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" title="img" class="gallery-item" style="box-shadow: none;"> <img src="/images/recovered/f42dacc74d6494b4f4f31d165161d290d5ec05133a75966de8cbd59bb4ba0132.png" alt="img"></a><br>使用后调整通知平台和告警项的相关信息，会立刻生效，但不会通过平台通知到</p>
 <h1 id="5、注意事项"><a href="#5、注意事项" class="headerlink" title="5、注意事项"></a>5、注意事项</h1><p>目前dynamic-tp的告警限流不支持redis集群当前线上场景出现过触发告警后增加阈值，在未达到告警阈值时仍然会告警的情况，仍未解决JMH（java项目性能测试工具）发现线程池qps增大到1w及以上时，动态线程池带来的性能损耗会比较大（具体见官网）之前上线时为了保证微服务可用，会保留旧线程池的bean，当前线上运行良好，故不再需要保留旧线程池<br>推荐阅读<br><a target="_blank" rel="noopener" href="http://10.188.48.130:4999/web/#/p/498344b13fab2662ebbb1b14507b8d06">（showdoc）《怎么根据线程池预警对线程池参数做修改》</a><a target="_blank" rel="noopener" href="http://10.188.48.130:4999/web/#/p/fbfb215f1144bd3500e8a64447c6085a">（showdoc）《DynamicTP源码解析》</a><a target="_blank" rel="noopener" href="https://dynamictp.cn/">（外网）《dynamic-tp官网》</a><a target="_blank" rel="noopener" href="https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html">（外网）《Java线程池实现原理及其在美团业务中的实践》</a></p>
-
+</div>
     </div>
 
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-08-05</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BC%80%E5%8F%91/'>
+                            开发
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+    <br>
     
     
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B/">凤凰架构——读书笔记</a>
+                    </span>
+                
+            </div>
+    
+        
     
 
-    <footer class="post-footer">
+    
+        
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
 
         
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B%E2%80%94%E2%80%941.%E6%BC%94%E8%BF%9B%E4%B8%AD%E7%9A%84%E6%9E%B6%E6%9E%84/" rel="prev" title="凤凰架构——演进中的架构">
-                  <i class="fa fa-angle-left"></i> 凤凰架构——演进中的架构
-                </a>
-            </div>
-            <div class="post-nav-item">
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="copyright">
-    &copy; 
-    <span itemprop="copyrightYear">2026</span>
-    <span class="with-love">
-      <i class="fa fa-heart"></i>
-    </span>
-    <span class="author" itemprop="copyrightHolder">true</span>
-  </div>
-<div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
-  </div>
-
-    </div>
-  </footer>
-
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-  <div class="sidebar-dimmer"></div>
-  <div class="back-to-top" role="button" aria-label="返回顶部">
-    <i class="fa fa-arrow-up fa-lg"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-</body>
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    </body>
 </html>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="最近更新列表" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-top paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+                    <div class="archive-list">
+    <ul class="archive">
+        
+  
+        <!--文章先按照时间排好序-->
+        
+  
+  
+        
+        
+  
+        
+  
+        
+        
+  
+        <!--循环遍历文章数组-->
+        
+  
+        <li>
+            <span class="year-font-color">
+                最近更新：
+            </span>
+        </li>
+        <!--放 文章-->
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2026/10/18 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/26.%E3%80%8A%E5%87%A4%E5%87%B0%E6%9E%B6%E6%9E%84%E3%80%8B/">凤凰架构——读书笔记</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/08/05 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/7.%E6%B2%A7%E6%B5%AA%E4%B9%8B%E6%B0%B4/">沧浪之水</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/08/05 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/">Dynamic-TP动态线程池部署SOP</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/10.%E6%85%A2SQL%E4%BC%98%E5%8C%96/">线上慢查询优化</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/4.%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE/">学会提问</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/2.%E9%AB%98%E6%95%88%E8%83%BD%E4%BA%BA%E5%A3%AB%E7%9A%847%E4%B8%AA%E4%B9%A0%E6%83%AF/">高效能人士的7个习惯</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/5.%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/">金字塔原理笔记</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/3.%E5%B0%8F%E7%B1%B3%E5%88%9B%E4%B8%9A%E6%80%9D%E8%80%83/">小米创业思考</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/21 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/阅读笔记/">
+                    阅读笔记 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/21/%E8%AF%BB%E4%B9%A6/1.%E4%BC%98%E5%8A%BF%E8%B0%88%E5%88%A4/">优势谈判</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/14.%E7%BB%99%E5%85%AC%E5%8F%B8%E6%8E%A5%E5%85%A5%E4%BA%86dynamic-tp%EF%BC%8C%E6%88%91%E6%98%AF%E8%BF%99%E4%B9%88%E5%81%9A%E7%9A%84/">实际使用动态线程池框架dynamic-tp</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/生活/">
+                    生活 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E7%94%9F%E6%B4%BB/1.2024%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">2024年终总结</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/5.easy%20excel%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%BB%BB%E6%84%8F%E8%A1%A8%E7%9A%84Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">Spring boot整合easy excel实现低代码量的Excel导入导出</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/11.Linux%E4%B8%8B%E7%81%AB%E7%84%B0%E5%9B%BE%E6%94%B6%E9%9B%86/">Linux下火焰图收集</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/设计/">
+                    设计 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E8%AE%BE%E8%AE%A1/2.%E6%80%8E%E4%B9%88%E6%A0%B9%E6%8D%AE%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9B%91%E6%8E%A7%E5%91%8A%E8%AD%A6%E5%AE%9A%E9%87%8F%E4%BF%AE%E6%94%B9%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%8F%82%E6%95%B0/">怎么根据线程池监控告警定量修改线程池参数</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/设计/">
+                    设计 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E8%AE%BE%E8%AE%A1/3.Dynamic-TP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90/">Dynamic-TP底层原理解析</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/6.redisson%E4%BD%BF%E7%94%A8lock%E5%AF%BC%E8%87%B4%E6%AD%BB%E9%94%81%E9%97%AE%E9%A2%98/">redisson使用lock导致死锁问题</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/7.code%20review%E6%80%8E%E4%B9%88%E5%81%9A%EF%BC%9F/">code review 怎么做？</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/8.%E6%97%A5%E5%BF%97%E5%88%B0%E5%BA%95%E6%80%8E%E4%B9%88%E6%89%93%EF%BC%9F/">日志到底该怎么打？</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/9.flyway%E5%8F%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E5%88%B0%E5%BD%93%E5%89%8D%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">flyway可否使用到当前开发环境</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/4.Java%E5%BE%AA%E7%8E%AF%E6%93%8D%E4%BD%9C%E5%93%AA%E4%B8%AA%E5%BF%AB%EF%BC%9F/">spring中的async、schedule的线程问题</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/设计/">
+                    设计 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E8%AE%BE%E8%AE%A1/1.DDD%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8%EF%BC%9F/">DDD是什么？怎么使用？</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/2.Java%E7%9A%84Map%E5%A2%9E%E5%BC%BA/">Java的Map增强</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/3.spring%E4%B8%AD%E7%9A%84async%E3%80%81schedule%E7%9A%84%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98/">spring中的async、schedule的线程问题</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/">superset安装文档</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/15.easy%20excel%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E6%8E%A5%E5%8F%A3%E4%BB%BB%E6%84%8F%E8%A1%A8%E7%9A%84Excel%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/">easy excel实现一个接口任意表的Excel导入导出</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/13.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E9%80%A0%E6%88%90%E7%9A%84OOM%E9%97%AE%E9%A2%98/">cos因为数据库表造成的OOM问题</a>
+              </div>
+            </li>
+        
+            
+            <li>
+              <span class="archive-date">&nbsp;&nbsp;&nbsp;2025/07/12 
+              </span>
+              <div class="archive-main">
+                
+                  <a class="archive-title"  href="/categories/开发/">
+                    开发 
+                  </a> | 
+                
+                  <a class="archive-title" href="/2025/07/12/%E5%BC%80%E5%8F%91/12.NAT%E6%89%93%E6%B4%9E%E5%91%8A%E8%AD%A6CPU%E8%BE%83%E9%AB%98/">p2p-relay服务CPU高</a>
+              </div>
+            </li>
+        
+    </ul>
+  </div>
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+               </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    </body>
+</html>
