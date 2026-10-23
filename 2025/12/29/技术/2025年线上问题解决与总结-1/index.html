@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2025年线上问题解决与总结-1" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    2025年线上问题解决与总结-1
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1%E3%80%81%E4%BA%91%E5%AD%98%E5%82%A8%E4%B8%9A%E5%8A%A1%E7%BB%8F%E5%B8%B8%E5%87%BA%E7%8E%B0%E6%8B%92%E7%BB%9D%E7%AD%96%E7%95%A5%E9%97%AE%E9%A2%98"><span class="post-toc-text">1、云存储业务经常出现拒绝策略问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90"><span class="post-toc-text">根因分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%8E%E7%BB%AD%E7%BB%B4%E6%8A%A4"><span class="post-toc-text">后续维护</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2%E3%80%81%E4%BA%91%E5%AD%98%E5%82%A8%E4%B8%9A%E5%8A%A1%E7%BA%BF%E7%A8%8B%E6%B1%A0%E8%B5%84%E6%BA%90%E4%B8%80%E7%9B%B4%E5%A2%9E%E5%8A%A0%E9%97%AE%E9%A2%98"><span class="post-toc-text">2、云存储业务线程池资源一直增加问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF-1"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90-1"><span class="post-toc-text">根因分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F"><span class="post-toc-text">解决方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3%E3%80%81%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1OOM%E9%97%AE%E9%A2%98"><span class="post-toc-text">3、分库分表定时任务OOM问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF-2"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90-2"><span class="post-toc-text">根因分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-text">解决方案</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><p>最近我跳槽了，虽然我进了新公司，从原先公司（滨江某安防公司）离职了，但是我个人认为还是要好好的对之前的工作做一个总结，以避免自己在未来再犯同样的错误，以下是我整理的几个在线上的时候遇到的问题与解决，包含背景、分析、解决、规避方案等方面。</p>
+<p>很多时候，那种可以预见到的问题，最好不要犯两次，一个可以预见的问题犯两次，可能领导不会说，但是实际上第二次就属于低级错误了，避免的方式就是第一次排查的时候就发现根因问题，并通过提升能力，固化流程等方式解决。这些是我遇到的问题以及解决思路，如果有更好的欢迎讨论，不吝赐教。</p>
+<p>第一部分主要用于展示云存储业务产生的线上问题以及解决</p>
+<h1 id="1、云存储业务经常出现拒绝策略问题"><a href="#1、云存储业务经常出现拒绝策略问题" class="headerlink" title="1、云存储业务经常出现拒绝策略问题"></a>1、云存储业务经常出现拒绝策略问题</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h2><p>如图所示，我们这边会有云存储（cloud storage）业务，设备会把资源上报到上报到存储桶里，我们这边也会有对应的微服务队设备的云存储功能进行编排，以下是这个系统大概的一个流程。</p>
+<pre class="mermaid">flowchart TD
+
+A[开始] --&gt; B[设备购买套餐]
+
+B --&gt; C[套餐上线]
+
+C --&gt; D[套餐开通]
+
+D --&gt; E{开通方式}
+
+E --&gt;|立即开通| F[下发token给设备]
+
+E --&gt;|定时开通| G[等待定时任务执行]
+
+F --&gt; H[设备使用token上传数据]
+
+G --&gt; F
+
+H --&gt; I{使用状态}
+
+I --&gt;|正常使用| H
+
+J[定时检查任务] --&gt; K{检查条件}
+
+K --&gt;|需要续费| L[自动续费套餐]
+
+K --&gt;|需要关闭| M[关闭套餐]
+
+K --&gt;|正常| J
+
+K --&gt;|token过期| N[更新设备token]
+
+L --&gt; H
+
+N --&gt; H
+
+M --&gt; O[套餐关闭]
+
+O --&gt; Q[结束]
+
+R[套餐转移] --&gt; S[更换设备绑定]
+
+S --&gt; F</pre>
+
+<p>可以看到，只有几块流程需要对通过线程池进行操作：比如对设备云存储套餐进行续费、关闭、开通、下发token（因和网页cookie一样，过期即失效，所以需要定时下发），但是随着业务量的增加，线程池经常触发拒绝策略</p>
+<p>虽然拒绝策略是CallersRunPolicy，但是对于运维，系统稳定性是一个痛点（当然如果任务量超过线程池量，我们的池化策略会失效，同时业务稳定性肯定有影响）</p>
+<p>同时如果更新线程池参数，但是因为没有对应API更新线程池参数，导致还需要重启服务才能生效，不合理</p>
+<p>调试验证的周期延长了，因为修改文件，重启服务都是线上操作，需要走流程</p>
+<h2 id="根因分析"><a href="#根因分析" class="headerlink" title="根因分析"></a><strong>根因分析</strong></h2><p>目前缺少一个合适的方式对线程池进行监控，运维，编排，并且这个也是其他的组会遇到的问题，其他的组没有对应的解决方案，我这边便通过引入动态线程池（Dynamic-TP）解决了这个问题。对应的一些文章为已经写过了，我把文章内容在这里</p>
+<p>动态线程池引入</p>
+<p>动态线程池源码</p>
+<p>动态线程池调参</p>
+<h2 id="后续维护"><a href="#后续维护" class="headerlink" title="后续维护"></a><strong>后续维护</strong></h2><p>生成动态线程池Util包进行接入使用</p>
+<p>对于重要业务进行线程池更新，对于其他新增非网关类pod也使用线程池，也通过私有仓库的二开dynamic-tp动态线程池包进行开发</p>
+<h1 id="2、云存储业务线程池资源一直增加问题"><a href="#2、云存储业务线程池资源一直增加问题" class="headerlink" title="2、云存储业务线程池资源一直增加问题"></a>2、云存储业务线程池资源一直增加问题</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>在接入动态线程池动之后，我们后续的业务也遇到了问题，线上其中一个环境中。</p>
+<ol>
+<li><p>当前的线程池告警持续触发拒绝策略（调度线程处理任务），增加资源量快于业务增长量，导致运维要求我们进行排查</p>
+</li>
+<li><p>线程池资源告警则增加资源，环境中云存储微服务已经增加到了6台，但是仍然线程的队列容量稳步上升，增加资源并不能解决问题</p>
+</li>
+<li><p>因为任务队列容量较多，导致大量云存储设备下发云存储都是在初始化的5-6h以后了，涉及设备面广，影响较大</p>
+</li>
+</ol>
+<h2 id="根因分析-1"><a href="#根因分析-1" class="headerlink" title="根因分析"></a>根因分析</h2><ol>
+<li><p>使用 jstack 1查看当前的线程池开头的线程状态与堆栈</p>
+</li>
+<li><p>发现初始化任务的线程池的线程状态都是WATING状态，这个是Java线程主动挂起等待的状态。</p>
+</li>
+</ol>
+<p>查看堆栈，都是在等待Redisson的锁释放</p>
+<ol start="3">
+<li><p>查看了下对应线程池设计的流程，发现在下发license时确实会通过lock方法加锁</p>
+</li>
+<li><p>查看 云存储的 日志，发现同一台设备在日志中频繁向设备下发初始化，10s一次，正常流程应当至少2min才初始化下发一次</p>
+</li>
+</ol>
+<p>所以我怀疑是代码问题+设备问题，导致的线程池资源占用。具体的问题原因可能如下</p>
+<pre class="mermaid">flowchart TD
+
+A[设备频繁重复注册] --&gt; B[注册网关发送大量初始化请求]
+
+B --&gt; C[线程池接收请求&lt;br&gt;创建多个同一设备的初始化线程]
+
+C --&gt; D[redisson源码层面可能的真实锁是 各线程尝试获取分布式锁&lt;br&gt;锁KEY: device_&lt;设备ID&gt;_init_lock]
+
+D --&gt; E{是否获取到锁?}
+
+E --&gt;|否| F[线程等待锁释放]
+
+E --&gt;|是| G[执行设备初始化流程]
+
+G --&gt; H[初始化完成&lt;br&gt;释放分布式锁]
+
+subgraph 问题发生场景
+
+I[服务重启开始] --&gt; J[线程池开始关闭&lt;br&gt;状态: SHUTDOWN]
+
+J --&gt; K[线程池关闭过程中&lt;br&gt;最后一个设备初始化线程释放锁]
+
+K --&gt; L[同一设备的另一个等待线程&lt;br&gt;获取到分布式锁]
+
+L --&gt; M[线程池状态变为TERMINATED&lt;br&gt;获取锁的线程被销毁]
+
+M --&gt; N[分布式锁被永久占用&lt;br&gt;持有者: 已销毁的线程]
+
+end
+
+subgraph 重启后问题
+
+O[新服务实例启动] --&gt; P[收到同一设备的初始化请求]
+
+P --&gt; Q[尝试获取分布式锁]
+
+Q --&gt; R{锁状态检查}
+
+R --&gt;|锁仍被旧线程持有&lt;br&gt;但线程已不存在| S[锁无法释放&lt;br&gt;永久阻塞]
+
+R --&gt;|正常情况| T[获取锁成功]
+
+S --&gt; U[线程池资源被持续占用&lt;br&gt;可能导致线程耗尽]
+
+end
+
+subgraph 根本原因分析
+
+V[Redisson锁机制] --&gt; W[锁标识: 客户端ID + 线程ID]
+
+W --&gt; X[服务重启后&lt;br&gt;客户端ID相同]
+
+X --&gt; Y[但持有锁的线程已不存在&lt;br&gt;且无法自动释放]
+
+end
+
+H --&gt; I
+
+M --&gt; O
+
+S --&gt; U
+
+Y --&gt; N</pre>
+
+<p>除了使用lock方式永久等待，redisson看门狗给错误的key进行续期也是个问题。</p>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><ol>
+<li><p>不能使用lock方法而是tryLock，等待一段时间后释放掉锁；一般会有重试机制，redisson锁一般是800ms以内，足够调用侧接收到异常并重试了</p>
+</li>
+<li><p>删除对应占用资源的redisson锁</p>
+</li>
+<li><p>排查redisson锁机制，避免出现重启仍然续期的问题。</p>
+</li>
+</ol>
+<h1 id="3、分库分表定时任务OOM问题"><a href="#3、分库分表定时任务OOM问题" class="headerlink" title="3、分库分表定时任务OOM问题"></a>3、分库分表定时任务OOM问题</h1><h2 id="背景-2"><a href="#背景-2" class="headerlink" title="背景"></a>背景</h2><p>还是云存储，某个环境中云存储服务一直不健康；原因是pod.yml中没有配置liveness，导致服务没有被容器重启；</p>
+<p>随后查看日志发现服务触发了OOM异常。</p>
+<p><a target="_blank" rel="noopener" href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/81ef31afe8a946708db662f313c7ecce~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=RvK4bAYi1RsHu+OY2e+tmrzKjxI=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/81ef31afe8a946708db662f313c7ecce~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=RvK4bAYi1RsHu+OY2e+tmrzKjxI=" alt="image.png"></a></p>
+<h2 id="根因分析-2"><a href="#根因分析-2" class="headerlink" title="根因分析"></a>根因分析</h2><p>使用jmap命令（jmap -dump:format&#x3D;b,file&#x3D;heapdump.hprof 1）打印出服务的内存dump文件；</p>
+<p>使用MemoryAnalyzer分析dump文件；</p>
+<p><a target="_blank" rel="noopener" href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/9de1461896c34ca38ceda24ed6ffcb8b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=lvn1zhmEa0kY0Dl06XrT7SQjgOI=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/9de1461896c34ca38ceda24ed6ffcb8b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=lvn1zhmEa0kY0Dl06XrT7SQjgOI=" alt="img"></a></p>
+<p>发现大对象是ShardingSphereDataSource，查看这个对象的外引用发现是数据库表实例；<a target="_blank" rel="noopener" href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/18b46fd380744da7ba3df2afc736be78~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=jX0WY+yAIPOrsLERBP02cJOn1bE=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/18b46fd380744da7ba3df2afc736be78~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=jX0WY+yAIPOrsLERBP02cJOn1bE=" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/744bfaea405e4be08b1faf7810a9b634~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=0xtti8h7LK8Cr6y/kGCsZudxkSA=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/744bfaea405e4be08b1faf7810a9b634~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=0xtti8h7LK8Cr6y/kGCsZudxkSA=" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/021045d55b544fec856796024cb0306f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=WkgA/BveEPyvJy3TS7tw4wN3hu8=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p9-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/021045d55b544fec856796024cb0306f~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1792975512&x-signature=WkgA/BveEPyvJy3TS7tw4wN3hu8=" alt="img"></a></p>
+<p>最终发现table元数据存在47256个结点；查看node中的value发现数据是表名，但是环境内的表最多存在5632张表，很明显47256是异常的；</p>
+<p>应该是环境内每日清理过期表的任务执行失败或者没有执行导致的；</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li>定时任务删除失败，并且没有记录，导致后续定时任务删除时，一次性获取过多的shardingJDBC导致问题，失败的定时任务需要及时通知开发人员进行介入</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-12-29</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BC%80%E5%8F%91/'>
+                            开发
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/12/30/%E6%8A%80%E6%9C%AF/2025%E5%B9%B4%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E4%B8%8E%E6%80%BB%E7%BB%93-2/'>2025年线上问题解决与总结-2</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E7%94%9F%E6%B4%BB/2610212243009087.%E7%BB%99%E4%BB%96%E4%BA%BA%E6%8F%90%E4%BE%9B%E4%BB%B7%E5%80%BC%E4%B8%8E%E7%BB%99%E8%87%AA%E5%B7%B1%E6%8F%90%E4%BE%9B%E4%BB%B7%E5%80%BC%E7%9A%84%E6%9D%83%E8%A1%A1/">给他人提供价值与给自己提供价值的权衡</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

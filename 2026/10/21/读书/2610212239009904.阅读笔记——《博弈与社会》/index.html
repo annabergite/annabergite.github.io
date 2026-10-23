@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《博弈与社会》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+        <div class="post-cover">
+            <img src="/images/20261018-231127.jpeg" alt="阅读笔记——《博弈与社会》" loading="lazy" />
+        </div>
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《博弈与社会》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-05</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：5分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%96%9C%E5%A5%BD"><span class="post-toc-text">喜好</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%9A%E5%BC%88%E7%9A%84%E4%B8%BB%E8%A6%81%E5%88%86%E7%B1%BB"><span class="post-toc-text">博弈的主要分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B0%81%E7%B1%BB%E5%AE%9A%E4%B9%89%E5%88%86%E7%B1%BB"><span class="post-toc-text">谁类定义分类</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="post-toc-text">其他重要的信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E5%88%86%E7%B1%BB"><span class="post-toc-text">其他分类</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 2 月</p>
+<p>我前段时间阅读了《博弈与社会》，发现博弈论真的是个好东西</p>
+<h1 id="喜好"><a href="#喜好" class="headerlink" title="喜好"></a>喜好</h1><p>博弈论让我们做好选择，做好每一步的动作，首先对于那些有价值的选择&#x2F;事情，肯定人们会有更喜欢，怎么选择自己更喜欢的结果，就是博弈论正在做的事情</p>
+<p>（当然出现的循环喜好，比如喜欢梨&gt;香蕉&gt;橙子&gt;西瓜&gt;梨）这部分会优先进行舍弃，因为对我们设计博弈规则有误导，所以需要进行舍弃，对剩下的信息进行处理</p>
+<p>为了能达到纳什均衡&#x2F;帕累托最优，博弈规则会尝试进行帕累托改进</p>
+<p>我这边先尝试分分类</p>
+<h1 id="博弈的主要分类"><a href="#博弈的主要分类" class="headerlink" title="博弈的主要分类"></a>博弈的主要分类</h1><p>常见场景</p>
+<p>区分场景，事情至少有三个层次，一个是他知道，一个是我知道，一个是我知道他知道，这个时候就有了博弈的思路了，最多再有一个他知道我知道，我知道他知道我知道这几个层次，再超过就不好判断了</p>
+<p>（那个信息最终绝对不透明，是相对于我们生活中的设计，因为确实存在这种情况）</p>
+<p>| 信息是否透明\博弈次数 | | 静态博弈（过程一次动作） | | 动态博弈（过程多次动作） | | 重复博弈（相同博弈重复多次） |<br>| 信息透明 | | 石头剪刀布 | | 一个居于规则的处理，如象棋 | | 打很多遍围棋或者石头剪刀布 |<br>| 信息不透明 | | 暂无&#x2F;购买东西 | | 二手车市场&#x2F;保险服务 | | 职场合作 |<br>| 信息最终绝对透明 | | —— | | 暂时没想到 | | 长久亲密关系 |</p>
+<p>应对策略</p>
+<p>| 信息是否透明\博弈次数 | | 静态博弈（过程一次动作） | | 动态博弈（过程多次动作） | | 重复博弈（相同博弈重复多次） |<br>| 信息透明 | | 随机动作 | | 根据最终收益最大的选择进行反推 | | 最后一次必然背叛 |<br>| 信息不透明 | | 确保自己利益最大化 | | 品牌效应，权威第三方 | | 看情况&#x2F;约定社会准则 |<br>| 信息最终绝对透明 | | —— | | —————— | | 看情况&#x2F;约定社会准则 |</p>
+<p>有一些通用方式进行博弈论的应对策略，比如本身品牌效用和权威第三方的使用范围就很广</p>
+<p>重复博弈则会有以下几个具体情况（其实这几种场景可以同时出现，可能同时，可能在不同时间进度下不一样）</p>
+<p>| 情况 | | 使用模型 | | 做些什么 | | 应用场景 |<br>| 是否担心贴现率&#x2F;是否足够有耐心+完全信息 （或者是合作的可行性分析） | | 无名氏定理 | | 可以合作，让合作带来的未来收益足够大，从而降低短期背叛的诱惑 | | 成熟市场双寡头&#x2F;验证可行性 |<br>| 信息微小不确定+足够有耐心 | | KWRW | | 让对方相信有长期合作意愿，诱使对方前期选择合作，释放出不确定一定的非理性 | | 新进入者与在位企业 |<br>| 信息严重不确定+长期可以揭示 | | 贝叶斯博弈模型 | | 优先小项目合作，根据反馈信息逐步更新自己的模型判断 | | 长期贸易伙伴 |<br>| 参与人无法处理大量信息 | | 不完美监控&#x2F;KW2W | | 简化策略，引入可验证外部信号 | | 日常交往 |<br>| 具体操作 | | 以牙还牙&#x2F;赢保输改&#x2F;善意以牙还牙 | | 第一次必然合作，但是后续遇到背叛，则下一次必然背叛他，之后继续合作 | | 日常交往 |</p>
+<p>重复博弈代表着有可行性分析（无名氏定理）先判断是否可行，再有KWRW&#x2F;KW2W&#x2F;贝叶斯进行模型设计，再有一些具体操作进行操作处理</p>
+<p>很有可能，在持续尺度上，小尺度&#x3D;动态博弈&#x2F;重复博弈，中尺度：动态博弈，长尺度：演化博弈</p>
+<p>其他的，还有演化博弈，也就是一个群体中，持有某种策略的人的群体会变化，可能会被新的替代，可能不断的出现动态平衡</p>
+<h1 id="谁类定义分类"><a href="#谁类定义分类" class="headerlink" title="谁类定义分类"></a>谁类定义分类</h1><p>同样的，假定别人设计</p>
+<h1 id="其他重要的信息"><a href="#其他重要的信息" class="headerlink" title="其他重要的信息"></a>其他重要的信息</h1><ul>
+<li>贴现因子：贴现因子小就是有人觉得未来收益没那么大，在当前的资金上贴现少，此时这个人就会考虑利益最大化，包括但不限于背叛，没耐心；但是如果贴现因子大，就是有人觉得未来收益大，在当前资金上贴现极大，代表这个人更有耐心，更会有长期合作</li>
+<li>信号博弈，比如我学习很多，只是为了拿到一个学历，但是这个学历不是为了证明我有知识，代表我愿意浪费我的时间去获取这么一张文凭，给别人的信号就是自己有资质，有合作意向，同时，比较好的外形与意愿度，行贿送礼等也是这个范畴</li>
+<li>通过最终结果反推第一步操作：如果对方是理性人，那他就会尝试自己利益最大化，反推他的最后一步，就能知道他会做什么，反推我的最大化利益的最后一步，尝试找到分歧点。可信威胁，承诺的可信性</li>
+<li>信息不对称：信息分为事前信息不对称和事后信息不对称，也就是事前不知道情况，或者时候不知道对应人的情况，两者经常重复出现</li>
+<li>激励相容：创造让对方说实话，合作环境氛围</li>
+<li>纳什均衡，帕累托改进，帕累托最优</li>
+<li>共同知识&#x2F;信念与信念的层级</li>
+<li>焦点&#x2F;可验证性</li>
+<li>时间一致性与承诺能力</li>
+<li>协调&#x2F;动态过程（这一段需要主要进行学习）</li>
+</ul>
+<h1 id="其他分类"><a href="#其他分类" class="headerlink" title="其他分类"></a>其他分类</h1><ul>
+<li>演化博弈</li>
+<li>制度家也算是博弈的一部分，将自己的主张分发给大众</li>
+<li>作为生物性状的博弈</li>
+<li>网格博弈</li>
+<li>信号博弈<br>等等等等正在学习中</li>
+</ul>
+<hr>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-05</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E7%94%9F%E6%B4%BB/2610212240009655.2025%E5%B9%B4%E4%B8%80%E5%B9%B4%EF%BC%8C%E6%88%91%E6%89%80%E5%BD%A2%E6%88%90%E7%9A%84%E6%A8%A1%E5%9E%8B/'>2025年一年，我所形成的模型</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E7%94%9F%E6%B4%BB/2610212241007454.%E7%A4%BE%E7%BE%A4%E6%B4%BB%E5%8A%A8%E8%A7%84%E5%88%99%E5%88%86%E6%9E%90%E2%80%94%E2%80%94%E5%A4%A7%E5%9F%8E%E5%B8%82coffee%20chat/">社群活动规则分析——大城市coffee chat</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

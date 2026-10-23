@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="2025年线上问题解决与总结-2" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    2025年线上问题解决与总结-2
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：2.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1%E3%80%81%E5%91%8A%E8%AD%A6%E6%85%A2%E6%9F%A5%E8%AF%A2%E8%A7%A3%E5%86%B3"><span class="post-toc-text">1、告警慢查询解决</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-text">背景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E7%8E%B0%E8%B1%A1"><span class="post-toc-text">问题现象</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8E%92%E6%9F%A5%E6%96%B9%E5%BC%8F"><span class="post-toc-text">排查方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F"><span class="post-toc-text">解决方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1%E3%80%81%E8%87%AA%E5%B7%B1%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E7%9A%84"><span class="post-toc-text">3.1、自己可以修改的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2%E3%80%81%E9%9C%80%E8%A6%81%E9%85%8D%E5%90%88%E7%9A%84"><span class="post-toc-text">3.2、需要配合的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86"><span class="post-toc-text">产品经理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#app"><span class="post-toc-text">app</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E5%9B%9E%E6%BA%AF"><span class="post-toc-text">问题回溯</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BC%98%E5%8C%96%E6%95%88%E6%9E%9C"><span class="post-toc-text">优化效果</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%8E%E7%BB%AD%E4%BC%98%E5%8C%96"><span class="post-toc-text">后续优化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="post-toc-text">推荐阅读</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2%E3%80%81%E6%89%93%E6%B4%9E%E5%BE%AE%E6%9C%8D%E5%8A%A1CPU%E5%8D%87%E9%AB%98"><span class="post-toc-text">2、打洞微服务CPU升高</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF-1"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B9%E5%9B%A0%E5%88%86%E6%9E%90"><span class="post-toc-text">根因分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-text">解决方案</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><p>这个是本系列的第2个文章，主要用于记录一下告警业务的几个比较典型的线上问题，以此警戒</p>
+<p>往期文章见【实践】2025年线上问题解决与总结-1</p>
+<p>（告警业务就是安防行业会给消费者提供监控设备，监控设备会进行监控，监控过程中可能会通过算法获取到信息，比如行人通过，火花等，通过图像识别的方式将该画面&#x2F;视频记录下来上报到我们这边的安防平台，或者是将视频发送到安防平台，再通过平台的AI识别进行告警判断，最终触发告警通知与存储，方便APP用户&#x2F;第三方对接者等操作方获取告警以及对应的告警信息）</p>
+<p>大概流程如下</p>
+<pre class="mermaid">graph LR
+
+A[设备上报告警] --&gt; B[告警网关]
+
+B --&gt; C[Kafka发送]
+
+C --&gt; D[消费告警数据]
+
+D --&gt; E{设备类型判断}
+
+E --&gt;|特定设备告警| F[P2P打洞连接]
+
+F --&gt; G[查询设备状态]
+
+G --&gt; H[数据处理]
+
+E --&gt;|其他设备告警| H
+
+H --&gt; I[数据存储]
+
+I --&gt; J[平台展示]
+
+J --&gt; K[通知相关人员]</pre>
+
+<h1 id="1、告警慢查询解决"><a href="#1、告警慢查询解决" class="headerlink" title="1、告警慢查询解决"></a>1、告警慢查询解决</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>告警页面由APP+ H5开发转纯H5页面优化</p>
+<p>好处</p>
+<ol>
+<li><p>开发与维护需要服务端+APP+H5同时开发，对于项目管理复杂</p>
+</li>
+<li><p>转成H5可以减少APP的开发压力</p>
+</li>
+</ol>
+<h3 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h3><ol>
+<li>慢查询16K&#x2F;天</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/08395e32628f4804bb784b3bb4520ed1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=XuQaAG5W4iZw+9SXPkYhsuKIcuU=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/08395e32628f4804bb784b3bb4520ed1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=XuQaAG5W4iZw+9SXPkYhsuKIcuU=" alt="image.png"></a></p>
+<ol start="2">
+<li>线上MySQL CPU有激增现象，不过缓存命中率，内存利用率无明显变化</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/d2a305bc73cb4cbc9b002fdca3778759~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=LnxrwaTdPD3auZeq650gCyw53oU=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/d2a305bc73cb4cbc9b002fdca3778759~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=LnxrwaTdPD3auZeq650gCyw53oU=" alt="image.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5da440741f9a4b56b991a6b9fdc1db6b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=UDJ66Q0RX0iOd9YxSEHWuCM9jdM=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5da440741f9a4b56b991a6b9fdc1db6b~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=UDJ66Q0RX0iOd9YxSEHWuCM9jdM=" alt="image.png"></a></p>
+<h2 id="排查方式"><a href="#排查方式" class="headerlink" title="排查方式"></a>排查方式</h2><p>结论先行，以下是该列表的优化流程</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/366ee308ccdd419dab6f43eb6acfc796~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=d8Sr8uBaEBJP+ZtgqYZOKHhY65E=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/366ee308ccdd419dab6f43eb6acfc796~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=d8Sr8uBaEBJP+ZtgqYZOKHhY65E=" alt="image.png"></a></p>
+<ol>
+<li>直接使用购买MySQL实例的腾讯云上面的智能优化</li>
+</ol>
+<p><strong>可以优先查看AI的优化建议进行快速修复的凭证</strong></p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/b7192e741f4346f796d30bfec64ef454~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=it5DCeOTADz8WAI3hvBhSLE2HR0=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/b7192e741f4346f796d30bfec64ef454~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=it5DCeOTADz8WAI3hvBhSLE2HR0=" alt="image.png"></a></p>
+<ol start="2">
+<li>查看慢sql的统计情况，发现慢sql和CPU趋势较为相同</li>
+</ol>
+<p><strong>这说明如果优化了慢查询，则MysqlCPU较高问题也可以解决</strong></p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/f7d60c5e91da4dfe8f35494251e44c2e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=sZ6VfPzE7hk2/K9nNex12FO2E8U=" title="994a8ff4419f284e41339ad008f0d530" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/f7d60c5e91da4dfe8f35494251e44c2e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=sZ6VfPzE7hk2/K9nNex12FO2E8U=" alt="994a8ff4419f284e41339ad008f0d530"></a></p>
+<ol start="3">
+<li>导出慢查询日志，进行sql统计分析，发现其中99%以上是开发的告警信息列表查询语句</li>
+</ol>
+<p><strong>这表明优化单一告警即可优化Mysql的慢查询</strong></p>
+<ol start="4">
+<li>在线上环境使用explain对查询语句进行查看，发现以下现象：</li>
+</ol>
+<p>partition占用较多——打算减少partition</p>
+<p>type为range，不是ref、eq_ref、const、system等——怀疑索引效果差，需要优化索引</p>
+<p>key有值——有索引</p>
+<p>rows大，且filtered较小，只有2%——扫描200条数据需要进而扫描大量条数数据，不合理，需修改查询条件</p>
+<p>extra——有Using filesort，排序未触发索引，需优化索引</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/4831b88bcd61463a892b4312484ea6f2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=oEBsNeGZ26sONU+ECvG4JUP+CqM=" title="4873f5fb0e88d3f8c86bf327d2fd566e" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/4831b88bcd61463a892b4312484ea6f2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=oEBsNeGZ26sONU+ECvG4JUP+CqM=" alt="4873f5fb0e88d3f8c86bf327d2fd566e"></a></p>
+<ol start="5">
+<li>随机查看其他用户，发现告警量大的用户稳定出现慢查询，告警总量大约是20W-50W，告警量少的用户，即使是跨分区也不会出现慢查询</li>
+</ol>
+<h2 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h2><h3 id="3-1、自己可以修改的"><a href="#3-1、自己可以修改的" class="headerlink" title="3.1、自己可以修改的"></a><strong>3.1、自己可以修改的</strong></h3><ol>
+<li>改变查询条件顺序，减少查询条件</li>
+</ol>
+<p>expire_time &gt;now()——删除，因为每天会将超过过期时间的数据删掉</p>
+<p>alarm_time between and——需要放在最后，因为联合索引在&gt;,&lt;,between and后会失效</p>
+<p>设备id ——放到稍微靠前的位置，因为该字段在线上验证时，发现该字段独立度更高，如id 是114514时占总数据的1-5%，而告警类型2000可以占10%左右，所以设备id需要放在比告警类型更靠前的位置</p>
+<ol start="2">
+<li>优化联合索引顺序，个数</li>
+</ol>
+<p>app的最常见查询条件作为联合索引的个数与顺序</p>
+<p>通过腾讯云迁移数据到测试环境数据库验证解决</p>
+<p>迁移单个表，单表200w数据，去其中的告警量50w单个用户进行压力测试</p>
+<ol start="3">
+<li><p>尝试增加资源——MySQL实例已经是购买的最贵的实例，无法优化</p>
+</li>
+<li><p>paritition删除——删除会导致线上长时间停顿20min以上，且涉及到删除过期数据逻辑，无法优化</p>
+</li>
+</ol>
+<h3 id="3-2、需要配合的"><a href="#3-2、需要配合的" class="headerlink" title="3.2、需要配合的"></a>3.2、需要配合的</h3><h3 id="产品经理"><a href="#产品经理" class="headerlink" title="产品经理"></a>产品经理</h3><ol>
+<li>重构时默认查询7天，涉及多个partition，可不可以改成默认查询1天——为了在功能上对标海康，大华，不能进行修改</li>
+</ol>
+<h3 id="app"><a href="#app" class="headerlink" title="app"></a>app</h3><ol>
+<li>缺少偏移量，期望入参增加偏移量，避免后续出现的深分页问题——app暂时没人力投入，不进行修改</li>
+</ol>
+<h2 id="问题回溯"><a href="#问题回溯" class="headerlink" title="问题回溯"></a>问题回溯</h2><ol>
+<li><p>新问题单开发同事开发时直接在原有查询中间添加查询条件</p>
+</li>
+<li><p>以下为测试环境压力测试时CPU，内存图片，无问题</p>
+</li>
+</ol>
+<p>推测可能是因为测试环境压测数据量不够导致问题</p>
+<p>为什么没有准备合适数据，原因为慢查询多为数据量较少用户</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/6a9b9aec5a564b1ca73ad97f2db0177d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=MEwl9z+BD9A0GJA3kfpdqRorOZ4=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/6a9b9aec5a564b1ca73ad97f2db0177d~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=MEwl9z+BD9A0GJA3kfpdqRorOZ4=" alt="image.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5147b618e6764ff28c772bd7cbb32dc1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=vvC+IAFlAzJECNuvgWXgaRXWN5s=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/5147b618e6764ff28c772bd7cbb32dc1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=vvC+IAFlAzJECNuvgWXgaRXWN5s=" alt="image.png"></a></p>
+<h2 id="优化效果"><a href="#优化效果" class="headerlink" title="优化效果"></a>优化效果</h2><ol>
+<li>慢查询explain优化</li>
+</ol>
+<p>filtered查询行数降低，筛选率变高</p>
+<p>extra没有using filesort</p>
+<p>type虽然还是range，但是实际上速度已经可以来到200ms左右，顾先不优化，因为本次目的是减少慢查询降低MySQL压力</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/1eab43abf9d94a4cb09f0744796f7e02~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=g7xg+9j9TJsgHUkKx95FvvhzROE=" title="image-20250706185239859" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/1eab43abf9d94a4cb09f0744796f7e02~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=g7xg+9j9TJsgHUkKx95FvvhzROE=" alt="image-20250706185239859"></a></p>
+<ol start="2">
+<li>每日慢查询数量降低，从16k&#x2F;天 -&gt; 500&#x2F;天</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/2c49611f9cde4d92834a5756b2374041~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=RBjQ/dGM6eEq+F+Zy0kEjqq/m4U=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/2c49611f9cde4d92834a5756b2374041~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=RBjQ/dGM6eEq+F+Zy0kEjqq/m4U=" alt="image.png"></a></p>
+<h1 id="后续优化"><a href="#后续优化" class="headerlink" title="后续优化"></a>后续优化</h1><ol>
+<li><p>APP侧辅助修改提问题单</p>
+</li>
+<li><p>后续排查发现告警有子模块呼叫查询，也会使用tbl_alarm表，为了减少单表压力，提单将对应查询优化到专门存储呼叫的表中进行查询</p>
+</li>
+</ol>
+<h1 id="推荐阅读"><a href="#推荐阅读" class="headerlink" title="推荐阅读"></a>推荐阅读</h1><ol>
+<li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/">Mysql Documentation</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html">MySQL documentation explain</a></p>
+</li>
+</ol>
+<h1 id="2、打洞微服务CPU升高"><a href="#2、打洞微服务CPU升高" class="headerlink" title="2、打洞微服务CPU升高"></a>2、打洞微服务CPU升高</h1><h2 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h2><p>告警有主动P2P打洞的业务，添加该功能后，对应主要用于打洞的微服务有CPU升高问题</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a6d1cda2a48448c8bda61d623e88a537~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=sMcoDWufalxnkitrmWfae3/nslw=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a6d1cda2a48448c8bda61d623e88a537~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=sMcoDWufalxnkitrmWfae3/nslw=" alt="image.png"></a></p>
+<h2 id="根因分析"><a href="#根因分析" class="headerlink" title="根因分析"></a>根因分析</h2><ol>
+<li>CPU高主要是pid为1的java进程占用的，也就是p2p-relay的服务</li>
+</ol>
+<p>因为是CPU高，所以只需要查看下CPU高的愿意，如果是内存高则需要用另一种方式解决</p>
+<ol start="2">
+<li>使用top -H，查看线程号为8&#x2F;9&#x2F;10&#x2F;11的线程CPU使用率的特别高</li>
+</ol>
+<ul>
+<li><p><code>PID</code>：进程ID。它是标识进程的唯一正整数。我们可以通过 <code>kill 命令</code> 带上 PID 来杀掉进程。</p>
+</li>
+<li><p><code>USER</code>：启动该进程的“有效”用户名。Linux为进程分配一个<code>真实的用户ID</code>和一个<code>有效的用户ID</code>。后者允许进程代表另一个用户执行操作。（例如，非root用户可以提升为root用户才能安装软件包。） 扩展阅读：</p>
+</li>
+<li><p><code>NI</code>：NI 字段显示进程的 nice 值，负值表示高优先级，正值表示低优先级。</p>
+</li>
+<li><p><code>PR</code>：PR 字段从内核的角度显示了进程的调度优先级。nice 值会影响进程的优先级。</p>
+</li>
+<li><p><code>VIRT</code>：进程消耗的内存总量。这包括程序的代码、进程存储在内存中的数据以及 Swap 的任何内存区域，即<code>包含(RAM 和 Swap)</code>。</p>
+</li>
+<li><p><code>RES</code>：是该进程在 RAM 中消耗的内存<code>(不包含 Swap)</code>。</p>
+</li>
+<li><p><code>SHR</code>：是与其他进程共享的内存量。</p>
+</li>
+<li><p><code>％MEM</code>：进程消耗 RAM 内存总量的百分比。</p>
+</li>
+<li><p><code>S</code>：进程状态。和前面叙述的一样，进程可能处于各种状态。此字段以<code>单字母</code>形式显示过程状态。</p>
+</li>
+<li><p><code>TIME+</code>：自进程启动以来所使用的 CPU 总时间，精确到 <code>1/100</code> 秒。</p>
+</li>
+<li><p><code>COMMAND</code>：进程名称。</p>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/0b93a7e68c274838b9920de719a849f2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=fG3LJYNTYAJD4ha435BZ/fsyxCc=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/0b93a7e68c274838b9920de719a849f2~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=fG3LJYNTYAJD4ha435BZ/fsyxCc=" alt="img"></a></p>
+<ol start="3">
+<li>jstack 1查看线程8&#x2F;9&#x2F;10&#x2F;11对应着四个ParalLelGC并行垃圾回收器（CPU 4核会存在4个垃圾回收器线程）；</li>
+</ol>
+<p>垃圾回收器线程为什么会CPU高，说明有大量的对象在被创建&#x2F;没有引用&#x2F;被回收持续往复</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/f0ccb5d7790345009b788566913f8db1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=tmzXBSIf+YavSBvuptH2NXm9glE=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/f0ccb5d7790345009b788566913f8db1~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=tmzXBSIf+YavSBvuptH2NXm9glE=" alt="img"></a></p>
+<ol start="4">
+<li>使用arthas的dashboard命令查看，young gc出现了289W次，持续了8小时（进程启动了25小时)，再次确认有大量的对象在被创建</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/cb35fb9d2c75455eacc7570b7b0d7e62~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=J9J9ZfLYurjMdNrkRm3PTUQn+rY=" title="img" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/cb35fb9d2c75455eacc7570b7b0d7e62~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=J9J9ZfLYurjMdNrkRm3PTUQn+rY=" alt="img"></a></p>
+<ol start="5">
+<li>使用jstat -gc 1000 | awk ‘{print $6}’ 观察 Eden 分配速率，发现每隔几秒采集就有大量Eden对象创建（单位是kb）；也就是说时时刻刻有2.27G的对象产生</li>
+</ol>
+<p>大量对象产生说明业务中存在很大的并发的业务；结合p2p-relay流程，怀疑是接口&#x2F;pr&#x2F;device&#x2F;p2p&#x2F;invoke接口调用的频发；</p>
+<p>但是TOMCAT的http-nio线程并不多，说明请求量并没有很大</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/73ea02ca153049baa57c8f4a6440677e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=0HQLBlfrDDn8h1rd90Yjq7r4P3c=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/73ea02ca153049baa57c8f4a6440677e~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=0HQLBlfrDDn8h1rd90Yjq7r4P3c=" alt="image.png"></a></p>
+<ol start="6">
+<li><p>怀疑是日志导致的GC较高，Java侧代码方便直接识别日志，C代码侧比较麻烦，是通过JNA进行Java的对象进行打印的。</p>
+</li>
+<li><p>业务如果回调频繁，岂不是要创建大量的String对象（JNA 将原生代码（如 C&#x2F;C++的 char*）传递的字符串转换为 Java 的 String）；为了确认日志回调的量，将打洞组件的日志级别开到最细（什么都会打印），在日志采集服务中发现P2P产生的日志是其他所有服务加起来的10倍+<br><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a7a299e97a8a426297841fb3c8626a35~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=NFh77amn0VBtfcf/HR3Sf09XL9o=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/a7a299e97a8a426297841fb3c8626a35~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=NFh77amn0VBtfcf/HR3Sf09XL9o=" alt="image.png"></a></p>
+</li>
+</ol>
+<p>那问题基本确认就是这个造成的，将设置回调的函数注释掉，并重新部署</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><ol>
+<li><p>直接与P2P组件团队沟通，解决日志问题。</p>
+</li>
+<li><p>同步我们这一侧的开发规范给P2P组件团队，方便进行后续对接。</p>
+</li>
+</ol>
+<p>切打洞组件后，CPU正常了，闭环</p>
+<p><a target="_blank" rel="noopener" href="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/957e6916438248dc8a52f1be17b7fe59~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=V9wDmpNVsrb5mlm+l6Nu1Y8RctY=" title="image.png" class="gallery-item" style="box-shadow: none;"> <img src="https://p6-xtjj-sign.byteimg.com/tos-cn-i-73owjymdk6/957e6916438248dc8a52f1be17b7fe59~tplv-73owjymdk6-jj-mark-v1:0:0:0:0:5o6Y6YeR5oqA5pyv56S-5Yy6IEAg6Zi_5ZOyQXl1:q75.awebp?rk3s=f64ab15b&x-expires=1793090383&x-signature=V9wDmpNVsrb5mlm+l6Nu1Y8RctY=" alt="image.png"></a></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-12-30</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BC%80%E5%8F%91/'>
+                            开发
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2025/12/31/%E6%8A%80%E6%9C%AF/2025%E5%B9%B4%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E4%B8%8E%E6%80%BB%E7%BB%93-3/'>2025年线上问题解决与总结-3</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/12/29/%E6%8A%80%E6%9C%AF/2025%E5%B9%B4%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E4%B8%8E%E6%80%BB%E7%BB%93-1/">2025年线上问题解决与总结-1</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

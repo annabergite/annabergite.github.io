@@ -46,7 +46,7 @@
     
     
         
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/toc.css">
+<link rel="stylesheet" href="/css/toc.css">
 
     
 
@@ -78,7 +78,7 @@
 
     <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
     
     
@@ -243,6 +243,8 @@
     
 
     
+
+    
         
             
                 <div class="post-main-title" style="text-align: center;">
@@ -294,12 +296,12 @@
 <p>互联网的基石是分布式系统，一个通过系统设计极大降低系统复杂度的系统，作为开发设计</p>
 <p>使用这本书厘清一系列概念是非常重要的，了解一系列技术的发展历程，变化关系，才能更好的做开发与架构设计</p>
 <p>（虚拟化相关的设计没特别关注）</p>
-<h3 id="演进式架构"><a href="#演进式架构" class="headerlink" title="演进式架构"></a>演进式架构</h3><pre><code class="mermaid">flowchart LR
+<h3 id="演进式架构"><a href="#演进式架构" class="headerlink" title="演进式架构"></a>演进式架构</h3><pre class="mermaid">flowchart LR
     A[原始分布式时代] --&gt;B(单体系统时代)
     B[单体系统时代] --&gt;C(SOA时代)
     C[SOA时代] --&gt;D(微服务时代)
     D[微服务时代] --&gt;E(后微服务时代)
-    E[后微服务时代] --&gt;F(无服务时代)</code></pre>
+    E[后微服务时代] --&gt;F(无服务时代)</pre>
 
 <p>容错性设计会承认服务会出错，演进式设计则策划给承认服务会被报废淘汰</p>
 <p>技术设计者的第一职责是决策权哼，有利有弊才需要决策，有取有舍才需要权衡，因此要求设计者本身的知识面需要完全覆盖需要决策的内容，清楚其中的利弊</p>
@@ -402,7 +404,7 @@
 </tbody></table>
 <p>MVCC 是只针对“读 + 写”场景的优化，如果是两个事务同时修改数据，即“写 + 写”的情况，那就没有多少优化的空间了，此时加锁几乎是唯一可行的解决方案，稍微有点讨论余地的是加锁策略是选“乐观加锁”（Optimistic Locking）还是选“悲观加锁”（Pessimistic Locking）。</p>
 <h4 id="2-2-全局事务"><a href="#2-2-全局事务" class="headerlink" title="2.2 全局事务"></a>2.2 全局事务</h4><p>（XA 事务时对事务调度器和资源调度的整合）</p>
-<pre><code class="mermaid">graph TD
+<pre class="mermaid">graph TD
 A[共识协议层] --&gt; A1(2PC/3PC)
 A --&gt; A2(Paxos/Raft/ZAB) --&gt; B[协调器高可用]
 A --&gt; A3(Gossip) --&gt; C[最终一致系统]
@@ -410,11 +412,11 @@ A --&gt; A3(Gossip) --&gt; C[最终一致系统]
 D[事务模型层] --&gt; D1(XA) --&gt; A1
 D --&gt; D2(TCC) --&gt; B
 D --&gt; D3(SAGA) --&gt; E[消息中间件] --&gt; A2
-D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
+D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</pre>
 
 <h4 id="2-3-共享事务"><a href="#2-3-共享事务" class="headerlink" title="2.3 共享事务"></a>2.3 共享事务</h4><p>“共享事务”的提法和这里所列的两种处理方式在实际应用中并不值得提倡，鲜有采用这种方式的成功案例，能够查询到的资料几乎都发源于十余年前 Spring 的核心开发者 Dave Syer 撰写的文章“Distributed Transactions in Spring,with and without XA”[插图]。笔者把共享事务列为本章介绍的四种事务类型之一只是为了叙述逻辑的完备，尽管拆分微服务后仍然共享数据库的情况在现实中并不少见，但笔者个人不赞同将共享事务作为一种常规的解决方案来考量。</p>
 <h4 id="2-4-分布式事务"><a href="#2-4-分布式事务" class="headerlink" title="2.4 分布式事务"></a>2.4 分布式事务</h4><p>ACID 与 CAP 与 BASE</p>
-<pre><code class="mermaid">flowchart LR
+<pre class="mermaid">flowchart LR
     A[CAP理论] --&gt; B1(CP模式)
     B1[CP模式] --&gt; B2(强一致性)
     B2[强一致性] --&gt; B3(ACID事务)
@@ -422,7 +424,7 @@ D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
     A[CAP理论] --&gt; C1(AP模式)
     C1[CAP理论] --&gt; C2(最终一致性,弱一致性)
     C2[CAP理论] --&gt; C3(BASE事务)
-    C3[CAP理论] --&gt; C4(柔性事务)</code></pre>
+    C3[CAP理论] --&gt; C4(柔性事务)</pre>
 
 <h3 id="3、透明多级分流系统与架构安全性"><a href="#3、透明多级分流系统与架构安全性" class="headerlink" title="3、透明多级分流系统与架构安全性"></a>3、透明多级分流系统与架构安全性</h3><p>四层负载均衡的优势是性能高，七层负载均衡的优势是功能强。</p>
 <p>做多级混合负载均衡，通常应是低层负载均衡在前，高层负载均衡在后。</p>
@@ -474,6 +476,12 @@ D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
         
         </i>
     </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
     <br>
     
     
@@ -482,7 +490,7 @@ D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
     
             <div class="post-footer-pre-next">
                 
-                    <span>上一篇：<a href='/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/'>Dynamic-TP动态线程池部署SOP</a></span>
+                    <span>上一篇：<a href='/2025/07/12/%E5%BC%80%E5%8F%91/1.superset%E5%AE%89%E8%A3%85%E6%96%87%E6%A1%A3/'>superset安装文档</a></span>
                 
 
                 
@@ -558,7 +566,7 @@ D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
     
-<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/toc.js"></script>
+<script src="/js/toc.js"></script>
 
 
 
@@ -690,5 +698,5 @@ D --&gt; D4(AT) --&gt; F[事务协调器TC] --&gt; A2</code></pre>
                 }
             });
         </script>
-    </body>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
 </html>

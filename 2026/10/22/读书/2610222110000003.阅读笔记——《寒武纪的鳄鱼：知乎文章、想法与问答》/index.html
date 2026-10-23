@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《寒武纪的鳄鱼：知乎文章、想法与问答》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《寒武纪的鳄鱼：知乎文章、想法与问答》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：9.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：33分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E5%AF%92%E6%AD%A6%E7%BA%AA%E7%9A%84%E9%B3%84%E9%B1%BC%EF%BC%9A%E7%9F%A5%E4%B9%8E%E6%96%87%E7%AB%A0%E3%80%81%E6%83%B3%E6%B3%95%E4%B8%8E%E9%97%AE%E7%AD%94%E5%90%88%E9%9B%86%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《寒武纪的鳄鱼：知乎文章、想法与问答合集》阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E6%8A%95%E8%B5%84%E5%93%B2%E5%AD%A6%EF%BC%9A%E4%B8%89%E5%A4%A7%E6%94%AF%E6%9F%B1"><span class="post-toc-text">一、核心投资哲学：三大支柱</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%91%A8%E6%9C%9F%EF%BC%88%E6%9C%80%E9%87%8D%E8%A6%81%EF%BC%89"><span class="post-toc-text">1. 周期（最重要）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BB%B7%E5%80%BC"><span class="post-toc-text">2. 价值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%A4%8D%E5%88%A9"><span class="post-toc-text">3. 复利</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E8%B4%A2%E5%AF%8C%E6%9C%AC%E8%B4%A8%E8%AE%BA%EF%BC%9A%E5%8D%A0%E6%9C%89%E7%94%9F%E4%BA%A7%E8%B5%84%E6%96%99"><span class="post-toc-text">二、财富本质论：占有生产资料</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E6%8A%95%E8%B5%84%E5%8D%81%E5%85%AD%E5%AD%97%E5%8E%9F%E5%88%99%E4%B8%8E%E2%80%9D%E5%9B%A4%E7%A7%AF%E5%95%86%E5%93%81%E2%80%9D%E8%AE%BA"><span class="post-toc-text">三、投资十六字原则与”囤积商品”论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%95%E8%B5%84%E5%8D%81%E5%85%AD%E5%AD%97%E5%8E%9F%E5%88%99%EF%BC%882025-%E5%B9%B4%E6%8F%90%E5%87%BA%EF%BC%89"><span class="post-toc-text">投资十六字原则（2025 年提出）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E2%80%9C%E5%9B%A4%E7%A7%AF%E5%95%86%E5%93%81%E2%80%9D%E8%AE%BA%EF%BC%88%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E7%8B%AC%E7%89%B9%E6%80%9D%E6%83%B3%EF%BC%89"><span class="post-toc-text">“囤积商品”论（最核心的独特思想）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E8%82%A1%E5%85%AB%E5%8E%9F%E5%88%99%EF%BC%88%E8%AF%A6%E7%BB%86%EF%BC%89"><span class="post-toc-text">四、选股八原则（详细）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E4%BA%A4%E6%98%93%EF%BC%88%E9%A3%8E%E6%8E%A7%EF%BC%89%E5%8E%9F%E5%88%99"><span class="post-toc-text">五、交易（风控）原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E5%91%A8%E6%9C%9F%E7%90%86%E8%AE%BA%EF%BC%9A%E4%B8%83%E5%A4%A7%E9%A9%B1%E5%8A%A8%E5%9B%A0%E7%B4%A0%EF%BC%882026-%E5%B9%B4%E7%B3%BB%E7%BB%9F%E9%98%90%E8%BF%B0%EF%BC%89"><span class="post-toc-text">六、周期理论：七大驱动因素（2026 年系统阐述）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E2%80%9C%E5%91%A8%E6%9C%9F%E5%BF%85%E7%84%B6%E5%AD%98%E5%9C%A8%E2%80%9D%E7%9A%84%E5%BA%95%E5%B1%82%E9%80%BB%E8%BE%91%EF%BC%88%E5%AF%B9%E6%97%A0%E6%B3%95%E6%B7%98%E6%B1%B0%E7%9A%84%E5%95%86%E5%93%81%EF%BC%89"><span class="post-toc-text">“周期必然存在”的底层逻辑（对无法淘汰的商品）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%95%86%E5%93%81%E4%BB%B7%E6%A0%BC%E9%95%BF%E6%9C%9F%E5%BF%85%E5%88%9B%E6%96%B0%E9%AB%98"><span class="post-toc-text">商品价格长期必创新高</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E5%86%9C%E4%BA%A7%E5%93%81%E7%9C%8B%E4%BE%9B%E7%BB%99%EF%BC%8C%E5%B7%A5%E4%B8%9A%E5%93%81%E7%9C%8B%E9%9C%80%E6%B1%82"><span class="post-toc-text">七、农产品看供给，工业品看需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%A7%E5%91%A8%E6%9C%9F%E4%B8%8B%E2%80%9D%E4%BC%98%E5%8A%BF%E6%97%A0%E7%94%A8%E8%AE%BA%E2%80%9D"><span class="post-toc-text">大周期下”优势无用论”</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E8%AE%A4%E7%9F%A5%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%9A%E5%94%AF%E7%89%A9%E8%BE%A9%E8%AF%81%E6%B3%95%E4%B8%8E%E7%AC%AC%E4%B8%80%E6%80%A7%E5%8E%9F%E7%90%86"><span class="post-toc-text">八、认知方法论：唯物辩证法与第一性原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%94%AF%E7%89%A9%E8%BE%A9%E8%AF%81%E6%B3%95%E4%B8%89%E5%A4%A7%E8%A7%84%E5%BE%8B%EF%BC%88%E4%BD%9C%E8%80%85%E2%80%9D%E4%B8%80%E7%94%9F%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E6%80%9D%E8%80%83%E6%96%B9%E5%BC%8F%E2%80%9D%EF%BC%89"><span class="post-toc-text">唯物辩证法三大规律（作者”一生最重要的思考方式”）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AE%A4%E7%9F%A5%E9%A1%BA%E5%BA%8F%EF%BC%88%E2%80%9D%E6%98%AF%E4%BB%80%E4%B9%88-%E2%86%92-%E4%B8%BA%E4%BB%80%E4%B9%88-%E2%86%92-%E6%80%8E%E4%B9%88%E5%8A%9E%E2%80%9D%EF%BC%89"><span class="post-toc-text">正确的认知顺序（”是什么 → 为什么 → 怎么办”）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E5%88%86%E5%B1%82%E7%BA%A7%EF%BC%887-%E7%BA%A7%EF%BC%89"><span class="post-toc-text">知识分层级（7 级）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A4%E6%96%AD%E2%80%9D%E8%A7%82%E7%82%B9%E6%9C%89%E6%97%A0%E4%BB%B7%E5%80%BC%E2%80%9D%E7%9A%84%E6%A0%87%E5%87%86"><span class="post-toc-text">判断”观点有无价值”的标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E5%85%B3%E4%BA%8E%E4%BC%B0%E5%80%BC"><span class="post-toc-text">九、关于估值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E5%85%B3%E4%BA%8E%E5%BF%83%E6%80%81"><span class="post-toc-text">十、关于心态</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%85%B3%E4%BA%8E%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90"><span class="post-toc-text">十一、关于技术分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E2%80%9D%E7%A0%94%E7%A9%B6%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%8A%95%E8%B5%84%E5%91%A8%E6%9C%9F%E9%94%99%E4%BD%8D%E2%80%9D%EF%BC%88%E9%87%8D%E5%A4%A7%E8%AE%A4%E7%9F%A5%E9%99%B7%E9%98%B1%EF%BC%89"><span class="post-toc-text">十二、”研究周期与投资周期错位”（重大认知陷阱）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E8%AF%BB%E4%B9%A6%E6%96%B9%E6%B3%95"><span class="post-toc-text">十三、读书方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E4%BA%BA%E7%94%9F%E7%BB%8F%E9%AA%8C%E4%B8%8E%E6%95%99%E8%AE%AD%EF%BC%88%E6%91%98%E5%BD%95%EF%BC%89"><span class="post-toc-text">十四、人生经验与教训（摘录）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E9%87%8D%E8%A6%81%E4%BA%BA%E7%94%9F%E6%84%9F%E6%82%9F"><span class="post-toc-text">其他重要人生感悟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%BA%E7%94%9F%E6%80%9D%E8%80%83%E4%BD%93%E7%B3%BB%E6%A1%86%E6%9E%B6%EF%BC%88%E4%B8%80%E5%BC%A0-PPT-%E7%9A%84%E6%B5%93%E7%BC%A9%EF%BC%89"><span class="post-toc-text">人生思考体系框架（一张 PPT 的浓缩）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E6%88%98%E7%95%A5%E6%80%9D%E6%83%B3%EF%BC%8815-%E6%9D%A1%EF%BC%89"><span class="post-toc-text">十五、战略思想（15 条）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%85%AD%E3%80%81%E5%8E%86%E5%8F%B2%E4%BA%BA%E7%89%A9%E9%9A%8F%E7%AC%94"><span class="post-toc-text">十六、历史人物随笔</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E4%B8%AA%E4%BA%BA%E7%BB%8F%E5%8E%86%EF%BC%88%E3%80%8A%E8%82%A1%E6%B5%B7%E6%97%A0%E7%96%86%E3%80%8B%E4%B8%BB%E7%BA%BF%EF%BC%89"><span class="post-toc-text">十七、个人经历（《股海无疆》主线）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E5%85%AB%E3%80%81%E9%97%AE%E7%AD%94%E7%B2%BE%E9%80%89%EF%BC%88%E7%9F%A5%E4%B9%8E%E9%97%AE%E7%AD%94%E5%90%88%E9%9B%86%EF%BC%89"><span class="post-toc-text">十八、问答精选（知乎问答合集）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E6%8A%95%E8%B5%84%E6%96%B9%E6%B3%95"><span class="post-toc-text">关于投资方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%85%B7%E4%BD%93%E6%A0%87%E7%9A%84%E4%B8%8E%E5%B8%82%E5%9C%BA%EF%BC%88%E4%BD%9C%E8%80%85%E6%98%8E%E7%A1%AE%E8%AF%B4%E6%98%8E-2025-%E5%B9%B4-5-%E6%9C%88%E5%90%8E%E4%B8%8D%E5%86%8D%E5%86%99%E4%B8%AA%E8%82%A1%EF%BC%89"><span class="post-toc-text">关于具体标的与市场（作者明确说明 2025 年 5 月后不再写个股）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E4%BA%BA%E7%94%9F%E4%B8%8E%E8%B5%84%E9%87%91"><span class="post-toc-text">关于人生与资金</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%8E%86%E5%8F%B2%E4%B8%8E%E6%94%BF%E6%B2%BB%EF%BC%88%E5%B0%91%E9%87%8F%EF%BC%89"><span class="post-toc-text">关于历史与政治（少量）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B9%9D%E3%80%81%E9%87%91%E5%8F%A5%E9%9B%86%E9%94%A6"><span class="post-toc-text">十九、金句集锦</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%EF%BC%9A%E4%B8%80%E9%A1%B5%E9%80%9F%E8%A7%88%EF%BC%88%E6%A0%B8%E5%BF%83%E7%BB%93%E8%AE%BA%EF%BC%89"><span class="post-toc-text">附：一页速览（核心结论）</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《寒武纪的鳄鱼：知乎文章、想法与问答合集》阅读笔记"><a href="#《寒武纪的鳄鱼：知乎文章、想法与问答合集》阅读笔记" class="headerlink" title="《寒武纪的鳄鱼：知乎文章、想法与问答合集》阅读笔记"></a>《寒武纪的鳄鱼：知乎文章、想法与问答合集》阅读笔记</h1><blockquote>
+<p><strong>作者</strong>：寒武纪的鳄鱼（知乎 ID）<br><strong>内容</strong>：知乎文章（52 篇）、知乎想法（429 条）、知乎问答（1 份合集，约 70+ 个问答）<br><strong>时间跨度</strong>：2022–2026 年<br><strong>作者背景</strong>：1985 年生于甘肃酒泉，2006 年完成第一笔交易、2007 年正式入市，至今约 18 年专职投资；本科学金融工程，后走上”商品周期 + 价值投资”的道路；自述”通过股票间接囤积商品”，未来方向是做一个”证券版的嘉能可 &#x2F; 商品王国”。</p>
+<p><strong>一句话概括其思想</strong>：他不是在”炒股”，而是在通过股票市场<strong>间接囤积商品</strong>；他的全部投资与人生决策建立在三根支柱上——<strong>周期、价值、复利</strong>，并用<strong>唯物辩证法</strong>（尤其是《矛盾论》《实践论》）作为底层思考工具。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>核心投资哲学：三大支柱</li>
+<li>财富本质论：占有生产资料</li>
+<li>投资十六字原则与”囤积商品”论</li>
+<li>选股八原则（详细）</li>
+<li>交易（风控）原则</li>
+<li>周期理论：七大驱动因素</li>
+<li>农产品看供给，工业品看需求</li>
+<li>认知方法论：唯物辩证法与第一性原理</li>
+<li>关于估值</li>
+<li>关于心态</li>
+<li>关于技术分析</li>
+<li>关于”研究周期与投资周期错位”</li>
+<li>读书方法</li>
+<li>人生经验与教训（摘录）</li>
+<li>战略思想（15 条）</li>
+<li>历史人物随笔</li>
+<li>个人经历（股海无疆主线）</li>
+<li>问答精选</li>
+<li>金句集锦</li>
+</ol>
+<hr>
+<h2 id="一、核心投资哲学：三大支柱"><a href="#一、核心投资哲学：三大支柱" class="headerlink" title="一、核心投资哲学：三大支柱"></a>一、核心投资哲学：三大支柱</h2><p>作者反复强调，他<strong>人生中所有决策</strong>（生意、公司、投资、人际、学习）都建立在三根支柱上：</p>
+<h3 id="1-周期（最重要）"><a href="#1-周期（最重要）" class="headerlink" title="1. 周期（最重要）"></a>1. 周期（最重要）</h3><ul>
+<li><strong>万物皆周期</strong>，周期就是”运势”（运），是先天的”命”之外能够被利用的东西。</li>
+<li>命不可改（出生国家、时代、父母、性别、民族）；<strong>运 &#x3D; 能遇到的产业周期、行业周期</strong>。</li>
+<li>“周期选错，剩下的努力基本都是白费。”（例：2020-21 年在房地产周期尾巴买北上广深好地段的房子，也会跌 1&#x2F;3 甚至腰斩。）</li>
+<li>周期的力量远大于个人奋斗。</li>
+<li><strong>判断一个人是”聪明”还是”智慧”的分界线，就是能否识别并顺应大的周期、大势。</strong></li>
+</ul>
+<h3 id="2-价值"><a href="#2-价值" class="headerlink" title="2. 价值"></a>2. 价值</h3><ul>
+<li>价值 &#x3D; “5 毛钱买 1 块钱的东西”，让自己先立于不败之地。</li>
+<li><strong>价值一定要放在周期的尺度上理解才有意义</strong>——脱离了周期谈价值是本末倒置（这也是国内很多价值投资者的误区）。</li>
+<li>例：2020-21 年房地产周期高位，买入任何”有价值”的房地产股票都要完蛋。</li>
+<li>良好的人际关系、做有意义的事、便宜买入股票&#x2F;房产，都是价值。</li>
+</ul>
+<h3 id="3-复利"><a href="#3-复利" class="headerlink" title="3. 复利"></a>3. 复利</h3><ul>
+<li>复利 &#x3D; 价值在时间上的函数。</li>
+<li>核心在”<strong>积累</strong>“：不怕慢，就怕停；在一个方向持续积累获得绝对优势。</li>
+<li>过去做的事要成为现在的基础，现在做的事要成为未来的基础。</li>
+<li>“长期而言，稳定就是暴利。”</li>
+</ul>
+<hr>
+<h2 id="二、财富本质论：占有生产资料"><a href="#二、财富本质论：占有生产资料" class="headerlink" title="二、财富本质论：占有生产资料"></a>二、财富本质论：占有生产资料</h2><p>这是他读了三遍《资本论》后的核心顿悟（自认为”对思想产生质的飞跃”）：</p>
+<ul>
+<li><strong>决定一个人最终贫穷或富有的最根本原因，只有一个——对生产资料的占有。</strong><ul>
+<li>生产资料 &#x3D; 能让资本持续增值的东西：土地、矿产、房子、工厂、股权、商标……</li>
+<li>大部分人掌握的技能（读工科&#x2F;文科&#x2F;医学&#x2F;技术）都只是<strong>生产工具</strong>，本质是出卖劳动技能&#x2F;劳动时间换取收益，永远处于剩余价值被剥削的状态，无法完成资本积累与增殖。</li>
+</ul>
+</li>
+<li>奴隶社会最重要的生产资料是人口，封建社会是土地，现代社会是<strong>资本</strong>。</li>
+<li>以工资为主要收入 &#x3D; 生产工具；占有生产资料 &#x3D; 资本增殖。</li>
+<li><strong>巴菲特 vs 索罗斯</strong>：名声相当，财富天差地别（巴菲特约 3000 亿 vs 索罗斯约 200 亿美元），根本区别在于——巴菲特收购持有公司股权，几十年占有了这些公司的生产资料（可口可乐 40 年）；索罗斯做基金是用交易技术赚钱，本质仍在出售劳动力和时间。</li>
+<li><strong>股票投资的本质 &#x3D; 通过股权间接占有与之有关的生产资料</strong>，长期让资本自我增殖。</li>
+<li>个人的技能要<strong>转换成生产资料</strong>（如入股公司），才能实现财富质变（阿里 18 罗汉 vs 最优秀程序员）。</li>
+<li><strong>投资最根本的方式：解决现金流问题 → 想办法占有资本 → 通过投资占有更多生产资料 → 反复循环。</strong></li>
+<li>要把钱投到**”用钱也无法获得的生产资料”**中去（军工、太空、稀土、民爆牌照、大麻种植、长江水电站……这些”有钱也做不到的事”才最稀缺、最有价值）。</li>
+</ul>
+<hr>
+<h2 id="三、投资十六字原则与”囤积商品”论"><a href="#三、投资十六字原则与”囤积商品”论" class="headerlink" title="三、投资十六字原则与”囤积商品”论"></a>三、投资十六字原则与”囤积商品”论</h2><h3 id="投资十六字原则（2025-年提出）"><a href="#投资十六字原则（2025-年提出）" class="headerlink" title="投资十六字原则（2025 年提出）"></a>投资十六字原则（2025 年提出）</h3><blockquote>
+<p><strong>专注商品，立足周期，低位买入，长期持有。</strong></p>
+</blockquote>
+<h3 id="“囤积商品”论（最核心的独特思想）"><a href="#“囤积商品”论（最核心的独特思想）" class="headerlink" title="“囤积商品”论（最核心的独特思想）"></a>“囤积商品”论（最核心的独特思想）</h3><ul>
+<li><strong>他做的根本不是股票投资，本质是”囤积商品”</strong>，股票只是更简单、高效、低成本的囤货工具。</li>
+<li>三种商品投资方式：① 囤积现货；② 期货交易；③ 持有资源类上市公司股票间接囤货。他选择第三种。</li>
+<li>股票比实物囤货的优势：<ul>
+<li>不用收购、物流、仓储、防偷防损；</li>
+<li>可近乎无限期持有；</li>
+<li><strong>商品先大涨、股票才跟进 → 给出确定的”时间差”</strong>（类似同片区房子已涨到 10 万，却有几间还卖 5 万）；</li>
+<li><strong>股票有情绪与流动性溢价，波动幅度通常大于实物</strong>（例：白糖从 1500→5000 约 3.5 倍，但对应股票可能从 2.1 元涨到 13 元，约 6 倍）。</li>
+</ul>
+</li>
+<li>底层逻辑链条：<strong>商品价格周期性运动 → 决定商品类企业利润周期性运动 → 决定其股价周期性运动</strong>。</li>
+<li>他的身份定位：”<strong>我们不是一家做股票&#x2F;股票投资的公司，我们是一家囤积货物的大宗商品公司。</strong>“商品市场规模几百万亿，A 股商品相关股票市值约 12 万亿，没有天花板。</li>
+<li>对标历史人物：<strong>范蠡</strong>——“旱则资舟，水则资车，贱取如珠玉，贵出如粪土”，只不过用资本化的股票市场来完成。</li>
+<li>投资十六字原则的另一表述：”<strong>买其所值，卖其疯狂</strong>“。</li>
+</ul>
+<hr>
+<h2 id="四、选股八原则（详细）"><a href="#四、选股八原则（详细）" class="headerlink" title="四、选股八原则（详细）"></a>四、选股八原则（详细）</h2><p>作者反复强调：<strong>重要的不是哪些股票可以买，而是哪些不能买</strong>——每一条就是一道筛子，八条全部筛完，剩下可能只占两市 1% 左右。</p>
+<ol>
+<li><strong>只买国务院国资委控股的央企或省国资委控股的国企</strong>（不买市国资委以下、不买任何民企）。<ul>
+<li>核心是”<strong>安全</strong>“：财务数字可信（央企严格审计、董事长为内审第一责任人、财务造假成本极高）；实控人背景强大，极端困境时能被救助、重组。</li>
+<li>97 家央企 + 约 330~400 家上市公司 &#x3D; 中国最核心的资产（”共和国经济的压舱石”）。</li>
+<li>“买央企最重要的是安全、防御和保守”；财务造假对民企是经济恶劣时的最大风险。</li>
+<li>央企代表最核心资产，且在中国”选股都不需要自己做”。</li>
+</ul>
+</li>
+<li><strong>业绩三年内爆发式增长 5–10 倍；或主要产品价格涨 2–3 倍；或单年业绩 3 倍以上增长</strong>（才进场）；或最低价已到净资产的八折。<ul>
+<li>“只有爆发性的业绩，才能带来爆发性的股价”。</li>
+<li>资源周期股 2–3 年内业绩可增长 10 倍甚至几十倍。</li>
+</ul>
+</li>
+<li><strong>产品或服务在国内独一无二、不可替代</strong>；业绩不亏损。<ul>
+<li>稀缺才是真正的价值；越稀缺，价格波动越大，获利空间越大。</li>
+</ul>
+</li>
+<li><strong>主营占比集中，专注于一个领域</strong>（主营占比最好超过 70%）。<ul>
+<li>聚焦是最大的力量；反对多元化。</li>
+</ul>
+</li>
+<li><strong>业务模式简单、赚钱方式简单、可理解</strong>。</li>
+<li><strong>低价低位，两年&#x2F;三年以上盘整</strong>。</li>
+<li><strong>市值尽量小于 200 亿</strong>（超 500 亿的不是散户玩的）。</li>
+<li><strong>在一个行业有独特优势，让资本没有选择，只能选择它爆发</strong>。</li>
+</ol>
+<p><strong>作者自述关注的股票池</strong>：约 70 只（37 只资源股、21 只化工股、5 只农业股、7 只民爆股），未来几十年就做这四五十只，每年增减不超过 5%。已删除军工等与商品无直接关系的股票。</p>
+<hr>
+<h2 id="五、交易（风控）原则"><a href="#五、交易（风控）原则" class="headerlink" title="五、交易（风控）原则"></a>五、交易（风控）原则</h2><ol>
+<li>不买民企；</li>
+<li>不买 ST 股；</li>
+<li>不买业绩连续下降的股票；</li>
+<li>不买业绩亏损股票；</li>
+<li><strong>账户最多只持仓三只股</strong>；</li>
+<li>主仓位股票不能低于 70%；</li>
+<li>原则上不使用融资，只有低位千股跌停次日顺势下跌时使用 30% 融资，快速反弹后解除；</li>
+<li>反对试探性交易、频繁交易；主仓位中长线；”如果在一个价位没有把握，那就不买”。</li>
+</ol>
+<p><strong>核心结论</strong>：</p>
+<ul>
+<li>控制交易频率，减少随意性交易，做确定性大的投资，减少出手频率、提高胜率。</li>
+<li>“一生买 10 只股票就足够富有；99% 的机会都是可以放弃的。”</li>
+<li>“买股票就是买企业”——买入前自问：”如果我有这么多钱、只有这么多钱，要用全部身家把这家公司买下来，我买不买？”犹豫就一股不买。</li>
+</ul>
+<hr>
+<h2 id="六、周期理论：七大驱动因素（2026-年系统阐述）"><a href="#六、周期理论：七大驱动因素（2026-年系统阐述）" class="headerlink" title="六、周期理论：七大驱动因素（2026 年系统阐述）"></a>六、周期理论：七大驱动因素（2026 年系统阐述）</h2><p>经济周期是多重力量合力形成的必然现象，只要驱动因素无法消除，周期就永远存在。<strong>七大驱动力量</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>驱动力量</th>
+<th>要点</th>
+<th>典型周期</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>央行货币政策</strong></td>
+<td>加息&#x2F;降息是周期启动的核心导火索，决定资金成本</td>
+<td>3–5 年</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>存货（库存）周期</strong></td>
+<td>高位盲目扩产→过剩→积压库存，消化需 2–3 个生产周期（如猪肉）</td>
+<td>短期</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>资本性扩张支出</strong></td>
+<td>繁荣期大规模投建产能，滞后 2 年落地时价格已见顶（如碳酸锂 4 万→60 万→5 万）</td>
+<td>中长期</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>抵押品价值周期性溢价</strong></td>
+<td>抵押品溢价通过金融体系放大振幅（房 100 万→300 万，7 折贷 210 万）；下行时溢价消失引发踩踏</td>
+<td>—</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>耗竭动力</strong></td>
+<td>繁荣引发过度乐观、提前透支未来现金流（抵押未来 30 年收入买房）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>信用崩溃</strong></td>
+<td>最极端风险（欧债、希腊、东南亚金融危机），引发系统性危机</td>
+<td>—</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>市场情绪</strong></td>
+<td>周期末端主导力量，脱离基本面（最后 1&#x2F;3 的涨跌几乎由情绪主导）</td>
+<td>—</td>
+</tr>
+</tbody></table>
+<p><strong>关键结论</strong>：</p>
+<ul>
+<li>周期启动阶段由央行货币政策率先发力；末端狂热&#x2F;恐慌完全由市场情绪主宰。</li>
+<li>对商品投资，核心研究：央行货币政策（资金与成本）、存货周期（短期供需）、资本性扩张（中长期产能）、市场情绪（把握波段）。</li>
+<li>盈利高峰期资本涌入、产能极速扩张，最终因产能无法消化陷入漫长熊市。</li>
+</ul>
+<h3 id="“周期必然存在”的底层逻辑（对无法淘汰的商品）"><a href="#“周期必然存在”的底层逻辑（对无法淘汰的商品）" class="headerlink" title="“周期必然存在”的底层逻辑（对无法淘汰的商品）"></a>“周期必然存在”的底层逻辑（对无法淘汰的商品）</h3><p>价格暴跌跌破生产成本 → 全产业链亏损 → 被动减产 → 但商品无法被淘汰、需求稳定 → 供给短缺 → 价格回升 → 底部去掉的产能不会恢复 → 价格一路涨 → 全行业赚钱 → 资本重新进入 → 产能瞬间扩大 → 需求增长不明显 → 拼命降价 → 新一轮暴跌……周而复始。<strong>这是群体行为，不以人的意志为转移。</strong></p>
+<h3 id="商品价格长期必创新高"><a href="#商品价格长期必创新高" class="headerlink" title="商品价格长期必创新高"></a>商品价格长期必创新高</h3><ul>
+<li>商品价格每 10 年左右重心上移约 50%，本质是货币每年 3–4% 通胀的累积；国内经济高速发展期基础商品定价增速超 3%。</li>
+<li>商品价格<strong>不可能跌成 0</strong>（有真实使用价值、有生产成本底线）。</li>
+<li>“<strong>商品历史上所有的高价，全部都是用来超越的。</strong>“</li>
+</ul>
+<hr>
+<h2 id="七、农产品看供给，工业品看需求"><a href="#七、农产品看供给，工业品看需求" class="headerlink" title="七、农产品看供给，工业品看需求"></a>七、农产品看供给，工业品看需求</h2><p>判断行业周期主导力量能否持续的最重要标志：</p>
+<ul>
+<li><strong>农产品看供给</strong>：需求稳定（如猪肉食用量稳定），供给决定价格；一季收获后供给变化需等下一个种植周期，有钱也无法短期提高供给。</li>
+<li><strong>工业品看需求</strong>：供给稳定（矿山采矿量稳定），需求爆发后供给无法满足 → 价格持续上涨，直到需求端稳定、供给周期跟上去。</li>
+</ul>
+<h3 id="大周期下”优势无用论”"><a href="#大周期下”优势无用论”" class="headerlink" title="大周期下”优势无用论”"></a>大周期下”优势无用论”</h3><ul>
+<li>生产成本 7 块的公司 vs 8 块的公司，好比 20 米的船（抗 7 级风）vs 15 米的船（抗 5 级风）。</li>
+<li>但真正的大势是 12 级台风——上行时行业最差的公司也赚大钱，下行时最好的公司也亏得一塌糊涂。</li>
+<li>例：房地产上行 15 年，建材、五金、水泥、装修都赚大钱；下行时万科、恒大也艰难。管理精益多出来的 10% 优势在大势面前不是优势。</li>
+</ul>
+<hr>
+<h2 id="八、认知方法论：唯物辩证法与第一性原理"><a href="#八、认知方法论：唯物辩证法与第一性原理" class="headerlink" title="八、认知方法论：唯物辩证法与第一性原理"></a>八、认知方法论：唯物辩证法与第一性原理</h2><h3 id="唯物辩证法三大规律（作者”一生最重要的思考方式”）"><a href="#唯物辩证法三大规律（作者”一生最重要的思考方式”）" class="headerlink" title="唯物辩证法三大规律（作者”一生最重要的思考方式”）"></a>唯物辩证法三大规律（作者”一生最重要的思考方式”）</h3><ol>
+<li><strong>对立统一（矛盾）</strong>：矛盾无处不在、推动一切运动。抓住<strong>主要矛盾</strong>及<strong>主要矛盾的主要方面</strong>。→ 应用：”主要矛盾的 20%，再取其 20% 的 4% 就是核心，解决核心就解决了 90% 以上的问题。”</li>
+<li><strong>质量互变</strong>：大量量变引起质变。→ 应用：水从 0 度到 90 度表面无变化，但正在量变积累；股票 5 元&#x2F;企业赚 1 亿 → 5 元&#x2F;企业赚 10 亿，表面相同、实质不同，质变必发生。</li>
+<li><strong>否定之否定</strong>：曲折中前进、螺旋式上升。→ 应用：好时不过分看好，坏时不过分看坏，转折必到来。</li>
+</ol>
+<p><strong>两个方法论</strong>：《实践论》《矛盾论》。<br><strong>两个唯物论基本观点</strong>：万事万物普遍联系、永恒发展。</p>
+<h3 id="正确的认知顺序（”是什么-→-为什么-→-怎么办”）"><a href="#正确的认知顺序（”是什么-→-为什么-→-怎么办”）" class="headerlink" title="正确的认知顺序（”是什么 → 为什么 → 怎么办”）"></a>正确的认知顺序（”是什么 → 为什么 → 怎么办”）</h3><ul>
+<li>来自读《论持久战》《中国革命战争的战略问题》《实践论》的领悟：先研究”是什么&#x2F;不是什么”，再研究”怎么做&#x2F;不怎么做”。</li>
+<li>例：先搞清楚”股票是什么”（企业发行的有价证券）→ 价值和”企业”有关 → “企业是什么”（以盈利为目的的组织）→ 股票直接和企业盈利有关 → 再谈怎么做。</li>
+<li><strong>第一性原理</strong>：把最本质的原因搞清楚，事情就简单了。</li>
+</ul>
+<h3 id="知识分层级（7-级）"><a href="#知识分层级（7-级）" class="headerlink" title="知识分层级（7 级）"></a>知识分层级（7 级）</h3><blockquote>
+<p>真理 &gt; 定律 &gt; 原理 &gt; 理论 &gt; 方法论&#x2F;技术 &gt; 技能 &gt; 技巧</p>
+</blockquote>
+<ul>
+<li>越往上力量越大、越具支配性；越往下数量越多、能量越小。</li>
+<li><strong>技术分析只是”技术&#x2F;技巧”层面，价值投资的供需关系是”原理”层面，无法越阶挑战。</strong></li>
+<li>“我们终究交易的不是钱，而是思想；对世界的理解构成投资哲学，投资哲学是投资世界的分水岭。”</li>
+</ul>
+<h3 id="判断”观点有无价值”的标准"><a href="#判断”观点有无价值”的标准" class="headerlink" title="判断”观点有无价值”的标准"></a>判断”观点有无价值”的标准</h3><ul>
+<li>“判断和观点本身没有价值，只有能够指导你自己实践的判断和观点才有价值。”</li>
+<li>“不能指导实践的理论是空洞的理论；没有理论指导的实践是盲目的实践。”</li>
+<li>投资市场最好的地方：<strong>衡量一切理论的唯一标准是账户数字</strong>（业绩）。</li>
+</ul>
+<hr>
+<h2 id="九、关于估值"><a href="#九、关于估值" class="headerlink" title="九、关于估值"></a>九、关于估值</h2><ul>
+<li><strong>没有简单的公式</strong>（PE&#x2F;PB 不够），要像研究自家公司一样研究。</li>
+<li>方法：把公司最近 10–15 年年报一页页看完（甚至看几遍）；搞清楚产品、成本、产能、当前售价、能赚多少钱；算清每一笔账，然后 <strong>合理估值 ≈ 净利润 × 20~30 倍</strong>。</li>
+<li><strong>可买入价格 ≈ 接近净资产（比净资产高 10% 左右）</strong>；周期股跌到<strong>净资产 8 折</strong>往往是未来几年超级大底。</li>
+<li>了解行业最好方式：把该行业上市约 10 家公司 10 年年报全部读一遍。</li>
+<li>“买一只股票可能只需要十几分钟，但为这十几分钟决策提供依据需要一两年的持续研究（前期 99% 时间在研究与调研）。”</li>
+<li>大钱止不了损（有交易冲击成本），所以要 100% 做对，不能靠止损；”网上教止损的都是没见过大钱的。”</li>
+<li>估值是”懂”的产物——“懂，就是你进场之时就知道自己一定是对的。”</li>
+</ul>
+<hr>
+<h2 id="十、关于心态"><a href="#十、关于心态" class="headerlink" title="十、关于心态"></a>十、关于心态</h2><p>核心观点：<strong>心态从来不是问题，好心态是结果</strong>；心态的根源是”懂”与”买的低”。</p>
+<ul>
+<li>“给我一个科技股我也睡不着觉，因为我不知道它值多少钱”——不懂就不可能有好的心态。</li>
+<li>重仓不需要勇气，只需要”确信用 5 毛钱买了 1 块钱的东西”；不敢重仓 &#x3D; 不知道自己买的是 1 块钱还是一毛钱。</li>
+<li>买入前先想最坏情况：腰斩能不能承受？”明天 A 股关门 5 年再开门，还敢不敢买？”</li>
+<li>买得足够低，是后面一切操作和长期持仓勇气的基础。</li>
+<li>“好的心态 &#x3D; 有耐心、不动如山；有定力、呆若木鸡。”</li>
+<li>降低收益预期：两三年赚一倍（年化 20%+）已经极高；4 年净资产翻倍，20 年就是 64 倍。</li>
+<li>长期收益比例真相：约 3% 的人赚钱，7% 持平，90% 亏损（比”一赚二平七亏”更悲观）。</li>
+</ul>
+<hr>
+<h2 id="十一、关于技术分析"><a href="#十一、关于技术分析" class="headerlink" title="十一、关于技术分析"></a>十一、关于技术分析</h2><ul>
+<li>作者花了 6 年研究 K 线、均线、指标、形态、黄金分割、江恩、变盘窗口、迪马克等，结论：<strong>技术分析依然是赌概率</strong>（散户 50%，技术分析提到 80%，但错的 20% 造成的损失和 50% 一样是 100% 的打击）。</li>
+<li>“投错一次，无论错率 20% 还是 50%，对资金的打击都是 100%。”</li>
+<li>长期来看技术分析唯一有用的只有<strong>最原始的支撑和压力（阻力）</strong>，其他都对赚钱没大用。</li>
+<li>检验标准：能不能长期赚大钱&#x2F;账户数字。</li>
+<li>为什么散户爱用技术分析：① 简单、照猫画虎，觉得是捷径；② 没做过生意、不懂企业如何赚钱、无法理解价值；③ 没耐心等待价值兑现、钱太少急功近利。</li>
+</ul>
+<hr>
+<h2 id="十二、”研究周期与投资周期错位”（重大认知陷阱）"><a href="#十二、”研究周期与投资周期错位”（重大认知陷阱）" class="headerlink" title="十二、”研究周期与投资周期错位”（重大认知陷阱）"></a>十二、”研究周期与投资周期错位”（重大认知陷阱）</h2><ul>
+<li>投资中一个经常性且无法意识到的错误：<strong>分析周期和投资周期不一致</strong>（”看长做短”或”看短做长”）。</li>
+<li>例：用 20–30 年的老龄化趋势，指导半年一年的持仓——两者可能完全相反。</li>
+<li>例：人口下降是几十年问题，但投房产是 3–5 年周期。</li>
+<li>例：茅台 2022 年 2600 元赚 400–500 亿，今天赚 900 亿却 1300 元——“业绩一直涨所以股价一直涨”是错误归因。</li>
+<li><strong>巴菲特的牛逼之处：研究周期以 20–30 年计，持仓也真的 20–30 年。</strong></li>
+<li>作者的自我设定：分析周期和持仓周期定在 <strong>3–5 年</strong>左右。</li>
+<li>“观点没有任何意义，只有能指导实践的观点才有意义。”</li>
+</ul>
+<hr>
+<h2 id="十三、读书方法"><a href="#十三、读书方法" class="headerlink" title="十三、读书方法"></a>十三、读书方法</h2><ul>
+<li><strong>第一人称代入法</strong>：读《资本论》把”资本家”换成”我”、”工人”换成”员工”；读《中国革命战争的战略问题》把”战略”换成”投资”、”战役”换成”股票”、”士兵”换成”资金”。</li>
+<li><strong>只读经典、大量阅读、集中突破；重要的书&#x2F;文章要死记硬背，背下来的才是自己的。</strong></li>
+<li>读历史的方法：时间、地点、人物不重要，重要的是<strong>方案</strong>（别人怎么做的）和<strong>结论</strong>（这样做的后果）——历史上你遇到的事别人已遇到无数次，直接看答案。</li>
+<li>向”拿到大结果的人”学习：99% 的书没价值，因为 99% 的作者没拿到结果。</li>
+<li>反复推荐的书单：<ul>
+<li>《矛盾论》《实践论》</li>
+<li>《毛主席五篇哲学著作》《毛主席六篇军事著作》</li>
+<li>《孙子兵法》</li>
+<li>《资本论》《毛选》</li>
+<li>《投资最重要的事》霍华德·马克斯</li>
+<li>《巴菲特写给股东的信 1957&#x2F;1958–2024&#x2F;2025 完整版》（不要读删减版）</li>
+<li>《逃不开的经济周期》（”值得读 10 遍”）</li>
+<li>《投资的护城河》（后半部分行业特点最有价值）</li>
+<li>《大癫狂》《乌合之众》（理解群体贪婪与恐惧）</li>
+<li>《赌金者》（长期资本管理公司陨落）</li>
+<li>各种金融史、危机史、泡沫史、投机史</li>
+<li>《史记》《资治通鉴》《布局天下》</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="十四、人生经验与教训（摘录）"><a href="#十四、人生经验与教训（摘录）" class="headerlink" title="十四、人生经验与教训（摘录）"></a>十四、人生经验与教训（摘录）</h2><p>作者有一个随身带了 20 年的小本子《经验与教训》，把踩过的大坑和赚过的钱都抽象成原则。已见诸文字的主要条目：</p>
+<p><strong>2024 年总结（12 条）</strong>：</p>
+<ol>
+<li>生物链顶端的动物大部分时间在晒太阳&#x2F;嬉戏&#x2F;睡觉——要闲下来，不要有太多多余动作。</li>
+<li>抓住主要矛盾，一天只做一件事。</li>
+<li>一件事看到 10 年后可能不做，就不开始；一个人不值得交往一辈子，就不开始。</li>
+<li><strong>可做可不做的事一律不做；可买可不买的股票一律不买；可进可不进的价格一律不进；可投可不投的项目一律不投。</strong>（知道不做什么比知道做什么重要得多。）</li>
+<li>高光时刻与暴涨时刻一样，极短时间完成，95% 时间在量变积累。</li>
+<li>一次只做一件事，日拱一卒，功不唐捐；核心能力每天精进不可断绝。</li>
+<li>人际关系不解释、不问理由、不纠缠。</li>
+<li>把自己变成别人非常需要的、稀缺的资源，其他资源会向你聚拢。</li>
+<li>你怎么理解世界，世界就给你匹配什么模式。</li>
+<li>一个人的价值 &#x3D; 能给他人创造多大价值；利他之心极重要。</li>
+<li><strong>一定要非常稳，稳是中年以后最重要的命数；宁可错过不要做错，宁可不动不要瞎动，无所事事也是一种操作。</strong></li>
+<li>只做毫不费力的事，凡事勉强一律不做——用一个亿做 3000 万的事（以多打少），不要用一个亿做 1.5 亿的事。</li>
+</ol>
+<p><strong>2025 年经验教训（10 条）</strong>：</p>
+<ol>
+<li>凡有勉强皆是强求，强求的事一律放弃。</li>
+<li>一件事总做不好，可能不是你的错，而是时机不合适，老天在救你。</li>
+<li>赚大钱需要大行情，走完大行情需要大胆量；大多数人没有赚大钱的胆量。</li>
+<li>人生命格如底牌，看准方向就按最初目标做牌，换来换去终究一事无成。</li>
+<li>人还是要善良，别耍小聪明，否则挖的坑最后自己跳进去填。</li>
+<li>买财力范围内最好的，然后用很久。</li>
+<li>拒绝参与任何”拍卖类”出价。</li>
+<li>实践是把知识变成力量唯一的途径。</li>
+<li><strong>按真实囤货的时间考虑股票持有时间；按商品一轮周期上涨倍数判断股票倍数。投资所有智慧就是”耐心”。</strong></li>
+<li>稳，是我的命数。</li>
+</ol>
+<p><strong>其他经验教训</strong>：</p>
+<ul>
+<li><strong>之六：集中</strong>。</li>
+<li><strong>之八：3% 以内，价值才开始显现</strong>——努力到 30 分和 80 分没有本质区别，只有进入前 3%，真正的价值才开始显现。</li>
+<li><strong>之二十一：反对意见一定要当面提。</strong></li>
+<li>“3%、5% 的优势不是优势，只有碾压性的优势才是优势。”</li>
+<li>入世强者的三样标配：入世的强者、出世的智者、普普通通的普通人（后文指”入世强者通常兼具三者气质”）。</li>
+</ul>
+<h3 id="其他重要人生感悟"><a href="#其他重要人生感悟" class="headerlink" title="其他重要人生感悟"></a>其他重要人生感悟</h3><ul>
+<li><strong>“稳”</strong> 是中年&#x2F;后半生最重要的字：20 多岁失败世界宽容，30 多岁是积累经验，40 多岁失败会失去信用与信任，50 岁失败无人再愿与你合作；年纪越大失败，世界容忍度越低。</li>
+<li>男人的三段论：20 年成长、20 年学习、20 年平天下；40 岁是量变结束、进入质变的节点。</li>
+<li>“钱永远赚不完，机会永远都在，但钱是可以亏完的。”</li>
+<li>风险理解：”即使中美开战，我买的股票位置不高，跌 30–40% 也能回来，最多亏时间，不亏钱、不破产。”</li>
+<li>“所谓 10 年一遇的事，一年能遇到几次；百年不遇的，10 年遇到几次；千年不遇的，一辈子能见一两次。永远不追高，永远不站山顶。”</li>
+<li>巴菲特式”活久见”：巴菲特活到 95 岁，但让人”活久见”的事某一年能连续出现三次。</li>
+<li>投资里”失败不是成功之母，成功才是”——必须重仓赚一次大钱，才能突破认知。</li>
+<li>“识于微时，雪中送炭”（人际与买股同理：人微时结交、股未涨时买入）。</li>
+<li>40 岁开始放慢一切频率（生活、赚钱、事业、吃饭、读书都慢下来）。</li>
+</ul>
+<h3 id="人生思考体系框架（一张-PPT-的浓缩）"><a href="#人生思考体系框架（一张-PPT-的浓缩）" class="headerlink" title="人生思考体系框架（一张 PPT 的浓缩）"></a>人生思考体系框架（一张 PPT 的浓缩）</h3><ul>
+<li><strong>心法</strong>：调用”神”识，以击凡尘（向领域最强的神级人物学习，直接抄他们的方法和智慧）。</li>
+<li><strong>核心</strong>：实践。</li>
+<li><strong>一套思考系统</strong>：唯物辩证法。</li>
+<li><strong>两个方法论</strong>：《实践论》《矛盾论》。</li>
+<li><strong>两个思考技巧</strong>：① 任何事推到极点看本质；② 把时间推到 30 年后衡量现在的决定。</li>
+<li><strong>两个处事原则</strong>：① 识人于微时、买股于未涨；② 雪中送炭、只看优点。</li>
+<li><strong>三个思考支柱</strong>：价值、复利、周期。</li>
+<li><strong>三个核心能力及训练</strong>：战略（历史&#x2F;兵法&#x2F;传记）、投资（金融史&#x2F;危机史&#x2F;年报&#x2F;牛人传记）、输出（写文章&#x2F;对别人讲）。</li>
+<li><strong>学习方法</strong>：只读经典、大量阅读、集中突破、死记硬背。</li>
+</ul>
+<hr>
+<h2 id="十五、战略思想（15-条）"><a href="#十五、战略思想（15-条）" class="headerlink" title="十五、战略思想（15 条）"></a>十五、战略思想（15 条）</h2><p>作者早年总结的战略领悟，用于投资、创业、人生：</p>
+<ol>
+<li>战略的本质 &#x3D; 运用一切条件创造”以多打少”的态势。</li>
+<li>集中力量连续打击敌人一个薄弱环节，直至突破（蒙古集重兵破襄阳，三年后南宋灭亡）。</li>
+<li>由点及面，积累优势，扩大优势（周起于岐山，三代积累终灭商）。</li>
+<li>弱者联合强者，大多被吞并（南宋联蒙古灭金后被蒙古所灭）。</li>
+<li>联合弱者攻强者，联盟明日之敌攻击今日之敌（成吉思汗统一蒙古）。</li>
+<li>避免陷入两线&#x2F;多线作战（二战德国之败）。</li>
+<li>使敌人陷入多线作战、疲于奔命（春秋晋四军疲楚）。</li>
+<li>劣势时在局部创造绝对优势，以多打少、以众凌寡（红军、八路军战例）。</li>
+<li>集中优势兵力，消灭敌人有生力量（秦昭王对六国）。</li>
+<li>重用人才，重赏重罚，集中组织力量（刘邦）。</li>
+<li>战略性政策必须有连续执行力（商鞅变法，秦惠王杀商鞅而其法执行至秦一统）。</li>
+<li>每个阶段最重要的问题只有一个（解决主要矛盾）。</li>
+<li>重视大迂回战略，以迂为直、以远为近（蒙古西征灭西夏）。</li>
+<li>远交近攻，保持胜利果实（秦灭六国）。</li>
+<li>内部团结、强壮自己才是战胜敌人的根本——绝对实力面前，阴谋诡计都是笑话。</li>
+</ol>
+<hr>
+<h2 id="十六、历史人物随笔"><a href="#十六、历史人物随笔" class="headerlink" title="十六、历史人物随笔"></a>十六、历史人物随笔</h2><p>作者读《史记》等历史书，借历史人物谈”时来天地皆同力，运去英雄不自由”：</p>
+<ul>
+<li><strong>李斯</strong>：旷世大才（《谏逐客书》、传国玉玺”受命于天既寿永昌”、泰山刻石），但私心太重，为私利与赵高矫诏杀扶苏蒙恬，最终腰斩族灭。”一辈子选择做粮仓里的硕鼠，结局也配得上他的背叛。”</li>
+<li><strong>蒙恬</strong>：传说中发明毛笔的男人，传记读之”依然觉得好可惜”。</li>
+<li><strong>商鞅</strong>：变法之神，奠基秦国富强，建立郡县制与”以功受爵”制度，延续为中华民族 2000 年精神信仰；为人刻薄，”非冷酷强力无以功成”，影响远超 90% 帝王将相。</li>
+<li><strong>魏冉</strong>：宣太后之弟、秦昭王之舅，打仗、治国、选贤任能皆强，可能是秦史上最强外戚。</li>
+<li><strong>吕不韦</strong>：奇货可居，做成中国历史上所有商人最大的一笔生意，”非大智大勇之才不能为之”。</li>
+<li><strong>苏秦、张仪</strong>：风云战国 40 年，人品极渣但才能出众，尤其说服各国君王的说辞极好。</li>
+<li><strong>整本《史记》</strong>：写尽”时来天地皆同力，运去英雄不自由”的人生——人生最重要的东西可能是气运，努力的作用很有限，大富大贵、大灾大难命里有没有就是有没有。</li>
+</ul>
+<hr>
+<h2 id="十七、个人经历（《股海无疆》主线）"><a href="#十七、个人经历（《股海无疆》主线）" class="headerlink" title="十七、个人经历（《股海无疆》主线）"></a>十七、个人经历（《股海无疆》主线）</h2><p>作者计划写 30 万字的纪实体小说《股海无疆》，以一位 70 岁老人在终南山归隐回忆的形式，讲述自己从 2006 年入市到”0→100 亿”的一生。主要情节线索：</p>
+<ul>
+<li><strong>出身</strong>：1985 年生于甘肃酒泉，祖父是改革开放后当地第一个”万元户”（养羊），父亲 1992 年受邓小平南巡讲话鼓舞辞职下海做农资（农药、种子、化肥、农产品收购），母亲强势坚韧、大局观强。</li>
+<li><strong>童年</strong>：8 岁开始帮家里卖货、数钱、收废品、看店赚”销售提成”，初一已有 1 万存款；10 岁时目睹<strong>孜然</strong>价格从 10 元&#x2F;斤暴涨到 60 元再跌回 6 元，第一次感受价格波动的力量。</li>
+<li><strong>啤酒花领悟</strong>：初中观察啤酒花价格从 1 万&#x2F;吨跌到 2000 多（老百姓把干花砌进墙里），再到 7 万&#x2F;吨、如今高位 15 万&#x2F;吨——第一次系统验证”供需决定价格 + 周期 + 价值”框架，理解”商品历史所有高价都被用来超越”。</li>
+<li><strong>观察积累</strong>：从小学到高中刻意观察大麦、甘草、羊绒、葱姜蒜、辣椒、土豆、猪肉等价格运动，用央视报道验证自己的”顶部&#x2F;底部”判断。</li>
+<li><strong>命运起点</strong>：大学第一周金融课，第一次理解”股票 &#x3D; 企业发给股东的凭证”，瞬间顿悟”可以通过股票间接囤积商品”，用白糖（南宁糖业&#x2F;贵糖股份）做了推演——人生最重要转折。</li>
+<li><strong>第一笔交易</strong>：2006 年 6 月 6 日开户，买入天南铜业；此前 6 年沉迷技术分析（K 线、江恩、迪马克等），后在上海接触近 2 亿资金只运作一只股票，才看懂市场本质，抛弃全部技术分析。</li>
+<li><strong>实战验证</strong>：2021 年 6-7 月以 5.5 元买入金钼股份（钼），持仓 4 年半，2026 年 3 月在 27 元附近全部卖出，获利近 5 倍，作为”再见了，金钼”的纪念。</li>
+</ul>
+<hr>
+<h2 id="十八、问答精选（知乎问答合集）"><a href="#十八、问答精选（知乎问答合集）" class="headerlink" title="十八、问答精选（知乎问答合集）"></a>十八、问答精选（知乎问答合集）</h2><h3 id="关于投资方法"><a href="#关于投资方法" class="headerlink" title="关于投资方法"></a>关于投资方法</h3><ul>
+<li><strong>Q：大部分人为什么喜欢 K 线技术分析而不用价值投资？</strong> A：① 技术分析简单、像捷径；② 没做过生意、无法理解企业如何赚钱、无法识别价值；③ 没耐心等待价值兑现、钱太少急功近利。”价值投资不只是股票上的事，是一种思考方式。”</li>
+<li><strong>Q：交易者最稀缺的是什么？</strong> A：<strong>确定性</strong>——入场时就知道自己对，大概知道出场时能赚多少。</li>
+<li><strong>Q：如何练交易重仓的勇气？</strong> A：重仓不需要勇气，只需要确信用 5 毛钱买了 1 块钱的东西。</li>
+<li><strong>Q：止损很痛苦，如何做到？</strong> A：需要止损，说明买的时候就已经错了。</li>
+<li><strong>Q：怎么分辨网上大 V 是真高手？</strong> A：看<strong>同一个账户连续 5 年的年化收益曲线</strong>（券商统计不考虑新增资金）。</li>
+<li><strong>Q：技术分析哪个指标最有效？</strong> A：最原始的支撑和压力，其他都没大用。</li>
+<li><strong>Q：价值投资与趋势交易如何结合？</strong> A：鱼和熊掌都想吃，结果大概率都吃不到。</li>
+<li><strong>Q：为什么一重仓心里就变化？</strong> A：因为没赚过大钱。</li>
+<li><strong>Q：散户重仓后如何看淡涨跌？</strong> A：确定知道买的公司值多少钱，就能看淡涨跌。</li>
+<li><strong>Q：一句话说清交易成败？</strong> A：没在混沌中找到确定性，就永远在赌概率；<strong>买入之时，胜负已定。</strong></li>
+<li><strong>Q：交易真的需要天赋吗？</strong> A：任何领域成为绝顶高手都需要天赋异禀。</li>
+<li><strong>Q：为什么 10% 赚钱？</strong> A：比例高了，长期约 3% 赚钱、7% 持平、90% 亏损。</li>
+<li><strong>Q：能否推荐交易类书籍？</strong> A：见读书方法一节书单；读完若还不赚钱，说明悟性有限，应离开市场找自己更有天赋的领域。</li>
+</ul>
+<h3 id="关于具体标的与市场（作者明确说明-2025-年-5-月后不再写个股）"><a href="#关于具体标的与市场（作者明确说明-2025-年-5-月后不再写个股）" class="headerlink" title="关于具体标的与市场（作者明确说明 2025 年 5 月后不再写个股）"></a>关于具体标的与市场（作者明确说明 2025 年 5 月后不再写个股）</h3><ul>
+<li>2026 年化工行业周期拐点：化工从 2021 到 2026 五年下行周期基本结束，进入 3–5 年上行周期；找跌到高点 1&#x2F;4、1&#x2F;5 的、省国资委级别控股的、细分领域国内前三&#x2F;亚洲前几的、市值 300 亿以下的、月线在低位的，拿三四年基本三倍。</li>
+<li>300 万投资：5.5 元买齐翔腾达（顺酐），拿两年大概率变 600 万。</li>
+<li>可以养老的股票：5.28 元的中石化（净资产 6.89、股息约 5%，到净资产有约 30% 空间）。</li>
+<li>白酒会被 90 后终结吗？看行动：每天 9:30 秒光 100 吨茅台（约 3.75 亿）。</li>
+<li>原油上涨对化工利润的影响：上游涨价初期冲击中游成本，但中下游随后提价，<strong>提价幅度超过成本涨幅，利润反而增加</strong>（精细化工可能原油涨 50%、产品涨 200–300%）。</li>
+</ul>
+<h3 id="关于人生与资金"><a href="#关于人生与资金" class="headerlink" title="关于人生与资金"></a>关于人生与资金</h3><ul>
+<li>2 万&#x2F;10 万资金：投资自己、好好读书&#x2F;工作、先攒本金到 30 万再入市做中长线；1000 万之前不用考虑资产配置。</li>
+<li>30 万以下最重要是找收入更高的工作或做好生意，扩大本金才是正事。</li>
+<li>10 万裸辞炒股：明显不够，且能问出这问题说明能力不适合 A 股。</li>
+<li>挣钱为了什么：吃喝玩乐、贪财好色、混吃等死（戏谑，呼应”人生松弛”）。</li>
+<li>资产千万的烦恼：应该问”能拿出 1000 万现金资产的人”（回答会少 2&#x2F;3）。</li>
+<li>炫富：没见过一个不炫富的有钱人，只是炫在我们看不懂的地方。</li>
+</ul>
+<h3 id="关于历史与政治（少量）"><a href="#关于历史与政治（少量）" class="headerlink" title="关于历史与政治（少量）"></a>关于历史与政治（少量）</h3><ul>
+<li>曾国藩屠杀百姓却称”半个圣人”：屁股决定脑袋，阶级决定立场。</li>
+<li>普京是当代列宁？：开创制度的人寥寥无几，拿普京比列宁是看不起列宁。</li>
+<li>列宁若再活 20 年：1929 大萧条时德国可能变”红色德国”，改变 20 世纪历史进程。</li>
+</ul>
+<hr>
+<h2 id="十九、金句集锦"><a href="#十九、金句集锦" class="headerlink" title="十九、金句集锦"></a>十九、金句集锦</h2><blockquote>
+<ul>
+<li>“周期是运势，价值是不败之地，复利是稳定即暴利。”</li>
+<li>“买其所值，卖其疯狂。”</li>
+<li>“研究透，低位，重仓，然后耐心等风把你刮起来，钱从天上刮来。”</li>
+<li>“价值投资 95% 的时间无所事事，但这 95% 无所事事的时间是整个价值投资最重要的组成部分。”</li>
+<li>“大钱都是风刮来的，和自己努力没啥关系。”</li>
+<li>“真正的大势，岂是主观力量能挡得住的。”</li>
+<li>“如果你自己都还没感觉到疯狂，那绝对没到顶；如果自己都还没感觉到绝望，那行情绝对没跌到底。”</li>
+<li>“在血流成河的时候买入，哪怕流的是自己的血。”</li>
+<li>“顶部冲进去的和底部杀跌卖出的，有同一个名字：乌合之众。”</li>
+<li>“好公司，低位买，重仓进，耐心拿，狂涨卖。”（致富三字经）</li>
+<li>“大跌的时候买股，无聊的行情看书睡觉，暴涨的行情赚钱。”</li>
+<li>“知识真的就是财富和力量；大钱不是写在刑法里，是写在历史和经济规律里。”</li>
+<li>“实践，是把知识变成力量唯一的路径；也是检验真理的唯一标准。”</li>
+<li>“道虽迩，不行不至；事虽小，不为不成。”</li>
+<li>“识于微时，雪中送炭。”</li>
+<li>“取财有道，用财有德。”</li>
+<li>“飞黄腾达之日不生骄纵之心，窘困低谷之时不堕青云之志。”</li>
+<li>“愿我历经波澜、走过岁月、遍览山河，依然心有童真，赤心不改。”</li>
+<li>“春风若有怜花意，可否许我再少年。”</li>
+<li>“时来天地皆同力，运去英雄不自由。”</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="附：一页速览（核心结论）"><a href="#附：一页速览（核心结论）" class="headerlink" title="附：一页速览（核心结论）"></a>附：一页速览（核心结论）</h2><ol>
+<li><strong>本质</strong>：不做股票投机，做”通过股票间接囤积商品”的大宗商品生意。</li>
+<li><strong>三支柱</strong>：周期（运势）＞ 价值（不败）＞ 复利（积累）。</li>
+<li><strong>十六字</strong>：专注商品、立足周期、低位买入、长期持有。</li>
+<li><strong>选股</strong>：央企&#x2F;省国资 + 业绩 3–5 倍爆发 + 产品独一无二 + 主营集中 + 模式简单 + 低位盘整 + 市值小 + 资本只能选它。</li>
+<li><strong>风控</strong>：最多 3 只、主仓 70%、基本不用杠杆、不买民企&#x2F;ST&#x2F;亏损&#x2F;连降、不追高。</li>
+<li><strong>周期</strong>：七大驱动因素；农产品看供给、工业品看需求；无法淘汰的商品周期必然存在；商品高价永远被超越。</li>
+<li><strong>认知</strong>：唯物辩证法 + 第一性原理 + 是什么&#x2F;为什么&#x2F;怎么办；主要矛盾的主要方面（4% 核心）。</li>
+<li><strong>心态</strong>：懂 + 买得低 → 自然有好心态；心态是结果不是问题。</li>
+<li><strong>估值</strong>：净利润 × 20~30 倍；净资产 8 折是周期股大底。</li>
+<li><strong>人生</strong>：稳是命数；宁可错过不要做错；用 1 亿做 3000 万的事。</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222110000004.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%80%81%E5%BA%A6%E6%94%B9%E5%8F%98%E4%B8%8E%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D%E3%80%8B/'>阅读笔记——《态度改变与社会影响》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222110000002.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8ACFA%E4%B8%89%E7%BA%A7%E4%B8%AD%E6%96%87%E7%B2%BE%E8%AE%B2%EF%BC%88%E7%AC%AC3%E5%86%8C%EF%BC%89%E3%80%8B/">阅读笔记——《CFA三级中文精讲（第3册）》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

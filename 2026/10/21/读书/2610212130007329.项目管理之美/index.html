@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="项目管理之美（The Art of Project Management）读书笔记" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    项目管理之美（The Art of Project Management）读书笔记
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：12.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：42分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E7%BE%8E%EF%BC%88The-Art-of-Project-Management%EF%BC%89%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">项目管理之美（The Art of Project Management）读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0-%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%AE%80%E5%8F%B2%EF%BC%9A%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E5%BA%95%E8%89%B2"><span class="post-toc-text">第 1 章 项目管理简史：这本书的底色</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E5%A4%B1%E8%B4%A5%E4%B8%AD%E5%AD%A6%E4%B9%A0"><span class="post-toc-text">从失败中学习</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E7%9A%84%E5%B9%B3%E8%A1%A1%E4%B9%8B%E9%81%93%EF%BC%888-%E4%B8%AA%E6%82%96%E8%AE%BA%EF%BC%89"><span class="post-toc-text">项目管理的平衡之道（8 个悖论）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B5%81%E7%A8%8B%E4%B8%8E%E7%9B%AE%E6%A0%87%E7%9B%B8%E6%B7%B7%E6%B7%86%EF%BC%88%E4%BD%9C%E8%80%85%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BF%BB%E8%BD%A6%E6%95%85%E4%BA%8B%EF%BC%89"><span class="post-toc-text">流程与目标相混淆（作者自己的翻车故事）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%82%E5%BA%A6%E5%8F%82%E4%B8%8E-%E5%88%A9%E7%94%A8%E5%A5%BD%E4%BD%A0%E7%9A%84%E8%A7%82%E7%82%B9"><span class="post-toc-text">适度参与 + 利用好你的观点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0-%E8%BF%9B%E5%BA%A6%E8%A1%A8%E7%9A%84%E5%8E%9F%E7%90%86%EF%BC%9A%E6%8E%92%E6%9C%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%A4%B1%E8%B4%A5"><span class="post-toc-text">第 2 章 进度表的原理：排期为什么会失败</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E5%BA%A6%E8%A1%A8%E6%9C%89%E4%B8%89%E4%B8%AA%E7%9B%AE%E7%9A%84"><span class="post-toc-text">进度表有三个目的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E5%88%86%E6%B3%95%EF%BC%9A%E8%BF%9B%E5%BA%A6%E8%A1%A8%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="post-toc-text">三分法：进度表最简单的骨架</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9B%E5%BA%A6%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%B1%E8%B4%A5"><span class="post-toc-text">进度为什么失败</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%96%8F%E5%BF%BD%E6%A3%80%E6%9F%A5%E6%B8%85%E5%8D%95%EF%BC%88%E8%8A%82%E9%80%89%EF%BC%89"><span class="post-toc-text">常见疏忽检查清单（节选）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A9%E8%BF%9B%E5%BA%A6%E8%A1%A8%E6%AD%A3%E5%B8%B8%E8%BF%90%E8%BD%AC"><span class="post-toc-text">让进度表正常运转</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0-%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9A%E4%B8%89%E7%A7%8D%E8%A7%86%E8%A7%92%E7%9A%84%E4%BA%A4%E9%9B%86"><span class="post-toc-text">第 3 章 如何知道该做什么：三种视角的交集</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%84%E7%BB%87%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E8%A7%84%E5%88%92%EF%BC%9A%E4%BA%94%E7%A7%8D%E6%8E%88%E6%9D%83"><span class="post-toc-text">组织如何影响规划：五种授权</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E8%A7%84%E5%88%92%E4%BA%A7%E7%89%A9"><span class="post-toc-text">常见的规划产物</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E8%A7%86%E8%A7%92%EF%BC%9A%E4%B8%9A%E5%8A%A1%E3%80%81%E6%8A%80%E6%9C%AF%E3%80%81%E5%AE%A2%E6%88%B7"><span class="post-toc-text">三种视角：业务、技术、客户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E9%99%88%E8%BF%B0%E4%B8%8E%E5%9C%BA%E6%99%AF"><span class="post-toc-text">问题陈述与场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0-%E7%BC%96%E5%86%99%E5%A5%BD%E7%9A%84%E8%BF%9C%E6%99%AF%E6%96%87%E6%A1%A3%EF%BC%9A%E8%AE%A9%E6%96%B9%E5%90%91%E4%B8%8D%E8%B7%91%E5%81%8F"><span class="post-toc-text">第 4 章 编写好的远景文档：让方向不跑偏</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%8A%E4%BA%8B%E6%83%85%E8%AE%B0%E5%BD%95%E4%B8%8B%E6%9D%A5%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="post-toc-text">把事情记录下来的价值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A5%BD%E7%9A%84%E8%BF%9C%E6%99%AF%E7%9A%84-5-%E9%A1%B9%E8%B4%A8%E9%87%8F%E6%8C%87%E6%A0%87"><span class="post-toc-text">好的远景的 5 项质量指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%95%B0%E9%87%8F%E4%B8%8D%E7%AD%89%E4%BA%8E%E8%B4%A8%E9%87%8F"><span class="post-toc-text">数量不等于质量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A5%BD%E7%9A%84%E8%BF%9C%E6%99%AF%E9%99%88%E8%BF%B0%E5%AE%9E%E4%BE%8B%EF%BC%88%E4%BD%9C%E8%80%85%E7%BB%99%E5%87%BA%EF%BC%89"><span class="post-toc-text">好的远景陈述实例（作者给出）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9C%E6%99%AF%E5%BA%94%E8%AF%A5%E7%9C%8B%E5%BE%97%E5%88%B0"><span class="post-toc-text">远景应该看得到</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%9C%E6%99%AF%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5"><span class="post-toc-text">远景健康检查</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0-%E6%83%B3%E6%B3%95%E4%BB%8E%E4%BD%95%E8%80%8C%E6%9D%A5%EF%BC%9A%E5%88%9B%E9%80%A0%E5%8A%9B%E7%9A%84%E7%9C%9F%E7%9B%B8"><span class="post-toc-text">第 5 章 想法从何而来：创造力的真相</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AD%98%E5%9C%A8%E4%B8%8D%E5%A5%BD%E7%9A%84%E6%83%B3%E6%B3%95"><span class="post-toc-text">存在不好的想法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E3%80%8C%E8%B7%B3%E5%87%BA%E6%A1%86%E6%A1%86%E6%80%9D%E8%80%83%E3%80%8D%E4%B9%9F%E4%B8%8D%E5%AF%B9"><span class="post-toc-text">「跳出框框思考」也不对</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A5%BD%E9%97%AE%E9%A2%98%E5%B8%A6%E6%9D%A5%E5%A5%BD%E6%83%B3%E6%B3%95"><span class="post-toc-text">好问题带来好想法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8D%E5%A5%BD%E7%9A%84%E6%83%B3%E6%B3%95%E5%BC%95%E5%87%BA%E5%A5%BD%E6%83%B3%E6%B3%95"><span class="post-toc-text">不好的想法引出好想法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%B3%E5%85%B4%E8%A7%84%E5%88%99%EF%BC%88%E5%A4%B4%E8%84%91%E9%A3%8E%E6%9A%B4%E5%9B%9B%E8%A7%84%E5%88%99%EF%BC%89"><span class="post-toc-text">即兴规则（头脑风暴四规则）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E5%AE%A2%E6%88%B7%E4%BD%93%E9%AA%8C%E5%BC%80%E5%A7%8B%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">从客户体验开始设计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0-%E6%9C%89%E4%BA%86%E6%83%B3%E6%B3%95%E4%B9%8B%E5%90%8E%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9A%E6%94%B6%E6%95%9B%E7%9A%84%E8%89%BA%E6%9C%AF"><span class="post-toc-text">第 6 章 有了想法之后做什么：收敛的艺术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95%E4%BC%9A%E5%A4%B1%E6%8E%A7"><span class="post-toc-text">想法会失控</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E7%A9%BA%E9%97%B4%E5%BF%85%E9%A1%BB%E5%85%88%E6%89%A9%E5%BC%A0%E5%90%8E%E6%94%B6%E6%95%9B"><span class="post-toc-text">问题空间必须先扩张后收敛</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%BF%AD%E4%BB%A3-%E5%89%8D%E8%BF%9B%E4%B8%A4%E6%AD%A5%E3%80%81%E5%90%8E%E9%80%80%E4%B8%80%E6%AD%A5"><span class="post-toc-text">迭代 &#x3D; 前进两步、后退一步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E8%AE%A1%E9%98%B6%E6%AE%B5%E7%9A%84%E6%A3%80%E6%9F%A5%E7%82%B9"><span class="post-toc-text">设计阶段的检查点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%B2%E5%92%8C%E5%9B%BE%EF%BC%88KJ-%E5%9B%BE%EF%BC%89"><span class="post-toc-text">亲和图（KJ 图）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8E%9F%E5%9E%8B%E6%98%AF%E4%BD%A0%E7%9A%84%E6%9C%8B%E5%8F%8B"><span class="post-toc-text">原型是你的朋友</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%80%E6%94%BE%E9%97%AE%E9%A2%98%E5%88%97%E8%A1%A8"><span class="post-toc-text">开放问题列表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0-%E6%92%B0%E5%86%99%E4%BC%98%E7%A7%80%E7%9A%84%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6%EF%BC%9A%E6%B2%9F%E9%80%9A%E8%80%8C%E9%9D%9E%E5%AE%98%E5%83%9A"><span class="post-toc-text">第 7 章 撰写优秀的规格说明书：沟通而非官僚</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88-%E4%B8%8D%E8%83%BD%E5%81%9A%E4%BB%80%E4%B9%88"><span class="post-toc-text">规格说明书能做什么 &#x2F; 不能做什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6%E7%9A%84-4-%E7%A7%8D%E4%BF%A1%E6%81%AF"><span class="post-toc-text">规格说明书的 4 种信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%92%B0%E5%86%99%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E%E4%B9%A6%E4%B8%8D%E6%98%AF%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">撰写规格说明书不是设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%84%E5%AE%A1%E5%92%8C%E5%8F%8D%E9%A6%88"><span class="post-toc-text">评审和反馈</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0-%E5%A6%82%E4%BD%95%E5%88%B6%E5%AE%9A%E5%A5%BD%E7%9A%84%E5%86%B3%E7%AD%96%EF%BC%9A%E5%85%83%E5%86%B3%E7%AD%96%E4%B8%8E%E5%8B%87%E6%B0%94"><span class="post-toc-text">第 8 章 如何制定好的决策：元决策与勇气</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%83%E5%86%B3%E7%AD%96%EF%BC%88meta-decision-making%EF%BC%89"><span class="post-toc-text">元决策（meta-decision-making）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A1%A1%E9%87%8F%E5%86%B3%E7%AD%96%E7%9A%84%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="post-toc-text">衡量决策的核心问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%95%E4%B8%80%E8%AF%84%E4%BC%B0-vs-%E6%AF%94%E8%BE%83%E8%AF%84%E4%BC%B0"><span class="post-toc-text">单一评估 vs 比较评估</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E7%BC%BA%E7%82%B9%E5%88%97%E8%A1%A8%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="post-toc-text">优缺点列表的注意事项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80-%E6%B2%89%E6%80%9D"><span class="post-toc-text">奥卡姆剃刀 + 沉思</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E6%98%AF%E9%97%AA%E5%85%89%E7%81%AF%EF%BC%8C%E4%B8%8D%E6%98%AF%E5%86%B3%E7%AD%96%E8%80%85"><span class="post-toc-text">信息是闪光灯，不是决策者</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B3%E5%AE%9A%E7%9A%84%E5%8B%87%E6%B0%94-%E5%A5%BD%E5%86%B3%E7%AD%96%E5%8F%AF%E8%83%BD%E6%9C%89%E5%9D%8F%E7%BB%93%E6%9E%9C"><span class="post-toc-text">决定的勇气 + 好决策可能有坏结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0-%E6%B2%9F%E9%80%9A%E5%92%8C%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%EF%BC%9A%E5%B7%B4%E5%88%AB%E5%A1%94%E7%9A%84%E6%95%99%E8%AE%AD"><span class="post-toc-text">第 9 章 沟通和人际关系：巴别塔的教训</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%82%E6%9E%9C%E4%BD%A0%E6%97%A0%E6%B3%95%E6%B2%9F%E9%80%9A%EF%BC%8C%E4%BD%A0%E5%B0%B1%E6%97%A0%E6%B3%95%E6%88%90%E5%8A%9F"><span class="post-toc-text">如果你无法沟通，你就无法成功</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E8%BF%87%E4%BA%A4%E8%B0%88%E6%9D%A5%E7%AE%A1%E7%90%86%EF%BC%88MBWA%EF%BC%89"><span class="post-toc-text">通过交谈来管理（MBWA）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B2%9F%E9%80%9A%E7%9A%84-5-%E6%AD%A5%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">沟通的 5 步模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E6%B2%9F%E9%80%9A%E9%97%AE%E9%A2%98"><span class="post-toc-text">常见沟通问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89%E8%A7%92%E8%89%B2%EF%BC%88Covey-%E8%AF%AD%E5%BD%95%EF%BC%89"><span class="post-toc-text">定义角色（Covey 语录）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E3%80%8C%E6%88%91%E8%A6%81%E6%80%8E%E4%B9%88%E5%81%9A%E6%89%8D%E8%83%BD%E5%B8%AE%E4%BD%A0%E5%81%9A%E5%87%BA%E6%9C%80%E5%A5%BD%E7%9A%84%E5%B7%A5%E4%BD%9C%EF%BC%9F%E3%80%8D"><span class="post-toc-text">「我要怎么做才能帮你做出最好的工作？」</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0-%E6%80%8E%E6%A0%B7%E6%89%8D%E8%83%BD%E4%B8%8D%E6%83%B9%E6%81%BC%E5%88%AB%E4%BA%BA%EF%BC%9A%E6%B5%81%E7%A8%8B%E3%80%81%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E5%92%8C%E4%BC%9A%E8%AE%AE"><span class="post-toc-text">第 10 章 怎样才能不惹恼别人：流程、电子邮件和会议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%BA%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A2%AB%E6%83%B9%E6%80%92"><span class="post-toc-text">人们为什么被惹怒</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A5%BD%E6%B5%81%E7%A8%8B%E7%9A%84%E5%85%AC%E5%BC%8F"><span class="post-toc-text">好流程的公式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E4%B8%8B%E5%B1%82%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B"><span class="post-toc-text">从下层管理流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8D%E4%BB%A4%E4%BA%BA%E8%AE%A8%E5%8E%8C%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="post-toc-text">不令人讨厌的电子邮件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%9A%E8%AE%AE"><span class="post-toc-text">会议</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%E4%BA%8B%E6%83%85%E5%87%BA%E9%94%99%E6%97%B6%E8%AF%A5%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9A%E6%80%A5%E6%95%91%E7%AE%B1"><span class="post-toc-text">第 11 章 事情出错时该做什么：急救箱</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%84%E7%90%86%E5%9B%B0%E9%9A%BE%E7%9A%84%E7%B2%97%E7%95%A5%E6%80%A7%E6%8C%87%E5%8D%97%EF%BC%88%E6%80%A5%E6%95%91%E7%AE%B1%EF%BC%89"><span class="post-toc-text">处理困难的粗略性指南（急救箱）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9B%B0%E9%9A%BE%E6%83%85%E5%86%B5"><span class="post-toc-text">常见困难情况</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%9F%E8%B5%B7%E8%B4%A3%E4%BB%BB"><span class="post-toc-text">负起责任</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8D%9F%E5%AE%B3%E6%8E%A7%E5%88%B6"><span class="post-toc-text">损害控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3%E5%92%8C%E8%B0%88%E5%88%A4"><span class="post-toc-text">冲突解决和谈判</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%83%85%E7%BB%AA%E5%B7%A5%E5%85%B7%E7%AE%B1"><span class="post-toc-text">情绪工具箱</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%A2%86%E5%AF%BC%E5%8A%9B%E4%BB%A5%E4%BF%A1%E4%BB%BB%E4%B8%BA%E5%9F%BA%E7%A1%80"><span class="post-toc-text">第 12 章 为什么领导力以信任为基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E4%BB%BB%E9%80%9A%E8%BF%87%E6%89%BF%E8%AF%BA%E8%80%8C%E5%BB%BA%E7%AB%8B"><span class="post-toc-text">信任通过承诺而建立</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%88%E4%BA%88%E5%9E%8B%E6%9D%83%E5%8A%9B-vs-%E6%8C%A3%E5%BE%97%E5%9E%8B%E6%9D%83%E5%8A%9B"><span class="post-toc-text">授予型权力 vs 挣得型权力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%88%E6%9D%83%EF%BC%9A%E7%9B%B8%E4%BF%A1%E5%88%AB%E4%BA%BA"><span class="post-toc-text">授权：相信别人</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E4%BB%BB%E6%98%AF%E7%81%BE%E7%A5%B8%E7%9A%84%E4%BF%9D%E9%99%A9-%E4%BF%A1%E4%BB%BB%E5%92%8C%E7%8A%AF%E9%94%99"><span class="post-toc-text">信任是灾祸的保险 + 信任和犯错</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E4%BF%A1%E8%87%AA%E5%B7%B1"><span class="post-toc-text">相信自己</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BA%8B%E6%83%85%E5%8F%91%E7%94%9F%EF%BC%9A%E4%BC%98%E5%85%88%E7%BA%A7%E3%80%81%E8%AF%B4%E3%80%8C%E4%B8%8D%E3%80%8D%E3%80%81%E5%9D%9A%E6%8C%81%E4%B8%8D%E6%87%88"><span class="post-toc-text">第 13 章 如何让事情发生：优先级、说「不」、坚持不懈</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E8%AE%A9%E4%BA%8B%E6%83%85%E5%8F%91%E7%94%9F"><span class="post-toc-text">优先级让事情发生</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7-1-vs-%E5%85%B6%E4%BB%96%E4%B8%80%E5%88%87"><span class="post-toc-text">优先级 1 vs 其他一切</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BD%93%E4%BD%A0%E8%AF%B4%E3%80%8C%E4%B8%8D%E3%80%8D%E6%97%B6%EF%BC%8C%E4%BA%8B%E6%83%85%E5%8F%91%E7%94%9F%E4%BA%86"><span class="post-toc-text">当你说「不」时，事情发生了</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%9D%E6%8C%81%E7%9C%9F%E5%AE%9E%EF%BC%88%E5%90%B9%E7%89%9B%EF%BC%89"><span class="post-toc-text">保持真实（吹牛）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%86%E8%A7%A3%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="post-toc-text">了解关键路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%9A%E6%8C%81%E4%B8%8D%E6%87%88"><span class="post-toc-text">坚持不懈</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A6%81%E6%9C%BA%E6%99%BA-%E6%B8%B8%E5%87%BB%E6%88%98%E6%9C%AF"><span class="post-toc-text">要机智 + 游击战术</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0-%E4%B8%AD%E7%9B%98%E6%88%98%E7%95%A5%EF%BC%9A%E9%A3%9E%E5%9C%A8%E9%A3%9E%E6%9C%BA%E4%B9%8B%E5%89%8D"><span class="post-toc-text">第 14 章 中盘战略：飞在飞机之前</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A3%9E%E5%9C%A8%E9%A3%9E%E6%9C%BA%E4%B9%8B%E5%89%8D-vs-%E9%A3%9E%E5%9C%A8%E9%A3%9E%E6%9C%BA%E4%B9%8B%E5%90%8E"><span class="post-toc-text">飞在飞机之前 vs 飞在飞机之后</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5%EF%BC%9A%E9%A3%9E%E5%9C%A8%E5%89%8D%E9%9D%A2%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text">健康检查：飞在前面的方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%87%E5%8F%96%E5%AE%89%E5%85%A8%E7%9A%84%E8%A1%8C%E5%8A%A8"><span class="post-toc-text">采取安全的行动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%89%93%E7%A0%B4%E6%89%BF%E8%AF%BA"><span class="post-toc-text">打破承诺</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BC%96%E7%A0%81%E7%AE%A1%E9%81%93"><span class="post-toc-text">编码管道</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%A1%E7%90%86%E5%8F%98%E5%8A%A8%EF%BC%88DCR%EF%BC%89"><span class="post-toc-text">管理变动（DCR）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-%E7%BB%88%E7%9B%98%E6%88%98%E7%95%A5%EF%BC%9A%E7%9D%80%E9%99%86%E7%9A%84%E8%89%BA%E6%9C%AF"><span class="post-toc-text">第 15 章 终盘战略：着陆的艺术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B5%B6%E4%B8%8A%E6%97%A5%E6%9C%9F%E5%B0%B1%E5%83%8F%E9%A3%9E%E6%9C%BA%E9%99%8D%E8%90%BD"><span class="post-toc-text">赶上日期就像飞机降落</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%80%E5%87%BA%E6%A0%87%E5%87%86"><span class="post-toc-text">退出标准</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%8D%E8%90%BD%E7%9A%84%E8%A7%92%E5%BA%A6"><span class="post-toc-text">降落的角度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%84%E4%BB%B7%E7%9A%84%E5%85%83%E7%B4%A0"><span class="post-toc-text">评价的元素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Bug-%E5%88%86%E7%B1%BB-%E4%BD%9C%E6%88%98%E5%9B%A2%E9%98%9F"><span class="post-toc-text">Bug 分类 + 作战团队</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%88%E5%B1%80%E9%98%B6%E6%AE%B5%E7%9A%84%E7%BB%93%E6%9D%9F"><span class="post-toc-text">终局阶段的结束</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-16-%E7%AB%A0-%E6%94%BF%E6%B2%BB%E4%B8%8E%E6%9D%83%E5%8A%9B%EF%BC%9A%E6%94%BF%E6%B2%BB%E4%B8%8D%E6%98%AF%E8%84%8F%E8%AF%8D"><span class="post-toc-text">第 16 章 政治与权力：政治不是脏词</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%BF%E6%B2%BB%E6%98%AF%E4%BA%BA%E6%80%A7%E7%9A%84%E5%89%AF%E4%BA%A7%E5%93%81"><span class="post-toc-text">政治是人性的副产品</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9D%83%E5%8A%9B%E7%9A%84%E6%9D%A5%E6%BA%90"><span class="post-toc-text">权力的来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%BB%A5%E7%94%A8%E6%9D%83%E5%8A%9B"><span class="post-toc-text">滥用权力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%A3%E5%86%B3%E6%94%BF%E6%B2%BB%E9%97%AE%E9%A2%98-%E5%BD%B1%E5%93%8D%E5%8A%9B%E6%88%98%E6%9C%AF"><span class="post-toc-text">解决政治问题 + 影响力战术</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E6%94%BF%E6%B2%BB%E8%BF%90%E5%8A%A8%E5%9C%BA"><span class="post-toc-text">建立自己的政治运动场</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">我的几点感悟</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="项目管理之美（The-Art-of-Project-Management）读书笔记"><a href="#项目管理之美（The-Art-of-Project-Management）读书笔记" class="headerlink" title="项目管理之美（The Art of Project Management）读书笔记"></a>项目管理之美（The Art of Project Management）读书笔记</h1><p>2026年10月21日</p>
+<p>作者：艾迪</p>
+<blockquote>
+<p>书的全名是《项目管理之美》（<em>Making Things Happen &#x2F; The Art of Project Management</em>），作者 Scott Berkun（中文版译为「博克顿」），2008 年 O’Reilly 出版的修订版。作者 1994–2003 年在微软做过程序经理，参与过 Internet Explorer、Windows、MSN 等项目，后来又进微软的卓越工程组给内部团队做咨询和教学。所以这本书不是学院派 PMBOK 式教科书，而是一个实战者把「让事情发生」这件事拆开揉碎讲清楚的经验总结。</p>
+</blockquote>
+<p>全书分三部分、十六章，结构非常清晰：</p>
+<ul>
+<li><strong>第一部分 规划（第 1–6 章）</strong>：想清楚要做什么——从简史、进度表、需求，到远景文档、想法、规格说明书。</li>
+<li><strong>第二部分 技巧（第 7–11 章）</strong>：让事情发生的硬技能——规格说明书、决策、沟通、流程与会议、危机处理。</li>
+<li><strong>第三部分 管理（第 12–16 章）</strong>：人、权力与执行——信任、推动力、中盘战略、终盘战略、政治与权力。</li>
+</ul>
+<hr>
+<h2 id="第-1-章-项目管理简史：这本书的底色"><a href="#第-1-章-项目管理简史：这本书的底色" class="headerlink" title="第 1 章 项目管理简史：这本书的底色"></a>第 1 章 项目管理简史：这本书的底色</h2><p>作者开篇没有急着讲工具，而是先给了三个贯穿全书的判断：</p>
+<ol>
+<li><p><strong>项目管理和软件开发不是神秘的艺术。</strong> 造物史几千年，现代工程不过是一朵新出现的浪花。技术和技能会变，但工程难题的核心挑战从未变过——埃及金字塔和罗马沟渠的设计师当年画的「虚线」，和今天的软件排期是同一个东西。作者真的去研究了哈勃太空望远镜、波音 777、克莱斯勒大厦、帕台农神殿、电影工业和急诊室是怎么组织工作的，结论是：<strong>核心概念高度相通——需求、设计、限制、沟通、决策、进度、预算、客户。</strong></p>
+</li>
+<li><p><strong>对所做事情了解得越少，反而越有精力去完成它。</strong> 这里引用日语的「初心」（shoshin）：保持初学者心态、保持开放，才能不断学习、避免走入歧途。</p>
+</li>
+<li><p><strong>简单不等于容易。</strong> 跑马拉松很简单——开始跑，跑完 26.2 英里就停。但跑完非常困难。领导力和管理也一样：本质简单（朝特定目标、以特定方式把事情做好），做起来极难。<strong>别把「简单」误当成「容易」。</strong> 这一条几乎可以用来解释所有「原理我都懂，就是做不好」的困境。</p>
+</li>
+</ol>
+<h3 id="从失败中学习"><a href="#从失败中学习" class="headerlink" title="从失败中学习"></a>从失败中学习</h3><p>作者引用 Henry Petroski 和 Karl Popper：许多工程突破恰恰来自失败，因为失败迫使我们重新检查被忘却的假设。波音公司从成立起就保留一本「黑皮书」，专门记录设计和制造失败的教训，帮助后来的设计师避坑。软件开发团队也应该有自己的黑皮书——<strong>与其否认和隐藏失败，不如公开讨论、从中学习。</strong></p>
+<h3 id="项目管理的平衡之道（8-个悖论）"><a href="#项目管理的平衡之道（8-个悖论）" class="headerlink" title="项目管理的平衡之道（8 个悖论）"></a>项目管理的平衡之道（8 个悖论）</h3><p>作者从 Tom Peters 的文章推衍出一组项目经理必须平衡的冲突力量，这是全章最精华的部分：</p>
+<ul>
+<li><strong>自我 &#x2F; 无我</strong>：为项目投入情感是动力来源，但不能把个人利益放在项目之前，要愿意分享成功。</li>
+<li><strong>独裁 &#x2F; 委派</strong>：紧急时要果断授权，但整体上要建立可委派、可合作的环境。</li>
+<li><strong>忍受模糊 &#x2F; 追求完美</strong>：项目初期未知远多于已知，要尊重模糊；后期则要规范和精确。</li>
+<li><strong>口头 &#x2F; 书面</strong>：组织越大，书面越重要；但要懂得在特定时刻哪个更有效。</li>
+<li><strong>承认复杂 &#x2F; 拥护简单</strong>：别迷失在细节里，也别因不了解细节而否认复杂。</li>
+<li><strong>不耐烦 &#x2F; 有耐心</strong>：知道何时该推、何时该退一步让事情发生。</li>
+<li><strong>勇气 &#x2F; 恐惧</strong>：勇者不是无惧，而是感到害怕却依然行动。要对所有可能出错的事保持重视，同时有勇气面对风险。</li>
+<li><strong>相信 &#x2F; 怀疑</strong>：对所做的事要有信心，同时对进展保持怀疑——热情地提问、挑战假设，但不动摇团队信念。</li>
+</ul>
+<h3 id="流程与目标相混淆（作者自己的翻车故事）"><a href="#流程与目标相混淆（作者自己的翻车故事）" class="headerlink" title="流程与目标相混淆（作者自己的翻车故事）"></a>流程与目标相混淆（作者自己的翻车故事）</h3><p>做 IE4.0 时，作者为了「不失败」，把一切都做成检查列表和电子表格，办公室里贴满矩阵。直到上司点醒他：<strong>「你的项目是你的团队，管理好团队，而不是检查列表。如果你这样做下去，不久之后，你就需要你的团队来帮你管理检查列表。」</strong> 结论：计划与跟踪应该支持团队达成目标，而不是阻碍它。把流程和目标混淆，是管理层最大的错误之一。</p>
+<h3 id="适度参与-利用好你的观点"><a href="#适度参与-利用好你的观点" class="headerlink" title="适度参与 + 利用好你的观点"></a>适度参与 + 利用好你的观点</h3><p>经理不像工人那样产生线性工作量，而是用来<strong>增强周围每个人的价值</strong>。作者讲了一个走动式管理的故事：他闲逛时发现两个程序员正为一个 ListView 兼容性问题头疼，而他恰好知道走廊尽头的 Bill 昨晚刚解决过同样的问题，一句话就替团队省了半天。<strong>「没有任何 Bug 跟踪系统能完全替代人们彼此交谈。」</strong></p>
+<hr>
+<h2 id="第-2-章-进度表的原理：排期为什么会失败"><a href="#第-2-章-进度表的原理：排期为什么会失败" class="headerlink" title="第 2 章 进度表的原理：排期为什么会失败"></a>第 2 章 进度表的原理：排期为什么会失败</h2><h3 id="进度表有三个目的"><a href="#进度表有三个目的" class="headerlink" title="进度表有三个目的"></a>进度表有三个目的</h3><ol>
+<li><strong>对什么时候完成任务的承诺</strong>——进度是一份合同。</li>
+<li><strong>鼓励每个人把自己的工作看作整体的一部分</strong>——写下计划、附上名字，才会真正思考。这种心理作用叫「强迫功能」（Forcing function）。<strong>即使进度表后来被证明不准，第二项目的也已经实现了。</strong></li>
+<li><strong>提供一种跟踪项目、把工作切小的工具</strong>——把「房子：120 天」拆成每周细目，才能提出问题、澄清假设。</li>
+</ol>
+<h3 id="三分法：进度表最简单的骨架"><a href="#三分法：进度表最简单的骨架" class="headerlink" title="三分法：进度表最简单的骨架"></a>三分法：进度表最简单的骨架</h3><p>把可用时间分成三段：<strong>设计 &#x2F; 实现 &#x2F; 测试</strong>。任何进度表如果总体时间没有被大致分成这三类，就要有充分理由说明为何不均匀。三分法把项目的本质呈现出来：<strong>增加新功能不只是「程序员实现它」，还有人要支付不可避免的设计和测试成本。</strong></p>
+<h3 id="进度为什么失败"><a href="#进度为什么失败" class="headerlink" title="进度为什么失败"></a>进度为什么失败</h3><ul>
+<li><strong>从极远处盲目射击</strong>：越早做估算，偏差越大。Barry Boehm 的研究显示，早期整体估算偏差可高达 ±400%，即使进入实施阶段仍有约 20% 误差。所以进度估算的准确度会随时间进展而增加，必须不断调整。</li>
+<li><strong>进度是一种几率</strong>：进度表只是一堆小估算的汇总，而每种小估算都不可避免地引发疏忽。<strong>团队应该问：进度表里时间线发生的几率有多高？5 种最可能的风险是什么？</strong></li>
+<li><strong>估算是困难的</strong>：好的估算只能来自可靠的设计和需求。一个实用技巧——当程序员犹豫时问：<strong>「我该回答你什么问题，才能让你更有信心给出估算？」</strong></li>
+<li><strong>滚雪球效应</strong>：复合几率冷酷无情。每周以 90% 几率按时完成，连续多周后延迟几率持续累积。熵无所不在，它既不是项目也不是经理人的朋友。</li>
+</ul>
+<h3 id="常见疏忽检查清单（节选）"><a href="#常见疏忽检查清单（节选）" class="headerlink" title="常见疏忽检查清单（节选）"></a>常见疏忽检查清单（节选）</h3><p>是否把生病和度假时间算进去？是否考虑节假日？每个成员是否看得到进度表？团队对进度表有拥有感吗？估算用的几率是 90% 还是 50%？规格说明书质量是否配得上好估算的要求？</p>
+<h3 id="让进度表正常运转"><a href="#让进度表正常运转" class="headerlink" title="让进度表正常运转"></a>让进度表正常运转</h3><ul>
+<li>里程碑长度要和项目变化相匹配：变化越多，里程碑越短。</li>
+<li><strong>对远景要乐观，对进度表要存疑</strong>：进度表不该反映理想情况，而该宣称「什么将实际发生」。</li>
+<li>重视设计；规划「新增&#x2F;裁减」检查点；告知团队计划的原理；用问题空间衡量团队经验；尽早考虑风险。</li>
+</ul>
+<hr>
+<h2 id="第-3-章-如何知道该做什么：三种视角的交集"><a href="#第-3-章-如何知道该做什么：三种视角的交集" class="headerlink" title="第 3 章 如何知道该做什么：三种视角的交集"></a>第 3 章 如何知道该做什么：三种视角的交集</h2><p>规划回答两个问题：<strong>「我们需要做什么？」（需求搜集）和「我们要怎么做？」（设计&#x2F;详细说明）。</strong> 作者用林肯的话点题：<strong>「如果我有 6 小时砍树，我会花 4 小时把斧头磨利。」</strong></p>
+<h3 id="组织如何影响规划：五种授权"><a href="#组织如何影响规划：五种授权" class="headerlink" title="组织如何影响规划：五种授权"></a>组织如何影响规划：五种授权</h3><p>需求授权、设计授权、技术授权、预算授权、检查频率。<strong>一个人可能拥有其中几项甚至全部，但多数时候授权分散在多个团队领导者身上。授权分布越复杂，规划就越费心。</strong></p>
+<h3 id="常见的规划产物"><a href="#常见的规划产物" class="headerlink" title="常见的规划产物"></a>常见的规划产物</h3><p>市场需求文档（MRD）、远景&#x2F;范围文档、规格说明书、工作分解结构（WBS）。分别回答项目的 What 和 How。</p>
+<h3 id="三种视角：业务、技术、客户"><a href="#三种视角：业务、技术、客户" class="headerlink" title="三种视角：业务、技术、客户"></a>三种视角：业务、技术、客户</h3><p>这是全章的核心。作者认为很多项目失败，是因为把规划搞成了「业务 vs 工程」的二元对立。正确做法是把三种视角放到同等位置，寻找重叠区域：</p>
+<ul>
+<li><strong>业务视角</strong>：关注财务盈亏。工程团队不了解公司怎么赚钱时，很多管理层决策就会显得不可理喻。营销不等于「赶集者」——4 个 P（产品、价格、分销、促销）中，促销只占业务分析师约 10%–20% 的时间。</li>
+<li><strong>技术视角</strong>：关注事物怎么构建。危险在于「满足工程师美学就够了」，即使客户不知道该怎么用。</li>
+<li><strong>客户视角</strong>：<strong>最重要的一个，却常常是最弱的。</strong> 客户会混淆「问题」和「解决方案」——他们要求打印预览，却没说出真正的问题（浪费了太多纸）。从了解问题开始，可能有更便宜更好的解法。</li>
+</ul>
+<p>三者重叠处有最大潜在价值：一次努力同时解决业务、技术、客户三类目标。用维恩图（Venn 图）可视化，可以化解视角偏见。<strong>权力比例不等于人数比例</strong>——10 个程序员和 1 个营销人员，营销人员可能因资历而拥有全部权力。</p>
+<h3 id="问题陈述与场景"><a href="#问题陈述与场景" class="headerlink" title="问题陈述与场景"></a>问题陈述与场景</h3><p>需求定义的一个实用方法是<strong>问题陈述法</strong>：用一两句话描述特定客户的真实问题（注意：不是 Bug 报告，而是「从客户视角看，我们缺什么」）。再把问题陈述转成<strong>场景&#x2F;特性陈述</strong>——描述「项目完成时世界会怎样」，但<strong>绝不描述具体设计</strong>。特性陈述永远只解释「解决方案对客户的影响」。</p>
+<hr>
+<h2 id="第-4-章-编写好的远景文档：让方向不跑偏"><a href="#第-4-章-编写好的远景文档：让方向不跑偏" class="headerlink" title="第 4 章 编写好的远景文档：让方向不跑偏"></a>第 4 章 编写好的远景文档：让方向不跑偏</h2><p>领导团队的一个挑战，是让人们长时间把焦点放在同一个目标上。<strong>远景文档是所有规划材料中最重要的。</strong></p>
+<h3 id="把事情记录下来的价值"><a href="#把事情记录下来的价值" class="headerlink" title="把事情记录下来的价值"></a>把事情记录下来的价值</h3><p>引用 Daniel Boorstin：<strong>记录文字是人类发明的最伟大的技术。</strong> 把决策细节形成文档，可以把精确和回忆的负担从大脑卸下来，转交给文档。团队越大、越跨时区，文档就越重要。</p>
+<h3 id="好的远景的-5-项质量指标"><a href="#好的远景的-5-项质量指标" class="headerlink" title="好的远景的 5 项质量指标"></a>好的远景的 5 项质量指标</h3><ol>
+<li><strong>简单</strong>：为核心问题提供答案，为每个人制定决策提供工具。远景不是供在玻璃柜里的圣物，而该像一本被翻烂、写满批注的规则手册。</li>
+<li><strong>目的明确（目标驱动）</strong>：SMART（明确、可度量、行动导向、实际、及时）。高层次目标越少越有效，通常 <strong>3–5 个</strong>。</li>
+<li><strong>统一</strong>：从研究、分析、策略中提炼关键想法并整合，不是堆一堆参考材料。</li>
+<li><strong>激励人心</strong>：靠「明确的问题 + 可行的规划」来激励，而不是靠表面口号。</li>
+<li><strong>容易记住</strong>：想法必须有意义、能引起共鸣、能在整个项目期间坚持下去。<strong>人们很少能记住他们不理解的事情。</strong></li>
+</ol>
+<h3 id="数量不等于质量"><a href="#数量不等于质量" class="headerlink" title="数量不等于质量"></a>数量不等于质量</h3><p>最有效的领导文件都不长：《美国宪法》含《人权法案》只有 7000 字（约 6 页），《十诫》300 字，《大宪章》5000 字。<strong>以简单方式表达复杂想法，比复杂表达要花更多功夫。</strong> 10 页摘要、免责声明、图表，往往只是作者缺乏安全感。远景文档应由<strong>一名主要作者</strong>撰写——美国《独立宣言》也是委员会讨论、但最终让 Jefferson 一人执笔。</p>
+<h3 id="好的远景陈述实例（作者给出）"><a href="#好的远景陈述实例（作者给出）" class="headerlink" title="好的远景陈述实例（作者给出）"></a>好的远景陈述实例（作者给出）</h3><ul>
+<li>SuperEdit 3.0：面向有经验的文字编辑者，使前 5 个最常用场景更易用、更可靠、更快。</li>
+<li>Palm Pilot 的项目目标：<strong>尺寸</strong>（放进衬衫口袋）、<strong>价格</strong>（低于 300 美元的纸质万用记事本）、<strong>简单</strong>（和纸一样简单）、<strong>能与 PC 同步</strong>。明确而简单地描述了产品完成时的状态。</li>
+</ul>
+<h3 id="远景应该看得到"><a href="#远景应该看得到" class="headerlink" title="远景应该看得到"></a>远景应该看得到</h3><p><strong>手指指月时，不要混淆手指和月亮。</strong> 优秀远景文档要包含可视化图像：草图、样本、原型。即使项目没有用户界面，也要想办法可视化「项目完成后世界如何变化」——哪怕用两张「之前&#x2F;之后」的对比图。<strong>如果无法把最终结果可视化，那这个远景就是不清晰的。</strong></p>
+<h3 id="远景健康检查"><a href="#远景健康检查" class="headerlink" title="远景健康检查"></a>远景健康检查</h3><p>远景要贴到走廊上、在会议开头大声念出来。每次状态会上问三个问题：远景是否精确反映了项目目标？是否帮助每个贡献者做决策、拒绝范畴外的请求？应该考虑哪些修改？</p>
+<hr>
+<h2 id="第-5-章-想法从何而来：创造力的真相"><a href="#第-5-章-想法从何而来：创造力的真相" class="headerlink" title="第 5 章 想法从何而来：创造力的真相"></a>第 5 章 想法从何而来：创造力的真相</h2><h3 id="存在不好的想法"><a href="#存在不好的想法" class="headerlink" title="存在不好的想法"></a>存在不好的想法</h3><p>作者明确反驳「没有不好的想法」这句流行口号：<strong>存在无数可怕、吓人、无用的拙劣想法。</strong> 一个好的解决方案空间比非解决方案空间小得多——「不做某事的办法，总比做某事的办法多」。想法的优劣只能由「它是否解决特定问题」来判断，E&#x3D;mc² 对撒哈拉沙漠里迷路的人也毫无用处。<strong>聪明人常因想法的抽象优雅而误入歧途，脱离了身边的实际问题。</strong></p>
+<h3 id="「跳出框框思考」也不对"><a href="#「跳出框框思考」也不对" class="headerlink" title="「跳出框框思考」也不对"></a>「跳出框框思考」也不对</h3><p>跳出框框不是最难的事，<strong>知道该用哪个「框框」、何时用</strong>才是最难的。限制条件一直存在，有时还很有用。真正的问题是：可以忽视、屈服、改变、利用哪些限制条件？<strong>「该死，这里没有规则，我们正试着建立点规则。」——爱迪生</strong></p>
+<h3 id="好问题带来好想法"><a href="#好问题带来好想法" class="headerlink" title="好问题带来好想法"></a>好问题带来好想法</h3><ul>
+<li><strong>焦点问题</strong>：把注意力转移到关键缺失上。「是否存在用现有代码满足性能需求的方法？」</li>
+<li><strong>创意问题</strong>：指向尚未考虑但该探索的方向，增加可选方案。</li>
+<li><strong>夸张问题</strong>（要避免）：没有诚意、为了定罪而非求答案的问题。</li>
+</ul>
+<p>作者认为最有力量的一个问题是：<strong>「你想要解决什么问题？」</strong> 只要信任建立起来，这个问题几乎可用于任何讨论——它让房间里每个人确认自己在解决同一个问题。作者把它写在海报上挂在办公桌上方。</p>
+<h3 id="不好的想法引出好想法"><a href="#不好的想法引出好想法" class="headerlink" title="不好的想法引出好想法"></a>不好的想法引出好想法</h3><p>作者上大学时看设计师画草图，设计师说：<strong>「除非我看见不好的想法，否则我真的不知道好想法是什么样。」</strong> 名人们也这么说：爱因斯坦「物理学家最伟大的工具是废纸篓」、海明威「每一页杰作，我得写 99 页垃圾」、IBM 的 Tom Watson「想成功，先把失败率加倍」。</p>
+<h3 id="即兴规则（头脑风暴四规则）"><a href="#即兴规则（头脑风暴四规则）" class="headerlink" title="即兴规则（头脑风暴四规则）"></a>即兴规则（头脑风暴四规则）</h3><ol>
+<li><strong>是的，而且……</strong>：先接住并推进别人的想法。</li>
+<li><strong>没有不好的</strong>：不为自己说的道歉，蠢想法只是引导别人说出更好的。</li>
+<li><strong>不能阻挠问题</strong>：提问是为了防卫，别用「你为何这么做」打断开放思考。</li>
+<li><strong>让他人高兴</strong>：不记录谁说了什么，功劳归于帮别人放大想法的人。</li>
+</ol>
+<h3 id="从客户体验开始设计"><a href="#从客户体验开始设计" class="headerlink" title="从客户体验开始设计"></a>从客户体验开始设计</h3><p><strong>「技术空想家永远分不清可行的和理想的之间的差别。」</strong> 由上到下设计：先草拟客户会看到什么，再谈组件，再谈工作项目。UML、Visio 图是抽象，会隐藏「用户实际看到什么」的问题——它们不是设计草图。设计是一系列对话，需要不同背景的人反复碰撞。</p>
+<hr>
+<h2 id="第-6-章-有了想法之后做什么：收敛的艺术"><a href="#第-6-章-有了想法之后做什么：收敛的艺术" class="headerlink" title="第 6 章 有了想法之后做什么：收敛的艺术"></a>第 6 章 有了想法之后做什么：收敛的艺术</h2><h3 id="想法会失控"><a href="#想法会失控" class="headerlink" title="想法会失控"></a>想法会失控</h3><p>作者讲 IE4.0 的经历：白板被所有特性填满，陷入绝望。解决方案是<strong>小心控制可能设计的范围</strong>。管理想法要像调光器旋钮，而不是电灯开关——焦点要逐渐转移，绝不能在某天突然宣布「好了，选一个设计，开始编码吧」。</p>
+<h3 id="问题空间必须先扩张后收敛"><a href="#问题空间必须先扩张后收敛" class="headerlink" title="问题空间必须先扩张后收敛"></a>问题空间必须先扩张后收敛</h3><p>前半段时间扩展可选方案，后半段提炼和缩小，最后收敛到规格说明书。但现实比图表难看：新信息、工程师计划变化、两个方案的整合冲突，都会让问题空间反复变化。<strong>设计决策互相依赖，一项改变会引起连锁反应</strong>（作者用 IE5.0「收藏夹设计」的组件依赖故事说明）。</p>
+<h3 id="迭代-前进两步、后退一步"><a href="#迭代-前进两步、后退一步" class="headerlink" title="迭代 &#x3D; 前进两步、后退一步"></a>迭代 &#x3D; 前进两步、后退一步</h3><p>工作越难，前进与后退的比值越小。设计期间做决策（哪怕是错的）是迫使问题浮现的唯一方式。引用诺奖得主 Lederberg：<strong>「在观察与理论之间反复……会移动几千次甚至几万次。」</strong></p>
+<h3 id="设计阶段的检查点"><a href="#设计阶段的检查点" class="headerlink" title="设计阶段的检查点"></a>设计阶段的检查点</h3><p>远景和概念论证 → 想法分组&#x2F;列表 → 3 个可选方案 → 两个可选方案 → 一个设计 → 规格说明书。检查点不是用来控制流程的，而是<strong>把工作分解成可管理单位，让项目经理有办法了解项目状态</strong>。最早的检查点最难做，要小心管理；顽固团队可简化到 3 个检查点。</p>
+<h3 id="亲和图（KJ-图）"><a href="#亲和图（KJ-图）" class="headerlink" title="亲和图（KJ 图）"></a>亲和图（KJ 图）</h3><p>把每个想法写在一张即时贴上墙，然后移动、分组，直到形成 4–5 个组。<strong>可视化让大家把焦点放在关系上，而非靠大脑记忆。</strong> 列表适合项目经理自己用，团队应使用亲和图。</p>
+<h3 id="原型是你的朋友"><a href="#原型是你的朋友" class="headerlink" title="原型是你的朋友"></a>原型是你的朋友</h3><p>原型实现木匠格言「<strong>量两次，切一次</strong>」。不需要精细昂贵，只要足以回答关键问题。有 UI 的项目从上到下建原型（先屏幕原型，再规划数据库）；没 UI 的项目挑最困难的技术挑战建原型。<strong>原型对程序员的帮助最大</strong>：它让他们有时间研究后续要用的技术，让交付的代码质量更高。</p>
+<h3 id="开放问题列表"><a href="#开放问题列表" class="headerlink" title="开放问题列表"></a>开放问题列表</h3><p>任何尚未决定或考虑的问题都记下来，按「规格说明书完成前必须解决 &#x2F; 可以稍后解决」分优先级，附上负责人名字，公开贴出来。<strong>「当那份列表空了的时候，我就能完成规格说明书。」</strong> 如果列表很短但问的是「我们想解决什么问题」「用什么语言」这类基础问题，说明项目还早得很。</p>
+<hr>
+<h2 id="第-7-章-撰写优秀的规格说明书：沟通而非官僚"><a href="#第-7-章-撰写优秀的规格说明书：沟通而非官僚" class="headerlink" title="第 7 章 撰写优秀的规格说明书：沟通而非官僚"></a>第 7 章 撰写优秀的规格说明书：沟通而非官僚</h2><p>作者讲了一个程序员的故事：他嘲笑 50 页的规格说明书模板。两人最后达成共识——<strong>没有唯一正确的写法，规格说明书要满足当前项目的需求和读者。</strong> 那份像税法一样庞大的模板就废除了。</p>
+<h3 id="规格说明书能做什么-不能做什么"><a href="#规格说明书能做什么-不能做什么" class="headerlink" title="规格说明书能做什么 &#x2F; 不能做什么"></a>规格说明书能做什么 &#x2F; 不能做什么</h3><p><strong>能做的</strong>：有效描述功能；迫使设计者理清决策；允许评审和提问；从一个人向多个人传达信息；提供团队参考点；提供进度里程碑；提供「撰写者被公交车撞到」的保险；加快讨论频率；给领导设定质量基准的机会；增加团队信心。</p>
+<p><strong>不能做的</strong>：消除所有讨论；证明撰写者多聪明；证明功能多重要；把众人变成理性人；变成 Visio&#x2F;UML 技能秀场。</p>
+<h3 id="规格说明书的-4-种信息"><a href="#规格说明书的-4-种信息" class="headerlink" title="规格说明书的 4 种信息"></a>规格说明书的 4 种信息</h3><p>按时间顺序：<strong>需求 → 功能 → 技术 → 工作项目</strong>。功能规格说明书从客户角度描述行为；技术规格说明书说明工程方法；工作项目列表（WBS）由程序员建立，以天数估算。此外还要<strong>测试标准和里程碑退出标准</strong>。</p>
+<h3 id="撰写规格说明书不是设计"><a href="#撰写规格说明书不是设计" class="headerlink" title="撰写规格说明书不是设计"></a>撰写规格说明书不是设计</h3><p>坐下写规格说明书时，必须停止探索和创造，集中精力表达和说明。<strong>「我们考虑事情的方式，不一定是向别人解释的最好方法。」</strong> 好的规格说明书分层次描述：先用客户语言描述体验，再看对象和架构，最后才覆盖复杂工程细节。<strong>能简化事情是核心能力</strong>——最好的老师知道何时跳过次要内容。</p>
+<h3 id="评审和反馈"><a href="#评审和反馈" class="headerlink" title="评审和反馈"></a>评审和反馈</h3><p>最大的错误是一直等到正式评审才获取反馈。评审要回答两个问题：<strong>「是否足够详细，足以指引开发？」「结果是否满足需求和目标？」</strong> 规则：会前必须读文件（没读的人不该待在房间）；房间里每个关键角色至少要有一人；PM 主持；开放问题写白板；会后发问题摘要邮件。</p>
+<hr>
+<h2 id="第-8-章-如何制定好的决策：元决策与勇气"><a href="#第-8-章-如何制定好的决策：元决策与勇气" class="headerlink" title="第 8 章 如何制定好的决策：元决策与勇气"></a>第 8 章 如何制定好的决策：元决策与勇气</h2><h3 id="元决策（meta-decision-making）"><a href="#元决策（meta-decision-making）" class="headerlink" title="元决策（meta-decision-making）"></a>元决策（meta-decision-making）</h3><p>决策失败常不是因为无能，而是<strong>把精力平均分散在所有决策上</strong>。优秀决策者本能地把工作分成有意义的小块，找出最有影响力的决策并全力做好，对小决策则快刀斩乱麻。为什么有人能管理比别人多 5 倍的工作量？就是靠这个能力。</p>
+<h3 id="衡量决策的核心问题"><a href="#衡量决策的核心问题" class="headerlink" title="衡量决策的核心问题"></a>衡量决策的核心问题</h3><ul>
+<li>什么问题是决策的核心？（重新定义问题：表面是「没时间解决 50 个 Bug」，真问题是「没有 Bug 分类标准」。）</li>
+<li>影响多长时间、多深？</li>
+<li>如果错了，成本是多少？（「死于千刃」——害死你的往往不是重大决策，而是众多微小决定。）</li>
+<li>机会之窗在哪里？（有时决策速度比质量更重要。）</li>
+<li>我们以前做过这种决策吗？（承认无知需要勇气，但会让整个团队诚实起来。）</li>
+<li>谁具有专家观点？需要谁的批准？</li>
+</ul>
+<h3 id="单一评估-vs-比较评估"><a href="#单一评估-vs-比较评估" class="headerlink" title="单一评估 vs 比较评估"></a>单一评估 vs 比较评估</h3><p>Gary Klein 的研究（《Sources of Power》）：专家很少用教科书方法，而是靠经验、直觉、训练和彼此。<strong>单一评估</strong>适合「无差异地带」——当所有替代方案结果差别不大时，第一个够好的选择就足够，别浪费时间优化不需要优化的东西。<strong>比较评估</strong>适合变量多、结果难掌握、需要高质量结果的情况。</p>
+<h3 id="优缺点列表的注意事项"><a href="#优缺点列表的注意事项" class="headerlink" title="优缺点列表的注意事项"></a>优缺点列表的注意事项</h3><ul>
+<li><strong>始终包含「什么也不做」选项</strong>（沉没成本很少值得恢复）。</li>
+<li>追问「你怎么知道你认为你知道的？」。</li>
+<li>询问艰难的问题；包含不同意的观点（尤其你个人不喜欢但有道理的）。</li>
+<li>考虑混合式抉择；包含所有相关视角（性能、可靠、扩展、成本、可用性、区域化）。</li>
+<li>从白板开始，精炼直到稳定（不再出现新观点，就是决策的时候）。</li>
+</ul>
+<h3 id="奥卡姆剃刀-沉思"><a href="#奥卡姆剃刀-沉思" class="headerlink" title="奥卡姆剃刀 + 沉思"></a>奥卡姆剃刀 + 沉思</h3><p>砍掉不必要的细节，回归问题核心。最简单的选择不保证最好，但<strong>成功解决问题的几率最大</strong>。需要沉思让信息沉淀——散步、跑步、做点别的，让大脑处理已接收的信息。</p>
+<h3 id="信息是闪光灯，不是决策者"><a href="#信息是闪光灯，不是决策者" class="headerlink" title="信息是闪光灯，不是决策者"></a>信息是闪光灯，不是决策者</h3><p><strong>信息很少能为你做决策</strong>——它照亮空间，但回报递减。「分析麻痹」是妄想「数据够了决策自己会解决」。还要防三种误用：数据被曲解（Huff《How to Lie with Statistics》）、研究成了弹药（先有结论再找数据）、<strong>精确 ≠ 准确</strong>（「5.273 天」未必比「4 或 5 天」更准——伪造的精确是免费的）。</p>
+<h3 id="决定的勇气-好决策可能有坏结果"><a href="#决定的勇气-好决策可能有坏结果" class="headerlink" title="决定的勇气 + 好决策可能有坏结果"></a>决定的勇气 + 好决策可能有坏结果</h3><p>知道正确选择和做出正确选择之间有很大区别。<strong>决策是一种有勇气的行为</strong>——最好的决策常不受欢迎。作者讲 IE4.0 浏览器栏的艰难选择（三个选项都很差），最终选择「什么也不做」。要区分「好决策」和「好结果」：<strong>不能因为事后结果差，就责备当初做了好决策的人。</strong> 战斗飞行员和医生的「任务报告会 &#x2F; M&amp;M 会议」是提升决策能力的关键机制——回顾决策，而不是审问。</p>
+<hr>
+<h2 id="第-9-章-沟通和人际关系：巴别塔的教训"><a href="#第-9-章-沟通和人际关系：巴别塔的教训" class="headerlink" title="第 9 章 沟通和人际关系：巴别塔的教训"></a>第 9 章 沟通和人际关系：巴别塔的教训</h2><h3 id="如果你无法沟通，你就无法成功"><a href="#如果你无法沟通，你就无法成功" class="headerlink" title="如果你无法沟通，你就无法成功"></a>如果你无法沟通，你就无法成功</h3><p>巴别塔故事的核心就是沟通。当代沟通的瓶颈不再是速度，而是<strong>质量和效力</strong>。软件团队依赖同级互动，而非军队式的命令结构。</p>
+<h3 id="通过交谈来管理（MBWA）"><a href="#通过交谈来管理（MBWA）" class="headerlink" title="通过交谈来管理（MBWA）"></a>通过交谈来管理（MBWA）</h3><p>作者早年不理解经理们为何花大量时间「闲聊」，后来才懂：<strong>对话比独白更好。</strong> 粗暴命令、威胁、苛求是无效战术；而「嘿，我想我们需要做 X，你是最佳人选，你觉得怎么样？」更快、还能激发建议。Tom Peters 称之为<strong>走动式管理（Management By Walking Around）</strong>——那些谈话是对人和信息的投资。</p>
+<h3 id="沟通的-5-步模型"><a href="#沟通的-5-步模型" class="headerlink" title="沟通的 5 步模型"></a>沟通的 5 步模型</h3><ol>
+<li><strong>传达</strong>（信息离手，不代表被读）</li>
+<li><strong>收到</strong>（被打开，不代表被理解）</li>
+<li><strong>理解</strong>（真正的认知活动，可能需要提问澄清）</li>
+<li><strong>同意</strong>（理解 ≠ 同意）</li>
+<li><strong>转换成有用的行动</strong>（最难的一步）</li>
+</ol>
+<p><strong>发出去不等于被理解，被理解不等于被同意，被同意不等于转化为行动。</strong> 优秀沟通者会考虑「要有效需要深入到哪一步」，并精心设计沟通。</p>
+<h3 id="常见沟通问题"><a href="#常见沟通问题" class="headerlink" title="常见沟通问题"></a>常见沟通问题</h3><p>假设、不够明确、没有倾听、独裁、问题错配（把其他问题伪装进当前讨论）、人身攻击、嘲讽奚落指责。把这些列成海报贴墙上，让团队有共同语言来描述问题。</p>
+<h3 id="定义角色（Covey-语录）"><a href="#定义角色（Covey-语录）" class="headerlink" title="定义角色（Covey 语录）"></a>定义角色（Covey 语录）</h3><p>几乎所有人际关系困难的根源，都是<strong>对角色和目标的期望冲突或模糊</strong>。做法：和重要的人一起在白板上列三个列表——你主要负责的、双方共同负责的、对方主要负责的。</p>
+<h3 id="「我要怎么做才能帮你做出最好的工作？」"><a href="#「我要怎么做才能帮你做出最好的工作？」" class="headerlink" title="「我要怎么做才能帮你做出最好的工作？」"></a>「我要怎么做才能帮你做出最好的工作？」</h3><p>这是作者最推崇的问题，会带来三件事：承认对方有能力做出最好工作；把他放进评估执行力的框架；开启改善工作质量的对话。<strong>帮人最好的工作 &#x3D; 直接提升项目质量。</strong> 让人最佳工作的方法：遵照建议、挑战&#x2F;提出要求（但别刻薄）、鼓舞、清除路障（做那个「后卫」）、提醒角色、提醒项目目标、教导、请求。</p>
+<hr>
+<h2 id="第-10-章-怎样才能不惹恼别人：流程、电子邮件和会议"><a href="#第-10-章-怎样才能不惹恼别人：流程、电子邮件和会议" class="headerlink" title="第 10 章 怎样才能不惹恼别人：流程、电子邮件和会议"></a>第 10 章 怎样才能不惹恼别人：流程、电子邮件和会议</h2><h3 id="人们为什么被惹怒"><a href="#人们为什么被惹怒" class="headerlink" title="人们为什么被惹怒"></a>人们为什么被惹怒</h3><p>假设我是白痴 &#x2F; 不信任我 &#x2F; 浪费我的时间 &#x2F; 对我不尊重 &#x2F; 让我听读蠢事。很多流程让人讨厌，是因为设计者忘了这些。</p>
+<h3 id="好流程的公式"><a href="#好流程的公式" class="headerlink" title="好流程的公式"></a>好流程的公式</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">流程价值 = (失败成本 × 失败几率 × 时间) − (设计时间 + 学习时间 + 每次使用时间 × 频率)</span><br></pre></td></tr></table></figure>
+
+<p>要点：好的流程应该<strong>让事情花更少时间</strong>（此时「每次使用时间」为负值）；失败几率随时间累积，长期项目的预防流程更值。好流程的特征：加速事情进展、防止问题、让重要行动可见可测量、<strong>包含修改&#x2F;删除此流程的流程</strong>、受影响的人赞同。</p>
+<h3 id="从下层管理流程"><a href="#从下层管理流程" class="headerlink" title="从下层管理流程"></a>从下层管理流程</h3><p>被强加讨厌的流程时，三招：<strong>替团队挡开</strong>（自己吸收书面工作）、<strong>打赌不适合流程</strong>（约定试用期，用结果说话）、<strong>忽视流程</strong>（没人追问就说明不重要）。</p>
+<h3 id="不令人讨厌的电子邮件"><a href="#不令人讨厌的电子邮件" class="headerlink" title="不令人讨厌的电子邮件"></a>不令人讨厌的电子邮件</h3><p>帕斯卡：「如果有更多时间，我会写更短的信。」好邮件：明确简单直接、<strong>提出行动和截止期限</strong>、分优先级、隔离 FYI 邮件、复杂问题打电话（30 秒电话 &#x3D; 一长串邮件）。</p>
+<h3 id="会议"><a href="#会议" class="headerlink" title="会议"></a>会议</h3><p>开会很贵：1 小时 10 个人的会 &#x3D; 10 人时。<strong>促进的艺术</strong>（Hadi Partovi 的故事：争论失控时，安静地走上白板列出问题列表，逐一解决）。促进者的职责：建立主人地位、倾听和反映（「所以你的意思是……对吧？」）、引导会谈、结束会谈、制造历史（记录并发出）。三种会议类型：高度互动（2–8 人）、报告&#x2F;一般讨论（5–15 人）、状态查看（0–100 人）。<strong>目标和会议形式不匹配是最令人讨厌的。</strong> 周期性会议用「opt-in 会议」规则：会前 5 分钟看议程，没议程就取消。会议结束必须有明确的下一步和负责人。</p>
+<hr>
+<h2 id="第-11-章-事情出错时该做什么：急救箱"><a href="#第-11-章-事情出错时该做什么：急救箱" class="headerlink" title="第 11 章 事情出错时该做什么：急救箱"></a>第 11 章 事情出错时该做什么：急救箱</h2><p><strong>「所有成功的项目，都只是一长串必须克服的困难。」</strong> 完全避开困难的唯一方法是不做重要的事。</p>
+<h3 id="处理困难的粗略性指南（急救箱）"><a href="#处理困难的粗略性指南（急救箱）" class="headerlink" title="处理困难的粗略性指南（急救箱）"></a>处理困难的粗略性指南（急救箱）</h3><ol>
+<li><strong>冷静下来</strong>——别把行动建立在恐惧、愤怒、沮丧上。</li>
+<li><strong>评估问题和项目的关系</strong>——天塌下来了吗？影响 5%、20% 还是 90%？分紧急&#x2F;大问题&#x2F;小问题&#x2F;假问题。</li>
+<li><strong>再次冷静下来</strong>——找个安全方式宣泄情绪（运动、朋友），也帮团队冷静。</li>
+<li><strong>让对的人出现在房间内</strong>——找出最有责任感、最有知识、最有用的人，小组越小越好。</li>
+<li><strong>探讨替代方案</strong>。</li>
+<li><strong>做出最简单的计划</strong>——危机时不谈理想主义，坑越大，出来的路越要直接。</li>
+<li><strong>执行</strong>——明确检查点。</li>
+<li><strong>听取汇报</strong>——「下次怎么避开这个问题？」</li>
+</ol>
+<h3 id="常见困难情况"><a href="#常见困难情况" class="headerlink" title="常见困难情况"></a>常见困难情况</h3><p>疏忽或实现问题、被迫做蠢事、进度落后&#x2F;资源匮乏（布鲁克定律：加人未必有用）、质量差、方向改变、团队&#x2F;人员问题、意见冲突、缺乏信念、叛乱的威胁。</p>
+<h3 id="负起责任"><a href="#负起责任" class="headerlink" title="负起责任"></a>负起责任</h3><p><strong>「对事情负责，并不让它变成你的错，只表示你对解决这种状况负责。」</strong> 优秀经理会主动承担责任，帮团队卸下怕受责难的心理负担。指责他人或推卸责任，会消除你学习、成长、证明自己的机会。</p>
+<h3 id="损害控制"><a href="#损害控制" class="headerlink" title="损害控制"></a>损害控制</h3><p>当很多问题同时爆发：开全体会议（不隐藏重大问题）、找同意点、回退到最近的已知良好状态、隔离问题（像救一艘着火的船）、找资源（花钱解决）。</p>
+<h3 id="冲突解决和谈判"><a href="#冲突解决和谈判" class="headerlink" title="冲突解决和谈判"></a>冲突解决和谈判</h3><p>推荐 Fisher 的《Getting to Yes》。要点：<strong>找出一致点</strong>、找出个性冲突并忽视它们、<strong>寻找共同利益（而非立场）</strong>——「立场是『我只吃巧克力蛋糕』，利益是『我想要美味满足的点心』」、刚中带柔、<strong>了解 BATNA（谈判破裂时的最佳替代方案）</strong>——谁的 BATNA 越强，谁越有谈判力量（沙漠里只有你有一加仑清水）。</p>
+<h3 id="情绪工具箱"><a href="#情绪工具箱" class="headerlink" title="情绪工具箱"></a>情绪工具箱</h3><ul>
+<li><strong>压力 4 类型</strong>：自然的&#x2F;人为的、正面的&#x2F;负面的。团队效能有极限，超过极限再施压只会崩溃（Weinberg 曲线）。</li>
+<li><strong>对感觉的感觉</strong>（萨提尔模型）：我们回应的情绪往往不是核心情绪（被指出 Bug 后，伤心被表达成愤怒）。领导者要能识别这种间接情绪。</li>
+<li><strong>英雄情结</strong>：有人会故意引发危险好让自己去解决。要警惕「规划无用论」「只为自己而做」「假英雄」「英雄背后的愚蠢国王」等心态，把功劳给英雄，也奖赏那些防止未来再发生的人。</li>
+</ul>
+<hr>
+<h2 id="第-12-章-为什么领导力以信任为基础"><a href="#第-12-章-为什么领导力以信任为基础" class="headerlink" title="第 12 章 为什么领导力以信任为基础"></a>第 12 章 为什么领导力以信任为基础</h2><p><strong>真正的领导力不是电影里的英雄戏码，而是非常实际的事：做你所说的，说你所想的，做错了就认错。</strong></p>
+<h3 id="信任通过承诺而建立"><a href="#信任通过承诺而建立" class="headerlink" title="信任通过承诺而建立"></a>信任通过承诺而建立</h3><p>信任和个人喜好无关——人们会信任他们根本不喜欢的人。信任的最小单位是<strong>承诺</strong>。有效承诺的元素（Humphrey）：</p>
+<ol>
+<li>做出承诺的人非常愿意；</li>
+<li>承诺不是轻易做出的；</li>
+<li>双方对做什么、谁来做、什么时候做达成一致；</li>
+<li>公开坦诚地做出；</li>
+<li>即使需要帮助也尽力实现；</li>
+<li><strong>兑现前有任何变化，提前通知对方并重新承诺。</strong></li>
+</ol>
+<p>信任因为<strong>不一致的行为</strong>而失去（作者讲 Jake 经理「风向标」的故事：会上临阵倒戈，最后作者干脆绕开他做决策）。</p>
+<h3 id="授予型权力-vs-挣得型权力"><a href="#授予型权力-vs-挣得型权力" class="headerlink" title="授予型权力 vs 挣得型权力"></a>授予型权力 vs 挣得型权力</h3><ul>
+<li><strong>授予型权力</strong>：来自体制&#x2F;头衔（职权）。容易获得，也容易失效。</li>
+<li><strong>挣得型权力</strong>：靠表现和行为赢得，人们因你的英明而自愿追随。</li>
+</ul>
+<p><strong>「一旦你拔剑，就没有人听你说什么了——他们都听剑的了。」</strong> 作者讲 IE2.0 时面对资深程序员 Bill 的故事：差点用职权压人，最终选择一点点赢得信任，反而建立了稳固关系。<strong>「暴君创造了一种只有奴才才可以忍受的环境。」</strong> 独裁权力有存在理由（失控时恢复秩序最快），但用越多，越掩饰组织的基本问题。</p>
+<h3 id="授权：相信别人"><a href="#授权：相信别人" class="headerlink" title="授权：相信别人"></a>授权：相信别人</h3><p>授权更有力的形式是<strong>把决策或影响决策的能力分散出去</strong>。作者把一块工作交给 John 后，坚持让 Steve 去找 John 而不是自己，即使 Steve 反复回来。<strong>「除非我有理由参与，否则就得信任 John 和 Steve。」</strong></p>
+<h3 id="信任是灾祸的保险-信任和犯错"><a href="#信任是灾祸的保险-信任和犯错" class="headerlink" title="信任是灾祸的保险 + 信任和犯错"></a>信任是灾祸的保险 + 信任和犯错</h3><p>所有项目都会出错，信任是团队面对不确定时的保险。处理别人犯错时保持三种观点：<strong>很高兴他能来找我谈</strong>（而不是隐瞒）、我能怎么帮他、这里有没有教训可以吸取。<strong>绝不当场指责</strong>——「知道谁放的火，通常并不能帮着灭火」，等问题解决、头脑冷静后再复盘。</p>
+<h3 id="相信自己"><a href="#相信自己" class="headerlink" title="相信自己"></a>相信自己</h3><p>自我依靠是领导力的核心。推荐 Emerson《Self-Reliance》。<strong>「愚蠢的一致性就是心思狭隘的鬼怪」——聪明人随时学习，即使新想法和旧想法冲突。</strong> 背叛对自己的信任，和背叛对团队的信任一样危险。</p>
+<hr>
+<h2 id="第-13-章-如何让事情发生：优先级、说「不」、坚持不懈"><a href="#第-13-章-如何让事情发生：优先级、说「不」、坚持不懈" class="headerlink" title="第 13 章 如何让事情发生：优先级、说「不」、坚持不懈"></a>第 13 章 如何让事情发生：优先级、说「不」、坚持不懈</h2><h3 id="优先级让事情发生"><a href="#优先级让事情发生" class="headerlink" title="优先级让事情发生"></a>优先级让事情发生</h3><p>作者说自己大部分时间在做<strong>序列表</strong>——把需求、功能、Bug 按重要性排列。项目上最浪费时间的是不清楚什么先做什么后做。三种最基本的序列表：<strong>项目目标（远景）→ 功能列表 → 工作项目列表</strong>，必须彼此同步——每个工作项目对应一个功能，每个功能对应一个目标。<strong>「老板，这个功能很好，但会帮我们实现什么目标呢？」</strong></p>
+<h3 id="优先级-1-vs-其他一切"><a href="#优先级-1-vs-其他一切" class="headerlink" title="优先级 1 vs 其他一切"></a>优先级 1 vs 其他一切</h3><p>优先级 1 &#x3D;「没有这个我们就活不了」——造汽车的话，优先级 1 是发动机、轮胎、传动、刹车、方向盘、踏板；优先级 2 才是车门、挡风玻璃、空调、收音机。<strong>划这条线总是痛苦，但没有痛苦的选择就没有进步。</strong> 排优先级的挑战更多是情绪&#x2F;心理层面的，而非理智的（像节食减肥、预算省钱）。</p>
+<h3 id="当你说「不」时，事情发生了"><a href="#当你说「不」时，事情发生了" class="headerlink" title="当你说「不」时，事情发生了"></a>当你说「不」时，事情发生了</h3><p><strong>「如果不会说『不』，你就无法管理。」</strong> 说「不」要从组织顶端开始——领导一直对无关的事说「好」，其他人也会跟着做。五种说「不」的方式：不符合优先级；除非有时间；除非你让（不可能的事）发生；下一版再说；绝不永不。</p>
+<h3 id="保持真实（吹牛）"><a href="#保持真实（吹牛）" class="headerlink" title="保持真实（吹牛）"></a>保持真实（吹牛）</h3><p>团队离事实越远，越难让有益的事发生。作者讲「吹牛」（纸牌游戏）的比喻：如果人们预期你会提难题，他们就会在见你之前做好准备。<strong>真相越早暴露在阳光下，你就能越早对它做点什么。</strong> 把要问的问题列成列表贴在会议墙上，让「吹牛」成为文化的一部分。</p>
+<h3 id="了解关键路径"><a href="#了解关键路径" class="headerlink" title="了解关键路径"></a>了解关键路径</h3><p>关键路径 &#x3D; 完成项目所需的最短工作序列。一个相对不重要的组件可能是重要依赖物。<strong>不仅工程有关键路径，人际关系、决策流程、代码签入流程、发布流程都有关键路径。</strong> 每次走进房间、读邮件、参与决策，都要问：这真的是核心问题吗？</p>
+<h3 id="坚持不懈"><a href="#坚持不懈" class="headerlink" title="坚持不懈"></a>坚持不懈</h3><p><strong>「世界只回应行为，而不是别的什么。」</strong> 成功的 PM 只是不轻易放弃。作者讲 Hillel Cooperman 的故事：「你还没试过哪些方法？」「所有方法？你怎么可能试过所有方法？」——继续努力，总会找到方法。阿波罗 13 号是这种态度的经典故事。</p>
+<h3 id="要机智-游击战术"><a href="#要机智-游击战术" class="headerlink" title="要机智 + 游击战术"></a>要机智 + 游击战术</h3><p>坚忍不拔不等于埋头傻干，要评估环境（像海军陆战队评估地形），调整方法。实用战术：<strong>知道谁有权限</strong>（别和没影响力的人争论）、<strong>找到源头</strong>（别靠二手信息）、<strong>转换沟通模式</strong>（邮件不行就打电话、上门）、<strong>与人独处</strong>（私下反应和公开完全不同）、<strong>追踪众人</strong>、<strong>隐藏</strong>（赶工时躲进会议室）、<strong>获得建议</strong>（问人问题是一种尊重）、<strong>请求和贿赂</strong>（20 美元请顿饭换一个帮忙）、<strong>让人们彼此对立</strong>（谨慎：拿 Bob 的估算去对 Sam 的）、<strong>码好牌</strong>（开会前先搞定反对者）、<strong>请人喝咖啡</strong>。</p>
+<hr>
+<h2 id="第-14-章-中盘战略：飞在飞机之前"><a href="#第-14-章-中盘战略：飞在飞机之前" class="headerlink" title="第 14 章 中盘战略：飞在飞机之前"></a>第 14 章 中盘战略：飞在飞机之前</h2><h3 id="飞在飞机之前-vs-飞在飞机之后"><a href="#飞在飞机之前-vs-飞在飞机之后" class="headerlink" title="飞在飞机之前 vs 飞在飞机之后"></a>飞在飞机之前 vs 飞在飞机之后</h3><p>项目是大惯性的非线性系统——改变某个元素可能产生多重影响，且结果可能几天几周后才显现。当人们失去控制时，第一反应是鲁莽更正，但<strong>太强的更正又会引发新问题</strong>。「飞在飞机之后」就是被各种力量推着走。优秀 PM 的多数工作是<strong>提前一两步避开这些境况</strong>。</p>
+<h3 id="健康检查：飞在前面的方法"><a href="#健康检查：飞在前面的方法" class="headerlink" title="健康检查：飞在前面的方法"></a>健康检查：飞在前面的方法</h3><ul>
+<li><strong>每日战术问题</strong>：我们的目标和承诺是什么？今天做的事对目标有贡献吗？工作项目不仅完成，完成方式也满足需求和使用场景吗？</li>
+<li><strong>每周战略问题</strong>：下个交付日达到适当质量水平的概率是多少？提高概率需要哪些调整？如何像外科手术那样做最小调整？最大或最可能的风险是什么？世界可能怎么改变？</li>
+</ul>
+<p><strong>进度是概率</strong>——如果信心只有五五开，你就已经落后了。</p>
+<h3 id="采取安全的行动"><a href="#采取安全的行动" class="headerlink" title="采取安全的行动"></a>采取安全的行动</h3><p>项目进展越多，越难安全地调整。中盘调整前问 5 个问题：我们试着解决什么问题？这是症状还是起因？我们了解得足够多吗？好处多于代价吗？新风险值得吗？<strong>越到后期，采取行动的基准线越高。</strong></p>
+<h3 id="打破承诺"><a href="#打破承诺" class="headerlink" title="打破承诺"></a>打破承诺</h3><p>中盘任何行动都可能让之前的承诺失效。变化是好的，但要遵守协商程序——<strong>提前声明，协商新承诺</strong>（Humphrey 的第 6 条）。</p>
+<h3 id="编码管道"><a href="#编码管道" class="headerlink" title="编码管道"></a>编码管道</h3><p>项目前进的唯一方法就是写代码。<strong>「编码管道」&#x3D; 程序员接下来要做的工作序列，要跑在程序员之前几天。</strong> 管道领先 3 个工作项目就够了（若每项两天，就是一周多的缓冲）。4 个问题：正在积极编写哪些项目？有无阻碍？程序员理解规格说明书了吗？下一组是什么？最后的工作真的完成了吗？</p>
+<h3 id="管理变动（DCR）"><a href="#管理变动（DCR）" class="headerlink" title="管理变动（DCR）"></a>管理变动（DCR）</h3><p>项目越接近尾声，变动越敏感。最简单的变动控制流程（NASA 和微软叫 DCR&#x2F;设计变更请求）：写摘要 → 程序员&#x2F;测试员评估 → 一小群领导审核 → 通过则成为新工作项目并更新进度表。<strong>「最好用短循环 + 有力设计流程 + 少量 DCR，而不是规划一个预期很多 DCR 的进度表。」</strong></p>
+<hr>
+<h2 id="第-15-章-终盘战略：着陆的艺术"><a href="#第-15-章-终盘战略：着陆的艺术" class="headerlink" title="第 15 章 终盘战略：着陆的艺术"></a>第 15 章 终盘战略：着陆的艺术</h2><h3 id="赶上日期就像飞机降落"><a href="#赶上日期就像飞机降落" class="headerlink" title="赶上日期就像飞机降落"></a>赶上日期就像飞机降落</h3><p><strong>「你如何演奏音符，和音符本身同等重要。」</strong> 紧逼赶上一个日期，会预支下个里程碑初期的精力，且恢复期比额外付出更长（20 秒冲刺赶火车，1 分钟才能喘匀）。生产力是零和资源。</p>
+<h3 id="退出标准"><a href="#退出标准" class="headerlink" title="退出标准"></a>退出标准</h3><p>大的截止期限就是几个小的截止期限：<strong>设计完成 → 功能完成 → 测试&#x2F;里程碑完成</strong>。每个交接点要有<strong>退出标准</strong>——里程碑完成时项目应处于什么状态。越早定义退出标准，按时完成概率越大。常见退出标准：完成的工作项目列表、特定水平的 Bug 数量、通过指定测试案例、性能&#x2F;可靠度数字、时间或金钱。</p>
+<p><strong>「目标不只是赶上日期，而是赶上日期的同时让项目处于特定状态。」</strong></p>
+<h3 id="降落的角度"><a href="#降落的角度" class="headerlink" title="降落的角度"></a>降落的角度</h3><p>发现落后时只有三个选择：改变进度表、改变角度（让团队加速）、砍功能。<strong>改变角度往往失效</strong>——速度太高时控制不好，项目像燃料不足的飞机，资源只够降落一次。路线不是直线而是渐进曲线（严重的 Bug 倾向在晚期才被发现），越接近日期越真实。</p>
+<h3 id="评价的元素"><a href="#评价的元素" class="headerlink" title="评价的元素"></a>评价的元素</h3><ul>
+<li><strong>每日构建</strong>：每天构建，及时暴露问题，少依赖状态报告。用 BVT（构建验证测试）把构建分「好&#x2F;中&#x2F;坏」三档。</li>
+<li><strong>Bug 管理</strong>：单一系统，核心字段——优先级（1 必须修 &#x2F; 2 找机会 &#x2F; 3 想修 &#x2F; 4 不可能）、严重性（1 数据丢失瘫痪 &#x2F; 2 重要功能 &#x2F; 3 次要功能；严重性≠优先级）、分配、再现步骤、区域、状态、解决方法、类型（缺陷型&#x2F;回归型）。</li>
+<li><strong>活动图表</strong>：追踪「活动中 &#x2F; 新生成 &#x2F; 已修正」三条趋势线。核心关系是<strong>新生成 vs 已修正</strong>。避免过度分析——「Bug 修正率和西班牙降雨率一致」的图表没有意义。</li>
+<li><strong>有用指标</strong>：修正率、新生成→已核准比率、活动中 Bug 存货时间、每位开发负责多少 Bug、错误反馈比（FFR：修正一个 Bug 引起几个回归，0.1–0.3 可接受）。</li>
+</ul>
+<h3 id="Bug-分类-作战团队"><a href="#Bug-分类-作战团队" class="headerlink" title="Bug 分类 + 作战团队"></a>Bug 分类 + 作战团队</h3><p>分类 &#x3D; 清洁 + 调查 + 分优先级。随项目收尾，分类从个人走向集中。<strong>作战团队（war team）</strong>：终局阶段把分散权限集中到一小群领导，每天开会，对 DCR 和 Bug 设定优先级。标准要高——没准备好的人请出去。<strong>「如果作战团队会议是残酷的 3 小时马拉松，说明领导层已经在某方面失败了。」</strong></p>
+<h3 id="终局阶段的结束"><a href="#终局阶段的结束" class="headerlink" title="终局阶段的结束"></a>终局阶段的结束</h3><ul>
+<li><strong>零 Bug 反弹（ZBB）</strong>：活动且已核准的 Bug 归零（之所以叫「反弹」，因为下一个 Bug 进来就不是零了）。</li>
+<li><strong>候选版本（RC）</strong>：第一个满足所有退出标准的构建，定义「什么问题才值得出第二个 RC」的新退出标准。</li>
+<li><strong>事后分析</strong>：团队领导必须坚持做复盘，报告包含两件事——对教训的分析总结 + 承诺下个项目解决少数几个问题（别贪多）。</li>
+<li><strong>聚会时光</strong>：完成了就要庆祝，要非常非常快乐。</li>
+</ul>
+<hr>
+<h2 id="第-16-章-政治与权力：政治不是脏词"><a href="#第-16-章-政治与权力：政治不是脏词" class="headerlink" title="第 16 章 政治与权力：政治不是脏词"></a>第 16 章 政治与权力：政治不是脏词</h2><h3 id="政治是人性的副产品"><a href="#政治是人性的副产品" class="headerlink" title="政治是人性的副产品"></a>政治是人性的副产品</h3><p><strong>「人是政治的动物。」——亚里士多德</strong> 政治 &#x3D; 群体互动时人性的副产品。作者年轻时对政治的定义是「邪恶、软弱、自私自利的人才会做的事」，直到 Chris Jones 一顿午餐改变了他。</p>
+<p>三个重点：<strong>政治不是肮脏的词语</strong>（词典第一条是「管理的艺术或科学」）；<strong>所有领导者都有政治和权力的限制</strong>（美国总统受三权制衡，VP 也不喜欢被命令）；<strong>权力与职责之比是常数</strong>（权力越大，挑战越大）。</p>
+<h3 id="权力的来源"><a href="#权力的来源" class="headerlink" title="权力的来源"></a>权力的来源</h3><ul>
+<li><strong>奖励</strong>（给奖金、加薪的能力）、<strong>高压</strong>（处罚）、<strong>知识</strong>（专业或信息）、<strong>关联</strong>（你认识谁）、<strong>影响力</strong>（说服力，也可能来自「欠人情」）。</li>
+<li>授予型权力来自体制，挣得型权力有机分布（Mar​​la 和 Jack 信 Tyler，Chloe 不信——他们把部分权力变成支持 Tyler 的力量）。</li>
+</ul>
+<h3 id="滥用权力"><a href="#滥用权力" class="headerlink" title="滥用权力"></a>滥用权力</h3><p><strong>只要无法为项目和参与的人提供利益，任何行为都是滥用权力。</strong> 个人动机与项目目标的重叠越小，破坏性政治越强。流程因素（决策过程不清晰、沟通不畅、资源分配不清晰、缺少责任、目标不稳）比动机因素更危险，因为它们是系统性的。动机因素：保护他人、自私自利、自我、厌恶&#x2F;报复——这些本身不一定邪恶，只有当行为不再支持项目目标时才成问题。</p>
+<h3 id="解决政治问题-影响力战术"><a href="#解决政治问题-影响力战术" class="headerlink" title="解决政治问题 + 影响力战术"></a>解决政治问题 + 影响力战术</h3><p>明确你所需要的（资源、决策权、影响力、目标调整、建议），然后<strong>向上管理</strong>（和经理明确「我希望你为我做什么、我需要什么资源、需要你参与的程度」）。找出谁有权力给你所需，了解他们的观点、他们信任和尊敬谁。<strong>「集体权力的幻想」——会议很少决定任何事，永远把群体拆成个人来看。</strong></p>
+<p>影响力战术：直接要求、对话（合作式）、使用影响力（从侧面进攻）、多级影响力、间接影响力、集体会议（会前权衡谁会出席、准备问题）、「让他们认为这是他们的想法」（高风险，偶尔有效）。</p>
+<h3 id="建立自己的政治运动场"><a href="#建立自己的政治运动场" class="headerlink" title="建立自己的政治运动场"></a>建立自己的政治运动场</h3><p><strong>「你总是有权定义你自己的运动场。」</strong> 不要因为经理对你不好就用同样方式对待下属，不要传递破坏性的态度和习惯。保护团队，同时给他们真实的学习机会——这就是优秀管理的实质。</p>
+<hr>
+<h2 id="我的几点感悟"><a href="#我的几点感悟" class="headerlink" title="我的几点感悟"></a>我的几点感悟</h2><ol>
+<li><p><strong>「简单不等于容易」是全书的钥匙。</strong> 做技术的人常犯的错：觉得某件事「原理很简单」就低估执行难度。分布式、项目管理、沟通、信任，都是这种「简单但极难」的事。这句话能解释大量「我明明都懂，为什么还做不好」。</p>
+</li>
+<li><p><strong>进度表是一堆几率的乘积，这个视角很反直觉但极有用。</strong> 90% × 90% &#x3D; 81%，滚雪球效应是冷冰冰的数学。它提醒我们：延迟不是某个人突然变懒，而是系统性的熵在累积。好的 PM 对远景乐观、对进度存疑。</p>
+</li>
+<li><p><strong>信任是项目管理的底层资产。</strong> 一个 PM 可以没有头衔，但必须有让人愿意跟他一起把事情做成的能力——来自坦诚、兑现承诺、敢于承担责任。<strong>「做你所说的，说你所想的，做错了就认错」</strong>，这句朴素的话比任何领导力模型都管用。</p>
+</li>
+<li><p><strong>优先级和「说『不』」是被严重低估的硬技能。</strong> 项目上最浪费时间的不是写代码慢，而是「不清楚什么先做什么后做」。序列表 + 优先级 1 的黄线 + 敢于说不，这三件事做好，就已经解决了一半以上的混乱。</p>
+</li>
+<li><p><strong>从历史和其他领域学习，是技术人常忽略的杠杆。</strong> 我们总在追逐最新工具和方法论，却很少像作者那样回头看看哈勃望远镜、波音黑皮书、急诊室、厨房后厨是怎么被管出来的。太阳底下没有新鲜事。</p>
+</li>
+<li><p><strong>这本书适合所有「不叫项目经理但实际在带项目」的人。</strong> 正如作者开篇所说：无论是独自工作还是带团队，每个人日常都在管理项目。只要你对结果负责，这本书就适用于你。</p>
+</li>
+</ol>
+<hr>
+<p><strong>一句话总结：项目管理不是神秘艺术，而是把不同人的工作凝聚成有价值产物的手艺——它简单，但绝不容易；它靠信任，而不靠头衔；它的核心工作只有三件：排出正确的优先级、说必要的「不」、以及坚持不懈地让好事发生。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212345000056.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8%E5%88%86%E6%9E%90%E4%B8%8E%E8%82%A1%E7%A5%A8%E4%BC%B0%E5%80%BC%E3%80%8B/'>阅读笔记——《财务报表分析与股票估值》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212128006147.%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%AF%BB%E8%B4%A2%E6%8A%A5/">手把手教你读财报（雪球系列套装）读书笔记</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

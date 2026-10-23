@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《分布式计算：原理、算法与系统》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《分布式计算：原理、算法与系统》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：6.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：21分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E7%AE%97%E6%B3%95%E4%B8%8E%E7%B3%BB%E7%BB%9F%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《分布式计算：原理、算法与系统》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0%EF%BC%9A%E5%BC%95%E8%A8%80"><span class="post-toc-text">第 1 章：引言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%AE%9A%E4%B9%89"><span class="post-toc-text">核心定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8E%E5%B9%B6%E8%A1%8C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="post-toc-text">与并行系统的关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E4%BF%A1%E5%8E%9F%E8%AF%AD"><span class="post-toc-text">通信原语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%B8%89%E7%B1%BB%E6%8C%91%E6%88%98"><span class="post-toc-text">分布式系统的三类挑战</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">第 2 章：分布式计算模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8B%E4%BB%B6%E4%B8%8E%E5%9B%A0%E6%9E%9C%E5%85%B3%E7%B3%BB"><span class="post-toc-text">事件与因果关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%A8%E5%B1%80%E7%8A%B6%E6%80%81%E3%80%81%E5%88%86%E5%89%B2%E7%BA%BF%E4%B8%8E%E9%94%A5%E9%9D%A2"><span class="post-toc-text">全局状态、分割线与锥面</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E9%80%BB%E8%BE%91%E6%97%B6%E9%97%B4"><span class="post-toc-text">第 3 章：逻辑时间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E9%80%BB%E8%BE%91%E6%97%B6%E9%92%9F"><span class="post-toc-text">为什么需要逻辑时钟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E9%87%8F%E6%97%B6%E9%92%9F"><span class="post-toc-text">标量时钟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%91%E9%87%8F%E6%97%B6%E9%92%9F"><span class="post-toc-text">向量时钟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A9%E9%98%B5%E6%97%B6%E9%92%9F"><span class="post-toc-text">矩阵时钟</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E5%85%A8%E5%B1%80%E5%BF%AB%E7%85%A7"><span class="post-toc-text">第 4 章：全局快照</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98"><span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Chandy-Lamport-%E5%BF%AB%E7%85%A7%E7%AE%97%E6%B3%95"><span class="post-toc-text">Chandy-Lamport 快照算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E5%88%A4%E6%96%AD"><span class="post-toc-text">关键判断</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0%EF%BC%9A%E6%9C%AF%E8%AF%AD%E5%92%8C%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95"><span class="post-toc-text">第 5 章：术语和基础算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9C%80%E8%A6%81%E8%AE%B0%E4%BD%8F%E7%9A%84%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="post-toc-text">需要记住的基础概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BE%E7%AE%97%E6%B3%95"><span class="post-toc-text">图算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E6%B6%88%E6%81%AF%E5%BA%8F%E4%B8%8E%E7%BB%84%E9%80%9A%E4%BF%A1"><span class="post-toc-text">第 6 章：消息序与组通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B6%88%E6%81%AF%E5%BA%8F%E7%9A%84%E5%B1%82%E6%AC%A1"><span class="post-toc-text">消息序的层次</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%A0%E6%9E%9C%E5%BA%8F%E4%B8%8E%E5%85%A8%E5%BA%8F"><span class="post-toc-text">因果序与全序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%84%E9%80%9A%E4%BF%A1"><span class="post-toc-text">组通信</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E7%BB%88%E6%AD%A2%E6%A3%80%E6%B5%8B"><span class="post-toc-text">第 7 章：终止检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="post-toc-text">问题定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="post-toc-text">算法思路</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E7%9F%A5%E8%AF%86%E6%8E%A8%E7%90%86"><span class="post-toc-text">第 8 章：知识推理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%8E%E2%80%9C%E6%B3%A5%E5%AD%A9%E5%AD%90%E9%9A%BE%E9%A2%98%E2%80%9D%E7%90%86%E8%A7%A3%E7%9F%A5%E8%AF%86"><span class="post-toc-text">从“泥孩子难题”理解知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%A5%E8%AF%86%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="post-toc-text">知识运算符</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E8%A6%81%E7%BB%93%E8%AE%BA"><span class="post-toc-text">重要结论</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%92%E6%96%A5"><span class="post-toc-text">第 9 章：分布式互斥</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A6%81%E6%B1%82"><span class="post-toc-text">问题与要求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="post-toc-text">三类算法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E7%82%B9%E5%88%A4%E6%96%AD"><span class="post-toc-text">重点判断</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E6%AD%BB%E9%94%81%E6%A3%80%E6%B5%8B"><span class="post-toc-text">第 10 章：死锁检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E6%AD%BB%E9%94%81%E7%9A%84%E9%9A%BE%E7%82%B9"><span class="post-toc-text">分布式死锁的难点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E8%A6%81%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">主要模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="post-toc-text">四类算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E5%85%A8%E5%B1%80%E8%B0%93%E8%AF%8D%E6%A3%80%E6%B5%8B"><span class="post-toc-text">第 11 章：全局谓词检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A8%B3%E5%AE%9A%E8%B0%93%E8%AF%8D%E4%B8%8E%E4%B8%8D%E7%A8%B3%E5%AE%9A%E8%B0%93%E8%AF%8D"><span class="post-toc-text">稳定谓词与不稳定谓词</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E7%A7%8D%E5%85%B3%E9%94%AE%E6%A8%A1%E6%80%81"><span class="post-toc-text">两种关键模态</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E5%85%B1%E4%BA%AB%E5%86%85%E5%AD%98"><span class="post-toc-text">第 12 章：分布式共享内存</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81-DSM"><span class="post-toc-text">为什么需要 DSM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">一致性模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%92%E6%96%A5%E4%B8%8E%E6%97%A0%E7%AD%89%E5%BE%85%E5%AF%84%E5%AD%98%E5%99%A8"><span class="post-toc-text">互斥与无等待寄存器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0%EF%BC%9A%E6%A3%80%E6%9F%A5%E7%82%B9%E4%B8%8E%E5%8D%B7%E5%9B%9E%E6%81%A2%E5%A4%8D"><span class="post-toc-text">第 13 章：检查点与卷回恢复</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E6%A3%80%E6%9F%A5%E7%82%B9%E7%AD%96%E7%95%A5"><span class="post-toc-text">三种检查点策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E7%B1%B3%E8%AF%BA%E6%95%88%E5%BA%94"><span class="post-toc-text">多米诺效应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B6%88%E6%81%AF%E6%97%A5%E5%BF%97"><span class="post-toc-text">消息日志</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0%EF%BC%9A%E5%85%B1%E8%AF%86%E4%B8%8E%E5%8D%8F%E5%AE%9A"><span class="post-toc-text">第 14 章：共识与协定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98%E5%AE%B6%E6%97%8F"><span class="post-toc-text">问题家族</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8C%89%E6%A8%A1%E5%9E%8B%E7%9C%8B%E5%8F%AF%E8%A7%A3%E6%80%A7"><span class="post-toc-text">按模型看可解性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FLP-%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="post-toc-text">FLP 的核心</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%B1%E5%8C%96%E5%90%8E%E7%9A%84%E5%8F%AF%E8%A7%A3%E9%97%AE%E9%A2%98"><span class="post-toc-text">弱化后的可解问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-15-%E7%AB%A0%EF%BC%9A%E5%A4%B1%E6%95%88%E6%A3%80%E6%B5%8B"><span class="post-toc-text">第 15 章：失效检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%8C%E5%A4%87%E6%80%A7%E4%B8%8E%E5%87%86%E7%A1%AE%E6%80%A7"><span class="post-toc-text">完备性与准确性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%AF%E7%BA%A6%E6%80%A7%E4%B8%8E%E6%9C%80%E5%BC%B1%E5%A4%B1%E6%95%88%E6%A3%80%E6%B5%8B%E5%99%A8"><span class="post-toc-text">可约性与最弱失效检测器</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-16-%E7%AB%A0%EF%BC%9A%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E8%AE%A4%E8%AF%81"><span class="post-toc-text">第 16 章：分布式系统中的认证</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A4%E8%AF%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="post-toc-text">认证的基本问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">对称密钥协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%AF%86%E9%92%A5%E5%8D%8F%E8%AE%AE"><span class="post-toc-text">非对称密钥协议</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%A3%E4%BB%A4%E7%9A%84%E8%AE%A4%E8%AF%81"><span class="post-toc-text">基于口令的认证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-17-%E7%AB%A0%EF%BC%9A%E8%87%AA%E7%A8%B3%E5%AE%9A"><span class="post-toc-text">第 17 章：自稳定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Dijkstra-%E4%BB%A4%E7%89%8C%E7%8E%AF"><span class="post-toc-text">Dijkstra 令牌环</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9"><span class="post-toc-text">设计要点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B1%80%E9%99%90"><span class="post-toc-text">局限</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-18-%E7%AB%A0%EF%BC%9AP2P-%E4%B8%8E%E8%A6%86%E7%9B%96%E7%BD%91%E7%BB%9C"><span class="post-toc-text">第 18 章：P2P 与覆盖网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E7%BB%93%E6%9E%84%E5%8C%96-P2P"><span class="post-toc-text">非结构化 P2P</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96-P2P-%E4%B8%8E-DHT"><span class="post-toc-text">结构化 P2P 与 DHT</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#P2P-%E7%9A%84%E9%9D%9E%E6%8A%80%E6%9C%AF%E9%97%AE%E9%A2%98"><span class="post-toc-text">P2P 的非技术问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%8D%E6%9D%82%E7%BD%91%E7%BB%9C"><span class="post-toc-text">复杂网络</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84-10-%E4%B8%AA%E5%88%A4%E6%96%AD"><span class="post-toc-text">最有价值的 10 个判断</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5%E7%9A%84%E8%81%94%E7%B3%BB"><span class="post-toc-text">与工程实践的联系</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《分布式计算：原理、算法与系统》读书笔记"><a href="#《分布式计算：原理、算法与系统》读书笔记" class="headerlink" title="《分布式计算：原理、算法与系统》读书笔记"></a>《分布式计算：原理、算法与系统》读书笔记</h1><blockquote>
+<p>作者：Ajay D. Kshemkalyani、Mukesh Singhal<br>中译本：余宏亮、张冬艳 译，高等教育出版社<br>英文原名：<em>Distributed Computing: Principles, Algorithms, and Systems</em></p>
+</blockquote>
+<p>这本书最大的价值不是把某一个分布式组件讲得特别深，而是给出一套<strong>可迁移的分布式思维模型</strong>：先明确系统模型，再判断某个问题在给定模型下是否可解，最后才谈算法和实现。全书 18 章，核心是“模型 → 时间与状态 → 通信 → 基础问题 → 容错 → 系统技术”。</p>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p>分布式系统由一组通过消息传递协作、没有共享内存和统一物理时钟的自治进程组成；理解分布式系统的钥匙，是理解<strong>因果关系、逻辑时间、全局状态、故障模型和不可能性结论</strong>。</p>
+<h2 id="全书地图"><a href="#全书地图" class="headerlink" title="全书地图"></a>全书地图</h2><table>
+<thead>
+<tr>
+<th>篇章</th>
+<th>章节</th>
+<th>关键问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基础</td>
+<td>1 引言</td>
+<td>什么是分布式系统？它和并行系统、多计算机有什么关系？</td>
+</tr>
+<tr>
+<td>模型与时间</td>
+<td>2~4</td>
+<td>如何刻画事件因果、逻辑时钟、全局快照？</td>
+</tr>
+<tr>
+<td>通信与协调</td>
+<td>5~9</td>
+<td>图算法、消息顺序、终止检测、知识推理、互斥</td>
+</tr>
+<tr>
+<td>状态与一致性</td>
+<td>10~13</td>
+<td>死锁检测、全局谓词、共享内存、检查点恢复</td>
+</tr>
+<tr>
+<td>容错与安全</td>
+<td>14~17</td>
+<td>共识、失效检测、认证、自稳定</td>
+</tr>
+<tr>
+<td>大规模系统</td>
+<td>18</td>
+<td>P2P、覆盖网络、复杂网络</td>
+</tr>
+</tbody></table>
+<h2 id="第-1-章：引言"><a href="#第-1-章：引言" class="headerlink" title="第 1 章：引言"></a>第 1 章：引言</h2><h3 id="核心定义"><a href="#核心定义" class="headerlink" title="核心定义"></a>核心定义</h3><p>分布式系统可以从不同侧面定义，但共同点是：</p>
+<ol>
+<li>一组<strong>自治进程</strong>通过网络协作；</li>
+<li>没有<strong>共享内存</strong>；</li>
+<li>没有<strong>统一物理时钟</strong>；</li>
+<li>通过<strong>消息传递</strong>通信；</li>
+<li>向用户表现为一个整体，或至少协同完成单机无法完成的任务。</li>
+</ol>
+<p>一个实用判据：某个节点崩溃不应该导致整个系统无法工作；一组计算机如果既不共享内存、也没有共同物理时钟，主要靠消息协作，就可以按分布式系统来理解。</p>
+<h3 id="与并行系统的关系"><a href="#与并行系统的关系" class="headerlink" title="与并行系统的关系"></a>与并行系统的关系</h3><p>不要混淆“分布式”和“并行”：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>多处理器&#x2F;并行系统</th>
+<th>分布式系统</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内存</td>
+<td>通常共享，UMA 或 NUMA</td>
+<td>无共享</td>
+</tr>
+<tr>
+<td>时钟</td>
+<td>常共享统一时钟</td>
+<td>无统一时钟</td>
+</tr>
+<tr>
+<td>耦合</td>
+<td>紧耦合</td>
+<td>松耦合</td>
+</tr>
+<tr>
+<td>通信</td>
+<td>共享变量或消息</td>
+<td>以消息为主</td>
+</tr>
+<tr>
+<td>地理分布</td>
+<td>常集中部署</td>
+<td>可广域分布</td>
+</tr>
+</tbody></table>
+<p>Flynn 分类中，分布式系统主要是 <strong>MIMD</strong>：多个指令流、多个数据流。共享内存和消息传递可以互相仿真，但仿真有代价：在消息传递系统上仿真共享内存时，读&#x2F;写会被翻译成网络查询&#x2F;更新消息，因此“看起来像内存”不等于“内存级延迟”。</p>
+<h3 id="通信原语"><a href="#通信原语" class="headerlink" title="通信原语"></a>通信原语</h3><ul>
+<li><strong>阻塞&#x2F;非阻塞</strong>：调用后是否等待操作完成才返回控制权。</li>
+<li><strong>同步&#x2F;异步发送</strong>：发送是否等待接收方已经收到。</li>
+<li><strong>同步&#x2F;异步接收</strong>：接收是否等待消息已经到达。</li>
+<li>非阻塞调用通常返回一个句柄，后续通过轮询或 <code>wait</code> 检查完成状态。</li>
+</ul>
+<h3 id="分布式系统的三类挑战"><a href="#分布式系统的三类挑战" class="headerlink" title="分布式系统的三类挑战"></a>分布式系统的三类挑战</h3><ol>
+<li>系统设计：可伸缩、模块化、异构、故障隔离；</li>
+<li>算法设计：并发、不确定性、部分知识、故障；</li>
+<li>新技术驱动：移动、无线、传感器、P2P、云。</li>
+</ol>
+<h2 id="第-2-章：分布式计算模型"><a href="#第-2-章：分布式计算模型" class="headerlink" title="第 2 章：分布式计算模型"></a>第 2 章：分布式计算模型</h2><p>这一章建立全书的数学语言。</p>
+<h3 id="事件与因果关系"><a href="#事件与因果关系" class="headerlink" title="事件与因果关系"></a>事件与因果关系</h3><ul>
+<li>一个进程的本地历史由<strong>内部事件、发送事件、接收事件</strong>组成。</li>
+<li><strong>happens-before 关系</strong> <code>→</code> 是分布式系统最核心的偏序关系：<ul>
+<li>同一进程内，若 <code>a</code> 先于 <code>b</code>，则 <code>a → b</code>；</li>
+<li>若 <code>a</code> 是发送消息事件，<code>b</code> 是同一消息的接收事件，则 <code>a → b</code>；</li>
+<li>关系具有传递性。</li>
+</ul>
+</li>
+<li>如果 <code>a</code> 和 <code>b</code> 既不满足 <code>a → b</code>，也不满足 <code>b → a</code>，则它们是<strong>并发事件</strong>。</li>
+</ul>
+<p>因果关系比墙钟时间更本质：分布式系统中真正重要的不是“同时”，而是“谁可能影响谁”。</p>
+<h3 id="全局状态、分割线与锥面"><a href="#全局状态、分割线与锥面" class="headerlink" title="全局状态、分割线与锥面"></a>全局状态、分割线与锥面</h3><ul>
+<li><strong>全局状态</strong> &#x3D; 所有进程状态 + 所有通道状态。</li>
+<li><strong>分割线 &#x2F; cut</strong>：一条与每个进程都相交的锯齿线，代表一个全局状态。</li>
+<li><strong>一致性分割线</strong>：没有“接收已记录、发送未记录”的跨线消息。</li>
+<li><strong>过去锥面</strong>：可能影响某事件的所有事件集合。</li>
+<li><strong>未来锥面</strong>：可能被某事件影响的所有事件集合。</li>
+</ul>
+<p>这个几何直觉对快照、回滚、谓词检测都很关键。</p>
+<h2 id="第-3-章：逻辑时间"><a href="#第-3-章：逻辑时间" class="headerlink" title="第 3 章：逻辑时间"></a>第 3 章：逻辑时间</h2><h3 id="为什么需要逻辑时钟"><a href="#为什么需要逻辑时钟" class="headerlink" title="为什么需要逻辑时钟"></a>为什么需要逻辑时钟</h3><p>物理时钟在广域系统中无法完美同步，而且分布式系统真正需要的是因果顺序，不一定是真实时间。逻辑时钟用单调递增的数值捕捉因果关系。</p>
+<table>
+<thead>
+<tr>
+<th>时钟</th>
+<th>表示</th>
+<th>能力</th>
+<th>代价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标量时钟</td>
+<td>整数</td>
+<td><code>a → b ⇒ C(a) &lt; C(b)</code>，但逆命题不成立</td>
+<td>低</td>
+</tr>
+<tr>
+<td>向量时钟</td>
+<td>整数向量</td>
+<td>精确刻画因果关系：<code>a → b ⇔ V(a) &lt; V(b)</code></td>
+<td>中</td>
+</tr>
+<tr>
+<td>矩阵时钟</td>
+<td>整数矩阵</td>
+<td>还保留“最近的直接依赖”信息</td>
+<td>高</td>
+</tr>
+</tbody></table>
+<h3 id="标量时钟"><a href="#标量时钟" class="headerlink" title="标量时钟"></a>标量时钟</h3><p>每个进程维护一个计数器。发送消息时先自增并随消息携带时间戳；接收时取 <code>max(local, received) + 1</code>。</p>
+<p>标量时钟只能给出因果关系的必要不充分条件。<code>C(a) &lt; C(b)</code> 不能推出 <code>a → b</code>，所以不能用于判断并发。</p>
+<h3 id="向量时钟"><a href="#向量时钟" class="headerlink" title="向量时钟"></a>向量时钟</h3><p>向量长度等于进程数。发送时只更新自己分量；接收时逐分量取最大值。对向量做分量级比较：</p>
+<ul>
+<li><code>V(a) &lt; V(b)</code> 表示 <code>a</code> 因果先于 <code>b</code>；</li>
+<li><code>V(a) ‖ V(b)</code> 表示两个事件并发。</li>
+</ul>
+<p>向量时钟的代价是每个消息携带 <code>O(n)</code> 信息。工程上可用差量技术、直接依赖技术、自适应技术压缩，但精确的因果判断本质上仍需要一定维度信息。</p>
+<h3 id="矩阵时钟"><a href="#矩阵时钟" class="headerlink" title="矩阵时钟"></a>矩阵时钟</h3><p>矩阵时钟额外记录“我知道他知道”这类间接知识，适合分布式垃圾回收、资源回收等需要判断“是否还有人可能引用”的场景。</p>
+<h2 id="第-4-章：全局快照"><a href="#第-4-章：全局快照" class="headerlink" title="第 4 章：全局快照"></a>第 4 章：全局快照</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在无全局时钟的系统中，无法由一个观察者在瞬间同时读所有进程和通道状态。快照的目标是得到一个<strong>一致全局状态</strong>，而不是“真实发生过的某个瞬时状态”。</p>
+<h3 id="Chandy-Lamport-快照算法"><a href="#Chandy-Lamport-快照算法" class="headerlink" title="Chandy-Lamport 快照算法"></a>Chandy-Lamport 快照算法</h3><p>适用于 FIFO 通道：</p>
+<ol>
+<li>一个进程记录本地状态，然后沿所有出边发送标记；</li>
+<li>首次收到标记的进程记录本地状态，并继续扩散标记；</li>
+<li>记录状态后、收到标记前到达的消息，属于“在途消息”，要记入通道状态；</li>
+<li>当每个通道都已记录后，快照完成。</li>
+</ol>
+<p>它的性质：最终记录出的全局状态是<strong>可达的</strong>，即它可能是某次执行中的一个一致性状态，而不一定是实际发生过的那一个。</p>
+<h3 id="关键判断"><a href="#关键判断" class="headerlink" title="关键判断"></a>关键判断</h3><ul>
+<li>通信抽象越强，快照算法越简单。</li>
+<li>不存在万能的最优快照算法，要按用途选择：终止检测关心消息计数，检查点关心增量，监控关心按需评估。</li>
+<li>非 FIFO 通道、因果传递、监控全局状态都需要更复杂的协议。</li>
+</ul>
+<h2 id="第-5-章：术语和基础算法"><a href="#第-5-章：术语和基础算法" class="headerlink" title="第 5 章：术语和基础算法"></a>第 5 章：术语和基础算法</h2><h3 id="需要记住的基础概念"><a href="#需要记住的基础概念" class="headerlink" title="需要记住的基础概念"></a>需要记住的基础概念</h3><ul>
+<li>应用执行 vs 控制算法执行；</li>
+<li>集中式&#x2F;分布式、对称&#x2F;非对称、匿名、确定性&#x2F;非确定性；</li>
+<li><strong>故障模型</strong>：无故障、崩溃停止、拜占庭故障；</li>
+<li>复杂度度量：消息数、时间、空间、位复杂度。</li>
+</ul>
+<h3 id="图算法"><a href="#图算法" class="headerlink" title="图算法"></a>图算法</h3><ul>
+<li><strong>生成树</strong>：广播和收集的基础。同步单发起者、异步单发起者、异步并发发起者算法各有取舍。</li>
+<li><strong>广播&#x2F;聚合（convergecast）</strong>：在树上分发信息和收集结果，可反复计算 <code>min/max/sum</code> 等全局函数。</li>
+<li><strong>最短路径</strong>：同步 Bellman-Ford、距离向量；异步单源和多源版本。距离向量路由在网络层有真实应用。</li>
+<li><strong>同步器</strong>：让同步算法运行在异步系统上的转换工具，复杂度从简单到 <code>α/β/γ</code> 同步器递增。</li>
+<li><strong>最大独立集、连通支配集、紧凑路由、领导者选举</strong>：都是分布式图算法的典型问题。</li>
+</ul>
+<p>这一章最重要的经验是：<strong>为同步系统设计算法通常比异步系统容易</strong>；同步器告诉我们，同步假设其实是一种可模拟的抽象，但代价是复杂度。</p>
+<h2 id="第-6-章：消息序与组通信"><a href="#第-6-章：消息序与组通信" class="headerlink" title="第 6 章：消息序与组通信"></a>第 6 章：消息序与组通信</h2><h3 id="消息序的层次"><a href="#消息序的层次" class="headerlink" title="消息序的层次"></a>消息序的层次</h3><p>从强到弱，常见消息序：</p>
+<ol>
+<li><strong>同步序</strong>：发送和接收被同步约束；</li>
+<li><strong>FIFO 序</strong>：同一发送者到同一接收者的消息保持顺序；</li>
+<li><strong>因果序</strong>：保持 happened-before 顺序；</li>
+<li><strong>非因果序&#x2F;全序</strong>：全体进程看到同一顺序。</li>
+</ol>
+<p>不同序的强度形成层级，越强通常代价越高，也越难实现。</p>
+<h3 id="因果序与全序"><a href="#因果序与全序" class="headerlink" title="因果序与全序"></a>因果序与全序</h3><ul>
+<li><strong>因果序多播</strong>：如果一次发送因果先于另一次发送，所有接收者必须先收到前者。可用向量时钟实现。</li>
+<li><strong>全序多播</strong>：所有正确进程以相同顺序投递所有消息。可用集中式序列器、三阶段分布式算法等实现。</li>
+</ul>
+<h3 id="组通信"><a href="#组通信" class="headerlink" title="组通信"></a>组通信</h3><p>组通信还要处理成员变化、故障语义和投递保证。网络层的分布式多播包括反向路径转发、Steiner 树、有界延迟树、核基树等；不少问题是 NP 完全问题，实践中用多项式时间启发式。</p>
+<h2 id="第-7-章：终止检测"><a href="#第-7-章：终止检测" class="headerlink" title="第 7 章：终止检测"></a>第 7 章：终止检测</h2><h3 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h3><p>一个分布式计算终止，当且仅当：</p>
+<ol>
+<li>所有进程都处于空闲状态；</li>
+<li>系统中没有在途消息。</li>
+</ol>
+<p>难点在于任何进程都没有全局视图：一个进程看起来空闲，可能之后收到消息又被激活。</p>
+<h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><ul>
+<li><strong>基于快照</strong>：用一致性快照判断是否满足终止条件；</li>
+<li><strong>信用&#x2F;传递</strong>：通过令牌或计数器追踪未完成任务；</li>
+<li><strong>基于生成树</strong>：在树上收敛“所有子节点是否已空闲、通道是否为空”的信息；</li>
+<li><strong>原子计算模型</strong>：四计数器、向量计数、信道计数等。</li>
+</ul>
+<p>终止检测被广泛用于分布式垃圾回收、任务收敛、并行批处理结束判断。</p>
+<h2 id="第-8-章：知识推理"><a href="#第-8-章：知识推理" class="headerlink" title="第 8 章：知识推理"></a>第 8 章：知识推理</h2><h3 id="从“泥孩子难题”理解知识"><a href="#从“泥孩子难题”理解知识" class="headerlink" title="从“泥孩子难题”理解知识"></a>从“泥孩子难题”理解知识</h3><p>知识不是单个进程掌握的事实，而是<strong>对他人状态和他人知识的知识</strong>。书中用泥孩子&#x2F;不忠妻子难题说明：公共知识在协议中往往比各自知道更重要。</p>
+<h3 id="知识运算符"><a href="#知识运算符" class="headerlink" title="知识运算符"></a>知识运算符</h3><ul>
+<li><code>K_i φ</code>：进程 <code>i</code> 知道 <code>φ</code>；</li>
+<li><code>E φ</code>：每个进程都知道 <code>φ</code>；</li>
+<li><code>C φ</code>：公共知识，即“每个人知道，每个人知道每个人知道……”。</li>
+</ul>
+<h3 id="重要结论"><a href="#重要结论" class="headerlink" title="重要结论"></a>重要结论</h3><ul>
+<li><strong>异步无错消息传递系统无法获得公共知识</strong>：无法确定消息是否已到达，因此无法获得无限层级的“我知道你知道”。</li>
+<li>可以获得的弱化版本：最终共同知识、时间戳共同知识、并发共同知识。</li>
+<li><strong>并发共同知识</strong>是多数异步协议的基础。</li>
+</ul>
+<p>这个结论的意义：异步分布式协议往往只能收敛到某种“足够强”的知识，而不是完整公共知识。</p>
+<h2 id="第-9-章：分布式互斥"><a href="#第-9-章：分布式互斥" class="headerlink" title="第 9 章：分布式互斥"></a>第 9 章：分布式互斥</h2><h3 id="问题与要求"><a href="#问题与要求" class="headerlink" title="问题与要求"></a>问题与要求</h3><p>互斥确保任意时刻最多一个进程进入临界区。要求通常包括：安全性、活性、公平性、容错、低消息复杂度、低同步延迟。</p>
+<h3 id="三类算法"><a href="#三类算法" class="headerlink" title="三类算法"></a>三类算法</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>思路</th>
+<th>代表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>基于令牌</td>
+<td>唯一令牌在站点间传递，持令牌者可进入临界区</td>
+<td>Suzuki-Kasami、Raymond 树算法</td>
+</tr>
+<tr>
+<td>基于许可</td>
+<td>通过两轮或多轮消息获得许可</td>
+<td>Lamport、Ricart-Agrawala</td>
+</tr>
+<tr>
+<td>基于仲裁团</td>
+<td>向一个站点子集申请，任意两个子集相交</td>
+<td>Maekawa</td>
+</tr>
+</tbody></table>
+<h3 id="重点判断"><a href="#重点判断" class="headerlink" title="重点判断"></a>重点判断</h3><ul>
+<li>Lamport 算法逻辑简洁，但消息开销高。</li>
+<li>Ricart-Agrawala 通过时间戳和请求队列减少消息。</li>
+<li>Maekawa 用 <code>√n</code> 规模的仲裁团换取许可轮数，但可能死锁，需要处理。</li>
+<li>树形令牌算法适合局部访问模式；动态信息结构算法会适应流量变化。</li>
+</ul>
+<p>互斥不是只有一种答案，性能由<strong>消息数、延迟、公平性和故障模型</strong>共同决定。</p>
+<h2 id="第-10-章：死锁检测"><a href="#第-10-章：死锁检测" class="headerlink" title="第 10 章：死锁检测"></a>第 10 章：死锁检测</h2><h3 id="分布式死锁的难点"><a href="#分布式死锁的难点" class="headerlink" title="分布式死锁的难点"></a>分布式死锁的难点</h3><p>各站点只能看到等待图的一部分，可能把<strong>不同时刻的局部边</strong>拼成一个假环，导致“假死锁”。分布式死锁检测要同时构造&#x2F;维护等待图，并检测环或结。</p>
+<h3 id="主要模型"><a href="#主要模型" class="headerlink" title="主要模型"></a>主要模型</h3><ul>
+<li>单资源模型：一次最多等待一个资源；</li>
+<li>AND 模型：需要等待所有请求资源；</li>
+<li>OR 模型：任一请求资源满足即可；</li>
+<li><code>AND-OR</code>、无限制模型等更复杂。</li>
+</ul>
+<h3 id="四类算法"><a href="#四类算法" class="headerlink" title="四类算法"></a>四类算法</h3><ol>
+<li><strong>路径推送</strong>：传播等待依赖路径；</li>
+<li><strong>边探测</strong>：探测消息沿边传播，若回到发出者则发现环，如 Chandy-Misra-Haas；</li>
+<li><strong>计算分散</strong>：用回声&#x2F;diffusion 检测，如 Chandy-Misra-Haas 的 diffusing computation 变体；</li>
+<li><strong>全局状态检测</strong>：记录快照并检查等待图。</li>
+</ol>
+<p>工程中还有一个简单的替代：超时中止，但它会误杀长任务，也难区分“真正死锁”和“只是慢”。</p>
+<h2 id="第-11-章：全局谓词检测"><a href="#第-11-章：全局谓词检测" class="headerlink" title="第 11 章：全局谓词检测"></a>第 11 章：全局谓词检测</h2><h3 id="稳定谓词与不稳定谓词"><a href="#稳定谓词与不稳定谓词" class="headerlink" title="稳定谓词与不稳定谓词"></a>稳定谓词与不稳定谓词</h3><ul>
+<li><strong>稳定谓词</strong>：一旦为真就永远为真，如死锁、终止。</li>
+<li><strong>不稳定谓词</strong>：可能短暂为真后被破坏，检测更难。</li>
+</ul>
+<h3 id="两种关键模态"><a href="#两种关键模态" class="headerlink" title="两种关键模态"></a>两种关键模态</h3><ul>
+<li><strong>Possibly φ</strong>：是否存在一个可达一致性状态满足 <code>φ</code>；</li>
+<li><strong>Definitely φ</strong>：是否所有观察路径上都有状态满足 <code>φ</code>。</li>
+</ul>
+<p>谓词形态决定算法复杂度：</p>
+<ul>
+<li>关系谓词检测通常是<strong>指数复杂度</strong>；</li>
+<li>合取谓词可按区间或全局状态检测，存在多项式算法；</li>
+<li>基于令牌、基于区间、捎带技术是常见的分布式实现。</li>
+</ul>
+<h2 id="第-12-章：分布式共享内存"><a href="#第-12-章：分布式共享内存" class="headerlink" title="第 12 章：分布式共享内存"></a>第 12 章：分布式共享内存</h2><h3 id="为什么需要-DSM"><a href="#为什么需要-DSM" class="headerlink" title="为什么需要 DSM"></a>为什么需要 DSM</h3><p>DSM 用读写内存的抽象替代消息传递，减轻程序员负担，但底层仍需网络通信，所以<strong>延迟和一致性无法靠抽象消失</strong>。</p>
+<h3 id="一致性模型"><a href="#一致性模型" class="headerlink" title="一致性模型"></a>一致性模型</h3><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>含义</th>
+<th>强度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>线性一致性&#x2F;原子一致性</td>
+<td>所有操作像一个全局瞬间完成</td>
+<td>最强</td>
+</tr>
+<tr>
+<td>顺序一致性</td>
+<td>所有操作保持单一全局顺序，但不要求实时顺序</td>
+<td>强</td>
+</tr>
+<tr>
+<td>因果一致性</td>
+<td>只保持因果相关的读写顺序</td>
+<td>中</td>
+</tr>
+<tr>
+<td>PRAM&#x2F;处理器一致性</td>
+<td>每写者自身的写序可见，但不要求全局统一</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>慢内存</td>
+<td>只保证本地进程最终看到自己的写</td>
+<td>更弱</td>
+</tr>
+</tbody></table>
+<p>一致性模型是<strong>系统提供者与程序员之间的契约</strong>。选择模型要在易编程性、可用性和性能之间折中。</p>
+<h3 id="互斥与无等待寄存器"><a href="#互斥与无等待寄存器" class="headerlink" title="互斥与无等待寄存器"></a>互斥与无等待寄存器</h3><ul>
+<li>面包店算法不依赖硬件原子指令，只依赖共享读&#x2F;写；</li>
+<li>Lamport 快速互斥在无竞争时只需常数级操作；</li>
+<li>测试并设置、交换等硬件指令能高效实现互斥，但多处理器代价高；</li>
+<li><strong>等待无关性</strong>指一个进程的完成不因其他进程暂停而受阻，容错度为 <code>n-1</code>。</li>
+</ul>
+<p>寄存器可分为布尔&#x2F;整数、单读者&#x2F;多读者、单写者&#x2F;多写者、安全&#x2F;普通&#x2F;原子，可组合成多个层次；从弱寄存器逐步构造强寄存器，展示了如何用算法弥补硬件原子性不足。</p>
+<h2 id="第-13-章：检查点与卷回恢复"><a href="#第-13-章：检查点与卷回恢复" class="headerlink" title="第 13 章：检查点与卷回恢复"></a>第 13 章：检查点与卷回恢复</h2><h3 id="三种检查点策略"><a href="#三种检查点策略" class="headerlink" title="三种检查点策略"></a>三种检查点策略</h3><ol>
+<li><strong>非协同检查点</strong>：各进程独立做检查点，恢复时再寻找一致全局状态，可能产生多米诺效应；</li>
+<li><strong>协同检查点</strong>：进程协调形成一致状态，增加运行时开销，但避免卷回传播；</li>
+<li><strong>通信引导检查点</strong>：根据收到的应用消息携带的信息决定是否做检查点，恢复简单、高效且避免多米诺效应。</li>
+</ol>
+<h3 id="多米诺效应"><a href="#多米诺效应" class="headerlink" title="多米诺效应"></a>多米诺效应</h3><p>如果各进程任意做本地检查点，一个进程回滚可能迫使其他进程继续回滚，最坏可能一直回到初始状态。这是独立检查点的核心风险。</p>
+<h3 id="消息日志"><a href="#消息日志" class="headerlink" title="消息日志"></a>消息日志</h3><ul>
+<li><strong>悲观日志</strong>：先持久化消息再继续，恢复安全但运行开销高；</li>
+<li><strong>乐观日志</strong>：先处理，后落盘，恢复时可能丢失消息；</li>
+<li><strong>因果日志</strong>：在因果信息中记录日志，兼顾成本和恢复能力。</li>
+</ul>
+<h2 id="第-14-章：共识与协定"><a href="#第-14-章：共识与协定" class="headerlink" title="第 14 章：共识与协定"></a>第 14 章：共识与协定</h2><h3 id="问题家族"><a href="#问题家族" class="headerlink" title="问题家族"></a>问题家族</h3><p>共识问题、拜占庭协定、交互式一致性等可以互相归约，本质都是让一组进程对某个值达成一致。</p>
+<h3 id="按模型看可解性"><a href="#按模型看可解性" class="headerlink" title="按模型看可解性"></a>按模型看可解性</h3><table>
+<thead>
+<tr>
+<th>系统模型</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无故障，同步或异步</td>
+<td>可解</td>
+</tr>
+<tr>
+<td>同步，崩溃故障</td>
+<td>有算法，通常需要 <code>n &gt; f</code></td>
+</tr>
+<tr>
+<td>同步，拜占庭故障</td>
+<td>可解当 <code>n &gt; 3f</code>，典型如 Lamport-Shostak-Pease</td>
+</tr>
+<tr>
+<td>异步，消息传递</td>
+<td><strong>FLP 不可能性</strong>：即使只有一个崩溃进程，也不能用确定性算法保证终止</td>
+</tr>
+<tr>
+<td>异步共享内存，仅读&#x2F;写寄存器</td>
+<td>共识不可能，需要更强的同步原语</td>
+</tr>
+</tbody></table>
+<h3 id="FLP-的核心"><a href="#FLP-的核心" class="headerlink" title="FLP 的核心"></a>FLP 的核心</h3><p>在异步系统中，无法区分“进程崩溃”和“进程只是很慢”。因此一个算法如果为了保证安全而无限等待，就可能永远不终止；如果提前决定，又可能踩到故障前的旧状态。这个区分问题正是后续<strong>失效检测</strong>要解决的对象。</p>
+<h3 id="弱化后的可解问题"><a href="#弱化后的可解问题" class="headerlink" title="弱化后的可解问题"></a>弱化后的可解问题</h3><ul>
+<li><code>k</code>-共识、近似共识、重命名、可靠广播；</li>
+<li>分布式事务提交本质也是一种共识，但两阶段提交等协议在异步故障模型下也有阻塞或不可能性边界。</li>
+</ul>
+<p>共享内存共识还有<strong>共识层级</strong>：不同对象（寄存器、测试并设置、比较并交换等）支持不同数量的共识参与者。能够解决任意数量进程共识的对象称为<strong>通用对象</strong>。</p>
+<h2 id="第-15-章：失效检测"><a href="#第-15-章：失效检测" class="headerlink" title="第 15 章：失效检测"></a>第 15 章：失效检测</h2><h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>异步系统没有可靠的崩溃检测。失效检测器允许有限错误，用<strong>怀疑列表</strong>给出“哪些进程可能已崩溃”的提示，从而绕过 FLP 的部分限制。</p>
+<h3 id="完备性与准确性"><a href="#完备性与准确性" class="headerlink" title="完备性与准确性"></a>完备性与准确性</h3><ul>
+<li><strong>完备性</strong>：最终能怀疑所有已崩溃进程。分强完备、弱完备。</li>
+<li><strong>准确性</strong>：限制错误怀疑。分强准确、弱准确，以及最终强&#x2F;最终弱准确。</li>
+<li>完备性本身没用：一个把所有进程都永远怀疑的检测器满足强完备，却没有信息量。</li>
+</ul>
+<p>常见类别：完美检测器 <code>P</code>、最终完美 <code>◇P</code>、强 <code>S</code>、最终强 <code>◇S</code>、弱 <code>W</code>、最终弱 <code>◇W</code> 等。</p>
+<h3 id="可约性与最弱失效检测器"><a href="#可约性与最弱失效检测器" class="headerlink" title="可约性与最弱失效检测器"></a>可约性与最弱失效检测器</h3><p>如果能把一类失效检测器转换成另一类，就形成<strong>可约性</strong>。研究最弱失效检测器的意义在于：找到解决某个问题所需的最小失效信息。共识问题存在最弱失效检测器，典型结果是<strong>最终领导者 Ω</strong> 足以解决异步共识；这也给工程实现指了路：很多生产系统实际使用租约、心跳、超时和一个“当前领导者”近似。</p>
+<h2 id="第-16-章：分布式系统中的认证"><a href="#第-16-章：分布式系统中的认证" class="headerlink" title="第 16 章：分布式系统中的认证"></a>第 16 章：分布式系统中的认证</h2><h3 id="认证的基本问题"><a href="#认证的基本问题" class="headerlink" title="认证的基本问题"></a>认证的基本问题</h3><p>认证是主体向另一主体证明身份的过程，通常依赖共享秘密或非对称密钥。要同时考虑协议正确性、密钥分发和字典攻击、重放攻击、中间人攻击。</p>
+<h3 id="对称密钥协议"><a href="#对称密钥协议" class="headerlink" title="对称密钥协议"></a>对称密钥协议</h3><ul>
+<li>Needham-Schroeder、Kerberos、Otway-Rees 等；</li>
+<li>认证服务器&#x2F;KDC 分发会话密钥；</li>
+<li>一次性口令降低口令重放风险。</li>
+</ul>
+<h3 id="非对称密钥协议"><a href="#非对称密钥协议" class="headerlink" title="非对称密钥协议"></a>非对称密钥协议</h3><ul>
+<li>公钥加密和数字签名；</li>
+<li>Needham-Schroeder 公钥版、X.509、Diffie-Hellman 等；</li>
+<li>证书机构解决公钥与身份绑定问题。</li>
+</ul>
+<h3 id="基于口令的认证"><a href="#基于口令的认证" class="headerlink" title="基于口令的认证"></a>基于口令的认证</h3><ul>
+<li>EKE（加密密钥交换）把口令用于保护 Diffie-Hellman，抵抗字典攻击；</li>
+<li>SRP（安全远程口令）在无明文口令的情况下做零知识式验证。</li>
+</ul>
+<p>设计原则比单个协议更重要：不要信任未认证输入、显式声明主体与消息意图、防重放、防反射、最小化信任中心、考虑失败后的状态。</p>
+<h2 id="第-17-章：自稳定"><a href="#第-17-章：自稳定" class="headerlink" title="第 17 章：自稳定"></a>第 17 章：自稳定</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>自稳定系统从<strong>任意非法状态</strong>出发，都能在有限时间内自动收敛到合法状态，并在此后保持合法。它是一种统一处理瞬态故障的方法。</p>
+<h3 id="Dijkstra-令牌环"><a href="#Dijkstra-令牌环" class="headerlink" title="Dijkstra 令牌环"></a>Dijkstra 令牌环</h3><p>自稳定领域的经典起点是共享内存模型下的互斥环：给进程设计本地规则，使系统无论初始有多少个“令牌”，最终都收敛到恰好一个令牌在环上循环。</p>
+<h3 id="设计要点"><a href="#设计要点" class="headerlink" title="设计要点"></a>设计要点</h3><ul>
+<li>本地校验 + 本地修正，而不是靠全局复位；</li>
+<li>中央守护程序算法通常容易扩展到分布式守护程序；</li>
+<li>常见扩展：滑动窗口、双向握手、交替位协议；</li>
+<li>收敛阶梯、交错运行可以帮助验证；</li>
+<li>全局超时、跨节点读取等强假设会增加实现难度，应尽量避免。</li>
+</ul>
+<h3 id="局限"><a href="#局限" class="headerlink" title="局限"></a>局限</h3><p>自稳定不能解决所有故障；例如某些要求“检查通道内容”或“读取非本地变量”的协议很难实用化。伪稳定算法虽然不完全保证永久稳定，但常因开销低而更实用。</p>
+<h2 id="第-18-章：P2P-与覆盖网络"><a href="#第-18-章：P2P-与覆盖网络" class="headerlink" title="第 18 章：P2P 与覆盖网络"></a>第 18 章：P2P 与覆盖网络</h2><h3 id="非结构化-P2P"><a href="#非结构化-P2P" class="headerlink" title="非结构化 P2P"></a>非结构化 P2P</h3><p>Napster、Gnutella 等。查找方式有洪泛、受限洪泛、盲查找。优点是简单，缺点是查询开销和命中率不可控。</p>
+<h3 id="结构化-P2P-与-DHT"><a href="#结构化-P2P-与-DHT" class="headerlink" title="结构化 P2P 与 DHT"></a>结构化 P2P 与 DHT</h3><p>Chord、CAN、Pastry、Tapestry 都用分布式哈希表把节点和对象映射到逻辑空间，实现确定性、可扩展查找：</p>
+<ul>
+<li><strong>Chord</strong>：一致性哈希环 + 手指表，<code>O(log n)</code> 跳；</li>
+<li><strong>CAN</strong>：多维笛卡尔空间分区；</li>
+<li><strong>Pastry&#x2F;Tapestry</strong>：前缀路由。</li>
+</ul>
+<p>它们都在<strong>路径长度、路由表大小和状态维护成本</strong>之间折中。</p>
+<h3 id="P2P-的非技术问题"><a href="#P2P-的非技术问题" class="headerlink" title="P2P 的非技术问题"></a>P2P 的非技术问题</h3><p>没有中心控制主体时，必须自动处理公平性、搭便车、信任&#x2F;声誉、节点频繁加入离开。很多激励机制被建模成博弈。</p>
+<h3 id="复杂网络"><a href="#复杂网络" class="headerlink" title="复杂网络"></a>复杂网络</h3><p>真实 P2P 和互联网拓扑不是均匀随机图，而是具有：</p>
+<ul>
+<li>小世界特性：平均路径短；</li>
+<li>无标度特性：少数节点度极高，容易成为攻击目标；</li>
+<li>对随机故障鲁棒，但对针对性攻击脆弱。</li>
+</ul>
+<p>Barabási-Albert 模型的“优先连接”解释了无标度网络的生长。</p>
+<h2 id="最有价值的-10-个判断"><a href="#最有价值的-10-个判断" class="headerlink" title="最有价值的 10 个判断"></a>最有价值的 10 个判断</h2><ol>
+<li>系统模型决定可解性：先问“同步还是异步、崩溃还是拜占庭、共享内存还是消息传递”。</li>
+<li>分布式系统的本质约束是<strong>没有全局时钟、没有共享内存、只有部分知识</strong>。</li>
+<li>因果关系 <code>happens-before</code> 比物理时间更适合描述分布式执行。</li>
+<li>向量时钟能精确编码因果偏序，标量时钟只能给出必要条件。</li>
+<li>全局快照记录的是<strong>一致的可达状态</strong>，不一定是真实瞬时状态。</li>
+<li>异步系统无法可靠区分“崩溃”和“慢”，这是 FLP 不可能性的根源。</li>
+<li>失效检测器是对不可靠信息的系统化利用；最弱检测器揭示了问题的最小同步需求。</li>
+<li>一致性、可用性、延迟、容错和编程复杂度之间永远是权衡。</li>
+<li>自稳定把容错从“预防故障”提升为“从任意坏状态自动恢复”。</li>
+<li>大尺度系统不仅要解决正确性，还要解决公平、信任、激励和网络演化。</li>
+</ol>
+<h2 id="与工程实践的联系"><a href="#与工程实践的联系" class="headerlink" title="与工程实践的联系"></a>与工程实践的联系</h2><ul>
+<li><strong>逻辑时钟&#x2F;向量时钟</strong>：分布式追踪、并发控制、CRDT、因果消息中间件。</li>
+<li><strong>快照算法</strong>：微服务调用链采样、故障现场重建、一致性检查点。</li>
+<li><strong>组通信与消息序</strong>：消息队列的有序性、Raft&#x2F;共识日志、流处理乱序。</li>
+<li><strong>互斥&#x2F;锁</strong>：分布式锁需要租约、令牌和超时，纯锁只能提供有限保证。</li>
+<li><strong>死锁检测</strong>：数据库死锁检测、跨服务依赖环、资源等待图。</li>
+<li><strong>共识与失效检测</strong>：Raft、Paxos、ZooKeeper、etcd 都是把异步模型工程化的结果。</li>
+<li><strong>P2P&#x2F;DHT</strong>：分布式缓存、服务发现、内容寻址存储、区块链网络。</li>
+</ul>
+<p>读这本书时，值得把每章算法都还原成三个问题：<strong>它在什么模型下成立？它牺牲了什么换取什么？如果放宽一个假设会怎样？</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000002.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%86%B3%E7%AD%96%E7%9A%8412%E4%B8%AA%E5%B7%A5%E5%85%B7%E3%80%8B/'>阅读笔记——《决策的12个工具》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000001.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9%E3%80%8B/">阅读笔记——《人性的弱点：增订全译版》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

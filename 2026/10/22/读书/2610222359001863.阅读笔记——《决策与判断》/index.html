@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《决策与判断》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《决策与判断》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：8k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：29分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%86%B3%E7%AD%96%E4%B8%8E%E5%88%A4%E6%96%AD%E3%80%8B"><span class="post-toc-text">阅读笔记——《决策与判断》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E7%9F%A5%E8%A7%89%E3%80%81%E8%AE%B0%E5%BF%86%E5%92%8C%E6%83%85%E5%A2%83"><span class="post-toc-text">第一部分：知觉、记忆和情境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E9%80%89%E6%8B%A9%E6%80%A7%E7%9F%A5%E8%A7%89%EF%BC%88Selective-Perception%EF%BC%89"><span class="post-toc-text">第1章 选择性知觉（Selective Perception）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E8%AE%A4%E7%9F%A5%E4%B8%8D%E5%8D%8F%E8%B0%83%EF%BC%88Cognitive-Dissonance%EF%BC%89"><span class="post-toc-text">第2章 认知不协调（Cognitive Dissonance）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E8%AE%B0%E5%BF%86%E5%92%8C%E4%BA%8B%E5%90%8E%E8%81%AA%E6%98%8E%E5%BC%8F%E5%81%8F%E5%B7%AE%EF%BC%88Hindsight-Bias%EF%BC%89"><span class="post-toc-text">第3章 记忆和事后聪明式偏差（Hindsight Bias）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E6%83%85%E5%A2%83%E4%BE%9D%E8%B5%96%E6%80%A7%EF%BC%88Context-Dependence%EF%BC%89"><span class="post-toc-text">第4章 情境依赖性（Context Dependence）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E9%97%AE%E9%A2%98%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E7%AD%94%E6%A1%88"><span class="post-toc-text">第二部分：问题如何影响答案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC5%E7%AB%A0-%E5%8F%AF%E5%A1%91%E6%80%A7%EF%BC%88Plasticity%EF%BC%89"><span class="post-toc-text">第5章 可塑性（Plasticity）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC6%E7%AB%A0-%E9%97%AE%E9%A2%98%E7%9A%84%E6%8E%AA%E8%BE%9E%E5%92%8C%E6%A1%86%E6%9E%B6%E7%9A%84%E5%BD%B1%E5%93%8D%EF%BC%88Framing%EF%BC%89"><span class="post-toc-text">第6章 问题的措辞和框架的影响（Framing）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E5%86%B3%E7%AD%96%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">第三部分：决策模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC7%E7%AB%A0-%E6%9C%9F%E6%9C%9B%E6%95%88%E7%94%A8%E7%90%86%E8%AE%BA%EF%BC%88Expected-Utility-Theory%EF%BC%89"><span class="post-toc-text">第7章 期望效用理论（Expected Utility Theory）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC8%E7%AB%A0-%E7%90%86%E6%80%A7%E5%86%B3%E7%AD%96%E7%9A%84%E6%82%96%E8%AE%BA%EF%BC%88Paradoxes%EF%BC%89"><span class="post-toc-text">第8章 理性决策的悖论（Paradoxes）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC9%E7%AB%A0-%E6%8F%8F%E8%BF%B0%E6%80%A7%E5%86%B3%E7%AD%96%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">第9章 描述性决策模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E7%9B%B4%E8%A7%89%E4%B8%8E%E5%81%8F%E5%B7%AE"><span class="post-toc-text">第四部分：直觉与偏差</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC10%E7%AB%A0-%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9B%B4%E8%A7%89%EF%BC%88Representativeness-Heuristic%EF%BC%89"><span class="post-toc-text">第10章 代表性直觉（Representativeness Heuristic）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC11%E7%AB%A0-%E6%98%93%E5%BE%97%E6%80%A7%E7%9B%B4%E8%A7%89%EF%BC%88Availability-Heuristic%EF%BC%89"><span class="post-toc-text">第11章 易得性直觉（Availability Heuristic）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC12%E7%AB%A0-%E6%A6%82%E7%8E%87%E5%92%8C%E9%A3%8E%E9%99%A9"><span class="post-toc-text">第12章 概率和风险</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC13%E7%AB%A0-%E9%94%9A%E5%AE%9A%E4%B8%8E%E8%B0%83%E6%95%B4%EF%BC%88Anchoring-and-Adjustment%EF%BC%89"><span class="post-toc-text">第13章 锚定与调整（Anchoring and Adjustment）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%AF%B9%E9%9A%8F%E6%9C%BA%E6%80%A7%E7%9A%84%E7%9F%A5%E8%A7%89"><span class="post-toc-text">第14章 对随机性的知觉</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E7%9B%B8%E5%85%B3%E3%80%81%E5%9B%A0%E6%9E%9C%E5%85%B3%E7%B3%BB%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="post-toc-text">第15章 相关、因果关系与控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC16%E7%AB%A0-%E5%BD%92%E5%9B%A0%E7%90%86%E8%AE%BA%EF%BC%88Attribution-Theory%EF%BC%89"><span class="post-toc-text">第16章 归因理论（Attribution Theory）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E5%86%B3%E7%AD%96%E4%B8%8E%E5%88%A4%E6%96%AD%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E6%80%A7%E4%B8%80%E9%9D%A2"><span class="post-toc-text">第五部分：决策与判断中的社会性一面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC17%E7%AB%A0-%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D%EF%BC%88Social-Influences%EF%BC%89"><span class="post-toc-text">第17章 社会影响（Social Influences）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC18%E7%AB%A0-%E7%BE%A4%E4%BD%93%E5%86%B3%E7%AD%96%E4%B8%8E%E5%88%A4%E6%96%AD"><span class="post-toc-text">第18章 群体决策与判断</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%EF%BC%9A%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1"><span class="post-toc-text">第六部分：常见陷阱</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E8%BF%87%E5%BA%A6%E8%87%AA%E4%BF%A1%EF%BC%88Overconfidence%EF%BC%89"><span class="post-toc-text">第19章 过度自信（Overconfidence）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC20%E7%AB%A0-%E8%87%AA%E6%88%91%E5%AE%9E%E7%8E%B0%E7%9A%84%E9%A2%84%E8%A8%80%EF%BC%88Self-Fulfilling-Prophecies%EF%BC%89"><span class="post-toc-text">第20章 自我实现的预言（Self-Fulfilling Prophecies）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC21%E7%AB%A0-%E8%A1%8C%E4%B8%BA%E9%99%B7%E9%98%B1%EF%BC%88Behavioral-Traps%EF%BC%89"><span class="post-toc-text">第21章 行为陷阱（Behavioral Traps）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BC%96%E5%90%8E%E8%AE%B0%EF%BC%9A%E5%81%8F%E5%B7%AE%E4%B8%8D%E4%B8%80%E5%AE%9A%E9%83%BD%E6%98%AF%E9%9D%9E%E7%90%86%E6%80%A7%E7%9A%84"><span class="post-toc-text">编后记：偏差不一定都是非理性的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%81%8F%E5%B7%AE%E9%80%9F%E6%9F%A5%E8%A1%A8%EF%BC%88%E5%AE%9E%E7%94%A8%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="post-toc-text">全书偏差速查表（实用索引）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E6%9D%A1%E5%8F%AF%E7%AB%8B%E5%8D%B3%E8%A1%8C%E5%8A%A8%E7%9A%84%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">三条可立即行动的建议</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《决策与判断》"><a href="#阅读笔记——《决策与判断》" class="headerlink" title="阅读笔记——《决策与判断》"></a>阅读笔记——《决策与判断》</h1><blockquote>
+<p><strong>英文原名</strong>：<em>The Psychology of Judgment and Decision Making</em><br><strong>作者</strong>：斯科特·普劳斯（Scott Plous，美国卫斯理大学心理学教授）<br><strong>中译本</strong>：施俊琦、王星 译，”社会心理学精品译丛”<br><strong>学科定位</strong>：判断与决策心理学（Judgment and Decision Making，JDM）的经典入门读物<br><strong>全书结构</strong>：6 个部分、21 章，每章可独立阅读</p>
+</blockquote>
+<p>这本书是<strong>行为经济学&#x2F;决策心理学领域最经典的入门书之一</strong>，与卡尼曼《思考，快与慢》互为补充：普劳斯这本书更早、更系统，用大量经典实验讲清楚”<strong>人类在决策与判断中是如何系统性地犯错的</strong>“。</p>
+<hr>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><blockquote>
+<p>人类的决策与判断<strong>不是理性计算</strong>，而是深受<strong>知觉、记忆、情境、问题措辞、直觉启发式、社会因素和陷阱</strong>影响的系统过程——理解这些偏差，是做出更好决策的第一步。</p>
+</blockquote>
+<hr>
+<h2 id="全书地图"><a href="#全书地图" class="headerlink" title="全书地图"></a>全书地图</h2><pre class="mermaid">flowchart TB
+    BOOK["决策与判断&lt;br/&gt;6 部分 · 21 章"]
+    P1["第一部分&lt;br/&gt;知觉、记忆和情境&lt;br/&gt;（信息如何进入大脑）"]
+    P2["第二部分&lt;br/&gt;问题如何影响答案&lt;br/&gt;（措辞与框架）"]
+    P3["第三部分&lt;br/&gt;决策模型&lt;br/&gt;（理性 vs 现实）"]
+    P4["第四部分&lt;br/&gt;直觉与偏差&lt;br/&gt;（启发式）"]
+    P5["第五部分&lt;br/&gt;社会性一面&lt;br/&gt;（群体决策）"]
+    P6["第六部分&lt;br/&gt;常见陷阱&lt;br/&gt;（过度自信等）"]
+
+    BOOK --&gt; P1 &amp; P2 &amp; P3 &amp; P4 &amp; P5 &amp; P6
+
+    P1 --&gt; C1["1 选择性知觉&lt;br/&gt;2 认知不协调&lt;br/&gt;3 记忆与事后聪明&lt;br/&gt;4 情境依赖性"]
+    P2 --&gt; C2["5 可塑性&lt;br/&gt;6 措辞与框架效应"]
+    P3 --&gt; C3["7 期望效用理论&lt;br/&gt;8 理性悖论&lt;br/&gt;9 描述性模型"]
+    P4 --&gt; C4["10 代表性直觉&lt;br/&gt;11 易得性直觉&lt;br/&gt;12 概率与风险&lt;br/&gt;13 锚定与调整&lt;br/&gt;14 随机性知觉&lt;br/&gt;15 相关与因果&lt;br/&gt;16 归因理论"]
+    P5 --&gt; C5["17 社会影响&lt;br/&gt;18 群体决策"]
+    P6 --&gt; C6["19 过度自信&lt;br/&gt;20 自我实现的预言&lt;br/&gt;21 行为陷阱"]
+
+    style BOOK fill:#4a90d9,color:#fff
+    style P1 fill:#5cb85c,color:#fff
+    style P2 fill:#f0ad4e,color:#fff
+    style P3 fill:#d9534f,color:#fff
+    style P4 fill:#9b59b6,color:#fff
+    style P5 fill:#1abc9c,color:#fff
+    style P6 fill:#e67e22,color:#fff</pre>
+
+<p><strong>全书逻辑</strong>：先讲”信息如何被扭曲地接收”（第一、二部分）→ 再讲”理性模型为何失效”（第三部分）→ 再讲”直觉启发式如何运作”（第四部分）→ 最后讲”社会因素与常见陷阱”（第五、六部分）。</p>
+<hr>
+<h2 id="第一部分：知觉、记忆和情境"><a href="#第一部分：知觉、记忆和情境" class="headerlink" title="第一部分：知觉、记忆和情境"></a>第一部分：知觉、记忆和情境</h2><h3 id="第1章-选择性知觉（Selective-Perception）"><a href="#第1章-选择性知觉（Selective-Perception）" class="headerlink" title="第1章 选择性知觉（Selective Perception）"></a>第1章 选择性知觉（Selective Perception）</h3><p><strong>核心命题</strong>：我们看到的，不是”世界本来的样子”，而是”我们期待看到的样子”。<strong>知觉是选择性的</strong>，受预期强烈塑造。</p>
+<p><strong>经典实验</strong>：</p>
+<ol>
+<li><strong>布鲁纳 &amp; 波斯特曼（1949）扑克牌实验</strong>：向被试快速闪现扑克牌，其中混有”反常牌”（如红色的黑桃）。被试会**”看到”自己预期中的牌**（把红色黑桃说成红桃或黑桃），因为预期压倒了真实知觉。</li>
+<li><strong>哈斯托夫 &amp; 坎特里尔（1954）橄榄球实验</strong>：让达特茅斯和普林斯顿两校学生观看同一场激烈比赛的录像。结果<strong>双方”看到”的犯规数完全不同</strong>——普林斯顿学生认为达特茅斯犯规是己方的两倍多，而达特茅斯学生认为双方犯规差不多。<strong>立场决定知觉。</strong></li>
+<li><strong>敌意媒体效应（hostile media effect）</strong>：瓦伦、罗斯、莱珀（1985）发现——<strong>对立双方的每一方都认为媒体对争议事件的报道偏向于对方</strong>。这一效应也存在于调解、仲裁等场景。</li>
+</ol>
+<blockquote>
+<p><strong>价值点</strong>：当你”确信”某件事时，先问自己——<strong>我是不是只看到了我想看到的？</strong> 选择性知觉是几乎所有判断偏差的起点。</p>
+</blockquote>
+<hr>
+<h3 id="第2章-认知不协调（Cognitive-Dissonance）"><a href="#第2章-认知不协调（Cognitive-Dissonance）" class="headerlink" title="第2章 认知不协调（Cognitive Dissonance）"></a>第2章 认知不协调（Cognitive Dissonance）</h3><p><strong>核心命题</strong>：费斯汀格（Festinger, 1957）提出——当一个人的<strong>行为与态度不一致</strong>时，会产生心理不适（不协调），于是人们会<strong>改变态度来适应行为</strong>（而非相反）。</p>
+<p><strong>核心机制</strong>：<strong>态度改变往往由行为改变引起</strong>——“因为我做了，所以我认为它是对的”。</p>
+<p><strong>经典现象</strong>：</p>
+<ul>
+<li><strong>“无聊也可以变得有趣”</strong>：费斯汀格 &amp; 卡尔史密斯（1959）的经典实验——被付 1 美元的人比被付 20 美元的人，更倾向于说服自己”这个无聊的任务其实挺有趣”。因为 20 美元足以解释行为（”我为钱做”），而 1 美元不够解释，只能改变态度来消除不协调。</li>
+<li><strong>“付出越多越珍惜”</strong>：当人们为某事付出越多，就越认为它有价值，越有压力继续付出——这是第 21 章”行为陷阱”的心理基础，也是”沉没成本”的心理学根源。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：理解认知不协调，能解释大量现象——从”买了就吹”（决策后不协调）到”入会门槛越高的组织，成员越忠诚”。</p>
+</blockquote>
+<hr>
+<h3 id="第3章-记忆和事后聪明式偏差（Hindsight-Bias）"><a href="#第3章-记忆和事后聪明式偏差（Hindsight-Bias）" class="headerlink" title="第3章 记忆和事后聪明式偏差（Hindsight Bias）"></a>第3章 记忆和事后聪明式偏差（Hindsight Bias）</h3><p><strong>核心命题</strong>：记忆是<strong>重建性</strong>的，不是录像回放；它会系统性地被当前状态扭曲。</p>
+<p><strong>三种记忆偏差</strong>：</p>
+<ol>
+<li><strong>破碎的记忆</strong>：记忆随情境重建，可能被植入或扭曲。</li>
+<li><strong>甜蜜的回忆（玫瑰色滤镜）</strong>：人们倾向于把过去回忆得比实际更美好。</li>
+<li><strong>事后聪明式偏差（”我早就知道”效应）</strong>：<strong>一旦知道了结果，人们就倾向于认为这个结果”本来就显而易见、不可避免”</strong>，而忽略自己的判断其实已被结果污染。</li>
+</ol>
+<p><strong>经典实验</strong>：菲施霍夫 &amp; 贝思（1975）尼克松访华实验——结果揭晓后，84% 的学生”回忆”出的预测概率比他们<strong>当时实际</strong>预测的更接近真相。他们”忘了自己当初其实没这么准”。</p>
+<p><strong>如何减少事后聪明式偏差</strong>（斯洛维奇 &amp; 菲施霍夫 1977）：</p>
+<ul>
+<li>单纯告诫”别犯这个错”<strong>无效</strong>；</li>
+<li>有效方法：<strong>认真考虑”为什么会出现相反的结果”</strong>——强迫自己想另一种可能性。</li>
+<li>根本方法：<strong>做好准确记录</strong>（写决策日志），因为再老练的决策者也会有记忆偏差。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这是全书最实用的建议之一——<strong>写决策日志</strong>。投资、管理、人生重大决策，都要记录”当时的理由”，否则事后你会不自觉地”改写历史”，无法真正复盘。</p>
+</blockquote>
+<hr>
+<h3 id="第4章-情境依赖性（Context-Dependence）"><a href="#第4章-情境依赖性（Context-Dependence）" class="headerlink" title="第4章 情境依赖性（Context Dependence）"></a>第4章 情境依赖性（Context Dependence）</h3><p><strong>核心命题</strong>：<strong>不依赖于情境的决策是不存在的</strong>。同一刺激在不同情境下会产生完全不同的影响。四种表现：</p>
+<pre class="mermaid">flowchart LR
+    CD["情境依赖性"]
+    E1["对比效应&lt;br/&gt;Contrast Effect"]
+    E2["初始效应&lt;br/&gt;Primacy Effect"]
+    E3["近因效应&lt;br/&gt;Recency Effect"]
+    E4["晕轮效应&lt;br/&gt;Halo Effect"]
+    CD --&gt; E1 &amp; E2 &amp; E3 &amp; E4
+
+    E1 --&gt; E1a["先看到的刺激&lt;br/&gt;影响对后者的判断&lt;br/&gt;（如中彩票后日常乐趣变少）"]
+    E2 --&gt; E2b["先出现的印象&lt;br/&gt;主导整体判断"]
+    E3 --&gt; E3c["最近的信息&lt;br/&gt;权重更大"]
+    E4 --&gt; E4d["一个突出优点&lt;br/&gt;辐射到所有方面&lt;br/&gt;（桑代克 1920）"]
+
+    style CD fill:#4a90d9,color:#fff
+    style E1 fill:#5cb85c,color:#fff
+    style E2 fill:#f0ad4e,color:#fff
+    style E3 fill:#d9534f,color:#fff
+    style E4 fill:#9b59b6,color:#fff</pre>
+
+<ul>
+<li><strong>对比效应</strong>：布里克曼（1978）彩票中奖者研究——中奖者日常生活的乐趣反而<strong>更少</strong>，因为与”中奖的兴奋”形成对比。</li>
+<li><strong>晕轮效应</strong>（桑代克 1920）：对一个人某一突出特征的印象，会<strong>辐射</strong>到对他其他所有方面的评价（”长得好看的人，什么都好”）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：面试、谈判、写简历、做评价——<strong>顺序和情境会悄悄决定结果</strong>。高手会主动设计”呈现的顺序与参照物”。</p>
+</blockquote>
+<hr>
+<h2 id="第二部分：问题如何影响答案"><a href="#第二部分：问题如何影响答案" class="headerlink" title="第二部分：问题如何影响答案"></a>第二部分：问题如何影响答案</h2><h3 id="第5章-可塑性（Plasticity）"><a href="#第5章-可塑性（Plasticity）" class="headerlink" title="第5章 可塑性（Plasticity）"></a>第5章 可塑性（Plasticity）</h3><p><strong>核心命题</strong>：人们的答案（意见、选择）具有惊人的<strong>可塑性</strong>——<strong>问题的措辞、顺序、语境会大幅改变回答</strong>。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>顺序效应</strong>：问题出现的先后顺序影响答案。</li>
+<li><strong>虚假意见（pseudo-opinions）</strong>：对一个问题<strong>一无所知</strong>的人，在特定询问方式下<strong>也会发表意见</strong>——调查中大量”民意”其实是虚假意见。</li>
+<li><strong>过滤虚假意见</strong>：调查中需要识别并剔除那些”根本没真实态度”的回答。</li>
+<li><strong>态度矛盾</strong>：人们常同时持有相互矛盾的态度（如”支持自由”但”反对某具体自由”）。</li>
+</ul>
+<p><strong>规律</strong>：人们对问题<strong>越不熟悉</strong>，答案<strong>越容易</strong>受措辞影响；越熟悉，影响越小（但仍有边际影响）。</p>
+<blockquote>
+<p><strong>价值点</strong>：<strong>所有问卷调查、用户访谈、投票的结果都要警惕”虚假意见”</strong>——很多”数据”反映的不是真实态度，而是”被问出来的态度”。</p>
+</blockquote>
+<hr>
+<h3 id="第6章-问题的措辞和框架的影响（Framing）"><a href="#第6章-问题的措辞和框架的影响（Framing）" class="headerlink" title="第6章 问题的措辞和框架的影响（Framing）"></a>第6章 问题的措辞和框架的影响（Framing）</h3><p><strong>核心命题</strong>：<strong>微妙的措辞变化，能从根本上改变人们的决策</strong>——这是卡尼曼 &amp; 特韦尔斯基最著名的发现，也是行为经济学的奠基性成果之一。</p>
+<p><strong>框架效应（framing effect）核心实验</strong>（特韦尔斯基 &amp; 卡尼曼 1981，”亚洲疾病问题”）：</p>
+<pre class="mermaid">flowchart TB
+    FR["同一决策，不同表述"]
+    G["收益框架（正面表述）&lt;br/&gt;"200人获救""]
+    L["损失框架（负面表述）&lt;br/&gt;"400人死亡""]
+    FR --&gt; G
+    FR --&gt; L
+    G --&gt; G1["大多数人&lt;br/&gt;风险规避&lt;br/&gt;（选确定方案）"]
+    L --&gt; L1["大多数人&lt;br/&gt;风险偏好&lt;br/&gt;（选赌博方案）"]
+
+    style FR fill:#4a90d9,color:#fff
+    style G fill:#5cb85c,color:#fff
+    style L fill:#d9534f,color:#fff
+    style G1 fill:#5cb85c,color:#fff
+    style L1 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>面临收益时，人们规避风险</strong>（”一鸟在手胜过二鸟在林”）；</li>
+<li><strong>面临损失时，人们偏好风险</strong>（”赌一把翻盘”）。</li>
+<li>两个问题在数学上等价，却导致截然相反的选择（84% 选收益框架的确定项，87% 选损失框架的赌博项）。</li>
+</ul>
+<p><strong>其他关键概念</strong>：</p>
+<ul>
+<li><strong>社会称许性（social desirability）</strong>：人们倾向于给出”显得更好”的答案。</li>
+<li><strong>允许 vs 禁止</strong>：”是否应该允许 X”与”是否应该禁止 X”，措辞不同，答案也不同。</li>
+<li><strong>心理分账（mental accounting）</strong>：同样一笔钱，放在不同”心理账户”里，价值感不同（”退税”比”奖金”更舍得花）。</li>
+<li><strong>良药苦口难下咽</strong>：信息的呈现方式（”90% 存活率” vs “10% 死亡率”）会改变患者的治疗选择。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>换一种说法，就能改变别人的决定</strong>——这是营销、谈判、沟通、政策设计中最强的杠杆之一。同时也要用它来”反洗脑”：看到一个方案时，问自己”如果换一种框架表述，我还会这样选吗？”</p>
+</blockquote>
+<hr>
+<h2 id="第三部分：决策模型"><a href="#第三部分：决策模型" class="headerlink" title="第三部分：决策模型"></a>第三部分：决策模型</h2><h3 id="第7章-期望效用理论（Expected-Utility-Theory）"><a href="#第7章-期望效用理论（Expected-Utility-Theory）" class="headerlink" title="第7章 期望效用理论（Expected Utility Theory）"></a>第7章 期望效用理论（Expected Utility Theory）</h3><p><strong>核心命题</strong>：经典理性决策理论——假设人是”理性人”，追求<strong>效用最大化</strong>。</p>
+<p><strong>理论脉络</strong>：</p>
+<ul>
+<li><strong>圣彼得堡悖论</strong> → 伯努利提出<strong>边际效用递减</strong>（钱越多，每一元带来的效用越少）。</li>
+<li><strong>冯·诺伊曼 &amp; 摩根斯坦（1947）</strong> 建立期望效用理论，提出理性决策的<strong>六条公理</strong>（有序性、占优性、相消性、可传递性、连续性、恒定性）。</li>
+<li><strong>萨维奇（1954）</strong> 扩展出<strong>主观期望效用理论</strong>（引入主观概率，可评估”核战争”这类不可重复事件）。</li>
+</ul>
+<p><strong>关键区分</strong>：</p>
+<ul>
+<li><strong>标准化模型（normative）</strong>：理性人”应该”如何决策；</li>
+<li><strong>描述性模型（descriptive）</strong>：人”实际”如何决策。</li>
+</ul>
+<p>期望效用理论是很好的<strong>标准化</strong>模型，但<strong>不是好的描述性模型</strong>（后面两章将证明）。</p>
+<blockquote>
+<p><strong>价值点</strong>：理解”标准化 vs 描述性”这对概念，是理解整个决策科学的钥匙——<strong>很多看似”非理性”的行为，只是违背了”标准化”模型，却符合某种”描述性”规律</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="第8章-理性决策的悖论（Paradoxes）"><a href="#第8章-理性决策的悖论（Paradoxes）" class="headerlink" title="第8章 理性决策的悖论（Paradoxes）"></a>第8章 理性决策的悖论（Paradoxes）</h3><p><strong>核心命题</strong>：人们会<strong>系统性地违背</strong>期望效用理论的公理。四大悖论：</p>
+<table>
+<thead>
+<tr>
+<th>悖论</th>
+<th>内容</th>
+<th>违背的公理</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>阿莱悖论（Allais, 1953）</strong></td>
+<td>确定性的诱惑让人偏离理性计算</td>
+<td>相消性&#x2F;恒定性</td>
+</tr>
+<tr>
+<td><strong>埃尔斯伯格悖论（Ellsberg）</strong></td>
+<td>人们厌恶”模糊”（不确定的概率）</td>
+<td>相消性</td>
+</tr>
+<tr>
+<td><strong>不可传递性</strong></td>
+<td>偏好 A&gt;B、B&gt;C，却 C&gt;A（循环偏好）</td>
+<td>可传递性</td>
+</tr>
+<tr>
+<td><strong>偏好逆转（preference reversal）</strong></td>
+<td>选择时看重概率，估价时看重金额，导致选择与估价矛盾</td>
+<td>可传递性&#x2F;恒定性</td>
+</tr>
+</tbody></table>
+<p><strong>重要结论</strong>：偏好逆转很难通过金钱激励消除（说明不是”不认真”而是”真规律”）。但——<strong>违背期望效用理论 ≠ 不理性</strong>（详见编后记）。</p>
+<blockquote>
+<p><strong>价值点</strong>：这章告诉我们——<strong>“理性”本身有很多种定义</strong>，人的偏好不是固定、可传递的，而是依赖情境和表述方式的。</p>
+</blockquote>
+<hr>
+<h3 id="第9章-描述性决策模型"><a href="#第9章-描述性决策模型" class="headerlink" title="第9章 描述性决策模型"></a>第9章 描述性决策模型</h3><p><strong>核心命题</strong>：既然期望效用理论描述不了真实行为，就需要新的描述性模型。三个最重要的替代理论：</p>
+<pre class="mermaid">flowchart TB
+    DM["描述性决策模型"]
+    M1["满意模型&lt;br/&gt;（西蒙 Simon, 1956）"]
+    M2["前景理论&lt;br/&gt;（卡尼曼 &amp; 特韦尔斯基 1979）"]
+    M3["后悔理论&lt;br/&gt;（Loomes &amp; Sugden）"]
+
+    DM --&gt; M1 &amp; M2 &amp; M3
+
+    M1 --&gt; M1a["人追求"满意"&lt;br/&gt;而非"最优"&lt;br/&gt;（有限理性）"]
+    M2 --&gt; M2b["价值函数呈 S 形&lt;br/&gt;参照点依赖 +&lt;br/&gt;损失厌恶 + 确定效应"]
+    M3 --&gt; M3c["人不仅看结果，&lt;br/&gt;还怕"后悔"&lt;br/&gt;而做决策"]
+
+    style DM fill:#4a90d9,color:#fff
+    style M1 fill:#5cb85c,color:#fff
+    style M2 fill:#f0ad4e,color:#fff
+    style M3 fill:#d9534f,color:#fff</pre>
+
+<p><strong>1. 满意模型（西蒙）</strong>：人是”有限理性”的，追求**”满意”而非”最优”**——租房时不会搜遍所有房源，而是找到”够好的”就停。</p>
+<p><strong>2. 前景理论（Prospect Theory）</strong>——本章核心，也是全书理论高峰：</p>
+<pre class="mermaid">flowchart TB
+    subgraph VALUE["前景理论价值函数（S 形）"]
+    direction TB
+    REF["参照点（Reference Point）"]
+    GAIN["收益区：&lt;br/&gt;凹函数 → 风险规避"]
+    LOSS["损失区：&lt;br/&gt;凸函数 → 风险偏好"]
+    REF --&gt; GAIN
+    REF --&gt; LOSS
+    end
+
+    LA["损失厌恶&lt;br/&gt;Loss Aversion&lt;br/&gt;损失 100 元的痛&lt;br/&gt;≈ 收益 200 元的乐"]
+    CE["确定效应&lt;br/&gt;Certainty Effect&lt;br/&gt;0→1 的变化&lt;br/&gt;远大于 3→4"]
+    DW["决策权重&lt;br/&gt;Decision Weight&lt;br/&gt;高估小概率&lt;br/&gt;低估中高概率"]
+
+    VALUE --- LA
+    VALUE --- CE
+    VALUE --- DW
+
+    style REF fill:#f0ad4e,color:#fff
+    style GAIN fill:#5cb85c,color:#fff
+    style LOSS fill:#d9534f,color:#fff
+    style LA fill:#9b59b6,color:#fff
+    style CE fill:#1abc9c,color:#fff
+    style DW fill:#e67e22,color:#fff</pre>
+
+<p>前景理论的核心要素：</p>
+<ul>
+<li><strong>参照点依赖</strong>：价值是相对于参照点的”变化”，而非绝对财富。</li>
+<li><strong>损失厌恶</strong>：损失的痛感 &gt; 等量收益的快感（约 2 倍）。</li>
+<li><strong>确定效应</strong>：泽克豪泽俄式轮盘赌例子——人们愿意出更多钱把子弹从 1 颗减到 0 颗，而不是从 4 颗减到 3 颗（虽然概率减少量相同）。</li>
+<li><strong>虚假确定效应</strong>：看似确定的选项，实际并不确定。</li>
+</ul>
+<p><strong>3. 后悔理论</strong>：人做决策时会<strong>预先回避”将来会后悔”的选项</strong>（如”安全牌”）。</p>
+<blockquote>
+<p><strong>价值点</strong>：前景理论是卡尼曼获得 2002 年诺贝尔经济学奖的核心成果，也是<strong>行为经济学的地基</strong>。理解”损失厌恶 + 参照点”，就能理解股市里”割肉难”、营销里”限时优惠”、谈判里”锚定”的底层逻辑。</p>
+</blockquote>
+<hr>
+<h2 id="第四部分：直觉与偏差"><a href="#第四部分：直觉与偏差" class="headerlink" title="第四部分：直觉与偏差"></a>第四部分：直觉与偏差</h2><h3 id="第10章-代表性直觉（Representativeness-Heuristic）"><a href="#第10章-代表性直觉（Representativeness-Heuristic）" class="headerlink" title="第10章 代表性直觉（Representativeness Heuristic）"></a>第10章 代表性直觉（Representativeness Heuristic）</h3><p><strong>核心命题</strong>：人们通过”<strong>A 在多大程度上像 B</strong>“来判断概率，而忽视真实的基础概率。</p>
+<p><strong>关键偏差</strong>：</p>
+<ul>
+<li><strong>忽视基线值（base-rate neglect）</strong>：判断”琳达是银行出纳员还是女权主义银行出纳员”时，人们忽略了”银行出纳员”这个更大的类别。</li>
+<li><strong>小数法则（law of small numbers）</strong>：错误地认为”小样本也能代表总体”（如”我认识的三个 X 都这样，所以 X 都这样”）。</li>
+<li><strong>手热现象（hot hand）</strong>：人们错误地相信”连续命中后下一球更可能中”——实际篮球投篮命中是近似独立的。</li>
+<li><strong>非回归性预测</strong>：忽视”均值回归”（regression to the mean），把偶然的高表现当成可持续。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“均值回归”是决策者最该懂的统计学概念之一</strong>——极好或极坏的表现，下一次往往会向平均水平回归。别把”运气”当”实力”，也别把”低谷”当”永跌”。</p>
+</blockquote>
+<hr>
+<h3 id="第11章-易得性直觉（Availability-Heuristic）"><a href="#第11章-易得性直觉（Availability-Heuristic）" class="headerlink" title="第11章 易得性直觉（Availability Heuristic）"></a>第11章 易得性直觉（Availability Heuristic）</h3><p><strong>核心命题</strong>：人们通过”<strong>想起来有多容易</strong>“来判断事件的频率和概率。<strong>越容易想到，就觉得越常见。</strong></p>
+<p><strong>关键偏差</strong>：</p>
+<ul>
+<li><strong>歪曲的易得性</strong>：媒体大量报道空难，让人高估空难风险（实际车祸风险高得多）。</li>
+<li><strong>生动性（vividness）</strong>：生动、具体、可想象的信息，比抽象的统计数据影响力大得多。</li>
+<li><strong>想像的局限性</strong>：难以想象的事，被低估其可能性。</li>
+<li><strong>在法律上的应用</strong>：目击证人的”生动证词”往往比统计证据更能打动陪审团，即使前者更不可靠。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“新闻报道的世界 ≠ 真实的世界”</strong>。你的风险感知被”易得性”绑架了——想客观评估，要看统计，别看热搜。</p>
+</blockquote>
+<hr>
+<h3 id="第12章-概率和风险"><a href="#第12章-概率和风险" class="headerlink" title="第12章 概率和风险"></a>第12章 概率和风险</h3><p><strong>核心命题</strong>：人对概率和风险的判断存在系统性偏差。</p>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li><strong>“这样的事情绝对不会发生在我身上”</strong>：低估坏事发生在自己身上的概率（乐观偏差，与第19章过度自信呼应）。</li>
+<li><strong>复合事件</strong>：人们<strong>高估连续事件（连乘）的概率</strong>，<strong>低估析取事件（至少一个发生）的概率</strong>。</li>
+<li><strong>保守主义（conservatism）</strong>：面对新证据，人们<strong>调整信念过慢</strong>（对新信息”打折扣”）。</li>
+<li><strong>对风险的知觉</strong>：风险感知与真实风险常不一致（受易得性、可控性、灾难性影响）。</li>
+<li><strong>事故可以使我们更安全吗</strong>：一次事故后人们会短暂更小心，但很快恢复（风险补偿）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“一次成功&#x2F;失败不代表什么，要看基础概率和长期期望”</strong>——投资、创业、医疗决策尤其如此。</p>
+</blockquote>
+<hr>
+<h3 id="第13章-锚定与调整（Anchoring-and-Adjustment）"><a href="#第13章-锚定与调整（Anchoring-and-Adjustment）" class="headerlink" title="第13章 锚定与调整（Anchoring and Adjustment）"></a>第13章 锚定与调整（Anchoring and Adjustment）</h3><p><strong>核心命题</strong>：人们做估计时，会<strong>从一个初始值（锚）出发，然后不充分地调整</strong>。这个”锚”可以是被任意给出的数字。</p>
+<p><strong>经典实验</strong>（特韦尔斯基 &amp; 卡尼曼 1974）：</p>
+<ul>
+<li>让被试先转一个”随机数字转盘”（其实被操控停在 10 或 65），再估计”非洲国家占联合国百分比”。</li>
+<li>结果：转盘停在 65 的人，估计值显著更高。<strong>一个完全无关的随机数字，竟然锚定了他们的判断。</strong></li>
+</ul>
+<p><strong>锚定效应的其他例子</strong>：</p>
+<ul>
+<li><strong>房地产</strong>：挂牌价会锚定买卖双方对房屋价值的判断。</li>
+<li><strong>谈判</strong>：先开价者占据锚定优势。</li>
+<li><strong>促销</strong>：原价 999 元（划线）→ 现价 399 元，原价就是锚。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>谈判中永远争取”先开价”</strong>（设定锚）；<strong>购物、评估、决策时，警惕任何先出现的数字</strong>——它可能已经在悄悄影响你。</p>
+</blockquote>
+<hr>
+<h3 id="第14章-对随机性的知觉"><a href="#第14章-对随机性的知觉" class="headerlink" title="第14章 对随机性的知觉"></a>第14章 对随机性的知觉</h3><p><strong>核心命题</strong>：人类<strong>天生不擅长理解随机性</strong>，总想在随机中找规律。</p>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li><strong>不可能事件</strong>：人会高估”连续出现同一结果”的不可能性（赌徒谬误——“连开 5 次大，下次该小了”）。</li>
+<li><strong>运气和迷信</strong>：把随机波动归因于”运气”或超自然力量。</li>
+<li><strong>在随机中发现特定的模式</strong>：人会在纯随机序列里”看出”趋势（如股价走势图的”头肩顶”）。</li>
+<li><strong>人们能够随机行为吗</strong>：不能——人刻意”装随机”时，反而会过于均匀、缺乏真随机该有的连续重复。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“趋势”很可能是你脑补出来的</strong>。对随机性的误解，是迷信、赌徒谬误、技术分析陷阱的共同根源。</p>
+</blockquote>
+<hr>
+<h3 id="第15章-相关、因果关系与控制"><a href="#第15章-相关、因果关系与控制" class="headerlink" title="第15章 相关、因果关系与控制"></a>第15章 相关、因果关系与控制</h3><p><strong>核心命题</strong>：人们经常<strong>错误地感知”相关”和”因果”</strong>。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>相关错觉（illusory correlation）</strong>：在两个本无关联的事件之间”看到”关联（如”满月夜犯罪更多”）。</li>
+<li><strong>无法识别的相关</strong>：真正存在的相关，人却常常看不出来（因为缺乏统计训练）。</li>
+<li><strong>因果关系</strong>：相关 ≠ 因果——但人本能地把”先后”当”因果”。</li>
+<li><strong>“正面，我赢了；反面，那是随机事件”</strong>：<strong>自我服务归因</strong>——成功归于自己，失败归于运气&#x2F;外部。</li>
+<li><strong>无法奏效的帮助</strong>：误判因果导致”好心办坏事”。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“相关不等于因果”是最该内化的思维纪律</strong>。尤其在读新闻、看数据、做归因时，先问”这是相关还是因果？有没有第三变量？”</p>
+</blockquote>
+<hr>
+<h3 id="第16章-归因理论（Attribution-Theory）"><a href="#第16章-归因理论（Attribution-Theory）" class="headerlink" title="第16章 归因理论（Attribution Theory）"></a>第16章 归因理论（Attribution Theory）</h3><p><strong>核心命题</strong>：人如何解释自己和他人的行为——而解释是系统偏差的。</p>
+<p><strong>最重要的发现：基本归因误差（Fundamental Attribution Error, FAE）</strong>：</p>
+<pre class="mermaid">flowchart LR
+    FAE["基本归因误差"]
+    SELF["解释自己的行为&lt;br/&gt;（尤其失败时）"]
+    OTHER["解释他人的行为"]
+
+    FAE --&gt; SELF
+    FAE --&gt; OTHER
+
+    SELF --&gt; SELF1["归因于情境&lt;br/&gt;"我迟到是因为堵车""]
+    OTHER --&gt; OTHER1["归因于性格&lt;br/&gt;"他迟到是因为懒/不靠谱""]
+
+    style FAE fill:#4a90d9,color:#fff
+    style SELF fill:#5cb85c,color:#fff
+    style OTHER fill:#d9534f,color:#fff
+    style SELF1 fill:#5cb85c,color:#fff
+    style OTHER1 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>基本归因误差</strong>：解释<strong>他人</strong>行为时，<strong>高估性格（内在）因素、低估情境（外在）因素</strong>；解释<strong>自己</strong>行为时则相反（”我的情境是你的个性”）。</li>
+<li><strong>突出因素（salience）</strong>：谁”突出”（被注视），谁就被归因更多。</li>
+<li><strong>临床含意</strong>：医生&#x2F;咨询师若犯 FAE，会把患者的处境问题误判为性格问题。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“别人失败是人不行，我失败是环境不行”</strong>——意识到这个双重标准，能让你更公平地看待他人，也更清醒地看待自己。</p>
+</blockquote>
+<hr>
+<h2 id="第五部分：决策与判断中的社会性一面"><a href="#第五部分：决策与判断中的社会性一面" class="headerlink" title="第五部分：决策与判断中的社会性一面"></a>第五部分：决策与判断中的社会性一面</h2><h3 id="第17章-社会影响（Social-Influences）"><a href="#第17章-社会影响（Social-Influences）" class="headerlink" title="第17章 社会影响（Social Influences）"></a>第17章 社会影响（Social Influences）</h3><p><strong>核心命题</strong>：人的判断深受<strong>他人在场和他人行为</strong>的影响。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>社会易化（social facilitation）</strong>：他人在场<strong>促进简单任务</strong>表现，但<strong>干扰复杂任务</strong>表现。</li>
+<li><strong>社会性懈怠（social loafing）</strong>：群体中个人<strong>出力更少</strong>（”搭便车”）。</li>
+<li><strong>旁观者干预（bystander intervention）</strong>：<strong>旁观者越多，单个人出手帮助的概率越低</strong>（责任分散）——著名的吉诺维斯案件。</li>
+<li><strong>社会比较理论</strong>：人们通过与他人比较来评估自己。</li>
+<li><strong>社会性痛觉丧失</strong>：看到他人不行动，自己也倾向于不行动。</li>
+<li><strong>从众（conformity）</strong>：阿施（Asch）线段实验——即使答案明显，多数人的错误意见也能让约 1&#x2F;3 的人从众。</li>
+<li><strong>少数派影响</strong>：坚定的少数派也能改变多数（如社会运动）。</li>
+<li><strong>群体盲思（groupthink）</strong>：追求群体和谐压倒理性批判，导致灾难性决策（如”猪湾事件”）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>紧急情况下，点名求助（”你，穿红衣服的，帮我打 120”）比泛泛呼救更有效</strong>——因为点名破解了”责任分散”。群体决策时，要警惕”表面和谐”下的群体盲思。</p>
+</blockquote>
+<hr>
+<h3 id="第18章-群体决策与判断"><a href="#第18章-群体决策与判断" class="headerlink" title="第18章 群体决策与判断"></a>第18章 群体决策与判断</h3><p><strong>核心命题</strong>：群体决策并不必然比个体更好，且有自己的系统性偏差。</p>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li><strong>群体误差和偏差</strong>：群体也会犯个体同样的偏差，甚至放大。</li>
+<li><strong>群体极化（group polarization）</strong>：群体讨论后，成员的<strong>原有倾向会变得更极端</strong>（”讨论让温和派变激进派”）。</li>
+<li><strong>人多智慧多吗</strong>：不一定——<strong>“独裁”（由最强者拍板）有时比”民主讨论”更准</strong>，因为讨论会引入从众、极化、社会性懈怠。</li>
+<li><strong>卖马问题</strong>：群体决策中信息共享的失败——<strong>群体倾向于讨论”大家都知道的”信息，而忽略”只有个别人知道”的关键信息</strong>（这是群体决策最大的陷阱）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>开会前，让成员先独立思考并匿名提交意见，再讨论</strong>——这能避免”卖马问题”和”从众”淹没真正有用的少数信息。</p>
+</blockquote>
+<hr>
+<h2 id="第六部分：常见陷阱"><a href="#第六部分：常见陷阱" class="headerlink" title="第六部分：常见陷阱"></a>第六部分：常见陷阱</h2><h3 id="第19章-过度自信（Overconfidence）"><a href="#第19章-过度自信（Overconfidence）" class="headerlink" title="第19章 过度自信（Overconfidence）"></a>第19章 过度自信（Overconfidence）</h3><p><strong>核心命题</strong>：人们<strong>系统性地高估自己的判断准确度</strong>。</p>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li><strong>极度自信</strong>：当人们说”我 100% 确定”时，实际正确率往往远低于 100%。</li>
+<li><strong>校准（calibration）</strong>：判断的”信心”与”准确度”之间几乎<strong>没有相关</strong>——信心爆棚不等于判断准确。</li>
+<li><strong>当过度自信变成严重错误</strong>：过度自信导致风险低估、准备不足、拒绝听劝。</li>
+</ul>
+<p><strong>如何减少过度自信</strong>：</p>
+<ul>
+<li><strong>校准训练</strong>：记录并反馈自己的判断准确率；</li>
+<li><strong>考虑反证</strong>：主动找”为什么我可能错了”的理由；</li>
+<li><strong>“杀死你自己”</strong>：在做重要判断前，设想如果判断错了，错在哪里。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“信心”是廉价的，要看你过去判断的”校准记录”</strong>。投资、管理、预测时，养成”给自己打分、记录准确率”的习惯。</p>
+</blockquote>
+<hr>
+<h3 id="第20章-自我实现的预言（Self-Fulfilling-Prophecies）"><a href="#第20章-自我实现的预言（Self-Fulfilling-Prophecies）" class="headerlink" title="第20章 自我实现的预言（Self-Fulfilling Prophecies）"></a>第20章 自我实现的预言（Self-Fulfilling Prophecies）</h3><p><strong>核心命题</strong>：<strong>期望本身会”制造”现实</strong>——当你预期某事会发生，你的行为会（无意识地）促成它发生。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>自身永存的社会信念</strong>：信念 → 行为 → 结果证实信念 → 强化信念（循环）。</li>
+<li><strong>皮格马利翁效应（Pygmalion effect）</strong>：罗森塔尔 &amp; 雅各布森（1968）——<strong>老师被告知某些学生是”潜力股”（其实是随机指定），结果这些学生真的进步更大</strong>，因为老师的期望改变了对待他们的方式。</li>
+<li><strong>自我实现的种族刻板印象</strong>：负面刻板印象通过”期望→行为→证实”而自我实现。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>你对一个人的期望，会真实地改变他</strong>——所以教师、父母、管理者要小心”贴标签”。反过来，也可以利用”积极的期望”去成就他人。</p>
+</blockquote>
+<hr>
+<h3 id="第21章-行为陷阱（Behavioral-Traps）"><a href="#第21章-行为陷阱（Behavioral-Traps）" class="headerlink" title="第21章 行为陷阱（Behavioral Traps）"></a>第21章 行为陷阱（Behavioral Traps）</h3><p><strong>核心命题</strong>：人们会陷入”短期有利、长期有害”的行为模式，且越陷越深。</p>
+<p><strong>五类行为陷阱</strong>：</p>
+<pre class="mermaid">flowchart TB
+    BT["行为陷阱"]
+    T1["延期陷阱&lt;br/&gt;（暂时满意，&lt;br/&gt;长期有害）"]
+    T2["无知陷阱&lt;br/&gt;（不知道后果&lt;br/&gt;而越陷越深）"]
+    T3["投入陷阱&lt;br/&gt;（沉没成本&lt;br/&gt;越投越多）"]
+    T4["恶化陷阱&lt;br/&gt;（如吸毒/&lt;br/&gt;坏关系）"]
+    T5["集体陷阱&lt;br/&gt;（公地悲剧）"]
+    BT --&gt; T1 &amp; T2 &amp; T3 &amp; T4 &amp; T5
+
+    style BT fill:#4a90d9,color:#fff
+    style T1 fill:#5cb85c,color:#fff
+    style T2 fill:#f0ad4e,color:#fff
+    style T3 fill:#d9534f,color:#fff
+    style T4 fill:#9b59b6,color:#fff
+    style T5 fill:#e67e22,color:#fff</pre>
+
+<ul>
+<li><strong>延期陷阱</strong>：眼下爽、将来惨（抽烟、拖延、刷手机）。</li>
+<li><strong>无知陷阱</strong>：因不了解后果而逐步陷入（如信用卡滚雪球）。</li>
+<li><strong>投入陷阱</strong>：<strong>沉没成本谬误</strong>——“已经投了这么多，不能放弃”（越陷越深的根源）。</li>
+<li><strong>恶化陷阱</strong>：投入带来短期回报，但长期恶性循环（吸毒、赌博、不良关系）。</li>
+<li><strong>集体陷阱</strong>：个人理性导致集体非理性（公地悲剧、军备竞赛）。</li>
+</ul>
+<p><strong>经典实验</strong>：”你愿意为一美元付多少钱”——拍卖 1 美元，出价第二高的人也要付钱，结果竞价飙升远超 1 美元（投入陷阱的生动演示）。</p>
+<p><strong>如何逃离行为陷阱</strong>（胜利解脱）：</p>
+<ul>
+<li><strong>设止损点</strong>：事前规定”到什么程度就退出”；</li>
+<li><strong>让不同的人做”继续 vs 退出”的决定</strong>（避免沉没成本偏见）；</li>
+<li><strong>只看未来，不看已投入</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“沉没成本”是决策的第一大敌人</strong>。记住：<strong>已经投入的，不该影响未来的决定——只问”从现在开始，继续值不值得”。</strong></p>
+</blockquote>
+<hr>
+<h2 id="编后记：偏差不一定都是非理性的"><a href="#编后记：偏差不一定都是非理性的" class="headerlink" title="编后记：偏差不一定都是非理性的"></a>编后记：偏差不一定都是非理性的</h2><p>普劳斯在结尾提出了一个重要的”元反思”：</p>
+<ol>
+<li><strong>偏差不一定都是非理性的</strong>：启发式（直觉捷径）在大多数情况下是<strong>高效且足够好</strong>的——它们之所以存在，是因为在进化上”够用”。只有当后果严重时，才需要慢下来用系统分析。</li>
+<li><strong>一个普遍的思路</strong>：全书所有偏差的共同线索是——<strong>人的判断是”适应性的”，为了满足特定环境需求而生</strong>。</li>
+<li><strong>对于不好的消息</strong>：负面反馈比正面反馈更该被认真对待（但人恰恰相反——见自我服务归因）。</li>
+<li><strong>决策研究者易犯的错误</strong>：研究者自己也难免偏差（如事后聪明式偏差去解释别人的偏差）。</li>
+</ol>
+<blockquote>
+<p><strong>最终结论</strong>：<strong>重要的不是”完全消除偏差”（不可能），而是”在关键决策上识别并减少偏差”。</strong></p>
+</blockquote>
+<hr>
+<h2 id="全书偏差速查表（实用索引）"><a href="#全书偏差速查表（实用索引）" class="headerlink" title="全书偏差速查表（实用索引）"></a>全书偏差速查表（实用索引）</h2><table>
+<thead>
+<tr>
+<th>偏差&#x2F;效应</th>
+<th>一句话</th>
+<th>出现章节</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>选择性知觉</td>
+<td>只看到想看到的</td>
+<td>1</td>
+</tr>
+<tr>
+<td>敌意媒体效应</td>
+<td>双方都觉得媒体偏向对方</td>
+<td>1</td>
+</tr>
+<tr>
+<td>认知不协调</td>
+<td>做了就说服自己”这是对的”</td>
+<td>2</td>
+</tr>
+<tr>
+<td>事后聪明式偏差</td>
+<td>“我早就知道”</td>
+<td>3</td>
+</tr>
+<tr>
+<td>晕轮效应</td>
+<td>一好百好</td>
+<td>4</td>
+</tr>
+<tr>
+<td>对比效应</td>
+<td>参照物决定感受</td>
+<td>4</td>
+</tr>
+<tr>
+<td>虚假意见</td>
+<td>不懂也要发表意见</td>
+<td>5</td>
+</tr>
+<tr>
+<td>框架效应</td>
+<td>换说法换决定</td>
+<td>6</td>
+</tr>
+<tr>
+<td>损失厌恶</td>
+<td>损失比收益更痛</td>
+<td>9</td>
+</tr>
+<tr>
+<td>确定效应</td>
+<td>更爱”确定的确定”</td>
+<td>9</td>
+</tr>
+<tr>
+<td>代表性直觉</td>
+<td>用”像不像”代替”概率”</td>
+<td>10</td>
+</tr>
+<tr>
+<td>忽视基线值</td>
+<td>忽略基础概率</td>
+<td>10</td>
+</tr>
+<tr>
+<td>手热现象</td>
+<td>误以为”连中”可持续</td>
+<td>10</td>
+</tr>
+<tr>
+<td>易得性直觉</td>
+<td>想得起就觉得常见</td>
+<td>11</td>
+</tr>
+<tr>
+<td>锚定效应</td>
+<td>先出现的数字定调</td>
+<td>13</td>
+</tr>
+<tr>
+<td>赌徒谬误</td>
+<td>误以为”该轮到”了</td>
+<td>14</td>
+</tr>
+<tr>
+<td>相关错觉</td>
+<td>无中生有的关联</td>
+<td>15</td>
+</tr>
+<tr>
+<td>基本归因误差</td>
+<td>别人失败是人品，我失败是环境</td>
+<td>16</td>
+</tr>
+<tr>
+<td>社会性懈怠</td>
+<td>群体里偷懒</td>
+<td>17</td>
+</tr>
+<tr>
+<td>旁观者效应</td>
+<td>人越多越没人管</td>
+<td>17</td>
+</tr>
+<tr>
+<td>群体盲思</td>
+<td>和谐压倒理性</td>
+<td>17</td>
+</tr>
+<tr>
+<td>群体极化</td>
+<td>讨论让立场更极端</td>
+<td>18</td>
+</tr>
+<tr>
+<td>过度自信</td>
+<td>信心 ≠ 准确</td>
+<td>19</td>
+</tr>
+<tr>
+<td>自我实现的预言</td>
+<td>期望制造现实</td>
+<td>20</td>
+</tr>
+<tr>
+<td>沉没成本&#x2F;投入陷阱</td>
+<td>已投入的拖累未来</td>
+<td>21</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三条可立即行动的建议"><a href="#三条可立即行动的建议" class="headerlink" title="三条可立即行动的建议"></a>三条可立即行动的建议</h2><ol>
+<li><strong>写决策日志</strong>：记录每个重要决策的”当时理由”，防止事后聪明式偏差，才能真正复盘进步。</li>
+<li><strong>谈判先开价 &#x2F; 评估先脱锚</strong>：主动设锚，同时警惕别人给你的锚。</li>
+<li><strong>只看未来，不看沉没成本</strong>：任何”要不要继续”的决定，只问”从现在起还值不值得”，屏蔽”已经投入了多少”。</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>一句话总结全书</strong>：人类的判断不是一台精确的计算机，而是一套<strong>由知觉、记忆、情境、直觉和社会共同塑造的”适应性装置”</strong>——它高效、够用，但在关键决策上会<strong>系统性地犯错</strong>；认识这些偏差，是做出更好决策的唯一可靠起点。</p>
+</blockquote>
+<hr>
+<p><em>本笔记基于斯科特·普劳斯《决策与判断》中文译本全文系统梳理，涵盖 6 部分、21 章的核心理论、经典实验与实用建议。</em></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001865.%E3%80%8A%E6%9D%83%E5%8A%9B%E7%9A%8448%E6%9D%A1%E6%B3%95%E5%88%99%E3%80%8B/'>阅读笔记——《权力的48条法则》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001867.%E3%80%8A%E8%87%AA%E6%88%91%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B/">阅读笔记——《自我（第2版）》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

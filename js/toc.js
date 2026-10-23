@@ -58,4 +58,13 @@ $(document).ready(function() {
     $("#toc").tocify({
         selectors: tocHeading
       });
+
+    // 目录标题过长时通过 CSS 省略号截断；这里为每个目录链接补充完整标题，
+    // 鼠标悬停时浏览器会弹出 title 小提示展示全名，复制时取到的仍是完整文本。
+    $("#toc a").each(function() {
+      var fullText = $(this).text();
+      if (fullText) {
+        this.title = fullText;
+      }
+    });
   });

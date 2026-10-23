@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-23</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：10.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：38分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%93%88%E4%BD%9B%E3%80%81%E6%96%AF%E5%9D%A6%E7%A6%8F%E3%80%81%E8%80%B6%E9%B2%81%E5%A4%A7%E5%AD%A6%E7%BB%8F%E5%85%B8%E8%AF%BE%E7%A8%8B%E5%88%86%E4%BA%AB%EF%BC%88%E5%A5%97%E8%A3%8511%E5%86%8C%EF%BC%89%E3%80%8B"><span class="post-toc-text">阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC%E6%95%B4%E5%A5%97%E4%B9%A6"><span class="post-toc-text">一句话概括整套书</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E6%80%BB%E8%A7%88"><span class="post-toc-text">全书总览</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E5%86%8C%E3%80%8A%E6%88%91%E5%9C%A8%E5%93%88%E4%BD%9B%E7%9A%84%E6%9C%80%E5%90%8E%E4%B8%80%E5%A0%82%E8%AF%BE%E3%80%8B"><span class="post-toc-text">第一册《我在哈佛的最后一堂课》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E5%91%BD%E9%A2%98%EF%BC%9A%E6%88%90%E5%8A%9F-%E2%89%A0-%E5%BF%AB%E4%B9%90"><span class="post-toc-text">核心命题：成功 ≠ 快乐</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BD%AC%E6%8A%98%E7%82%B9%EF%BC%88Inflection-Point%EF%BC%89"><span class="post-toc-text">转折点（Inflection Point）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BB%8E%E7%BB%88%E7%82%B9%E5%BC%80%E5%A7%8B%EF%BC%9A%E7%B2%BE%E7%A5%9E%E9%81%97%E4%BA%A7%EF%BC%88Legacy%EF%BC%89"><span class="post-toc-text">从终点开始：精神遗产（Legacy）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B9%B3%E8%A1%A1%E7%9A%84%E8%89%BA%E6%9C%AF%EF%BC%9A%E5%B9%B3%E8%A1%A1%E6%98%AF%E5%8A%A8%E8%AF%8D%EF%BC%8C%E4%B8%8D%E6%98%AF%E5%90%8D%E8%AF%8D"><span class="post-toc-text">平衡的艺术：平衡是动词，不是名词</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A1%A1%E9%87%8F%E4%BB%B7%E5%80%BC%E7%9A%84%E4%BA%94%E4%B8%AA%E5%91%BD%E9%A2%98%EF%BC%88%E5%81%9A%E9%80%89%E6%8B%A9%E5%89%8D%E2%80%9D%E5%81%9A%E5%8A%9F%E8%AF%BE%E2%80%9D%EF%BC%89"><span class="post-toc-text">衡量价值的五个命题（做选择前”做功课”）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E6%AC%BA%E6%AC%BA%E4%BA%BA%EF%BC%9A%E6%A0%B8%E5%BF%83%E7%AB%9E%E4%BA%89%E5%8A%9B%E4%B8%8E%E4%BA%94%E5%A4%A7%E8%B0%AC%E8%AE%BA"><span class="post-toc-text">自欺欺人：核心竞争力与五大谬论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E8%A6%81%E7%82%B9"><span class="post-toc-text">其他要点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E5%86%8C%E3%80%8A%E8%80%B6%E9%B2%81%E5%A4%A7%E5%AD%A6%E5%85%AC%E5%BC%80%E8%AF%BE%EF%BC%9A%E6%AD%BB%E4%BA%A1%E3%80%8B"><span class="post-toc-text">第二册《耶鲁大学公开课：死亡》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%A4%E5%A4%A7%E7%AB%8B%E5%9C%BA%EF%BC%9A%E4%BA%8C%E5%85%83%E8%AE%BA-vs-%E7%89%A9%E7%90%86%E4%B8%BB%E4%B9%89"><span class="post-toc-text">两大立场：二元论 vs 物理主义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E7%81%B5%E9%AD%82%E5%AD%98%E5%9C%A8%E7%9A%84%E8%AE%BA%E8%AF%81%E4%B8%8E%E5%8F%8D%E9%A9%B3"><span class="post-toc-text">关于灵魂存在的论证与反驳</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%BB%E4%BA%A1%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E2%80%9D%E6%AD%BB%E4%BA%A1%E7%9A%84%E5%9D%8F%E5%A4%84%E2%80%9D"><span class="post-toc-text">死亡的本质与”死亡的坏处”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B0%B8%E7%94%9F%E4%B8%8E%E7%94%9F%E5%91%BD%E7%9A%84%E4%BB%B7%E5%80%BC"><span class="post-toc-text">永生与生命的价值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%9D%A2%E5%AF%B9%E6%AD%BB%E4%BA%A1%E8%80%8C%E6%B4%BB%E3%80%81%E8%87%AA%E6%9D%80"><span class="post-toc-text">面对死亡而活、自杀</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E5%86%8C%E3%80%8A%E7%99%BB%E5%A4%A9%E7%9A%84%E6%84%9F%E8%A7%89%EF%BC%9A%E6%88%91%E5%9C%A8%E5%93%88%E4%BD%9B%E5%A4%A7%E5%AD%A6%E5%81%9A%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E3%80%8B"><span class="post-toc-text">第三册《登天的感觉：我在哈佛大学做心理咨询》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E4%B8%8D%E6%98%AF%E2%80%9D%E5%8A%9D%E4%BA%BA%E5%BC%80%E5%BF%83%E2%80%9D%EF%BC%8C%E8%80%8C%E6%98%AF%E2%80%9D%E5%8A%A9%E4%BA%BA%E8%87%AA%E5%8A%A9%E2%80%9D"><span class="post-toc-text">心理咨询的本质：不是”劝人开心”，而是”助人自助”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E7%9A%84%E4%B9%9D%E6%9D%A1%E5%8E%9F%E5%88%99%EF%BC%88%E2%80%9D%E4%BD%95%E4%BB%A5%E7%BB%99%E4%BA%BA%E7%99%BB%E5%A4%A9%E7%9A%84%E6%84%9F%E8%A7%89%E2%80%9D%EF%BC%89"><span class="post-toc-text">心理咨询的九条原则（”何以给人登天的感觉”）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%AA%E4%B8%AA%E6%A1%88%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88%E7%B2%BE%E9%80%89%EF%BC%89"><span class="post-toc-text">十个个案的知识点（精选）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9D%A3%E5%AF%BC%E7%AF%87%EF%BC%9A%E5%BF%83%E7%90%86%E5%92%A8%E8%AF%A2%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8A%9F"><span class="post-toc-text">督导篇：心理咨询的基本功</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E5%86%8C%E3%80%8A%E8%87%AA%E6%8E%A7%E5%8A%9B%EF%BC%9A%E5%92%8C%E5%8E%8B%E5%8A%9B%E5%81%9A%E6%9C%8B%E5%8F%8B%E3%80%8B"><span class="post-toc-text">第四册《自控力：和压力做朋友》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8E%8B%E5%8A%9B%E7%9A%84%E5%AE%9A%E4%B9%89%EF%BC%9A%E5%8E%8B%E5%8A%9B%E4%B8%8E%E6%84%8F%E4%B9%89%E4%B8%8D%E5%8F%AF%E5%88%86%E5%89%B2"><span class="post-toc-text">压力的定义：压力与意义不可分割</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%BC%8F%EF%BC%88Mindset%EF%BC%89%E6%94%B9%E5%8F%98%E7%94%9F%E7%90%86%E5%8F%8D%E5%BA%94"><span class="post-toc-text">思维模式（Mindset）改变生理反应</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8E%8B%E5%8A%9B%E6%98%AF%E5%8F%AF%E4%BB%A5%E4%BE%9D%E9%9D%A0%E7%9A%84%E8%B5%84%E6%BA%90%EF%BC%8C%E8%80%8C%E9%9D%9E%E8%A6%81%E6%B6%88%E7%81%AD%E7%9A%84%E6%95%8C%E4%BA%BA"><span class="post-toc-text">压力是可以依靠的资源，而非要消灭的敌人</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BD%AC%E5%8C%96%E5%8E%8B%E5%8A%9B%E7%9A%84%E7%AD%96%E7%95%A5"><span class="post-toc-text">转化压力的策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%94%E5%86%8C%E3%80%8A%E8%87%AA%E6%8E%A7%E5%8A%9B%E3%80%8B%EF%BC%88The-Willpower-Instinct%EF%BC%89"><span class="post-toc-text">第五册《自控力》（The Willpower Instinct）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%84%8F%E5%BF%97%E5%8A%9B%E7%9A%84%E4%B8%89%E7%A7%8D%E5%8A%9B%E9%87%8F%E4%B8%8E%E7%A5%9E%E7%BB%8F%E5%AD%A6%E5%8E%9F%E7%90%86"><span class="post-toc-text">意志力的三种力量与神经学原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AF%8F%E7%AB%A0%E4%B8%80%E4%B8%AA%E2%80%9D%E8%87%AA%E6%8E%A7%E9%99%B7%E9%98%B1%E2%80%9D%E4%B8%8E%E5%AF%B9%E7%AD%96"><span class="post-toc-text">每章一个”自控陷阱”与对策</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="post-toc-text">核心方法论</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AD%E5%86%8C%E3%80%8A%E9%A2%86%E5%AF%BC%E5%8A%9B%E3%80%8B%EF%BC%88Leading%EF%BC%89"><span class="post-toc-text">第六册《领导力》（Leading）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%A2%86%E5%AF%BC%E5%8A%9B%E5%BF%83%E6%B3%95%EF%BC%88%E7%AB%A0%E9%A2%98%E5%8D%B3%E6%A1%86%E6%9E%B6%EF%BC%89"><span class="post-toc-text">领导力心法（章题即框架）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E8%A7%82%E7%82%B9"><span class="post-toc-text">关键观点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%83%E5%86%8C%E3%80%8A%E5%AE%AB%E5%B4%8E%E5%B8%82%E5%AE%9A%E4%B8%AD%E5%9B%BD%E5%8F%B2%E3%80%8B"><span class="post-toc-text">第七册《宫崎市定中国史》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AE%AB%E5%B4%8E%E5%8F%B2%E5%AD%A6%E7%9A%84%E4%B8%89%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="post-toc-text">宫崎史学的三个核心概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E7%BB%93%E6%9E%84"><span class="post-toc-text">全书结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%A7%86%E8%A7%92%E7%9A%84%E4%BB%B7%E5%80%BC%EF%BC%9A%E6%8A%8A%E4%B8%AD%E5%9B%BD%E5%8F%B2%E6%94%BE%E8%BF%9B%E4%B8%96%E7%95%8C%E5%8F%B2"><span class="post-toc-text">视角的价值：把中国史放进世界史</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AB%E5%86%8C%E3%80%8A%E7%94%9F%E6%AD%BB%E5%8A%9F%E8%AF%BE%E3%80%8B%EF%BC%88The-Death-Class%EF%BC%89"><span class="post-toc-text">第八册《生死功课》（The Death Class）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%BB%E4%BA%A1%E6%95%99%E8%82%B2%E7%9A%84%E5%8E%86%E5%8F%B2"><span class="post-toc-text">死亡教育的历史</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%AF%BA%E7%8E%9B%E8%AF%BE%E5%A0%82%E7%9A%84%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95"><span class="post-toc-text">诺玛课堂的核心方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9F%83%E9%87%8C%E5%85%8B%E6%A3%AE%E5%BF%83%E7%90%86%E7%A4%BE%E4%BC%9A%E5%8F%91%E5%B1%95%E7%90%86%E8%AE%BA%E7%9A%84%E5%85%AB%E4%B8%AA%E9%98%B6%E6%AE%B5"><span class="post-toc-text">埃里克森心理社会发展理论的八个阶段</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E4%B9%9D%E5%86%8C%E3%80%8A%E8%AE%A9%E7%94%9F%E6%B4%BB%E6%9B%B4%E5%BF%AB%E4%B9%90%E7%9A%84%E5%93%88%E4%BD%9B%E5%AE%9E%E7%94%A8%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%8B"><span class="post-toc-text">第九册《让生活更快乐的哈佛实用心理学》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%84%E7%AB%A0%E4%B8%BB%E9%A2%98"><span class="post-toc-text">各章主题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E4%B8%AA%E6%9C%89%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="post-toc-text">三个有代表性的知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%BF%92%E6%AD%BB%E4%BD%93%E9%AA%8C%EF%BC%88NDE%EF%BC%89%E4%BA%94%E9%98%B6%E6%AE%B5"><span class="post-toc-text">濒死体验（NDE）五阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BF%83%E7%90%86%E5%B9%B4%E9%BE%84%E4%B8%8E%E5%BF%83%E6%99%BA%E6%88%90%E7%86%9F%EF%BC%88%E5%8A%A0%E6%96%AF%E7%A7%91%E5%9B%A0%E6%A1%88%E4%BE%8B%EF%BC%89"><span class="post-toc-text">心理年龄与心智成熟（加斯科因案例）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E7%B1%B3%E8%AF%BA%E9%AA%A8%E7%89%8C%E6%95%88%E5%BA%94"><span class="post-toc-text">多米诺骨牌效应</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E5%86%8C%E3%80%8A%E5%93%88%E4%BD%9B%E5%8D%9A%E5%BC%88%E8%AF%BE%E3%80%8B"><span class="post-toc-text">第十册《哈佛博弈课》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%9A%E5%BC%88%E7%9A%84%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="post-toc-text">博弈的三要素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E7%BB%8F%E5%85%B8%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">核心概念与经典模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%8D%E8%A6%81%E7%AD%96%E7%95%A5%E5%B7%A5%E5%85%B7"><span class="post-toc-text">重要策略工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E4%B8%80%E5%8F%A5%E8%AF%9D"><span class="post-toc-text">全书最核心的一句话</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E5%86%8C%E3%80%8A%E5%8F%A6%E7%B1%BB%EF%BC%9A%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6%E6%9C%80%E5%8F%97%E6%AC%A2%E8%BF%8E%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%AF%BE%E3%80%8B"><span class="post-toc-text">第十一册《另类：斯坦福大学最受欢迎的经济学课》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%85%AD%E5%A4%A7%E6%80%AA%EF%BC%88%E7%AC%AC%E4%B8%80%E7%AB%A0%EF%BC%89"><span class="post-toc-text">斯坦福六大怪（第一章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%8F%E6%B5%8E%E5%AD%A6%E7%9A%84%E2%80%9D%E5%8F%A6%E7%B1%BB%E2%80%9D%E9%97%AE%E9%A2%98%EF%BC%88%E5%90%84%E7%AB%A0%E7%B2%BE%E5%8D%8E%EF%BC%89"><span class="post-toc-text">经济学的”另类”问题（各章精华）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%A0%E4%B8%AA%E9%AB%98%E4%BB%B7%E5%80%BC%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="post-toc-text">几个高价值知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B7%A8%E4%B9%A6%E4%B8%B2%E8%81%94%EF%BC%9A11-%E5%86%8C%E4%B9%A6%E8%83%8C%E5%90%8E%E7%9A%84%E5%85%B1%E5%90%8C%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">跨书串联：11 册书背后的共同主线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%AF%E7%AB%8B%E5%88%BB%E8%BF%81%E7%A7%BB%E7%9A%84-10-%E4%B8%AA%E5%B7%A5%E5%85%B7"><span class="post-toc-text">可立刻迁移的 10 个工具</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="post-toc-text">一句话总结</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》"><a href="#阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》" class="headerlink" title="阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》"></a>阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》</h1><blockquote>
+<p>这是一套把三所顶级名校”课堂”搬进书里的合集，覆盖人生规划、死亡哲学、心理咨询、自控力、领导力、中国通史、生死教育、趣味心理学、博弈论与经济学十大主题。<br>全集合计约 200 万字的正文内容，核心价值不在于某一本书的深度，而在于它给出一套<strong>可迁移的”人生与决策”思维工具箱</strong>：从”如何活”（人生设计、死亡哲学）到”如何做”（自控、领导、博弈），再到”如何理解世界”（历史、经济、心理）。</p>
+</blockquote>
+<h2 id="一句话概括整套书"><a href="#一句话概括整套书" class="headerlink" title="一句话概括整套书"></a>一句话概括整套书</h2><p>这套书可以压缩成一条主线——<strong>用理性框架去理解”人如何选择、如何成长、如何面对必然到来的死亡与不确定性”，并把这些抽象学问转成可操作的日常工具</strong>。</p>
+<pre class="mermaid">flowchart TB
+  subgraph A["向内：认识与修炼自我"]
+    A1["① 我在哈佛的最后一堂课&lt;br/&gt;人生设计与精神遗产"]
+    A2["② 耶鲁公开课：死亡&lt;br/&gt;死亡哲学与生命价值"]
+    A3["③ 登天的感觉&lt;br/&gt;心理咨询与助人自助"]
+    A4["④ 自控力·和压力做朋友&lt;br/&gt;压力思维重塑"]
+    A5["⑤ 自控力&lt;br/&gt;意志力科学"]
+  end
+  subgraph B["向外：影响他人与世界"]
+    B1["⑥ 领导力&lt;br/&gt;弗格森的带队心法"]
+    B2["⑩ 哈佛博弈课&lt;br/&gt;策略性互动决策"]
+    B3["⑪ 斯坦福经济学&lt;br/&gt;另类经济学思维"]
+  end
+  subgraph C["纵深：理解人与历史"]
+    C1["⑦ 宫崎市定中国史&lt;br/&gt;通史与时代区分"]
+    C2["⑧ 生死功课&lt;br/&gt;死亡教育现场"]
+    C3["⑨ 哈佛实用心理学&lt;br/&gt;趣味心理学"]
+  end
+  A --&gt; D["核心问题：如何过好这一生"]
+  B --&gt; D
+  C --&gt; D</pre>
+
+<h2 id="全书总览"><a href="#全书总览" class="headerlink" title="全书总览"></a>全书总览</h2><table>
+<thead>
+<tr>
+<th>#</th>
+<th>书名</th>
+<th>作者</th>
+<th>所属领域</th>
+<th>核心关键词</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>我在哈佛的最后一堂课</td>
+<td>艾瑞克·赛诺威 &#x2F; 梅里尔·麦道</td>
+<td>人生规划</td>
+<td>毕生事业、转折点、精神遗产、平衡</td>
+</tr>
+<tr>
+<td>2</td>
+<td>耶鲁大学公开课：死亡</td>
+<td>谢利·卡根</td>
+<td>哲学</td>
+<td>二元论、物理主义、死亡本质、永生</td>
+</tr>
+<tr>
+<td>3</td>
+<td>登天的感觉</td>
+<td>岳晓东</td>
+<td>心理咨询</td>
+<td>助人自助、共情、成长、登天感觉</td>
+</tr>
+<tr>
+<td>4</td>
+<td>自控力：和压力做朋友</td>
+<td>凯利·麦格尼格尔</td>
+<td>心理学</td>
+<td>思维模式、压力与意义、拥抱压力</td>
+</tr>
+<tr>
+<td>5</td>
+<td>自控力</td>
+<td>凯利·麦格尼格尔</td>
+<td>心理学</td>
+<td>意志力、多巴胺、道德许可、传染</td>
+</tr>
+<tr>
+<td>6</td>
+<td>领导力</td>
+<td>亚历克斯·弗格森</td>
+<td>管理学</td>
+<td>标准、专注、领导≠管理、纪律</td>
+</tr>
+<tr>
+<td>7</td>
+<td>宫崎市定中国史</td>
+<td>宫崎市定</td>
+<td>历史</td>
+<td>时代区分、都市国家、景气史观</td>
+</tr>
+<tr>
+<td>8</td>
+<td>生死功课</td>
+<td>Erika Hayasaki</td>
+<td>生死教育</td>
+<td>死亡课、告别信、生命历程</td>
+</tr>
+<tr>
+<td>9</td>
+<td>哈佛实用心理学</td>
+<td>金圣荣</td>
+<td>心理学</td>
+<td>濒死体验、心智成熟、多米诺</td>
+</tr>
+<tr>
+<td>10</td>
+<td>哈佛博弈课</td>
+<td>杜振鹏</td>
+<td>博弈论</td>
+<td>纳什均衡、囚徒困境、搭便车</td>
+</tr>
+<tr>
+<td>11</td>
+<td>斯坦福经济学</td>
+<td>张择</td>
+<td>经济学</td>
+<td>农场、行为经济学、市场信号</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="第一册《我在哈佛的最后一堂课》"><a href="#第一册《我在哈佛的最后一堂课》" class="headerlink" title="第一册《我在哈佛的最后一堂课》"></a>第一册《我在哈佛的最后一堂课》</h1><blockquote>
+<p>作者把哈佛商学院资深教授霍华德·斯蒂文森（Howard Stevenson）的人生智慧整理成一套”人生设计框架”。原书英文名 <em>Howard’s Gift</em>，围绕霍华德”与死神擦肩而后毫无悔恨”的态度展开。</p>
+</blockquote>
+<h2 id="核心命题：成功-≠-快乐"><a href="#核心命题：成功-≠-快乐" class="headerlink" title="核心命题：成功 ≠ 快乐"></a>核心命题：成功 ≠ 快乐</h2><p>作者在 15 岁时就得出结论——<strong>“成功对我来说是不是意味着快乐”比”我是否成功”更重要</strong>。霍华德见过大量到达事业顶峰却毫无成就感的人：如果他们也经历一次濒死，未必能做到无悔无恨。</p>
+<ul>
+<li>用”<strong>幸福感</strong>“而不是”成功”来描述人生目标：成功常与财富、地位、学历绑定，而幸福感超越金钱与威望，标准由你自己定义。</li>
+<li><strong>第一个障碍</strong>：我们想当然地认为”别人（合伙人、朋友、家人、楷模）的成功秘诀也适合我”，这种理想与现实的脱节导致出师不利、低能低产、中年危机。</li>
+</ul>
+<h2 id="转折点（Inflection-Point）"><a href="#转折点（Inflection-Point）" class="headerlink" title="转折点（Inflection Point）"></a>转折点（Inflection Point）</h2><p>概念借用英特尔创始人安迪·葛洛夫的”转折点”——彻底颠覆常规、把人从头到脚调个个儿的事件。霍华德把它发展成一套主动应对法：</p>
+<ul>
+<li><strong>转折点带来”潜在能量”</strong>：一种藏在情境里的机遇，能刺激你改变、颠覆过去。</li>
+<li>三类转折点：<ol>
+<li><strong>有利的</strong>（外部送来机会，如公司设学费补偿项目）——张开双臂拥抱；</li>
+<li><strong>不利的</strong>（项目被砍、部门被裁、被迫搬家）——震惊之后仍可挖出积极机会；</li>
+<li><strong>中性的</strong>（自己创造的，如”把爱好转成职业会怎样”）——最易被忽视，却是你主动挖掘的。</li>
+</ol>
+</li>
+<li><strong>错失机会的最大原因</strong>：对出现的转折点”没有做出哪怕一点回应”。被动等待（像米歇尔那样”保持低调”）等于把命运交给别人。</li>
+<li>应对口诀：<strong>“我是该重蹈覆辙，还是开辟新航向？”</strong></li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["转折点出现"] --&gt; B{"识别它了吗？"}
+  B -- 否 --&gt; C["被动等待 → 命运交给别人"]
+  B -- 是 --&gt; D{"回应方式？"}
+  D -- 重蹈覆辙 --&gt; E["下坡路"]
+  D -- 开辟新航向 --&gt; F["借助潜在能量&lt;br/&gt;改变生命轨迹"]</pre>
+
+<h2 id="从终点开始：精神遗产（Legacy）"><a href="#从终点开始：精神遗产（Legacy）" class="headerlink" title="从终点开始：精神遗产（Legacy）"></a>从终点开始：精神遗产（Legacy）</h2><p>霍华德最有力的工具之一——<strong>“你想听到人们在你的葬礼上说些什么？”</strong></p>
+<ul>
+<li>“从终点开始”意味着回到原点，为自己绘制一幅指引生活与职业走向的蓝图。</li>
+<li>一旦认定想留给后人什么样的<strong>精神遗产</strong>，你就拥有了通向成功生活的地图，也是对付转折点的”参考答案”。</li>
+<li>精神遗产的价值不在于让选择变简单，而在于<strong>让选择背后有统一坐标系</strong>，从而更有效率、更容易获得满足感。</li>
+<li>第一步是”<strong>自我权限</strong>“：接受”我能决定自己成为什么样的人”这种选择的力量。</li>
+<li>一个有效战略不是死板的规划图，而是建立在明确参考背景上的<strong>灵活框架</strong>（像象棋：关注下一步怎么走，而不是纠结上一步）。</li>
+</ul>
+<h2 id="平衡的艺术：平衡是动词，不是名词"><a href="#平衡的艺术：平衡是动词，不是名词" class="headerlink" title="平衡的艺术：平衡是动词，不是名词"></a>平衡的艺术：平衡是动词，不是名词</h2><ul>
+<li>霍华德反感”静态平衡”的说法：人不是雕像，生活潮汐不断卷走脚下的沙子。</li>
+<li>比喻：<strong>在平衡木上玩杂耍</strong>——手里有网球（易处理）、鸡蛋（易碎）、小刀（暗藏危险），需全面技能、极其专心、勇敢前行。</li>
+<li><strong>四个能量罐</strong>：身体、情感、智力、财力。失衡 &#x3D; 某个罐子空了或岌岌可危。</li>
+<li>果汁论：”<strong>动手榨果汁值不值？</strong>“——为选择付出的时间精力是否物有所值。</li>
+</ul>
+<h2 id="衡量价值的五个命题（做选择前”做功课”）"><a href="#衡量价值的五个命题（做选择前”做功课”）" class="headerlink" title="衡量价值的五个命题（做选择前”做功课”）"></a>衡量价值的五个命题（做选择前”做功课”）</h2><ol>
+<li><strong>区别需求与欲求</strong>：多数选择介于两者之间，关键是明白选择中需求&#x2F;欲求的权重；</li>
+<li><strong>认清投资成本与机会成本</strong>：人们倾向关注自己付出了多少（投资成本），却忽视放弃的选项（机会成本）；</li>
+<li><strong>了解积极与消极因素</strong>：不要”车到山前必有路”，要把收益与代价具体化；</li>
+<li><strong>考虑成本对等性与可比性</strong>：小投资可能大收益；金钱换不来智力或感情；<strong>别把生活必需品卖掉</strong>；</li>
+<li><strong>给目标排排队</strong>：”你可以拥有一切，但不能一口吃成胖子”——目标分级，循序渐进。</li>
+</ol>
+<pre class="mermaid">flowchart TB
+  A["做重要选择"] --&gt; B["1 这是需求还是欲求？"]
+  B --&gt; C["2 投资成本 vs 机会成本"]
+  C --&gt; D["3 积极因素 vs 消极因素"]
+  D --&gt; E["4 成本与收益是否对等可比？"]
+  E --&gt; F["5 目标如何排序？"]
+  F --&gt; G["选择那个让你精力充沛的"]</pre>
+
+<h2 id="自欺欺人：核心竞争力与五大谬论"><a href="#自欺欺人：核心竞争力与五大谬论" class="headerlink" title="自欺欺人：核心竞争力与五大谬论"></a>自欺欺人：核心竞争力与五大谬论</h2><p>问自己两个问题：</p>
+<ol>
+<li>我的核心竞争力（知识、技能、个性）能否胜任这份工作？</li>
+<li>和同样目标的人相比，我的核心竞争力有没有优势？</li>
+</ol>
+<p><strong>三类核心竞争力</strong>：身体技能（歌手的音域、外科医生的手）、智力技能（设计师的色感、律师的信息处理）、性格技能（初次会面的放松、换位思考的随和）。</p>
+<p><strong>导致自欺欺人的五大谬论</strong>：</p>
+<ol>
+<li><strong>盲目发奋</strong>——“只要努力就能克服持久缺点”（努力不是万能灵药）；</li>
+<li><strong>聪明谬论</strong>——“我擅长甲和丙，所以也擅长乙”（像”300 磅摔跤手去做撑竿跳”）；</li>
+<li><strong>自以为是</strong>——“对着一张白板射箭，然后在箭落处画靶心”；</li>
+<li><strong>乐趣与热情</strong>——“热爱就能有所建树”（热情不补能力短板）；</li>
+<li><strong>良好愿望</strong>——“闭上眼当没看见，一切就简单了”。</li>
+</ol>
+<blockquote>
+<p>霍华德给詹姆斯的例子：缺的那张”王牌”是高压谈判中处理复杂人际关系的能力——技术再深，看不到谈判桌对面的信号，也当不了团队的”头把交椅”。</p>
+</blockquote>
+<h2 id="其他要点"><a href="#其他要点" class="headerlink" title="其他要点"></a>其他要点</h2><ul>
+<li><strong>催化剂</strong>：导师（如迈尔斯·梅斯问霍华德的三个问题——“这个数字怎么来的？有什么含义？你为什么想蒙我？”）能帮你看清热情与优势的交集。</li>
+<li><strong>实验心态</strong>：发现自己缺某种能力时，用小成本做实验测试，控制损失（”别拿打单打的能力当双打使”）。</li>
+<li><strong>生活的涟漪</strong>：精神遗产不是孤立的终点，而是像湖中涟漪一样扩散——影响家人、同事、社区。</li>
+</ul>
+<hr>
+<h1 id="第二册《耶鲁大学公开课：死亡》"><a href="#第二册《耶鲁大学公开课：死亡》" class="headerlink" title="第二册《耶鲁大学公开课：死亡》"></a>第二册《耶鲁大学公开课：死亡》</h1><blockquote>
+<p>谢利·卡根（Shelly Kagan）在耶鲁讲授的死亡哲学课，从”灵魂是否存在”一路追问到”死亡是不是坏事、永生是否值得向往”。全书是严格的哲学论证训练。</p>
+</blockquote>
+<h2 id="两大立场：二元论-vs-物理主义"><a href="#两大立场：二元论-vs-物理主义" class="headerlink" title="两大立场：二元论 vs 物理主义"></a>两大立场：二元论 vs 物理主义</h2><ul>
+<li><strong>二元论</strong>：人 &#x3D; 肉体 + 非物质的灵魂（我们熟悉、也常不自觉相信的观点）。</li>
+<li><strong>物理主义</strong>：人只是肉体——但<strong>不是随便什么肉体，而是能执行”P 功能”（思考、计划、推理、感受、沟通、爱）的肉体</strong>。心灵不过是”把肉体各种精神能力名词化”的便捷说法。</li>
+</ul>
+<p>关键澄清：即使灵魂存在，也<strong>不能自动推出</strong>灵魂能在肉体毁灭后存活，更不能推出永生——每一步都需要进一步论证。</p>
+<h2 id="关于灵魂存在的论证与反驳"><a href="#关于灵魂存在的论证与反驳" class="headerlink" title="关于灵魂存在的论证与反驳"></a>关于灵魂存在的论证与反驳</h2><ul>
+<li><strong>笛卡尔论证</strong>：我能想象”没有肉体的我存在”，故我不是肉体。——卡根的反驳：想象不等于证明可能性（我能”想象”三角形内角和不等于 180°，不代表它真的可能）。</li>
+<li><strong>柏拉图论证（灵魂不朽）</strong>：基于”理念&#x2F;形式”与”灵魂不灭”的经典论证，卡根逐条检验其前提是否成立。</li>
+<li><strong>个人同一性</strong>：什么让我”仍然是同一个人”？这是死亡问题真正依赖的前提——如果死后”我”不再存在，死亡就是”我的”终结。</li>
+</ul>
+<h2 id="死亡的本质与”死亡的坏处”"><a href="#死亡的本质与”死亡的坏处”" class="headerlink" title="死亡的本质与”死亡的坏处”"></a>死亡的本质与”死亡的坏处”</h2><ul>
+<li><strong>死亡的本质</strong>：死亡是生命的终止（肉体的死亡 &#x3D; 一系列生理过程的终止）。</li>
+<li>两个”惊人言论”：<ol>
+<li>死亡本身可能并不坏（坏的是”失去生命里本可拥有的好事”——<strong>剥夺说</strong>）；</li>
+<li>我们通常害怕的其实是<strong>死亡的过程</strong>，而非死亡状态本身。</li>
+</ol>
+</li>
+<li><strong>死亡的坏处</strong>：核心是”被剥夺”——死亡剥夺了你未来本可拥有的好体验。据此，英年早逝比寿终正寝”更坏”，因为被剥夺的好事更多。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+  A["我死后还继续存在吗？"] --&gt; B["前提：我是谁？"]
+  B --&gt; C1["二元论：肉体+灵魂"]
+  B --&gt; C2["物理主义：只是肉体"]
+  C1 --&gt; D["灵魂存在 ≠ 灵魂不死&lt;br/&gt;仍需论证"]
+  C2 --&gt; E["死亡 = P功能的终止&lt;br/&gt;'我'随之终结"]
+  D --&gt; F["永生是否值得向往？"]
+  E --&gt; F
+  F --&gt; G["生命的价值&lt;br/&gt;死亡为何可能是坏事：剥夺说"]</pre>
+
+<h2 id="永生与生命的价值"><a href="#永生与生命的价值" class="headerlink" title="永生与生命的价值"></a>永生与生命的价值</h2><ul>
+<li><strong>永生是否值得向往？</strong> 卡根引导读者思考：无限生命是否真的比有限生命更好？如果永恒意味着无限重复、倦怠与无意义，永生未必是恩赐。</li>
+<li><strong>生命的价值</strong>：不是”活得越久越好”，而是”生命的质量（好体验）”决定价值。这为”死亡为何是坏事”提供了标尺。</li>
+</ul>
+<h2 id="面对死亡而活、自杀"><a href="#面对死亡而活、自杀" class="headerlink" title="面对死亡而活、自杀"></a>面对死亡而活、自杀</h2><ul>
+<li><strong>面对死亡而活</strong>：既然死亡必然到来，”我该如何度过有限生命”才是真正的问题——这恰好与第一册的”精神遗产””从终点开始”形成呼应。</li>
+<li><strong>自杀</strong>：卡根以哲学态度讨论其道德地位，不回避、不轻率，强调”生命价值的自主权”与”他人生命价值”之间的张力。</li>
+</ul>
+<blockquote>
+<p>这一册最大的价值是<strong>论证方法本身</strong>：不轻易接受”大家都信”的结论，把”灵魂—死亡—永生”拆成一个个可检验的前提。</p>
+</blockquote>
+<hr>
+<h1 id="第三册《登天的感觉：我在哈佛大学做心理咨询》"><a href="#第三册《登天的感觉：我在哈佛大学做心理咨询》" class="headerlink" title="第三册《登天的感觉：我在哈佛大学做心理咨询》"></a>第三册《登天的感觉：我在哈佛大学做心理咨询》</h1><blockquote>
+<p>岳晓东记录自己在哈佛大学心理咨询中心（林登街 5 号）实习期间的 10 个真实咨询个案。书名来自一位老教授的话：”心理咨询就是要使人对自我感觉良好，<strong>犹如登天一样</strong>。”</p>
+</blockquote>
+<h2 id="心理咨询的本质：不是”劝人开心”，而是”助人自助”"><a href="#心理咨询的本质：不是”劝人开心”，而是”助人自助”" class="headerlink" title="心理咨询的本质：不是”劝人开心”，而是”助人自助”"></a>心理咨询的本质：不是”劝人开心”，而是”助人自助”</h2><ul>
+<li>使人开心只是<strong>前奏曲</strong>，使人<strong>成长</strong>才是<strong>主旋律</strong>：让来询者自己悟通、理顺、认清问题本质、知道该怎么做。</li>
+<li>目标：帮助人从自卑和迷茫的泥潭中<strong>自己挣脱出来</strong>——“耷拉着脑袋进来，挺着腰杆出去”。</li>
+<li><strong>高明所在</strong>：”它帮助了一个人，却让那个人感到，好像他自己帮助了自己似的。”</li>
+</ul>
+<h2 id="心理咨询的九条原则（”何以给人登天的感觉”）"><a href="#心理咨询的九条原则（”何以给人登天的感觉”）" class="headerlink" title="心理咨询的九条原则（”何以给人登天的感觉”）"></a>心理咨询的九条原则（”何以给人登天的感觉”）</h2><ol>
+<li>不求教训他人，而求<strong>启发</strong>他人；</li>
+<li>不是替人决策，而是帮人<strong>自行决策</strong>；</li>
+<li>首要任务是<strong>心灵沟通</strong>，而非心理分析；</li>
+<li>是高尚的精神享受，而非见不得人的事；</li>
+<li>确信<strong>人皆可自我完善</strong>；</li>
+<li>增强<strong>自立</strong>能力，而非增强依赖；</li>
+<li>既帮助他人成长，也帮助<strong>自己</strong>成长；</li>
+<li>使人更相信<strong>自我</strong>，而非迷信别人；</li>
+<li>使人学会<strong>多听少言</strong>。</li>
+</ol>
+<h2 id="十个个案的知识点（精选）"><a href="#十个个案的知识点（精选）" class="headerlink" title="十个个案的知识点（精选）"></a>十个个案的知识点（精选）</h2><ul>
+<li><strong>案例 1 “我是全哈佛最自卑的人”（丽莎，新生适应不良）</strong>：三步法——①宣泄不良情绪；②转移比较对象（从”和哈佛精英比”转到”和自己的进步比”）；③采取具体行动。背后是”<strong>情绪优先</strong>“的脑机制：情通了，理才能顺。</li>
+<li><strong>案例 2 “对姐姐怀有深深内疚”（莫妮卡）</strong>：教训是<strong>经验主义陷阱</strong>——咨询师不能套用旧经验；关键是挖出”冰山下的心里话”。</li>
+<li><strong>案例 3 “听自己的还是听父母的”（职业选择）</strong>：咨询师要做一个”<strong>中性人</strong>“，不替当事人选边；过度模糊的心理边界易产生亲子冲突。</li>
+<li><strong>案例 4 “爱情神话的破灭”（查理，完美主义）</strong>：核心是”<strong>不合理信念</strong>的枷锁”，通过自我觉察（self-awareness）解套；不做来询者的”拐杖”。</li>
+<li><strong>案例 5 “考试作弊的思索”（明轩）</strong>：<strong>擦除标签的沟通艺术</strong>——不把当事人钉在”作弊者”标签上，接纳以提升自我效能。</li>
+<li><strong>案例 6 “我恨我的冷漠”（佳莎）</strong>：解开”<strong>未完成情结</strong>“（unfinished business），给心房”大扫除”；呼应中医”<strong>通者不痛，痛者不通</strong>“。</li>
+<li><strong>案例 7 “我是同性恋吗”（汤姆）</strong>：咨询师的<strong>共情</strong>——“穿上对方的鞋”；关键是帮当事人认识自己，而非贴性取向标签。</li>
+<li><strong>案例 8 “我爱上了我的心理咨询师”</strong>：处理<strong>移情</strong>与”咨询蜜月期”；”<strong>距离产生美</strong>“、职业自律精神。</li>
+<li><strong>案例 9 “我们的缘分尽了吗”（卫红，婚姻危机）</strong>：<strong>儿童式自我与父母式自我</strong>之间的徘徊（交互分析 TA 的 PAC 模型）。</li>
+<li><strong>案例 10 “走出心灵创伤的深渊”（慕贤）</strong>：<strong>环境对大脑的塑造</strong>；过度保护使发展受阻；”<strong>陪伴促人成长</strong>“。</li>
+</ul>
+<h2 id="督导篇：心理咨询的基本功"><a href="#督导篇：心理咨询的基本功" class="headerlink" title="督导篇：心理咨询的基本功"></a>督导篇：心理咨询的基本功</h2><ul>
+<li><strong>同感共情（empathy）</strong>：罗杰斯的核心概念——理解对方的感受，但不要制造”<strong>同感泡沫</strong>“（廉价附和）。</li>
+<li><strong>洞察力是”开心眼”</strong>：洞察力（看到行为背后的心理动力）≠ 观察力（看到表面行为）。</li>
+<li><strong>倾听反应的四种沟通类型</strong>：<ol>
+<li>愣说不听型（只顾自己说）；</li>
+<li>愣听不说型（只听不反馈）；</li>
+<li>愣听傻说型（听了但说不到点上）；</li>
+<li><strong>善听会说型</strong>（目标状态）。</li>
+</ol>
+</li>
+<li><strong>幽默是治愈抑郁症的良药</strong>：幽默是人际关系的润滑剂、创造力的同义词、人生智慧的结晶。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["来询者：自卑/迷茫/痛苦"] --&gt; B["宣泄情绪&lt;br/&gt;(情通才能理顺)"]
+  B --&gt; C["转移比较对象&lt;br/&gt;(换个参照系)"]
+  C --&gt; D["自我觉察&lt;br/&gt;(看清不合理信念)"]
+  D --&gt; E["采取具体行动&lt;br/&gt;(小步前进)"]
+  E --&gt; F["登天的感觉&lt;br/&gt;(自己帮助了自己)"]</pre>
+
+<blockquote>
+<p>这一册对普通人最有用的迁移：<strong>好的沟通不是讲道理，而是先接住情绪，再帮对方自己想通</strong>。</p>
+</blockquote>
+<hr>
+<h1 id="第四册《自控力：和压力做朋友》"><a href="#第四册《自控力：和压力做朋友》" class="headerlink" title="第四册《自控力：和压力做朋友》"></a>第四册《自控力：和压力做朋友》</h1><blockquote>
+<p>凯利·麦格尼格尔（Kelly McGonigal）在这本里”反常识”：压力不是敌人，你对压力的<strong>看法</strong>决定了它对你的影响。</p>
+</blockquote>
+<h2 id="压力的定义：压力与意义不可分割"><a href="#压力的定义：压力与意义不可分割" class="headerlink" title="压力的定义：压力与意义不可分割"></a>压力的定义：压力与意义不可分割</h2><ul>
+<li><strong>压力 &#x3D; 你在乎的东西发生危险时引起的反应</strong>。对不在乎的事你不会感到压力；不经受压力，也无法开创有意义的生活。</li>
+<li>因此”<strong>压力和意义成正比</strong>：有意义，意味着有压力”。</li>
+</ul>
+<h2 id="思维模式（Mindset）改变生理反应"><a href="#思维模式（Mindset）改变生理反应" class="headerlink" title="思维模式（Mindset）改变生理反应"></a>思维模式（Mindset）改变生理反应</h2><p>核心证据来自心理学家艾丽娅·克拉姆（Alia Crum）的研究：</p>
+<ul>
+<li><strong>酒店服务员实验</strong>：只告诉服务员”你的工作等于锻炼”（贴卡路里标签），4 周后她们体重、体脂、血压都下降，工作满意度上升——<strong>唯一改变的只是观念</strong>。</li>
+<li><strong>品奶昔实验</strong>：同一杯奶昔，标签写成”620 卡放纵”时，胃饥饿素下降幅度是”140 卡健康”标签时的 3 倍——<strong>期望改变生理分泌</strong>。</li>
+</ul>
+<blockquote>
+<p>结论：当两种结果都可能时（锻炼的好处 vs 劳损、压力的积极面 vs 消极面），<strong>你期望的结果，就是你得到的结果</strong>。</p>
+</blockquote>
+<h2 id="压力是可以依靠的资源，而非要消灭的敌人"><a href="#压力是可以依靠的资源，而非要消灭的敌人" class="headerlink" title="压力是可以依靠的资源，而非要消灭的敌人"></a>压力是可以依靠的资源，而非要消灭的敌人</h2><ul>
+<li><strong>拥抱焦虑能帮助你更好地应对挑战</strong>：压力反应（心跳加快、肾上腺素）其实是在给身体”充电”，帮你迎战。</li>
+<li><strong>压力使人更具关怀性</strong>（”tend-and-befriend”反应）：催产素让人在压力下更想联结他人，从而提升抗挫力。</li>
+<li><strong>痛苦使你坚强</strong>：成长常发生在痛苦正当下、未来尚模糊之时。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["压力事件"] --&gt; B{"你的思维模式"}
+  B -- "压力有害" --&gt; C["威胁反应&lt;br/&gt;逃避/崩溃"]
+  B -- "压力是资源" --&gt; D["挑战反应&lt;br/&gt;充电/联结/成长"]
+  D --&gt; E["抗挫力↑ 幸福感↑"]
+  C --&gt; F["焦虑↑ 健康↓"]</pre>
+
+<h2 id="转化压力的策略"><a href="#转化压力的策略" class="headerlink" title="转化压力的策略"></a>转化压力的策略</h2><ol>
+<li><strong>重新评估</strong>：把”我很焦虑”重新理解为”我准备好了”（生理唤起可以重新解读）。</li>
+<li><strong>专注意义</strong>：问自己”这件事为什么对我重要”——把压力锚定在你在乎的价值上。</li>
+<li><strong>联结而非孤立</strong>：压力下主动寻求支持，助人也能提升自己的抗压力。</li>
+<li><strong>选择看压力好的一面</strong>：这不是否认糟糕，而是改变你应对挑战的方式，尤其在最困难（丧亲、慢性病、创伤）时帮助最大。</li>
+</ol>
+<hr>
+<h1 id="第五册《自控力》（The-Willpower-Instinct）"><a href="#第五册《自控力》（The-Willpower-Instinct）" class="headerlink" title="第五册《自控力》（The Willpower Instinct）"></a>第五册《自控力》（The Willpower Instinct）</h1><blockquote>
+<p>斯坦福继续教育学院最受欢迎的”意志力科学”课程成书。核心观点：<strong>提高自控力最有效的途径是弄清自己如何失控、为何失控</strong>。</p>
+</blockquote>
+<h2 id="意志力的三种力量与神经学原理"><a href="#意志力的三种力量与神经学原理" class="headerlink" title="意志力的三种力量与神经学原理"></a>意志力的三种力量与神经学原理</h2><ul>
+<li><strong>意志力 &#x3D; 驾驭三种力量</strong>：<ol>
+<li><strong>“我要做”</strong>（逼自己做该做的难事）；</li>
+<li><strong>“我不要”</strong>（抵制诱惑）；</li>
+<li><strong>“我想要”</strong>（牢记真正长远的目标）。</li>
+</ol>
+</li>
+<li>神经基础是<strong>前额皮质</strong>，分三个区域分管理这三种力量。著名案例：铁路领班菲尼亚斯·盖奇被钢筋刺穿前额皮质后，性格大变——失去”我要做&#x2F;我不要&#x2F;我想要”。</li>
+<li><strong>两个自我</strong>：一个任意妄为、及时行乐；一个克服冲动、深谋远虑。意志力挑战就是这两个自我的对抗。</li>
+<li><strong>意志力第一法则：认识你自己</strong>——人每天平均做约 227 个与食物相关的决定，多数在无意识中完成；没有自我意识，自控系统毫无用武之地。</li>
+</ul>
+<h2 id="每章一个”自控陷阱”与对策"><a href="#每章一个”自控陷阱”与对策" class="headerlink" title="每章一个”自控陷阱”与对策"></a>每章一个”自控陷阱”与对策</h2><table>
+<thead>
+<tr>
+<th>章</th>
+<th>陷阱&#x2F;主题</th>
+<th>关键知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>02 意志力的本能</td>
+<td>三思而后行</td>
+<td>压力是意志力最大的敌人（战逃反应 vs 三思反应）；通过冥想、呼吸、锻炼训练身心</td>
+</tr>
+<tr>
+<td>03 累到无力抵抗</td>
+<td>自控像肌肉</td>
+<td>自控力有极限，会被消耗（”自我损耗”）；但<strong>也可像肌肉一样被训练</strong>；血糖是重要变量</td>
+</tr>
+<tr>
+<td>04 容忍罪恶</td>
+<td><strong>道德许可</strong></td>
+<td>善行之后会有恶行（”今天锻炼了，可以多吃点”）；进步本身可能让你”许可”自己放纵</td>
+</tr>
+<tr>
+<td>05 大脑的弥天大谎</td>
+<td><strong>多巴胺</strong></td>
+<td>多巴胺是”想要”而非”快乐”的承诺；神经营销学利用它；要区分渴望与幸福</td>
+</tr>
+<tr>
+<td>06 “那又如何”</td>
+<td>罪恶感不起作用</td>
+<td>情绪低落→屈服诱惑→更自责→更放纵；<strong>自我谅解比自我批评更有效</strong></td>
+</tr>
+<tr>
+<td>07 出售未来</td>
+<td><strong>延迟折扣</strong></td>
+<td>人会”打折”未来的奖励；<strong>预先承诺</strong>（绑住自己的手）能对抗及时享乐；想象未来的自己</td>
+</tr>
+<tr>
+<td>08 传染</td>
+<td>意志力会传染</td>
+<td>目标、行为、情绪都会传染；”我应该”的力量（社会认同）；靠近有自制力的群体</td>
+</tr>
+<tr>
+<td>09 别读这章</td>
+<td><strong>讽刺性反弹</strong></td>
+<td>越是压抑”我不要”越反弹（白熊效应）；<strong>对内接受自我，对外控制行动</strong></td>
+</tr>
+</tbody></table>
+<pre class="mermaid">flowchart TB
+  A["意志力挑战"] --&gt; B["前额皮质三力量&lt;br/&gt;我要做 / 我不要 / 我想要"]
+  B --&gt; C{"失控的原因？"}
+  C --&gt; C1["道德许可&lt;br/&gt;(善行后放纵)"]
+  C --&gt; C2["那又如何&lt;br/&gt;(自责→更糟)"]
+  C --&gt; C3["多巴胺&lt;br/&gt;(想要≠快乐)"]
+  C --&gt; C4["延迟折扣&lt;br/&gt;(打折未来)"]
+  C --&gt; C5["讽刺反弹&lt;br/&gt;(压抑→反弹)"]
+  C1 --&gt; D["对策：不把进步当放纵的许可证"]
+  C2 --&gt; D2["对策：自我谅解"]
+  C3 --&gt; D3["对策：区分渴望与幸福"]
+  C4 --&gt; D4["对策：预先承诺"]
+  C5 --&gt; D5["对策：对内接受，对外控制"]</pre>
+
+<h2 id="核心方法论"><a href="#核心方法论" class="headerlink" title="核心方法论"></a>核心方法论</h2><ul>
+<li><strong>做自己的”自控力科学家”</strong>：把每个策略当实验，收集自己的数据，看哪些对你有用（理论好，但数据更重要）。</li>
+<li>选一个具体的”意志力挑战”贯穿全书，每周试一个策略。</li>
+<li>金句：<strong>“自控力比智商更有助于拿高分，比个人魅力更有助于领导别人，比同理心更有助于维持婚姻幸福”</strong>。</li>
+</ul>
+<hr>
+<h1 id="第六册《领导力》（Leading）"><a href="#第六册《领导力》（Leading）" class="headerlink" title="第六册《领导力》（Leading）"></a>第六册《领导力》（Leading）</h1><blockquote>
+<p>亚历克斯·弗格森（曼联功勋教练，26 年 38 座奖杯）+ 红杉资本主席迈克尔·莫里茨合著。核心：<strong>伟大的领导者与出色的管理者之间有很大差距——管理者可以装一卡车，领导者是最稀有的商品</strong>。</p>
+</blockquote>
+<h2 id="领导力心法（章题即框架）"><a href="#领导力心法（章题即框架）" class="headerlink" title="领导力心法（章题即框架）"></a>领导力心法（章题即框架）</h2><ol>
+<li><strong>成为你自己</strong>：领导力始于自我认知，装不像别人；</li>
+<li><strong>承认你的渴望</strong>：保持对胜利的渴望，且能让他人长期保持高水平；</li>
+<li><strong>化零为整</strong>：把个体天才凝聚成团队；</li>
+<li><strong>吸引别人</strong>：用愿景和人格吸引人；</li>
+<li><strong>设定标准</strong>：高标准是长期卓越的根基；</li>
+<li><strong>识人有术</strong>：看人、选人、用人；</li>
+<li><strong>专注</strong>：聚焦关键，不分心；</li>
+<li><strong>传达信息</strong>：清晰、反复、有说服力地沟通；</li>
+<li><strong>领导不是管理</strong>：管理是控制，领导是激励；</li>
+<li><strong>底线</strong>：纪律是底线，绝不含糊；</li>
+<li><strong>技术与信息</strong>：善用信息与技术但不迷信；</li>
+<li><strong>竞争与环境</strong>：理解竞争格局，拥抱变化；</li>
+<li><strong>全新的挑战</strong>：持续更新自我，避免自满。</li>
+</ol>
+<h2 id="关键观点"><a href="#关键观点" class="headerlink" title="关键观点"></a>关键观点</h2><ul>
+<li><strong>保持对成功的渴望是少数领导者能做到的事</strong>：兴衰循环是常态（1976 年道琼斯 30 指数公司，如今仅 7 家幸存），技术领域尤其残酷——一次根本性变化就能让巨头倒下。</li>
+<li><strong>纪律与关怀并存</strong>：弗格森对球员要求极严（标准、底线），但也会花几小时陪病中的朋友走出忧郁——领导力的”硬”与”软”缺一不可。</li>
+<li><strong>换血与淘汰</strong>：优秀团队需要不断更新，淘汰表现不佳者，哪怕有感情也要”将对某些人的个人情感搁置一旁”。</li>
+<li><strong>年轻才俊的价值</strong>：弗格森说”如果要我运营一家公司，我会经常听取年轻才俊的意见——他们与现实打交道最多，与未来息息相关”。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["成为你自己"] --&gt; B["承认渴望&lt;br/&gt;设定标准"]
+  B --&gt; C["识人/吸引&lt;br/&gt;化零为整"]
+  C --&gt; D["专注 + 传达信息"]
+  D --&gt; E["纪律(底线)&lt;br/&gt;领导≠管理"]
+  E --&gt; F["拥抱变化&lt;br/&gt;持续更新"]
+  F --&gt; G["长期卓越&lt;br/&gt;(对抗兴衰循环)"]</pre>
+
+<hr>
+<h1 id="第七册《宫崎市定中国史》"><a href="#第七册《宫崎市定中国史》" class="headerlink" title="第七册《宫崎市定中国史》"></a>第七册《宫崎市定中国史》</h1><blockquote>
+<p>宫崎市定（1901—1995），京都学派东洋史集大成者，内藤湖南的后继者。这是面向普通读者的中国通史经典（1978 年完成）。</p>
+</blockquote>
+<h2 id="宫崎史学的三个核心概念"><a href="#宫崎史学的三个核心概念" class="headerlink" title="宫崎史学的三个核心概念"></a>宫崎史学的三个核心概念</h2><ol>
+<li><strong>时代区分论</strong>：把中国史分成”古代—中世—近世—最近世”四段，是内藤湖南以来京都学派的核心争论点。宫崎继承并发展”<strong>宋代近世说</strong>“（宋朝是中国近世的开端）。</li>
+<li><strong>都市国家说</strong>：宫崎用”纸上考古学”方法，首次提出中国古代（如春秋时代）也存在<strong>类似古希腊的城郭都市国家</strong>——这一结论来自对文献（如《史记》）而非考古发掘的重新解读。</li>
+<li><strong>景气史观</strong>：花甲之后宫崎主张——中国史上自古至今都进行着<strong>相似的景气变动</strong>，它影响社会的所有方面；以景气变动的角度观察历史时，经济与文化同时进入视野。</li>
+</ol>
+<h2 id="全书结构"><a href="#全书结构" class="headerlink" title="全书结构"></a>全书结构</h2><table>
+<thead>
+<tr>
+<th>篇章</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>总论</td>
+<td>何谓历史、时代区分、古代&#x2F;中世&#x2F;近世&#x2F;最近世的定义</td>
+</tr>
+<tr>
+<td>古代史</td>
+<td>三代、都市国家时代、战国、秦、前汉、后汉</td>
+</tr>
+<tr>
+<td>中世史</td>
+<td>三国、晋、南北朝、唐、五代</td>
+</tr>
+<tr>
+<td>近世史</td>
+<td>北宋辽、南宋金、元、明、清</td>
+</tr>
+<tr>
+<td>最近世史</td>
+<td>中华民国、国民政府</td>
+</tr>
+</tbody></table>
+<h2 id="视角的价值：把中国史放进世界史"><a href="#视角的价值：把中国史放进世界史" class="headerlink" title="视角的价值：把中国史放进世界史"></a>视角的价值：把中国史放进世界史</h2><ul>
+<li>宫崎的定义：”<strong>中国史是中华民族固有的历史；东洋史是以中国民族为中心，兼以周围异民族，将两者以完全对等的价值一体考察的历史</strong>。”</li>
+<li>他留法期间确信”西亚在历史上的先进性”，把中国史与西亚、欧洲史对照，形成”世界史体系”式的通史视野。</li>
+<li>代表作脉络：《东洋的近世》《亚洲史概说》《大唐帝国——中国的中世》《雍正帝》等，都在回答”中国在世界史中处于什么位置”。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+  A["宫崎市定中国史"] --&gt; B["时代区分论"]
+  A --&gt; C["都市国家说"]
+  A --&gt; D["景气史观"]
+  B --&gt; B1["古代→中世→近世→最近世"]
+  B --&gt; B2["宋代近世说&lt;br/&gt;(内藤湖南遗产)"]
+  C --&gt; C1["纸上考古学&lt;br/&gt;中国古代也有城邦"]
+  D --&gt; D1["景气变动贯穿各时代&lt;br/&gt;经济与文化同频"]</pre>
+
+<blockquote>
+<p>阅读价值：提醒我们<strong>通史不是”编年流水账”，而是用一个核心问题（如何分期、如何比较）重新组织全部史料</strong>。</p>
+</blockquote>
+<hr>
+<h1 id="第八册《生死功课》（The-Death-Class）"><a href="#第八册《生死功课》（The-Death-Class）" class="headerlink" title="第八册《生死功课》（The Death Class）"></a>第八册《生死功课》（The Death Class）</h1><blockquote>
+<p>记者 Erika Hayasaki 以学生身份旁听诺玛·鲍伊（Norma Bowe）博士在肯恩大学开设的”透视死亡”课程，记录死亡教育如何改变人。原书英文名 <em>The Death Class</em>。</p>
+</blockquote>
+<h2 id="死亡教育的历史"><a href="#死亡教育的历史" class="headerlink" title="死亡教育的历史"></a>死亡教育的历史</h2><ul>
+<li>20 世纪早期，公开谈论死亡被视为品味低下；到 1960 年代，学者开始相信<strong>死亡教育与性教育同等重要</strong>——“不是每个人都有性生活，但每个人都会死亡”。</li>
+<li>先驱：精神病学家<strong>伊丽莎白·库伯勒-罗斯</strong>，尝试”将死亡拉出黑暗”（1969 年《时代》标题）。</li>
+<li>1963 年明尼苏达大学首开死亡课程，到 1971 年全美超 600 门，五年后翻番，今天上千门，成为”<strong>生死学</strong>“（thanatology）。</li>
+</ul>
+<h2 id="诺玛课堂的核心方法"><a href="#诺玛课堂的核心方法" class="headerlink" title="诺玛课堂的核心方法"></a>诺玛课堂的核心方法</h2><ul>
+<li><strong>第一份作业：写一封告别信</strong>——“给你们失去的某人或某物写一封告别信，写下日期并签上大名。此刻脑海里想到什么就写什么，那正是你需要的。”（全书结构即从此信展开）</li>
+<li><strong>围成一个圈</strong>：模拟真实的丧亲场景，直面而非回避。</li>
+<li>阅读材料：《相约星期二》《潜水钟与蝴蝶》——用他人面对死亡的经历照见自己。</li>
+</ul>
+<h2 id="埃里克森心理社会发展理论的八个阶段"><a href="#埃里克森心理社会发展理论的八个阶段" class="headerlink" title="埃里克森心理社会发展理论的八个阶段"></a>埃里克森心理社会发展理论的八个阶段</h2><p>附录给出的经典框架，用于理解”生命历程”：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>大致年龄</th>
+<th>核心冲突</th>
+<th>关键品质</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>婴儿期</td>
+<td>信任 vs 不信任</td>
+<td>希望</td>
+</tr>
+<tr>
+<td>2</td>
+<td>幼儿期</td>
+<td>自主 vs 羞怯&#x2F;怀疑</td>
+<td>意志</td>
+</tr>
+<tr>
+<td>3</td>
+<td>学前期</td>
+<td>主动 vs 内疚</td>
+<td>目的</td>
+</tr>
+<tr>
+<td>4</td>
+<td>学龄期</td>
+<td>勤奋 vs 自卑</td>
+<td>能力</td>
+</tr>
+<tr>
+<td>5</td>
+<td>青春期</td>
+<td>同一性 vs 角色混乱</td>
+<td>忠诚</td>
+</tr>
+<tr>
+<td>6</td>
+<td>成年早期</td>
+<td>亲密 vs 孤立</td>
+<td>爱</td>
+</tr>
+<tr>
+<td>7</td>
+<td>成年中期</td>
+<td>繁衍 vs 停滞</td>
+<td>关怀</td>
+</tr>
+<tr>
+<td>8</td>
+<td>成年晚期</td>
+<td>完整 vs 绝望</td>
+<td>智慧</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>全书的隐含命题：<strong>“用死亡来把握生命的每一瞬间”</strong>——直视死亡，才能更好地活。与第一册”从终点开始”、第二册”面对死亡而活”形成三重呼应。</p>
+</blockquote>
+<hr>
+<h1 id="第九册《让生活更快乐的哈佛实用心理学》"><a href="#第九册《让生活更快乐的哈佛实用心理学》" class="headerlink" title="第九册《让生活更快乐的哈佛实用心理学》"></a>第九册《让生活更快乐的哈佛实用心理学》</h1><blockquote>
+<p>金圣荣编写，用怪诞、有趣的问题包装严肃心理学。核心手法：<strong>把抽象概念用趣味性方式讲出来</strong>（哈佛第 24 任校长内森·普西的办学理念）。</p>
+</blockquote>
+<h2 id="各章主题"><a href="#各章主题" class="headerlink" title="各章主题"></a>各章主题</h2><ol>
+<li><strong>怪诞心理学</strong>：砍头后还有思维吗？（濒死体验）</li>
+<li><strong>行为心理学</strong>：女人为什么天生有不安全感？</li>
+<li><strong>情感心理学</strong>：你是一个花心的人吗？</li>
+<li><strong>精神分析心理学</strong>：为什么人人都有嫉妒心理？</li>
+<li><strong>人本主义心理学</strong>：为什么美国人不仇恨投降的军人？</li>
+<li><strong>发展心理学</strong>：”圣诞老人”也会犯罪吗？</li>
+<li><strong>认知心理学</strong>：猴子长出了美国人的嘴巴，它就是美国人吗？</li>
+<li><strong>演化心理学</strong>：占卜师真的能预知未来吗？</li>
+<li><strong>博弈心理学</strong>：一只狮子有肉吃，三只狮子为什么连骨头也没得啃？</li>
+</ol>
+<h2 id="三个有代表性的知识点"><a href="#三个有代表性的知识点" class="headerlink" title="三个有代表性的知识点"></a>三个有代表性的知识点</h2><h3 id="濒死体验（NDE）五阶段"><a href="#濒死体验（NDE）五阶段" class="headerlink" title="濒死体验（NDE）五阶段"></a>濒死体验（NDE）五阶段</h3><p>心理学家肯尼斯·莱恩斯 + 雷蒙德·穆迪的总结：</p>
+<ol>
+<li><strong>安详与放松</strong>（约 60% 的人经历过）——身轻如燕，飘向黑暗却不恐惧；</li>
+<li><strong>意识溢出体外</strong>（约 35%）——“飘到天花板上俯视医生和亲人”；</li>
+<li><strong>进入黑色旋涡</strong>——被引力牵引，仍平静；</li>
+<li><strong>与亲友相聚</strong>——黑洞尽头有强光，一生如快镜头闪过；</li>
+<li><strong>天人合一</strong>（不足 10%）——与强光融合，掌握宇宙奥秘。</li>
+</ol>
+<blockquote>
+<p>争议：反对者认为濒死体验是”个人幻觉”（宗教宣传 + 影视暗示 + 临死时大脑分泌化学物质）。但价值在于——<strong>经历过的人往往更珍惜生活、境界提升</strong>。</p>
+</blockquote>
+<h3 id="心理年龄与心智成熟（加斯科因案例）"><a href="#心理年龄与心智成熟（加斯科因案例）" class="headerlink" title="心理年龄与心智成熟（加斯科因案例）"></a>心理年龄与心智成熟（加斯科因案例）</h3><ul>
+<li>球星加斯科因的荒唐行为不是”恶”，而是<strong>心智不成熟</strong>：潜意识里仍把自己当”闯祸后由家长买单的小孩”，恶作剧是”博取长辈疼爱”。</li>
+<li>心理年龄偏低会给融入社会带来阻力；”60 岁的身体，20 岁的心”（”老小孩”）是需要警惕的状态。</li>
+<li>附有心理年龄测试题（10 题，得分 10 分内 &#x3D; 10 岁孩童心态；11–20 分 &#x3D; 青春期；20 分以上 &#x3D; 成熟稳健）。</li>
+</ul>
+<h3 id="多米诺骨牌效应"><a href="#多米诺骨牌效应" class="headerlink" title="多米诺骨牌效应"></a>多米诺骨牌效应</h3><ul>
+<li>物理实验：13 张骨牌每张是前一张 1.5 倍，推倒第一张（指甲盖大小）能推倒第 13 张，释放能量是第一张的 <strong>20 亿倍</strong>；做到第 32 张时高度超过帝国大厦。</li>
+<li>原理：重力势能 → 动能，逐级叠加，指数增长。</li>
+<li>心理学引申（戈登·奥尔波特）：”<strong>一棵树被砍伐，整个森林会消亡；一个人一日的荒废，可能是其一生荒废的开始</strong>“——牵一发而动全身。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["微小起点&lt;br/&gt;(指甲盖大的骨牌)"] --&gt; B["指数增长&lt;br/&gt;能量逐级叠加"]
+  B --&gt; C["巨大后果&lt;br/&gt;(20亿倍/帝国大厦)"]
+  C --&gt; D["迁移到人生：&lt;br/&gt;一日荒废→一生荒废"]</pre>
+
+<hr>
+<h1 id="第十册《哈佛博弈课》"><a href="#第十册《哈佛博弈课》" class="headerlink" title="第十册《哈佛博弈课》"></a>第十册《哈佛博弈课》</h1><blockquote>
+<p>杜振鹏根据哈佛博弈论课程整理。核心定义（诺贝尔奖得主罗伯特·奥曼）：<strong>“博弈，就是策略性的互动决策。”</strong></p>
+</blockquote>
+<h2 id="博弈的三要素"><a href="#博弈的三要素" class="headerlink" title="博弈的三要素"></a>博弈的三要素</h2><ol>
+<li><strong>参与者</strong>：两个或以上（自己跟自己玩不叫博弈，那是传统最优化问题）；</li>
+<li><strong>策略</strong>：必须”出招”，针对具体问题做选择；</li>
+<li><strong>收益</strong>：参与者都追求利益最大化。</li>
+</ol>
+<h2 id="核心概念与经典模型"><a href="#核心概念与经典模型" class="headerlink" title="核心概念与经典模型"></a>核心概念与经典模型</h2><table>
+<thead>
+<tr>
+<th>模型</th>
+<th>一句话</th>
+<th>生活例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>纳什均衡</strong></td>
+<td>给定他人选择后，没人对自己的策略后悔</td>
+<td>沙滩卖饮料的两个小贩都挤到中点</td>
+</tr>
+<tr>
+<td><strong>囚徒困境</strong></td>
+<td>各自”自私”的理性选择导致集体最差</td>
+<td>公共地悲剧（茶水间茶匙消失）</td>
+</tr>
+<tr>
+<td><strong>蜈蚣博弈</strong></td>
+<td>倒推法（逆向归纳）揭示合作会提前终止</td>
+<td>海盗分金、有限次重复博弈</td>
+</tr>
+<tr>
+<td><strong>枪手博弈</strong></td>
+<td>弱者有时反而能活到最后（最优策略不是”最强”）</td>
+<td>三方竞争中的”装弱”与保存实力</td>
+</tr>
+<tr>
+<td><strong>胆小鬼博弈</strong></td>
+<td>谁先”转向”谁输；优势策略与边缘策略</td>
+<td>冷战、谈判中的恐吓与退让</td>
+</tr>
+<tr>
+<td><strong>鹰鸽博弈</strong></td>
+<td>强硬与温和的动态演进（进化稳定策略）</td>
+<td>合作与对抗的平衡、威胁与承诺</td>
+</tr>
+<tr>
+<td><strong>猎鹿博弈</strong></td>
+<td>双赢能否持续取决于信任</td>
+<td>团队合作 vs 个人单干</td>
+</tr>
+<tr>
+<td><strong>智猪博弈</strong></td>
+<td>搭便车（小猪等大猪按按钮）</td>
+<td>团队里”大股东”多干活、”小股东”搭便车</td>
+</tr>
+</tbody></table>
+<h2 id="重要策略工具"><a href="#重要策略工具" class="headerlink" title="重要策略工具"></a>重要策略工具</h2><ul>
+<li><strong>公共地悲剧</strong>：每个人从公共资源中取一点利，最终人人受损（茶水间茶匙、大气、石油、森林、土地都是同构问题）——根源是”不合作”的策略互动。</li>
+<li><strong>柠檬市场（信息不对称）</strong>：劣质品驱逐良质品（阿克洛夫），关键是<strong>道德风险</strong>与<strong>信息传递</strong>（比言语可靠的信号）。</li>
+<li><strong>帕累托最优</strong>：不损害他人就无法让任何人更好的状态——衡量合作效率的基准。</li>
+<li><strong>麦穗理论</strong>：最优停止问题（”捡麦穗”）——前 1&#x2F;3 只观察不定标准，之后遇到超过标准就选。</li>
+<li><strong>边缘策略</strong>：主动制造风险&#x2F;不确定性来逼对方让步（最具破坏力的谈判技巧，需慎用）。</li>
+<li><strong>激励强于惩罚</strong>：管理中”胡萝卜”通常优于”大棒”。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+  A["博弈 = 策略性互动决策"] --&gt; B["三要素&lt;br/&gt;参与者/策略/收益"]
+  B --&gt; C["经典模型"]
+  C --&gt; C1["囚徒困境 → 合作困境"]
+  C --&gt; C2["智猪博弈 → 搭便车"]
+  C --&gt; C3["柠檬市场 → 信息不对称"]
+  C --&gt; C4["枪手/胆小鬼/鹰鸽"]
+  C1 --&gt; D["破解思路"]
+  C2 --&gt; D
+  C3 --&gt; D
+  C4 --&gt; D
+  D --&gt; E["重复博弈+沟通+信任&lt;br/&gt;+信号+承诺"]</pre>
+
+<h2 id="全书最核心的一句话"><a href="#全书最核心的一句话" class="headerlink" title="全书最核心的一句话"></a>全书最核心的一句话</h2><blockquote>
+<p><strong>“策略的艺术要求我们不以自我为中心，要理解他人的立场、观念以及利益所在，并运用这种理解来指导行动。”</strong> 你能看到多大、多远的博弈，取决于你的胸襟和眼光。</p>
+</blockquote>
+<hr>
+<h1 id="第十一册《另类：斯坦福大学最受欢迎的经济学课》"><a href="#第十一册《另类：斯坦福大学最受欢迎的经济学课》" class="headerlink" title="第十一册《另类：斯坦福大学最受欢迎的经济学课》"></a>第十一册《另类：斯坦福大学最受欢迎的经济学课》</h1><blockquote>
+<p>张择编写，围绕斯坦福经济学的”另类”传统展开——斯坦福是”经济学中的硅谷”，行为经济学与自由市场思想的大本营。</p>
+</blockquote>
+<h2 id="斯坦福六大怪（第一章）"><a href="#斯坦福六大怪（第一章）" class="headerlink" title="斯坦福六大怪（第一章）"></a>斯坦福六大怪（第一章）</h2><ol>
+<li><strong>别名”农场”</strong>：老斯坦福捐赠的 8130 亩土地来自他的赛马农场；因遗嘱规定”土地永远不准买卖”，特曼教授变通为”<strong>以租代售</strong>“，建成世界第一个科技园区——硅谷的雏形。</li>
+<li><strong>“自由之风吹拂”是德国化的结果</strong>：斯坦福校训来自 17 世纪德国自由斗士贝玛士；20 世纪初美国全盘”德化”，斯坦福以洪堡大学为模板建校（学术自由、教授治校、实用技能教育）。</li>
+<li><strong>外来”牛人”说了算</strong>：斯坦福不属于常春藤，文化上”和精英唱反调”，强调实际与应用。</li>
+<li><strong>教授与硅谷企业家都抱怨创新不足</strong>：越是创新高地越焦虑创新的持续性。</li>
+<li><strong>强制学生退学</strong>：高淘汰率（MBA 录取率仅约 7%）是”身价最高商学院”的来源之一。</li>
+<li><strong>对”不务正业”习以为常</strong>：跨界的”不务正业”恰恰孕育创新。</li>
+</ol>
+<h2 id="经济学的”另类”问题（各章精华）"><a href="#经济学的”另类”问题（各章精华）" class="headerlink" title="经济学的”另类”问题（各章精华）"></a>经济学的”另类”问题（各章精华）</h2><table>
+<thead>
+<tr>
+<th>章</th>
+<th>问题</th>
+<th>背后经济学概念</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>哈根达斯是不是奢侈品？1 美元阿司匹林无效、2 美元就能止痛？</td>
+<td><strong>价格与价值认知</strong>（价格本身是信号）</td>
+</tr>
+<tr>
+<td>3</td>
+<td>市场信号会消失吗？二手货市场会消失吗？</td>
+<td><strong>信息不对称、逆向选择、市场信号</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>谁是魔鬼经济学的祖师？穷人捐款比盖茨更可靠？</td>
+<td><strong>行为经济学、动物精神</strong>（凯恩斯）</td>
+</tr>
+<tr>
+<td>5</td>
+<td>电网公司为什么比自来水公司赚钱？</td>
+<td><strong>市场结构、垄断与定价权</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>给胖子征税能减肥吗？哄抬物价该罚吗？</td>
+<td><strong>激励、价格机制、道德与效率的辩论</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td>物价上涨像火箭、下降像羽毛？</td>
+<td><strong>价格粘性、通胀</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>伯南克的论文为什么只得 B？格林斯潘知情不报？</td>
+<td><strong>货币政策、央行困境（阿罗）</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td>房地产泡沫是穷人买房惹的祸吗？</td>
+<td><strong>资产泡沫、经济周期</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td>萨缪尔森的凯恩斯主义赞歌唱错了吗？</td>
+<td><strong>凯恩斯 vs 弗里德曼（货币主义）</strong></td>
+</tr>
+</tbody></table>
+<h2 id="几个高价值知识点"><a href="#几个高价值知识点" class="headerlink" title="几个高价值知识点"></a>几个高价值知识点</h2><ul>
+<li><strong>“动物精神”（animal spirits）</strong>：凯恩斯提出、阿克洛夫与席勒发扬——人的非理性冲动、信心与情绪是经济波动的重要驱动力，纯理性模型解释不了泡沫与恐慌。</li>
+<li><strong>行为经济学</strong>：斯坦福是行为经济学的重镇（特沃斯基等），研究”大脑离线状态”下人们真实的决策，比传统理性人假设更贴近生活。</li>
+<li><strong>弗里德曼与货币主义</strong>：米尔顿·弗里德曼加入斯坦福后，影响大批新古典宏观学者；核心是”<strong>通胀始终是货币现象</strong>“，强调规则而非相机抉择（”逆风而行”）。</li>
+<li><strong>价格是信号</strong>：哈根达斯限售、1 美元药无效 2 美元药有效，都说明<strong>价格不仅是成本，更是质量与稀缺性的信号</strong>。</li>
+<li><strong>老斯坦福的土地 vs 金本位</strong>：老斯坦福曾主张”货币发行应以土地存量而非黄金为基础”——土地比黄金更稀缺、存量几乎不变，且不与生产干扰，理论上比金本位更稳。这个被否的法案，反衬出今天”寸金寸土”的硅谷与金本位的崩溃。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["斯坦福经济学传统"] --&gt; B["农场/硅谷&lt;br/&gt;(土地→科技园)"]
+  A --&gt; C["行为经济学&lt;br/&gt;(动物精神)"]
+  A --&gt; D["市场信号&lt;br/&gt;(价格/信息)"]
+  A --&gt; E["货币与周期&lt;br/&gt;(凯恩斯vs弗里德曼)"]
+  B --&gt; F["另类视角：&lt;br/&gt;用经济学解释一切日常现象"]
+  C --&gt; F
+  D --&gt; F
+  E --&gt; F</pre>
+
+<hr>
+<h1 id="跨书串联：11-册书背后的共同主线"><a href="#跨书串联：11-册书背后的共同主线" class="headerlink" title="跨书串联：11 册书背后的共同主线"></a>跨书串联：11 册书背后的共同主线</h1><p>虽然这 11 本书分属不同学科，但可以抽出三条贯穿始终的主线：</p>
+<pre class="mermaid">flowchart TB
+  subgraph X["主线一：向死而生"]
+    X1["① 精神遗产 / 从终点开始"]
+    X2["② 死亡哲学 / 面对死亡而活"]
+    X3["⑧ 生死功课 / 用死亡把握每一瞬间"]
+  end
+  subgraph Y["主线二：认识自己"]
+    Y1["③ 助人自助 / 自我觉察"]
+    Y2["④⑤ 思维模式 / 意志力科学"]
+    Y3["⑨ 心智成熟 / 心理年龄"]
+  end
+  subgraph Z["主线三：理性决策"]
+    Z1["⑩ 博弈论 / 策略性互动"]
+    Z2["⑪ 经济学 / 信号与激励"]
+    Z3["⑥⑦ 领导力 / 历史分期(系统思维)"]
+  end
+  X --&gt; M["共同答案：&lt;br/&gt;有限的、不确定的人生里，&lt;br/&gt;用理性框架做选择、&lt;br/&gt;用意义感对抗虚无"]
+  Y --&gt; M
+  Z --&gt; M</pre>
+
+<h2 id="可立刻迁移的-10-个工具"><a href="#可立刻迁移的-10-个工具" class="headerlink" title="可立刻迁移的 10 个工具"></a>可立刻迁移的 10 个工具</h2><ol>
+<li><strong>葬礼演讲法</strong>（①）：写下你希望别人在你的葬礼上说的话，倒推今天的选择；</li>
+<li><strong>能量罐检查</strong>（①）：身体&#x2F;情感&#x2F;智力&#x2F;财力四罐，哪个空了补哪个；</li>
+<li><strong>需求 vs 欲求</strong>（①）：做选择前先给选项贴标签；</li>
+<li><strong>转折点扫描</strong>（①）：问自己”这算不算转折点？我该重蹈覆辙还是开辟新航向？”；</li>
+<li><strong>三个自问</strong>（①）：数字怎么来的？有什么含义？你为什么想蒙我？（迈尔斯·梅斯三问）；</li>
+<li><strong>死亡测试</strong>（②⑧）：用”如果这是我生命的最后一年，我会怎么做”校准优先级；</li>
+<li><strong>压力重评</strong>（④）：把”我很焦虑”改成”我准备好了”；</li>
+<li><strong>意志力三问</strong>（⑤）：我要做什么？我不要什么？我真正想要什么？；</li>
+<li><strong>预先承诺</strong>（⑤⑩）：用规则绑住未来的自己（奥德修斯绑桅杆）；</li>
+<li><strong>换位博弈</strong>（⑩）：行动前先问”对方的立场、利益、他们怎么看我”。</li>
+</ol>
+<hr>
+<h1 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h1><blockquote>
+<p>顶级名校的”经典课程”最终指向同一个朴素问题：<strong>在必死、有限、充满不确定的人生里，如何认识自己、做出好选择、活出意义。</strong> 这套书的价值，就是把这个大问题拆成”哲学（死亡）→ 心理（自控、压力、咨询）→ 管理（领导、人生设计）→ 社会（博弈、经济、历史）”四个层面，给出可操作的工具，而不是空泛的鸡汤。</p>
+</blockquote>
+<p><em>笔记完 · 2026 年 10 月 23 日</em></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-23</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230900000001.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%93%88%E4%BD%9B%E5%95%86%E5%AD%A6%E9%99%A2%E7%AE%A1%E7%90%86%E4%B8%8EMBA%E6%A1%88%E4%BE%8B%E5%85%A8%E4%B9%A6%E3%80%8B/'>阅读笔记——《哈佛商学院管理与MBA案例全书》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/23/%E8%AF%BB%E4%B9%A6/261023084604.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%AF%BB%E8%B4%A2%E6%8A%A52%E3%80%8B/">阅读笔记——《手把手教你读财报2：18节课看透银行业》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

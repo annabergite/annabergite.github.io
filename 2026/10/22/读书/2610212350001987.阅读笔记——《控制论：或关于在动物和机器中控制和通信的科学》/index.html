@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：4.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：14分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%8E%A7%E5%88%B6%E8%AE%BA%EF%BC%9A%E6%88%96%E5%85%B3%E4%BA%8E%E5%9C%A8%E5%8A%A8%E7%89%A9%E5%92%8C%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%8E%A7%E5%88%B6%E5%92%8C%E9%80%9A%E4%BF%A1%E7%9A%84%E7%A7%91%E5%AD%A6%E3%80%8B"><span class="post-toc-text">阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E9%AA%A8%E6%9E%B6"><span class="post-toc-text">一、这本书的骨架</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E2%80%9D%E6%8E%A7%E5%88%B6%E8%AE%BA%E2%80%9D%EF%BC%9A%E5%AE%9A%E4%B9%89%E3%80%81%E8%AF%8D%E6%BA%90%E4%B8%8E%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99"><span class="post-toc-text">二、什么是”控制论”：定义、词源与四个原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%8D%E6%BA%90%EF%BC%88%E4%B8%80%E4%B8%AA%E6%BC%82%E4%BA%AE%E7%9A%84%E9%9A%90%E5%96%BB%EF%BC%89"><span class="post-toc-text">词源（一个漂亮的隐喻）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%A7%E5%88%B6%E8%AE%BA%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%8E%9F%E5%88%99%EF%BC%88%E5%AF%BC%E8%AF%BB%E5%BD%92%E7%BA%B3%EF%BC%89"><span class="post-toc-text">控制论的四个原则（导读归纳）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%9A%E9%BB%91%E7%AE%B1%E6%96%B9%E6%B3%95%E4%B8%8E%E8%A1%8C%E4%B8%BA%E4%B8%BB%E4%B9%89"><span class="post-toc-text">三、最核心的方法论：黑箱方法与行为主义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E5%9B%9B%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%EF%BC%9A%E4%BF%A1%E6%81%AF%E3%80%81%E5%8F%8D%E9%A6%88%E3%80%81%E7%A8%B3%E6%80%81%E3%80%81%E7%9B%AE%E7%9A%84%E8%AE%BA"><span class="post-toc-text">四、四个核心概念：信息、反馈、稳态、目的论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BF%A1%E6%81%AF-%E6%B6%88%E6%81%AF-%E5%99%AA%E5%A3%B0"><span class="post-toc-text">1. 信息 &#x2F; 消息 &#x2F; 噪声</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%8F%8D%E9%A6%88%EF%BC%88feedback%EF%BC%89"><span class="post-toc-text">2. 反馈（feedback）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%A8%B3%E6%80%81%EF%BC%88homeostasis%EF%BC%89"><span class="post-toc-text">3. 稳态（homeostasis）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E7%9B%AE%E7%9A%84%E8%AE%BA%EF%BC%88teleology%EF%BC%89"><span class="post-toc-text">4. 目的论（teleology）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E5%93%B2%E5%AD%A6%E5%9C%B0%E5%9F%BA%EF%BC%9A%E7%89%9B%E9%A1%BF%E6%97%B6%E9%97%B4-vs-%E6%9F%8F%E6%A0%BC%E6%A3%AE%E6%97%B6%E9%97%B4"><span class="post-toc-text">五、哲学地基：牛顿时间 vs 柏格森时间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%BB%9F%E8%AE%A1%E5%8A%9B%E5%AD%A6%E4%B8%8E%E4%BF%A1%E6%81%AF%EF%BC%9A%E7%86%B5%E3%80%81%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E3%80%81%E6%BB%A4%E6%B3%A2%E4%B8%8E%E9%A2%84%E6%B5%8B"><span class="post-toc-text">六、统计力学与信息：熵、时间序列、滤波与预测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%86%B5%E4%B8%8E%E7%94%9F%E5%91%BD"><span class="post-toc-text">熵与生命</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E3%80%81%E6%BB%A4%E6%B3%A2%E4%B8%8E%E9%A2%84%E6%B5%8B"><span class="post-toc-text">时间序列、滤波与预测</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E6%81%AF%E9%87%8F-%E8%B4%9F%E7%86%B5"><span class="post-toc-text">信息量 &#x3D; 负熵</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E3%80%81%E7%A5%9E%E7%BB%8F%E7%B3%BB%E7%BB%9F%E4%B8%8E%E7%B2%BE%E7%A5%9E%E7%97%85%E7%90%86%E5%AD%A6%EF%BC%88%E7%AC%AC%E5%9B%9B-%E4%B8%83%E7%AB%A0%EF%BC%89"><span class="post-toc-text">七、计算机、神经系统与精神病理学（第四~七章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E4%BF%A1%E6%81%AF%E3%80%81%E8%AF%AD%E8%A8%80%E4%B8%8E%E7%A4%BE%E4%BC%9A%EF%BC%88%E7%AC%AC%E5%85%AB%E7%AB%A0%EF%BC%89%E2%80%94%E2%80%94%E7%BB%B4%E7%BA%B3%E7%9A%84%E6%82%B2%E8%A7%82%E9%A2%84%E8%A8%80"><span class="post-toc-text">八、信息、语言与社会（第八章）——维纳的悲观预言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E7%AC%AC%E4%BA%8C%E7%89%88%E6%96%B0%E5%A2%9E%EF%BC%9A%E5%AD%A6%E4%B9%A0%E3%80%81%E8%87%AA%E5%A2%9E%E6%AE%96%E4%B8%8E%E8%87%AA%E7%BB%84%E7%BB%87%EF%BC%88%E7%AC%AC%E4%B9%9D-%E5%8D%81%E7%AB%A0%EF%BC%89"><span class="post-toc-text">九、第二版新增：学习、自增殖与自组织（第九~十章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E7%BB%B4%E7%BA%B3%E8%BF%99%E4%B8%AA%E4%BA%BA%EF%BC%9A%E7%A5%9E%E7%AB%A5%E3%80%81%E6%95%B0%E5%AD%A6%E4%B8%8E%E8%B7%A8%E5%AD%A6%E7%A7%91"><span class="post-toc-text">十、维纳这个人：神童、数学与跨学科</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E5%8E%86%E5%8F%B2%E5%BD%B1%E5%93%8D%EF%BC%9A%E4%BB%8E%E2%80%9D%E4%BC%AA%E7%A7%91%E5%AD%A6%E2%80%9D%E5%88%B0%E2%80%9D%E4%BF%A1%E6%81%AF%E6%97%B6%E4%BB%A3%E4%B9%8B%E7%88%B6%E2%80%9D"><span class="post-toc-text">十一、历史影响：从”伪科学”到”信息时代之父”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">十二、我的几点感悟</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》"><a href="#阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》" class="headerlink" title="阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》"></a>阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》</h1><p>2026 年 10 月</p>
+<p>作者：艾迪</p>
+<p>诺伯特·维纳（Norbert Wiener，1894—1964）的《控制论》（<em>Cybernetics: or Control and Communication in the Animal and the Machine</em>，1948 年初版，1961 年第二版）是”信息时代”的奠基作之一。这本书在动物（生物体）和机器（自动机器）之间找到了一个共同的抽象框架——<strong>控制和通信</strong>，从而把自动控制、通信工程、神经生理学、计算机、统计力学这些原本互不相干的领域统一成一门新学科。中译本是”科学元典丛书”版（北京大学出版社，2007），译者”郝季仁”其实是四位译者的集体笔名（”好几仁”——罗劲柏、侯德彭、龚育之、陈步），1961 年由科学出版社首出，1962 年补译第二版新增的两章。</p>
+<p>一句话概括：<strong>控制论研究的是”系统如何通过信息反馈来控制和通信”——不管这个系统是一台机器、一个动物、一个人还是一个社会。</strong></p>
+<h2 id="一、这本书的骨架"><a href="#一、这本书的骨架" class="headerlink" title="一、这本书的骨架"></a>一、这本书的骨架</h2><p>全书正文共十章（第一版八章，第二版增补两章），外加一篇极重要的长篇”导言”：</p>
+<table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主题</th>
+<th>核心内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>导言</td>
+<td>控制论的产生</td>
+<td>跨学科研究班、信息&#x2F;反馈&#x2F;控制的统一</td>
+</tr>
+<tr>
+<td>第一章</td>
+<td>牛顿时间和柏格森时间</td>
+<td>可逆时间 vs 不可逆时间（生命、进化）</td>
+</tr>
+<tr>
+<td>第二章</td>
+<td>群和统计力学</td>
+<td>吉布斯统计力学、熵</td>
+</tr>
+<tr>
+<td>第三章</td>
+<td>时间序列、信息和通信</td>
+<td>时间序列、滤波、预测、信息量</td>
+</tr>
+<tr>
+<td>第四章</td>
+<td>反馈和振荡</td>
+<td>负反馈&#x2F;正反馈、神经系统</td>
+</tr>
+<tr>
+<td>第五章</td>
+<td>计算机和神经系统</td>
+<td>数字计算机、人机类比</td>
+</tr>
+<tr>
+<td>第六章</td>
+<td>完形和一般概念</td>
+<td>群扫描、感官替代、模式识别</td>
+</tr>
+<tr>
+<td>第七章</td>
+<td>控制论和精神病理学</td>
+<td>用控制论解释精神疾病</td>
+</tr>
+<tr>
+<td>第八章</td>
+<td>信息、语言和社会</td>
+<td>通信与社会稳定、自动化后果</td>
+</tr>
+<tr>
+<td>第九章</td>
+<td>学习和自增殖机（二版新增）</td>
+<td>图灵、自复制机</td>
+</tr>
+<tr>
+<td>第十章</td>
+<td>脑电波和自组织系统（二版新增）</td>
+<td>阿尔法节律、自组织</td>
+</tr>
+</tbody></table>
+<h2 id="二、什么是”控制论”：定义、词源与四个原则"><a href="#二、什么是”控制论”：定义、词源与四个原则" class="headerlink" title="二、什么是”控制论”：定义、词源与四个原则"></a>二、什么是”控制论”：定义、词源与四个原则</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>维纳给”控制论”下的定义就是副标题——<strong>“动物和机器中控制和通信的科学”</strong>。它的革命性在于：<strong>把机器与有机体放进同一个概念框架里研究</strong>，不去问”它由什么材料构成”（那是结构&#x2F;功能主义的问题），而去问”它如何通过信息来控制和通信”。</p>
+<h3 id="词源（一个漂亮的隐喻）"><a href="#词源（一个漂亮的隐喻）" class="headerlink" title="词源（一个漂亮的隐喻）"></a>词源（一个漂亮的隐喻）</h3><ul>
+<li>“cybernetics”来自希腊文 <strong>κυβερνήτης（kubernētēs，舵手&#x2F;steersman）</strong>，英文的 governor（统治者、调速器）与之同源。</li>
+<li>柏拉图在《高尔吉亚》中已用这个词指<strong>航行技术</strong>和<strong>修辞技术</strong>——两者的共同点都是”控制”，关键机制都是”信息反馈”（航行要看海浪对船的冲击，辩论要看听众的反应）。</li>
+<li>1784 年瓦特为蒸汽机的**离心调节器（governor）**申请专利；1868 年麦克斯韦发表关于调速器的论文，<strong>第一次明确提出反馈机制</strong>。维纳选用这个词，正是为了纪念麦克斯韦。</li>
+</ul>
+<h3 id="控制论的四个原则（导读归纳）"><a href="#控制论的四个原则（导读归纳）" class="headerlink" title="控制论的四个原则（导读归纳）"></a>控制论的四个原则（导读归纳）</h3><pre class="mermaid">flowchart TD
+    P1["普遍性原则&lt;br/&gt;任何自治系统都有相似的控制模式"]
+    P2["智能性原则&lt;br/&gt;生命群体乃至无生命世界都有信息与通信问题"]
+    P3["非决定性原则&lt;br/&gt;不完全的秩序产生目的性与自由"]
+    P4["黑箱方法&lt;br/&gt;不管内部结构，通过输入输出研究系统"]</pre>
+
+<h2 id="三、最核心的方法论：黑箱方法与行为主义"><a href="#三、最核心的方法论：黑箱方法与行为主义" class="headerlink" title="三、最核心的方法论：黑箱方法与行为主义"></a>三、最核心的方法论：黑箱方法与行为主义</h2><p>这是维纳在方法论上最重要的变革（他 1943 年与罗森布鲁斯、别格罗合写《行为、目的和目的论》，可看作控制论的纲领）。</p>
+<ul>
+<li><strong>功能主义方法</strong>：研究对象的内部结构、内在组织（它是”什么做的”）。</li>
+<li><strong>行为主义&#x2F;黑箱方法</strong>：只研究<strong>输入—输出关系</strong>，不关心内部如何实现（它”做了什么”）。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    IN["输入&lt;br/&gt;(环境对对象的作用)"] --&gt; BOX["黑箱&lt;br/&gt;(系统·不管内部结构)"]
+    BOX --&gt; OUT["输出&lt;br/&gt;(对象对环境的作用)"]</pre>
+
+<p>“行为”就是对象相对于环境做出的任何变化。维纳用这套方法得出一个惊人结论：<strong>从行为主义分析的角度看，机器与有机体之间找不到质的区别</strong>（虽然从结构上看它们大相径庭）。这意味着：原则上可以存在会学习、会自繁殖的机器。</p>
+<h2 id="四、四个核心概念：信息、反馈、稳态、目的论"><a href="#四、四个核心概念：信息、反馈、稳态、目的论" class="headerlink" title="四、四个核心概念：信息、反馈、稳态、目的论"></a>四、四个核心概念：信息、反馈、稳态、目的论</h2><h3 id="1-信息-消息-噪声"><a href="#1-信息-消息-噪声" class="headerlink" title="1. 信息 &#x2F; 消息 &#x2F; 噪声"></a>1. 信息 &#x2F; 消息 &#x2F; 噪声</h3><p>维纳打了一个影响深远的比喻：<strong>“有机体是消息”</strong>。</p>
+<blockquote>
+<p>生命体与混乱、瓦解、死亡相对立，正如消息同噪声相对立。</p>
+</blockquote>
+<p>人不断新陈代谢，构成躯体的物质一直在换，<strong>不变的只是”模式”（pattern）</strong>——这才是生命的本质。模式就是消息，消息可以编码、传递。维纳在 1948 年说出这句话时 DNA 双螺旋（1953）还没发现；后来遗传学证明：<strong>亲代传给子代的正是编码在基因（4 个核苷酸字母）上的信息</strong>。这是他最了不起的预见之一。</p>
+<h3 id="2-反馈（feedback）"><a href="#2-反馈（feedback）" class="headerlink" title="2. 反馈（feedback）"></a>2. 反馈（feedback）</h3><p>反馈是控制论的灵魂——<strong>把系统的输出（或输出的一部分）送回输入端，作为下一步调节的依据</strong>。</p>
+<pre class="mermaid">flowchart LR
+    G["目标/期望"] --&gt; C["控制器"]
+    C --&gt; E["执行机构"]
+    E --&gt; S["被控对象"]
+    S --&gt; O["输出"]
+    O --&gt; M["测量/传感器"]
+    M --&gt;|"反馈信息"| C</pre>
+
+<table>
+<thead>
+<tr>
+<th>反馈类型</th>
+<th>作用</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>负反馈</strong></td>
+<td>抵消偏差、维持稳定</td>
+<td>瓦特离心调节器、恒温器、人的体温&#x2F;血糖调节</td>
+</tr>
+<tr>
+<td><strong>正反馈</strong></td>
+<td>放大偏差、导致振荡或失控</td>
+<td>神经兴奋、麦克风啸叫、恐慌的蔓延、军备竞赛</td>
+</tr>
+</tbody></table>
+<p>维纳特别指出：<strong>负反馈是小脑维持肌肉协调（本体感觉）的机制</strong>。小脑受损时会出现”目的性震颤”——越接近目标手抖得越厉害，这正是负反馈失效的表现。</p>
+<h3 id="3-稳态（homeostasis）"><a href="#3-稳态（homeostasis）" class="headerlink" title="3. 稳态（homeostasis）"></a>3. 稳态（homeostasis）</h3><p>有机体不断抵抗”熵增加、混乱增加、差别消失”的总潮流，维持自身的组织水平，这个过程就是稳态。<strong>生命 &#x3D; 局部对抗熵增</strong>。</p>
+<h3 id="4-目的论（teleology）"><a href="#4-目的论（teleology）" class="headerlink" title="4. 目的论（teleology）"></a>4. 目的论（teleology）</h3><p>维纳大胆地把”目的”重新引入科学语言（这在当时的机械论科学界近乎异端）：<strong>带有负反馈的系统，其行为表现出”目的性”</strong>——它朝向一个目标自动纠偏。这为”机器有目的吗”提供了新的回答方式。</p>
+<h2 id="五、哲学地基：牛顿时间-vs-柏格森时间"><a href="#五、哲学地基：牛顿时间-vs-柏格森时间" class="headerlink" title="五、哲学地基：牛顿时间 vs 柏格森时间"></a>五、哲学地基：牛顿时间 vs 柏格森时间</h2><p>第一章是全书的哲学出发点。维纳区分了两种时间观：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>牛顿时间</th>
+<th>柏格森时间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>性质</td>
+<td>可逆</td>
+<td>不可逆</td>
+</tr>
+<tr>
+<td>适用</td>
+<td>经典力学（天体运动）</td>
+<td>生命、进化、统计过程</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>决定论</td>
+<td>进化、历史、熵</td>
+</tr>
+</tbody></table>
+<p>牛顿力学是可逆的（把时间倒过来方程照样成立），但它无法处理<strong>有方向的、进化的、历史的过程</strong>。维纳借用柏格森（Henri Bergson）的思想指出：<strong>天文学是牛顿时间的世界，而生物学和通信工程是柏格森时间的世界</strong>。控制论属于后者——它研究的是有过去、有统计、有不可逆性的系统。</p>
+<p>由此引出一个关键判断：<strong>机械决定论（拉普拉斯决定论）不足以描述控制论的对象</strong>，必须引入统计观点。维纳回顾了从牛顿到达尔文（进化论）到吉布斯（统计力学）的线索，指出”统计的、进化的观点正在渗透到科学的各个部门”。</p>
+<h2 id="六、统计力学与信息：熵、时间序列、滤波与预测"><a href="#六、统计力学与信息：熵、时间序列、滤波与预测" class="headerlink" title="六、统计力学与信息：熵、时间序列、滤波与预测"></a>六、统计力学与信息：熵、时间序列、滤波与预测</h2><h3 id="熵与生命"><a href="#熵与生命" class="headerlink" title="熵与生命"></a>熵与生命</h3><p>吉布斯统计力学用”熵”度量系统的无组织程度：孤立系统自发趋于熵最大（热平衡）。但<strong>控制系统不是孤立系统</strong>——它通过反馈机制可以<strong>减少无组织程度</strong>，即发生<strong>熵减</strong>。所以：</p>
+<pre class="mermaid">flowchart LR
+    A["孤立系统&lt;br/&gt;熵增 · 趋于热平衡"] --&gt;|"生命/控制系统"| B["开放系统&lt;br/&gt;靠信息与反馈实现局部熵减"]
+    B --&gt; C["稳态&lt;br/&gt;维持组织模式"]</pre>
+
+<h3 id="时间序列、滤波与预测"><a href="#时间序列、滤波与预测" class="headerlink" title="时间序列、滤波与预测"></a>时间序列、滤波与预测</h3><p>维纳把控制系统接收和加工的信息流看作一个<strong>时间序列</strong>（统计系综中的一元）。运用各态历经定理，他证明：<strong>在一定条件下，时间平均 &#x3D; 相平均</strong>，于是<strong>可以由过去从统计上推知未来</strong>——这就是预测。</p>
+<ul>
+<li><strong>滤波</strong> &#x3D; 从被噪声干扰的信号中尽可能恢复原信号，本质也是预测问题（预测被噪声搞混的时间序列）。</li>
+<li><strong>最优预测</strong> &#x3D; 使估算误差最小化的预测公式。</li>
+<li>这套理论直接服务于<strong>防空火炮</strong>（预测飞机下一时刻的位置），也是现代信号处理、通信、时间序列分析的源头之一（维纳滤波、维纳-霍普夫方程）。</li>
+</ul>
+<h3 id="信息量-负熵"><a href="#信息量-负熵" class="headerlink" title="信息量 &#x3D; 负熵"></a>信息量 &#x3D; 负熵</h3><p>维纳和香农（Claude Shannon）在同一年（1948）独立地提出：<strong>信息量可以用”负熵”来度量</strong>——信息是对不确定性的消除。信息、熵、通信由此在数学上统一起来。这是整个信息时代的地基。</p>
+<h2 id="七、计算机、神经系统与精神病理学（第四-七章）"><a href="#七、计算机、神经系统与精神病理学（第四-七章）" class="headerlink" title="七、计算机、神经系统与精神病理学（第四~七章）"></a>七、计算机、神经系统与精神病理学（第四~七章）</h2><p>维纳把控制论框架逐一”套”到生理和心理现象上：</p>
+<ul>
+<li><strong>计算机与神经系统</strong>：数字计算机的开关电路与神经元的”全或无”放电有结构上的相似；两者都靠二进制逻辑、记忆、反馈来实现功能。维纳与冯·诺依曼一起推动了这个类比（他也是电子计算机的先驱之一）。</li>
+<li><strong>完形与一般概念（Gestalt）</strong>：大脑如何识别”一般概念”（如”三角形”无论大小颜色都能认出）？维纳用<strong>群扫描</strong>和<strong>多级反馈</strong>来解释模式识别，并提出了<strong>感官替代</strong>的设想——用一种感官（如听觉）去弥补另一种感官（如视觉）的缺陷（如今已实现：盲人通过听觉&#x2F;触觉”看”图像）。</li>
+<li><strong>精神病理学</strong>：维纳用控制论设想了精神疾病的一种可能机制——<strong>信息加工回路的故障</strong>（如记忆存储、联想、反馈过度导致的焦虑）。他明确说这些是”启发性的”假设，但为后来用信息加工观点研究心理&#x2F;精神疾病开了先河。</li>
+</ul>
+<h2 id="八、信息、语言与社会（第八章）——维纳的悲观预言"><a href="#八、信息、语言与社会（第八章）——维纳的悲观预言" class="headerlink" title="八、信息、语言与社会（第八章）——维纳的悲观预言"></a>八、信息、语言与社会（第八章）——维纳的悲观预言</h2><p>维纳在最后一章把控制论延伸到社会，得出几个著名结论：</p>
+<ol>
+<li><strong>通信工具越发达，社会越不稳定</strong>：信息流通越快，小的扰动越容易被放大，社会系统的稳定性反而下降。</li>
+<li><strong>“小小乡村社会”优于”大的社会”</strong>：他认为大社会的复杂性超出了人理解和控制的能力。</li>
+<li><strong>对自动化的社会后果深感忧虑</strong>：自动化会带来大规模失业，控制技术会被用于战争。他主张”建立一个以人的价值为基础而不是以买卖为基础的社会”。</li>
+</ol>
+<p>这些结论的<strong>方法</strong>（把控制论直接套到社会根本问题上）被译者序明确批评为”不能成立”——社会科学有更根本的规律（阶级、制度），不能只看通信技术一个变量。但维纳对<strong>自动化、失业、技术作恶</strong>的担忧，今天看依然是真问题。他对人类前景的悲观，与后来他写的姊妹篇《人有人的用处》（1950）一脉相承。</p>
+<h2 id="九、第二版新增：学习、自增殖与自组织（第九-十章）"><a href="#九、第二版新增：学习、自增殖与自组织（第九-十章）" class="headerlink" title="九、第二版新增：学习、自增殖与自组织（第九~十章）"></a>九、第二版新增：学习、自增殖与自组织（第九~十章）</h2><ul>
+<li><strong>学习与自增殖机</strong>：维纳讨论了图灵的工作和”会学习的机器”，提出<strong>自复制机</strong>的可能（冯·诺依曼后来发展了”自复制自动机”理论）。他乐观地判断：学习现象是”有机体达到一定复杂性临界度时才出现”的涌现性质——这预示了后来的复杂性科学。</li>
+<li><strong>脑电波与自组织系统</strong>：用脑电（阿尔法节律）研究大脑的自组织、节律与同步——这是”自组织系统”概念的早期源头（维纳 1960 年代明确提出”自组织系统、非线性系统与’生命是什么’是一回事”）。</li>
+</ul>
+<h2 id="十、维纳这个人：神童、数学与跨学科"><a href="#十、维纳这个人：神童、数学与跨学科" class="headerlink" title="十、维纳这个人：神童、数学与跨学科"></a>十、维纳这个人：神童、数学与跨学科</h2><p>维纳的生平本身就是”控制论为何诞生”的注脚：</p>
+<ul>
+<li><strong>昔日神童</strong>：3 岁半能读书，8 岁高度近视（读书过多），不满 15 岁塔夫茨学院数学系毕业，18 岁哈佛哲学博士。</li>
+<li><strong>师承</strong>：父亲利奥·维纳（哈佛斯拉夫语言教授，懂 20 多国语言）亲自教数学；在剑桥师从<strong>罗素</strong>（罗素让他去读爱因斯坦 1905 年论文——布朗运动那篇直接启发了他后来的数学工作）和<strong>哈代</strong>（勒贝格积分）；在哥廷根师从<strong>希尔伯特</strong>、朗道。</li>
+<li><strong>跨学科研究班（梅西会议）</strong>：控制论不是维纳一个人关起门想出来的，而是 1940 年代一批横跨神经生理学、数学、工程、心理学的学者反复讨论的产物。维纳晚年回忆”控制论的苗头”早在 6 岁读文章时就种下了（”设计仿生自动机的欲望”）。</li>
+<li><strong>控制论的四个来源</strong>：自动控制（瓦特调节器）、通信理论（滤波）、神经生理学、电子计算机——只有维纳这样百科全书式的人能把它们统一起来。</li>
+</ul>
+<h2 id="十一、历史影响：从”伪科学”到”信息时代之父”"><a href="#十一、历史影响：从”伪科学”到”信息时代之父”" class="headerlink" title="十一、历史影响：从”伪科学”到”信息时代之父”"></a>十一、历史影响：从”伪科学”到”信息时代之父”</h2><ul>
+<li>控制论诞生后迅速渗透，衍生出<strong>生物控制论、经济控制论、社会控制论、人工智能、机器人学、一般系统论、认知科学</strong>等一大片学科。</li>
+<li><strong>苏联的戏剧性转向</strong>：1948 年后控制论先被批为”反动的伪科学”（《简明哲学辞典》称其是”现代奴隶主的科学”），1955 年后又因军事和科技需要被”平反”，1959 年苏联科学院成立控制论学术委员会，1961 年提出”控制论为共产主义服务”并写入苏共党纲，1974 年出两大卷《控制论百科全书》。</li>
+<li><strong>控制理论</strong>是控制论的技术化分支，1960 年代卡尔曼（Kalman）建立现代控制理论（状态空间、能控性、卡尔曼滤波）。</li>
+<li>康威和西格尔曼的传记称维纳为**”信息时代之父”**（<em>Dark Hero of the Information Age</em>）。</li>
+</ul>
+<h2 id="十二、我的几点感悟"><a href="#十二、我的几点感悟" class="headerlink" title="十二、我的几点感悟"></a>十二、我的几点感悟</h2><ol>
+<li><p><strong>“反馈”是理解一切自适应系统的一把万能钥匙。</strong> 无论写代码（负反馈&#x3D;自动纠偏的闭环，正反馈&#x3D;越滚越大的 bug&#x2F;雪崩）、带团队（反馈缺失&#x3D;系统失明）、还是个人成长（复盘&#x3D;给”人生系统”加反馈环），核心都是：<strong>没有反馈就没有控制</strong>。</p>
+</li>
+<li><p><strong>黑箱方法是一种高级的工程思维。</strong> 维纳说”从行为上看，机器和有机体没有质的区别”——这提醒我们：<strong>接口比实现重要，行为契约比内部结构重要</strong>。做系统设计时，先定义”输入-输出行为”，再谈内部实现，正是黑箱方法的现代版。</p>
+</li>
+<li><p><strong>“有机体是消息”是 1948 年的天启。</strong> 生命的本质不是构成它的物质（物质一直在换），而是它携带和维持的<strong>模式&#x2F;信息</strong>。这个思想比 DNA 双螺旋早了 5 年，比”信息即负熵”的完整表述早几十年，到今天依然是我们理解”生命、智能、意识”的最深刻视角之一。</p>
+</li>
+<li><p><strong>维纳的悲观值得认真对待。</strong> 他早在 1950 年代就警告：自动化会导致失业、信息过载会破坏社会稳定、技术会被用于作恶。这些不是杞人忧天，而是第一代信息科学家的清醒。读《控制论》第八章，会发现”AI 取代工作””信息茧房”这些当代焦虑，维纳全都提前想过了。</p>
+</li>
+<li><p><strong>跨学科是革命性思想的温床。</strong> 控制论不是”深入研究某个领域”的结果，而是把多个领域<strong>并排放在一起看共性</strong>的结果。维纳和梅西会议的同仁们证明了：<strong>真正的突破往往发生在学科的边界处</strong>——这也解释了为什么”T 型人才”（一专多能）在今天依然稀缺而珍贵。</p>
+</li>
+</ol>
+<p>一句话总结：<strong>控制论告诉我们——世界上的系统，无论动物还是机器，本质上都是”用信息来控制和通信”的系统；而反馈，就是让这些系统拥有目的、维持稳定、抵抗混乱的那根看不见的舵。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001866.%E3%80%8A%E5%9F%8E%E5%B8%82%E7%8C%8E%E4%BA%BA%E7%9A%84%E7%9F%A5%E4%B9%8E%E6%83%B3%E6%B3%95%E5%90%88%E9%9B%86%C2%B7%E7%AC%AC1%E5%8D%B7%E3%80%8B/'>阅读笔记——《城市猎人的知乎想法合集·第1卷》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610212350001673.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%86%B2%E7%AA%81%EF%BC%9A%E5%8D%87%E7%BA%A7%E3%80%81%E5%83%B5%E5%B1%80%E5%8F%8A%E8%A7%A3%E5%86%B3%E3%80%8B/">阅读笔记——《社会冲突：升级、僵局及解决》（第3版）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

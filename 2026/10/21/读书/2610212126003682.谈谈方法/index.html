@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="谈谈方法（Discourse on Method）读书笔记" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    谈谈方法（Discourse on Method）读书笔记
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：4.8k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：15分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B0%88%E8%B0%88%E6%96%B9%E6%B3%95%EF%BC%88Discourse-on-Method%EF%BC%89%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">谈谈方法（Discourse on Method）读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E7%BB%93%E6%9E%84%EF%BC%88%E5%85%88%E5%BB%BA%E7%AB%8B%E5%9C%B0%E5%9B%BE%EF%BC%89"><span class="post-toc-text">一、这本书的结构（先建立地图）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E8%89%AF%E7%9F%A5%E4%BA%BA%E4%BA%BA%E5%9D%87%E7%AD%89%EF%BC%8C%E9%97%AE%E9%A2%98%E5%9C%A8%E4%BA%8E%E2%80%9D%E7%94%A8%E6%B3%95%E2%80%9D"><span class="post-toc-text">二、第一部分：良知人人均等，问题在于”用法”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E5%9B%9B%E6%9D%A1%E6%96%B9%E6%B3%95%E5%87%86%E5%88%99-%E8%A7%A3%E6%9E%90%E5%87%A0%E4%BD%95%E7%9A%84%E8%AF%9E%E7%94%9F"><span class="post-toc-text">三、第二部分：四条方法准则 + 解析几何的诞生</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E4%B8%89%E6%9D%A1%E4%B8%B4%E6%97%B6%E8%A1%8C%E4%B8%BA%E8%A7%84%E8%8C%83"><span class="post-toc-text">四、第三部分：三条临时行为规范</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E6%88%91%E6%80%9D%E6%95%85%E6%88%91%E5%9C%A8%E4%B8%8E%E7%9C%9F%E7%90%86%E6%A0%87%E5%87%86"><span class="post-toc-text">五、第四部分：我思故我在与真理标准</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC%E4%BA%94%E9%83%A8%E5%88%86%EF%BC%9A%E6%9C%BA%E6%A2%B0%E8%AE%BA%E4%B8%96%E7%95%8C%E8%A7%82%E4%B8%8E%E2%80%9D%E4%BA%BA%E6%9C%BA%E4%B9%8B%E5%88%AB%E2%80%9D"><span class="post-toc-text">六、第五部分：机械论世界观与”人机之别”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E7%AC%AC%E5%85%AD%E9%83%A8%E5%88%86%EF%BC%9A%E7%A7%91%E5%AD%A6%E4%B8%BA%E4%BA%86%E4%BB%80%E4%B9%88%E2%80%94%E2%80%94%E5%AE%9E%E8%B7%B5%E5%93%B2%E5%AD%A6%E3%80%81%E5%8C%BB%E5%AD%A6%E4%B8%8E%E5%8D%8F%E4%BD%9C"><span class="post-toc-text">七、第六部分：科学为了什么——实践哲学、医学与协作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E9%99%84%E5%BD%95%E4%B8%80%EF%BC%9A%E8%AE%A4%E8%AF%86%E7%9A%84%E5%9B%9B%E9%87%8D%E5%B1%82%E6%AC%A1%E4%B8%8E%E2%80%9D%E5%93%B2%E5%AD%A6%E4%B9%8B%E6%A0%91%E2%80%9D%EF%BC%88%E6%9C%80%E5%80%BC%E5%BE%97%E9%87%8D%E8%AF%BB%EF%BC%89"><span class="post-toc-text">八、附录一：认识的四重层次与”哲学之树”（最值得重读）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E9%99%84%E5%BD%95%E4%BA%8C%E3%80%81%E4%B8%89%E3%80%81%E5%9B%9B%EF%BC%9A%E5%8F%AF%E7%95%A5%E8%AF%BB%E7%9A%84%E9%83%A8%E5%88%86"><span class="post-toc-text">九、附录二、三、四：可略读的部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">十、我的几点感悟</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="谈谈方法（Discourse-on-Method）读书笔记"><a href="#谈谈方法（Discourse-on-Method）读书笔记" class="headerlink" title="谈谈方法（Discourse on Method）读书笔记"></a>谈谈方法（Discourse on Method）读书笔记</h1><p>2026年10月21日</p>
+<p>作者：艾迪</p>
+<p>笛卡尔的《谈谈方法》（<em>Discours de la méthode</em>，1637 年）是现代哲学的奠基作之一。这本书很薄，却奠定了整个近代理性主义的方向。王太庆的这版译本（商务印书馆”汉译世界学术名著丛书”）是目前中文世界最通行的译本之一。笛卡尔在开篇就说明白了自己的姿态：<strong>我不是来教大家方法的，只是讲讲我自己是怎么运用理性的。</strong> 这种谦逊而坦率的口吻，本身就是方法的一部分。</p>
+<h2 id="一、这本书的结构（先建立地图）"><a href="#一、这本书的结构（先建立地图）" class="headerlink" title="一、这本书的结构（先建立地图）"></a>一、这本书的结构（先建立地图）</h2><p>笛卡尔自己在”说明”里把全书分成六个部分，这是理解全书的钥匙：</p>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>主题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一部分</td>
+<td>对各门学问的看法（为什么传统学问不可靠）</td>
+</tr>
+<tr>
+<td>第二部分</td>
+<td>方法的主要规则（四条准则 + 解析几何的诞生）</td>
+</tr>
+<tr>
+<td>第三部分</td>
+<td>从方法引出的行为守则（三四条临时规范）</td>
+</tr>
+<tr>
+<td>第四部分</td>
+<td>形而上学的根基（我思故我在、神存在、灵魂与形体）</td>
+</tr>
+<tr>
+<td>第五部分</td>
+<td>物理学问题（血液循环、动物机器、人与禽兽之别）</td>
+</tr>
+<tr>
+<td>第六部分</td>
+<td>为什么要研究自然、为什么要写书（科学为了人生）</td>
+</tr>
+</tbody></table>
+<p><strong>关于这个版本的一点说明</strong>：商务印书馆这个版本在正文之后附了四个”附录”，但严格说它们并不是《谈谈方法》本身的内容——附录一是笛卡尔为《哲学原理》法译本写的代序，附录二、三、四都出自《第一哲学沉思集》。其中<strong>附录一价值极高</strong>（下文第八节详谈），附录三、四则是比较技术性的经院神学证明，可略读。另外这个电子书文件末尾还夹着一页”文档说明”（制作者自称”X”，记录他把 epub 转成 docx、补录希腊文等），这不是原著内容，可以无视。</p>
+<h2 id="二、第一部分：良知人人均等，问题在于”用法”"><a href="#二、第一部分：良知人人均等，问题在于”用法”" class="headerlink" title="二、第一部分：良知人人均等，问题在于”用法”"></a>二、第一部分：良知人人均等，问题在于”用法”</h2><p>这一部分最著名的判断是：</p>
+<blockquote>
+<p>良知，是人间分配得最均匀的东西。</p>
+</blockquote>
+<p>笛卡尔说的”良知”（le bon sens）不是伦理学上分辨善恶，而是<strong>分辨真假的能力，也就是理性</strong>。他认为理性在每个人身上是均等的，人们的意见之所以分歧，<strong>不是因为有人理性多、有人理性少，而是因为运用思想的途径不同</strong>。所以关键命题是：<strong>单有聪明才智是不够的，主要在于正确地运用才智。</strong>（行动缓慢的人始终走正道，能超过离正道飞奔的人。）</p>
+<p>由此引出他对传统教育的批判：他读完了欧洲最好的学校（拉·弗来施公学）的全部课程，却发现”哲学经过千百年最杰出的能人钻研，却没有一点不在争论中”，因此没有一样学问是真正可靠的。他尤其看重数学（”推理确切明了”），惋惜人们没在数学这块牢固的地基上盖起高楼。</p>
+<p>于是他做了一个决定：<strong>抛开书本，去读”世界这本大书”</strong>——游历、参军、与各色人等交往、在具体处境里考验自己。他给出了一个非常精辟的观察：</p>
+<blockquote>
+<p>普通人的推理所包含的真理要比读书人的推理多得多：普通人对切身的事情推理，判断错了，结果马上就会来惩罚他；读书人关在书房里对思辨推理，思辨不产生任何实效……思辨离常识越远，虚荣心越大。</p>
+</blockquote>
+<p>这是”实践检验真理”的朴素直觉，笛卡尔用它为自己后面的方法铺路。</p>
+<h2 id="三、第二部分：四条方法准则-解析几何的诞生"><a href="#三、第二部分：四条方法准则-解析几何的诞生" class="headerlink" title="三、第二部分：四条方法准则 + 解析几何的诞生"></a>三、第二部分：四条方法准则 + 解析几何的诞生</h2><p>第二部分讲他躲在一间暖房里（1619 年冬，参加三十年战争期间）独自沉思的收获。先是一个关于”整体设计”的洞见：<strong>一手建成的作品，比七拼八凑的作品更完美</strong>——建筑师设计的城镇胜过自然生长的古城，单一立法者的法律胜过逐渐演变的风俗。但他立刻划清界限：<strong>只改造自己的思想，绝不改造国家和社会体制</strong>（大体制推倒了极难扶起，旧路走惯了反而平坦）。</p>
+<p>然后是全书的招牌——<strong>四条方法准则</strong>：</p>
+<ol>
+<li><strong>凡是没有明确认识到的东西，绝不把它当成真的接受。</strong> 小心轻率的判断和先入之见，只接受清楚分明、无法怀疑的东西。</li>
+<li><strong>把每一个难题按需要分成若干部分，以便一一解决。</strong> ——这就是”分析”。</li>
+<li><strong>按次序思考，从最简单、最容易认识的对象开始，逐步上升到复杂对象。</strong> ——这就是”综合”，由简入繁。</li>
+<li><strong>在任何情况下都尽量全面地考察、普遍地复查，确信毫无遗漏。</strong> ——这就是”枚举”。</li>
+</ol>
+<p>做工程的人看到这四条一定会心一笑：这不就是<strong>拒绝含糊 + 分解问题 + 由简入繁 + 覆盖边界</strong>吗？笛卡尔自己也说，数学家正是靠”一长串十分简易的推理”完成最难证明的。他相信：只要不把假的当成真的，并严守由彼推此的次序，就没有什么遥远到无法达到、隐蔽到无法发现的真理。</p>
+<p>这一部分还藏着解析几何的诞生过程：他发现几何（研究图形）和代数（研究数）本来是两门孤立的学问，各有短处，于是想找一种方法”包含这两门学问的长处而没有它们的短处”——<strong>把关系假定为线（图形），用尽可能短的数字（代数）来标记</strong>，于是图形和数被打通了。他说”我轻而易举地弄清了这两门学问所包括的一切问题”，并且”每一个真理都是一条规则，可以用来进一步发现其他真理”——这正是解析几何 + 方法论的相互印证。</p>
+<h2 id="四、第三部分：三条临时行为规范"><a href="#四、第三部分：三条临时行为规范" class="headerlink" title="四、第三部分：三条临时行为规范"></a>四、第三部分：三条临时行为规范</h2><p>笛卡尔很清醒：在把旧观念拆掉重建之前，得先有个临时住处。所以他在”思想上怀疑一切”的同时，给自己定了三条<strong>行为上的临时准则</strong>：</p>
+<ol>
+<li><strong>服从法律习俗，遵从最明智的人，选择最合乎中道的意见。</strong> 而且——<strong>要看他们的实际行动，不能光听他们说的话</strong>，因为”有不少人并不知道自己的真心是什么”。</li>
+<li><strong>行动上尽可能坚定果断</strong>，一旦选定方向就毫不动摇，像森林里迷路的人坚持朝一个方向走，总比困在原地强。</li>
+<li><strong>只求克服自己，不求克服命运；只求改变自己的愿望，不求改变世界的秩序。</strong> 因为除了我们自己的思想，没有一样东西能完全由我们做主。</li>
+</ol>
+<p>第三条尤其动人，接近斯多葛哲学：把身外之物看成不由自己做主的东西，就不会因失去它们而痛苦。<strong>“尽人事之后，凡是没有办到的，就是绝对办不到的。”</strong> 他还补充了自己选择的”行业”：把一生用来培养理性、增进对真理的认识——这是他给三条规范找到的最终目的。</p>
+<p>最后他强调：自己不是”为怀疑而怀疑”的怀疑论者，而是**”把沙子和浮土挖掉，为的是找出磐石和硬土”**。</p>
+<h2 id="五、第四部分：我思故我在与真理标准"><a href="#五、第四部分：我思故我在与真理标准" class="headerlink" title="五、第四部分：我思故我在与真理标准"></a>五、第四部分：我思故我在与真理标准</h2><p>这是全书的哲学核心。笛卡尔把怀疑推到极致：感官会骗人，推理会出错，梦里的景象也逼真得和醒时一样——那就<strong>把但凡有一点可疑的东西都当作假的抛掉</strong>。但就在这个怀疑过程中，他发现了一件无法怀疑的事：</p>
+<blockquote>
+<p><strong>我想，所以我是。</strong></p>
+</blockquote>
+<p>那个正在怀疑、正在思想的”我”，必然存在。因为要怀疑，就必须先有一个”我”在怀疑。这条真理”怀疑派的任何一条最狂妄的假定都不能使它发生动摇”，于是成了他整个哲学的第一条原理。</p>
+<p>（一个翻译上的细节：王太庆不译”我思故我在”，而译”我想，所以我是”，是为了保留”是”这个动词的实质意义——它不是系词，而是”起作用&#x2F;存在”的意思。这也是理解笛卡尔形而上学的关键，译者为此写了一条很长的注。）</p>
+<p>由此他推出两点：</p>
+<ul>
+<li><strong>“我”是一个思想的本体（灵魂&#x2F;心灵），它的全部本质只是思想</strong>，与形体完全不同，甚至比形体更容易认识，即使形体不存在，它仍然是不折不扣的它。</li>
+<li><strong>真理标准</strong>：”凡是我十分清楚、极其分明地理解的，都是真的。”（清楚分明 &#x3D; 真）</li>
+</ul>
+<p>接着是证明神存在：我心里有一个”比我自己更完满的是者”（神）的观念，而比较完满的东西不能产生于比较不完满的我，所以这个观念只能来自一个实际上更完满的本体——即神。此外还有本体论证明：<strong>存在包含在”最完满的是者”这个概念里</strong>，就像”三角形三内角等于两直角”包含在三角形概念里。最后神又反过来充当”清楚分明的观念必然为真”的保证（因为神不骗人）。</p>
+<p>这一部分对现代读者来说是最”硬”、也最容易感到过时的地方——神的存在论证属于经院哲学传统。但它的价值不在神学结论，而在<strong>把”清楚分明”确立为认知的判据</strong>，并把”我思”确立为不可怀疑的起点。</p>
+<h2 id="六、第五部分：机械论世界观与”人机之别”"><a href="#六、第五部分：机械论世界观与”人机之别”" class="headerlink" title="六、第五部分：机械论世界观与”人机之别”"></a>六、第五部分：机械论世界观与”人机之别”</h2><p>第五部分是笛卡尔的物理学和生理学，核心世界观是<strong>机械论</strong>：物质只有”广延”（长宽高）这一种属性，一切变化都可以还原为位置移动。”给我物质和运动，我就能给你构造出世界来。”</p>
+<p>他详细讲了<strong>血液循环</strong>（哈维的发现）：心脏像水泵，血管像管道，血液循环流动，生命就在于这种机械运动。今天看这些生理学细节有不少是错的（比如他以为心脏的高温使血液膨胀推动循环，不知道氧化作用），但作为”用机械原理解释生命”的早期尝试，方向是开创性的。</p>
+<p>真正到今天仍有价值的是**”人机之别”的两条标准**：</p>
+<ol>
+<li><strong>语言</strong>：机器和动物都不能用语言表达思想。鹦鹉、八哥能吐字，却不能”说话”（不能把字排成新的样式来回答别人的意思）；而最笨的人、连白痴都能做到这一点。</li>
+<li><strong>理性的普适性</strong>：机器只能做特定的事（一种结构只做一种动作），而<strong>理性是”万能的工具”，可以用于一切场合</strong>。</li>
+</ol>
+<p>这两条标准在今天的 AI 讨论里仍然反复被引用——它其实是在说：真正的人类智能不是”某件事做得好”，而是<strong>能灵活应对无限情境 + 能表达思想</strong>。</p>
+<p>他还由此区分了人与禽兽：禽兽不是理性不如人，而是<strong>根本没有理性</strong>（它们的灵巧只是器官结构的作用，像时钟报时一样）。人的灵魂不依赖身体，因此不会随身体死亡——这是他对”灵魂不死”的论证思路。</p>
+<h2 id="七、第六部分：科学为了什么——实践哲学、医学与协作"><a href="#七、第六部分：科学为了什么——实践哲学、医学与协作" class="headerlink" title="七、第六部分：科学为了什么——实践哲学、医学与协作"></a>七、第六部分：科学为了什么——实践哲学、医学与协作</h2><p>第六部分是笛卡尔”为什么要做科学、为什么要写书”的自白，其中几个点很有价值：</p>
+<ol>
+<li><strong>科学的目的不是空谈，而是让人做”自然的主人”</strong>。他提出一种”实践哲学”：认清火、水、空气、星辰、物体的力量和作用，就能”因势利导，充分利用这些力量，成为支配自然界的主人翁”。</li>
+<li><strong>最重要的应用是医学和健康</strong>。”健康是人生最重要的一种幸福，也是其他一切幸福的基础。”他甚至设想，充分认识疾病原因和药物之后，可以”免除无数身体疾病和精神疾病，甚至可以免除衰老、延年益寿”——这是 400 年前的生命延长愿景。</li>
+<li><strong>科学需要协作</strong>。实验无穷无尽，”我只有两只手”，所以他主张把发现毫无保留地告诉大家，让后人”接过前人的火炬前进”，把多数人的生命和成绩汇合在一起——这是现代开放科学和科研分工的雏形。</li>
+<li><strong>用通俗的法语而不是学究的拉丁文写作</strong>，因为要让”单凭干干净净的天然理性来判断的人”来评判，而不是只信古书的人。</li>
+<li>一个关于真理获取方式的洞见：<strong>“要想透彻理解、全面精通一样东西，跟别人学还不如自己发明。”</strong> 听人转述的思想会被窜改得面目全非，亲手一步步发现的东西才真正属于自己。</li>
+</ol>
+<h2 id="八、附录一：认识的四重层次与”哲学之树”（最值得重读）"><a href="#八、附录一：认识的四重层次与”哲学之树”（最值得重读）" class="headerlink" title="八、附录一：认识的四重层次与”哲学之树”（最值得重读）"></a>八、附录一：认识的四重层次与”哲学之树”（最值得重读）</h2><p>这是全书中信息密度最高的一篇（笛卡尔为《哲学原理》写的代序），其中两个模型尤其值得记下来。</p>
+<p><strong>模型一：人取得知识的四种办法（智慧的四等）</strong></p>
+<ol>
+<li><strong>本身就很清楚的见解</strong>，不用深思就能得到（自明的观念，如”同一个东西不能同时既是又不是”）；</li>
+<li><strong>各种感官经验</strong>使我们知道的一切；</li>
+<li><strong>别人的谈话</strong>教给我们的；</li>
+<li><strong>读书</strong>——专指读那些能给我们教益的人写的书（因为读书就是与作者的谈话）。</li>
+</ol>
+<p>笛卡尔说，人们通常拥有的智慧只是用这四种办法取得的（他不把”天启”列入，因为天启不是一步一步引导，而是突然把人提高到确信）。然后他指向前人一直在追求的<strong>第五等</strong>：<strong>寻找根本原因和真正的本原，从其中推演出人能知道的一切</strong>——这就是哲学家的事业。换句话说，前四等都是”平凡的、不完备的知识”，笛卡尔的整个方法就是要超越它们、达到第五等。</p>
+<blockquote>
+<p>值得对照：这个四层次经常被人转述时走样（比如把”读书”漏掉，或把”感官经验”和”别人的谈话”混为一谈）。笛卡尔的分类其实很清晰：<strong>自明（先天的）→ 亲历（感官）→ 听说（谈话）→ 读书（间接经验）</strong>，四者层层往外，再加上一个”哲学（找本原）”作为最高追求。</p>
+</blockquote>
+<p><strong>模型二：哲学是一棵树</strong></p>
+<blockquote>
+<p>整个哲学好像一棵大树：树根是形而上学，树干是物理学，从树干上发出的枝条是其他一切学问，主要分为三门——医学、机械学和道德学（道德学是最高的、最完全的学问）。</p>
+</blockquote>
+<p>这个比喻把笛卡尔的知识体系一眼说清：<strong>形而上学（最根本的原理）→ 物理学（自然规律）→ 具体应用学科</strong>，而树根树干不是给人直接摘果子的（果实长在枝梢），所以要靠各门具体学问来”用”哲学。</p>
+<p><strong>模型三：研究真本原的四个果实</strong></p>
+<ol>
+<li>发现许多以前不知道的真理，得到持久、牢靠的满足；</li>
+<li>养成正确判断的习惯，因而更智慧（与学经院哲学的效果正好相反）；</li>
+<li>本原清楚确切，<strong>肃清一切争执的缘由</strong>，使人心安定温和（经院争辩则使人吹毛求疵、顽固不化）；</li>
+<li>能据此自己发现更多未说明的真理，逐步上升到最高智慧。</li>
+</ol>
+<h2 id="九、附录二、三、四：可略读的部分"><a href="#九、附录二、三、四：可略读的部分" class="headerlink" title="九、附录二、三、四：可略读的部分"></a>九、附录二、三、四：可略读的部分</h2><ul>
+<li><strong>附录二</strong>（《沉思集》序）：回答对”灵魂本质只是思想””神观念证明神存在”的两点反驳，篇幅短、价值一般。</li>
+<li><strong>附录三</strong>（六篇沉思综述）：用一两页概括《第一哲学沉思集》六篇的论证链条（怀疑→心灵→神→真假→形体本性→心物之别），可作了解笛卡尔后期哲学的导览。</li>
+<li><strong>附录四</strong>（按几何学方式证明神存在）：定义—要求—公理—命题的经院式证明，是全书最技术、最枯燥的部分，普通读者不必细读，知道笛卡尔试图把神学证明”几何化”即可。</li>
+</ul>
+<h2 id="十、我的几点感悟"><a href="#十、我的几点感悟" class="headerlink" title="十、我的几点感悟"></a>十、我的几点感悟</h2><ol>
+<li><p><strong>怀疑不是目的，找到可靠的地基才是。</strong> 笛卡尔明确说不是”为怀疑而怀疑”，而是要”把沙子和浮土挖掉，找出磐石和硬土”。质疑是为了更牢固地相信。</p>
+</li>
+<li><p><strong>四条准则本质上就是一套工程方法。</strong> 明确性（拒绝含糊）、分解（分析）、排序（由简入繁）、复查（不漏边界），这几乎就是写好代码、做对架构、排好 bug 的通用心法。理性主义的遗产，到今天依然是工程师的底层操作系统。</p>
+</li>
+<li><p><strong>“认识四层次”是一个很好的个人知识管理框架。</strong> 自明&#x2F;亲历&#x2F;听说&#x2F;读书 + 找本原，可以用来审视自己每个观念到底来自哪一层、可靠程度如何——读书（间接经验）最容易误当成”知道了”，其实离”亲历”和”自明”还差得远。</p>
+</li>
+<li><p><strong>“改变自己的愿望”不是消极。</strong> 很多人误读第三条行为规范为”认命”。其实它是说：把精力花在自己能控制的事情上（自己的思想、判断、行动），对不能控制的（外部结果、他人评价）保持释然。这对现代人的焦虑感是一剂解药。</p>
+</li>
+<li><p><strong>第五、六部分看似过时，其实藏着现代性的种子。</strong> 血液循环的机械解释今天看是错的，但”动物是机器””人机之别在语言与理性普适性””科学为健康服务””科学需要协作”这些命题，依然是今天 AI、医学、开放科学争论的原点。笛卡尔的”错”也是开创性的错。</p>
+</li>
+<li><p><strong>一本 400 年前的小书，仍然在教我们如何思考。</strong> “想清楚”是有方法的，而不是靠天赋和灵感——这正是《谈谈方法》留给我们最持久的东西。</p>
+</li>
+</ol>
+<p>一句话总结：<strong>怀疑一切，直到找到那个无法怀疑的”我思”；然后用四条准则，把复杂的世界一点点变成可以理解的秩序——再交给实践哲学，去改善人生。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212128006147.%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%AF%BB%E8%B4%A2%E6%8A%A5/'>手把手教你读财报（雪球系列套装）读书笔记</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212124003385.%E8%B4%A2%E5%AF%8C%E8%87%AA%E7%94%B1%E9%9D%A9%E5%91%BD%E4%B9%8B%E8%B7%AF/">财富自由革命之路 读书笔记</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

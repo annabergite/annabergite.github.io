@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《社会冲突：升级、僵局及解决》（第3版）" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《社会冲突：升级、僵局及解决》（第3版）
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5.8k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：20分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%86%B2%E7%AA%81%EF%BC%9A%E5%8D%87%E7%BA%A7%E3%80%81%E5%83%B5%E5%B1%80%E5%8F%8A%E8%A7%A3%E5%86%B3%E3%80%8B%EF%BC%88%E7%AC%AC3%E7%89%88%EF%BC%89"><span class="post-toc-text">阅读笔记——《社会冲突：升级、僵局及解决》（第3版）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E4%B9%A6%E9%AA%A8%E6%9E%B6%EF%BC%9A%E4%B8%89%E7%BC%96-11-%E7%AB%A0%EF%BC%8C%E4%B8%80%E6%9D%A1%E5%AE%8C%E6%95%B4%E7%9A%84%E6%97%B6%E9%97%B4%E7%BA%BF"><span class="post-toc-text">一、全书骨架：三编 11 章，一条完整的时间线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC-1-%E7%AB%A0%EF%BC%9A%E5%86%B2%E7%AA%81%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%9B%9B%E5%A4%A7%E7%AD%96%E7%95%A5"><span class="post-toc-text">二、第 1 章：冲突的定义与四大策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B2%E7%AA%81-%E6%84%9F%E7%9F%A5%E5%88%B0%E7%9A%84%E5%88%A9%E7%9B%8A%E5%88%86%E6%AD%A7"><span class="post-toc-text">冲突 &#x3D; 感知到的利益分歧</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E5%A4%A7%E5%9F%BA%E6%9C%AC%E7%AD%96%E7%95%A5"><span class="post-toc-text">四大基本策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E5%8F%8C%E9%87%8D%E5%85%B3%E6%B3%A8%E6%A8%A1%E5%9E%8B%E2%80%94%E2%80%94%E5%85%A8%E4%B9%A6%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E7%90%86%E8%AE%BA%E5%B7%A5%E5%85%B7"><span class="post-toc-text">三、第 3 章：双重关注模型——全书最重要的理论工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC-2-%E7%AB%A0%EF%BC%9A%E5%86%B2%E7%AA%81%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="post-toc-text">四、第 2 章：冲突从哪里来</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%BF%80%E5%8F%91%E5%86%B2%E7%AA%81%E7%9A%84%E5%9B%9B%E7%B1%BB%E6%9D%A1%E4%BB%B6"><span class="post-toc-text">激发冲突的四类条件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E4%BA%89%E6%96%97%E4%B9%8B%E6%9C%AF%E2%80%94%E2%80%94%E4%B9%9D%E7%A7%8D%E6%88%98%E6%9C%AF"><span class="post-toc-text">五、第 4 章：争斗之术——九种战术</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC-5-6-%E7%AB%A0%EF%BC%9A%E5%86%B2%E7%AA%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%8D%87%E7%BA%A7"><span class="post-toc-text">六、第 5-6 章：冲突为什么会升级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E5%8D%87%E7%BA%A7%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">三种升级模型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E5%8D%87%E7%BA%A7%E4%B8%BA%E4%BB%80%E4%B9%88%E5%81%9C%E4%B8%8D%E4%B8%8B%E6%9D%A5"><span class="post-toc-text">七、第 8 章：升级为什么停不下来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E7%AC%AC-9-%E7%AB%A0%EF%BC%9A%E5%83%B5%E5%B1%80%E8%AE%A4%E7%9F%A5%E4%B8%8E%E5%8E%BB%E5%8D%87%E7%BA%A7%E5%8C%96"><span class="post-toc-text">八、第 9 章：僵局认知与去升级化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B2%E7%AA%81%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%81%9C"><span class="post-toc-text">冲突为什么会停</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%83%B5%E5%B1%80%E8%AE%A4%E7%9F%A5%EF%BC%88perceived-stalemate%EF%BC%89"><span class="post-toc-text">僵局认知（perceived stalemate）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E5%8E%BB%E5%8D%87%E7%BA%A7%E5%8C%96%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text">三种去升级化的方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E4%B8%8E%E6%95%B4%E5%90%88%E5%BC%8F%E6%96%B9%E6%A1%88"><span class="post-toc-text">九、第 10 章：问题解决与整合式方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E7%BB%93%E6%9E%9C"><span class="post-toc-text">三种结果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A6%A5%E5%8D%8F-vs-%E6%95%B4%E5%90%88%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="post-toc-text">妥协 vs 整合式解决方案</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%94%E7%A7%8D%E6%95%B4%E5%90%88%E5%BC%8F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%88%E5%8F%AF%E5%BD%93%E4%BD%9C%E8%B0%88%E5%88%A4%E2%80%9D%E6%A0%B8%E6%9F%A5%E6%B8%85%E5%8D%95%E2%80%9D%EF%BC%89"><span class="post-toc-text">五种整合式解决方案（可当作谈判”核查清单”）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A9%E7%9B%8A%E6%A0%91%EF%BC%9A%E5%BE%80%E6%B7%B1%E5%B1%82%E6%8C%96"><span class="post-toc-text">利益树：往深层挖</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%9A%E6%9F%94%E5%B9%B6%E6%B5%8E%EF%BC%88firm-flexibility%EF%BC%89"><span class="post-toc-text">刚柔并济（firm flexibility）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9A%90%E8%94%BD%E7%9A%84%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="post-toc-text">隐蔽的问题解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E7%AC%AC-10-%E7%AB%A0%E5%90%8E%E5%8D%8A%EF%BC%9A%E5%92%8C%E8%A7%A3%E2%80%94%E2%80%94%E5%8D%8F%E5%AE%9A%E4%B9%8B%E5%A4%96"><span class="post-toc-text">十、第 10 章后半：和解——协定之外</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E7%AC%AC%E4%B8%89%E6%96%B9%E5%B9%B2%E9%A2%84"><span class="post-toc-text">十一、第 11 章：第三方干预</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B0%83%E8%A7%A3%E8%80%85%E7%9A%84%E5%87%A0%E4%BB%B6%E5%85%B3%E9%94%AE%E5%B7%A5%E4%BD%9C"><span class="post-toc-text">调解者的几件关键工作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">十二、我的几点感悟</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《社会冲突：升级、僵局及解决》（第3版）"><a href="#阅读笔记——《社会冲突：升级、僵局及解决》（第3版）" class="headerlink" title="阅读笔记——《社会冲突：升级、僵局及解决》（第3版）"></a>阅读笔记——《社会冲突：升级、僵局及解决》（第3版）</h1><p>2026 年 10 月</p>
+<p>作者：艾迪</p>
+<p>狄恩·普鲁特（Dean G. Pruitt）和金盛熙（Sung Hee Kim）合著的《社会冲突》是社会心理学领域关于冲突研究最系统的一本教科书（第 2 版曾获国际冲突管理协会最佳图书奖）。它不给你”沟通三技巧””如何说服别人”这类快餐套路，而是给你一套<strong>覆盖冲突全生命周期的理论框架</strong>：冲突怎么产生 → 为什么升级 → 为什么卡在僵局 → 怎么解决。书中大量使用冷战、巴以冲突、水牛城大学学生运动、罗德尼·金事件、家庭争吵等真实案例，把抽象理论讲得极其具体。</p>
+<p>一句话概括：<strong>冲突 &#x3D; 感知到的利益分歧；而应对冲突只有四种基本策略——争斗、让步、问题解决、回避；全书讲的就是这四种策略如何被选择、如何走向升级、又如何走向僵局与解决。</strong></p>
+<h2 id="一、全书骨架：三编-11-章，一条完整的时间线"><a href="#一、全书骨架：三编-11-章，一条完整的时间线" class="headerlink" title="一、全书骨架：三编 11 章，一条完整的时间线"></a>一、全书骨架：三编 11 章，一条完整的时间线</h2><p>这本书的结构本身就是一个”冲突生命周期”模型：</p>
+<pre class="mermaid">flowchart LR
+    A["第一编&lt;br/&gt;冲突与策略选择&lt;br/&gt;(第1-4章)"] --&gt; B["第二编&lt;br/&gt;冲突升级&lt;br/&gt;(第5-8章)"]
+    B --&gt; C["第三编&lt;br/&gt;僵局和解决&lt;br/&gt;(第9-11章)"]
+    A -.-&gt;|"感知到的利益分歧"| A
+    B -.-&gt;|"结构变化自我强化"| B
+    C -.-&gt;|"真相·宽恕·正义·和平"| C</pre>
+
+<table>
+<thead>
+<tr>
+<th>编</th>
+<th>主题</th>
+<th>核心问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一编</td>
+<td>冲突与策略选择</td>
+<td>冲突是什么？人们为什么选争斗&#x2F;让步&#x2F;问题解决&#x2F;回避？</td>
+</tr>
+<tr>
+<td>第二编</td>
+<td>冲突升级</td>
+<td>冲突为什么越打越大、越打越久？</td>
+</tr>
+<tr>
+<td>第三编</td>
+<td>僵局和解决</td>
+<td>冲突为什么停？怎么转向谈判、问题解决与和解？</td>
+</tr>
+</tbody></table>
+<h2 id="二、第-1-章：冲突的定义与四大策略"><a href="#二、第-1-章：冲突的定义与四大策略" class="headerlink" title="二、第 1 章：冲突的定义与四大策略"></a>二、第 1 章：冲突的定义与四大策略</h2><h3 id="冲突-感知到的利益分歧"><a href="#冲突-感知到的利益分歧" class="headerlink" title="冲突 &#x3D; 感知到的利益分歧"></a>冲突 &#x3D; 感知到的利益分歧</h3><p>作者给了一个严格定义：<strong>冲突是”感知到的利益分歧”（perceived divergence of interest）</strong>——即当事人相信，一方得偿所愿，另一方就会受损。注意关键词是”感知到的”：<strong>很多冲突并不是客观上零和，而是人们”以为”它零和</strong>。这为后面”问题解决可以做大蛋糕”埋下伏笔。</p>
+<h3 id="四大基本策略"><a href="#四大基本策略" class="headerlink" title="四大基本策略"></a>四大基本策略</h3><p>任何冲突中的行动，都可以归为四种策略（策略是取径，战术是具体打法）：</p>
+<table>
+<thead>
+<tr>
+<th>策略</th>
+<th>含义</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>争斗（contending）</td>
+<td>把己方偏爱的方案强加给对方</td>
+<td>积极，试图压服对方</td>
+</tr>
+<tr>
+<td>让步（yielding）</td>
+<td>降低自己的期望，接受低于期望的结果</td>
+<td>积极，接受部分失败</td>
+</tr>
+<tr>
+<td>问题解决（problem solving）</td>
+<td>寻找能满足双方愿望的方案</td>
+<td>积极，兼顾双方</td>
+</tr>
+<tr>
+<td>回避（avoiding）</td>
+<td>不作为（inaction）或撤退（withdrawal）</td>
+<td>消极，不解决冲突</td>
+</tr>
+</tbody></table>
+<p>几个要点：</p>
+<ul>
+<li>争斗和让步<strong>互为镜像</strong>：一个要赢，一个接受输。</li>
+<li>大部分冲突是<strong>多种策略组合或轮流使用</strong>，很少只用一种。</li>
+<li>策略 vs 战术：争斗可以用”辩论说服””威胁””暴力”等不同战术来实现。</li>
+</ul>
+<h2 id="三、第-3-章：双重关注模型——全书最重要的理论工具"><a href="#三、第-3-章：双重关注模型——全书最重要的理论工具" class="headerlink" title="三、第 3 章：双重关注模型——全书最重要的理论工具"></a>三、第 3 章：双重关注模型——全书最重要的理论工具</h2><p><strong>双重关注模型（dual concern model）</strong> 用两个维度解释策略选择：<strong>自我关注</strong>（多在乎自己的利益）× <strong>他方关注</strong>（多在乎对方的利益）。两个维度组合出四种（或五种）策略：</p>
+<pre class="mermaid">flowchart TD
+    subgraph Q["双重关注模型"]
+        direction TB
+        PS["问题解决&lt;br/&gt;高自我关注 + 高他方关注"]
+        CT["争斗&lt;br/&gt;高自我关注 + 低他方关注"]
+        YD["让步&lt;br/&gt;低自我关注 + 高他方关注"]
+        AV["回避&lt;br/&gt;低自我关注 + 低他方关注"]
+        CP["妥协&lt;br/&gt;(第五种·消极的问题解决)"]
+    end</pre>
+
+<table>
+<thead>
+<tr>
+<th>自我关注</th>
+<th>他方关注</th>
+<th>策略</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高</td>
+<td>高</td>
+<td><strong>问题解决</strong>（想双赢）</td>
+</tr>
+<tr>
+<td>高</td>
+<td>低</td>
+<td><strong>争斗</strong>（只想自己赢）</td>
+</tr>
+<tr>
+<td>低</td>
+<td>高</td>
+<td><strong>让步</strong>（成全对方）</td>
+</tr>
+<tr>
+<td>低</td>
+<td>低</td>
+<td><strong>回避</strong>（懒得管）</td>
+</tr>
+<tr>
+<td>中</td>
+<td>中</td>
+<td>妥协（各退一步）</td>
+</tr>
+</tbody></table>
+<p>作者特别强调：<strong>自我关注和他方关注是两个独立维度，不是一条”自私↔合作”的单一轴线</strong>。人完全可以”既想自己赢、又在乎对方”（高+高 → 问题解决）。这是对早期”竞争—合作”单一维度理论的重要修正。</p>
+<p>两个延伸概念：</p>
+<ul>
+<li><strong>他方关注有两种</strong>：真诚关注（真心为对方好）和工具性关注（为了自己的利益而示好）。</li>
+<li><strong>感知到的共同之处（PCG，Perceived Common Ground）</strong>：一方对”能找到双方都满意的方案”的评价。PCG 越大，问题解决越显得可行。降低期望、看到整合方案、信任对方、有第三方在场，都会增大 PCG。</li>
+</ul>
+<p><strong>一个可直接用于职场的结论</strong>：一项模拟谈判研究（Ben-Yoav &amp; Pruitt）发现，<strong>当谈判者既对己方公司高度负责（高自我关注）、又期待未来与对手继续合作（高他方关注）时，最可能采用问题解决策略并拿到最高收益</strong>。所以组织谈判的正确姿势是：给代表高度责任感（要求汇报结果，而非严密监控过程）+ 鼓励他与对手保持长期关系。</p>
+<h2 id="四、第-2-章：冲突从哪里来"><a href="#四、第-2-章：冲突从哪里来" class="headerlink" title="四、第 2 章：冲突从哪里来"></a>四、第 2 章：冲突从哪里来</h2><h3 id="激发冲突的四类条件"><a href="#激发冲突的四类条件" class="headerlink" title="激发冲突的四类条件"></a>激发冲突的四类条件</h3><table>
+<thead>
+<tr>
+<th>类别</th>
+<th>关键机制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>情境</td>
+<td>稀缺性、成果迅速扩大后的期望落差</td>
+</tr>
+<tr>
+<td>冲突双方</td>
+<td>零和思维（”总量固定”假设）</td>
+</tr>
+<tr>
+<td>双方关系</td>
+<td>权力模糊、不公平比较、身份地位悬殊、猜疑</td>
+</tr>
+<tr>
+<td>所在社区</td>
+<td>安全困境、缺乏规范共识</td>
+</tr>
+</tbody></table>
+<p>几个最有解释力的概念：</p>
+<ol>
+<li><p><strong>相对剥夺（relative deprivation）</strong>：不是”绝对穷”引发冲突，而是”我应得的没得到”引发冲突。作者反复引用一个反直觉结论——<strong>最可能造反的不是最底层的人，而是”体验过变好、又突然变差”的人</strong>（戴维斯 J 曲线理论）。20 世纪 60 年代美国黑人民权运动反而在状况改善后更激化，就是例子。</p>
+</li>
+<li><p><strong>零和思维（fixed-pie assumption）</strong>：很多冲突不是真零和，而是<strong>双方”以为”零和</strong>。这是错误信念，却是冲突的罪魁祸首。</p>
+</li>
+<li><p><strong>安全困境（security dilemma）</strong>：当没有有力的第三方保护时（国际无政府状态、蛮荒西部、贫民窟、监狱），各方为自保而武装，武装又加剧对方的不安，形成猜疑螺旋。它是”囚徒困境”的一个版本——个体理性导致集体非理性。</p>
+</li>
+<li><p><strong>社会认同理论（social identity theory）</strong>：仅仅”意识到外群体的存在”就足以产生内群体偏爱和外群体歧视。罗伯斯山洞实验（谢里夫，1954）里，两组男孩在进入竞争情境之前、仅仅听说对方存在时就开始敌对——这无法用”现实冲突理论”（争夺稀缺资源）解释，只能用社会认同解释。”最简群体效应”（随便按画作偏好分组就能产生偏袒）进一步证实了它。</p>
+</li>
+<li><p><strong>同胞剥夺（fraternalistic deprivation）</strong>：群体层面的相对剥夺（”我们群体被亏待”）比个体层面的自我剥夺更能引发群际冲突和政治暴力。洛杉矶暴乱就是黑人群体在罗德尼·金案裁决后感到”整个群体被不公正对待”的结果。</p>
+</li>
+</ol>
+<h2 id="五、第-4-章：争斗之术——九种战术"><a href="#五、第-4-章：争斗之术——九种战术" class="headerlink" title="五、第 4 章：争斗之术——九种战术"></a>五、第 4 章：争斗之术——九种战术</h2><p>当一方选择”争斗”策略，可以用以下战术（从软到硬大致排列）：</p>
+<ol>
+<li><strong>逢迎讨好</strong>——先让人喜欢你，再提要求</li>
+<li><strong>承诺</strong>——许以好处换取让步</li>
+<li><strong>辩论说服</strong>——用论据压服</li>
+<li><strong>羞辱</strong>——攻击对方形象（注意：羞辱之后要做”重新整合的羞辱”，重新确认社会纽带，否则副作用很大）</li>
+<li><strong>针锋相对</strong>——对方合作就奖励，不合作就惩罚（应用最广，但易引发冲突螺旋）</li>
+<li><strong>威胁</strong>——让对方知道不服从会受惩罚（成功关键是把威胁变成”警告”，不留退路）</li>
+<li><strong>强制性任务</strong>——用静坐、绝食等施加压力</li>
+<li><strong>暴力</strong>——极端手段</li>
+<li><strong>非暴力反抗</strong>——弱者对付强者的工具，两大优势：唤起第三方同情、给目标群体成员制造负罪感</li>
+</ol>
+<h2 id="六、第-5-6-章：冲突为什么会升级"><a href="#六、第-5-6-章：冲突为什么会升级" class="headerlink" title="六、第 5-6 章：冲突为什么会升级"></a>六、第 5-6 章：冲突为什么会升级</h2><h3 id="三种升级模型"><a href="#三种升级模型" class="headerlink" title="三种升级模型"></a>三种升级模型</h3><p>作者用三个模型解释升级，各有适用场景：</p>
+<pre class="mermaid">flowchart TD
+    M1["争斗者-防御者模型&lt;br/&gt;一方主动、逐步加码，直到对方屈服"]
+    M2["冲突螺旋模型&lt;br/&gt;行为-报复的恶性循环"]
+    M3["结构变化模型&lt;br/&gt;升级引发的心理/群体/社区变化反过来推动升级"]</pre>
+
+<ol>
+<li><p><strong>争斗者-防御者模型（contender-defender）</strong>：一方为改变现状，从温和战术开始，不奏效就逐步升级。单向因果。<strong>这是大众最常用的解释，但往往是片面的</strong>——它满足了人们”找个罪魁祸首”的冲动（冷战双方都觉得自己是防御者）。</p>
+</li>
+<li><p><strong>冲突螺旋模型（conflict spiral）</strong>：升级是”行为—报复”的循环。每一轮报复都比上一轮更重（因为：对方过失清单越拉越长、人总觉得自己损失比对方大、双方都以为自己在”理性回应”）。<strong>一旦陷入，很难停止</strong>——因为停手会被视为软弱。</p>
+</li>
+<li><p><strong>结构变化模型（structural change model）</strong>：升级会造成三类”结构性变化”，这些变化反过来又推动升级（多伊奇的”原始法则”：争议性战术引发的过程，反过来又引发这种战术）：</p>
+</li>
+</ol>
+<pre class="mermaid">flowchart TB
+    subgraph 心理变化
+        A1["谴责·愤怒·恐惧·形象威胁"]
+        A2["敌对态度·敌对知觉·敌对目标"]
+        A3["去人性化·去个体化"]
+    end
+    subgraph 群体变化
+        B1["群体极化"]
+        B2["好斗规范与目标"]
+        B3["凝聚力增强·好战领导·好战亚群体"]
+    end
+    subgraph 社区变化
+        C1["社区极化"]
+        C2["横向联系断裂"]
+        C3["中立第三方消失"]
+    end
+    心理变化 --&gt; 群体变化 --&gt; 社区变化
+    社区变化 -.-&gt;|"进一步激化"| 心理变化</pre>
+
+<p>几个关键机制值得记住：</p>
+<ul>
+<li><strong>去人性化 &#x2F; 去个体化</strong>：把对方看成”非人”或”某类群体的一员”而非独特个体，会削弱共情和道德约束，使伤害变得容易。纳粹集中营里守卫知道犯人名字会对犯人更仁慈；飞行员对看不见的目标投弹比步兵面对活人射击更容易。</li>
+<li><strong>镜像现象（mirror image）</strong>：升级中双方的敌对知觉往往”像照镜子一样”对称——美苏、巴以都把对方看成难以和解的敌人，却意识不到对方也这么看自己。</li>
+</ul>
+<h2 id="七、第-8-章：升级为什么停不下来"><a href="#七、第-8-章：升级为什么停不下来" class="headerlink" title="七、第 8 章：升级为什么停不下来"></a>七、第 8 章：升级为什么停不下来</h2><p>升级一旦开始就难以逆转（作者用希腊神话”赛伯拉斯的尾巴”比喻：进去容易出来难）。有六种”确认机制”让敌对态度自我强化：</p>
+<ol>
+<li><strong>自我实现的预言</strong>：我相信你坏 → 我按”你坏”的方式对待你 → 你真做出坏行为 → 证实了我的信念。</li>
+<li><strong>行为合理化 &#x2F; 认知失调</strong>：我伤害了你 → 为了心安理得，我强化”你本来就该被伤害”的信念。</li>
+<li><strong>选择性信息加工（三种）</strong>：<ul>
+<li>自利评价：同一行为，自己做是”正义”，对方做是”暴力”（普林斯顿 vs 达特茅斯足球赛研究）。</li>
+<li>确认性证据：只问能证实假设的问题（斯奈德的内向&#x2F;外向访谈实验）。</li>
+<li>归因偏差：对方做坏事 &#x3D; 本性坏；对方示好 &#x3D; 暂时应付（杜勒斯对苏联：苏联强硬是邪恶证明，苏联和解是”变弱了”）。</li>
+</ul>
+</li>
+<li><strong>自闭性敌视</strong>：断绝沟通后，谣言填补真空，敌意自我循环。</li>
+<li><strong>越陷越深（entrapment）</strong>：<strong>美元拍卖</strong>游戏——为 1 美元竞价，两人较劲可以抬到 5 美元以上。因为已经投入太多，不愿放弃；从”最大化收益”变成”最小化损失”，最后变成”让对手和我一样惨”。美国深陷越南战争、日本偷袭珍珠港，都是越陷越深的例子。</li>
+</ol>
+<p><strong>预防越陷越深的四个办法</strong>：设定投入上限并公开承诺、定期”组块分析”（每过一段就重新评估是否继续）、突出代价（让人清楚继续的成本）、避免过度关注面子&#x2F;形象。</p>
+<h2 id="八、第-9-章：僵局认知与去升级化"><a href="#八、第-9-章：僵局认知与去升级化" class="headerlink" title="八、第 9 章：僵局认知与去升级化"></a>八、第 9 章：僵局认知与去升级化</h2><h3 id="冲突为什么会停"><a href="#冲突为什么会停" class="headerlink" title="冲突为什么会停"></a>冲突为什么会停</h3><p>升级不会永远持续。停止升级有五种路径：一方压倒另一方、一方单方面占据优势、双方共同撤出、有权的第三方裁决、双方商定解决方案（可借助调解）。</p>
+<h3 id="僵局认知（perceived-stalemate）"><a href="#僵局认知（perceived-stalemate）" class="headerlink" title="僵局认知（perceived stalemate）"></a>僵局认知（perceived stalemate）</h3><p>谈判和调解通常始于”僵局认知”——一方认识到<strong>无法以可接受的代价再升级取胜</strong>。四个原因：</p>
+<ol>
+<li>争斗之术失败（对方不吃这套了）</li>
+<li>必需资源枯竭（能量、金钱、时间耗尽）</li>
+<li>社会支持丧失（盟友施压要求停战）</li>
+<li>代价或风险变得无法接受（古巴导弹危机的核灾难风险）</li>
+</ol>
+<p>注意：<strong>光有僵局认知还不够，还要有”乐观主义”</strong>——相信能找到双方都能接受的方案（工作信任 + 看到隧道尽头的光）。两者缺一，谈判无法启动。</p>
+<h3 id="三种去升级化的方法"><a href="#三种去升级化的方法" class="headerlink" title="三种去升级化的方法"></a>三种去升级化的方法</h3><ol>
+<li><strong>接触与沟通</strong>：解释行动、了解对方、消除”恶魔形象”（但冲突剧烈时直接接触反而有害，需要冷静期或先经第三方）。</li>
+<li><strong>高端目标（superordinate goals）</strong>：设定一个双方共同认可、且单方无法完成的目标。罗伯斯山洞实验里，让孩子们合作修水塔、修卡车，成功逆转了两组男孩的敌意。最常见的高端目标是”共同的敌人”（普什图谚语：我反对我的兄弟，我和兄弟反对表亲，我们和表亲反对外人）。</li>
+<li><strong>单方的调解举措（GRIT）</strong>：一方主动做出引人注目、不可逆、有代价的和解姿态。萨达特 1977 年飞往耶路撒冷是经典案例——<strong>但关键前提是它发生在 1973 年十月战争之后</strong>，埃及先展示过强硬，再示好才被以色列当作诚意而非软弱。<strong>道歉</strong>是特殊的单方举措，能消除复仇愿望、打开宽恕之门。</li>
+</ol>
+<p>去升级化螺旋是冲突螺旋的反面：双方交替释放善意，逐步建立信任（北爱尔兰和平进程里的”求偶之舞”）。</p>
+<h2 id="九、第-10-章：问题解决与整合式方案"><a href="#九、第-10-章：问题解决与整合式方案" class="headerlink" title="九、第 10 章：问题解决与整合式方案"></a>九、第 10 章：问题解决与整合式方案</h2><h3 id="三种结果"><a href="#三种结果" class="headerlink" title="三种结果"></a>三种结果</h3><p>问题解决可以产生三种结果：<strong>冲突管理</strong>（程序性协定，如停火、热线）、<strong>协议</strong>（实质性但可能肤浅，如古巴导弹危机只解决了导弹，没解决根本问题）、<strong>决议</strong>（触及根本问题，能持续）。</p>
+<h3 id="妥协-vs-整合式解决方案"><a href="#妥协-vs-整合式解决方案" class="headerlink" title="妥协 vs 整合式解决方案"></a>妥协 vs 整合式解决方案</h3><p><strong>妥协</strong>是双方各退一步（分橘子：一人一半）。但更优的是<strong>整合式解决方案</strong>——协调双方利益，让双方都拿到自己最在乎的东西（分橘子：姐姐要果肉榨汁，妹妹要果皮烤蛋糕，各取所需，双赢）。</p>
+<p>整合式方案有四种好处：强烈愿望下唯一可行、比妥协更持久、加强关系、惠及更大社区。</p>
+<h3 id="五种整合式解决方案（可当作谈判”核查清单”）"><a href="#五种整合式解决方案（可当作谈判”核查清单”）" class="headerlink" title="五种整合式解决方案（可当作谈判”核查清单”）"></a>五种整合式解决方案（可当作谈判”核查清单”）</h3><pre class="mermaid">flowchart TD
+    I["整合式解决方案"] --&gt; S1["做大蛋糕&lt;br/&gt;增加可用资源"]
+    I --&gt; S2["非特定性补偿&lt;br/&gt;一方得偿，另一方得到无关补偿"]
+    I --&gt; S3["相互合作(logrolling)&lt;br/&gt;各自在对方看重的问题上让步"]
+    I --&gt; S4["削减代价&lt;br/&gt;降低让步方的损失"]
+    I --&gt; S5["搭建桥梁&lt;br/&gt;找到满足双方深层利益的新方案"]</pre>
+
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>一句话</th>
+<th>例子（夫妻度假之争：丈夫要山，妻子要海）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>做大蛋糕</td>
+<td>增加资源</td>
+<td>多请两周假，山和海都去</td>
+</tr>
+<tr>
+<td>非特定性补偿</td>
+<td>用别的好处补偿让步方</td>
+<td>去山上，但给妻子买辆新车</td>
+</tr>
+<tr>
+<td>相互合作</td>
+<td>在各自低优先项上互换让步</td>
+<td>丈夫在住宿上让步，妻子在地点上让步</td>
+</tr>
+<tr>
+<td>削减代价</td>
+<td>精确对冲让步方的损失</td>
+<td>海滨度假但租有安静内院的套房</td>
+</tr>
+<tr>
+<td>搭建桥梁</td>
+<td>满足双方深层利益的新方案</td>
+<td>找有森林河流（钓鱼）+ 可游泳的内陆湖泊</td>
+</tr>
+</tbody></table>
+<h3 id="利益树：往深层挖"><a href="#利益树：往深层挖" class="headerlink" title="利益树：往深层挖"></a>利益树：往深层挖</h3><p>整合式方案的关键是<strong>挖掘”立场”之下的”利益”</strong>。作者用”儿子要买摩托车”的例子画出利益树：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">立场：买摩托车</span><br><span class="line">  └ 第一层利益：在邻居那制造噪音（与父亲要安静冲突）</span><br><span class="line">      └ 第二层利益：引起邻居注意（与父亲要低调冲突）</span><br><span class="line">          └ 第三层利益：给重要人物留下印象（可另寻方案！→ 参加足球队）</span><br><span class="line">              └ 第四层利益：自尊</span><br></pre></td></tr></table></figure>
+
+<p>只要往下挖到第三层，就能找到”参加足球队”这个不冲突的搭建桥梁方案。<strong>“利益之下的利益”往往才是真正的和解点</strong>。</p>
+<h3 id="刚柔并济（firm-flexibility）"><a href="#刚柔并济（firm-flexibility）" class="headerlink" title="刚柔并济（firm flexibility）"></a>刚柔并济（firm flexibility）</h3><p>有效的问题解决姿态是”刚柔并济”：<strong>对根本利益坚定，对实现方式灵活</strong>。引用费歇的话：”执著于立场可能不明智，但执著于利益却是明智的。”</p>
+<ul>
+<li>展示坚定：有力捍卫利益、不做单方让步、适度威慑（而非强制威胁）。</li>
+<li>展示灵活：公开表达对对方利益的关注、愿意改计划、保持沟通开放、奖励对方合作。</li>
+</ul>
+<p>一个洞察：<strong>鹰派和鸽派都有存在必要</strong>。实验表明”鹰鸽混合团队”能达成最多整合式协定——鹰派抬价保底线，鸽派找方案。坏警察&#x2F;好警察就是这一原理的应用。</p>
+<h3 id="隐蔽的问题解决"><a href="#隐蔽的问题解决" class="headerlink" title="隐蔽的问题解决"></a>隐蔽的问题解决</h3><p>公开示好有三大风险：形象损失（显得软弱）、立场损失（显得在退让）、信息损失（暴露底线被利用）。于是有四种隐蔽战术：<strong>幕后交往、双轨外交、中间人、和解信号</strong>。它们让你在”不丢面子”的前提下试探对方诚意，一旦通过测试再转为公开合作。</p>
+<h2 id="十、第-10-章后半：和解——协定之外"><a href="#十、第-10-章后半：和解——协定之外" class="headerlink" title="十、第 10 章后半：和解——协定之外"></a>十、第 10 章后半：和解——协定之外</h2><p>达成协定不等于结束。严重冲突留下”结构变化”（仇恨、猜疑、极化），需要**和解（reconciliation）**来修复关系。和解四要素：</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>含义</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>真相</td>
+<td>挖掘并公开过去的伤痛，修正扭曲的叙述</td>
+<td>南非真相与和解委员会（TRC）</td>
+</tr>
+<tr>
+<td>宽恕</td>
+<td>放弃复仇愿望；最好是”交易”——受害者原谅，交换加害者真诚悔恨</td>
+<td>无条件宽恕可能有反效果（道德优越感、被误读为软弱）</td>
+</tr>
+<tr>
+<td>正义</td>
+<td>恢复性正义（赔偿）优于惩罚性正义（报复会激起新螺旋）</td>
+<td>赔偿 + 重新人性化</td>
+</tr>
+<tr>
+<td>和平</td>
+<td>积极和平（和谐、合作、安全）而非消极和平（只是停火）</td>
+<td>建立横向联系、制度化解决程序</td>
+</tr>
+</tbody></table>
+<p>关键洞见：<strong>宽恕不等于忘记</strong>，而是”有意识地决定不再推动复仇”；把痛苦的过去与有希望的未来分开。</p>
+<h2 id="十一、第-11-章：第三方干预"><a href="#十一、第-11-章：第三方干预" class="headerlink" title="十一、第 11 章：第三方干预"></a>十一、第 11 章：第三方干预</h2><p>当双方僵持、猜疑、沟通中断时，需要第三方。第三方分两类：<strong>契约干预</strong>（专业调解员、法官，按程序办事）和<strong>紧急干预</strong>（父母劝架、管理者调停，非正式、有切身利害）。</p>
+<h3 id="调解者的几件关键工作"><a href="#调解者的几件关键工作" class="headerlink" title="调解者的几件关键工作"></a>调解者的几件关键工作</h3><ol>
+<li><strong>改善对话结构</strong>：选中立&#x2F;封闭&#x2F;秘密场所（戴维营谈判把双方淡出公众视线，谈成才公开；奥斯陆谈判秘密进行因为公开会被内部强硬派搅黄）。</li>
+<li><strong>核心会议（caucusing）</strong>：冲突剧烈时不要直接对话，调解者分别会面、来回穿梭。</li>
+<li><strong>创建新方案 &#x2F; 抵消反应性贬值</strong>：对方提的方案，人们天然打折扣（反应性贬值）。调解者可以把一方的方案”当作自己的提案”抛出，让让步责任从当事方转移到调解者身上，保全双方颜面。</li>
+<li><strong>回避承诺</strong>：帮深陷其中的人找台阶下（把”海军”拆成”海军人员”和”海军舰队”，让德克萨斯州体面地不保留舰队）。</li>
+<li><strong>增加动机</strong>：促使认识僵局、鼓励乐观、鼓励让步、平复情感、强加时限（卡特在戴维营设最后期限逼双方行动）。</li>
+</ol>
+<p>一个重要提醒：<strong>第三方是猛药，不是灵丹妙药</strong>。如果双方已经在建设性对话，第三方积极干预反而有害。好第三方以”让自己变得不必要”为成功标准。</p>
+<h2 id="十二、我的几点感悟"><a href="#十二、我的几点感悟" class="headerlink" title="十二、我的几点感悟"></a>十二、我的几点感悟</h2><ol>
+<li><p><strong>“感知到的”三个字是全书钥匙。</strong> 冲突定义强调”感知到的利益分歧”——这意味着很多冲突可以通过纠正错误知觉来解决（先问一句”真的存在利益分歧吗”），也可以通过”做大蛋糕””搭建桥梁”把假零和变成真双赢。</p>
+</li>
+<li><p><strong>双重关注模型是最好用的自省工具。</strong> 每次遇到冲突，先问自己两个问题：我多在乎自己的利益？我多在乎对方？四个象限对应四种策略。尤其警惕”高自我+低他方”的争斗冲动，它常常是零和思维在作祟。</p>
+</li>
+<li><p><strong>升级的自我强化机制，比我们以为的强大得多。</strong> 自我实现预言、合理化、选择性信息加工、越陷越深——这些不是”坏人”才有的，而是普通人的心理规律。理解了它们，才能在冲突中”叫停自己”：我是不是在选择性看证据？我是不是因为投入太多而不愿止损？</p>
+</li>
+<li><p><strong>“越陷越深”对投资、职场、感情都成立。</strong> 美元拍卖的教训：及时设定止损上限、定期重新评估、别让面子绑架决策。这在沉没成本陷阱里完全通用。</p>
+</li>
+<li><p><strong>最难的从来不是”打赢”，而是”从升级转向解决”。</strong> 僵局认知 + 乐观主义，缺一不可；单方和解举措要”先展示强硬再示好”才有效；和解需要真相、宽恕、正义、和平四件套。这套”收尾”的学问，比”开打”的学问稀缺得多。</p>
+</li>
+<li><p><strong>这本书对工程师的价值超出书名表面。</strong> 代码评审、技术方案之争、跨部门协作、需求冲突、线上事故定责——本质都是”感知到的利益分歧”。用”整合式方案”思维（做大蛋糕&#x2F;削减代价&#x2F;搭建桥梁）替代”我的方案 vs 你的方案”的零和争论，往往是破局的关键。</p>
+</li>
+</ol>
+<p>一句话总结：<strong>冲突源于”感知到的利益分歧”；破解之道不是消灭冲突，而是看清它是怎么升级的、卡在哪儿了，然后用问题解决和整合式方案把”你死我活”改写成”各得其所”。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610212350001987.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%8E%A7%E5%88%B6%E8%AE%BA%EF%BC%9A%E6%88%96%E5%85%B3%E4%BA%8E%E5%9C%A8%E5%8A%A8%E7%89%A9%E5%92%8C%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%8E%A7%E5%88%B6%E5%92%8C%E9%80%9A%E4%BF%A1%E7%9A%84%E7%A7%91%E5%AD%A6%E3%80%8B/'>阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E6%8A%80%E6%9C%AF/Go-gin-ghttp-%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Go、Gin 与 ghttp 快速学习笔记</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

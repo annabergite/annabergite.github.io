@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《不确定世界的理性选择》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《不确定世界的理性选择》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：8.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：32分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%B8%8D%E7%A1%AE%E5%AE%9A%E4%B8%96%E7%95%8C%E7%9A%84%E7%90%86%E6%80%A7%E9%80%89%E6%8B%A9%EF%BC%9A%E5%88%A4%E6%96%AD%E4%B8%8E%E5%86%B3%E7%AD%96%E5%BF%83%E7%90%86%E5%AD%A6%E3%80%8B"><span class="post-toc-text">阅读笔记——《不确定世界的理性选择：判断与决策心理学》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E4%B8%BB%E7%BA%BF%E4%B8%8E%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">1. 全书核心主线与知识地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E6%80%9D%E7%BB%B4%E5%92%8C%E5%86%B3%E7%AD%96"><span class="post-toc-text">2. 第1章：思维和决策</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-%E5%86%B3%E7%AD%96%E6%98%AF%E4%B8%80%E7%A7%8D%E6%8A%80%E8%83%BD"><span class="post-toc-text">2.1 决策是一种技能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-%E8%87%AA%E5%8A%A8%E6%80%9D%E7%BB%B4-vs-%E6%8E%A7%E5%88%B6%E6%80%A7%E6%80%9D%E7%BB%B4"><span class="post-toc-text">2.2 自动思维 vs 控制性思维</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-%E5%BF%83%E7%90%86%E7%9A%84%E8%AE%A1%E7%AE%97%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%9C%89%E9%99%90%E7%90%86%E6%80%A7"><span class="post-toc-text">2.3 心理的计算模型与有限理性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-%E4%BB%8E%E7%B2%BE%E7%A5%9E%E5%88%86%E6%9E%90%E4%B8%8E%E8%A1%8C%E4%B8%BA%E4%B8%BB%E4%B9%89%E5%88%B0%E8%AE%A4%E7%9F%A5"><span class="post-toc-text">2.4 从精神分析与行为主义到认知</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E7%90%86%E6%80%A7%E7%9A%84%E5%9B%9B%E6%9D%A1%E6%A0%87%E5%87%86"><span class="post-toc-text">3. 理性的四条标准</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E4%BD%95%E8%B0%93%E5%86%B3%E7%AD%96"><span class="post-toc-text">4. 第2章：何谓决策</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-%E5%86%B3%E7%AD%96%E7%9A%84%E4%B8%89%E9%83%A8%E5%88%86%E5%AE%9A%E4%B9%89"><span class="post-toc-text">4.1 决策的三部分定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-%E5%86%B3%E7%AD%96%E6%A0%91"><span class="post-toc-text">4.2 决策树</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-%E6%B2%89%E6%B2%A1%E6%88%90%E6%9C%AC"><span class="post-toc-text">4.3 沉没成本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E5%88%A4%E6%96%AD%E7%9A%84%E6%95%B4%E4%BD%93%E6%A1%86%E6%9E%B6%EF%BC%88%E9%80%8F%E9%95%9C%E6%A8%A1%E5%9E%8B%EF%BC%89"><span class="post-toc-text">5. 第3章：判断的整体框架（透镜模型）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-%E9%80%8F%E9%95%9C%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">5.1 透镜模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B-vs-%E4%BA%BA%E5%B7%A5%E5%88%A4%E6%96%AD%EF%BC%88%E6%A0%B8%E5%BF%83%E7%BB%93%E8%AE%BA%EF%BC%89"><span class="post-toc-text">5.2 线性模型 vs 人工判断（核心结论）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B%E6%9B%B4%E5%A5%BD%EF%BC%88%E4%B8%89%E4%B8%AA%E5%8E%9F%E7%90%86%EF%BC%89"><span class="post-toc-text">5.3 为什么线性模型更好（三个原理）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%94%9A%E5%AE%9A%E4%B8%8E%E8%B0%83%E6%95%B4"><span class="post-toc-text">6. 第4章：锚定与调整</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E5%90%AF%E5%8F%91%E5%BC%8F%E5%88%A4%E6%96%AD"><span class="post-toc-text">7. 第5章：启发式判断</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-%E5%8F%AF%E5%BE%97%E6%80%A7%E5%90%AF%E5%8F%91%E5%BC%8F"><span class="post-toc-text">7.1 可得性启发式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-%E4%BB%A3%E8%A1%A8%E6%80%A7%E5%90%AF%E5%8F%91%E5%BC%8F%E4%B8%8E%E5%90%88%E5%8F%96%E8%B0%AC%E8%AF%AF"><span class="post-toc-text">7.2 代表性启发式与合取谬误</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E5%9F%BA%E4%BA%8E%E8%A7%A3%E9%87%8A%E7%9A%84%E5%88%A4%E6%96%AD"><span class="post-toc-text">8. 第6章：基于解释的判断</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-%E6%95%85%E4%BA%8B%E5%BB%BA%E6%9E%84%E4%B8%8E%E5%90%88%E5%8F%96%E6%A6%82%E7%8E%87%E8%B0%AC%E8%AF%AF"><span class="post-toc-text">8.1 故事建构与合取概率谬误</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-%E5%90%8E%E8%A7%81%E4%B9%8B%E6%98%8E%E5%81%8F%E5%B7%AE"><span class="post-toc-text">8.2 后见之明偏差</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-%E7%AC%AC7%E7%AB%A0%EF%BC%9A%E5%81%B6%E7%84%B6%E4%B8%8E%E5%9B%A0%E6%9E%9C"><span class="post-toc-text">9. 第7章：偶然与因果</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-%E6%8E%A7%E5%88%B6%E7%9A%84%E9%94%99%E8%A7%89"><span class="post-toc-text">9.1 控制的错觉</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-%E8%B5%8C%E5%BE%92%E8%B0%AC%E8%AF%AF%E4%B8%8E%E7%83%AD%E6%89%8B%E6%95%88%E5%BA%94"><span class="post-toc-text">9.2 赌徒谬误与热手效应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-%E8%B6%8B%E5%9D%87%E6%95%B0%E5%9B%9E%E5%BD%92"><span class="post-toc-text">9.3 趋均数回归</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E7%90%86%E6%80%A7%E6%80%9D%E8%80%83%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="post-toc-text">10. 第8章：理性思考不确定性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-%E7%94%A8%E6%A6%82%E7%8E%87%E6%80%9D%E8%80%83"><span class="post-toc-text">10.1 用概率思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-%E9%80%86%E6%A6%82%E7%8E%87%E4%B8%8E%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"><span class="post-toc-text">10.2 逆概率与贝叶斯定理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-%E6%AC%A1%E5%8F%AF%E5%8A%A0%E6%80%A7%E3%80%81%E5%90%88%E5%8F%96%E4%B8%8E%E6%9E%90%E5%8F%96"><span class="post-toc-text">10.3 次可加性、合取与析取</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-%E7%BB%9F%E8%AE%A1%E5%86%B3%E7%AD%96%E7%90%86%E8%AE%BA"><span class="post-toc-text">10.4 统计决策理论</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-%E7%AC%AC9-10%E7%AB%A0%EF%BC%9A%E4%BB%8E%E5%81%8F%E5%A5%BD%E5%88%B0%E9%80%89%E6%8B%A9"><span class="post-toc-text">11. 第9-10章：从偏好到选择</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-%E5%8D%95%E5%B3%B0%E5%81%8F%E5%A5%BD%E5%87%BD%E6%95%B0%EF%BC%88Coombs-Avrunin%EF%BC%89"><span class="post-toc-text">11.1 单峰偏好函数（Coombs &amp; Avrunin）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-%E5%B3%B0-%E7%BB%88%E5%AE%9A%E5%BE%8B%E4%B8%8E%E5%86%B3%E7%AD%96%E6%95%88%E7%94%A8"><span class="post-toc-text">11.2 峰-终定律与决策效用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-%E9%80%89%E6%8B%A9%E7%AD%96%E7%95%A5"><span class="post-toc-text">11.3 选择策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-%E7%AC%AC11%E7%AB%A0%EF%BC%9A%E7%90%86%E6%80%A7%E5%86%B3%E7%AD%96%E7%90%86%E8%AE%BA%EF%BC%88%E6%9C%9F%E6%9C%9B%E6%95%88%E7%94%A8%E7%90%86%E8%AE%BA%EF%BC%89"><span class="post-toc-text">12. 第11章：理性决策理论（期望效用理论）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-%E4%B8%83%E5%A4%A7%E5%85%AC%E7%90%86"><span class="post-toc-text">12.1 七大公理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-%E4%B8%A4%E6%9D%A1%E8%91%97%E5%90%8D%E6%82%96%E8%AE%BA"><span class="post-toc-text">12.2 两条著名悖论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-3-%E5%86%B3%E7%AD%96%E5%88%86%E6%9E%90%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">12.3 决策分析的应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-%E7%AC%AC12%E7%AB%A0%EF%BC%9A%E6%8F%8F%E8%BF%B0%E6%80%A7%E5%86%B3%E7%AD%96%E7%90%86%E8%AE%BA%EF%BC%88%E9%A2%84%E6%9C%9F%E7%90%86%E8%AE%BA%EF%BC%89"><span class="post-toc-text">13. 第12章：描述性决策理论（预期理论）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-%E4%BB%B7%E5%80%BC%E5%87%BD%E6%95%B0%E4%B8%8E%E5%86%B3%E7%AD%96%E6%9D%83%E9%87%8D"><span class="post-toc-text">13.1 价值函数与决策权重</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-2-%E6%A1%86%E6%9E%B6%E6%95%88%E5%BA%94"><span class="post-toc-text">13.2 框架效应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-3-%E6%8D%9F%E5%A4%B1%E8%A7%84%E9%81%BF%E4%B8%8E%E7%A6%80%E8%B5%8B%E6%95%88%E5%BA%94"><span class="post-toc-text">13.3 损失规避与禀赋效应</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-%E7%AC%AC13%E7%AB%A0%EF%BC%9A%E5%88%A4%E6%96%AD%E4%B8%8E%E5%86%B3%E7%AD%96%E7%A0%94%E7%A9%B6%E7%9A%84%E6%96%B0%E6%96%B9%E5%90%91"><span class="post-toc-text">14. 第13章：判断与决策研究的新方向</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-%E7%AC%AC14%E7%AB%A0%EF%BC%9A%E8%B5%9E%E7%BE%8E%E4%B8%8D%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="post-toc-text">15. 第14章：赞美不确定性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-%E9%99%84%E5%BD%95%EF%BC%9A%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="post-toc-text">16. 附录：概率论基本原则</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#17-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E9%80%9F%E6%9F%A5%E8%A1%A8-%E9%87%91%E5%8F%A5"><span class="post-toc-text">17. 核心概念速查表 + 金句</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E5%8F%A5"><span class="post-toc-text">金句</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%EF%BC%9A%E5%85%A8%E4%B9%A6%E4%B8%80%E5%BC%A0%E5%9B%BE"><span class="post-toc-text">附：全书一张图</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《不确定世界的理性选择：判断与决策心理学》"><a href="#阅读笔记——《不确定世界的理性选择：判断与决策心理学》" class="headerlink" title="阅读笔记——《不确定世界的理性选择：判断与决策心理学》"></a>阅读笔记——《不确定世界的理性选择：判断与决策心理学》</h1><blockquote>
+<p><strong>书名</strong>：不确定世界的理性选择（Rational Choice in an Uncertain World）<br><strong>作者</strong>：雷德·海斯蒂（Reid Hastie）、罗宾·道斯（Robyn M. Dawes）<br><strong>译者</strong>：谢晓非、李纾 等<br><strong>丛书</strong>：社会心理学精品译丛（彭凯平主编）<br><strong>出版社</strong>：人民邮电出版社（第 2 版）</p>
+<p><strong>一句话概括</strong>：这本书回答一个根本问题——<strong>在充满不确定性的世界里，人类如何做判断与决策，为什么会系统性地偏离理性，以及我们如何改进决策</strong>。核心观点：人类的思维存在<strong>系统的局限性</strong>（自动思维、启发式、认知偏差），决策的好坏<strong>不能用结果判定</strong>，而应看它是否基于对未来的理性评估（概率 × 价值）。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>全书核心主线与知识地图</li>
+<li>第1章：思维和决策——自动思维 vs 控制性思维</li>
+<li>理性的四条标准与”好决策”的判据</li>
+<li>第2章：何谓决策——决策树与沉没成本</li>
+<li>第3章：判断的整体框架——透镜模型与线性模型</li>
+<li>第4章：锚定与调整</li>
+<li>第5章：启发式判断——可得性与代表性</li>
+<li>第6章：基于解释的判断——合取谬误与后见之明</li>
+<li>第7章：偶然与因果——控制错觉与回归均值</li>
+<li>第8章：理性思考不确定性——概率与贝叶斯</li>
+<li>第9-10章：从偏好到选择</li>
+<li>第11章：理性决策理论——期望效用与公理</li>
+<li>第12章：描述性决策理论——预期理论与框架效应</li>
+<li>第13章：判断与决策研究的新方向</li>
+<li>第14章：赞美不确定性</li>
+<li>附录：概率论基本原则</li>
+<li>核心概念速查表 + 金句</li>
+</ol>
+<hr>
+<h2 id="1-全书核心主线与知识地图"><a href="#1-全书核心主线与知识地图" class="headerlink" title="1. 全书核心主线与知识地图"></a>1. 全书核心主线与知识地图</h2><pre class="mermaid">flowchart TB
+    subgraph 思维的两类["两类思维（第1章）"]
+        A[自动思维&lt;br/&gt;单纯联结/直觉/启发式]
+        B[控制性思维&lt;br/&gt;如果…那么…/形式运算/科学推理]
+    end
+
+    subgraph 判断["判断：估计与预测（第3~8章）"]
+        J1[透镜模型&lt;br/&gt;线性模型胜过人工判断]
+        J2[锚定与调整]
+        J3[可得性/代表性启发式]
+        J4[合取谬误/后见之明]
+        J5[控制错觉/回归均值]
+        J6[贝叶斯定理/概率思维]
+    end
+
+    subgraph 选择["选择：评价与决策（第9~12章）"]
+        C1[偏好与价值&lt;br/&gt;单峰函数/峰-终定律]
+        C2[选择策略&lt;br/&gt;满意/排序/背景效应]
+        C3[期望效用理论&lt;br/&gt;规范性]
+        C4[预期理论&lt;br/&gt;描述性：框架/损失规避]
+    end
+
+    A --&gt; J2
+    A --&gt; J3
+    B --&gt; J6
+    J1 --&gt; C2
+    J6 --&gt; C3
+    C3 --&gt; C4
+
+    应用1[神经经济学/情绪/动态决策&lt;br/&gt;第13章] --- C4
+    应用2[赞美不确定性&lt;br/&gt;第14章] --- C4</pre>
+
+<p><strong>主线</strong>：判断（如何估计世界的状态）→ 偏好（如何评价结果）→ 选择（如何整合信息做决策），并贯穿”<strong>规范理论（应该怎么做）vs 描述理论（实际怎么做）</strong>“的双线对比。</p>
+<hr>
+<h2 id="2-第1章：思维和决策"><a href="#2-第1章：思维和决策" class="headerlink" title="2. 第1章：思维和决策"></a>2. 第1章：思维和决策</h2><h3 id="2-1-决策是一种技能"><a href="#2-1-决策是一种技能" class="headerlink" title="2.1 决策是一种技能"></a>2.1 决策是一种技能</h3><ul>
+<li>人类主宰地球的独特技能 &#x3D; <strong>做出好的决策</strong>（为特定目标选择合适途径）。</li>
+<li>决策技能会随经验改善，类似学游泳：<strong>先消除不利的错误习惯</strong>，才能有效应对情境。</li>
+<li>富兰克林 1772 年信：”我没有足够的权力建议你应该选择什么，但如果你愿意聆听，我可以告诉你<strong>如何</strong>决策。”——本书只讲”如何”，不讲”选什么”。</li>
+</ul>
+<h3 id="2-2-自动思维-vs-控制性思维"><a href="#2-2-自动思维-vs-控制性思维" class="headerlink" title="2.2 自动思维 vs 控制性思维"></a>2.2 自动思维 vs 控制性思维</h3><pre class="mermaid">flowchart LR
+    subgraph 自动思维["自动思维（联想/直觉）"]
+        A1[单纯联结&lt;br/&gt;环境→想法→记忆]
+        A2[高度自动化&lt;br/&gt;如开车、象棋大师的直觉]
+        A3[速度快、不费劲]
+    end
+    subgraph 控制性思维["控制性思维（形式运算）"]
+        B1[如果…那么…]
+        B2[科学推理&lt;br/&gt;假设检验/排除其他解释]
+        B3[慢、费力、需意志]
+    end</pre>
+
+<ul>
+<li>思维 &#x3D; 对不在即时环境中的事物创造<strong>心理表征</strong>（巴特利特：”在已知现象中填补空缺”）。</li>
+<li><strong>任何伟大智力成果都是两者的结合</strong>；象棋特级大师”直觉”其实是 5 万小时练习积累的长时记忆（5 秒内编码整个棋局）。</li>
+<li><strong>本书基本观点</strong>：判断和选择时人们常用自动思维，因此可能做出较差决策；但控制性思维也不总优于直觉——要认识两者的<strong>相对优势</strong>。</li>
+</ul>
+<h3 id="2-3-心理的计算模型与有限理性"><a href="#2-3-心理的计算模型与有限理性" class="headerlink" title="2.3 心理的计算模型与有限理性"></a>2.3 心理的计算模型与有限理性</h3><ul>
+<li>认知科学：思维 &#x3D; 对符号的操作（类比计算机，但只是类比）。</li>
+<li>认知架构：感觉缓冲器 → <strong>工作记忆（有限容量）</strong> → 长时记忆（无限容量）。</li>
+<li><strong>有限理性（bounded rationality）</strong>：工作记忆限制了我们能使用的信息量 → 没有能力计算最优解。</li>
+<li>信息超载是有限理性的充分条件，但非必要条件（自动联结也会阻碍理性）。</li>
+</ul>
+<h3 id="2-4-从精神分析与行为主义到认知"><a href="#2-4-从精神分析与行为主义到认知" class="headerlink" title="2.4 从精神分析与行为主义到认知"></a>2.4 从精神分析与行为主义到认知</h3><ul>
+<li>精神分析（关注无意识）与行为主义（关注强化）都<strong>不把思维看作决定行为的重要因素</strong> → 无法解释纳粹主义、心算、下棋等。</li>
+<li>米尔格拉姆”破坏性服从”（1963）：不是问”纳粹和我们有什么不同”，而是问”我们和纳粹有何相似”→ 平庸之恶。</li>
+<li>认知革命：概念识别实验证明学习是”全或无”的假设检验过程，而非渐进强化。</li>
+</ul>
+<hr>
+<h2 id="3-理性的四条标准"><a href="#3-理性的四条标准" class="headerlink" title="3. 理性的四条标准"></a>3. 理性的四条标准</h2><pre class="mermaid">flowchart TB
+    R[理性选择] --&gt; R1[① 基于决策者目前的资产&lt;br/&gt;金钱/生理/心理/社会关系/感觉]
+    R --&gt; R2[② 基于选择的可能结果]
+    R --&gt; R3[③ 结果不确定时，用概率论评价可能性]
+    R --&gt; R4[④ 在概率、价值、满意度约束下&lt;br/&gt;选择具有适应性]</pre>
+
+<ul>
+<li><strong>决策好坏不能用结果判定</strong>：赌”蛇眼”（1&#x2F;36）是愚蠢的，即使碰巧赢；即将失败的一方冒险更”理性”。</li>
+<li>非理性的判据是<strong>矛盾</strong>：如果违反标准，决策者会得到相互矛盾的结论（既明智又愚蠢）。</li>
+<li>常见的非理性程序：习惯、从众一致性、宗教&#x2F;文化原则。</li>
+<li><strong>期望效用最大化</strong>（冯·诺依曼 &amp; 摩根斯坦 1947）：预期效用 &#x3D; Σ(概率 × 效用)。例：0.20×45 美元 vs 0.25×30 美元 → 期望值 9 美元 vs 7.5 美元，但个人效用可能不同。</li>
+</ul>
+<hr>
+<h2 id="4-第2章：何谓决策"><a href="#4-第2章：何谓决策" class="headerlink" title="4. 第2章：何谓决策"></a>4. 第2章：何谓决策</h2><h3 id="4-1-决策的三部分定义"><a href="#4-1-决策的三部分定义" class="headerlink" title="4.1 决策的三部分定义"></a>4.1 决策的三部分定义</h3><ol>
+<li><strong>不止一个行动方案</strong>可供选择。</li>
+<li>决策者对每个方案的结果和未来事件形成<strong>预期</strong>（以信心或概率呈现）。</li>
+<li>与结果相联系的后果可在连续体上<strong>评估</strong>（依据当前目标与个人价值观）。</li>
+</ol>
+<h3 id="4-2-决策树"><a href="#4-2-决策树" class="headerlink" title="4.2 决策树"></a>4.2 决策树</h3><pre class="mermaid">flowchart LR
+    SQ[选择点 □&lt;br/&gt;决策者行动] --&gt; A[不确定事件 ○&lt;br/&gt;概率]
+    SQ --&gt; B[不确定事件 ○]
+    A --&gt; O1[结果：价值]
+    A --&gt; O2[结果：价值]
+    B --&gt; O3[结果：价值]
+    B --&gt; O4[结果：价值]</pre>
+
+<ul>
+<li><strong>理性预期原则</strong>：期望效用 &#x3D; Σ(概率ᵢ × 价值ᵢ)。</li>
+<li>医疗例子：做手术期望效用 &#x3D; (80×0.65)+(0×0.35)&#x3D;52；不做 &#x3D; (100×0.30)+(20×0.70)&#x3D;44 → 理性选择做手术。</li>
+<li>关键发现：人们往往<strong>不完整思考</strong>——只聚焦一两个结点，忽视其他方案（首因效应 &#x2F; 确证性假设检验）。</li>
+</ul>
+<h3 id="4-3-沉没成本"><a href="#4-3-沉没成本" class="headerlink" title="4.3 沉没成本"></a>4.3 沉没成本</h3><pre class="mermaid">flowchart TB
+    A[已花 90 美元滑雪票] --&gt; B{理性视角}
+    B --&gt; C[沉没成本不应影响未来决策]
+    B --&gt; D[只看现在与未来]
+    D --&gt; E[回家 vs 留下滑雪&lt;br/&gt;仅取决于哪个更有价值]</pre>
+
+<ul>
+<li><strong>沉没成本 &#x3D; 已经花费、无法挽回的成本</strong>。理性上不应影响未来决策。</li>
+<li>关注沉没成本违背理性决策<strong>首要原则</strong>：决策应仅基于未来后果。</li>
+<li>案例：海湾战争”不能白白死去”、田纳西水道”不完成是浪费”、协和式客机。</li>
+<li>例外：放弃沉没成本若会<strong>损害名誉&#x2F;自我形象</strong>，则保留可能是理性的（图：滑雪 + 名誉损失）。</li>
+<li>实验（Arkes &amp; Blumer 1985）：买全价票者比买打折票者看演出更多（为沉没的钱找补偿）。</li>
+<li>结论：<strong>今天是我们剩余生命的第一天</strong>——过去只在对未来提供信息时才相关。</li>
+</ul>
+<hr>
+<h2 id="5-第3章：判断的整体框架（透镜模型）"><a href="#5-第3章：判断的整体框架（透镜模型）" class="headerlink" title="5. 第3章：判断的整体框架（透镜模型）"></a>5. 第3章：判断的整体框架（透镜模型）</h2><h3 id="5-1-透镜模型"><a href="#5-1-透镜模型" class="headerlink" title="5.1 透镜模型"></a>5.1 透镜模型</h3><pre class="mermaid">flowchart LR
+    subgraph 环境["环境（真实世界）"]
+        Y[效标&lt;br/&gt;真实状态]
+        X1[线索1]
+        X2[线索2]
+        X3[线索3]
+    end
+    subgraph 心理["心理（判断者）"]
+        J[判断]
+    end
+    Y --&gt; X1
+    Y --&gt; X2
+    Y --&gt; X3
+    X1 --&gt; J
+    X2 --&gt; J
+    X3 --&gt; J
+    X1 --- X2 --- X3
+    Y -.成就.-&gt; J</pre>
+
+<ul>
+<li>左半 &#x3D; 效标与线索的关系（生态效度）；右半 &#x3D; 线索利用的心理过程；中间 &#x3D; 线索”透镜”。</li>
+<li>判断 &#x3D; 通过”线索”看清世界的真实状态（如通过头发、皮肤、步态判断年龄）。</li>
+</ul>
+<h3 id="5-2-线性模型-vs-人工判断（核心结论）"><a href="#5-2-线性模型-vs-人工判断（核心结论）" class="headerlink" title="5.2 线性模型 vs 人工判断（核心结论）"></a>5.2 线性模型 vs 人工判断（核心结论）</h3><ul>
+<li><strong>专家判断习惯</strong>：只依赖 3~5 条线索；策略大多可加、线性；<strong>对自己的判断策略缺乏洞察</strong>；个体间一致性低；无关信息会提高自信但不提高准确性。</li>
+<li><strong>统计（线性）模型几乎总是胜过或至少不逊于临床专家</strong>：<ul>
+<li>Meehl（1954）20 项研究、Sawyer（1966）45 项研究：无一显示人工判断更准。</li>
+<li>Goldberg 法则（加三减二）诊断精神病 vs 神经症准确率近 70%，优于最好的人工判断（67%）。</li>
+<li>Einhorn 霍奇金淋巴瘤：专家评估与实际寿命无关，甚至方向相反；多元回归更准。</li>
+<li>Libby 银行信贷：人工判断 75%，回归 82%，单用资产负债率一项就 80%。</li>
+</ul>
+</li>
+<li><strong>随机线性模型也能胜过专家</strong>（道斯 20 000 个随机模型，解释方差是专家的 1.5 倍；单位加权是 2.61 倍）——<strong>系数符号比具体数值更重要</strong>。</li>
+<li><strong>自举引导式（bootstrapping）</strong>：用专家自己的判断拟合线性模型，然后代替专家——总比专家本人更好。</li>
+</ul>
+<h3 id="5-3-为什么线性模型更好（三个原理）"><a href="#5-3-为什么线性模型更好（三个原理）" class="headerlink" title="5.3 为什么线性模型更好（三个原理）"></a>5.3 为什么线性模型更好（三个原理）</h3><table>
+<thead>
+<tr>
+<th>原理</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>数学原理</td>
+<td>单调关系、单调交互作用都近似于线性（交叉交互罕见）</td>
+</tr>
+<tr>
+<td>自然原理</td>
+<td>现实中大多数交互作用是单调的</td>
+</tr>
+<tr>
+<td>心理学原理</td>
+<td>人难以同时注意多个不可比的方面（注意在线索间来回转移）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>启示：<strong>可能的话，用简单线性模型替代人工判断</strong>；”只有数字才是真实的”（Meehl：从超市出来你不会靠感觉估计价格，你会计算）。</li>
+</ul>
+<hr>
+<h2 id="6-第4章：锚定与调整"><a href="#6-第4章：锚定与调整" class="headerlink" title="6. 第4章：锚定与调整"></a>6. 第4章：锚定与调整</h2><pre class="mermaid">flowchart TB
+    A[凸显的值/锚] --&gt; B[从锚开始估计]
+    B --&gt; C[不充分调整]
+    C --&gt; D[最终估计仍靠近锚]
+    E[锚的来源] --&gt; F[自我生成/外部提供/现状]
+    F --&gt; D</pre>
+
+<ul>
+<li><strong>锚定与调整</strong>：从一个凸显值（锚）开始，做不充分调整。</li>
+<li>实验（Tversky &amp; Kahneman 1974）：<ul>
+<li>幸运转盘：随机得到 10 者估计非洲国家比例均值 25%；得到 65 者估计 45%。</li>
+<li>8 的阶乘：递增呈现（1×2×…×8）估计中值 512；递减呈现（8×7×…×1）估计中值 2250（正确答案 40 320）。</li>
+<li>甘地去世年龄”大于&#x2F;小于 214 岁”的荒谬锚仍影响估计。</li>
+</ul>
+</li>
+<li><strong>现状（status quo）是最常见的锚</strong>：个人与组织都只在现有备选方案范围内挑选。</li>
+<li><strong>偏好反转（Slovic, Fischhoff &amp; Lichtenstein）</strong>：出价时锚定”赢钱的数额”（赌博 A 出价高），选择时锚定”赢钱的概率”（赌博 B 更受欢迎）→ 违背传统效用理论。</li>
+<li>重要应用：<ul>
+<li>房地产估价（原始上市价上下 12% 影响专业经纪人估价）。</li>
+<li>社会保险号后两位作锚 → “随机一致性”（Ariely），社保号 80<del>99 者平均出价 39 美元 vs 00</del>19 者 12 美元。</li>
+<li>司法：原告要求赔偿额越高，判决中值越高（1500 万 vs 5000 万 → 判决中值分别是 1500 万和 5000 万）；”要的越多，得到的越多”。</li>
+<li>保释金：检察官建议数额权重最高。</li>
+</ul>
+</li>
+<li><strong>自我锚定与虚假共识效应</strong>（Ross）：从自己推测他人，高估同伴与自己的相似性（挂”忏悔”牌：愿意者估计 63% 同行，不愿意者估计 23%）。</li>
+<li><strong>“今”为”古”锚</strong>：记忆以当前信念为锚（Markus 政治态度回忆、Collins 药物使用回忆、Conway &amp; Ross 学习技能）→ 变化使我们对过去”撒谎”（”毛毛虫变成蝴蝶后，认为年幼时已是小蝴蝶”）。</li>
+</ul>
+<hr>
+<h2 id="7-第5章：启发式判断"><a href="#7-第5章：启发式判断" class="headerlink" title="7. 第5章：启发式判断"></a>7. 第5章：启发式判断</h2><h3 id="7-1-可得性启发式"><a href="#7-1-可得性启发式" class="headerlink" title="7.1 可得性启发式"></a>7.1 可得性启发式</h3><pre class="mermaid">flowchart TB
+    A[判断频率/概率] --&gt; B[从长时记忆提取相关事例]
+    B --&gt; C[评估提取的便捷性/流畅性&lt;br/&gt;数量、速度、生动性]
+    C --&gt; D[据提取便捷性估计频率]
+    E[偏差来源] --&gt; E1[记忆中有偏样本]
+    E --&gt; E2[记忆线索有偏]
+    E --&gt; E3[凸显性/生动性差异]
+    E --&gt; D</pre>
+
+<ul>
+<li>用”提取的容易程度”代替”实际频率”做判断。</li>
+<li>实验：回忆 6 个果断事例者比回忆 12 个者更自评果断（流畅性中介）。</li>
+<li><strong>记忆中的有偏样本</strong>：媒体过度报道谋杀 → 高估谋杀（相对自杀）；空难、鲨鱼、龙卷风被高估，中风、胃癌、家务事故被低估（Combs &amp; Slovic）。</li>
+<li>生动性效应（Reyes）：用生动证据的一方更占优势（”盛有绿色鳄梨酱汁的碗” vs “一个碗”）。</li>
+<li>情绪一致性效应（Wright &amp; Bower）：高兴者高估”幸事”概率，悲伤者高估”灾难”概率。</li>
+<li><strong>次可加性</strong>：各子事件概率之和 &gt; 整体（医生估计住院结果的四种概率之和 &#x3D; 1.64）。</li>
+<li>想象可得性：2 人组 vs 8 人组（数目相同，但 2 人组更易想象 → 被高估）。</li>
+</ul>
+<h3 id="7-2-代表性启发式与合取谬误"><a href="#7-2-代表性启发式与合取谬误" class="headerlink" title="7.2 代表性启发式与合取谬误"></a>7.2 代表性启发式与合取谬误</h3><pre class="mermaid">flowchart TB
+    A[判断某对象属于某类别] --&gt; B[比较对象特征与类别刻板印象的相似性]
+    B --&gt; C[相似性高 → 归入该类]
+    C --&gt; D[忽略基础概率/逻辑结构]</pre>
+
+<ul>
+<li><strong>佩内罗珀问题</strong>：描述更像艺术史学生 → 判断她是艺术史专业，却忽视心理学专业人数是艺术史的 150 倍（基础概率 0.13 vs 0.0008）。</li>
+<li><strong>工程师-律师问题</strong>：人格描述压倒基准概率（70% 工程师 vs 30% 律师）。</li>
+<li><strong>琳达问题（合取谬误）</strong>：86% 大学生认为”琳达是女权主义银行出纳员”比”琳达是银行出纳员”概率更高——逻辑上不可能（子集不可能大于全集）。</li>
+<li><strong>比例规则（条件概率与逆概率）</strong>：p(AB) ≠ p(BA)，混淆两者是常见错误。<ul>
+<li>辛普森案（Dershowitz）：”殴打妻子的丈夫中仅 0.1% 杀妻”混淆了 p(谋杀|殴打) 与 p(殴打|谋杀)。</li>
+<li>大麻与致瘾药物：标题逆转了条件关系。</li>
+</ul>
+</li>
+<li>结论：<strong>我们按相似性&#x2F;联想思考，而非按概率法则</strong>（Gould：”脑子里有个小人喊她不可能只是银行出纳员”）。</li>
+</ul>
+<hr>
+<h2 id="8-第6章：基于解释的判断"><a href="#8-第6章：基于解释的判断" class="headerlink" title="8. 第6章：基于解释的判断"></a>8. 第6章：基于解释的判断</h2><h3 id="8-1-故事建构与合取概率谬误"><a href="#8-1-故事建构与合取概率谬误" class="headerlink" title="8.1 故事建构与合取概率谬误"></a>8.1 故事建构与合取概率谬误</h3><pre class="mermaid">flowchart TB
+    A[多个事件的联合] --&gt; B[是否构成连贯的因果故事?]
+    B --&gt;|是| C[故事可信度高 → 高估联合概率]
+    B --&gt;|否| D[按概率法则：联合概率 = 各事件概率乘积&lt;br/&gt;必然小于单一事件]</pre>
+
+<ul>
+<li>合取谬误：认为联合事件比单一事件更可能（酗酒网球明星”参加戒酒协会 + 戒酒 + 夺冠”被认为比”夺冠”更可能）。</li>
+<li>故事有说服力的三个原因：① 各事件概率连乘很小；② 想象力导致高估；③ 戏剧性巧合被记忆强化。</li>
+<li><strong>司法应用（最好的故事胜诉）</strong>：陪审团决策 &#x3D; 故事建构（Pennington &amp; Hastie）。证据按故事顺序呈现时定罪率 78%，按目击者顺序仅 31%。</li>
+<li>反事实思维：”假如多雇保安，强奸就不会发生”→ 判业主有责；”即使多雇保安也防不住”→ 无责。</li>
+</ul>
+<h3 id="8-2-后见之明偏差"><a href="#8-2-后见之明偏差" class="headerlink" title="8.2 后见之明偏差"></a>8.2 后见之明偏差</h3><ul>
+<li>知道结果后，高估自己事先预测该结果的概率（Fischhoff）。</li>
+<li>“渐进决定论”：结果已知 → 构建前后一致的故事 → 记忆被重构（水门事件中约翰·戴恩的证词偏向他作证时对情境的描述）。</li>
+<li>Conway &amp; Ross：参加了学习项目的被试<strong>回忆</strong>自己参加前的技能比实际报告的更差 → 为”项目有效”提供证据。</li>
+<li>抑郁与童年记忆（Lewinsohn &amp; Rosenbaum）：当前抑郁者回忆父母更排斥自己，但治愈者与从不抑郁者无差异——消极回忆受当前心境影响。</li>
+</ul>
+<hr>
+<h2 id="9-第7章：偶然与因果"><a href="#9-第7章：偶然与因果" class="headerlink" title="9. 第7章：偶然与因果"></a>9. 第7章：偶然与因果</h2><h3 id="9-1-控制的错觉"><a href="#9-1-控制的错觉" class="headerlink" title="9.1 控制的错觉"></a>9.1 控制的错觉</h3><pre class="mermaid">flowchart TB
+    A[纯随机事件] --&gt; B[被知觉为包含技巧/可控]
+    B --&gt; C[行为表现好像能控制]
+    C --&gt; D[赌徒更用力掷骰子&lt;br/&gt;自己选彩票出价高 4 倍]</pre>
+
+<ul>
+<li>Langer 彩票实验：自己选卡的出价是随机发卡的 4 倍。</li>
+<li>投资领域的控制错觉（Fenton-O’Creevy）：交易员的控制错觉水平与收益、上司评价<strong>负相关</strong>（差异达 10 万美元量级）。</li>
+<li>开车 vs 坐飞机：开车”更有控制感”，但越洋飞行与开车 20 公里丧生概率相当（”9·11”后改开车额外致 1500 人死亡）。</li>
+</ul>
+<h3 id="9-2-赌徒谬误与热手效应"><a href="#9-2-赌徒谬误与热手效应" class="headerlink" title="9.2 赌徒谬误与热手效应"></a>9.2 赌徒谬误与热手效应</h3><ul>
+<li><strong>赌徒谬误</strong>：独立随机事件”时机已成熟”（连 8 次正面 → 押反面）。硬币没有记忆，每次概率恒定。</li>
+<li>人们对随机序列的刻板印象<strong>包含过多交替</strong>（期望小样本代表总体，违反”小数定律”）。</li>
+<li>生育顺序”女男女男男女”被认为比”男男男女女女”更可能，但实际概率相同。</li>
+<li><strong>热手效应</strong>（Gilovich, Vallone &amp; Tversky）：篮球中的”连续得分更容易得分”<strong>不存在</strong>；球员和 90% 以上球迷却坚信其存在。</li>
+<li>V-1&#x2F;V-2 炸弹伦敦落点、癌症集群、德州神枪手谬误：从随机模式中看到并不存在的因果结构。</li>
+</ul>
+<h3 id="9-3-趋均数回归"><a href="#9-3-趋均数回归" class="headerlink" title="9.3 趋均数回归"></a>9.3 趋均数回归</h3><pre class="mermaid">flowchart TB
+    A[极端表现&lt;br/&gt;特别高/特别低] --&gt; B[与下一次表现不完全相关]
+    B --&gt; C[回归：极端值趋向平均]
+    C --&gt; D[高个父亲的儿子略矮&lt;br/&gt;低分者下次略高&lt;br/&gt;体育画报封面厄运]</pre>
+
+<ul>
+<li>回归 &#x3D; 完全相关 − 实际相关。只要两个变量不完全相关，就存在回归。</li>
+<li>飞行教官的教训：表扬后变差、批评后变好——只是回归，却被误读为”惩罚有效、奖励无效”。</li>
+<li>《追求卓越》43 家卓越公司 5 年后 1&#x2F;3 财务危机——选择了极端事例后观察回归。</li>
+<li>解雇教练&#x2F;CEO 的”改善”大部分是回归作用。</li>
+<li>应对：比较<strong>实际值与预测值</strong>，而非两次测量值。</li>
+</ul>
+<hr>
+<h2 id="10-第8章：理性思考不确定性"><a href="#10-第8章：理性思考不确定性" class="headerlink" title="10. 第8章：理性思考不确定性"></a>10. 第8章：理性思考不确定性</h2><h3 id="10-1-用概率思考"><a href="#10-1-用概率思考" class="headerlink" title="10.1 用概率思考"></a>10.1 用概率思考</h3><ul>
+<li>现代概率论从赌博分析发展而来（卡尔达诺）。</li>
+<li>四种概率情境：① 机会游戏（逻辑推导）；② 定义明确的经验情境（频率统计）；③ 中等明确（因果+偏好推理）；④ 大量未知。</li>
+<li><strong>内部观察 vs 外部观察</strong>（Kahneman &amp; Lovallo）：决策者强调问题的独特性，应退一步把当前问题看作一系列类似问题中的一个。</li>
+<li><strong>三门问题</strong>：改变主意更好（不改变赢的概率 1&#x2F;3，改变则 2&#x2F;3）——关键在于问题表征。</li>
+<li><strong>频率格式</strong>比概率格式更能消除偏差（琳达问题错误率 86%→20%）。</li>
+</ul>
+<h3 id="10-2-逆概率与贝叶斯定理"><a href="#10-2-逆概率与贝叶斯定理" class="headerlink" title="10.2 逆概率与贝叶斯定理"></a>10.2 逆概率与贝叶斯定理</h3><pre class="mermaid">flowchart TB
+    A[先验概率&lt;br/&gt;基础比率] --&gt; B[新证据&lt;br/&gt;诊断力]
+    B --&gt; C[后验概率&lt;br/&gt;更新后的判断]
+    C --&gt; D["贝叶斯定理&lt;br/&gt;p(癌症|阳性) = p(阳性|癌症)×p(癌症)/p(阳性)"]</pre>
+
+<ul>
+<li><strong>乳腺癌 X 光问题</strong>（Eddy）：患病率 1%，X 光对患者 80% 阳性、对健康者 10% 阳性 → 阳性结果的妇女真正患癌概率约 <strong>7%</strong>（不是 95 名医生答的”约 75%”）。</li>
+<li><strong>出租车问题</strong>（Bar-Hillel）：85% 蓝、15% 绿，目击者 80% 准确，说”绿色” → 真为绿色概率仅 <strong>41%</strong>（不是 80%）。</li>
+<li>人们普遍<strong>忽视基础概率</strong>；但当基础概率有<strong>因果意义</strong>时更可能被考虑。</li>
+<li>补救：图表（概率树、韦恩图）、代数符号、频率格式。</li>
+</ul>
+<h3 id="10-3-次可加性、合取与析取"><a href="#10-3-次可加性、合取与析取" class="headerlink" title="10.3 次可加性、合取与析取"></a>10.3 次可加性、合取与析取</h3><ul>
+<li>次可加性：子事件概率之和 &gt; 整体（琳达）。</li>
+<li>析取谬误：低估”至少一个事件发生”的概率（析取概率 &#x3D; 1 − 所有不发生的乘积，即使单个概率小，析取概率可能很大）。</li>
+<li>合取与析取在逻辑上等价但心理上不等价——我们按类别思考，而非按补集思考。</li>
+</ul>
+<h3 id="10-4-统计决策理论"><a href="#10-4-统计决策理论" class="headerlink" title="10.4 统计决策理论"></a>10.4 统计决策理论</h3><pre class="mermaid">flowchart TB
+    A[判断是否患病/有信号] --&gt; B{四个结果}
+    B --&gt; B1[击中/正确肯定]
+    B --&gt; B2[未击中/错误否定]
+    B --&gt; B3[虚假警报/错误肯定]
+    B --&gt; B4[正确拒绝/正确否定]
+    B1 &amp; B2 &amp; B3 &amp; B4 --&gt; C[改变决策阈限&lt;br/&gt;权衡两类错误]</pre>
+
+<ul>
+<li>通过改变决策阈限控制各类错误的比率：降低阈限 → 更多击中但更多虚假警报。</li>
+<li><strong>应更努力思考价值，而非准确率</strong>——权衡未击中 vs 虚假警报的代价，设定合适阈限。</li>
+</ul>
+<hr>
+<h2 id="11-第9-10章：从偏好到选择"><a href="#11-第9-10章：从偏好到选择" class="headerlink" title="11. 第9-10章：从偏好到选择"></a>11. 第9-10章：从偏好到选择</h2><h3 id="11-1-单峰偏好函数（Coombs-Avrunin）"><a href="#11-1-单峰偏好函数（Coombs-Avrunin）" class="headerlink" title="11.1 单峰偏好函数（Coombs &amp; Avrunin）"></a>11.1 单峰偏好函数（Coombs &amp; Avrunin）</h3><pre class="mermaid">flowchart TB
+    A["好的事物会生腻&lt;br/&gt;（收益边际递减）"] --&gt; C[净收益 = 正负之和]
+    B["坏的事物会升级&lt;br/&gt;（代价边际递增）"] --&gt; C
+    C --&gt; D[单峰函数&lt;br/&gt;在适中量上取得最大值]</pre>
+
+<ul>
+<li>假期、食物、睡眠等体验的总体快乐与数量呈<strong>单峰关系</strong>（每个人有”理想点”，且因人而异）。</li>
+</ul>
+<h3 id="11-2-峰-终定律与决策效用"><a href="#11-2-峰-终定律与决策效用" class="headerlink" title="11.2 峰-终定律与决策效用"></a>11.2 峰-终定律与决策效用</h3><ul>
+<li><strong>峰-终评价原则</strong>：总体评价只取决于体验中最强烈部分 + 最终水平。</li>
+<li><strong>时长忽略</strong>：对过程长度不敏感（冰水实验：65% 选择更长的痛苦过程）。</li>
+<li><strong>享乐跑步机</strong>：人对幸福有”设定点”，大事件（离婚、中彩票）3~6 个月后回到基线。</li>
+<li><strong>免疫忽略</strong>：预测未来状态时忽略自己的适应能力 → 高估好结果的正性反应和坏结果的负性反应。</li>
+<li><strong>热-冷共情差距</strong>：冷状态下低估本能状态（饥饿、性唤起）对行为的影响。</li>
+<li><strong>金钱价值</strong>：边际效用递减（伯努利、费希纳对数定律）——200 万的价值小于 100 万的两倍。</li>
+<li>三种评价启发式：基于记忆、基于模拟、基于计算。</li>
+</ul>
+<h3 id="11-3-选择策略"><a href="#11-3-选择策略" class="headerlink" title="11.3 选择策略"></a>11.3 选择策略</h3><pre class="mermaid">flowchart TB
+    A[选择策略] --&gt; B[补偿性 vs 非补偿性]
+    A --&gt; C[基于备选项 vs 基于属性]
+    A --&gt; D[穷尽 vs 节省]
+    B --&gt; E[多属性效用理论 MAUT&lt;br/&gt;权重相加，最全面]
+    B --&gt; F[按方面排除/选最好&lt;br/&gt;快速但可能错失均衡选项]</pre>
+
+<ul>
+<li><strong>果酱实验</strong>：24 种口味仅 3% 购买，6 种口味 30% 购买——选择过多导致不选择（权衡的痛苦）。</li>
+<li><strong>满意原则（Simon）</strong>：找到满足预设标准的选项即停止搜索（而非最优）。</li>
+<li><strong>顺序效应</strong>（Nisbett &amp; Wilson）：无论商品怎么摆，总偏好最右边的。</li>
+<li><strong>背景效应</strong>：加入一个”诱饵”选项可反转偏好（电池 A vs B；面包机 275 美元 vs 429 美元）。</li>
+<li><strong>无意识选择</strong>：简单、”消费”时无需认知分析的对象，凭直觉选择更满意（海报实验）；但对复杂多属性选择，慎重策略更优。</li>
+<li><strong>富兰克林”德智代数法”</strong>：列出利与弊、赋权重、抵消、选总分最高者。</li>
+</ul>
+<hr>
+<h2 id="12-第11章：理性决策理论（期望效用理论）"><a href="#12-第11章：理性决策理论（期望效用理论）" class="headerlink" title="12. 第11章：理性决策理论（期望效用理论）"></a>12. 第11章：理性决策理论（期望效用理论）</h2><h3 id="12-1-七大公理"><a href="#12-1-七大公理" class="headerlink" title="12.1 七大公理"></a>12.1 七大公理</h3><pre class="mermaid">flowchart TB
+    A[期望效用理论公理] --&gt; A1[① 可比性]
+    A --&gt; A2[② 传递性]
+    A --&gt; A3[③ 闭合性]
+    A --&gt; A4[④ 选项间概率分布]
+    A --&gt; A5[⑤ 独立性]
+    A --&gt; A6[⑥ 一致性]
+    A --&gt; A7[⑦ 可分解性]</pre>
+
+<ul>
+<li>满足公理 → 可用实数（效用）量化价值；偏好强弱 &#x3D; 期望效用排序。</li>
+<li><strong>传递性</strong>的违反导致”钱泵”（循环交易中被持续抽走钱）。</li>
+<li><strong>可分解性</strong>用于测量效用（把确定选项 B 等价于 p 概率的 A + (1−p) 的 C）。</li>
+</ul>
+<h3 id="12-2-两条著名悖论"><a href="#12-2-两条著名悖论" class="headerlink" title="12.2 两条著名悖论"></a>12.2 两条著名悖论</h3><pre class="mermaid">flowchart TB
+    subgraph Allais["Allais 悖论"]
+        A1[偏好确定 100 万&lt;br/&gt;胜过 0.1 概率 250 万]
+        A2[却又偏好 0.1 概率 250 万&lt;br/&gt;胜过 0.11 概率 100 万]
+        A1 --- A2[违背独立性公理]
+    end
+    subgraph Ellsberg["Ellsberg 悖论"]
+        B1[偏好已知概率的红球&lt;br/&gt;胜过未知数量的黑球]
+        B2[却又偏好 黑球或黄球&lt;br/&gt;胜过 红球或黄球]
+        B1 --- B2[模糊规避：&lt;br/&gt;偏好明确概率而非模糊]
+    end</pre>
+
+<ul>
+<li><strong>确定性效应</strong>（Allais）：确定收益被赋予不成比例的高权重。</li>
+<li><strong>模糊规避</strong>（Ellsberg）：偏好已知概率而非模糊不确定。</li>
+</ul>
+<h3 id="12-3-决策分析的应用"><a href="#12-3-决策分析的应用" class="headerlink" title="12.3 决策分析的应用"></a>12.3 决策分析的应用</h3><ul>
+<li>医疗检查顺序（Fryback 肾脏囊肿&#x2F;肿瘤）：个人价值 + 期望效用分析 → 应先抽吸法（除非肿瘤概率是囊肿 10 倍以上）。</li>
+<li>决策分析像心理治疗：帮助人们<strong>外显自己的价值观并让行为符合价值观</strong>。</li>
+<li>期望效用理论不磨灭人性——它帮助我们判断<strong>什么最重要</strong>。</li>
+</ul>
+<hr>
+<h2 id="13-第12章：描述性决策理论（预期理论）"><a href="#13-第12章：描述性决策理论（预期理论）" class="headerlink" title="13. 第12章：描述性决策理论（预期理论）"></a>13. 第12章：描述性决策理论（预期理论）</h2><h3 id="13-1-价值函数与决策权重"><a href="#13-1-价值函数与决策权重" class="headerlink" title="13.1 价值函数与决策权重"></a>13.1 价值函数与决策权重</h3><pre class="mermaid">flowchart TB
+    subgraph 价值函数["价值函数"]
+        V1[参照点依赖&lt;br/&gt;以现状为 0 点]
+        V2[得失饱和性&lt;br/&gt;边际递减 α=β≈0.88]
+        V3[损失规避&lt;br/&gt;损失比收益陡峭 λ≈2.25]
+    end
+    subgraph 决策权重["决策权重函数"]
+        W1[小概率被高估&lt;br/&gt;近 0 点陡峭]
+        W2[中概率不敏感&lt;br/&gt;曲线平坦]
+        W3[确定性效应&lt;br/&gt;近 1 点陡峭]
+    end</pre>
+
+<ul>
+<li>预期理论（Kahneman &amp; Tversky 1979）：V &#x3D; Σ(πᵢ × vᵢ)。</li>
+<li>决策两阶段：<strong>编辑</strong>（构架、设参照点、整合&#x2F;分离）+ <strong>评价</strong>（估价、加权、整合）。</li>
+<li><strong>损失规避</strong>：损失 100 美元的痛苦 ≈ 获得 100 美元快乐的两倍（λ&#x3D;2.25）。</li>
+</ul>
+<h3 id="13-2-框架效应"><a href="#13-2-框架效应" class="headerlink" title="13.2 框架效应"></a>13.2 框架效应</h3><pre class="mermaid">flowchart TB
+    A[同一问题两种表述] --&gt; B[收益框架&lt;br/&gt;"200 人生还"]
+    A --&gt; C[损失框架&lt;br/&gt;"400 人死亡"]
+    B --&gt; D[风险规避&lt;br/&gt;选确定方案 72%]
+    C --&gt; E[风险寻求&lt;br/&gt;选赌博方案 78%]</pre>
+
+<ul>
+<li>亚洲疾病问题：生还框架下 72% 选确定救 200 人；死亡框架下 78% 选 1&#x2F;3 概率救 600 人——两方案逻辑等价却偏好反转。</li>
+<li>医疗框架（McNeil）：存活率框架下仅 18% 选放疗，死亡率框架下 44% 选放疗。</li>
+<li>框架效应<strong>不是言语花招</strong>：即使被指出不一致，人们仍坚持原选择（50% 不改）。</li>
+</ul>
+<h3 id="13-3-损失规避与禀赋效应"><a href="#13-3-损失规避与禀赋效应" class="headerlink" title="13.3 损失规避与禀赋效应"></a>13.3 损失规避与禀赋效应</h3><ul>
+<li><strong>禀赋效应</strong>（Thaler）：一旦拥有，失去它比未拥有时得到它更重要（拥有马克杯者的卖价远高于未拥有者的买价）。</li>
+<li><strong>心理账户</strong>、<strong>短视性损失规避</strong>：频繁查看盈亏 → 偏好稳定债券；少看报告 → 90% 投股票。</li>
+<li>保险与彩票：预期理论可同时解释购买保险（规避大损失）与购买彩票（小概率被高估）。</li>
+</ul>
+<hr>
+<h2 id="14-第13章：判断与决策研究的新方向"><a href="#14-第13章：判断与决策研究的新方向" class="headerlink" title="14. 第13章：判断与决策研究的新方向"></a>14. 第13章：判断与决策研究的新方向</h2><pre class="mermaid">flowchart TB
+    A[新方向] --&gt; B[决策的神经科学&lt;br/&gt;神经经济学]
+    A --&gt; C[决策中的情绪]
+    A --&gt; D[动态决策实验]
+    B --&gt; B1[眶额叶皮层：整合认知与情绪&lt;br/&gt;杏仁核：恐惧/模糊&lt;br/&gt;纹状体：奖赏/风险]
+    C --&gt; C1[躯体标记假设&lt;br/&gt;情绪信号引导适应性决策]
+    D --&gt; D1[爱荷华赌博任务&lt;br/&gt;气球模拟风险任务]</pre>
+
+<ul>
+<li><strong>神经经济学</strong>：眶额叶皮层（认知-情绪”交换机”）、杏仁核（模糊&#x2F;恐惧）、纹状体（风险&#x2F;奖赏）。大脑对”相对数量”而非绝对数量敏感（与预期理论一致）。</li>
+<li><strong>躯体标记假设</strong>（Damasio）：眶额叶受损者（如菲尼亚斯·盖吉）无法避开不利选择、无预期情绪反应——情绪信号在复杂决策中起引导作用。</li>
+<li><strong>动态不一致</strong>（时间折扣）：今天 20 美元 vs 一周后 25 美元选前者，但 5 周后 20 vs 6 周后 25 选后者——本能系统被即刻结果激活。</li>
+<li><strong>爱荷华赌博任务</strong>：正常被试 20~40 次后转向有利牌（且身体”先知道”），眶额叶病人持续选不利牌。</li>
+</ul>
+<hr>
+<h2 id="15-第14章：赞美不确定性"><a href="#15-第14章：赞美不确定性" class="headerlink" title="15. 第14章：赞美不确定性"></a>15. 第14章：赞美不确定性</h2><ul>
+<li>人们厌恶不确定性，花巨资消除”最后 10% 的不确定性”（代价荒谬）。</li>
+<li><strong>拒绝不确定性的代价</strong>：迷信、虚假的控制信念、”罪有应得”的公正世界幻觉（社会达尔文主义）、阴谋论（把随机事件视为有组织的计划）。</li>
+<li>我们高估技能、低估随机性：棒球命中率的”可解释变异”真实值约 0.5%，球迷估计 25%（高估 50 倍）。</li>
+<li><strong>概率匹配</strong>：面对 70% 蓝牌，被试不每次都猜蓝（那样成功 70%），而是按比例猜（成功仅 58%）——无法接受情境的随机本质。</li>
+<li><strong>确定性带来的快乐错觉</strong>：我们无法预测自己的适应能力（免疫忽略）；享乐设定点使情绪最终回归基线。</li>
+<li>但<strong>完全消除不确定性是可怕的</strong>——没有不确定性就没有希望、没有选择自由、没有道德困境。</li>
+<li>结语：接受不确定性，用概率与统计理论理性决策。”我们没告诉你决策什么，而是如何决策。”</li>
+</ul>
+<hr>
+<h2 id="16-附录：概率论基本原则"><a href="#16-附录：概率论基本原则" class="headerlink" title="16. 附录：概率论基本原则"></a>16. 附录：概率论基本原则</h2><ul>
+<li><strong>四条概率原则</strong>：① 0 ≤ p(A) ≤ 1；② p(S) &#x3D; 1（p(∅) &#x3D; 0）；③ 若 A、B 互斥，则 p(A∪B) &#x3D; p(A)+p(B)；④ p(A|B) &#x3D; p(A∩B)&#x2F;p(B)。</li>
+<li>补集：p(Ā) + p(A) &#x3D; 1。</li>
+<li><strong>连锁原则</strong>：p(A∩B) &#x3D; p(A|B)·p(B) &#x3D; p(B|A)·p(A)。</li>
+<li><strong>独立性</strong>：p(A∩B) &#x3D; p(A)·p(B)。</li>
+<li><strong>贝叶斯定理</strong>：p(H|E) &#x3D; p(E|H)·p(H) &#x2F; p(E)。</li>
+<li>维纳斯列概率：24&#x2F;256 ≈ 0.094。</li>
+<li>违反概率原则的常见观念：合取谬误、混淆逆概率、忽视基础概率。</li>
+</ul>
+<hr>
+<h2 id="17-核心概念速查表-金句"><a href="#17-核心概念速查表-金句" class="headerlink" title="17. 核心概念速查表 + 金句"></a>17. 核心概念速查表 + 金句</h2><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>提出者</th>
+<th>一句话</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>有限理性</td>
+<td>Simon</td>
+<td>工作记忆限制 → 无法计算最优解</td>
+</tr>
+<tr>
+<td>理性四条标准</td>
+<td>本书</td>
+<td>基于资产、结果、概率、适应性</td>
+</tr>
+<tr>
+<td>沉没成本</td>
+<td>—</td>
+<td>已花成本不应影响未来决策</td>
+</tr>
+<tr>
+<td>透镜模型</td>
+<td>Brunswik</td>
+<td>通过线索判断效标</td>
+</tr>
+<tr>
+<td>线性模型 vs 人工</td>
+<td>Meehl&#x2F;Dawes</td>
+<td>简单模型几乎总胜过专家</td>
+</tr>
+<tr>
+<td>锚定与调整</td>
+<td>Tversky &amp; Kahneman</td>
+<td>从凸显值出发、调整不足</td>
+</tr>
+<tr>
+<td>偏好反转</td>
+<td>Slovic</td>
+<td>出价与选择锚定不同</td>
+</tr>
+<tr>
+<td>虚假共识效应</td>
+<td>Ross</td>
+<td>高估他人与自己相似</td>
+</tr>
+<tr>
+<td>可得性启发式</td>
+<td>Tversky &amp; Kahneman</td>
+<td>用提取容易度估计频率</td>
+</tr>
+<tr>
+<td>代表性启发式</td>
+<td>Tversky &amp; Kahneman</td>
+<td>用相似性判断概率</td>
+</tr>
+<tr>
+<td>合取谬误</td>
+<td>Tversky &amp; Kahneman</td>
+<td>联合事件 &gt; 单一事件</td>
+</tr>
+<tr>
+<td>基础概率忽视</td>
+<td>Bar-Hillel</td>
+<td>忽略先验概率</td>
+</tr>
+<tr>
+<td>比例规则</td>
+<td>—</td>
+<td>p(A|B) ≠ p(B|A)</td>
+</tr>
+<tr>
+<td>后见之明偏差</td>
+<td>Fischhoff</td>
+<td>事后高估事先预测能力</td>
+</tr>
+<tr>
+<td>控制错觉</td>
+<td>Langer</td>
+<td>把随机当技巧</td>
+</tr>
+<tr>
+<td>赌徒谬误</td>
+<td>—</td>
+<td>“时机已成熟”</td>
+</tr>
+<tr>
+<td>热手效应（不存在）</td>
+<td>Gilovich</td>
+<td>连续得分后更易得分是错觉</td>
+</tr>
+<tr>
+<td>趋均数回归</td>
+<td>Galton</td>
+<td>极端值趋向平均</td>
+</tr>
+<tr>
+<td>贝叶斯定理</td>
+<td>Bayes</td>
+<td>用证据更新先验</td>
+</tr>
+<tr>
+<td>峰-终定律</td>
+<td>Redelmeier &amp; Kahneman</td>
+<td>总体评价看峰值+终点</td>
+</tr>
+<tr>
+<td>享乐跑步机</td>
+<td>Brickman &amp; Campbell</td>
+<td>幸福有设定点</td>
+</tr>
+<tr>
+<td>期望效用理论</td>
+<td>von Neumann &amp; Morgenstern</td>
+<td>期望效用最大化</td>
+</tr>
+<tr>
+<td>Allais 悖论</td>
+<td>Allais</td>
+<td>确定性效应</td>
+</tr>
+<tr>
+<td>Ellsberg 悖论</td>
+<td>Ellsberg</td>
+<td>模糊规避</td>
+</tr>
+<tr>
+<td>预期理论</td>
+<td>Kahneman &amp; Tversky</td>
+<td>参照点、损失规避、权重</td>
+</tr>
+<tr>
+<td>框架效应</td>
+<td>Tversky &amp; Kahneman</td>
+<td>表述方式改变选择</td>
+</tr>
+<tr>
+<td>禀赋效应</td>
+<td>Thaler</td>
+<td>拥有即增值</td>
+</tr>
+<tr>
+<td>躯体标记假设</td>
+<td>Damasio</td>
+<td>情绪信号引导决策</td>
+</tr>
+</tbody></table>
+<h3 id="金句"><a href="#金句" class="headerlink" title="金句"></a>金句</h3><blockquote>
+<ul>
+<li>“生活是一门艺术，要在不充足的前提下得出充足的结论。”（巴特勒）</li>
+<li>“决策是好是坏，不能用结果做出清晰判定。”</li>
+<li>“过去为未来可能发生的事件提供了信息，也仅仅在这种情况下，过去才是相关的。”</li>
+<li>“今天正是我们剩余生命的第一天。”</li>
+<li>“只有数字才是真实的。”（Meehl）</li>
+<li>“我们所有人都无一例外地对自己的判断能力过度自信。”</li>
+<li>“要的越多，得到的越多。”</li>
+<li>“我们的思维不是按照概率法则运作的。”</li>
+<li>“偏好不需要推论。”（Zajonc）</li>
+<li>“确定性所带来的快乐错觉”——我们无法预测自己的适应能力。</li>
+<li>“没有不确定性，世界将没有希望，没有道德，没有选择自由。”</li>
+<li>“我们并没有告诉你去决策什么，而是告诉你如何做决策。”</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="附：全书一张图"><a href="#附：全书一张图" class="headerlink" title="附：全书一张图"></a>附：全书一张图</h2><pre class="mermaid">flowchart LR
+    subgraph 判断["判断（世界是怎样的）"]
+        A[透镜模型/线性模型] --&gt; B[锚定与调整]
+        B --&gt; C[启发式：可得性/代表性]
+        C --&gt; D[合取谬误/后见之明]
+        D --&gt; E[控制错觉/回归均值]
+        E --&gt; F[贝叶斯/概率思维]
+    end
+    subgraph 选择["选择（我该怎么做）"]
+        G[偏好/价值] --&gt; H[选择策略]
+        H --&gt; I[期望效用理论&lt;br/&gt;规范性]
+        I --&gt; J[预期理论&lt;br/&gt;描述性]
+    end
+    F --&gt; G
+    J --&gt; K[改进决策：&lt;br/&gt;外化表征 + 概率 + 权衡价值]</pre>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222110000002.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8ACFA%E4%B8%89%E7%BA%A7%E4%B8%AD%E6%96%87%E7%B2%BE%E8%AE%B2%EF%BC%88%E7%AC%AC3%E5%86%8C%EF%BC%89%E3%80%8B/'>阅读笔记——《CFA三级中文精讲（第3册）》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222106000001.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%88%90%E6%9E%9C%E7%AE%A1%E7%90%86%E3%80%8B/">阅读笔记——《成果管理》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

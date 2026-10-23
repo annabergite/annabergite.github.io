@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Java源码到实践CompletableFuture" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Java源码到实践CompletableFuture
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2024-05-31</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：5分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%89%8D%E8%BA%AB"><span class="post-toc-text">前身</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Runnable"><span class="post-toc-text">Runnable</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Future"><span class="post-toc-text">Future</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RunnableFuture"><span class="post-toc-text">RunnableFuture</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#FutureTask"><span class="post-toc-text">FutureTask</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CompletableFuture%E5%8F%AF%E4%BB%A5%E5%81%9A%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="post-toc-text">CompletableFuture可以做什么？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%9E%E6%88%98"><span class="post-toc-text">实战</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="post-toc-text">其他包装类</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>本文将从以下几个点讲解CompletableFuture：</p>
+<ul>
+<li>前身</li>
+<li>是什么？</li>
+<li>可以用来做什么？</li>
+<li>源码原理</li>
+<li>实战</li>
+<li>其他包装类</li>
+</ul>
+<h1 id="前身"><a href="#前身" class="headerlink" title="前身"></a>前身</h1><p>CompletableFuture的依赖如图所示：</p>
+<p><a href="/images/zhihu/v2-6fec61ae05725375bafbf5a48649cb20.jpg" class="gallery-item" style="box-shadow: none;"> <img src="/images/zhihu/v2-6fec61ae05725375bafbf5a48649cb20.jpg"></a></p>
+<p><a href="/images/zhihu/v2-11d243f14c18cf6f538b3eb1995acd46.jpg" class="gallery-item" style="box-shadow: none;"> <img src="/images/zhihu/v2-11d243f14c18cf6f538b3eb1995acd46.jpg"></a></p>
+<p>所以我打算从Runnable、Future、RunnableFuture、FutureTask讲起</p>
+<h1 id="Runnable"><a href="#Runnable" class="headerlink" title="Runnable"></a>Runnable</h1><p>Runnable就是一个带着执行方法的接口，通过实现Runnable可以实现开始一个线程执行对应的无返回值的操作。</p>
+<h1 id="Future"><a href="#Future" class="headerlink" title="Future"></a>Future</h1><p>Future保存异步计算的结果,可以在我们执行任务时去做其他工作，体现了解耦的思想。Future 可以对于具体的Runnable或者Callable任务的执行结果进行取消、查询是否完成、获取结果。必要时可以通过get方法获取执行结果，该方法会阻塞直到任务返回结果。</p>
+<p>其实本质上就是对Runnable或者Callable任务做了一层异步方法封装</p>
+<h1 id="RunnableFuture"><a href="#RunnableFuture" class="headerlink" title="RunnableFuture"></a>RunnableFuture</h1><p>RunnableFuture实际上只是Runnable接口和Future接口的总和，使用较少。</p>
+<h1 id="FutureTask"><a href="#FutureTask" class="headerlink" title="FutureTask"></a>FutureTask</h1><p>FutureTask是Future接口的一个唯一实现类。</p>
+<p>FutureTask可以对Task做一个异步执行，通过FutureTask的构造函数可以将你想进行异步操作的Task封装进去。FutureTask是个适配器类，作为一个转换器，将Runnable和Callable适配，适配器类是适配器模式的核心，它通过实现RunnableFuture和组合Callable使得两者产生关系。</p>
+<h1 id="CompletableFuture可以做什么？"><a href="#CompletableFuture可以做什么？" class="headerlink" title="CompletableFuture可以做什么？"></a>CompletableFuture可以做什么？</h1><p>如果只使用Future类可以进行简单的异步执行，但是使用Future的get方法会导致主进程阻塞，并且也无法做到多个异步任务之间的依赖关系，并且有时候异步任务报错不会输出堆栈，Future任务也不会触发后续操作，没有提供函数式编程，不过以上CompletableFuture都可以帮助我们实现。</p>
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><p>以下是一些常用API，需要注意的是CompletableFuture可以使用默认线程池或者是自定义线程池，默认线程池是ForkJoinPool</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test1</span><span class="params">()</span> <span class="keyword">throws</span> ExecutionException, InterruptedException, java.util.concurrent.ExecutionException &#123;</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">base</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CompletableFuture</span>&lt;&gt;();</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">future</span> <span class="operator">=</span> base.thenApply(s -&gt; s + <span class="string">&quot; 2&quot;</span>).thenApply(s -&gt; s + <span class="string">&quot; 3&quot;</span>);</span><br><span class="line">        base.complete(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        System.out.println(future.get());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test2</span><span class="params">()</span> <span class="keyword">throws</span> ExecutionException, InterruptedException, java.util.concurrent.ExecutionException &#123;</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">base</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CompletableFuture</span>&lt;&gt;();</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">future</span> <span class="operator">=</span> base.thenApply(s -&gt; s + <span class="string">&quot; 2&quot;</span>).thenApply(s -&gt; s + <span class="string">&quot; 3&quot;</span>);</span><br><span class="line">        future.complete(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        System.out.println(future.get());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test3</span><span class="params">()</span> <span class="keyword">throws</span> java.util.concurrent.ExecutionException, InterruptedException &#123;</span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">4</span>);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤1】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤1的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step2</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤2】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤2的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step3</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤3】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤3的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line"></span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;Object&gt; <span class="variable">stepN</span> <span class="operator">=</span> CompletableFuture.anyOf(step1, step2, step3);</span><br><span class="line">        System.out.println(<span class="string">&quot;步骤N的结果：&quot;</span> + stepN.get());</span><br><span class="line"></span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test4</span><span class="params">()</span> <span class="keyword">throws</span> java.util.concurrent.ExecutionException, InterruptedException &#123;</span><br><span class="line">        <span class="type">ExecutorService</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">4</span>);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step1</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤1】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤1的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step2</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤2】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤2的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">step3</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;执行【步骤3】&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;【步骤3的执行结果】&quot;</span>;</span><br><span class="line">        &#125;, executor);</span><br><span class="line"></span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;Void&gt; <span class="variable">stepN</span> <span class="operator">=</span> CompletableFuture.allOf(step1, step2, step3);</span><br><span class="line">        System.out.println(<span class="string">&quot;步骤N的结果：&quot;</span> + stepN.get());</span><br><span class="line"></span><br><span class="line">        executor.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test5</span><span class="params">()</span> <span class="keyword">throws</span> java.util.concurrent.ExecutionException, InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 生产者，可以指定返回结果</span></span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;String&gt; <span class="variable">firstTask</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;异步任务开始执行&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;异步任务执行结束&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;返回结果&quot;</span>;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">result1</span> <span class="operator">=</span> firstTask.join();</span><br><span class="line">        <span class="type">String</span> <span class="variable">result2</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            result2 = firstTask.get();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(result1 + <span class="string">&quot;,&quot;</span> + result2);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test6</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;任务A&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;abcdefg&quot;</span>;</span><br><span class="line">        &#125;).thenAccept(result -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;任务b，拿到结果处理：&quot;</span> + result);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        System.in.read();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">void</span> <span class="title function_">test7</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">CompletableFuture</span>&lt;Integer&gt; <span class="variable">future</span> <span class="operator">=</span> CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;任务A执行&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">        &#125;).thenCombine(CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;任务B执行&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="number">10</span>;</span><br><span class="line">        &#125;), (r1, r2) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;任务C执行&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> r1 + r2;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(<span class="string">&quot;任务C结果=&quot;</span> + future.join());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他包装类"><a href="#其他包装类" class="headerlink" title="其他包装类"></a>其他包装类</h1><p>其他也有一些API可以实现异步编程，常用的有以下几个，后续有时间的话可以单独写文章解析</p>
+<ul>
+<li>Spring注解@Async</li>
+<li>消息队列</li>
+<li>第三方异步框架，比如Hutool的ThreadUtil</li>
+<li>Guava异步<br>这几个是进行开发的时候常用的</li>
+</ul>
+<hr>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-05-31</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BC%80%E5%8F%91/'>
+                            开发
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E5%BC%80%E5%8F%91/2610212231008038.Java%20%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0LockSupport/'>Java 源码学习LockSupport</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E5%BC%80%E5%8F%91/2610212233000216.Java%E4%BB%8E%E4%BB%A3%E7%A0%81%E5%88%B0%E5%AE%9E%E6%88%98TransmittableThreadLocal/">Java从代码到实战TransmittableThreadLocal</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

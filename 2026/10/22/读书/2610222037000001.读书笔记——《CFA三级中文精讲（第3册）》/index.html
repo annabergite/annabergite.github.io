@@ -1,0 +1,1898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="读书笔记——《CFA三级中文精讲（第3册）》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    读书笔记——《CFA三级中文精讲（第3册）》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：22k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：83分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8ACFA%E4%B8%89%E7%BA%A7%E4%B8%AD%E6%96%87%E7%B2%BE%E8%AE%B2%E3%80%8B-%E7%AC%AC3%E5%86%8C-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《CFA三级中文精讲》(第3册) 读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="post-toc-text">目录结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC9%E7%AB%A0-%E5%8F%A6%E7%B1%BB%E6%8A%95%E8%B5%84%E7%9A%84%E7%BB%84%E5%90%88%E7%AE%A1%E7%90%86"><span class="post-toc-text">第9章 另类投资的组合管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-1-%E5%8F%A6%E7%B1%BB%E6%8A%95%E8%B5%84%E6%A6%82%E8%BF%B0"><span class="post-toc-text">9.1 另类投资概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-1-%E5%8F%A6%E7%B1%BB%E6%8A%95%E8%B5%84%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%88%E5%85%B1%E6%80%A7%EF%BC%89"><span class="post-toc-text">9.1.1 另类投资的特点（共性）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-2-%E5%8F%A6%E7%B1%BB%E6%8A%95%E8%B5%84%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text">9.1.2 另类投资的分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-3-%E5%B0%BD%E8%81%8C%E8%B0%83%E6%9F%A5%E8%A6%81%E7%82%B9"><span class="post-toc-text">9.1.3 尽职调查要点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-2-%E6%88%BF%E5%9C%B0%E4%BA%A7%EF%BC%88Real-Estate%EF%BC%89"><span class="post-toc-text">9.2 房地产（Real Estate）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-1-%E5%88%86%E7%B1%BB"><span class="post-toc-text">9.2.1 分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-2-%E7%89%B9%E5%BE%81"><span class="post-toc-text">9.2.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-3-%E7%9B%B4%E6%8E%A5%E6%8A%95%E8%B5%84%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="post-toc-text">9.2.3 直接投资的优缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-4-%E4%B8%9A%E7%BB%A9%E5%8F%82%E7%85%A7%E6%A0%87%E5%87%86"><span class="post-toc-text">9.2.4 业绩参照标准</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-5-%E7%BB%84%E5%90%88%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text">9.2.5 组合中的作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-3-%E7%A7%81%E5%8B%9F%E8%82%A1%E6%9D%83%EF%BC%88Private-Equity-Venture-Capital%EF%BC%89"><span class="post-toc-text">9.3 私募股权（Private Equity &#x2F; Venture Capital）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-1-%E6%A6%82%E5%BF%B5"><span class="post-toc-text">9.3.1 概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-2-%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8-vs-%E9%9D%9E%E4%B8%8A%E5%B8%82%E5%85%AC%E5%8F%B8%E8%82%A1%E6%9D%83%E6%8A%95%E8%B5%84"><span class="post-toc-text">9.3.2 上市公司 vs 非上市公司股权投资</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-3-%E9%A3%8E%E9%99%A9%E6%8A%95%E8%B5%84%E7%9A%84%E9%98%B6%E6%AE%B5"><span class="post-toc-text">9.3.3 风险投资的阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-4-%E5%B9%B6%E8%B4%AD%E5%9F%BA%E9%87%91%EF%BC%88Buyout-Funds%EF%BC%89"><span class="post-toc-text">9.3.4 并购基金（Buyout Funds）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-5-%E7%A7%81%E5%8B%9F%E8%82%A1%E6%9D%83%E6%8A%95%E8%B5%84%E7%9A%84%E7%B1%BB%E5%9E%8B%E4%B8%8E%E8%B4%B9%E7%94%A8"><span class="post-toc-text">9.3.5 私募股权投资的类型与费用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-6-%E7%A7%81%E5%8B%9F%E8%82%A1%E6%9D%83%E6%8A%95%E8%B5%84%E7%9A%84%E7%89%B9%E5%BE%81"><span class="post-toc-text">9.3.6 私募股权投资的特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-7-%E5%8F%82%E7%85%A7%E6%A0%87%E5%87%86%E4%B8%8E%E7%BB%84%E5%90%88%E4%BD%9C%E7%94%A8"><span class="post-toc-text">9.3.7 参照标准与组合作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-4-%E5%A4%A7%E5%AE%97%E5%95%86%E5%93%81%EF%BC%88Commodity-Investments%EF%BC%89"><span class="post-toc-text">9.4 大宗商品（Commodity Investments）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-1-%E5%88%86%E7%B1%BB"><span class="post-toc-text">9.4.1 分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-2-%E7%89%B9%E5%BE%81"><span class="post-toc-text">9.4.2 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-3-%E7%BB%84%E5%90%88%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="post-toc-text">9.4.3 组合中的作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-5-%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91%EF%BC%88Hedge-Funds%EF%BC%89"><span class="post-toc-text">9.5 对冲基金（Hedge Funds）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-1-%E6%8C%89%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5%E5%88%86%E7%B1%BB"><span class="post-toc-text">9.5.1 按投资策略分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-2-%E8%96%AA%E9%85%AC%E7%BB%93%E6%9E%84"><span class="post-toc-text">9.5.2 薪酬结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-3-%E5%9F%BA%E9%87%91%E4%B8%AD%E7%9A%84%E5%9F%BA%E9%87%91%EF%BC%88FOF%EF%BC%89"><span class="post-toc-text">9.5.3 基金中的基金（FOF）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-4-%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91%E6%8C%87%E6%95%B0"><span class="post-toc-text">9.5.4 对冲基金指数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-5-%E5%8E%86%E5%8F%B2%E8%A1%A8%E7%8E%B0%E4%B8%8E%E7%BB%84%E5%90%88%E4%BD%9C%E7%94%A8"><span class="post-toc-text">9.5.5 历史表现与组合作用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-6-%E4%B8%9A%E7%BB%A9%E8%A1%A1%E9%87%8F%E7%9A%84%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="post-toc-text">9.5.6 业绩衡量的其他问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-7-%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91%E6%94%B6%E7%9B%8A%E4%B8%8E%E9%A3%8E%E9%99%A9%E8%AE%A1%E7%AE%97"><span class="post-toc-text">9.5.7 对冲基金收益与风险计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-8-%E4%B8%9A%E7%BB%A9%E8%A1%A1%E9%87%8F%E6%8C%87%E6%A0%87"><span class="post-toc-text">9.5.8 业绩衡量指标</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-6-%E7%AE%A1%E7%90%86%E5%9E%8B%E6%9C%9F%E8%B4%A7%E5%9F%BA%E9%87%91%EF%BC%88Managed-Futures%EF%BC%89"><span class="post-toc-text">9.6 管理型期货基金（Managed Futures）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-6-1-%E4%B8%8E%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91%E6%AF%94%E8%BE%83"><span class="post-toc-text">9.6.1 与对冲基金比较</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-6-2-%E6%8A%95%E8%B5%84%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">9.6.2 投资类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-6-3-%E7%89%B9%E5%BE%81"><span class="post-toc-text">9.6.3 特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-6-4-%E7%BB%84%E5%90%88%E4%BD%9C%E7%94%A8"><span class="post-toc-text">9.6.4 组合作用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-7-%E5%9B%B0%E5%A2%83%E8%AF%81%E5%88%B8%EF%BC%88Distressed-Securities%EF%BC%89"><span class="post-toc-text">9.7 困境证券（Distressed Securities）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-7-1-%E5%88%86%E7%B1%BB%E4%B8%8E%E6%A0%87%E7%9A%84"><span class="post-toc-text">9.7.1 分类与标的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-7-2-%E7%89%B9%E5%BE%81%E4%B8%8E%E7%AD%96%E7%95%A5"><span class="post-toc-text">9.7.2 特征与策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-7-3-%E5%8F%82%E7%85%A7%E6%A0%87%E5%87%86%E4%B8%8E%E5%8E%86%E5%8F%B2%E8%A1%A8%E7%8E%B0"><span class="post-toc-text">9.7.3 参照标准与历史表现</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC10%E7%AB%A0-%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="post-toc-text">第10章 风险管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-1-%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E6%A6%82%E8%BF%B0"><span class="post-toc-text">10.1 风险管理概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-1-%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5"><span class="post-toc-text">10.1.1 核心理念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-2-%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E6%B5%81%E7%A8%8B%EF%BC%885%E6%AD%A5%EF%BC%89"><span class="post-toc-text">10.1.2 风险管理流程（5步）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-3-%E9%A3%8E%E9%99%A9%E6%B2%BB%E7%90%86%EF%BC%88Risk-Governance%EF%BC%89"><span class="post-toc-text">10.1.3 风险治理（Risk Governance）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-4-%E9%A3%8E%E9%99%A9%E8%AF%86%E5%88%AB"><span class="post-toc-text">10.1.4 风险识别</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-2-%E9%A3%8E%E9%99%A9%E5%BA%A6%E9%87%8F%EF%BC%9A%E5%B8%82%E5%9C%BA%E9%A3%8E%E9%99%A9"><span class="post-toc-text">10.2 风险度量：市场风险</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-1-%E6%95%8F%E6%84%9F%E5%BA%A6%E6%8C%87%E6%A0%87"><span class="post-toc-text">10.2.1 敏感度指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-2-VaR%EF%BC%88%E5%9C%A8%E9%99%A9%E4%BB%B7%E5%80%BC%EF%BC%89"><span class="post-toc-text">10.2.2 VaR（在险价值）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-3-%E8%AE%A1%E7%AE%97-VaR-%E7%9A%843%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="post-toc-text">10.2.3 计算 VaR 的3种方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-4-VaR-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="post-toc-text">10.2.4 VaR 的优缺点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-5-%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%EF%BC%88Stress-Testing%EF%BC%89"><span class="post-toc-text">10.2.5 压力测试（Stress Testing）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-3-%E9%A3%8E%E9%99%A9%E5%BA%A6%E9%87%8F%EF%BC%9A%E4%BF%A1%E7%94%A8%E9%A3%8E%E9%99%A9"><span class="post-toc-text">10.3 风险度量：信用风险</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-1-%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="post-toc-text">10.3.1 基础概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-2-%E4%BF%A1%E7%94%A8-VaR"><span class="post-toc-text">10.3.2 信用 VaR</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-3-%E5%90%84%E7%B1%BB%E8%A1%8D%E7%94%9F%E5%93%81%E7%9A%84%E4%BF%A1%E7%94%A8%E9%A3%8E%E9%99%A9"><span class="post-toc-text">10.3.3 各类衍生品的信用风险</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-4-%E9%A3%8E%E9%99%A9%E7%9A%84%E7%AE%A1%E7%90%86"><span class="post-toc-text">10.4 风险的管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-1-%E7%AE%A1%E7%90%86%E5%B8%82%E5%9C%BA%E9%A3%8E%E9%99%A9"><span class="post-toc-text">10.4.1 管理市场风险</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-2-%E7%AE%A1%E7%90%86%E4%BF%A1%E7%94%A8%E9%A3%8E%E9%99%A9"><span class="post-toc-text">10.4.2 管理信用风险</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-3-%E4%B8%9A%E7%BB%A9%E8%A1%A1%E9%87%8F%EF%BC%88%E9%A3%8E%E9%99%A9%E8%B0%83%E6%95%B4%EF%BC%89"><span class="post-toc-text">10.4.3 业绩衡量（风险调整）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-4-%E8%B5%84%E6%9C%AC%E5%88%86%E9%85%8D%EF%BC%885%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%89"><span class="post-toc-text">10.4.4 资本分配（5种方法）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC11%E7%AB%A0-%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%9A%E8%A1%8D%E7%94%9F%E5%93%81"><span class="post-toc-text">第11章 风险管理的应用：衍生品</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-1-%E8%BF%9C%E6%9C%9F%E5%92%8C%E6%9C%9F%E8%B4%A7%E5%9C%A8%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">11.1 远期和期货在风险管理中的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-1-%E7%AE%A1%E7%90%86%E5%88%A9%E7%8E%87%E9%A3%8E%E9%99%A9%EF%BC%88%E8%B0%83%E6%95%B4%E4%B9%85%E6%9C%9F%EF%BC%89"><span class="post-toc-text">11.1.1 管理利率风险（调整久期）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-2-%E7%AE%A1%E7%90%86%E8%82%A1%E7%A5%A8%E5%B8%82%E5%9C%BA%E9%A3%8E%E9%99%A9%EF%BC%88%E8%B0%83%E6%95%B4%E8%B4%9D%E5%A1%94%EF%BC%89"><span class="post-toc-text">11.1.2 管理股票市场风险（调整贝塔）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-3-%E5%90%88%E6%88%90%E8%82%A1%E7%A5%A8%E5%A4%B4%E5%AF%B8%EF%BC%88synthetic-index-fund%EF%BC%89"><span class="post-toc-text">11.1.3 合成股票头寸（synthetic index fund）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-4-%E5%90%88%E6%88%90%E7%8E%B0%E9%87%91%E5%A4%B4%E5%AF%B8"><span class="post-toc-text">11.1.4 合成现金头寸</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-5-%E7%AE%A1%E7%90%86%E7%BB%84%E5%90%88%E7%9A%84%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE"><span class="post-toc-text">11.1.5 管理组合的资产配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-6-%E6%8F%90%E5%89%8D%E6%8A%95%E8%B5%84%EF%BC%88pre-investing%EF%BC%89"><span class="post-toc-text">11.1.6 提前投资（pre-investing）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-7-%E5%A4%96%E6%B1%87%E9%A3%8E%E9%99%A9%EF%BC%88%E5%9B%BD%E9%99%85%E8%B4%B8%E6%98%93%E5%85%AC%E5%8F%B8%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="post-toc-text">11.1.7 外汇风险（国际贸易公司角度）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-8-%E5%AF%B9%E5%86%B2%E7%9A%84%E9%99%90%E5%88%B6"><span class="post-toc-text">11.1.8 对冲的限制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-9-%E8%BF%9C%E6%9C%9F-vs-%E6%9C%9F%E8%B4%A7"><span class="post-toc-text">11.1.9 远期 vs 期货</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-2-%E6%9C%9F%E6%9D%83%E5%9C%A8%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">11.2 期权在风险管理中的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-1-%E6%9C%9F%E6%9D%83%E7%AD%96%E7%95%A5%E5%9C%A8%E8%82%A1%E7%A5%A8%E7%BB%84%E5%90%88%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">11.2.1 期权策略在股票组合中的应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-2-%E5%88%A9%E7%8E%87%E6%9C%9F%E6%9D%83%E7%AD%96%E7%95%A5"><span class="post-toc-text">11.2.2 利率期权策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-3-%E6%9C%9F%E6%9D%83%E7%BB%84%E5%90%88%E7%9A%84%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E7%AD%96%E7%95%A5%EF%BC%88%E5%81%9A%E5%B8%82%E5%95%86%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="post-toc-text">11.2.3 期权组合的风险管理策略（做市商角度）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-3-%E4%BA%92%E6%8D%A2%E5%9C%A8%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="post-toc-text">11.3 互换在风险管理中的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-1-%E5%88%A9%E7%8E%87%E4%BA%92%E6%8D%A2%EF%BC%88%E7%AE%A1%E7%90%86%E5%88%A9%E7%8E%87%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="post-toc-text">11.3.1 利率互换（管理利率风险）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-2-%E8%B4%A7%E5%B8%81%E4%BA%92%E6%8D%A2%EF%BC%88%E7%AE%A1%E7%90%86%E6%B1%87%E7%8E%87%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="post-toc-text">11.3.2 货币互换（管理汇率风险）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-3-%E6%9D%83%E7%9B%8A%E4%BA%92%E6%8D%A2%EF%BC%88%E7%AE%A1%E7%90%86%E8%82%A1%E7%A5%A8%E5%B8%82%E5%9C%BA%E9%A3%8E%E9%99%A9%EF%BC%89"><span class="post-toc-text">11.3.3 权益互换（管理股票市场风险）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-4-%E5%88%A9%E7%8E%87%E4%BA%92%E6%8D%A2%E6%9C%9F%E6%9D%83%EF%BC%88Swaption%EF%BC%89"><span class="post-toc-text">11.3.4 利率互换期权（Swaption）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC12%E7%AB%A0-%E4%BA%A4%E6%98%93"><span class="post-toc-text">第12章 交易</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-1-%E5%B8%82%E5%9C%BA%E7%BB%93%E6%9E%84%E4%B8%8E%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC"><span class="post-toc-text">12.1 市场结构与交易成本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-1-%E5%B8%82%E5%9C%BA%E5%8A%9F%E8%83%BD%EF%BC%883%E6%96%B9%E9%9D%A2%EF%BC%89"><span class="post-toc-text">12.1.1 市场功能（3方面）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-2-%E5%B8%82%E5%9C%BA%E7%BB%93%E6%9E%84%EF%BC%884%E7%A7%8D%EF%BC%89"><span class="post-toc-text">12.1.2 市场结构（4种）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-3-%E6%9C%89%E6%95%88%E4%BB%B7%E5%B7%AE%EF%BC%88effective-spread%EF%BC%89"><span class="post-toc-text">12.1.3 有效价差（effective spread）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-4-%E8%AF%84%E5%88%A4%E5%B8%82%E5%9C%BA%E8%B4%A8%E9%87%8F%E7%9A%84%E6%A0%87%E5%87%86"><span class="post-toc-text">12.1.4 评判市场质量的标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-2-%E8%A1%A1%E9%87%8F%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="post-toc-text">12.2 衡量交易成本的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-1-%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC%E5%88%86%E7%B1%BB"><span class="post-toc-text">12.2.1 交易成本分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-2-VWAP%EF%BC%88%E6%88%90%E4%BA%A4%E9%87%8F%E5%8A%A0%E6%9D%83%E5%B9%B3%E5%9D%87%E4%BB%B7%E6%A0%BC%EF%BC%89"><span class="post-toc-text">12.2.2 VWAP（成交量加权平均价格）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-3-%E6%89%A7%E8%A1%8C%E8%90%BD%E5%B7%AE%EF%BC%88Implementation-Shortfall-IS%EF%BC%89"><span class="post-toc-text">12.2.3 执行落差（Implementation Shortfall, IS）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-4-%E8%B0%83%E6%95%B4%E5%B8%82%E5%9C%BA%E5%8F%98%E5%8A%A8%E7%9A%84%E6%89%A7%E8%A1%8C%E8%90%BD%E5%B7%AE"><span class="post-toc-text">12.2.4 调整市场变动的执行落差</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-5-VWAP-vs-%E6%89%A7%E8%A1%8C%E8%90%BD%E5%B7%AE"><span class="post-toc-text">12.2.5 VWAP vs 执行落差</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-6-%E8%AE%A1%E9%87%8F%E6%A8%A1%E5%9E%8B%EF%BC%88econometric-models%EF%BC%89"><span class="post-toc-text">12.2.6 计量模型（econometric models）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-3-%E4%BA%A4%E6%98%93%E8%80%85%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">12.3 交易者的类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-4-%E4%BA%A4%E6%98%93%E7%AD%96%E7%95%A5"><span class="post-toc-text">12.4 交易策略</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-5-%E7%AE%97%E6%B3%95%E4%BA%A4%E6%98%93%EF%BC%88Algorithmic-Trading%EF%BC%89"><span class="post-toc-text">12.5 算法交易（Algorithmic Trading）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-5-1-%E9%80%BB%E8%BE%91%E5%8F%82%E4%B8%8E%E7%AD%96%E7%95%A5%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="post-toc-text">12.5.1 逻辑参与策略（重点）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-5-2-%E6%9C%BA%E4%BC%9A%E4%B8%BB%E4%B9%89%E4%B8%8E%E7%89%B9%E6%AE%8A%E7%AD%96%E7%95%A5"><span class="post-toc-text">12.5.2 机会主义与特殊策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-5-3-%E7%AE%97%E6%B3%95%E4%BA%A4%E6%98%93%E7%AD%96%E7%95%A5%E9%80%89%E6%8B%A9"><span class="post-toc-text">12.5.3 算法交易策略选择</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-6-%E6%9C%80%E4%BC%98%E6%89%A7%E8%A1%8C%EF%BC%88Best-Execution%EF%BC%89"><span class="post-toc-text">12.6 最优执行（Best Execution）</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC13%E7%AB%A0-%E4%B8%9A%E7%BB%A9%E8%AF%84%E4%BC%B0"><span class="post-toc-text">第13章 业绩评估</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-1-%E7%BB%84%E5%90%88%E4%B8%9A%E7%BB%A9%E8%AF%84%E4%BC%B0"><span class="post-toc-text">13.1 组合业绩评估</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-1-%E4%B8%A4%E5%A4%A7%E8%A7%92%E5%BA%A6%E4%B8%8E%E4%B8%89%E5%A4%A7%E7%BB%93%E6%9E%84"><span class="post-toc-text">13.1.1 两大角度与三大结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-2-%E6%94%B6%E7%9B%8A%E8%AE%A1%E7%AE%97"><span class="post-toc-text">13.1.2 收益计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-3-%E6%97%B6%E9%97%B4%E5%8A%A0%E6%9D%83%E6%94%B6%E7%9B%8A%E7%8E%87%EF%BC%88TWR%EF%BC%89"><span class="post-toc-text">13.1.3 时间加权收益率（TWR）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-4-%E8%B4%A7%E5%B8%81%E5%8A%A0%E6%9D%83%E6%94%B6%E7%9B%8A%E7%8E%87%EF%BC%88MWR%EF%BC%89"><span class="post-toc-text">13.1.4 货币加权收益率（MWR）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-5-%E8%A1%94%E6%8E%A5%E7%9A%84%E5%86%85%E9%83%A8%E6%94%B6%E7%9B%8A%E7%8E%87%EF%BC%88LIRR%EF%BC%89"><span class="post-toc-text">13.1.5 衔接的内部收益率（LIRR）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-1-6-%E6%95%B0%E6%8D%AE%E8%B4%A8%E9%87%8F"><span class="post-toc-text">13.1.6 数据质量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-2-%E7%BB%84%E5%90%88%E6%94%B6%E7%9B%8A%E7%9A%84%E6%9E%84%E6%88%90"><span class="post-toc-text">13.2 组合收益的构成</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-3-%E5%8F%82%E8%80%83%E5%9F%BA%E5%87%86"><span class="post-toc-text">13.3 参考基准</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-3-1-%E6%9C%89%E6%95%88%E5%8F%82%E8%80%83%E5%9F%BA%E5%87%86%E7%9A%847%E7%B1%BB%E7%89%B9%E5%BE%81"><span class="post-toc-text">13.3.1 有效参考基准的7类特征</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-3-2-7%E7%A7%8D%E4%B8%BB%E8%A6%81%E5%9F%BA%E5%87%86%E5%8F%82%E8%80%83%E6%8C%87%E6%A0%87"><span class="post-toc-text">13.3.2 7种主要基准参考指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-3-3-%E5%AF%B9%E2%80%9D%E5%9F%BA%E9%87%91%E7%BB%8F%E7%90%86%E7%BB%8F%E9%AA%8C%E9%A2%86%E5%9F%9F%E2%80%9D%E7%9A%84%E6%89%B9%E5%88%A4"><span class="post-toc-text">13.3.3 对”基金经理经验领域”的批判</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-3-4-%E5%8F%82%E8%80%83%E5%9F%BA%E5%87%86%E8%B4%A8%E9%87%8F%E7%9A%84%E6%A3%80%E9%AA%8C"><span class="post-toc-text">13.3.4 参考基准质量的检验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-4-%E5%AF%B9%E5%86%B2%E5%9F%BA%E9%87%91%E4%B8%9A%E7%BB%A9%E7%9A%84%E8%A1%A1%E9%87%8F%E6%96%B9%E6%B3%95"><span class="post-toc-text">13.4 对冲基金业绩的衡量方法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-5-%E4%B8%9A%E7%BB%A9%E5%BD%92%E5%9B%A0"><span class="post-toc-text">13.5 业绩归因</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-5-1-%E5%AE%8F%E8%A7%82%E4%B8%9A%E7%BB%A9%E5%BD%92%E5%9B%A0%EF%BC%88%E5%9F%BA%E9%87%91%E5%8F%91%E8%B5%B7%E4%BA%BA%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="post-toc-text">13.5.1 宏观业绩归因（基金发起人角度）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-5-2-%E5%BE%AE%E8%A7%82%E4%B8%9A%E7%BB%A9%E5%BD%92%E5%9B%A0%EF%BC%88%E5%9F%BA%E9%87%91%E7%BB%8F%E7%90%86%E8%A7%92%E5%BA%A6%EF%BC%89"><span class="post-toc-text">13.5.2 微观业绩归因（基金经理角度）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-5-3-%E5%9F%BA%E6%9C%AC%E9%9D%A2%E5%9B%A0%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="post-toc-text">13.5.3 基本面因子模型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-5-4-%E5%9B%BA%E5%AE%9A%E6%94%B6%E7%9B%8A%E7%BB%84%E5%90%88%E5%9B%9E%E6%8A%A5%E5%BD%92%E5%9B%A0"><span class="post-toc-text">13.5.4 固定收益组合回报归因</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-6-%E9%A3%8E%E9%99%A9%E8%B0%83%E6%95%B4%E5%90%8E%E7%9A%84%E4%B8%9A%E7%BB%A9%E9%89%B4%E5%AE%9A%E8%A1%A1%E9%87%8F"><span class="post-toc-text">13.6 风险调整后的业绩鉴定衡量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-6-1-5%E7%A7%8D%E6%8C%87%E6%A0%87"><span class="post-toc-text">13.6.1 5种指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-6-2-%E6%8C%87%E6%A0%87%E6%AF%94%E8%BE%83"><span class="post-toc-text">13.6.2 指标比较</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-7-%E8%B4%A8%E9%87%8F%E6%8E%A7%E5%88%B6%E5%9B%BE%EF%BC%88Quality-Control-Charts%EF%BC%89"><span class="post-toc-text">13.7 质量控制图（Quality Control Charts）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-7-1-%E5%9F%BA%E9%87%91%E7%BB%8F%E7%90%86%E7%BB%AD%E7%94%A8%E6%94%BF%E7%AD%96%EF%BC%88MCP%EF%BC%89"><span class="post-toc-text">13.7.1 基金经理续用政策（MCP）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-7-2-%E7%AC%AC%E4%B8%80%E7%B1%BB%E9%94%99%E8%AF%AF%E4%B8%8E%E7%AC%AC%E4%BA%8C%E7%B1%BB%E9%94%99%E8%AF%AF"><span class="post-toc-text">13.7.2 第一类错误与第二类错误</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%85%A8%E7%90%83%E6%8A%95%E8%B5%84%E4%B8%9A%E7%BB%A9%E5%87%86%E5%88%99%EF%BC%88GIPS%EF%BC%89"><span class="post-toc-text">第14章 全球投资业绩准则（GIPS）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-1-%E7%AE%80%E4%BB%8B"><span class="post-toc-text">14.1 简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-1-1-%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="post-toc-text">14.1.1 适用范围与目标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-1-2-%E4%B8%93%E4%B8%9A%E6%9C%AF%E8%AF%AD"><span class="post-toc-text">14.1.2 专业术语</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-1-3-GIPS-%E6%A6%82%E8%A7%82%EF%BC%889%E5%A4%A7%E9%83%A8%E5%88%86%EF%BC%89"><span class="post-toc-text">14.1.3 GIPS 概观（9大部分）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-2-0-5-%E9%83%A8%E5%88%86%E6%9D%A1%E6%AC%BE"><span class="post-toc-text">14.2 0~5 部分条款</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-1-0-Fundamentals-of-Compliance%EF%BC%88%E9%81%B5%E5%AE%88%E5%9F%BA%E7%A1%80%EF%BC%89"><span class="post-toc-text">14.2.1 0. Fundamentals of Compliance（遵守基础）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-2-1-Input-Data%EF%BC%88%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%EF%BC%89"><span class="post-toc-text">14.2.2 1. Input Data（输入数据）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-3-2-Calculation-Methodology%EF%BC%88%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95%EF%BC%89"><span class="post-toc-text">14.2.3 2. Calculation Methodology（计算方法）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-4-3-Composite-Construction%EF%BC%88%E7%BB%84%E5%90%88%E6%9E%84%E5%BB%BA%EF%BC%89"><span class="post-toc-text">14.2.4 3. Composite Construction（组合构建）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-5-4-Disclosures%EF%BC%88%E6%8A%AB%E9%9C%B2%EF%BC%89"><span class="post-toc-text">14.2.5 4. Disclosures（披露）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-2-6-5-Presentation-and-Reporting%EF%BC%88%E9%99%88%E8%BF%B0%E4%B8%8E%E6%8A%A5%E5%91%8A%EF%BC%89"><span class="post-toc-text">14.2.6 5. Presentation and Reporting（陈述与报告）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-3-6-8-%E9%83%A8%E5%88%86%E6%9D%A1%E6%AC%BE"><span class="post-toc-text">14.3 6~8 部分条款</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-3-1-6-Real-Estate%EF%BC%88%E6%88%BF%E5%9C%B0%E4%BA%A7%EF%BC%89"><span class="post-toc-text">14.3.1 6. Real Estate（房地产）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-3-2-7-Private-Equity%EF%BC%88%E7%A7%81%E5%8B%9F%E8%82%A1%E6%9D%83%EF%BC%89"><span class="post-toc-text">14.3.2 7. Private Equity（私募股权）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-3-3-8-Wrap-Fee-SMA-Portfolios%EF%BC%88%E6%89%93%E5%8C%85%E8%B4%B9-%E5%88%86%E5%BC%80%E7%AE%A1%E7%90%86%E8%B4%A6%E6%88%B7%EF%BC%89"><span class="post-toc-text">14.3.3 8. Wrap Fee &#x2F; SMA Portfolios（打包费&#x2F;分开管理账户）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-4-%E9%AA%8C%E8%AF%81%E4%B8%8E%E6%A3%80%E6%9F%A5"><span class="post-toc-text">14.4 验证与检查</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-4-1-%E9%AA%8C%E8%AF%81%EF%BC%88Verification%EF%BC%89"><span class="post-toc-text">14.4.1 验证（Verification）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-4-2-%E4%B8%9A%E7%BB%A9%E6%A3%80%E6%9F%A5%EF%BC%88Performance-Examination%EF%BC%89"><span class="post-toc-text">14.4.2 业绩检查（Performance Examination）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-5-%E4%BC%B0%E5%80%BC%E5%8E%9F%E5%88%99%EF%BC%88Valuation-Hierarchy%EF%BC%89"><span class="post-toc-text">14.5 估值原则（Valuation Hierarchy）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-6-GIPS-%E5%B9%BF%E5%91%8A%E6%8C%87%E5%AF%BC%E6%96%B9%E9%92%88"><span class="post-toc-text">14.6 GIPS 广告指导方针</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-7-%E7%A8%8E%E5%90%8E%E5%9B%9E%E6%8A%A5"><span class="post-toc-text">14.7 税后回报</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%EF%BC%9A%E6%A0%B8%E5%BF%83%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="post-toc-text">附：核心公式速查表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VaR-%E4%B8%8E%E9%A3%8E%E9%99%A9"><span class="post-toc-text">VaR 与风险</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A1%8D%E7%94%9F%E5%93%81%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86"><span class="post-toc-text">衍生品风险管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC"><span class="post-toc-text">交易成本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%9A%E7%BB%A9%E8%AF%84%E4%BC%B0%E4%B8%8E%E6%94%B6%E7%9B%8A"><span class="post-toc-text">业绩评估与收益</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A7%81%E5%8B%9F-%E5%8F%A6%E7%B1%BB%E4%B9%98%E6%95%B0"><span class="post-toc-text">私募&#x2F;另类乘数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%EF%BC%9AGIPS-%E5%85%B3%E9%94%AE%E6%97%B6%E9%97%B4%E7%BA%BF%E9%80%9F%E6%9F%A5"><span class="post-toc-text">附：GIPS 关键时间线速查</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《CFA三级中文精讲》-第3册-读书笔记"><a href="#《CFA三级中文精讲》-第3册-读书笔记" class="headerlink" title="《CFA三级中文精讲》(第3册) 读书笔记"></a>《CFA三级中文精讲》(第3册) 读书笔记</h1><blockquote>
+<p><strong>书名</strong>：CFA三级中文精讲（全三册 · 第3册）<br><strong>编著</strong>：何旋、李斯克<br><strong>出版</strong>：机械工业出版社（2019年1月）<br><strong>ISBN</strong>：978-7-111-61565-1<br><strong>系列</strong>：品职教育 CFA 一考而过系列</p>
+<p>本册对应 CFA 三级考试中 <strong>另类投资、风险管理、交易执行、业绩评估与 GIPS</strong> 六大学科（第 9～14 章）。全书以”风险”为主线：如何识别、度量、管理风险，如何把衍生品当作风险管理工具（而非投机工具），如何评估基金经理的业绩并规范其披露。</p>
+</blockquote>
+<hr>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>主题</th>
+<th>核心内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第9章</td>
+<td>另类投资的组合管理</td>
+<td>6类另类产品特征与组合作用</td>
+</tr>
+<tr>
+<td>第10章</td>
+<td>风险管理</td>
+<td>流程、治理、识别、VaR、信用风险</td>
+</tr>
+<tr>
+<td>第11章</td>
+<td>风险管理的应用：衍生品</td>
+<td>远期&#x2F;期货&#x2F;期权&#x2F;互换&#x2F;互换期权的风险管理</td>
+</tr>
+<tr>
+<td>第12章</td>
+<td>交易</td>
+<td>市场结构、交易成本、执行落差、算法交易</td>
+</tr>
+<tr>
+<td>第13章</td>
+<td>业绩评估</td>
+<td>收益计算、基准、归因、风险调整衡量</td>
+</tr>
+<tr>
+<td>第14章</td>
+<td>全球投资业绩准则 GIPS</td>
+<td>条款、验证、估值、广告、税后回报</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="第9章-另类投资的组合管理"><a href="#第9章-另类投资的组合管理" class="headerlink" title="第9章 另类投资的组合管理"></a>第9章 另类投资的组合管理</h1><h2 id="9-1-另类投资概述"><a href="#9-1-另类投资概述" class="headerlink" title="9.1 另类投资概述"></a>9.1 另类投资概述</h2><h3 id="9-1-1-另类投资的特点（共性）"><a href="#9-1-1-另类投资的特点（共性）" class="headerlink" title="9.1.1 另类投资的特点（共性）"></a>9.1.1 另类投资的特点（共性）</h3><ol>
+<li><strong>流动性差</strong>：无活跃交易市场 → 有流动性溢价补偿，收益普遍高于传统投资。</li>
+<li><strong>分散化效果</strong>：与传统股票债券相关性低。</li>
+<li><strong>尽职调查成本高</strong>：结构策略复杂，依赖经验技能，信息不透明。</li>
+<li><strong>业绩衡量困难</strong>：难以找到有效参照标准（benchmark）。</li>
+<li><strong>信息有效性低</strong>：有机会获得超额收益。</li>
+</ol>
+<h3 id="9-1-2-另类投资的分类"><a href="#9-1-2-另类投资的分类" class="headerlink" title="9.1.2 另类投资的分类"></a>9.1.2 另类投资的分类</h3><ul>
+<li><strong>按传统&#x2F;现代维度</strong>：<ul>
+<li>传统另类投资：私募股权、大宗商品、房地产（与实体经济相关）。</li>
+<li>现代另类投资：依赖电子化系统和金融工具，更依赖投资工具与策略。</li>
+</ul>
+</li>
+<li><strong>按组合中的作用</strong>（3类）：<ol>
+<li>提供不同于股票债券的风险敞口（房地产、大宗商品，实物形态）。</li>
+<li>提供专业化投资策略（对冲基金、管理型期货，收益取决于经理技能）。</li>
+<li>结合以上两者（私募基金、困境公司证券）。</li>
+</ol>
+</li>
+</ul>
+<h3 id="9-1-3-尽职调查要点"><a href="#9-1-3-尽职调查要点" class="headerlink" title="9.1.3 尽职调查要点"></a>9.1.3 尽职调查要点</h3><p><strong>共性问题（机构+高净值客户都关注）</strong>：</p>
+<ul>
+<li>市场机会（识别市场无效性及原因，超额收益能否持续）</li>
+<li>投资过程（基金经理优势）</li>
+<li>组织架构（健全稳定、薪酬公允、人员流动性）</li>
+<li>人员（性格、经验、天赋、品格，背景调查）</li>
+<li>条款和结构（公允性、利益关联）</li>
+<li>服务提供者（律师、审计师、主经纪商）</li>
+<li>文件（招股说明书等）</li>
+<li>记下来（书面记录投资讨论）</li>
+</ul>
+<p><strong>个人客户特有</strong>：</p>
+<ul>
+<li>税收（有限合伙制的税费处理不同）</li>
+<li>适合性（投资期限和流动性需求随时变化）</li>
+<li>交流（非专业投资者难理解复杂问题）</li>
+<li><strong>决策风险</strong>（在亏损最大时改变策略的风险；负偏态 + 高峰度时决策风险高）</li>
+<li>集中性（客户资产集中，如股权、大量房地产）</li>
+</ul>
+<p><strong>核心-卫星法（core-satellite）</strong>：核心&#x3D;被动&#x2F;风险可控主动投资（国债、高市值股票）；卫星&#x3D;获取超额收益+降低风险（选择与核心相关性低的投资）。另类投资适合放在”卫星”位置。</p>
+<h2 id="9-2-房地产（Real-Estate）"><a href="#9-2-房地产（Real-Estate）" class="headerlink" title="9.2 房地产（Real Estate）"></a>9.2 房地产（Real Estate）</h2><h3 id="9-2-1-分类"><a href="#9-2-1-分类" class="headerlink" title="9.2.1 分类"></a>9.2.1 分类</h3><ul>
+<li><strong>直接投资</strong>：实物房地产（住宅、商业、农业土地）。</li>
+<li><strong>间接投资</strong>：<ul>
+<li>上市房地产开发&#x2F;管理公司股票（如万科）</li>
+<li><strong>REIT</strong>（权益型直接投资房产收租金+升值；抵押型发放抵押贷款收利息）</li>
+<li><strong>CREF 混合地产基金</strong>（非公开交易，机构&#x2F;高净值，可开放可封闭；封闭式杠杆更高、要求更高收益）</li>
+<li><strong>独立管理账户 SMA</strong>（类似 CREF，面向高净值）</li>
+<li><strong>基础设施基金</strong>（政府租用并支付租金）</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-2-2-特征"><a href="#9-2-2-特征" class="headerlink" title="9.2.2 特征"></a>9.2.2 特征</h3><ul>
+<li>实物市场缺乏流动性、资金规模和交易成本高。</li>
+<li><strong>不同质性（heterogeneity）</strong>、<strong>不可移动性（immobility）</strong>、信息透明度低（卖方信息多于买方）→ 谁能低成本掌握信息谁获益。</li>
+<li>利率通过直接&#x2F;间接方式影响房地产供需。</li>
+<li>收益与 GDP 变化成正比，长期人口增长正面影响。</li>
+<li>受**特定变量（idiosyncratic variables）**影响（如地理位置）→ 靠全球投资完成完全分散化。</li>
+<li><strong>抗通胀（inflation-hedging）</strong>：通胀上升时租金可上涨；但合约期内租金固定（类似债券、无抗通胀作用），合约到期重签时可随通胀上涨。</li>
+</ul>
+<h3 id="9-2-3-直接投资的优缺点"><a href="#9-2-3-直接投资的优缺点" class="headerlink" title="9.2.3 直接投资的优缺点"></a>9.2.3 直接投资的优缺点</h3><p><strong>优点</strong>：</p>
+<ol>
+<li>税费抵减（tax deductible，抵押贷款利息、财产税等）。</li>
+<li>可用更高杠杆（抵押贷款）。</li>
+<li>有控制权（直接决策扩张&#x2F;装修）。</li>
+<li>分散不同区域可降低巨灾风险。</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>不可拆分、投资额大 → 组合占比高、风险集中。</li>
+<li>每处房产独一无二 → 信息成本高。</li>
+<li>经纪人佣金高。</li>
+<li>持续经营维护成本（管理、租赁、维修），需实际管理经验。</li>
+<li>周围环境恶化风险（不受控制）。</li>
+<li>个人税收减免政策面临政策变化风险。</li>
+</ol>
+<h3 id="9-2-4-业绩参照标准"><a href="#9-2-4-业绩参照标准" class="headerlink" title="9.2.4 业绩参照标准"></a>9.2.4 业绩参照标准</h3><table>
+<thead>
+<tr>
+<th>指数</th>
+<th>投资类型</th>
+<th>权重</th>
+<th>频率</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NCREIF</strong></td>
+<td>直接投资</td>
+<td>价值权重</td>
+<td>每季度</td>
+<td>基于估值（appraisal-based&#x2F;smoothed），滞后、低估波动、不可投资；另有基于交易的非平滑指数（回归法）</td>
+</tr>
+<tr>
+<td><strong>NAREIT</strong></td>
+<td>间接投资</td>
+<td>市值权重</td>
+<td>每月</td>
+<td>含所有公开交易 REIT</td>
+</tr>
+</tbody></table>
+<p><strong>历史表现（1996–2015）</strong>：REIT 收益高（10.3%）但波动大（20.1%）；直接平滑指数波动低（4.6%）；非平滑直接投资的波动（16.3%）约为平滑后 4 倍，收益从 9.9% 降至 8.3%。</p>
+<h3 id="9-2-5-组合中的作用"><a href="#9-2-5-组合中的作用" class="headerlink" title="9.2.5 组合中的作用"></a>9.2.5 组合中的作用</h3><ul>
+<li>与其他资产相关性不高，波动性小于其他资产；商业地产租金现金流稳定 → 提升组合收益。</li>
+<li>加入 10% REIT 后组合风险调整收益变化不大（0.93 → 0.92）→ REIT 分散化作用有限。</li>
+<li>不同类型、不同地域房地产之间也有分散化作用（零售业风险调整收益高，写字楼低）。</li>
+<li>直接房地产投资可提供一定抗通胀作用。</li>
+</ul>
+<h2 id="9-3-私募股权（Private-Equity-Venture-Capital）"><a href="#9-3-私募股权（Private-Equity-Venture-Capital）" class="headerlink" title="9.3 私募股权（Private Equity &#x2F; Venture Capital）"></a>9.3 私募股权（Private Equity &#x2F; Venture Capital）</h2><h3 id="9-3-1-概念"><a href="#9-3-1-概念" class="headerlink" title="9.3.1 概念"></a>9.3.1 概念</h3><ul>
+<li>投资于非上市公司股份，私下募集、监管较少，投资者为机构和高净值客户。</li>
+<li>两种方式：面对面直接投资；通过私募基金间接投资。</li>
+<li>本章侧重：<strong>风险投资（VC，早期公司融资）</strong> 与 <strong>并购基金（buyout funds，成熟公司并购）</strong>。</li>
+</ul>
+<h3 id="9-3-2-上市公司-vs-非上市公司股权投资"><a href="#9-3-2-上市公司-vs-非上市公司股权投资" class="headerlink" title="9.3.2 上市公司 vs 非上市公司股权投资"></a>9.3.2 上市公司 vs 非上市公司股权投资</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>非上市（直接）</th>
+<th>上市</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>交易结构与估值</td>
+<td>投资者与管理层谈判</td>
+<td>市场决定，结构标准化</td>
+</tr>
+<tr>
+<td>信息获取</td>
+<td>可要求全部信息（含内部规划）</td>
+<td>只能公开信息</td>
+</tr>
+<tr>
+<td>投资后活动</td>
+<td>进入董事会、参与经营管理</td>
+<td>不在董事会、不参与决策</td>
+</tr>
+</tbody></table>
+<h3 id="9-3-3-风险投资的阶段"><a href="#9-3-3-风险投资的阶段" class="headerlink" title="9.3.3 风险投资的阶段"></a>9.3.3 风险投资的阶段</h3><p><strong>形成阶段（早期）</strong>：</p>
+<ul>
+<li>种子期（seed）：只有一个想法，出资人&#x3D;FF&amp;F（创始人的朋友家人）、天使投资人、VC。</li>
+<li>启动期（start-ups）：产品研发+初期市场营销，pre-revenue，出资人&#x3D;天使+VC。</li>
+<li>第一阶段（first stage）：初始生产&#x2F;销售。</li>
+</ul>
+<p><strong>扩张阶段（后期）</strong>：</p>
+<ul>
+<li>第二阶段：第一轮扩张，投资人&#x3D;VC+战略投资人。</li>
+<li>第三阶段：第二轮扩张。</li>
+<li>夹层&#x2F;IPO前（mezzanine&#x2F;pre-IPO）：为 IPO 做准备，股权+债权结合（过桥 bridge）。</li>
+</ul>
+<p><strong>资金提供方</strong>：天使投资人（最早外部投资者、金额小、风险最高）；风险资本（VC fund，有限合伙制，占董事会席位）；大型公司（corporate venturing，战略投资者，不向公众开放）。</p>
+<h3 id="9-3-4-并购基金（Buyout-Funds）"><a href="#9-3-4-并购基金（Buyout-Funds）" class="headerlink" title="9.3.4 并购基金（Buyout Funds）"></a>9.3.4 并购基金（Buyout Funds）</h3><ul>
+<li>规模约为 VC 基金 2~3 倍；以 AUM 或承诺资本衡量。</li>
+<li><strong>中等规模并购基金</strong>：购买已成立公司&#x2F;大公司剥离部分。</li>
+<li><strong>超大规模并购基金（mega-cap）</strong>：上市公司私有化。</li>
+<li>增加收益方式：识别机会低价买入、债务重组。</li>
+<li>实现收益方式：IPO、卖出公司、<strong>股息资本重构（dividend recapitalization）</strong>（发债获得现金并以股利发放给股东，所有权不变，但会使公司承受过高杠杆）。</li>
+</ul>
+<h3 id="9-3-5-私募股权投资的类型与费用"><a href="#9-3-5-私募股权投资的类型与费用" class="headerlink" title="9.3.5 私募股权投资的类型与费用"></a>9.3.5 私募股权投资的类型与费用</h3><ul>
+<li><strong>直接投资主要通过可转换优先股（convertible preferred stock）</strong>：付给普通股股东现金前，先返还优先股股东初始投资的倍数（如2倍）；清算时优先求偿权。<ul>
+<li>例：投资20万占股20%，公司价值100万。公司以120万卖出：优先股先拿 2×20&#x3D;40万，剩余(120-40)×20%&#x3D;16万，共56万，占47%。公司价值越高，普通股回报越接近20%。</li>
+</ul>
+</li>
+<li><strong>间接投资通过私募基金</strong>（VC&#x2F;并购基金），通常有限合伙制（LP）或有限责任制（LLC），存续期7<del>10年（可延长1</del>5年）。<ul>
+<li>避免双层征税；LP 最大损失不超过投资额；GP 负责挑选目标公司并出资 → 利益捆绑。</li>
+</ul>
+</li>
+<li><strong>费用结构</strong>：<ul>
+<li><strong>管理费</strong>：基于<strong>承诺投资金额</strong>（非实际投资），通常 1.5%~2.5%。</li>
+<li><strong>绩效奖（incentive fee &#x2F; carried interest）</strong>：通常 20%，可设最低回报率（hurdle rate&#x2F;preferred return）。</li>
+<li><strong>追索&#x2F;回拨条款（claw-back provision）</strong>：投资者未收回本金和应有收益时，经理需返还部分金额。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-3-6-私募股权投资的特征"><a href="#9-3-6-私募股权投资的特征" class="headerlink" title="9.3.6 私募股权投资的特征"></a>9.3.6 私募股权投资的特征</h3><ul>
+<li>流动性差、投资期长、投资风险高、内部要求回报率高、信息非常有限（估值需很多假设）。</li>
+<li><strong>VC vs 并购基金</strong>：<ol>
+<li>并购基金杠杆较高（成熟公司可抵押资产借债）；VC 一般不用杠杆。</li>
+<li>并购基金更早收回现金、现金流更稳定；VC 前期”烧钱”（cash-burning），后期成功退出收益迅速积累。</li>
+<li>VC 收益更难衡量、误差大。</li>
+</ol>
+<ul>
+<li>结论：<strong>投资越早期，风险越大，潜在收益越高</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-3-7-参照标准与组合作用"><a href="#9-3-7-参照标准与组合作用" class="headerlink" title="9.3.7 参照标准与组合作用"></a>9.3.7 参照标准与组合作用</h3><ul>
+<li>市场价格仅在特定事件（新融资、收购、上市、失败）时才可获得 → 用内部收益率（IRR）衡量。</li>
+<li>主要参照：Cambridge Associates 与 Thomson Venture Economics 指数（VC&#x2F;并购基金）+ 定制化指数。</li>
+<li>短期 VC&#x2F;并购收益低于纳斯达克&#x2F;标普500，但5&#x2F;10&#x2F;20年期均高于（投资期限长）。</li>
+<li><strong>分散化作用中等</strong>（与上市公司股票相关性 moderately high，但 not extremely high）：<ul>
+<li>原因：① 企业都面临经济和行业风险敞口；② 上市是 VC 退出的主要渠道。</li>
+</ul>
+</li>
+<li>投资注意：充分分散化（可用 fund of funds，但收两层费用）、流动性（7~10年）、承诺资本条款（capital call，承诺期5年）、合适的分散化策略（行业&#x2F;阶段&#x2F;地理）。</li>
+</ul>
+<h2 id="9-4-大宗商品（Commodity-Investments）"><a href="#9-4-大宗商品（Commodity-Investments）" class="headerlink" title="9.4 大宗商品（Commodity Investments）"></a>9.4 大宗商品（Commodity Investments）</h2><h3 id="9-4-1-分类"><a href="#9-4-1-分类" class="headerlink" title="9.4.1 分类"></a>9.4.1 分类</h3><ul>
+<li><strong>直接投资</strong>：现货市场购买实物（有储存成本 → 偏向衍生品市场）；衍生品市场获得敞口（实物&#x2F;现金交割，多数到期前反向合约抵消）。</li>
+<li><strong>间接投资</strong>：购买相关公司股票&#x2F;大宗商品基金。<strong>但股票价格不完全取决于大宗商品价格</strong>（如中石油股价与油价非完全正相关）→ 不能有效获得敞口 → 越来越多投资者直接投衍生品。</li>
+</ul>
+<h3 id="9-4-2-特征"><a href="#9-4-2-特征" class="headerlink" title="9.4.2 特征"></a>9.4.2 特征</h3><ol>
+<li><strong>风险特征</strong>：与股票债券相关性极低。<ul>
+<li>收益影响因素：<ul>
+<li>经济周期相关的供需。</li>
+<li><strong>便利收益率（convenience yield）</strong>：持有现货的非货币好处；存货越低、短缺可能性越大 → 便利收益越高。</li>
+<li><strong>实物期权（real option）</strong>：生产者选择生产&#x2F;不生产的权利。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>抗通胀</strong>：<ul>
+<li>股票债券与非预期通胀负相关（抗通胀弱）。</li>
+<li>**不可储存（non-storable）**大宗商品（农产品、家畜）与非预期通胀负相关 → 抗通胀差。</li>
+<li>**可储存（storable）**大宗商品（能源、贵金属）与非预期通胀正相关 → 抗通胀好（能源最强）。</li>
+<li>判断标准：① 是否可储存；② 是否与经济活动紧密相关。</li>
+</ul>
+</li>
+</ol>
+<h3 id="9-4-3-组合中的作用"><a href="#9-4-3-组合中的作用" class="headerlink" title="9.4.3 组合中的作用"></a>9.4.3 组合中的作用</h3><ol>
+<li>风险分散化；2. 抗通胀（抵消非预期通胀损失）。适合养老金（负债与通胀挂钩）、大学捐赠基金（运营费用对通胀敏感）。</li>
+</ol>
+<h2 id="9-5-对冲基金（Hedge-Funds）"><a href="#9-5-对冲基金（Hedge-Funds）" class="headerlink" title="9.5 对冲基金（Hedge Funds）"></a>9.5 对冲基金（Hedge Funds）</h2><h3 id="9-5-1-按投资策略分类"><a href="#9-5-1-按投资策略分类" class="headerlink" title="9.5.1 按投资策略分类"></a>9.5.1 按投资策略分类</h3><ol>
+<li><strong>市场中性策略（equity market neutral）</strong>：同时买卖股票使系统性风险为零；机会来自自由多空 + 市场无效（被高估股票因禁止做空回归更慢）。</li>
+<li><strong>可转换套利（convertible arbitrage）</strong>：买可转债+卖股票对冲；可转债&#x3D;债券+看涨期权。</li>
+<li><strong>固定收益套利（fixed-income arbitrage）</strong>：识别高估&#x2F;低估固定收益证券，多空中和市场变动影响。</li>
+<li><strong>困境证券（distressed securities）</strong>：投资濒临破产公司证券，流动性差难做空 → 通常多头。</li>
+<li><strong>并购套利（merger arbitrage &#x2F; deal arbitrage）</strong>：买入被收购方股票、卖出收购方股票。</li>
+<li><strong>对冲股票（hedged equity）</strong>：类似市场中性但不使风险为零，头寸可能过于集中；是最主要策略。</li>
+<li><strong>全球宏观策略（global macro）</strong>：全球投资，自上而下，大量使用衍生品。</li>
+<li><strong>新兴市场（emerging markets）</strong>：通常禁止卖空 → 以多头为主。</li>
+<li><strong>基金中的基金（FOF）</strong>：投资10~30个对冲基金，收两层费用。</li>
+</ol>
+<p><strong>其他分类</strong>：相对价值（relative value）、事件驱动（event driven）、股票对冲（equity hedge）、全球资产配置、卖空（short selling）。</p>
+<h3 id="9-5-2-薪酬结构"><a href="#9-5-2-薪酬结构" class="headerlink" title="9.5.2 薪酬结构"></a>9.5.2 薪酬结构</h3><ul>
+<li>管理费 1%~2%（基于 AUM）+ 绩效奖 20%。</li>
+<li><strong>门槛收益率（hurdle rate）</strong>：达到最小收益率才发绩效奖。</li>
+<li><strong>最高水位线（high-water mark, HWM）</strong>：业绩超过历史最好才发奖。绩效奖 &#x3D; 20% × (期末NAV − HWM)。防止同一收益发两次奖。<ul>
+<li>例：收益15%超过 HWM，”1%管理费+20%×15%&#x3D;4%”；未超过则只有1%管理费。</li>
+</ul>
+</li>
+<li>管理费较低的基金更有动力获得高收益；历史业绩优秀的经理绩效奖比例更高。</li>
+<li><strong>锁定期（lock-up period）</strong>：规定最短投资期限（1~3年），期间不能赎回；FOF 一般无锁定期（需预留 cash buffer，降低收益）。</li>
+<li>费率争议：高费用结构对应更高收益要求&#x2F;类似保险费（保护下跌风险）。</li>
+</ul>
+<h3 id="9-5-3-基金中的基金（FOF）"><a href="#9-5-3-基金中的基金（FOF）" class="headerlink" title="9.5.3 基金中的基金（FOF）"></a>9.5.3 基金中的基金（FOF）</h3><ul>
+<li>委托专业经理筛选对冲基金，降低尽调成本，适合资产量小投资者。</li>
+<li>两层费用；无锁定期 → 预留现金降低收益率。</li>
+<li><strong>幸存者偏差更小</strong> → 更能准确预测未来收益。</li>
+<li>FOF 风险因子会经常变化 → 不适合加入大类资产配置。</li>
+</ul>
+<h3 id="9-5-4-对冲基金指数"><a href="#9-5-4-对冲基金指数" class="headerlink" title="9.5.4 对冲基金指数"></a>9.5.4 对冲基金指数</h3><ul>
+<li>构建考虑：选择标准、风格分类、加权方式、调整方案、可投资性。</li>
+<li>每日发布：HFR；每月发布：CISDM（麻州大学）、Credit Suisse、Hedge fund Intelligence、Hedge fund net、Morningstar MSCI。</li>
+<li><strong>指数存在的问题</strong>：<ol>
+<li><strong>流行偏差（popularity）</strong>：市值权重易被表现好的基金占据；等权重可避免但调整成本高。</li>
+<li><strong>历史业绩相关性</strong>：波动性是更一致的指标，用过去收益预测未来不可靠。</li>
+<li><strong>幸存者偏差（survivorship bias）</strong>（最大问题）：只包含存活基金，误差每年 1.5%~3%。</li>
+<li><strong>滞后价格偏差（stale price bias）</strong>：非主要问题。</li>
+<li><strong>回填&#x2F;纳入偏差（backfill&#x2F;inclusion bias）</strong>：加入指数时纳入过去好业绩 → 高估历史收益。</li>
+</ol>
+</li>
+</ul>
+<h3 id="9-5-5-历史表现与组合作用"><a href="#9-5-5-历史表现与组合作用" class="headerlink" title="9.5.5 历史表现与组合作用"></a>9.5.5 历史表现与组合作用</h3><ul>
+<li>长期对冲基金业绩优于除房地产外的其他资产；与标普500相关系数0.74（2008年危机升至0.82）。</li>
+<li>不同策略风险收益相关性差异大（市场中性、固收套利与股票债券相关性小；事件驱动相关性高）→ 策略间有分散化作用。</li>
+<li>对冲基金收益往往<strong>负偏态、高峰度</strong>（与投资者期望相反）；全球宏观策略正偏态（但高峰度）、市场中性可降波动和峰度。</li>
+</ul>
+<h3 id="9-5-6-业绩衡量的其他问题"><a href="#9-5-6-业绩衡量的其他问题" class="headerlink" title="9.5.6 业绩衡量的其他问题"></a>9.5.6 业绩衡量的其他问题</h3><ul>
+<li>只看绝对收益（absolute return）即可；超额收益需参照标准。</li>
+<li>系统性风险模型针对 long-only 股票组合，不适用于多空策略。</li>
+<li>两个手段建立可比组合：单&#x2F;多因素模型；追踪类似收益风险特征的组合。</li>
+<li>自身特点影响业绩：<strong>锁定期越长表现越好、越年轻越好、规模越小越好</strong>。</li>
+<li><strong>起始年份（age&#x2F;vintage effects）</strong>：经济萧条时开始的基金与经济繁荣时无可比性（类比酿酒葡萄年份）。</li>
+<li>评判经理业绩因素：收益率、波动率（含下行风险）、评判方法、相关系数（正态分布下才有意义）、偏度和峰度、一致性。</li>
+</ul>
+<h3 id="9-5-7-对冲基金收益与风险计算"><a href="#9-5-7-对冲基金收益与风险计算" class="headerlink" title="9.5.7 对冲基金收益与风险计算"></a>9.5.7 对冲基金收益与风险计算</h3><ul>
+<li><strong>收益</strong>：月度收益 &#x3D;（期末价值−期初价值）&#x2F;期初价值；年化按12个月连续复利（季度按4个）。</li>
+<li>杠杆&#x2F;衍生品只影响权重、不影响收益（假设全部自有资金投入）。</li>
+<li><strong>移动平均（rolling return, RR）</strong>：判断收益率一致性、识别周期性。</li>
+<li><strong>波动率</strong>：年化标准差 &#x3D; 月度标准差 × √12（假设月收益序列不相关 + 正态分布）。</li>
+<li><strong>跌势差（downside deviation）</strong>：只衡量低于门槛值的偏离；门槛为月收益均值时&#x3D;<strong>半方差（semideviation）</strong>。</li>
+<li><strong>回撤率（drawdown）</strong>：最高水位与最低点差值；<strong>最大回撤（maximum drawdown）</strong>&#x3D;高水位与之后最低点的最大差额。</li>
+</ul>
+<h3 id="9-5-8-业绩衡量指标"><a href="#9-5-8-业绩衡量指标" class="headerlink" title="9.5.8 业绩衡量指标"></a>9.5.8 业绩衡量指标</h3><ul>
+<li><strong>夏普比率（Sharpe ratio）</strong> &#x3D; (组合收益 − 无风险利率) &#x2F; 标准差。缺点：受时间影响（年化&#x3D;月度×√12）、只适用对称分布、流动性差平滑数据→低估风险→高估比率、序列相关→低估标准差、未考虑相关性、对预测无帮助、<strong>可被操纵</strong>（增加计量周期&#x2F;复利收益不复利标准差&#x2F;卖出价外期权&#x2F;平滑收益&#x2F;去除极端收益）。</li>
+<li><strong>索提诺比率（Sortino ratio）</strong> &#x3D; (年化收益 − 年化无风险利率) &#x2F; 跌势差。</li>
+<li><strong>收益&#x2F;损失比（gain-to-loss ratio）</strong> &#x3D; (产生正收益月份次数×平均正收益)&#x2F;(产生负收益月份次数×平均负收益)，越高越好。</li>
+</ul>
+<h2 id="9-6-管理型期货基金（Managed-Futures）"><a href="#9-6-管理型期货基金（Managed-Futures）" class="headerlink" title="9.6 管理型期货基金（Managed Futures）"></a>9.6 管理型期货基金（Managed Futures）</h2><h3 id="9-6-1-与对冲基金比较"><a href="#9-6-1-与对冲基金比较" class="headerlink" title="9.6.1 与对冲基金比较"></a>9.6.1 与对冲基金比较</h3><ul>
+<li>相同：私下募集、主动管理、有限合伙制、只向合格投资者开放、薪酬类似（2-20）。</li>
+<li><strong>最大区别</strong>：管理型期货大部分时间<strong>只投资衍生品市场</strong>（远期&#x2F;期货&#x2F;期权）；对冲基金现货市场更活跃，衍生品只用于对冲。</li>
+<li>对冲基金侧重个股（微观、更无效市场）；管理型期货侧重广泛期货期权市场&#x2F;一篮子资产（宏观指数）。</li>
+</ul>
+<h3 id="9-6-2-投资类型"><a href="#9-6-2-投资类型" class="headerlink" title="9.6.2 投资类型"></a>9.6.2 投资类型</h3><ul>
+<li>一般合伙人&#x3D;商品基金经理（CPO），可能由商品交易顾问（CTA）组成；需在 CFTC 注册、NFA 会员。</li>
+<li>交易策略：<ul>
+<li><strong>系统性交易策略</strong>：按模型交易，多数 CTA 用趋势追踪法（trend-following），分短&#x2F;中&#x2F;长期趋势，也可逆趋势。</li>
+<li><strong>自主交易策略（discretionary）</strong>：可自主判断（基本面数据等）。</li>
+</ul>
+</li>
+<li>按市场：金融市场、货币市场、分散化市场。</li>
+</ul>
+<h3 id="9-6-3-特征"><a href="#9-6-3-特征" class="headerlink" title="9.6.3 特征"></a>9.6.3 特征</h3><ul>
+<li>衍生品是零和游戏 → 无杠杆被动投资长期收益&#x3D;无风险利率−管理费−交易成本。</li>
+<li>套期保值者出让收益获得确定性 → 付风险溢价给流动性提供者 → 有足够套保者时管理型期货才能获超额收益。</li>
+<li>可做空 → 市场下滑也能获利；可进入期权市场获得波动收益。</li>
+</ul>
+<h3 id="9-6-4-组合作用"><a href="#9-6-4-组合作用" class="headerlink" title="9.6.4 组合作用"></a>9.6.4 组合作用</h3><ul>
+<li>最大好处：<strong>很好的分散化</strong>。市场上升时与股债正相关，下降时负相关。</li>
+<li>2008年金融危机时期表现较大正收益、低波动，与其他资产负相关。</li>
+</ul>
+<h2 id="9-7-困境证券（Distressed-Securities）"><a href="#9-7-困境证券（Distressed-Securities）" class="headerlink" title="9.7 困境证券（Distressed Securities）"></a>9.7 困境证券（Distressed Securities）</h2><h3 id="9-7-1-分类与标的"><a href="#9-7-1-分类与标的" class="headerlink" title="9.7.1 分类与标的"></a>9.7.1 分类与标的</h3><ul>
+<li>按结构：对冲基金结构（最主要，流动性高，管理费基于AUM、绩效奖不设门槛）；私募基金结构（固定期限、封闭式）；混合型（hybrid）。</li>
+<li>投资标的：公开交易的困境债券股票、孤儿股权（orphan equity）、银行&#x2F;供应商债权、最终借款人债券、对冲衍生品。</li>
+</ul>
+<h3 id="9-7-2-特征与策略"><a href="#9-7-2-特征与策略" class="headerlink" title="9.7.2 特征与策略"></a>9.7.2 特征与策略</h3><ul>
+<li>特征：因监管&#x2F;IPS 限制，债券降级为投机级（堕落天使 fallen angels）后投资者必须卖出 → 低价 → 有动力投资。流动性差；收益呈尖峰肥尾（positive kurtosis）+负偏态（negative skewness）。</li>
+<li><strong>4种投资策略</strong>：<ol>
+<li><strong>多头策略（long-only value investing）</strong>：买被低估困境证券；公开债券&#x3D;高收益投资，孤儿股权&#x3D;孤儿股权投资。</li>
+<li><strong>困境债券套利（distressed debt arbitrage）</strong>：低折扣买破产公司债券+卖空普通股（债券优先级高于股票）。</li>
+<li><strong>私募股权（主动策略）</strong>：超低价买入成为主要债权人，参与经营提高公司价值。</li>
+<li><strong>预先打包破产（prepackaged bankruptcy）</strong>：债券转股票，好转后卖出。</li>
+</ol>
+<ul>
+<li>前两种为短期（对冲基金结构），后两种为长期主动（私募股权结构）。</li>
+</ul>
+</li>
+<li><strong>风险</strong>：事件风险（event risk，公司特有、与系统风险相关性低）、市场流动风险（最主要）、市场风险、J因素风险（法官对破产判决的影响）。</li>
+</ul>
+<h3 id="9-7-3-参照标准与历史表现"><a href="#9-7-3-参照标准与历史表现" class="headerlink" title="9.7.3 参照标准与历史表现"></a>9.7.3 参照标准与历史表现</h3><ul>
+<li>平均收益高于股票债券，但负偏态 → 大亏损可能性大。</li>
+<li>风险调整收益基于正态假设 → 不适合衡量困境证券。</li>
+<li>策略取决于经济周期：经济疲软 → 破产增加 → 投资机会增加；事件风险预测能力不完全体现在业绩中。</li>
+</ul>
+<hr>
+<h1 id="第10章-风险管理"><a href="#第10章-风险管理" class="headerlink" title="第10章 风险管理"></a>第10章 风险管理</h1><h2 id="10-1-风险管理概述"><a href="#10-1-风险管理概述" class="headerlink" title="10.1 风险管理概述"></a>10.1 风险管理概述</h2><h3 id="10-1-1-核心理念"><a href="#10-1-1-核心理念" class="headerlink" title="10.1.1 核心理念"></a>10.1.1 核心理念</h3><ul>
+<li><strong>风险管理不是消除所有风险</strong>（不承担风险就没有收益），而是投资过程的组成部分；更像<strong>风险修正（risk modification）</strong>，既可减少也可增加风险（risk expansion）。</li>
+</ul>
+<h3 id="10-1-2-风险管理流程（5步）"><a href="#10-1-2-风险管理流程（5步）" class="headerlink" title="10.1.2 风险管理流程（5步）"></a>10.1.2 风险管理流程（5步）</h3><ol>
+<li>确定方法、制定流程（制定风险管理准则 policies + 流程 procedures）。</li>
+<li>确定风险承受能力（意愿 willingness + 能力 ability）。</li>
+<li>识别风险。</li>
+<li>衡量风险大小。</li>
+<li>调整风险大小（通过衍生品或其他交易）。<ul>
+<li>选择”最合适”交易工具：模型定价 vs 市场价。买入工具时市场价低于预估才划算；卖出工具时市场价≥预估才合适。完成后回到第4步度量风险。</li>
+</ul>
+</li>
+</ol>
+<h3 id="10-1-3-风险治理（Risk-Governance）"><a href="#10-1-3-风险治理（Risk-Governance）" class="headerlink" title="10.1.3 风险治理（Risk Governance）"></a>10.1.3 风险治理（Risk Governance）</h3><ul>
+<li>评判维度：透明性、责任明确、有效性（达成目标）、效率性（有效利用资源）。</li>
+<li><strong>集中化风险管理（ERM，enterprise risk management）</strong>：<ul>
+<li>优点：全局视角、规模效应降成本、部门间风险对冲（A部门做多+B部门做空&#x3D;无敞口）、各风险分散化（整体风险&lt;单个加总，如10年融资vs180天融资利率相关性非完全）。</li>
+</ul>
+</li>
+<li><strong>分散化风险管理</strong>：风险管理责任分散到各部门，负责人更贴近风险源头、更熟悉业务。</li>
+<li>有效的风险治理要求：<strong>交易部门与风险管理部门相互独立；后台部门完全独立于前台部门</strong>。<ul>
+<li>后台（back office）：事务处理、记录保管、合规管理；前台（front office）：交易、销售。</li>
+</ul>
+</li>
+<li>有效 ERM 系统步骤：识别所有风险 → 量化风险为金额 → 公司层面估算（VaR）→ 评估总风险及每种风险贡献 → 建立向高管汇报流程 → 监控执行。</li>
+</ul>
+<h3 id="10-1-4-风险识别"><a href="#10-1-4-风险识别" class="headerlink" title="10.1.4 风险识别"></a>10.1.4 风险识别</h3><p><strong>金融风险</strong>：</p>
+<ul>
+<li><strong>市场风险</strong>：利率、汇率、股价、大宗商品价格变化（与供需挂钩）。</li>
+<li><strong>信用风险</strong>：对手方&#x2F;债务人未履约造成的损失。</li>
+<li><strong>流动性风险</strong>：不能及时以合理价格买卖。用买卖价差衡量（价差小&#x3D;流动性好，但只适用小部分情况）；成交量（trading volume）是更好指标。流动性风险难衡量，往往不良事件发生时才出现；衍生品不能有效管理资产流动性（基础资产流动性出问题，衍生品也会出问题）。</li>
+</ul>
+<p><strong>非金融风险</strong>：</p>
+<ul>
+<li><strong>操作风险</strong>：电脑系统、操作过程（人为错误）、外部不可控事件。应对：监控、预防、预案、保险。</li>
+<li><strong>模型风险</strong>：模型使用方法不当或错误模型（衍生品&#x2F;无报价产品依赖模型定价）。</li>
+<li><strong>结算风险（settlement risk）</strong>：一方履约而对手方未履约。交易所&#x2F;清算中心、净额结算、CLS（持续联系结算）可减少；外汇交易（时区不同）风险更大；<strong>Herstatt 风险</strong>（德国 Herstatt 银行破产案例）。</li>
+<li><strong>监管&#x2F;政策风险</strong>：监管政策变动。</li>
+<li><strong>法律&#x2F;合约风险</strong>：法律体系不能保证对手履约。</li>
+<li><strong>税务风险、会计风险</strong>。</li>
+<li><strong>主权风险（sovereign risk）</strong>：债务人是国家（信用风险一种），需分析财务状况+还款意愿+政治环境。</li>
+<li><strong>政治风险</strong>：政治环境变动。</li>
+</ul>
+<p><strong>其他风险</strong>：</p>
+<ul>
+<li><strong>ESG 风险</strong>：环境、社会、治理漏洞导致的市值下跌。</li>
+<li><strong>业绩净额风险（performance netting risk）</strong>：多策略基金中一策略赚钱一策略亏损但净收益为零，仍要付赚钱策略奖金 → 最终亏损（不对称绩效结构导致）。</li>
+<li><strong>净额结算风险（settlement netting risk）</strong>：破产清算时净额结算在不同法律体系执行不同。</li>
+</ul>
+<h2 id="10-2-风险度量：市场风险"><a href="#10-2-风险度量：市场风险" class="headerlink" title="10.2 风险度量：市场风险"></a>10.2 风险度量：市场风险</h2><h3 id="10-2-1-敏感度指标"><a href="#10-2-1-敏感度指标" class="headerlink" title="10.2.1 敏感度指标"></a>10.2.1 敏感度指标</h3><ul>
+<li><strong>一阶线性</strong>：股票 beta、债券久期（duration）、期权 delta。</li>
+<li><strong>二阶非线性</strong>：债券凸性（convexity）、期权 gamma。</li>
+<li>其他：theta（剩余到期日）、vega（标的波动率）。</li>
+</ul>
+<h3 id="10-2-2-VaR（在险价值）"><a href="#10-2-2-VaR（在险价值）" class="headerlink" title="10.2.2 VaR（在险价值）"></a>10.2.2 VaR（在险价值）</h3><ul>
+<li><strong>定义</strong>：未来特定时间、一定概率水平（常见1%或5%）下的预期最大损失。</li>
+<li><strong>两种解释</strong>（例：市值10亿，一周5%概率 VaR&#x3D;200万）：<ul>
+<li>最小亏损角度：一周内有5%可能性最小损失（至少）200万。</li>
+<li>最大亏损角度：有95%可能性最大损失不超过200万。</li>
+</ul>
+</li>
+<li>注意：同置信水平才可比、明确时间段、针对亏损取绝对值、单尾检验。</li>
+<li>使用关注3点：概率水平（1% VaR 损失 &gt; 5% VaR 损失）、时间段（公司选季度&#x2F;年匹配报表周期；基金&#x2F;高杠杆选天）、估计方法。</li>
+</ul>
+<h3 id="10-2-3-计算-VaR-的3种方法"><a href="#10-2-3-计算-VaR-的3种方法" class="headerlink" title="10.2.3 计算 VaR 的3种方法"></a>10.2.3 计算 VaR 的3种方法</h3><ol>
+<li><strong>分析法（方差-协方差法，variance-covariance）</strong>：<ul>
+<li>假设收益正态分布。VaR &#x3D; |−μ + zσ|（5%: z&#x3D;1.65；1%: z&#x3D;2.33，单尾）。</li>
+<li>例：μ&#x3D;16%，σ&#x3D;25%，市值3亿：VaR(%)&#x3D;−16%+1.65×25%&#x3D;25.25% → 7575万。</li>
+<li>时间转换：年&#x3D;日×√250，年&#x3D;月×√12，年&#x3D;周×√52（假设250交易日、数据独立）。</li>
+<li>组合方差：σ²p &#x3D; w²Aσ²A + w²Bσ²B + 2ρwAwBσAσB。</li>
+<li>优点：简单易懂；缺点：依赖正态假设（期权组合不服从正态、尖峰肥尾低估亏损），可用**一阶常态法（delta-normal）**修正含权组合；资产多时标准差计算复杂。</li>
+</ul>
+</li>
+<li><strong>历史模拟法（historical）</strong>：非参数法，不假设分布；将 N 个历史收益排序，5%×N 临界值即 VaR。优点：简单、不假设正态；缺点：假设历史代表未来。</li>
+<li><strong>蒙特卡罗模拟法（Monte Carlo）</strong>：电脑模拟路径产生随机结果，取最低第（5%×样本数）个数据。优点：不要求输入变量正态。</li>
+</ol>
+<h3 id="10-2-4-VaR-的优缺点"><a href="#10-2-4-VaR-的优缺点" class="headerlink" title="10.2.4 VaR 的优缺点"></a>10.2.4 VaR 的优缺点</h3><p><strong>优点</strong>：行业标准（监管要求）、清晰明了、应用灵活（按投资活动&#x2F;经理分类）、可事前计算用于资本配置（风险预算 risk budgeting）。<br><strong>缺点</strong>：估算困难（不同方法结果不同）、误以为风险被准确衡量、只衡量亏损不反映上升潜力、低估亏损严重程度与频度。</p>
+<ul>
+<li>需持续<strong>回溯测试（backtesting）</strong>：5%概率每天VaR&#x3D;100万 → 一年约 250×5%&#x3D;12.5 天亏损超100万，差距大说明模型不准。</li>
+<li><strong>其他补充指标</strong>：<ul>
+<li>增量 VaR（IVaR）：加入新资产后组合 VaR − 之前 VaR。</li>
+<li>现金流风险（CFAR）：一段时间给定概率下最小现金流亏损。</li>
+<li>利润风险（EAR）：按会计利润计算。</li>
+<li>尾部风险（TVaR）：最差5%结果的平均值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-2-5-压力测试（Stress-Testing）"><a href="#10-2-5-压力测试（Stress-Testing）" class="headerlink" title="10.2.5 压力测试（Stress Testing）"></a>10.2.5 压力测试（Stress Testing）</h3><ul>
+<li><strong>场景分析（scenario analysis）</strong>：<ol>
+<li>程式化情景（stylized scenarios）：行业标准，如 DPG 1995 年7种情景（利率曲线平行±100bps、非平行twist±25bps、两者4种组合、隐含波动率±20%、股票指数±10%、主要货币±6%其他±20%、互换利差±20bps）。缺点：变量变动呈现顺序而现实中同时发生。</li>
+<li>真实的极端事件（科技泡沫、911、次贷危机）。</li>
+<li>假设的极端事件。</li>
+</ol>
+</li>
+<li><strong>压力模型（stressing models）</strong>：不预测具体数值而预测范围。3种方式：<ol>
+<li>因素推进法（factor push）：设置极端不利条件（缺陷：假设极端下模型仍适用，否则产生模型风险）。</li>
+<li>最大损失优化（maximum loss optimization）：数学优化风险因子得到损失最大情景。</li>
+<li>最差情景分析（worst-case scenario）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="10-3-风险度量：信用风险"><a href="#10-3-风险度量：信用风险" class="headerlink" title="10.3 风险度量：信用风险"></a>10.3 风险度量：信用风险</h2><h3 id="10-3-1-基础概念"><a href="#10-3-1-基础概念" class="headerlink" title="10.3.1 基础概念"></a>10.3.1 基础概念</h3><ul>
+<li>信用风险损失从两方面衡量：违约概率、违约后损失（可回收比率 recovery rate，难估计）。</li>
+<li>信用风险数据有限（事件少、历史可回收率不可靠）。</li>
+<li><strong>现时信用风险（current credit risk &#x2F; JTD risk）</strong>：违约马上发生；<strong>潜在信用风险（potential credit risk）</strong>：未来可能违约。</li>
+<li><strong>交叉违约条款（cross-default provisions）</strong>：对某一义务违约即对所有义务违约。</li>
+<li>只有持有头寸价值大于零的一方才面临信用风险。</li>
+</ul>
+<h3 id="10-3-2-信用-VaR"><a href="#10-3-2-信用-VaR" class="headerlink" title="10.3.2 信用 VaR"></a>10.3.2 信用 VaR</h3><ul>
+<li>一段时间、一定概率下因信用风险导致的最小亏损。</li>
+<li>与市场 VaR 不能完全分割；信用 VaR 对应收益分布<strong>右尾</strong>（正收益方），市场 VaR 对应左尾。</li>
+<li>更难估计（数据缺乏）；不同信用风险难加总（相关性需考虑）。</li>
+</ul>
+<h3 id="10-3-3-各类衍生品的信用风险"><a href="#10-3-3-各类衍生品的信用风险" class="headerlink" title="10.3.3 各类衍生品的信用风险"></a>10.3.3 各类衍生品的信用风险</h3><ul>
+<li><strong>远期合约</strong>：期初价值为零；期间盈利方有潜在信用风险（账面收益）；到期结算时存在现时信用风险。期货（交易所交易）信用风险默认为零。<ul>
+<li>远期求价值：多头的价值 &#x3D; 向上箭头现值 − 向下箭头现值（股票&#x2F;债券远期扣除股利现值；外汇远期用各自币种利率折现+即期汇率统一货币；FRA 用名义本金+利率折现）。</li>
+</ul>
+</li>
+<li><strong>互换合约</strong>（&#x3D;一系列远期）：每个结算日有现时信用风险，期间价值&#x3D;潜在信用风险。<ul>
+<li>利率&#x2F;权益互换：潜在信用风险最大在<strong>合约中期</strong>（期初双方做了信用分析、临近到期现金流减少）；净额结算时只有收款方（盈利方）面临信用风险。</li>
+<li>货币互换：期初&#x2F;期末交换本金，本金远大于期间现金流，货币不同无法净额结算，双方都面临信用风险，最大在<strong>中后期</strong>。</li>
+<li>利率互换注意：浮动利率债券在结算日价值回归面值（&#x3D;1）；利息由上一结算日决定。</li>
+</ul>
+</li>
+<li><strong>期权</strong>：<strong>单边信用风险（unilateral credit risk）</strong>——只有买方面临信用风险（买方期初付期权费后无义务）。欧式期权到期前只有潜在信用风险（现值&#x3D;当时期权价值）；美式期权价值更高、潜在信用风险更高，提前行权则面临现时信用风险。</li>
+</ul>
+<h2 id="10-4-风险的管理"><a href="#10-4-风险的管理" class="headerlink" title="10.4 风险的管理"></a>10.4 风险的管理</h2><h3 id="10-4-1-管理市场风险"><a href="#10-4-1-管理市场风险" class="headerlink" title="10.4.1 管理市场风险"></a>10.4.1 管理市场风险</h3><ul>
+<li><strong>风险预算（risk budgeting）</strong>：关注”想承担哪方面风险””如何分配”。两个层面：公司层面、组合管理层面。<ul>
+<li>各部门风险预算之和 &gt; 公司总风险预算（分散化作用）。</li>
+<li>用 return on VaR 等风险调整收益比较各基金经理。</li>
+</ul>
+</li>
+<li>其他方法：止损线（performance stopout）、营运资本分配（working capital allocation）、VaR限制、情景分析限制、风险因子限制、头寸集中度限制、杠杆限制、流动性限制。</li>
+</ul>
+<h3 id="10-4-2-管理信用风险"><a href="#10-4-2-管理信用风险" class="headerlink" title="10.4.2 管理信用风险"></a>10.4.2 管理信用风险</h3><ul>
+<li>限制每个主体的风险敞口（分散化，但”太多”难量化）</li>
+<li>盯市（marking to market）</li>
+<li>抵押物（collateral）</li>
+<li>结算轧差（payment netting）</li>
+<li>出清轧差（close-out netting）</li>
+<li>最低信用要求（minimum credit standards；SPV&#x2F;EDPC 提高评级）</li>
+<li>信用衍生品（CDS、总收益互换、信用利差期权、信用利差远期）</li>
+</ul>
+<h3 id="10-4-3-业绩衡量（风险调整）"><a href="#10-4-3-业绩衡量（风险调整）" class="headerlink" title="10.4.3 业绩衡量（风险调整）"></a>10.4.3 业绩衡量（风险调整）</h3><ol>
+<li><strong>夏普比率</strong> SR &#x3D; (R_p − R_f)&#x2F;σ_p。</li>
+<li><strong>风险调整资本收益 RAROC</strong> &#x3D; 预期收益&#x2F;风险资本（如 VaR）。</li>
+<li><strong>最大回撤收益 RoMAD</strong> &#x3D; 平均收益&#x2F;最大回撤率。</li>
+<li><strong>索提诺比率</strong>：分子&#x3D;预期收益−最小可接受收益（MAR），分母&#x3D;下行标准差。</li>
+<li><strong>信息比率</strong>：每单位主动风险的超额收益。</li>
+</ol>
+<h3 id="10-4-4-资本分配（5种方法）"><a href="#10-4-4-资本分配（5种方法）" class="headerlink" title="10.4.4 资本分配（5种方法）"></a>10.4.4 资本分配（5种方法）</h3><ol>
+<li>按名义金额&#x2F;持有资金量（简单但不考虑风险）。</li>
+<li>按 VaR 分配（考虑风险，但需 VaR 准确、不易被交易员理解、总体与单个 VaR 关联复杂）。</li>
+<li>按最大亏损分配（不能太高&#x2F;太低，极端情况易被打破）。</li>
+<li>内部资本要求。</li>
+<li>监管资本要求（银行、券商）。</li>
+</ol>
+<ul>
+<li>注意管理者利益冲突：薪酬与业绩挂钩 → 无动力最小化风险，反有动力提高风险。</li>
+</ul>
+<hr>
+<h1 id="第11章-风险管理的应用：衍生品"><a href="#第11章-风险管理的应用：衍生品" class="headerlink" title="第11章 风险管理的应用：衍生品"></a>第11章 风险管理的应用：衍生品</h1><blockquote>
+<p>核心视角：衍生品是<strong>管理风险的工具，而非投机工具</strong>。对冲（hedge）锁定不确定性（回避损失也失去收益）；管理风险（manage risk）更进一步，可减少也可增加风险头寸。</p>
+</blockquote>
+<h2 id="11-1-远期和期货在风险管理中的应用"><a href="#11-1-远期和期货在风险管理中的应用" class="headerlink" title="11.1 远期和期货在风险管理中的应用"></a>11.1 远期和期货在风险管理中的应用</h2><h3 id="11-1-1-管理利率风险（调整久期）"><a href="#11-1-1-管理利率风险（调整久期）" class="headerlink" title="11.1.1 管理利率风险（调整久期）"></a>11.1.1 管理利率风险（调整久期）</h3><ul>
+<li>债券利率风险&#x3D;久期风险。预期利率上升 → 减久期；预期利率下降 → 增加久期。</li>
+<li><strong>用债券期货调整组合久期</strong>：<ul>
+<li>美元久期 &#x3D; 修正久期 × 价格。</li>
+<li>组合美元久期 &#x3D; 债券美元久期 + 期货美元久期。</li>
+<li>公式：<strong>N &#x3D; (MDUR_T − MDUR_B) &#x2F; MDUR_f × (B&#x2F;f) × β_y</strong><ul>
+<li>MDUR_T：目标修正久期；MDUR_B：债券修正久期；MDUR_f：债券期货修正久期；B：债券价格；f：期货价格；β_y：<strong>收益率贝塔（yield beta）</strong>&#x3D; Δy_B&#x2F;Δy_f（债券利率变化对期货基础资产利率变化的敏感度）。</li>
+</ul>
+</li>
+<li>完全对冲：目标久期&#x3D;0。</li>
+<li>例：B&#x3D;5000万，f&#x3D;7.5万，MDUR_B&#x3D;5.5，MDUR_f&#x3D;7.5，β_y&#x3D;1.05。目标6 → 买46.67≈47份；目标4 → 卖140份。</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-1-2-管理股票市场风险（调整贝塔）"><a href="#11-1-2-管理股票市场风险（调整贝塔）" class="headerlink" title="11.1.2 管理股票市场风险（调整贝塔）"></a>11.1.2 管理股票市场风险（调整贝塔）</h3><ul>
+<li>分散化组合用贝塔衡量风险（侧重系统性风险）。</li>
+<li>公式：β_T×S &#x3D; β_S×S + N_f×β_f×f → <strong>N_f &#x3D; (β_T − β_S)&#x2F;β_f × S&#x2F;f</strong><ul>
+<li>β_T：目标贝塔；β_S：股票组合贝塔；β_f：股指期货贝塔（不一定等于1）；S：组合市值；f：期货价格。</li>
+<li>完全对冲：目标贝塔&#x3D;0（卖期货）。</li>
+</ul>
+</li>
+<li>期货价格通过点位×乘数表示（如标普500，1点&#x3D;250美元）；不同指数乘数不同。</li>
+<li>成长股组合只能用成长股股指期货管理风险。</li>
+<li><strong>有效贝塔（effective beta）</strong>：对冲后组合真实贝塔 &#x3D; 组合实际收益率&#x2F;市场收益率，用于评判风险管理有效性（四舍五入等原因导致不完全等于目标贝塔）。</li>
+</ul>
+<h3 id="11-1-3-合成股票头寸（synthetic-index-fund）"><a href="#11-1-3-合成股票头寸（synthetic-index-fund）" class="headerlink" title="11.1.3 合成股票头寸（synthetic index fund）"></a>11.1.3 合成股票头寸（synthetic index fund）</h3><ul>
+<li>基础公式：买入股票 + 卖出期货 &#x3D; 买入无风险资产 → <strong>买入股票 &#x3D; 买入无风险资产 + 买入期货</strong>。</li>
+<li>用股指期货将现金头寸合成股票头寸（省成本、流动性好、到期自动回归现金）。</li>
+<li>计算3要素：需要多少份期货、期初投资多少本金、相当于购买多少份股票（考虑股利再投资）。</li>
+</ul>
+<h3 id="11-1-4-合成现金头寸"><a href="#11-1-4-合成现金头寸" class="headerlink" title="11.1.4 合成现金头寸"></a>11.1.4 合成现金头寸</h3><ul>
+<li>买入股票 + 卖出期货 &#x3D; 买入无风险资产，将股票头寸合成为现金头寸（不用卖股票、降成本）。</li>
+</ul>
+<h3 id="11-1-5-管理组合的资产配置"><a href="#11-1-5-管理组合的资产配置" class="headerlink" title="11.1.5 管理组合的资产配置"></a>11.1.5 管理组合的资产配置</h3><ul>
+<li><strong>债券与股票之间转换</strong>（如60&#x2F;40→50&#x2F;50）：先确定转换金额，再用股指期货去除股票风险敞口（β&#x3D;0），用债券期货加债券风险敞口（久期&#x3D;目标值），以现金为桥梁（现金 β&#x3D;0、久期&#x3D;0）。</li>
+<li><strong>不同股票类型之间转换</strong>（大盘股→小盘股）：先用大盘股期货调 β&#x3D;0，再用小盘股期货调至目标 β。</li>
+<li>用远期&#x2F;期货调整的优势：避免交易费用、流动性高（尤其相对债券）；局限：只调整系统性风险忽略非系统性风险、依赖 β&#x2F;久期估计偏差、四舍五入影响。</li>
+</ul>
+<h3 id="11-1-6-提前投资（pre-investing）"><a href="#11-1-6-提前投资（pre-investing）" class="headerlink" title="11.1.6 提前投资（pre-investing）"></a>11.1.6 提前投资（pre-investing）</h3><ul>
+<li>预期未来收到现金，根据市场预期买入合约（期初无现金流出，期货保证金由其他账户满足）。</li>
+</ul>
+<h3 id="11-1-7-外汇风险（国际贸易公司角度）"><a href="#11-1-7-外汇风险（国际贸易公司角度）" class="headerlink" title="11.1.7 外汇风险（国际贸易公司角度）"></a>11.1.7 外汇风险（国际贸易公司角度）</h3><ul>
+<li><strong>经济风险（economic exposure）</strong>：汇率变化影响竞争力（如美元升值→美国出口企业竞争力下降）。无法对冲。</li>
+<li><strong>折算风险（translation exposure）</strong>：合并国外子公司报表时汇兑损益变化，只是会计风险，不对冲也不能对冲。</li>
+<li><strong>交易风险（transaction exposure）</strong>：以外币计价的应收&#x2F;应付账款因汇率变动产生的风险。可对冲：应收账款→卖出合约；应付账款→买入合约。</li>
+</ul>
+<h3 id="11-1-8-对冲的限制"><a href="#11-1-8-对冲的限制" class="headerlink" title="11.1.8 对冲的限制"></a>11.1.8 对冲的限制</h3><ul>
+<li>国外投资面临国外市场风险 + 汇率风险。可对冲两种&#x2F;一种&#x2F;都不对冲。</li>
+<li>只对冲汇率风险：期末价值不确定 → 无法确定对冲本金。处理：预期未来价值对冲；设最小值对冲。都不尽如人意；两种风险都对冲则市场风险对冲后值确定，汇率对冲更容易。</li>
+</ul>
+<h3 id="11-1-9-远期-vs-期货"><a href="#11-1-9-远期-vs-期货" class="headerlink" title="11.1.9 远期 vs 期货"></a>11.1.9 远期 vs 期货</h3><ul>
+<li>远期 OTC 定制化、不受约束、有违约风险；期货交易所标准化、受监管、无违约风险。</li>
+<li>实务：FRA 常用于对冲借款利率风险；债券市场偏向期货；外汇市场偏爱远期；做市商喜欢欧洲美元期货（交易量大）。</li>
+</ul>
+<h2 id="11-2-期权在风险管理中的应用"><a href="#11-2-期权在风险管理中的应用" class="headerlink" title="11.2 期权在风险管理中的应用"></a>11.2 期权在风险管理中的应用</h2><h3 id="11-2-1-期权策略在股票组合中的应用"><a href="#11-2-1-期权策略在股票组合中的应用" class="headerlink" title="11.2.1 期权策略在股票组合中的应用"></a>11.2.1 期权策略在股票组合中的应用</h3><p><strong>（1）持保看涨期权（covered call）&#x3D; 买入股票 + 卖出看涨期权</strong></p>
+<ul>
+<li>适用：预期股票价格短期平稳。</li>
+<li>收益 Π &#x3D; −[Max(0,S_T−X) − C_0] + (S_T − S_0)。</li>
+<li>最大收益（S_T≥X）&#x3D; X + C_0 − S_0；最大亏损（S_T&#x3D;0）&#x3D; C_0 − S_0；盈亏平衡点 S_T &#x3D; S_0 − C_0。</li>
+</ul>
+<p><strong>（2）保护性看跌期权（protective put）&#x3D; 买入股票 + 买入看跌期权</strong></p>
+<ul>
+<li>看跌期权多头&#x3D;保险。</li>
+<li>收益 Π &#x3D; (S_T − S_0) + [Max(0,X−S_T) − P_0]。</li>
+<li>最大收益无限（S_T&gt;X）&#x3D; S_T − S_0 − P_0；最大亏损（S_T≤X）&#x3D; X − S_0 − P_0；盈亏平衡点 S_T &#x3D; S_0 + P_0。</li>
+<li>代价：期权费贵；执行价格越高（保护越大）期权费越贵。</li>
+<li>期权费关系：看跌执行价越高期权费越贵；看涨执行价越低期权费越贵。</li>
+</ul>
+<p><strong>（3）价差（spread）策略</strong></p>
+<ul>
+<li>时间价差（到期时间不同，三级不讨论）；<strong>货币价差（money spread，执行价格不同，重点）</strong>。</li>
+<li><strong>牛市价差（bull spread）</strong>：买低执行价看涨 + 卖高执行价看涨（C_L &gt; C_H）。<ul>
+<li>收益 Π &#x3D; [Max(0,S_T−X_L)−C_L] − [Max(0,S_T−X_H)−C_H]。</li>
+<li>最大收益（S_T≥X_H）&#x3D; X_H − X_L + C_H − C_L；最大亏损（S_T≤X_L）&#x3D; C_H − C_L；盈亏平衡 S_T &#x3D; X_L + C_L − C_H。</li>
+<li>用看跌期权构建牛市价差：卖高执行价看跌（获利）+ 买低执行价看跌（对冲），P_H &gt; P_L。最大收益 &#x3D; P_H − P_L；最大亏损 &#x3D; X_H − X_L + P_L − P_H；盈亏平衡 S_T &#x3D; X_H + P_L − P_H。</li>
+</ul>
+</li>
+<li><strong>熊市价差（bear spread）</strong>：卖低执行价看涨 + 买高执行价看涨。与牛市价差相反（熊市获利）。<ul>
+<li>关系：<strong>long bull call spread &#x3D; short bear call spread；long bull put spread &#x3D; short bear put spread</strong>。</li>
+</ul>
+</li>
+<li><strong>蝶式价差（butterfly spread）&#x3D; 买入牛市价差 + 买入熊市价差</strong>（3个执行价 X_L&lt;X_M&lt;X_H）。<ul>
+<li>头寸：买 X_L 看涨 + 卖2份 X_M 看涨 + 买 X_H 看涨。</li>
+<li>收益 Π &#x3D; [Max(0,S_T−X_L)−C_L] − 2[Max(0,S_T−X_M)−C_M] + [Max(0,S_T−X_H)−C_H]。</li>
+<li>适用：预期价格波动平稳（S_T&#x3D;X_M 时最大收益 &#x3D; X_M−X_L−C_L+2C_M−C_H）；最大亏损 &#x3D; 2C_M−C_L−C_H。</li>
+<li>预期波动剧烈则卖出蝶式价差。</li>
+</ul>
+</li>
+</ul>
+<p><strong>（4）跨式期权（straddle）&#x3D; 买入同执行价看涨 + 看跌</strong></p>
+<ul>
+<li>适用：预期市场有波动但方向不确定。</li>
+<li>最大亏损 &#x3D; C + P（价格不变）；价格持续上涨时收益无限。</li>
+<li>盈亏平衡：S_T&lt;X 时 &#x3D; X − C − P；S_T&gt;X 时 &#x3D; X + C + P。</li>
+<li><strong>宽跨式期权（strangle）</strong>：两期权执行价格不同（图形底部为平滑线）。</li>
+</ul>
+<p><strong>（5）保护性封顶保底策略（collar）</strong></p>
+<ul>
+<li>&#x3D; 保护性看跌 + 卖出看涨（用卖出看涨的期权费支付看跌期权费）。期权费相同&#x3D;<strong>零成本 collar</strong>。</li>
+<li>核心头寸是股票现货，看跌执行价通常低于看涨执行价。</li>
+<li>收益 Π &#x3D; (S_T−S_0) + [Max(0,X_P−S_T)−P] − [Max(0,S_T−X_C)−C]。</li>
+<li>最大收益（S_T≥X_C）&#x3D; X_C + C − S_0 − P；最大亏损（S_T≤X_P）&#x3D; X_P + C − S_0 − P；盈亏平衡 S_T &#x3D; S_0 + P − C。</li>
+</ul>
+<p><strong>（6）盒式套利（box spread）&#x3D; 牛市价差 + 熊市价差</strong></p>
+<ul>
+<li>损益确定不变：Π &#x3D; (X_H − X_L) − (C_L − C_H + P_H − P_L)。</li>
+<li>(X_H−X_L) 为期末价值&#x2F;收入；(C_L−C_H+P_H−P_L) 为构建成本。</li>
+<li>合理定价时收益&#x3D;无风险收益率；收益&gt;无风险利率 → 成本低（多头低估&#x2F;空头高估）→ 买入低估、卖出高估套利；收益&lt;无风险利率 → 反向头寸。</li>
+<li>有效组合：box spread &#x3D; long bull call spread + long bear put spread；或 &#x3D; long bear call spread + long bull put spread。</li>
+</ul>
+<h3 id="11-2-2-利率期权策略"><a href="#11-2-2-利率期权策略" class="headerlink" title="11.2.2 利率期权策略"></a>11.2.2 利率期权策略</h3><ul>
+<li>利率看涨期权：基础利率&gt;执行利率有收益；利率看跌期权：基础利率&lt;执行利率有收益。</li>
+<li>收益 &#x3D; 名义本金 × Max(0, 到期基础利率 − 执行利率) × (贷款期限&#x2F;360)。</li>
+<li><strong>利率看涨期权在借款中的作用</strong>（借款人担心利率上升）：<ul>
+<li>实际借款利率 &#x3D; 实际支付的利息&#x2F;实际拿到的本金。</li>
+<li>期权费需时间调整（按 LIBOR+利差 复利到借款日），从借款金额扣除。</li>
+</ul>
+</li>
+<li><strong>利率看跌期权在贷款中的作用</strong>（贷款人担心利率下降）：<ul>
+<li>期权费时间调整后加到贷款金额（都是贷款人现金流出）。</li>
+<li>锁定收到利息下限 &#x3D; 执行利率 + 利差。</li>
+</ul>
+</li>
+<li><strong>利率上限（interest rate cap）</strong>：对冲多笔利息的一系列利率看涨期权；组成单元&#x3D;<strong>利率上限单元（caplet）</strong>。利率下限、上下限原理类似（上下限需同时考虑上下限结算金额）。<ul>
+<li>关键：利率在期初确定、期末结算；第一笔利息利率已知（0时刻）→ 无需期权，只需 3 个 caplet（针对后3笔）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-2-3-期权组合的风险管理策略（做市商角度）"><a href="#11-2-3-期权组合的风险管理策略（做市商角度）" class="headerlink" title="11.2.3 期权组合的风险管理策略（做市商角度）"></a>11.2.3 期权组合的风险管理策略（做市商角度）</h3><ul>
+<li>看涨期权空头收益有限、亏损无限。3种对冲方法：找相反头寸抵消（难）；买卖权平价合成（麻烦）；<strong>delta 对冲（最常用）</strong>。</li>
+<li><strong>Delta 对冲</strong>：delta &#x3D; Δ期权价格&#x2F;Δ基础资产价格。对冲1份看涨期权空头需买入 delta 份基础资产；对冲1份看跌期权空头需卖出 delta 份基础资产。</li>
+<li><strong>动态对冲（dynamic hedge）</strong>：delta 随市场环境、时间改变而变化 → 不断调整头寸。原因：delta 是一阶线性（凸性问题）、delta 本身会变、四舍五入。</li>
+<li>完美对冲时组合收益&#x3D;无风险利率；不等则对冲不完美。</li>
+<li><strong>Gamma</strong>：delta 对基础资产价格的敏感度。平价期权接近到期时 gamma 最大、风险最大 → gamma 对冲比 delta 对冲更重要。</li>
+</ul>
+<h2 id="11-3-互换在风险管理中的应用"><a href="#11-3-互换在风险管理中的应用" class="headerlink" title="11.3 互换在风险管理中的应用"></a>11.3 互换在风险管理中的应用</h2><h3 id="11-3-1-利率互换（管理利率风险）"><a href="#11-3-1-利率互换（管理利率风险）" class="headerlink" title="11.3.1 利率互换（管理利率风险）"></a>11.3.1 利率互换（管理利率风险）</h3><ul>
+<li><strong>单纯利率互换（plain vanilla）</strong>：固定换浮动。</li>
+<li>互换久期：D_swap &#x3D; D_fixed − D_float（付固定方）或 D_float − D_fixed（收固定方）。<ul>
+<li>浮动利率债券付息日久期≈0；两付息日之间久期&#x3D;到下次付息时间或平均久期（季度付息平均0.125年）。</li>
+<li>固定利率债券久期 &#x3D; 到期时间 × 0.75（季度付息）。</li>
+</ul>
+</li>
+<li>增加久期 → 收固定互换；降低久期 → 付固定互换。</li>
+<li>名义本金公式：V_p×MDUR_T &#x3D; V_p×MDUR_P + NP×MDUR_swap → <strong>NP &#x3D; V_p × (MDUR_T − MDUR_P)&#x2F;MDUR_swap</strong>（名义本金与互换久期负相关）。</li>
+<li><strong>浮动&#x2F;固定利率贷款转换</strong>：付固定借款 + 收固定付浮动互换 → 变浮动负债。将浮动负债转固定负债&#x3D;把现金流风险（cash flow risk）换成市场价值风险（market value risk）——现金流不确定性消除（利于预算），但久期上升、市值波动加剧。</li>
+<li>降低所有者权益久期：增加负债久期（付浮动收固定互换）。</li>
+<li><strong>管理结构性债券风险</strong>（杠杆化浮动利率债券、反向浮动利率债券）：用固定利率债券 + 互换对冲。要点：确定买入固定利率债券面值倍数、进入何种互换、承担两个对手方违约风险。</li>
+</ul>
+<h3 id="11-3-2-货币互换（管理汇率风险）"><a href="#11-3-2-货币互换（管理汇率风险）" class="headerlink" title="11.3.2 货币互换（管理汇率风险）"></a>11.3.2 货币互换（管理汇率风险）</h3><ul>
+<li>货币互换可固定换固定&#x2F;固定换浮动&#x2F;浮动换浮动（汇率不确定）。</li>
+<li><strong>改变负债币种</strong>：国内发本币债券 + 货币互换 → 外币负债（降低国外融资成本）。期间利息差额&#x3D;信用风险溢价成本。</li>
+<li><strong>不交换本金的货币互换</strong>：锁定每期现金流转换金额。风险：实际现金流与预期不一致。</li>
+</ul>
+<h3 id="11-3-3-权益互换（管理股票市场风险）"><a href="#11-3-3-权益互换（管理股票市场风险）" class="headerlink" title="11.3.3 权益互换（管理股票市场风险）"></a>11.3.3 权益互换（管理股票市场风险）</h3><ul>
+<li>不买卖股票获得&#x2F;转移股票头寸（暂时性）。</li>
+<li>应用：管理市场风险（支付股票收益+收固定利息，把股票头寸变固定收益头寸）、组合分散化、国际化分散化（付国内收益换国外指数收益，交易成本低但有外汇风险）、改变资产配置（股股&#x2F;债债&#x2F;股债转换）。</li>
+<li>特点：可能出现付两份&#x2F;收两份（指数收益为负时收两份）；支付两份可能现金流不足需卖股票。</li>
+</ul>
+<h3 id="11-3-4-利率互换期权（Swaption）"><a href="#11-3-4-利率互换期权（Swaption）" class="headerlink" title="11.3.4 利率互换期权（Swaption）"></a>11.3.4 利率互换期权（Swaption）</h3><ul>
+<li>互换期权&#x3D;进入互换合约的权利。<strong>支付互换期权（payer swaption）</strong>：有权支付固定、收浮动；<strong>收到互换期权（receiver swaption）</strong>：有权收固定、付浮动。</li>
+<li>性质类似期权：买方付期权费、分美式&#x2F;欧式、有执行利率。</li>
+<li>市场利率&gt;执行利率 → payer swaption 行权（类似利率看涨期权）；市场利率&lt;执行利率 → receiver swaption 行权（类似利率看跌期权）。</li>
+<li><strong>对冲将来借款利率风险</strong>：未来付浮动利率 → 买 payer swaption（预期利率上升时按固定付有利）。</li>
+<li><strong>提前终止互换</strong>：买入与现有合约头寸相反、特征相同的互换期权。</li>
+<li><strong>合成增加&#x2F;去除看涨期权特征</strong>：<ul>
+<li>payer swaption ~ 利率看涨期权 ~ 债券看跌期权。</li>
+<li>receiver swaption ~ 利率看跌期权 ~ 债券看涨期权。</li>
+<li>去除可赎回债券（callable bond）的看涨性质：<strong>short callable bond &#x3D; short receiver swaption</strong>。</li>
+<li>加入看涨性质：<strong>long callable bond &#x3D; long receiver swaption</strong>。</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="第12章-交易"><a href="#第12章-交易" class="headerlink" title="第12章 交易"></a>第12章 交易</h1><h2 id="12-1-市场结构与交易成本"><a href="#12-1-市场结构与交易成本" class="headerlink" title="12.1 市场结构与交易成本"></a>12.1 市场结构与交易成本</h2><h3 id="12-1-1-市场功能（3方面）"><a href="#12-1-1-市场功能（3方面）" class="headerlink" title="12.1.1 市场功能（3方面）"></a>12.1.1 市场功能（3方面）</h3><p>流动性（liquidity）、透明性（transparency）、确保交易的完成性（assurity of completion）。</p>
+<h3 id="12-1-2-市场结构（4种）"><a href="#12-1-2-市场结构（4种）" class="headerlink" title="12.1.2 市场结构（4种）"></a>12.1.2 市场结构（4种）</h3><ul>
+<li><strong>指令驱动型市场（order-driven）</strong>：价格受买卖指令影响，交易在投资者间进行（不通过做市商）。订单竞争激烈→更好价格执行，但流动性弱→可能延迟&#x2F;无法成交。成交规则：价格优先、时间优先。<ul>
+<li>子分类：电子交互网络（electronic crossing networks，成批处理、成本低、信息保密、但可能不完全执行、<strong>无价格发现功能</strong>）；拍卖市场（auction markets，有价格发现）；自动拍卖市场（如 ECN，连续竞价、有价格发现、信息保密）。</li>
+<li><strong>市场指令（market order）</strong>：以当前最好价格立即成交，重速度 → 价格不确定（price uncertainty）。</li>
+<li><strong>限价指令（limit order）</strong>：只以约定或更好价格成交 → 执行不确定（execution uncertainty），存在隐性机会成本。</li>
+</ul>
+</li>
+<li><strong>报价驱动型市场（quote-driven &#x2F; dealer markets）</strong>：做市商提供买卖价，赚买卖价差，为买卖双方提供流动性。流动性差市场（如债券）以做市商为主；信用有时比价格更重要。</li>
+<li><strong>经纪人市场（brokered market）</strong>：经纪人代表做市商寻找对手方，服务大单（block order）保密订单（防抢单 front-run）。</li>
+<li><strong>混合市场（hybrid）</strong>：前三者组合。</li>
+</ul>
+<h3 id="12-1-3-有效价差（effective-spread）"><a href="#12-1-3-有效价差（effective-spread）" class="headerlink" title="12.1.3 有效价差（effective spread）"></a>12.1.3 有效价差（effective spread）</h3><ul>
+<li>买入价（bid）&#x3D;做市商愿意买入的价格；卖出价（ask&#x2F;offer）&#x3D;做市商愿意卖出的价格。</li>
+<li>内部买入价（inside bid）&#x3D;最高买入价；内部卖出价（inside ask）&#x3D;最低卖出价；内部价差（inside bid-ask spread）越小流动性越高；中间价（midquote）&#x3D;买卖价均值。</li>
+<li><strong>有效价差 &#x3D; 2 × |执行价格 − 中间价|</strong>（买单：2×(执行价−中间价)；卖单：2×(中间价−执行价)）。</li>
+<li>有效价差 &lt; 市场价差 → 交易成本低、有价格改善（price improvement）。</li>
+<li>有效价差优于市场价差：可反映价格改善和大单对市场的改变（market impact）。</li>
+<li><strong>平均有效价差</strong>：分批执行时计算，可简单平均或成交量加权。</li>
+</ul>
+<h3 id="12-1-4-评判市场质量的标准"><a href="#12-1-4-评判市场质量的标准" class="headerlink" title="12.1.4 评判市场质量的标准"></a>12.1.4 评判市场质量的标准</h3><ol>
+<li><strong>流动性</strong>：较小买卖价差、较大市场深度（market depth，大单不改变价格）、市场有弹性（market resilience，价格与内在价值差距小、回归快）。影响因素：买卖双方数量、投资者&#x2F;观点多样化、交易便捷性、市场诚信与监管。</li>
+<li><strong>透明性</strong>：获得信息难易（交易前价量+交易后信息）。</li>
+<li><strong>完成性</strong>：合约双方履行义务，经纪商和交易所提供保证。</li>
+</ol>
+<h2 id="12-2-衡量交易成本的方法"><a href="#12-2-衡量交易成本的方法" class="headerlink" title="12.2 衡量交易成本的方法"></a>12.2 衡量交易成本的方法</h2><h3 id="12-2-1-交易成本分类"><a href="#12-2-1-交易成本分类" class="headerlink" title="12.2.1 交易成本分类"></a>12.2.1 交易成本分类</h3><ul>
+<li><strong>显性成本（explicit costs）</strong>：佣金、税费、印花税（可直接观测）。</li>
+<li><strong>隐性成本（implicit costs）</strong>：买卖价差、市场冲击成本&#x2F;价格影响、未成交的机会成本（missed trade opportunity costs）、延迟成本（delay costs&#x2F;slippage）。</li>
+<li>隐性成本计算（用参照价格）：<ul>
+<li>买单 &#x3D; 交易量 × (执行价格 − 参照价格)。</li>
+<li>卖单 &#x3D; 交易量 × (参照价格 − 执行价格)。</li>
+<li>参照价格：开盘价、收盘价或 VWAP。</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-2-2-VWAP（成交量加权平均价格）"><a href="#12-2-2-VWAP（成交量加权平均价格）" class="headerlink" title="12.2.2 VWAP（成交量加权平均价格）"></a>12.2.2 VWAP（成交量加权平均价格）</h3><ul>
+<li>VWAP &#x3D; Σ(P_i × Q_i)&#x2F;ΣQ_i（权重&#x3D;各笔交易量占总交易量比例）。</li>
+<li>作为参照价格衡量隐性成本。</li>
+<li><strong>缺点</strong>：① 交易员订单占市场绝大部分时会严重影响 VWAP（执行价≈VWAP，隐性成本看似为零但实际很高）；② 容易被操纵（可预测 VWAP 并延迟到第二天执行）。</li>
+</ul>
+<h3 id="12-2-3-执行落差（Implementation-Shortfall-IS）"><a href="#12-2-3-执行落差（Implementation-Shortfall-IS）" class="headerlink" title="12.2.3 执行落差（Implementation Shortfall, IS）"></a>12.2.3 执行落差（Implementation Shortfall, IS）</h3><ul>
+<li>定义：真实组合收益与假设组合（paper portfolio，订单立即全部执行、无费用）收益之差，包含所有显性+隐性成本。</li>
+<li><strong>决定价格（decision price）</strong>：通常为前一天收盘价（或题目给定）。</li>
+<li>假设组合收益 &#x3D; 订单数 × (交易期末市场价格 − 决定价格)。</li>
+<li>4个组成元素：<ol>
+<li><strong>显性成本</strong>：佣金、税费。</li>
+<li><strong>实现的损益（realized profit&#x2F;loss）</strong>：执行价格与决定价格（若延迟执行则为第一天收盘价）之差 × 执行股数。</li>
+<li><strong>延迟成本（delay costs）</strong>：下单当天未成交带来的成本 &#x3D;（第一天收盘价 − 决定价格）× 执行股数。</li>
+<li><strong>未实现损益&#x2F;机会成本</strong>：（取消时价格 − 决定价格）× 取消股数。</li>
+</ol>
+</li>
+<li>总执行落差 &#x3D; 假设组合收益 − 真实组合收益；百分比 &#x3D; 总执行落差&#x2F;假设组合总成本。</li>
+</ul>
+<h3 id="12-2-4-调整市场变动的执行落差"><a href="#12-2-4-调整市场变动的执行落差" class="headerlink" title="12.2.4 调整市场变动的执行落差"></a>12.2.4 调整市场变动的执行落差</h3><ul>
+<li>市场变动是交易员无法掌控的，应剔除。E(R_i) &#x3D; α_i + β_i×E(R_M)，日收益 α_i≈0。</li>
+<li>调整后执行落差 &#x3D; IS − β×市场收益（负数&#x3D;对组合是收益）。</li>
+</ul>
+<h3 id="12-2-5-VWAP-vs-执行落差"><a href="#12-2-5-VWAP-vs-执行落差" class="headerlink" title="12.2.5 VWAP vs 执行落差"></a>12.2.5 VWAP vs 执行落差</h3><ul>
+<li><strong>VWAP 优点</strong>：好理解、计算简单、快速决策，适用无趋势市场的小单。</li>
+<li><strong>VWAP 缺点</strong>：不适大单、易被操纵、不能衡量延迟成本&#x2F;机会成本&#x2F;市场冲击成本。</li>
+<li><strong>执行落差优点</strong>：衡量所有成本、可分解、不易被操纵、可在快速执行与市场冲击间权衡。</li>
+<li><strong>执行落差缺点</strong>：计算繁琐、需大量数据。</li>
+</ul>
+<h3 id="12-2-6-计量模型（econometric-models）"><a href="#12-2-6-计量模型（econometric-models）" class="headerlink" title="12.2.6 计量模型（econometric models）"></a>12.2.6 计量模型（econometric models）</h3><ul>
+<li>多元回归预测交易成本；影响因素：流动性、风险程度、市场走势、交易量大小、交易风格。</li>
+<li>用途：评判交易质量、调整交易规模。</li>
+</ul>
+<h2 id="12-3-交易者的类型"><a href="#12-3-交易者的类型" class="headerlink" title="12.3 交易者的类型"></a>12.3 交易者的类型</h2><ol>
+<li><strong>信息驱动型（information-motivated）</strong>：拥有信息、机会稍纵即逝，重速度、用市场指令、要求高流动性、注意隐藏动机。</li>
+<li><strong>价值驱动型（value-motivated）</strong>：寻找高估&#x2F;低估证券，不常交易，重价格、用限价指令。</li>
+<li><strong>流动性驱动型（liquidity-motivated）</strong>：变现满足现金需求&#x2F;调仓，是前两者的天然对手方。</li>
+<li><strong>被动交易者（passive）</strong>：指数基金投资者，重成本不重速度。</li>
+</ol>
+<ul>
+<li>其他：做市商（赚价差）、套利者（价格和速度都重要）、日内交易员（几秒&#x2F;几分钟快速买卖）。</li>
+</ul>
+<h2 id="12-4-交易策略"><a href="#12-4-交易策略" class="headerlink" title="12.4 交易策略"></a>12.4 交易策略</h2><ul>
+<li>专注流动性（liquidity-at-any-cost）：牺牲成本换快速执行（信息驱动型）。</li>
+<li>成本不重要（cost-are-not-important）：市场有效、执行价已最好。</li>
+<li>需要可信代理人（need-trustworthy-agent）：大单需经验经纪商（时间长，不适合信息驱动型）。</li>
+<li>广而告之（advertise-to-draw-liquidity）：公开吸引投资者（可能泄露信息、抢跑）。</li>
+<li>低成本优先（low-cost-whatever-the-liquidity）：限价指令最小化成本（被动&#x2F;价值驱动型）。</li>
+</ul>
+<h2 id="12-5-算法交易（Algorithmic-Trading）"><a href="#12-5-算法交易（Algorithmic-Trading）" class="headerlink" title="12.5 算法交易（Algorithmic Trading）"></a>12.5 算法交易（Algorithmic Trading）</h2><ul>
+<li>目的：<strong>最小化交易成本</strong>（非获得超额收益），对大单分割执行。</li>
+</ul>
+<h3 id="12-5-1-逻辑参与策略（重点）"><a href="#12-5-1-逻辑参与策略（重点）" class="headerlink" title="12.5.1 逻辑参与策略（重点）"></a>12.5.1 逻辑参与策略（重点）</h3><ul>
+<li><strong>简单逻辑参与策略</strong>：<ol>
+<li><strong>VWAP 策略</strong>：按历史日交易量分配订单，匹配日平均交易价。</li>
+<li><strong>TWAP 策略</strong>（时间加权平均价格）：按时间权重平均分配（适用交易量小的资产）。</li>
+<li><strong>POV 策略</strong>（成交量百分比）：按市场总交易量份额拆分（活跃多下单，不活跃少下单）。</li>
+</ol>
+</li>
+<li><strong>执行落差策略（arrival price strategy）</strong>：最小化执行落差（尤其市场冲击+机会成本）；早期多成交（front-loaded）；风险厌恶越高越早交易；适用于转化管理（transition management）。</li>
+</ul>
+<h3 id="12-5-2-机会主义与特殊策略"><a href="#12-5-2-机会主义与特殊策略" class="headerlink" title="12.5.2 机会主义与特殊策略"></a>12.5.2 机会主义与特殊策略</h3><ul>
+<li>机会主义策略：被动投资同时捕捉主动机会。</li>
+<li>特殊策略：猎人策略（hunter）、市场收盘策略（market-on-close，以收盘价执行）。</li>
+</ul>
+<h3 id="12-5-3-算法交易策略选择"><a href="#12-5-3-算法交易策略选择" class="headerlink" title="12.5.3 算法交易策略选择"></a>12.5.3 算法交易策略选择</h3><ul>
+<li>订单规模占总交易量比率高 → 算法交易不适用，选择经纪商&#x2F;交易平台。</li>
+<li>占比低且价差小 → 算法交易；紧急程度高 → 执行落差策略；紧急程度低 → 简单算法策略。</li>
+</ul>
+<h2 id="12-6-最优执行（Best-Execution）"><a href="#12-6-最优执行（Best-Execution）" class="headerlink" title="12.6 最优执行（Best Execution）"></a>12.6 最优执行（Best Execution）</h2><ul>
+<li>目的：最有利方法买卖证券，提高组合收益、履行受托责任。</li>
+<li>4个特征：<ol>
+<li>不能独立于投资决策（需考虑投资策略，如信息驱动型需快速执行）。</li>
+<li>事前无法知晓（买卖双方博弈共同决定）。</li>
+<li>只能事后评判，需看长期表现而非单次交易。</li>
+<li>交易是一个复杂的、持续性的过程。</li>
+</ol>
+</li>
+<li>定义困难：合适参考标准难找、隐性成本难衡量、大单拆小后成本计算难、”最优”本身因人而异。</li>
+</ul>
+<hr>
+<h1 id="第13章-业绩评估"><a href="#第13章-业绩评估" class="headerlink" title="第13章 业绩评估"></a>第13章 业绩评估</h1><h2 id="13-1-组合业绩评估"><a href="#13-1-组合业绩评估" class="headerlink" title="13.1 组合业绩评估"></a>13.1 组合业绩评估</h2><h3 id="13-1-1-两大角度与三大结构"><a href="#13-1-1-两大角度与三大结构" class="headerlink" title="13.1.1 两大角度与三大结构"></a>13.1.1 两大角度与三大结构</h3><ul>
+<li><strong>基金发起人角度（外部）</strong>：业绩评估是反馈机制，识别投资项目好坏、决定经理去留。</li>
+<li><strong>基金经理角度（内部）</strong>：自我评价、改进投资过程。</li>
+<li><strong>三大结构</strong>：<ol>
+<li><strong>业绩测定（performance measurement）</strong>：账户价值变化 → 收益率。</li>
+<li><strong>业绩归因（performance attribution）</strong>：收益来源（板块选择&#x2F;个股选择）。</li>
+<li><strong>业绩评估（performance appraisal）</strong>：收益受投资决策还是市场环境&#x2F;运气影响。</li>
+</ol>
+</li>
+</ul>
+<h3 id="13-1-2-收益计算"><a href="#13-1-2-收益计算" class="headerlink" title="13.1.2 收益计算"></a>13.1.2 收益计算</h3><ul>
+<li>无外部现金流：r &#x3D; (MV_1 − MV_0)&#x2F;MV_0。</li>
+<li>期初外部现金流 CF：r &#x3D; [MV_1 − (MV_0+CF)]&#x2F;(MV_0+CF)。</li>
+<li>期末外部现金流 CF：r &#x3D; [(MV_1−CF) − MV_0]&#x2F;MV_0。</li>
+<li>期间现金流：以现金流发生点为界分段计算再衔接。</li>
+</ul>
+<h3 id="13-1-3-时间加权收益率（TWR）"><a href="#13-1-3-时间加权收益率（TWR）" class="headerlink" title="13.1.3 时间加权收益率（TWR）"></a>13.1.3 时间加权收益率（TWR）</h3><ul>
+<li>TWR &#x3D; (1+r_1)(1+r_2)…(1+r_n) − 1。</li>
+<li>每1单位资金在投资期的复合增长率，<strong>不受外部现金流时间&#x2F;规模影响</strong>。</li>
+<li>需大量数据（data intensive and expensive）。</li>
+</ul>
+<h3 id="13-1-4-货币加权收益率（MWR）"><a href="#13-1-4-货币加权收益率（MWR）" class="headerlink" title="13.1.4 货币加权收益率（MWR）"></a>13.1.4 货币加权收益率（MWR）</h3><ul>
+<li>账户内部收益率（IRR），受外部现金流时间&#x2F;规模影响。</li>
+<li>只需期初&#x2F;期末市值。适合基金经理能控制现金流时间的账户（如部分对冲基金、LLP）。</li>
+<li>市场上涨前追加投资 → MWR &gt; TWR；下跌前追加 → MWR &lt; TWR。</li>
+</ul>
+<h3 id="13-1-5-衔接的内部收益率（LIRR）"><a href="#13-1-5-衔接的内部收益率（LIRR）" class="headerlink" title="13.1.5 衔接的内部收益率（LIRR）"></a>13.1.5 衔接的内部收益率（LIRR）</h3><ul>
+<li>每个子时间段用 MWR 计算再几何衔接 ≈ 近似 TWR。</li>
+<li>适用：外部现金流规模较小、投资收益稳定（若现金流&gt;10%账户总值或收益剧烈波动则差异大）。</li>
+</ul>
+<h3 id="13-1-6-数据质量"><a href="#13-1-6-数据质量" class="headerlink" title="13.1.6 数据质量"></a>13.1.6 数据质量</h3><ul>
+<li>流动性差&#x2F;交易不频繁资产价值难估计（相似产品报价、成本价&#x2F;历史价、直接猜测）。</li>
+<li>需考虑交易日会计（trade date accounting）、应计利息股息（accrued interest and dividends）。</li>
+<li><strong>全价 &#x3D; 净价 + (t&#x2F;T)×C</strong>（t&#x3D;交易日距上次付息时间，T&#x3D;两次付息间隔，C&#x3D;每期息票）。</li>
+</ul>
+<h2 id="13-2-组合收益的构成"><a href="#13-2-组合收益的构成" class="headerlink" title="13.2 组合收益的构成"></a>13.2 组合收益的构成</h2><ul>
+<li><strong>P &#x3D; M + S + A</strong>，即 P &#x3D; M + (B−M) + A。<ul>
+<li>M：市场指数收益；S &#x3D; B−M：基金经理投资风格；A &#x3D; P−B：主动管理超额收益；B：参考基准收益。</li>
+<li>例：P&#x3D;4.2%，B&#x3D;4.5%，M&#x3D;3.3% → S&#x3D;1.2%，A&#x3D;−0.3%。</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-3-参考基准"><a href="#13-3-参考基准" class="headerlink" title="13.3 参考基准"></a>13.3 参考基准</h2><h3 id="13-3-1-有效参考基准的7类特征"><a href="#13-3-1-有效参考基准的7类特征" class="headerlink" title="13.3.1 有效参考基准的7类特征"></a>13.3.1 有效参考基准的7类特征</h3><ol>
+<li>事先明确（specified in advance）</li>
+<li>合适的（appropriate，符合投资风格）</li>
+<li>可衡量的（measurable）</li>
+<li>清楚的（unambiguous，可复制）</li>
+<li>反映当前投资观点（reflective of current investment opinions）</li>
+<li>拥有性及可说明性（owned and accountable）</li>
+<li>可投资的（investable）</li>
+</ol>
+<h3 id="13-3-2-7种主要基准参考指标"><a href="#13-3-2-7种主要基准参考指标" class="headerlink" title="13.3.2 7种主要基准参考指标"></a>13.3.2 7种主要基准参考指标</h3><table>
+<thead>
+<tr>
+<th>基准</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>绝对值（absolute）</td>
+<td>简单直观</td>
+<td>不可投资、不满足多数特性</td>
+</tr>
+<tr>
+<td>基金经理基准比较（manager universes）</td>
+<td>可计量</td>
+<td>存在偏差（后文重点）</td>
+</tr>
+<tr>
+<td>广义市场指数（如S&amp;P500、MSCI）</td>
+<td>认可、易懂、易获取、清楚可投资</td>
+<td>风格可能与经理不符</td>
+</tr>
+<tr>
+<td>风格指数（style indices）</td>
+<td>认可、易懂</td>
+<td>可能含过多权重证券&#x2F;板块、风格定义差异</td>
+</tr>
+<tr>
+<td>因子模型（factor-model-based）</td>
+<td>有效评估、洞察风格</td>
+<td>不为人熟知、数据昂贵、结果差异</td>
+</tr>
+<tr>
+<td>基于收益的基准（returns-based）</td>
+<td>直观、符合多数特性</td>
+<td>可能含过多权重板块、需大量月度数据</td>
+</tr>
+<tr>
+<td>自定义证券（custom security-based）</td>
+<td>符合所有条件、持续监管、有效分配风险预算</td>
+<td>构建维护成本高、缺乏透明性</td>
+</tr>
+</tbody></table>
+<ul>
+<li>自定义基准构建步骤：确认投资过程重要元素 → 选证券 → 分配权重 → 回顾调整 → 定期再平衡。</li>
+</ul>
+<h3 id="13-3-3-对”基金经理经验领域”的批判"><a href="#13-3-3-对”基金经理经验领域”的批判" class="headerlink" title="13.3.3 对”基金经理经验领域”的批判"></a>13.3.3 对”基金经理经验领域”的批判</h3><ul>
+<li>除可测量性外不满足其他优秀性质；不确定、不能事前知晓、不可投资。</li>
+<li>存在<strong>存活偏差（survivor bias）</strong>：发起人终结差经理 + 经理选择不披露差业绩 → 基准定制过高。</li>
+</ul>
+<h3 id="13-3-4-参考基准质量的检验"><a href="#13-3-4-参考基准质量的检验" class="headerlink" title="13.3.4 参考基准质量的检验"></a>13.3.4 参考基准质量的检验</h3><ol>
+<li><strong>系统性偏差（systematic bias）</strong>：回归 R_B &#x3D; a + βR_P + e，β显著≠1 说明存在系统性偏差。好的基准：A（主动超额）与 S（风格超额）无关联；S 与 E（P−M）高度相关。</li>
+<li><strong>追踪误差（tracking error）</strong>：A 的标准差，越小越好；S_(P−B) &lt; S_(P−M)。</li>
+<li><strong>风险特性</strong>：账户系统性风险来源应与基准一致（长期相等）。</li>
+<li><strong>覆盖率（coverage）</strong>：相同证券占账户市值百分比，越高越反映风格。</li>
+<li><strong>周转率（turnover）</strong>：被动组合基准应低周转。</li>
+<li><strong>多头的主动仓位（positive active positions）</strong>：应有大量多头主动仓位；大量空头说明基准未反映风格。</li>
+</ol>
+<h2 id="13-4-对冲基金业绩的衡量方法"><a href="#13-4-对冲基金业绩的衡量方法" class="headerlink" title="13.4 对冲基金业绩的衡量方法"></a>13.4 对冲基金业绩的衡量方法</h2><ul>
+<li>多空组合初始市值可能近似为零 → 收益率公式失效。</li>
+<li><strong>价值增加收益法（value-added return）</strong>：R_VA &#x3D; R_p − R_B，对每只证券超额收益加总。</li>
+<li>缺陷：难区分主动决策超额收益与做空能力；无特定风格的对冲基金无法找到可比对象。</li>
+<li>也有人用夏普比率比较（但收益有偏、标准差衡量风险存疑）。</li>
+</ul>
+<h2 id="13-5-业绩归因"><a href="#13-5-业绩归因" class="headerlink" title="13.5 业绩归因"></a>13.5 业绩归因</h2><h3 id="13-5-1-宏观业绩归因（基金发起人角度）"><a href="#13-5-1-宏观业绩归因（基金发起人角度）" class="headerlink" title="13.5.1 宏观业绩归因（基金发起人角度）"></a>13.5.1 宏观业绩归因（基金发起人角度）</h3><ul>
+<li>3类输入变量：政策分配（policy allocations）、参考基准组合收益（benchmark portfolio returns）、基金收益&#x2F;估值&#x2F;外部现金流。</li>
+<li>6个层次（从初始市值到最终市值）：<ol>
+<li><strong>净贡献（net contributions）</strong>：外部现金流总和。</li>
+<li><strong>无风险资产（risk-free asset）</strong>：0~M’ 部分。</li>
+<li><strong>资产类别（asset categories）</strong>：M’~W，R_AC &#x3D; Σ w_i(R_M,i − R_F)。</li>
+<li><strong>参考基准（benchmarks level）</strong>：W~B，R_B &#x3D; ΣΣ (w_i)(w_ij)(R_B,ij − R_M,i)。</li>
+<li><strong>基金经理（investment managers）</strong>：B~P，R_M &#x3D; ΣΣ (w_i)(w_ij)(R_P,ij − R_B,ij)。</li>
+<li><strong>分配效应（allocation effects）</strong>：调平项。</li>
+</ol>
+</li>
+</ul>
+<h3 id="13-5-2-微观业绩归因（基金经理角度）"><a href="#13-5-2-微观业绩归因（基金经理角度）" class="headerlink" title="13.5.2 微观业绩归因（基金经理角度）"></a>13.5.2 微观业绩归因（基金经理角度）</h3><ul>
+<li>价值增加收益来自：行业选择、个股选择、交集。</li>
+</ul>
+<ol>
+<li><strong>单纯板块分配（pure sector allocation）</strong> &#x3D; Σ (w_pj − w_bj)(R_bj − R_B)。</li>
+<li><strong>板块内部选择（within-sector selection）</strong> &#x3D; Σ w_bj(R_pj − R_bj)。</li>
+<li><strong>分配&#x2F;选择交叉收益（allocation&#x2F;selection interaction）</strong> &#x3D; Σ (w_pj − w_bj)(R_pj − R_bj)。</li>
+</ol>
+<ul>
+<li><strong>经验法则</strong>：加大对表现优异板块投资 → 高收益；减少 → 低收益；加大对表现拙劣板块投资 → 低收益；减少 → 高收益。</li>
+</ul>
+<h3 id="13-5-3-基本面因子模型"><a href="#13-5-3-基本面因子模型" class="headerlink" title="13.5.3 基本面因子模型"></a>13.5.3 基本面因子模型</h3><ul>
+<li>多因子回归：R_p &#x3D; a + b_1F_1 + … + b_nF_n + ε。</li>
+<li>主动收益 &#x3D; (a−a’) + Σ(b_i−b’_i)F_i，其中 (b_i−b’_i) 为主动敞口，(b_i−b’_i)F_i 为超额收益来源。</li>
+<li>4类超额收益技巧：市场择时（market timing，含现金头寸+Beta择时）、基本面因子敞口（成长、规模、杠杆、收益率因子）、经济板块因子敞口（行业）、特殊&#x2F;无法解释的收益。</li>
+<li>主动影响 &#x3D; 主动敞口 × 风险因子。</li>
+</ul>
+<h3 id="13-5-4-固定收益组合回报归因"><a href="#13-5-4-固定收益组合回报归因" class="headerlink" title="13.5.4 固定收益组合回报归因"></a>13.5.4 固定收益组合回报归因</h3><ul>
+<li>两大部分：外部利率环境影响 + 管理过程贡献。</li>
+<li><strong>外部利率环境影响</strong>：预期利率影响（远期隐含收益率）+ 非预期利率影响（实际 vs 远期差异）；以无风险债券为基准，被动投资即可获得。<ul>
+<li>远期利率：(1+S_2)² &#x3D; (1+S_1)(1+f)。</li>
+</ul>
+</li>
+<li><strong>管理过程贡献（4部分）</strong>：<ol>
+<li>利率管理影响（interest-rate management effect，含久期、凸性、收益率曲线形状）。</li>
+<li>板块&#x2F;质量管理影响（sector&#x2F;quality management effect，板块利差+资产质量）。</li>
+<li>证券选择影响（security selection effect）。</li>
+<li>交易活动（trading activity，无法解释部分）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="13-6-风险调整后的业绩鉴定衡量"><a href="#13-6-风险调整后的业绩鉴定衡量" class="headerlink" title="13.6 风险调整后的业绩鉴定衡量"></a>13.6 风险调整后的业绩鉴定衡量</h2><h3 id="13-6-1-5种指标"><a href="#13-6-1-5种指标" class="headerlink" title="13.6.1 5种指标"></a>13.6.1 5种指标</h3><ol>
+<li><strong>事后 α（ex-post alpha）</strong> &#x3D; R_p − [R_f + β_p(R_M − R_f)]。α&gt;0 位于 SML 上方。</li>
+<li><strong>特雷诺衡量（Treynor）</strong> &#x3D; (R_p − R_f)&#x2F;β_p（每单位系统性风险的超额收益）。</li>
+<li><strong>夏普比率（Sharpe）</strong> &#x3D; (R_p − R_f)&#x2F;σ_p（每单位总风险的超额收益，CML 斜率）。</li>
+<li><strong>信息比率（IR）</strong> &#x3D; (R_p − R_B)&#x2F;σ(R_p−R_B)（每单位主动风险的超额收益）。</li>
+<li><strong>M² 衡量</strong> &#x3D; R_f + (R_p − R_f) × (σ_M&#x2F;σ_p)（组合风险调整为与市场一致时的收益）。M²&gt;市场收益 → 位于 CML 上方。</li>
+</ol>
+<h3 id="13-6-2-指标比较"><a href="#13-6-2-指标比较" class="headerlink" title="13.6.2 指标比较"></a>13.6.2 指标比较</h3><ul>
+<li>α 和 Treynor 基于系统性风险 β：α&gt;0 ⇔ Treynor &gt; 市场 Treynor；最高 α 不一定最高 Treynor。</li>
+<li>Sharpe 和 M² 基于总风险：Sharpe 大 → M² 大。</li>
+<li>对 α&#x2F;Treynor 的批评：CAPM 只假设一个市场风险；用标普500代表市场；忽略交易成本；事后结果未来可变。</li>
+<li>高指标组合不一定高回报（低风险组合可有高 α&#x2F;Sharpe 但低绝对收益）。</li>
+</ul>
+<h2 id="13-7-质量控制图（Quality-Control-Charts）"><a href="#13-7-质量控制图（Quality-Control-Charts）" class="headerlink" title="13.7 质量控制图（Quality Control Charts）"></a>13.7 质量控制图（Quality Control Charts）</h2><ul>
+<li>假设：预期价值增加收益为零（原假设 H0：经理无能力）；价值增加收益独立且服从正态；投资过程稳定。</li>
+<li>价值增加线持续高于红线（基准收益）→ 优秀；随机分布 → 运气。</li>
+<li>95% 数据落在均值±2标准差；大量数据持续落在置信区间上方 → 5%显著性水平拒绝原假设。</li>
+</ul>
+<h3 id="13-7-1-基金经理续用政策（MCP）"><a href="#13-7-1-基金经理续用政策（MCP）" class="headerlink" title="13.7.1 基金经理续用政策（MCP）"></a>13.7.1 基金经理续用政策（MCP）</h3><ul>
+<li>目的：留用优秀&#x2F;解雇糟糕经理、多方面评估、最小化不必要轮转、关注账户成长性。</li>
+</ul>
+<h3 id="13-7-2-第一类错误与第二类错误"><a href="#13-7-2-第一类错误与第二类错误" class="headerlink" title="13.7.2 第一类错误与第二类错误"></a>13.7.2 第一类错误与第二类错误</h3><ul>
+<li><strong>第一类错误</strong>：留下没有增加价值的经理（错误拒绝真实原命题）。</li>
+<li><strong>第二类错误</strong>：解雇能带来价值的经理（未拒绝虚假原命题）。</li>
+<li>记忆：解雇好经理&#x3D;主公误杀忠臣，非常”二” → 第二类错误。</li>
+</ul>
+<hr>
+<h1 id="第14章-全球投资业绩准则（GIPS）"><a href="#第14章-全球投资业绩准则（GIPS）" class="headerlink" title="第14章 全球投资业绩准则（GIPS）"></a>第14章 全球投资业绩准则（GIPS）</h1><h2 id="14-1-简介"><a href="#14-1-简介" class="headerlink" title="14.1 简介"></a>14.1 简介</h2><h3 id="14-1-1-适用范围与目标"><a href="#14-1-1-适用范围与目标" class="headerlink" title="14.1.1 适用范围与目标"></a>14.1.1 适用范围与目标</h3><ul>
+<li>适用主体：<strong>拥有投资业绩的投资公司</strong>（制造业企业如可口可乐不能声称遵守 GIPS）。</li>
+<li><strong>自愿遵守</strong>的准则。</li>
+<li>目标：建立全球业绩计算与披露的行业惯例、促进客户获得准确业绩陈述、促进行业比较、鼓励完整披露与公平竞争、鼓励自我监管。</li>
+<li>当前版本 2010 年版（2011年1月1日生效）；<strong>英语版本是官方指定版本</strong>。</li>
+<li>与当地法律冲突时遵守法律并披露冲突。</li>
+</ul>
+<h3 id="14-1-2-专业术语"><a href="#14-1-2-专业术语" class="headerlink" title="14.1.2 专业术语"></a>14.1.2 专业术语</h3><ol>
+<li><strong>阐离（carve out）</strong>：从原组合中分割单独管理的部分；除非有自己的现金余额，否则不能从原组合中割离（防虚报业绩）。</li>
+<li><strong>组合（composite）</strong>：具有相同投资风格、目的、策略的组合类别（虚拟概念，是业绩披露单位）。所有 portfolio 必须至少归入一个 composite。</li>
+<li><strong>公司&#x2F;独立商业主体（firm）</strong>：不一定是法人，形式与功能独立、可自主处置资产、有自主投资决策过程即可是 firm（GIPS 适用单位）。</li>
+<li><strong>衔接（link）</strong>：数学衔接（几何衔接收益率）+ 表象衔接（两段业绩放一起陈述）。</li>
+<li><strong>合格客户（prospective client）</strong>：对组合策略感兴趣且符合投资要求的个人&#x2F;实体。</li>
+<li><strong>Gross-of-fees</strong>：扣除交易费用（trading expenses）后收益。</li>
+<li><strong>Net-of-fees</strong>：gross-of-fees 基础上再扣投资管理费用（含绩效奖&#x2F;附带权益）。</li>
+<li><strong>托管费用（custody fee）</strong>：行政费用，不在 gross-of-fees 中扣减。</li>
+<li><strong>交易日记账（trade date accounting）</strong>：以交易日（非交割日）价格入账。</li>
+<li><strong>交割日记账（settlement date accounting）</strong>：以交割日价格入账（最新 GIPS 规定用交易日记账）。</li>
+<li><strong>临时新建账户（temporary new account）</strong>：显著外部现金流先放入，建仓后再并入原账户。</li>
+<li><strong>Vintage year</strong>（房地产&#x2F;私募股权）：基金开始运作收取管理费的年份；判定标准&#x3D;首次资本召唤年份 或 第一笔承诺资本被锁定受法律约束的年份。</li>
+<li><strong>打包费（wrap fee）</strong>：含投资管理费、交易费、托管费、行政费用的组合（养老金账户&#x3D;SMA&#x2F;managed account）。</li>
+<li><strong>授权（mandate）</strong>：投资者授权基金经理按一定投资风格管理（&#x3D;对外宣称的投资风格）。</li>
+</ol>
+<h3 id="14-1-3-GIPS-概观（9大部分）"><a href="#14-1-3-GIPS-概观（9大部分）" class="headerlink" title="14.1.3 GIPS 概观（9大部分）"></a>14.1.3 GIPS 概观（9大部分）</h3><ol start="0">
+<li>Fundamentals of Compliance（遵守基础）</li>
+<li>Input Data（输入数据）</li>
+<li>Calculation Methodology（计算方法）</li>
+<li>Composite Construction（组合构建）</li>
+<li>Disclosures（披露）</li>
+<li>Presentation and Reporting（陈述与报告）</li>
+<li>Real Estate（房地产）</li>
+<li>Private Equity（私募股权）</li>
+<li>Wrap Fee&#x2F;SMA Portfolios（打包费&#x2F;分开管理账户）</li>
+</ol>
+<ul>
+<li>0<del>5 部分针对一般股票债券（重点）；6</del>8 部分针对特定投资品。</li>
+<li>每条分 requirements（必须遵守，考试重点）和 recommended（推荐遵守）。</li>
+</ul>
+<h2 id="14-2-0-5-部分条款"><a href="#14-2-0-5-部分条款" class="headerlink" title="14.2 0~5 部分条款"></a>14.2 0~5 部分条款</h2><h3 id="14-2-1-0-Fundamentals-of-Compliance（遵守基础）"><a href="#14-2-1-0-Fundamentals-of-Compliance（遵守基础）" class="headerlink" title="14.2.1 0. Fundamentals of Compliance（遵守基础）"></a>14.2.1 0. Fundamentals of Compliance（遵守基础）</h3><p><strong>必须遵守</strong>：</p>
+<ul>
+<li>0.A.1 遵守 GIPS 所有必须条款（不可只遵守部分）。</li>
+<li>0.A.2 遵守所有相关法律法规。</li>
+<li>0.A.3 禁止虚假&#x2F;误导信息。</li>
+<li>0.A.4 GIPS 适用于整个公司层面（不可只对某一组合宣称遵守）。</li>
+<li>0.A.5 记录建立与维持合规的政策流程。</li>
+<li>0.A.6 不得发表”遵守 GIPS 除了……”等部分合规言论。</li>
+<li>0.A.7 禁止”核算方法符合 GIPS”类陈述。</li>
+<li>0.A.8 禁止单独向客户陈述某组合计算符合 GIPS（除非合规公司只向该客户报告其投资组合）。</li>
+<li>0.A.9 向所有合格客户提供标准陈述（12个月内提供过即合规）。</li>
+<li>0.A.10 提供完整组合描述清单，含已终结组合（终结后至少保留5年）。</li>
+<li>0.A.11 客户需要时提供清单上任何组合的标准陈述。</li>
+<li>0.A.12 公司须定义为独立的商业实体。</li>
+<li>0.A.13 自2011年起，公司总资产&#x3D;自主+非自主资产（含付费+不付费组合）的公允价值合计。<ul>
+<li>自主支配（discretionary）组合 MUST 归入组合；非自主（non-discretionary）MUST NOT 归入；不付费（non-fee-paying）MAY 归入。</li>
+</ul>
+</li>
+<li>0.A.14 公司总资产须包含分配给副顾问的资产（有自主选择权时）。</li>
+<li>0.A.15 组织架构变化不能改变历史业绩。</li>
+<li>0.A.16 联合营销时须明确哪家公司在遵守 GIPS。</li>
+</ul>
+<h3 id="14-2-2-1-Input-Data（输入数据）"><a href="#14-2-2-1-Input-Data（输入数据）" class="headerlink" title="14.2.2 1. Input Data（输入数据）"></a>14.2.2 1. Input Data（输入数据）</h3><p><strong>必须遵守（关键时间线）</strong>：</p>
+<ul>
+<li>1.A.1 所有数据必须捕获并保存。</li>
+<li>1.A.2 自2011年起按公允价值+估值原则估值。</li>
+<li>1.A.3 估值频率：自2001年起至少每月；自2010年起大笔现金流发生日也须估值。</li>
+<li>1.A.4 自2010年起日历月结束日或最后营业日估值。</li>
+<li>1.A.5 自2005年起使用交易日记账（trade date accounting）。</li>
+<li>1.A.6 固定收益证券使用权责发生制，含应计利息。</li>
+<li>1.A.7 自2006年起年度估值起止日一致（日历年末&#x2F;最后交易日）。</li>
+<li><strong>估值时间线</strong>：2001（至少每季度→每月）、2005（交割日记账→交易日记账）、2006（起止日一致）、2010（每月+大笔现金流、日历月末）。</li>
+</ul>
+<h3 id="14-2-3-2-Calculation-Methodology（计算方法）"><a href="#14-2-3-2-Calculation-Methodology（计算方法）" class="headerlink" title="14.2.3 2. Calculation Methodology（计算方法）"></a>14.2.3 2. Calculation Methodology（计算方法）</h3><p><strong>必须遵守</strong>：</p>
+<ul>
+<li>2.A.1 使用总收益（total returns）。</li>
+<li>2.A.2 使用调整外部现金流的 TWR，子期间几何衔接。自2001年至少每月计算；自2005年调整按天加权的外部现金流。</li>
+<li>2.A.3 现金及现金等价物收益须包含。</li>
+<li>2.A.4 扣减真实交易费用（不可用估计值）。</li>
+<li>2.A.5 打包费无法拆分时：gross-of-fees 扣全部捆绑费（或含交易费部分）；net-of-fees 扣全部（含交易费+管理费部分）；不可用估计费用。</li>
+<li>2.A.6 组合收益以资产加权（期初价值或期初价值+外部现金流）。</li>
+<li>2.A.7 组合收益资产加权：自2006年至少每季度；自2010年至少每月。</li>
+<li><strong>收益计算法演进时间线</strong>：<ul>
+<li>2005年前：<strong>Original Dietz</strong>：R &#x3D; (EMV − BMV − CF)&#x2F;(BMV + 0.5×CF)。</li>
+<li>2005年后：<strong>Modified Dietz</strong>：R &#x3D; (EMV − BMV − ΣCF_i)&#x2F;(BMV + Σw_i×CF_i)，w_i&#x3D;(CD−D_i)&#x2F;CD；<strong>Modified IRR</strong>：EMV &#x3D; Σ[CF_i(1+r)^w_i] + BMV(1+r)。</li>
+<li>2010年后：<strong>TWR</strong>（大笔现金流分割子期间，几何衔接）。</li>
+</ul>
+</li>
+<li><strong>组合收益3种计算方法</strong>：期初市值加权；期初市值+外部现金流加权；加总收益法（aggregate return）。</li>
+</ul>
+<h3 id="14-2-4-3-Composite-Construction（组合构建）"><a href="#14-2-4-3-Composite-Construction（组合构建）" class="headerlink" title="14.2.4 3. Composite Construction（组合构建）"></a>14.2.4 3. Composite Construction（组合构建）</h3><p><strong>必须遵守</strong>：</p>
+<ul>
+<li>3.A.1 所有付费+自主组合 MUST 至少归入一个组合；非自主 MUST NOT；不付费自主 MAY（需披露）。</li>
+<li>3.A.2 只含真实管理的资产（模拟组合不可）。</li>
+<li>3.A.3 模拟收益不可与真实业绩衔接。</li>
+<li>3.A.4 组合须按投资风格&#x2F;目标&#x2F;策略定义；定义改变不可追溯调整。</li>
+<li>3.A.5 新组合及时、持续纳入。</li>
+<li>3.A.6 已终结组合业绩保留至上一完整评估周期。</li>
+<li>3.A.7 组合不可随意在组合间转移（除非风格&#x2F;目标&#x2F;策略重大改变或组合重定义）。</li>
+<li>3.A.8 自2010年起，carve-out 须有自己的现金余额。</li>
+<li>3.A.9 最低资产标准不可追溯调整。</li>
+<li>3.A.10 显著现金流须事先定义。</li>
+<li><strong>large cash flow（针对组合，影响收益计算）vs significant cash flow（针对组合，影响策略执行）</strong>。</li>
+</ul>
+<h3 id="14-2-5-4-Disclosures（披露）"><a href="#14-2-5-4-Disclosures（披露）" class="headerlink" title="14.2.5 4. Disclosures（披露）"></a>14.2.5 4. Disclosures（披露）</h3><p><strong>必须遵守</strong>（核心）：</p>
+<ul>
+<li>4.A.1 合规声明（官方措辞，含是否被验证）。</li>
+<li>4.A.2 公司定义；4.A.3 组合描述；4.A.4 参考基准描述。</li>
+<li>4.A.5 gross-of-fees 是否扣其他费用；4.A.6 net-of-fees 扣其他费用&#x2F;模型或真实管理费&#x2F;是否扣绩效奖。</li>
+<li>4.A.7 货币；4.A.8 内部偏差计量方法；4.A.9 费用计划；4.A.10 组合创立日期。</li>
+<li>4.A.11 组合描述清单可得；4.A.12 估值&#x2F;计算政策可得。</li>
+<li>4.A.13 杠杆&#x2F;衍生品&#x2F;空头头寸披露（用途、程度、频率、特性）。</li>
+<li>4.A.14 重大事件；4.A.15 2000年前不合规期披露。</li>
+<li>4.A.16~19 公司&#x2F;组合重定义、组合改名、最低资产标准及变化披露。</li>
+<li>4.A.20 预扣税处理；4.A.21 自2011年汇率&#x2F;估值来源差异。</li>
+<li>4.A.22 与法律冲突披露；4.A.23 2010年前 carve-out 现金分配政策。</li>
+<li>4.A.24 打包费类型；4.A.25 副顾问使用；4.A.26 2010年前非日历月末估值。</li>
+<li>4.A.27 主观不可观察输入变量；4.A.28 估值层级差异。</li>
+<li>4.A.29 无参考基准的原因；4.A.30 参考基准改变；4.A.31 定制基准成分权重再平衡。</li>
+<li>4.A.32 显著现金流政策；4.A.33 36个月收益不足无法提供3年年化事后标准差。</li>
+<li>4.A.34 事后标准差不适用时说明原因+提供其他风险衡量。</li>
+<li>4.A.35 过去公司&#x2F;关联业绩衔接披露。</li>
+</ul>
+<h3 id="14-2-6-5-Presentation-and-Reporting（陈述与报告）"><a href="#14-2-6-5-Presentation-and-Reporting（陈述与报告）" class="headerlink" title="14.2.6 5. Presentation and Reporting（陈述与报告）"></a>14.2.6 5. Presentation and Reporting（陈述与报告）</h3><p><strong>必须遵守</strong>：</p>
+<ul>
+<li>5.A.1 每份标准陈述必须包含：<ul>
+<li>至少5年业绩（不足5年自成立起），逐年增加至<strong>至少10年</strong>。</li>
+<li>每年组合收益（标明 gross&#x2F;net of fees）。</li>
+<li>组合成立&#x2F;终止时不足1年的期间收益（不可年化）。</li>
+<li>每年参考基准总收益。</li>
+<li>每年末组合内组合个数（≤5个可不披露）。</li>
+<li>每年末组合资产规模。</li>
+<li>公司总资产 或 组合资产占公司总资产百分比。</li>
+<li>每年内部偏差指标（≤5个可不披露）。</li>
+<li><strong>内部偏差5种方法</strong>：最高&#x2F;最低收益、全距（range）、等权标准差、资产加权标准差、四分位全距（interquartile range）。</li>
+</ul>
+</li>
+<li>5.A.2 自2011年起每年末披露组合及基准的3年年化事后标准差（用月度收益）；不适用时提供其他风险衡量（周期须一致）。</li>
+<li>5.A.3 2000年后不合规业绩不可与合规业绩衔接（2000年前可，但须披露不合规期）。</li>
+<li>5.A.4 不足1年收益不可年化。</li>
+<li>5.A.5 carve-out 占组合百分比；5.A.6 不付费组合百分比；5.A.7 打包费组合百分比。</li>
+<li>5.A.8 收购公司业绩衔接条件：① 决策人员基本留用；② 决策过程保持完整独立；③ 有业绩记录文件。收购后有1年时间将不合规资产转合规。</li>
+</ul>
+<h2 id="14-3-6-8-部分条款"><a href="#14-3-6-8-部分条款" class="headerlink" title="14.3 6~8 部分条款"></a>14.3 6~8 部分条款</h2><h3 id="14-3-1-6-Real-Estate（房地产）"><a href="#14-3-1-6-Real-Estate（房地产）" class="headerlink" title="14.3.1 6. Real Estate（房地产）"></a>14.3.1 6. Real Estate（房地产）</h3><ul>
+<li>不适用的投资品：公开交易房地产股票、CMBS、商业&#x2F;住房贷款私人债务投资。<br><strong>必须遵守（关键）</strong>：</li>
+<li>6.A.1 自2011年公允价值估值。</li>
+<li>6.A.2 自2008年至少每季度估值。</li>
+<li>6.A.3 自2010年季度末&#x2F;最后营业日估值。</li>
+<li>6.A.4 <strong>外部估值</strong>：2012年前至少36个月一次；2012年后至少12个月一次（客户协议可另定但不超过36个月）。</li>
+<li>6.A.5 外部估值由独立专业认证评估师执行。</li>
+<li>6.A.6 至少每季度计算收益。</li>
+<li>6.A.7 扣减真实交易费用（transaction expenses）。</li>
+<li>6.A.8 自2011年收入回报与资本回报分开计算（几何衔接 TWR）。</li>
+<li>6.A.9 组合及成分收益以资产加权至少每季度计算。</li>
+<li>6.A.10~13 披露（自由裁量权、估值方法、外部估值差异、估值频率等）。</li>
+<li>6.A.14 须陈述成分收益+总收益。</li>
+<li>6.A.15 2006年后不合规业绩不可衔接。</li>
+<li>6.A.16 内部偏差用最高&#x2F;最低年化 TWR；披露外部估值组合占比。</li>
+<li>封闭式基金（closed-end fund）：6.A.17 计算 <strong>SI-IRR（since inception IRR）</strong>；6.A.18 至少季度现金流；6.A.19 按 vintage year+风格&#x2F;目标&#x2F;策略定义；6.A.20~22 披露清算日、现金流频率、vintage year；6.A.23 须陈述 net-of-fees SI-IRR（5年+逐年增加）；6.A.24 若陈述 gross SI-IRR 须同陈述 net；6.A.25 披露 TVPI&#x2F;DPI&#x2F;PIC&#x2F;RVPI 乘数；6.A.26 基准 SI-IRR（同风格、同期、同 vintage year）。</li>
+<li><strong>房地产收益计算</strong>：<ul>
+<li>动用资本 C_e &#x3D; C_0 + Σ(CF_i × w_i)。</li>
+<li>资本回报 R_C &#x3D; [(V_1−V_0) − E_C + S]&#x2F;C_e。</li>
+<li>收入回报 R_I &#x3D; (I − E_D − I_d − T_p)&#x2F;C_e（毛收入 − 不可回撤费用 − 债券利息 − 财产税）。</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-3-2-7-Private-Equity（私募股权）"><a href="#14-3-2-7-Private-Equity（私募股权）" class="headerlink" title="14.3.2 7. Private Equity（私募股权）"></a>14.3.2 7. Private Equity（私募股权）</h3><p><strong>必须遵守（关键）</strong>：</p>
+<ul>
+<li>7.A.1 自2011年公允价值估值。</li>
+<li>7.A.2 至少每年估值。</li>
+<li>7.A.3 计算年化 SI-IRR。</li>
+<li>7.A.4 自2011年用每日现金流；股票分配计入现金流并估值。</li>
+<li>7.A.5 扣减真实交易费用。</li>
+<li>7.A.6 net-of-fees 扣实际管理费（含附带权益）。</li>
+<li>7.A.7 FOF 收益扣所有底层合伙&#x2F;基金费用（含附带权益）。</li>
+<li>7.A.8 组合定义保持一致性。</li>
+<li>7.A.9 主要基金须归入按 vintage year+风格&#x2F;目标&#x2F;策略定义的组合。</li>
+<li>7.A.10 FOF 按 vintage year 和&#x2F;或风格&#x2F;目标&#x2F;策略定义。</li>
+<li>7.A.11~20 披露（vintage year、清算日、估值方法、估值政策变化、行业准则、基准指数、现金流频率、费用、不合规期）。</li>
+<li>7.A.21 须披露5年 net + gross SI-IRR，逐年增加。</li>
+<li>7.A.22 FOF 组合仅按风格&#x2F;目标&#x2F;策略定义时须另披露按 vintage year 分类的底层投资 SI-IRR。</li>
+<li>7.A.23 披露 TVPI&#x2F;DPI&#x2F;RVPI&#x2F;PIC 乘数。</li>
+<li>7.A.24~25 基准 SI-IRR（同风格、同期、同 vintage year）。</li>
+<li>7.A.26 FOF 组合披露直接投资比例。</li>
+<li>7.A.27 主要基金披露投资其他基金比例。</li>
+<li>7.A.28 2006年后不合规业绩不可陈述。</li>
+</ul>
+<h3 id="14-3-3-8-Wrap-Fee-SMA-Portfolios（打包费-分开管理账户）"><a href="#14-3-3-8-Wrap-Fee-SMA-Portfolios（打包费-分开管理账户）" class="headerlink" title="14.3.3 8. Wrap Fee &#x2F; SMA Portfolios（打包费&#x2F;分开管理账户）"></a>14.3.3 8. Wrap Fee &#x2F; SMA Portfolios（打包费&#x2F;分开管理账户）</h3><ul>
+<li>bundled fee &#x3D; all-in fee 和 wrap fee 两大类；wrap fee 以资产价值为基准。<br><strong>必须遵守</strong>：</li>
+<li>8.A.1 实际 wrap fee&#x2F;SMA 组合业绩须按既定政策归入适当组合。</li>
+<li>8.A.2 披露未含真实 wrap fee 组合的期间。</li>
+<li>8.A.3 披露2006年前不合规期。</li>
+<li>8.A.4 sponsor-specific 组合披露发起人名称、用途限制。</li>
+<li>8.A.5 组合须含所有真实 wrap fee 组合（不论发起人）。</li>
+<li>8.A.6 业绩须扣减整个 wrap fee。</li>
+<li>8.A.7 2006年后不合规业绩不可衔接。</li>
+</ul>
+<h2 id="14-4-验证与检查"><a href="#14-4-验证与检查" class="headerlink" title="14.4 验证与检查"></a>14.4 验证与检查</h2><h3 id="14-4-1-验证（Verification）"><a href="#14-4-1-验证（Verification）" class="headerlink" title="14.4.1 验证（Verification）"></a>14.4.1 验证（Verification）</h3><ul>
+<li>自愿行为；由独立的合格第三方执行（可遵守 GIPS 也可不遵守）。</li>
+<li>评估：① 公司层面所有组合构建是否符合 GIPS；② 计算&#x2F;陈述业绩的政策流程是否符合 GIPS。</li>
+<li><strong>单一验证报告针对整个公司，不可针对某一组合</strong>。</li>
+<li>初始最小验证期：1年（不足1年自成立起）。</li>
+<li>验证报告未发布前不可宣称已验证。</li>
+<li>可用抽样方法；验证后可能得出不符合 GIPS 的结论（须说明原因）。</li>
+</ul>
+<h3 id="14-4-2-业绩检查（Performance-Examination）"><a href="#14-4-2-业绩检查（Performance-Examination）" class="headerlink" title="14.4.2 业绩检查（Performance Examination）"></a>14.4.2 业绩检查（Performance Examination）</h3><ul>
+<li>针对单一组合检验是否符合 GIPS（自愿）。</li>
+<li><strong>必须先被验证过才能被检查</strong>；验证与检查第三方应为同一主体。</li>
+</ul>
+<h2 id="14-5-估值原则（Valuation-Hierarchy）"><a href="#14-5-估值原则（Valuation-Hierarchy）" class="headerlink" title="14.5 估值原则（Valuation Hierarchy）"></a>14.5 估值原则（Valuation Hierarchy）</h2><p>估值层级（级别逐次降低）：</p>
+<ol>
+<li>相同投资品活跃市场的客观可观察未经调整报价。</li>
+<li>相似投资品活跃市场报价。</li>
+<li>相同&#x2F;相似投资品不活跃市场报价。</li>
+<li>基于市场基础的可观察输入变量（模型估值）。</li>
+<li>主观不可观察输入变量（反映公司自身假设，基于最优可得信息）。</li>
+</ol>
+<ul>
+<li>私募股权估值流程考虑：可信赖的估值数据、可比较企业&#x2F;数据、企业当前发展阶段、企业独特特征。</li>
+<li>外部估值师费用不得与估值结果挂钩；推荐以单一数值呈现；每3~5年轮换外部估值师。</li>
+</ul>
+<h2 id="14-6-GIPS-广告指导方针"><a href="#14-6-GIPS-广告指导方针" class="headerlink" title="14.6 GIPS 广告指导方针"></a>14.6 GIPS 广告指导方针</h2><ul>
+<li>适用对象：公司层面遵守 GIPS 的投资公司；与法律冲突时遵守法律并披露冲突。</li>
+<li>广告形式：报纸、杂志、宣传册、信件、媒体及任何书面&#x2F;电子形式（非一对一）。</li>
+<li><strong>广告须披露</strong>：<ol>
+<li>公司定义。</li>
+<li>客户如何获取标准陈述&#x2F;组合描述清单。</li>
+<li>GIPS 广告合规声明（简练版）：”[公司名] claims compliance with the Global Investment Performance Standards (GIPS®)。”</li>
+</ol>
+</li>
+<li><strong>若广告含业绩披露，额外披露</strong>：<ol start="4">
+<li>组合描述。</li>
+<li>组合总收益（3种方式之一：1&#x2F;3&#x2F;5年年化收益率；期间至今+1&#x2F;3&#x2F;5年年化；期间至今+过去5年每年收益率。不足1年不可年化）。</li>
+<li>业绩是 gross 还是 net of fees。</li>
+<li>参考基准总收益；8. 参考基准描述；9. 无基准说明原因。</li>
+<li>货币；11. 杠杆&#x2F;衍生品&#x2F;空头头寸；12. 2000年前不合规期；13. 与法律冲突之处。</li>
+</ol>
+</li>
+</ul>
+<h2 id="14-7-税后回报"><a href="#14-7-税后回报" class="headerlink" title="14.7 税后回报"></a>14.7 税后回报</h2><ul>
+<li>GIPS 不要求提供税后回报，但要求国家倡议者指导税后计算披露。</li>
+<li>挑战：基金经理难控制客户指定交易（client-directed trades）、难找合适基准、pre-liquidation 与 market-to-liquidation 未考虑未来收益&#x2F;损失（未衡量经济价值）。</li>
+<li><strong>计算税后收益方法</strong>：<ul>
+<li><strong>pre-liquidation</strong>：未实现资本收益不征税 → 低估税后影响。</li>
+<li><strong>market-to-liquidation</strong>：所有收益征税 → 高估税收影响。</li>
+</ul>
+</li>
+<li><strong>合适的参考基准</strong>：反映客户纳税状态；指数需自行计算税后回报；共同基金有执照费用且收益有别于真实指数、受交易&#x2F;申赎影响；<strong>ETF 不受申赎影响，更合适</strong>；最准确的是定制化基准（custom security-based）和影子组合（shadow portfolio，模拟客户买卖现金流）。</li>
+</ul>
+<hr>
+<h2 id="附：核心公式速查表"><a href="#附：核心公式速查表" class="headerlink" title="附：核心公式速查表"></a>附：核心公式速查表</h2><h3 id="VaR-与风险"><a href="#VaR-与风险" class="headerlink" title="VaR 与风险"></a>VaR 与风险</h3><ul>
+<li>VaR(%) &#x3D; |−μ + zσ|（5%: z&#x3D;1.65；1%: z&#x3D;2.33，单尾）</li>
+<li>年化波动率：年&#x3D;日×√250 &#x3D; 月×√12 &#x3D; 周×√52</li>
+<li>组合方差：σ²p &#x3D; w²Aσ²A + w²Bσ²B + 2ρwAwBσAσB</li>
+<li>夏普比率 SR &#x3D; (R_p − R_f)&#x2F;σ_p</li>
+<li>索提诺比率 &#x3D; (年化收益 − 年化无风险利率)&#x2F;跌势差</li>
+<li>收益损失比 &#x3D; (正收益月数×平均正收益)&#x2F;(负收益月数×平均负收益)</li>
+<li>Treynor &#x3D; (R_p − R_f)&#x2F;β_p</li>
+<li>信息比率 IR &#x3D; (R_p − R_B)&#x2F;σ(R_p−R_B)</li>
+<li>M² &#x3D; R_f + (R_p − R_f) × (σ_M&#x2F;σ_p)</li>
+<li>事后 α &#x3D; R_p − [R_f + β_p(R_M − R_f)]</li>
+<li>RoMAD &#x3D; 平均收益&#x2F;最大回撤率</li>
+</ul>
+<h3 id="衍生品风险管理"><a href="#衍生品风险管理" class="headerlink" title="衍生品风险管理"></a>衍生品风险管理</h3><ul>
+<li>债券期货调整久期：N &#x3D; (MDUR_T − MDUR_B)&#x2F;MDUR_f × (B&#x2F;f) × β_y</li>
+<li>股指期货调整贝塔：N_f &#x3D; (β_T − β_S)&#x2F;β_f × S&#x2F;f</li>
+<li>有效贝塔 &#x3D; 组合实际收益率&#x2F;市场收益率</li>
+<li>合成股票 &#x3D; 买入无风险资产 + 买入期货</li>
+<li>合成现金 &#x3D; 买入股票 + 卖出期货</li>
+<li>利率互换名义本金：NP &#x3D; V_p × (MDUR_T − MDUR_P)&#x2F;MDUR_swap</li>
+<li>互换久期：D_swap &#x3D; D_fixed − D_float（付固定方）</li>
+<li>利率期权收益 &#x3D; 名义本金 × Max(0, 到期基础利率 − 执行利率) × 贷款期限&#x2F;360</li>
+<li>实际借款利率 &#x3D; 实际支付利息&#x2F;实际拿到本金</li>
+</ul>
+<h3 id="交易成本"><a href="#交易成本" class="headerlink" title="交易成本"></a>交易成本</h3><ul>
+<li>VWAP &#x3D; Σ(P_i×Q_i)&#x2F;ΣQ_i</li>
+<li>买单隐性成本 &#x3D; Q×(执行价 − 参考价)；卖单隐性成本 &#x3D; Q×(参考价 − 执行价)</li>
+<li>有效价差 &#x3D; 2×|执行价 − 中间价|</li>
+<li>执行落差 IS &#x3D; 假设组合收益 − 真实组合收益</li>
+<li>假设组合收益 &#x3D; Q×(期末价 − 决定价)</li>
+<li>实现的损益 &#x3D; (执行价 − 第一天收盘价)×执行股数</li>
+<li>延迟成本 &#x3D; (第一天收盘价 − 决定价)×执行股数</li>
+<li>未实现损益 &#x3D; (取消价 − 决定价)×取消股数</li>
+</ul>
+<h3 id="业绩评估与收益"><a href="#业绩评估与收益" class="headerlink" title="业绩评估与收益"></a>业绩评估与收益</h3><ul>
+<li>TWR &#x3D; (1+r1)(1+r2)…(1+rn) − 1</li>
+<li>Original Dietz：R &#x3D; (EMV − BMV − CF)&#x2F;(BMV + 0.5CF)</li>
+<li>Modified Dietz：R &#x3D; (EMV − BMV − ΣCF_i)&#x2F;(BMV + Σw_iCF_i)，w_i&#x3D;(CD−D_i)&#x2F;CD</li>
+<li>全价 &#x3D; 净价 + (t&#x2F;T)×C</li>
+<li>P &#x3D; M + S + A &#x3D; M + (B−M) + (P−B)</li>
+<li>单纯板块分配 &#x3D; Σ(w_pj − w_bj)(R_bj − R_B)</li>
+<li>板块内部选择 &#x3D; Σ w_bj(R_pj − R_bj)</li>
+<li>分配&#x2F;选择交叉 &#x3D; Σ(w_pj − w_bj)(R_pj − R_bj)</li>
+<li>远期利率：(1+S₂)² &#x3D; (1+S₁)(1+f)</li>
+</ul>
+<h3 id="私募-另类乘数"><a href="#私募-另类乘数" class="headerlink" title="私募&#x2F;另类乘数"></a>私募&#x2F;另类乘数</h3><ul>
+<li>TVPI（Investment multiple）&#x3D; 总价值&#x2F;实收资本</li>
+<li>DPI（Realization multiple）&#x3D; 累计分配&#x2F;实收资本</li>
+<li>RVPI（Unrealized multiple）&#x3D; 剩余价值&#x2F;实收资本</li>
+<li>PIC（PIC multiple）&#x3D; 实收资本&#x2F;承诺资本</li>
+</ul>
+<hr>
+<h2 id="附：GIPS-关键时间线速查"><a href="#附：GIPS-关键时间线速查" class="headerlink" title="附：GIPS 关键时间线速查"></a>附：GIPS 关键时间线速查</h2><table>
+<thead>
+<tr>
+<th>时间节点</th>
+<th>要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2001-01-01</td>
+<td>组合至少每月估值；组合收益至少每月计算</td>
+</tr>
+<tr>
+<td>2005-01-01</td>
+<td>使用交易日记账（trade date accounting）；Modified Dietz&#x2F;Modified IRR（按天加权现金流）</td>
+</tr>
+<tr>
+<td>2006-01-01</td>
+<td>年度估值起止日一致；组合资产加权至少每季度；房地产&#x2F;PE 不合规业绩（2006年后）不可衔接</td>
+</tr>
+<tr>
+<td>2008-01-01</td>
+<td>房地产至少每季度估值</td>
+</tr>
+<tr>
+<td>2010-01-01</td>
+<td>组合资产加权至少每月；日历月末估值；大笔现金流日估值；carve-out 须有自身现金余额；TWR 法</td>
+</tr>
+<tr>
+<td>2011-01-01</td>
+<td>公允价值估值；披露3年年化事后标准差；公司总资产公允价值；房地产收入&#x2F;资本回报分开计算；PE 每日现金流</td>
+</tr>
+<tr>
+<td>2012-01-01</td>
+<td>房地产外部估值至少每12个月一次（可延至36个月）</td>
+</tr>
+</tbody></table>
+<hr>
+<blockquote>
+<p><strong>本书核心主线</strong>：另类投资（第9章）提供分散化与收益增强 → 风险管理（第10章）识别&#x2F;度量&#x2F;管理各类风险 → 衍生品（第11章）作为风险管理的工具调整风险头寸 → 交易执行（第12章）衡量并最小化执行成本 → 业绩评估（第13章）回答”收益来自能力还是运气” → GIPS（第14章）规范业绩计算与披露。</p>
+</blockquote>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222038000002.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%E3%80%8B/'>读书笔记——《分布式计算：原理、算法与系统》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610220009005491.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%95%A3%E6%88%B7%E4%B9%99%E9%9B%AA%E7%90%83%E5%8F%91%E8%A8%80%E6%B1%87%E7%BC%96%EF%BC%882014%E2%80%942023%EF%BC%89%E3%80%8B/">阅读笔记——《散户乙雪球发言汇编（2014—2023）》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

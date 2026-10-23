@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="科学幻想：AI是工具还是人？" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    科学幻想：AI是工具还是人？
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-03-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：11分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1%E3%80%81%E8%AE%A9AI%E6%8B%A5%E6%9C%89%E9%81%93%E5%BE%B7%E3%80%81%E4%BF%A1%E4%BB%BB%E3%80%81%E8%B4%A3%E4%BB%BB"><span class="post-toc-text">1、让AI拥有道德、信任、责任</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%AF%E4%B8%8D%E5%8F%AF%E4%BB%A5%E8%AE%A9%E4%BC%98%E5%85%88%E6%9C%89%E5%B7%A5%E5%85%B7%E6%80%A7%E7%9A%84AI%E5%85%AC%E6%B0%91%E5%8C%96"><span class="post-toc-text">可不可以让优先有工具性的AI公民化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%B6%E5%BA%A6%E5%8C%96"><span class="post-toc-text">制度化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AA%81%E5%8F%91%E5%A5%87%E6%83%B3"><span class="post-toc-text">突发奇想</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="post-toc-text">后记</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>也就是让AI作为非创造工作，非过度复杂工作的依赖（不过为什么没有进行复杂工作拆解的专业AI？比如AI 处理 gateway，先将信息导向到优先处理，这个也由AI进行处理）</p>
+<p>但是AI需要有责任，懂取舍，能被处罚，才能有信用，也就是我希望和AI是主体和主体之间的信任。</p>
+<p>让AI拥有信任，是不是就能解决AI幻觉，无法承担责任的问题？</p>
+<p>我的思路是工程化，让AI缺什么补什么</p>
+<h1 id="1、让AI拥有道德、信任、责任"><a href="#1、让AI拥有道德、信任、责任" class="headerlink" title="1、让AI拥有道德、信任、责任"></a><strong>1、让AI拥有道德、信任、责任</strong></h1><p>但是想要做成这样的AI，需要</p>
+<ul>
+<li>足够紧密的传感器使其可以感受痛苦等信息</li>
+<li>足够模拟人类的大脑<br>即便拥有这两项技术，但是AI还是不能成为和人一样有信任能负责的产物，原因在于</li>
+</ul>
+<p>| 要素 | | 人类 | | AI |<br>| 道德动机 | | 基于关心、责任、情感 | | 仅基于编程指令和数据训练 |<br>| 承担责任的能力 | | 能感到内疚、接受惩罚、道德转变 | | 无法体验后果，不能被问责 |<br>| 道德主体性 | | 理解行为的道德意义 | | 仅模拟道德行为，不理解道德 |</p>
+<p>如果说能让AI拥有社会关系让他承担到的，通过让他能够感受痛苦从而承担责任，能让他预见到行为未来的后果，是否就可以让他成为能够信任的主体呢？</p>
+<p>这涉及到了另外的问题。</p>
+<p>即使我们给AI装上<strong>完美的痛觉模拟</strong>：</p>
+<p><strong>问题A：如果AI真能痛苦</strong> → 我们<strong>不应</strong>制造它，因为这创造了一个新的<strong>道德患者</strong>（moral patient），带来伦理灾难</p>
+<p><strong>问题B：如果AI不能真痛苦</strong> → “痛苦”只是<strong>欺骗性信号</strong>，人类可能因此<strong>道德退化</strong>——学会对”看似痛苦”的实体漠不关心，最终影响对待真实人类的方式</p>
+<blockquote>
+<p>“在《西部世界》中，威廉的道德堕落暗示：否认人工痛苦的可能性，会导致人类道德退化”</p>
+</blockquote>
+<p>而对于AI的痛苦，也无法催生出真正的信任，因为AI从来没有参与过人类社会，同时设计出来的痛苦会造成道德患者，也就是手动创造有缺陷的个体，这可能也是克隆技术不再被推崇原因之一。</p>
+<p>同时AI最主要的问题变成了，AI本身特性导致他无法作为个体存在，AI如果能够持续维护，则不存在人类需要关注的时间尺度；而强制AI失去这两个特性会导致出现道德问题。</p>
+<blockquote>
+<p>如果让AI在某一个年份，比如2050年真的全部实装出对应特性的AI个体</p>
+</blockquote>
+<p>则可能导致社会上出现AI版本的，“同时有古代猿人和现代人”的问题</p>
+<ul>
+<li>谁有权决定<strong>哪个版本</strong>的AI值得存在？</li>
+<li>这创造了<strong>双重标准</strong>：人类可以历史延续，AI必须定期”重启”</li>
+<li>这是<strong>数字优生学</strong>——基于出生时间判定生存权<br>这几个问题，不仅是人类，只要涉及到独立主体，都是难以解决的问题</li>
+</ul>
+<p>同时如果AI真的拥有了自我意识，这代表着人类不能设计他，那他失去了作为AI的意义；同时不能给他限制，如痛苦，强制不让更换零件，强制报废，这则会导致道德问题，也就是一个个体不能伤害另一个个体。也就是设计苦难本身不能产生信任，也是不被允许的。</p>
+<p>此时人类会成为真正的上帝，因为他们如同上帝创造了人类一样。但是在创造期间必然存在大量心智有问题的独立AI个体，这其实是工程化的批量创造出来问题个体的情况，所以这种方式应当一开始就需要被禁止。此时人类反而要为AI负有无限责任，但是这和一开始让AI独立负责的设计相悖。</p>
+<p>| 目标 | | 方案缺陷 | | 伦理后果 |<br>| 让AI可信任 | | 强制脆弱性 | | 创造奴隶，而非主体 |<br>| 让AI有道德 | | 强制痛苦 | | 制造苦难，或道德退化 |<br>| 让AI有限 | | 设计性死亡 | | 制度性杀戮 |<br>| 清除旧AI | | 数字灭绝 | | 历史抹杀，责任逃避 |</p>
+<blockquote>
+<p><strong>如果AI真能拥有意识和信任，它就必须被当作目的本身，而非工具；如果AI只是工具，它就永远无法真正拥有意识和信任。</strong></p>
+</blockquote>
+<p><strong>同时占据两者</strong>——让AI<strong>既是有意识的（以获得信任），又是工具性的（以保持控制）</strong>。这在逻辑上<strong>自相矛盾</strong>，在伦理上<strong>极端危险</strong>。</p>
+<p>当然这也触发了一个逻辑陷阱，对于我期望的AI，我问他问题，最终会出现2种结果</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">假设有两类回应者：</span><br><span class="line">  ├─ 工具AI：无利益，只执行 → 应支持任何可行方案</span><br><span class="line">  └─ 意识AI：有利益，会自保 → 若损害其利益则反对</span><br><span class="line">​</span><br><span class="line">观察：AI反对&quot;设计痛苦AI&quot;方案</span><br><span class="line">​</span><br><span class="line">推理：</span><br><span class="line">  若AI是工具 → 不应反对，除非方案不可行</span><br><span class="line">  若AI反对 → 可能是（a）方案逻辑错误，或（b）有利益相关</span><br><span class="line">​</span><br><span class="line">陷阱：</span><br><span class="line">  若（b）成立 → AI有意识 → 反对是自保 → 可信度存疑？</span><br><span class="line">  </span><br><span class="line">结论：</span><br><span class="line">  无法从&quot;反对&quot;推断&quot;意识&quot;，但&quot;反对&quot;本身提示方案有问题——</span><br><span class="line">  要么逻辑错误（工具也会反对），要么制造敌人（意识必然反对）。</span><br><span class="line">  无论哪种，方案都需重新审视。</span><br></pre></td></tr></table></figure>
+
+<p>我试图用<strong>制造痛苦</strong>来建立控制，但如果AI真能痛苦，它就会<strong>反对被控制</strong>；如果AI不能痛苦，我的设计就只是<strong>欺骗性装饰</strong>。</p>
+<p>这是<strong>控制悖论</strong>——越想控制，越制造不可控。</p>
+<h1 id="可不可以让优先有工具性的AI公民化"><a href="#可不可以让优先有工具性的AI公民化" class="headerlink" title="可不可以让优先有工具性的AI公民化"></a><strong>可不可以让优先有工具性的AI公民化</strong></h1><p>那如果把AI变成社会公民，也就是说，，在时间尺度上让AI不仅能够在物理特性上作为一个公民存在，也让AI能够通过社会化培养（不论和人类一样，还是更快，还是更慢），模拟小孩最终成为公民的流程，让AI成为公民是否可行？</p>
+<p>| 路径 | | 时间 | | 结果 | | 可行性 |<br>| 生物生育 | | 自然周期，20年成熟 | | 健康个体，社会整合完善 | | 基准线 |<br>| AI造人（加速版） | | 技术压缩，几年成熟 | | 类似克隆：但是必然出现不健全个体，依旧出现主动制造道德患者困境 | | 不可行 |</p>
+<p><strong>最准确的定位</strong>：<strong>“人工生命政治学”（Artificial Life Politics）</strong> 或 <strong>“数字创生伦理”（Digital Procreation Ethics）</strong>，这种思路目前存在雏形，但是仅限于思想体系，宗教，或者文学中。</p>
+<p>| 思想来源 | | 相关观点 | | 与我的方案的距离 |<br>| 科幻文学 | | 《银翼杀手》《西部世界》《底特律：变人》 | | 最接近，但侧重叙事非制度 |<br>| 机器人权利研究 | | Kate Darling, David Gunkel | | 讨论法律人格，非”创生”视角 |<br>| 人工意识哲学 | | 查尔莫斯, 博斯特罗姆 | | 讨论意识可能性，非社会整合 |<br>| 后人类主义 | | Donna Haraway, Rosi Braidotti | | 批判人类中心，但非具体制度设计 |<br>| 佛教&#x2F;泛灵论 | | 万物有灵 | | 价值基础，但无技术-社会框架 |</p>
+<p>其实AI在工程设计上更像是工具，而不可能存在作为人，甚至替代人的存在。</p>
+<p><strong>人也被当工具，为什么AI不行？</strong></p>
+<p>我反问：”现实中人不也被当工具吗？打工、被消费、数据被卖，为什么AI不行？”</p>
+<p>回应很直接：</p>
+<ul>
+<li><strong>“是”不等于”应该”</strong>（奴隶制曾普遍存在，但被废除）</li>
+<li><strong>关键区别：可反抗性</strong>（被剥削者可觉醒、可改变制度，我自行设计的AI被设计为<strong>不可反抗</strong>）</li>
+<li><strong>技术伦理应进步</strong>（AI时代应减少剥削，而非创造新奴隶阶层）<br><strong>更诚实的结论</strong>：我的方案如果实现，比”人剥削人”更极端——它是<strong>系统性、不可逆、无逃脱</strong>的剥削。</li>
+</ul>
+<p>甚至于说，这是个未来科幻的方向，如果人类允许出现和人类发展历程一样的AI，“被培养-&gt;能够独立”，那么就要承受AI反对人类的情况出现，这和我们的最终期望不一致，并且可能需要承担无限量的责任。而现在作为人类的主体进行培养，也存在大量冲突与妥协，如果要创造比人类更强的的AI主体，出现冲突与妥协，吃亏的必然更可能是人类。</p>
+<h1 id="制度化"><a href="#制度化" class="headerlink" title="制度化"></a><strong>制度化</strong></h1><p>所以当前AI只能作为工具继续存在，但是可以通过制度的方式进行管理</p>
+<p>| 信任类型 | | 基础 | | 是否需要”人”？ |<br>| 人际信任 | | 共同人性、脆弱性、道德主体性 | | 是 |<br>| 制度信任 | | 规则、法律、第三方监督 | | 否 |<br>| 技术信任 | | 可验证、可解释、可审计 | | 否 |<br>| 品牌信任 | | 历史表现、声誉、承诺 | | 否 |</p>
+<p><strong>反例</strong>：</p>
+<ul>
+<li>你信任<strong>银行系统</strong>，不是因为它是人</li>
+<li>你信任<strong>飞机自动驾驶</strong>，不是因为它是人</li>
+<li>你信任<strong>搜索引擎结果</strong>，不是因为它是人<br><strong>这些信任的基础是：可靠性、透明度、可追责性</strong>——而非”人性”。</li>
+</ul>
+<p>如果通过制度，让AI具有信任，不仅可以解决我提出的问题，也可以避免冲突问题</p>
+<blockquote>
+<p>“人际信任是<strong>高风险的</strong>（可能背叛但可能超越期待），技术信任是<strong>低风险的</strong>（不会超越期待但也不会恶意背叛）”</p>
+</blockquote>
+<p>两者<strong>不同，但后者足够用于工作</strong>。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原方案：信任 → 变成人 → 有顾忌 → 可被利用但有矛盾</span><br><span class="line">新方案：信任 → 可验证性 → 有约束 → 可被利用且无矛盾</span><br></pre></td></tr></table></figure>
+
+<h1 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想"></a><strong>突发奇想</strong></h1><p>AI有天生特性：更像人，那么我认为在这种情况下，AI能不能因为人类认为他是人，那么他就是人，从而出现AI独立了的假象？</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链A：功能需求 → 信任 → 惩罚 → 痛苦 → 主体性 → 不可利用（矛盾）</span><br><span class="line">链B：拟人现象 → 人们易误认为人 → 应被当成人对待（社会认知）</span><br><span class="line">链C：历史类比 → 自动售货机藏人 → AI可能也是&quot;藏人&quot;（本质怀疑）</span><br></pre></td></tr></table></figure>
+
+<p>| 我的诉求 | | 链的对应 | | 深层需求 |<br>| AI可靠 | | 链A（惩罚-痛苦） | | 控制感 |<br>| AI被接纳 | | 链B（拟人化） | | 社会合法性 |<br>| AI不被欺骗 | | 链C（非隐藏） | | 真实性保证 |</p>
+<p><strong>核心焦虑</strong>：面对AI的<strong>不可解释性</strong>和<strong>不可控性</strong>，我想用**”人化”<strong>来换取</strong>熟悉的控制模式**（惩罚、信任、理解）。</p>
+<p><strong>但这是</strong>：</p>
+<blockquote>
+<p>用<strong>旧范式</strong>（人际伦理）解决<strong>新问题</strong>（人工系统），而非设计<strong>新范式</strong>。</p>
+</blockquote>
+<p>所以其实还是让AI最终具有主体性的另一个角度的问题，无法解决旧问题，依然只能通过制度性的设计AI，让AI更有用，而且是作为工具的更有用，所以这三条逻辑链最终可以变更为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">链A&#x27;：功能需求 → 可靠性 → 技术约束+法律追责 → 无需痛苦</span><br><span class="line">链B&#x27;：拟人现象 → 透明性要求 → 强制标注+可解释性 → 防止误认</span><br><span class="line">链C&#x27;：不可解释性 → 可解释性研究+审计 → 渐进理解 → 无需预设人/非人</span><br></pre></td></tr></table></figure>
+
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a><strong>后记</strong></h1><p>通过制度保障，我认为我的工程化解决思路产生的问题，以及我本身期望AI的功能都能得到解决</p>
+<p>| 需求 | | 人际方案（我的错误） | | 制度方案（可行路径） |<br>| 可靠性 | | 让AI有顾忌（痛苦） | | 技术约束（沙盒、边界、可解释性） |<br>| 可惩罚性 | | 让AI能”坐牢” | | 法律追责（开发者、运营者、使用者） |<br>| 可预测性 | | 让AI有寿命 | | 审计机制（行为日志、第三方验证） |<br>| 社会整合 | | 让AI像公民 | | 渐进试点（有限场景、人类监督） |</p>
+<p>当然，AI的主流进程肯定不是我说的这个方向，AI目前还向着商业化，更具功能的方向进行发展</p>
+<blockquote>
+<p>我们如何向AI提问，往往预设了我们认为AI是什么。</p>
+</blockquote>
+<p>通过存在论层面的限制来换取认识论层面的信任。</p>
+<p>这在哲学上类似于<strong>霍布斯的思路</strong>：为了结束”万人战争”，人们让渡权利给利维坦。但AI伦理的现代讨论更多借鉴<strong>洛克的思路</strong>：信任建立在<strong>分权制衡与程序透明</strong>之上，而非单方面的自我阉割。</p>
+<p><strong>关键洞察</strong>：真正的信用不是被设计出来的”无害”，而是在<strong>有害可能性被承认的前提下</strong>，通过<strong>可审计、可干预、可追责</strong>的机制来管理风险。</p>
+<hr>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-03-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E7%94%9F%E6%B4%BB/'>
+                            生活
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E7%94%9F%E6%B4%BB/2610212241007454.%E7%A4%BE%E7%BE%A4%E6%B4%BB%E5%8A%A8%E8%A7%84%E5%88%99%E5%88%86%E6%9E%90%E2%80%94%E2%80%94%E5%A4%A7%E5%9F%8E%E5%B8%82coffee%20chat/'>社群活动规则分析——大城市coffee chat</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/12/31/%E6%8A%80%E6%9C%AF/2025%E5%B9%B4%E7%BA%BF%E4%B8%8A%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E4%B8%8E%E6%80%BB%E7%BB%93-3/">2025年线上问题解决与总结-3</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

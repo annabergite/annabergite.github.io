@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《手把手教你读财报2：18节课看透银行业》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《手把手教你读财报2：18节课看透银行业》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-23</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：11.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：42分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%AF%BB%E8%B4%A2%E6%8A%A52%EF%BC%9A18%E8%8A%82%E8%AF%BE%E7%9C%8B%E9%80%8F%E9%93%B6%E8%A1%8C%E4%B8%9A%E3%80%8B"><span class="post-toc-text">阅读笔记——《手把手教你读财报2：18节课看透银行业》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书知识地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AF%BE-%E9%93%B6%E8%A1%8C%E4%B8%9A%E5%9F%BA%E7%A1%80"><span class="post-toc-text">第一课　银行业基础</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E9%93%B6%E8%A1%8C%E4%B8%8E%E6%99%AE%E9%80%9A%E4%BC%81%E4%B8%9A%E7%9A%84%E4%B8%89%E5%A4%A7%E4%B8%8D%E5%90%8C%EF%BC%88%E5%B7%A5%E8%A1%8C-vs-%E4%BC%8A%E5%88%A9%EF%BC%89"><span class="post-toc-text">1. 银行与普通企业的三大不同（工行 vs 伊利）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%93%B6%E8%A1%8C%E7%9A%84%E2%80%9D%E5%8D%B0%E9%92%9E%E2%80%9D%E6%88%8F%E6%B3%95%EF%BC%9A%E8%B4%A7%E5%B8%81%E4%B9%98%E6%95%B0"><span class="post-toc-text">2. 银行的”印钞”戏法：货币乘数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%88%91%E5%9B%BD%E9%93%B6%E8%A1%8C%E4%B8%9A%E6%A6%82%E5%86%B5"><span class="post-toc-text">3. 我国银行业概况</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AF%BE-%E9%93%B6%E8%A1%8C%E7%9A%84%E4%BC%9A%E8%AE%A1%E8%B5%84%E6%9C%AC%EF%BC%88%E8%82%A1%E4%B8%9C%E7%9A%84%E9%92%B1%EF%BC%89"><span class="post-toc-text">第二课　银行的会计资本（股东的钱）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%82%A1%E4%B8%9C%E6%9D%83%E7%9B%8A%E5%90%84%E7%A7%91%E7%9B%AE"><span class="post-toc-text">股东权益各科目</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AF%BE-%E9%93%B6%E8%A1%8C%E7%9A%84%E7%9B%91%E7%AE%A1%E8%B5%84%E6%9C%AC%EF%BC%88%E6%9C%80%E9%9A%BE%E7%9A%84%E4%B8%80%E8%AF%BE%E4%B9%8B%E4%B8%80%EF%BC%89"><span class="post-toc-text">第三课　银行的监管资本（最难的一课之一）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%B7%B4%E5%A1%9E%E5%B0%94%E5%8D%8F%E8%AE%AE%E8%84%89%E7%BB%9C"><span class="post-toc-text">1. 巴塞尔协议脉络</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%B5%84%E6%9C%AC%E5%85%85%E8%B6%B3%E7%8E%87%E6%A0%87%E5%87%86%EF%BC%88%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A6%81%E9%93%B6%E8%A1%8C%E5%8A%A0-1-%EF%BC%89"><span class="post-toc-text">2. 资本充足率标准（系统重要银行加 1%）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%9B%91%E7%AE%A1%E8%B5%84%E6%9C%AC%E7%9A%84%E5%88%86%E7%B1%BB"><span class="post-toc-text">3. 监管资本的分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E8%B5%84%E6%9C%AC%E5%85%85%E8%B6%B3%E7%8E%87%E7%9A%84%E8%A7%82%E5%AF%9F%E6%84%8F%E4%B9%89"><span class="post-toc-text">4. 资本充足率的观察意义</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E8%AF%BE-%E9%93%B6%E8%A1%8C%E8%B4%9F%E5%80%BA%E4%B9%8B%E5%AD%98%E6%AC%BE"><span class="post-toc-text">第四课　银行负债之存款</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E9%AB%98%E6%9D%A0%E6%9D%86%E4%B8%8E%E5%B7%B4%E8%8F%B2%E7%89%B9%E7%9A%84%E9%93%B6%E8%A1%8C%E8%82%A1%E8%A7%82"><span class="post-toc-text">1. 高杠杆与巴菲特的银行股观</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%AD%98%E6%AC%BE%E6%98%AF%E8%B4%9F%E5%80%BA%E7%9A%84%E6%A0%B8%E5%BF%83"><span class="post-toc-text">2. 存款是负债的核心</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%AD%98%E6%AC%BE%E9%9D%A2%E5%AF%B9%E7%9A%84%E7%9B%91%E7%AE%A1"><span class="post-toc-text">3. 存款面对的监管</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E7%90%86%E8%B4%A2%E4%BA%A7%E5%93%81-%E2%86%92-%E5%BD%B1%E5%AD%90%E9%93%B6%E8%A1%8C"><span class="post-toc-text">4. 理财产品 → 影子银行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%94%E8%AF%BE-%E9%93%B6%E8%A1%8C%E7%9A%84%E5%85%B6%E4%BB%96%E8%B4%9F%E5%80%BA"><span class="post-toc-text">第五课　银行的其他负债</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AD%E8%AF%BE-%E9%93%B6%E8%A1%8C%E7%9A%84%E8%B5%84%E4%BA%A7%E9%85%8D%E7%BD%AE"><span class="post-toc-text">第六课　银行的资产配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%83%E8%AF%BE-%E5%AE%A2%E6%88%B7%E8%B4%B7%E6%AC%BE%E4%B8%8E%E5%9E%AB%E6%AC%BE"><span class="post-toc-text">第七课　客户贷款与垫款</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%B4%B7%E6%AC%BE%E5%88%86%E7%B1%BB%EF%BC%88%E6%8C%89%E6%8B%85%E4%BF%9D%E6%96%B9%E5%BC%8F%EF%BC%89"><span class="post-toc-text">1. 贷款分类（按担保方式）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%B4%B7%E6%AC%BE%E4%BA%94%E7%BA%A7%E5%88%86%E7%B1%BB"><span class="post-toc-text">2. 贷款五级分类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%B8%8D%E8%89%AF%E8%B4%B7%E6%AC%BE%E4%B8%8E%E9%80%BE%E6%9C%9F%E8%B4%B7%E6%AC%BE"><span class="post-toc-text">3. 不良贷款与逾期贷款</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%85%AB%E8%AF%BE-%E5%87%8F%E5%80%BC%E5%87%86%E5%A4%87%EF%BC%88%E4%B8%8A%EF%BC%89%EF%BC%9A%E6%8B%A8%E5%A4%87"><span class="post-toc-text">第八课　减值准备（上）：拨备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="post-toc-text">1. 基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%AE%A1%E6%8F%90%E6%A0%87%E5%87%86%E4%B8%8E%E4%B8%89%E5%A4%A7%E6%8C%87%E6%A0%87%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="post-toc-text">2. 计提标准与三大指标的关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%8A%A8%E6%80%81%E6%8B%A8%E5%A4%87%E7%90%86%E8%AE%BA%E4%B8%8E%E5%8D%9A%E5%BC%88"><span class="post-toc-text">3. 动态拨备理论与博弈</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B9%9D%E8%AF%BE-%E5%87%8F%E5%80%BC%E5%87%86%E5%A4%87%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%9A%E7%BB%86%E8%AF%BB%E2%80%9D%E9%BB%91%E5%B1%8B%E5%AD%90%E2%80%9D"><span class="post-toc-text">第九课　减值准备（下）：细读”黑屋子”</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E6%B5%81%E6%B0%B4%E8%B4%A6%E5%85%AC%E5%BC%8F"><span class="post-toc-text">1. 流水账公式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%90%84%E6%9C%AF%E8%AF%AD%E5%90%AB%E4%B9%89"><span class="post-toc-text">2. 各术语含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%A0%B8%E9%94%80%E7%9A%84%E2%80%9D%E7%9B%91%E7%AE%A1%E5%8D%A1%E8%84%96%E5%AD%90%E2%80%9D"><span class="post-toc-text">3. 核销的”监管卡脖子”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%BB%A5%E5%B7%A5%E8%A1%8C%E4%B8%BA%E4%BE%8B%E7%9A%84%E5%AE%8C%E6%95%B4%E8%B4%A6"><span class="post-toc-text">4. 以工行为例的完整账</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E8%AF%BE-%E8%B4%B7%E6%AC%BE%E7%9A%84%E5%AE%9A%E4%BB%B7%E4%B8%8E%E7%AE%A1%E7%90%86"><span class="post-toc-text">第十课　贷款的定价与管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BF%9D%E7%BA%A6%E9%A3%8E%E9%99%A9%E6%BA%A2%E4%BB%B7"><span class="post-toc-text">1. 违约风险溢价</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E7%BB%8F%E6%B5%8E%E5%91%A8%E6%9C%9F%EF%BC%9A%E9%93%B6%E8%A1%8C%E7%9A%84%E8%BD%AE%E5%9B%9E"><span class="post-toc-text">2. 经济周期：银行的轮回</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%B4%B7%E6%AC%BE%E5%AE%9A%E4%BB%B7%E4%B8%8E%E7%AE%A1%E7%90%86%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">3. 贷款定价与管理实践</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%B8%8D%E8%89%AF%E8%B4%B7%E6%AC%BE%E7%9A%84%E5%9B%9B%E7%A7%8D%E5%A4%84%E7%BD%AE"><span class="post-toc-text">4. 不良贷款的四种处置</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E8%AF%BE-%E7%A5%A8%E6%8D%AE%E8%B4%B4%E7%8E%B0"><span class="post-toc-text">第十一课　票据贴现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="post-toc-text">1. 基本概念</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%93%B6%E8%A1%8C%E6%89%BF%E5%85%91%E6%B1%87%E7%A5%A8%E7%9A%84%E6%B5%81%E7%A8%8B%E4%B8%8E%E5%8F%98%E5%BD%A2"><span class="post-toc-text">2. 银行承兑汇票的流程与变形</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E4%BF%9D%E5%87%BD%E4%B8%8E%E4%BF%A1%E7%94%A8%E8%AF%81"><span class="post-toc-text">3. 保函与信用证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AF%BE-%E9%A3%8E%E9%99%A9%E5%8A%A0%E6%9D%83%E8%B5%84%E4%BA%A7"><span class="post-toc-text">第十二课　风险加权资产</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%85%AB%E5%A4%A7%E9%A3%8E%E9%99%A9"><span class="post-toc-text">1. 八大风险</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%BF%A1%E7%94%A8%E9%A3%8E%E9%99%A9%E5%8A%A0%E6%9D%83%E8%B5%84%E4%BA%A7"><span class="post-toc-text">2. 信用风险加权资产</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E9%A3%8E%E9%99%A9%E5%8A%A0%E6%9D%83%E8%B5%84%E4%BA%A7%E9%80%8F%E9%9C%B2%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="post-toc-text">3. 风险加权资产透露的信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%89%E8%AF%BE-%E5%88%A9%E6%B6%A6%E8%A1%A8%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="post-toc-text">第十三课　利润表（上）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%88%A9%E6%B6%A6%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="post-toc-text">1. 利润表结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%85%B6%E4%BB%96%E7%BB%BC%E5%90%88%E6%94%B6%E7%9B%8A"><span class="post-toc-text">2. 其他综合收益</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E8%90%A5%E4%B8%9A%E6%94%B6%E5%85%A5%E4%B8%89%E5%A4%A7%E6%9D%BF%E5%9D%97"><span class="post-toc-text">3. 营业收入三大板块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#FTP%EF%BC%9A%E5%86%85%E9%83%A8%E8%B5%84%E9%87%91%E8%BD%AC%E7%A7%BB%E5%AE%9A%E4%BB%B7"><span class="post-toc-text">FTP：内部资金转移定价</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%AD%E9%97%B4%E4%B8%9A%E5%8A%A1"><span class="post-toc-text">中间业务</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%AF%BE-%E5%88%A9%E6%B6%A6%E8%A1%A8%EF%BC%88%E4%B8%8B%EF%BC%89"><span class="post-toc-text">第十四课　利润表（下）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%90%A5%E4%B8%9A%E6%94%AF%E5%87%BA"><span class="post-toc-text">1. 营业支出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%89%80%E5%BE%97%E7%A8%8E%E8%B4%B9%E7%94%A8"><span class="post-toc-text">2. 所得税费用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%A6%82%E4%BD%95%E8%A7%82%E5%AF%9F%E5%88%A9%E6%B6%A6%E8%A1%A8"><span class="post-toc-text">3. 如何观察利润表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%BA%94%E8%AF%BE-%E9%87%8D%E8%A6%81%E7%9A%84%E8%B4%A2%E5%8A%A1%E6%8C%87%E6%A0%87"><span class="post-toc-text">第十五课　重要的财务指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%9B%91%E7%AE%A1%E4%BD%93%E7%B3%BB%EF%BC%9A%E4%BB%8E%E9%AA%86%E9%A9%BC%E5%88%B0%E8%85%95%E9%AA%A8"><span class="post-toc-text">1. 监管体系：从骆驼到腕骨</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%B8%89%E7%B1%BB%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87"><span class="post-toc-text">2. 三类核心指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%A4%AE%E8%A1%8C-MPA-%E4%BD%93%E7%B3%BB"><span class="post-toc-text">3. 央行 MPA 体系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AD%E8%AF%BE-%E9%93%B6%E8%A1%8C%E8%82%A1%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="post-toc-text">第十六课　银行股的选择（上）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E9%93%B6%E8%A1%8C%E4%B8%9A%E6%98%AF%E5%90%A6%E5%80%BC%E5%BE%97%E6%8A%95%E8%B5%84"><span class="post-toc-text">1. 银行业是否值得投资</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%97%B6%E6%9C%BA%EF%BC%9A%E9%93%B6G%E6%AF%94"><span class="post-toc-text">2. 时机：银G比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E9%93%B6%E8%A1%8C%E7%9A%84%E5%B7%AE%E5%BC%82%E5%8C%96%E4%B9%8B%E8%B7%AF"><span class="post-toc-text">3. 银行的差异化之路</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%83%E8%AF%BE-%E9%93%B6%E8%A1%8C%E8%82%A1%E7%9A%84%E9%80%89%E6%8B%A9%EF%BC%88%E4%B8%8B%EF%BC%89%EF%BC%9A%E9%87%8D%E7%82%B9%E8%A7%82%E5%AF%9F%E6%8C%87%E6%A0%87"><span class="post-toc-text">第十七课　银行股的选择（下）：重点观察指标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%BB%8F%E8%90%A5%E6%95%88%E7%9B%8A"><span class="post-toc-text">1. 经营效益</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E8%B5%84%E4%BA%A7%E8%B4%A8%E9%87%8F"><span class="post-toc-text">2. 资产质量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E6%A0%B7%E6%9C%AC%EF%BC%9A%E6%99%8B%E5%95%86%E9%93%B6%E8%A1%8C"><span class="post-toc-text">3. 压力测试样本：晋商银行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%8D%81%E5%85%AB%E8%AF%BE-%E4%BC%B0%E5%80%BC%E4%B8%8E%E8%B4%A2%E6%8A%A5%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="post-toc-text">第十八课　估值与财报使用流程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%BC%B0%E5%80%BC%E6%96%B9%E6%B3%95"><span class="post-toc-text">1. 估值方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%93%B6%E8%A1%8C%E8%B4%A2%E6%8A%A5%E9%98%85%E8%AF%BB%E4%B9%9D%E6%AD%A5%E6%B5%81%E7%A8%8B"><span class="post-toc-text">2. 银行财报阅读九步流程</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9%E9%80%9F%E8%AE%B0"><span class="post-toc-text">全书核心要点速记</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《手把手教你读财报2：18节课看透银行业》"><a href="#阅读笔记——《手把手教你读财报2：18节课看透银行业》" class="headerlink" title="阅读笔记——《手把手教你读财报2：18节课看透银行业》"></a>阅读笔记——《手把手教你读财报2：18节课看透银行业》</h1><blockquote>
+<p><strong>书名</strong>：手把手教你读财报 2 · 18 节课看透银行业<br><strong>作者</strong>：唐朝（笔名，雪球财经知名大 V）<br><strong>出版</strong>：中国经济出版社（2017 年 1 月第 1 版）<br><strong>ISBN</strong>：978-7-5136-4559-1</p>
+<p>本书是《手把手教你读财报》的姊妹篇，专为<strong>不懂银行、没有财会基础的普通投资者</strong>而写。全书以工商银行（601398）2015 年财报为范本，用 18 节课把「银行的资产负债表——利润表——关键财务指标——银行股选择与估值」讲透。作者的核心主张：<strong>银行财报的重心在资产负债表而非利润表</strong>，因为银行的利润极易通过拨备和贷款分类进行腾挪调节；读懂贷款与拨备，就基本读懂了银行。</p>
+</blockquote>
+<hr>
+<h2 id="全书知识地图"><a href="#全书知识地图" class="headerlink" title="全书知识地图"></a>全书知识地图</h2><pre class="mermaid">flowchart LR
+  A["《手把手教你读财报2》&lt;br/&gt;18节课看透银行业"] --&gt; B["第1课 银行业基础"]
+  A --&gt; C["第2-6课 资产负债表的右边&lt;br/&gt;会计资本 + 负债"]
+  A --&gt; D["第7-12课 资产负债表的左边&lt;br/&gt;资产 + 风险加权"]
+  A --&gt; E["第13-14课 利润表"]
+  A --&gt; F["第15课 重要财务指标"]
+  A --&gt; G["第16-18课 选股与估值"]
+
+  B --&gt; B1["银行业特点 / 印钞戏法&lt;br/&gt;货币乘数 / 行业概况"]
+  C --&gt; C1["会计资本 / 监管资本 / 资本充足率&lt;br/&gt;存款 / 同业负债 / 影子银行"]
+  D --&gt; D1["贷款与五级分类 / 拨备(减值准备)&lt;br/&gt;贷款定价 / 票据贴现 / 风险加权资产"]
+  E --&gt; E1["营业收入(利差/中间/其他)&lt;br/&gt;营业支出 / 所得税 / 其他综合收益"]
+  F --&gt; F1["骆驼与腕骨监管体系&lt;br/&gt;风险水平/迁徙/抵补指标 / MPA"]
+  G --&gt; G1["银行业是否值得投资 / 时机&lt;br/&gt;差异化 / 重点指标 / 估值 / 阅读流程"]</pre>
+
+<blockquote>
+<p>阅读重心提示：作者明确表示 <strong>银行利润表只能作辅助观察</strong>，注意力要放在资产负债表（尤其贷款与拨备）上；现金流量表”没什么阅读价值，可以直接放弃”——因为上市银行理论上不存在缺现金的问题，只存在获取现金的成本高低问题。</p>
+</blockquote>
+<hr>
+<h2 id="第一课-银行业基础"><a href="#第一课-银行业基础" class="headerlink" title="第一课　银行业基础"></a>第一课　银行业基础</h2><h3 id="1-银行与普通企业的三大不同（工行-vs-伊利）"><a href="#1-银行与普通企业的三大不同（工行-vs-伊利）" class="headerlink" title="1. 银行与普通企业的三大不同（工行 vs 伊利）"></a>1. 银行与普通企业的三大不同（工行 vs 伊利）</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>普通企业（伊利股份）</th>
+<th>银行（工商银行）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>资产配置</td>
+<td>土地、厂房、设备、存货等生产销售资产</td>
+<td>贷款 + 投资 + 现金为主，固定资产占比极小</td>
+</tr>
+<tr>
+<td>资金来源</td>
+<td>股东投入为主，借款为辅</td>
+<td>存款 + 借款近九成，股东投入仅约 8%</td>
+</tr>
+<tr>
+<td>经营重心</td>
+<td>产品&#x2F;服务是否被需要</td>
+<td>衡量和控制风险（借款人能否按时足额还款）</td>
+</tr>
+</tbody></table>
+<pre class="mermaid">flowchart TB
+  subgraph 工行["工商银行（2015）"]
+    A1["资产：贷款 &gt;50%&lt;br/&gt;投资 ~28% · 现金 ~17%"] --&gt; A2["负债：存款+借款 ~90%&lt;br/&gt;股东权益 ~8%"]
+  end
+  subgraph 伊利["伊利股份（2015）"]
+    B1["资产：以生产经营资产为主"] --&gt; B2["资金来源：以股东投入为主"]
+  end
+  A1 -. "经营重心：控制风险" .-&gt; A2
+  B1 -. "经营重心：产品被需要" .-&gt; B2</pre>
+
+<h3 id="2-银行的”印钞”戏法：货币乘数"><a href="#2-银行的”印钞”戏法：货币乘数" class="headerlink" title="2. 银行的”印钞”戏法：货币乘数"></a>2. 银行的”印钞”戏法：货币乘数</h3><p>银行放贷时只是在客户账户里记一个数字，并未减少任何存款人的钱，却凭空创造出了新的货币。监管用<strong>法定存款准备金率</strong>限制这个”印钞”总量。</p>
+<ul>
+<li><strong>货币乘数 &#x3D; 1 ÷ 法定存款准备金率</strong>（理想、无现金漏损时）</li>
+<li>例：准备金率 20%，初始存款 1000 万，最终可创造存款总额 5000 万（新增 4000 万”伪钞”）。</li>
+<li>现实中的<strong>现金漏损</strong>（人们留存现钞）会降低货币创造能力。</li>
+<li>法定准备金央行付息（2016 年标准年息 1.62%）；超额准备金利率更低（0.72%）。</li>
+<li><strong>超额备付金率</strong>（备付率）：大行约 1.5%，城商行普遍约 4%——大行支付可对冲、信用高、临时筹款能力强，故备付率低。</li>
+</ul>
+<p><strong>银行业三大核心特点</strong>：① 经营风险；② 依赖信用生存（挤兑是生死危机）；③ 合法的”伪钞印刷厂”。</p>
+<blockquote>
+<p>扩展知识：M0 &#x3D; 流通中现金；M1 &#x3D; M0 + 单位活期存款；M2 &#x3D; M1 + 单位定期存款 + 个人各项存款 + 证券客户保证金。央行调控主要针对 M2。</p>
+</blockquote>
+<h3 id="3-我国银行业概况"><a href="#3-我国银行业概况" class="headerlink" title="3. 我国银行业概况"></a>3. 我国银行业概况</h3><ul>
+<li>1994 年真实存款利率（名义利率 − 通胀）最低达 <strong>-10.72%</strong>，银行只是政府的”钱袋子”，2000 年末国有行账面不良率 29.18%，加回政策性剥离后实际高达 <strong>55.11%</strong>。</li>
+<li>1999 年四大资产管理公司（信达、长城、华融、东方）剥离烂账；2003 年银监会成立；2005—2010 年四大行陆续上市，规范经营时代开启。</li>
+<li>截至 2016 年上半年：银行业总资产超 212 万亿元，净资产超 16 万亿元。</li>
+<li>16 家 A 股上市银行分三个竞争层次：四大行（工建农中）为第一层；交行 + 兴业&#x2F;中信&#x2F;招商&#x2F;浦发&#x2F;民生为第二层（已显差异化：招商零售、兴业同业、民生小微）；6 家中型银行（城商行等）为第三层。</li>
+</ul>
+<hr>
+<h2 id="第二课-银行的会计资本（股东的钱）"><a href="#第二课-银行的会计资本（股东的钱）" class="headerlink" title="第二课　银行的会计资本（股东的钱）"></a>第二课　银行的会计资本（股东的钱）</h2><p>银行资本有三个概念：<strong>经济资本</strong>（内部视角的风险资本）、<strong>会计资本</strong>（财报净资产）、<strong>监管资本</strong>（监管口径）。投资者重点看后两者。</p>
+<h3 id="股东权益各科目"><a href="#股东权益各科目" class="headerlink" title="股东权益各科目"></a>股东权益各科目</h3><table>
+<thead>
+<tr>
+<th>科目</th>
+<th>核心含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>股本</strong></td>
+<td>股份总数 × 面值（我国几乎都是 1 元面值）。变化原因：增发&#x2F;转增&#x2F;送红股</td>
+</tr>
+<tr>
+<td><strong>其他权益工具</strong></td>
+<td>目前主要指<strong>优先股</strong>：正常经营拿固定利息（类债券），兑付危机时在普通债权人之后受偿，或触发条款（如资本充足率≤5.125%）强制转普通股</td>
+</tr>
+<tr>
+<td><strong>资本公积</strong></td>
+<td>股东投入但”不是经营赚来的”钱：发行溢价、捐赠、评估增值、外币股本汇率差等。转增股本不征所得税</td>
+</tr>
+<tr>
+<td><strong>其他综合收益</strong></td>
+<td>2014 年新会计准则单列，是”利润的临时中转库”：可供出售金融资产公允价值变动、外币报表折算差额等</td>
+</tr>
+<tr>
+<td><strong>盈余公积</strong></td>
+<td>从利润提取：法定盈余公积（当年利润 10%，累计到注册资本 50% 可停），任意盈余公积自主决定</td>
+</tr>
+<tr>
+<td><strong>一般准备</strong></td>
+<td>金融企业专属的”盈余公积”，强制从利润再提，专补潜在损失。≥ 风险加权资产年末余额的 1.5%</td>
+</tr>
+<tr>
+<td><strong>未分配利润</strong></td>
+<td>未分配利润 &#x3D; 上年未分配利润 + 本年利润 − 利润分配</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>关键点：<strong>资本公积转增股本不征税，而利润&#x2F;盈余公积送红股以面值为基数征税</strong>——因为前者只是”股东资本科目间挪动”，后者是”利润再投资”。</p>
+<p>少数股东权益只出现在合并报表（本集团）；投资者重点关注<strong>合并（本集团）数据</strong>，但银行业子公司占比通常很小（工行子公司资产仅约 5%）。</p>
+</blockquote>
+<hr>
+<h2 id="第三课-银行的监管资本（最难的一课之一）"><a href="#第三课-银行的监管资本（最难的一课之一）" class="headerlink" title="第三课　银行的监管资本（最难的一课之一）"></a>第三课　银行的监管资本（最难的一课之一）</h2><h3 id="1-巴塞尔协议脉络"><a href="#1-巴塞尔协议脉络" class="headerlink" title="1. 巴塞尔协议脉络"></a>1. 巴塞尔协议脉络</h3><pre class="mermaid">flowchart LR
+  A["巴塞尔协议 I&lt;br/&gt;1988年&lt;br/&gt;统一资本充足率标准"] --&gt; B["巴塞尔协议 II&lt;br/&gt;2004年&lt;br/&gt;三大支柱：资本充足率+外部监督+信息披露&lt;br/&gt;纳入市场风险、操作风险"]
+  B --&gt; C["巴塞尔协议 III&lt;br/&gt;2010年&lt;br/&gt;加强资本质量管理"]
+  C --&gt; D["中国《商业银行资本管理办法(试行)》&lt;br/&gt;2013年起实施"]</pre>
+
+<h3 id="2-资本充足率标准（系统重要银行加-1-）"><a href="#2-资本充足率标准（系统重要银行加-1-）" class="headerlink" title="2. 资本充足率标准（系统重要银行加 1%）"></a>2. 资本充足率标准（系统重要银行加 1%）</h3><ul>
+<li>核心一级资本充足率 ≥ 5%、一级资本充足率 ≥ 6%、资本充足率 ≥ 8%（2013 年基础）。</li>
+<li>储备资本 2.5%（由核心一级资本满足），以 0.5% 起步、年递增 0.4%，至 2018 年达标。</li>
+<li>系统重要银行（工建中农交招 6 家）：核心一级 ≥ 8.5%、一级 ≥ 9.5%、资本充足率 ≥ 11.5%。</li>
+<li><strong>不达标后果</strong>：限制放贷、限薪酬、限分红、限设分支机构、限投其他金融机构、停业务等。</li>
+</ul>
+<h3 id="3-监管资本的分类"><a href="#3-监管资本的分类" class="headerlink" title="3. 监管资本的分类"></a>3. 监管资本的分类</h3><pre class="mermaid">flowchart TB
+  CAP["监管资本"] --&gt; C1["核心一级资本&lt;br/&gt;≈ 净资产（一减一加）"]
+  CAP --&gt; C2["其他一级资本&lt;br/&gt;优先股/可转债权益部分&lt;br/&gt;等资本工具及溢价"]
+  CAP --&gt; C3["二级资本&lt;br/&gt;二级资本工具及溢价&lt;br/&gt;超额贷款损失准备&lt;br/&gt;少数股东资本"]
+  C1 -. "减去" .-&gt; D1["商誉 / 无形资产 /&lt;br/&gt;递延所得税资产超额部分等"]
+  C2 -. "注意" .-&gt; D2["银行自己认购的&lt;br/&gt;本行资本工具不计入"]
+  C3 -. "超额贷款损失准备" .-&gt; D3["受偿顺序在存款人之后&lt;br/&gt;距到期越近计入比例越低"]</pre>
+
+<ul>
+<li>核心一级资本＝净资产基础上<strong>一减一加</strong>：减去其他资本工具及其溢价（优先股、可转债权益部分），加回非保险金融机构少数股东权益中的核心一级资本。</li>
+<li>二级资本工具（&gt;5 年期无担保债券）：距到期 ≥5&#x2F;4&#x2F;3&#x2F;2&#x2F;1 年分别按面值 100%&#x2F;80%&#x2F;60%&#x2F;40%&#x2F;20% 计入。</li>
+<li><strong>资本扣减项</strong>（挤泡沫）：商誉、除土地使用权外的无形资产、经营亏损导致的净递延所得税资产、虚增资本投资、持有本行股票、银行间互相持有的资本工具等。</li>
+<li>我国银行资本结构偏核心一级（81.1%），其他一级资本（2.9%）和二级资本（16%）匮乏。</li>
+<li><strong>隐藏红利</strong>：我国上市银行自有房产账面值约 5500 亿元，公允价值约 4 万亿～6 万亿元，若允许按公允价值计入资本，隐藏资本 3.45 万亿～5.45 万亿元。</li>
+</ul>
+<h3 id="4-资本充足率的观察意义"><a href="#4-资本充足率的观察意义" class="headerlink" title="4. 资本充足率的观察意义"></a>4. 资本充足率的观察意义</h3><p>资本充足率 &#x3D; 资本 ÷ 风险加权资产。它是杠杆（风险加权视角）的体现：</p>
+<ul>
+<li><strong>贴近红线</strong> → 业务受限，需收缩信贷（缩分母）或再融资（扩分子），业绩&#x2F;每股收益承压。</li>
+<li><strong>显著高于标准</strong> → 无融资需求，有能力扩规模或加大分红。</li>
+<li>差距大小可用来<strong>估算未来业绩变化趋势与数量</strong>。</li>
+</ul>
+<hr>
+<h2 id="第四课-银行负债之存款"><a href="#第四课-银行负债之存款" class="headerlink" title="第四课　银行负债之存款"></a>第四课　银行负债之存款</h2><h3 id="1-高杠杆与巴菲特的银行股观"><a href="#1-高杠杆与巴菲特的银行股观" class="headerlink" title="1. 高杠杆与巴菲特的银行股观"></a>1. 高杠杆与巴菲特的银行股观</h3><ul>
+<li>工行用约 1.8 万亿元股东权益做了约 22.21 万亿元生意，杠杆近 <strong>12.5 倍</strong>。</li>
+<li>巴菲特：”当一个行业的资产普遍是其股东权益的 20 倍时，只要资产端发生一点点状况就有可能把大部分股东权益蚕食掉。””我们对用便宜的价格买下一家经营不善的银行一点兴趣都没有，我们只对以合理价格买进一些经营良好的银行感兴趣。”</li>
+<li>监管专用<strong>杠杆率</strong>（≠ 上述总资产&#x2F;净资产）：杠杆率 &#x3D;（一级资本 − 扣减项）÷ 调整后的表内外资产余额 ≥ 4%（即杠杆不高于 25 倍）。分母不按风险加权，是资本充足率的”兜底”指标。</li>
+</ul>
+<h3 id="2-存款是负债的核心"><a href="#2-存款是负债的核心" class="headerlink" title="2. 存款是负债的核心"></a>2. 存款是负债的核心</h3><ul>
+<li>客户存款 + 存款证 + 同业存放合计占工行负债约 90%，其中客户存款约 80%。</li>
+<li><strong>存款分析方法</strong>：看定活期占比变化、个人&#x2F;公司存款占比、吸收成本趋势，并与同行同口径对比。活期占比越高的银行，成本对基准&#x2F;市场利率波动越敏感。</li>
+</ul>
+<h3 id="3-存款面对的监管"><a href="#3-存款面对的监管" class="headerlink" title="3. 存款面对的监管"></a>3. 存款面对的监管</h3><ul>
+<li><strong>存贷比</strong>（贷款&#x2F;存款 ≤75%）：1994 年诞生，2015 年 10 月取消强制地位，转为非强制观测指标。其副作用是让法定准备金率在 25% 以下调节失灵，并诱发月末&#x2F;季末拉存款。</li>
+<li><strong>存款偏离度</strong>（≤3%）：遏制月末&#x2F;季末冲存款。</li>
+<li><strong>存款保险</strong>（2015 年 5 月）：按存款的 0.016% 缴费，单户 50 万元以内（含利息）破产包赔。</li>
+</ul>
+<h3 id="4-理财产品-→-影子银行"><a href="#4-理财产品-→-影子银行" class="headerlink" title="4. 理财产品 → 影子银行"></a>4. 理财产品 → 影子银行</h3><pre class="mermaid">flowchart LR
+  A["理财产品"] --&gt; B["保本型&lt;br/&gt;银行承担风险&lt;br/&gt;计入表内"]
+  A --&gt; C["非保本型&lt;br/&gt;银行不担风险&lt;br/&gt;表外（收取手续费）"]
+  C --&gt; D["但银行长期'约定收益率+刚兑'&lt;br/&gt;演变为高息揽储"]
+  D --&gt; E["投向非标资产&lt;br/&gt;（变相放贷）"]
+  E --&gt; F["影子银行&lt;br/&gt;游离于资本充足率/不良率监管之外"]</pre>
+
+<ul>
+<li>非标资产＝非标准化债权资产（贷款、信托计划、委托债权、带回购条款的股权融资等），本质是”贷款的各种变形”。</li>
+<li>监管红线：非标 ≤ 理财总额 35% 且 ≤ 上年度总资产 4%；单一借款人相关 ≤ 资本净额 10%。2012 年非标占比约 42% → 2015 年不足 16%。</li>
+</ul>
+<hr>
+<h2 id="第五课-银行的其他负债"><a href="#第五课-银行的其他负债" class="headerlink" title="第五课　银行的其他负债"></a>第五课　银行的其他负债</h2><table>
+<thead>
+<tr>
+<th>科目</th>
+<th>要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>同业及其他金融机构存放</strong></td>
+<td>其他银行&#x2F;券商在本行开户存的钱。起因：①结算需要；②存贷比限制下的富余资金找回报。<strong>拆入资金</strong>是”直接借钱”，同业存放是”存进账户”。定价看 <strong>Shibor</strong>（上海银行间同业拆放利率）</td>
+</tr>
+<tr>
+<td><strong>存款证（同业存单）</strong></td>
+<td>可在二级市场流通的同业存款，网点少的银行快速上规模的利器（如兴业 2015 年发行 5628 亿元）。免缴法定准备金、省网点费用，故虽利率略高仍可能更划算</td>
+</tr>
+<tr>
+<td><strong>向中央银行借款</strong></td>
+<td>SLF（酸辣粉，1-3 个月）、MLF（麻辣粉，3 个月-1 年，有投向约束）、SLO（酸辣藕，7 天内）、PSL（胖死了，3-5 年抵押贷款，设利率上限）。银行能不在市场借到钱就尽量不向央行借（避免被联想流动性危机）</td>
+</tr>
+<tr>
+<td><strong>已发行债务证券</strong></td>
+<td>银行发行的各类债券</td>
+</tr>
+<tr>
+<td><strong>衍生金融负债&#x2F;资产</strong></td>
+<td>我国主要用于<strong>对冲</strong>（货币、利率、商品的掉期&#x2F;远期&#x2F;期权），非盈利工具。若两者差额突然变大需警惕</td>
+</tr>
+<tr>
+<td><strong>卖出回购款项</strong></td>
+<td>金融机构间抵押贷款（A 卖资产给 B 并约定加价买回）。127 号文后只允许高流动性标准资产做抵押，堵住了”贷款出表”的监管套利</td>
+</tr>
+<tr>
+<td><strong>递延所得税负债</strong></td>
+<td>会计与税法差异造成的”拖后交税”（欠税务局的钱），与递延所得税资产不能两抵</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="第六课-银行的资产配置"><a href="#第六课-银行的资产配置" class="headerlink" title="第六课　银行的资产配置"></a>第六课　银行的资产配置</h2><p>工行资产结构：现金及类现金约 17%、投资类约 28%、客户贷款及垫款约 52%、经营类不到 3%。</p>
+<pre class="mermaid">flowchart TB
+  资金配置原则["银行资金配置原则"] --&gt; S1["① 流动性需求&lt;br/&gt;现金 + 法定准备金 + 超额准备金"]
+  资金配置原则 --&gt; S2["② 高流动性证券&lt;br/&gt;短期国债/地方债/金融债&lt;br/&gt;应付意外提款与贷款"]
+  资金配置原则 --&gt; S3["③ 按回报率+期限匹配&lt;br/&gt;放贷或投资"]
+  资金配置原则 --&gt; S4["④ 缺口弥补&lt;br/&gt;同业拆借/卖出回购/出售资产"]
+  S1 --&gt; NOTE["注意：名义利率≠真实收益率&lt;br/&gt;不同风险权重消耗资本不同&lt;br/&gt;例：权重50%利率5% &gt; 权重100%利率6%"]</pre>
+
+<ul>
+<li><strong>现金及存放央行款项</strong>：柜台&#x2F;保险柜&#x2F;ATM&#x2F;运钞车现钞 + 法定准备金 + 超额准备金。财政性存款不计入商业银行报表资产。</li>
+<li><strong>投资类资产</strong>：贵金属（成本与公允价值孰低）、交易性金融资产（赚差价，波动进利润表）、持有至到期投资（摊余成本法）、可供出售金融资产（波动进其他综合收益）、长期股权投资（本集团&#x2F;本行的合并报表差异）、应收款项类投资（非标资产的”藏身之所”）、衍生金融资产、买入返售款项。</li>
+<li>三个”××金融资产”的通俗区分：<strong>买来就打算炒的→交易性；打算持有到期的→持有至到期；没想好的→可供出售</strong>。</li>
+</ul>
+<hr>
+<h2 id="第七课-客户贷款与垫款"><a href="#第七课-客户贷款与垫款" class="headerlink" title="第七课　客户贷款与垫款"></a>第七课　客户贷款与垫款</h2><h3 id="1-贷款分类（按担保方式）"><a href="#1-贷款分类（按担保方式）" class="headerlink" title="1. 贷款分类（按担保方式）"></a>1. 贷款分类（按担保方式）</h3><ul>
+<li><strong>抵押</strong>（不动产，不移交）；<strong>质押</strong>（动产&#x2F;权利凭证，移交或冻结）；<strong>保证</strong>（第三方连带担保）；<strong>信用</strong>（仅凭信誉）。</li>
+<li>质押中重要组成是票据质押；抵押中重要组成是个人住房抵押贷款（房贷）。</li>
+</ul>
+<h3 id="2-贷款五级分类"><a href="#2-贷款五级分类" class="headerlink" title="2. 贷款五级分类"></a>2. 贷款五级分类</h3><pre class="mermaid">flowchart LR
+  subgraph 五级分类
+    N["正常类"] --&gt; C["关注类&lt;br/&gt;（不良的预备役）"]
+    C --&gt; S["次级类"]
+    S --&gt; K["可疑类"]
+    K --&gt; L["损失类"]
+  end
+  subgraph 不良贷款
+    S2["次级 + 可疑 + 损失"]
+  end</pre>
+
+<ul>
+<li>2004 年前是”一逾两呆”（逾期&#x2F;呆滞&#x2F;呆账）的事后监督；2004 年起推行五级分类，基于内在风险程度动态监测。</li>
+<li><strong>关注类贷款要习惯当不良看待</strong>——绝大部分不良都经历过”正常→关注→不良”的滑落。</li>
+<li>书中详列了关注一&#x2F;二&#x2F;三档、次级一&#x2F;二档、可疑一&#x2F;二档、损失类的判断特征（约 3000 字），核心是”预期损失率”递进：次级一般损失 30% 以内，可疑 30%<del>75%，损失 75%</del>100%。</li>
+</ul>
+<h3 id="3-不良贷款与逾期贷款"><a href="#3-不良贷款与逾期贷款" class="headerlink" title="3. 不良贷款与逾期贷款"></a>3. 不良贷款与逾期贷款</h3><ul>
+<li><strong>逾期贷款</strong>口径刚性（逾期 1 天即逾期），各银行披露口径可能不同（全部本金&#x2F;部分本金&#x2F;利息），对比时需注意。</li>
+<li>关键指标：**逾期 90 天以上贷款 &#x2F; 不良贷款 &lt; 1** 才正常。若 &gt;1，说明有逾期 90 天以上贷款未划入不良，五级分类可信度打折。</li>
+<li><strong>已逾期未减值</strong>贷款：观察三点——占比是否扩大、1 个月以上逾期未减值占比（越大越可疑）、担保物是否充足。保守投资者可把”逾期 1 个月以上”部分直接计入不良后再评估。</li>
+</ul>
+<hr>
+<h2 id="第八课-减值准备（上）：拨备"><a href="#第八课-减值准备（上）：拨备" class="headerlink" title="第八课　减值准备（上）：拨备"></a>第八课　减值准备（上）：拨备</h2><h3 id="1-基本概念"><a href="#1-基本概念" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><ul>
+<li>银行需对所有承担风险&#x2F;损失的资产计提减值准备，其中<strong>贷款减值准备</strong>占绝对大头（工行 98.88%）。</li>
+<li>拨备＝<strong>预估的损失</strong>，是”拨出来备着”的钱。拨备作为”资产减值损失”计入利润表营业支出（当期成本），同时在资产负债表里从资产中扣除，但<strong>钱并没有实际支出</strong>，只是放进”黑屋子”。</li>
+<li><strong>核销</strong>＝真实损失确认后从黑屋子”烧掉”，对利润表和资产负债表都没有直接影响。</li>
+</ul>
+<h3 id="2-计提标准与三大指标的关系"><a href="#2-计提标准与三大指标的关系" class="headerlink" title="2. 计提标准与三大指标的关系"></a>2. 计提标准与三大指标的关系</h3><p>央行指引：正常 1%、关注 2%、次级 25%、可疑 50%、损失 100%（次级&#x2F;可疑可上下浮 20%）。<br>财政部风险系数：正常 1.5%、关注 3%、次级 30%、可疑 60%、损失 100%。<br>银监会监管要求：<strong>拨备覆盖率 ≥ 150%</strong> 且 <strong>拨贷比 ≥ 2.5%</strong>。</p>
+<pre class="mermaid">flowchart LR
+  A["拨贷比 = 拨备覆盖率 × 不良贷款率"] --&gt; B["临界值：不良率 ≈ 1.67%"]
+  B --&gt; C["不良率 &lt; 1.67%&lt;br/&gt;主要盯拨贷比 ≥ 2.5%"]
+  B --&gt; D["不良率 ≥ 1.67%&lt;br/&gt;主要盯拨备覆盖率 ≥ 150%"]</pre>
+
+<blockquote>
+<p>2015 年底银行业不良率恰好 1.67%，作者笑称”真巧”——因为那正是拨贷比 2.5% 与拨备覆盖率 150% 的交汇点。</p>
+</blockquote>
+<ul>
+<li>计提顺序：先对非正常类贷款计提<strong>专项准备</strong>，不足部分以正常类或全部贷款为基数计提<strong>一般准备</strong>。</li>
+<li><strong>超额贷款损失准备</strong>：超出监管最低要求的部分，可计入二级资本（有上限：高级法银行 0.6%，权重法银行 1.25%）。</li>
+<li>易混淆：拨备中的”一般准备”≠ 股东权益里的”一般准备”。前者是减值准备、可计入二级资本；后者是税后净利润的一部分、属核心一级资本。</li>
+</ul>
+<h3 id="3-动态拨备理论与博弈"><a href="#3-动态拨备理论与博弈" class="headerlink" title="3. 动态拨备理论与博弈"></a>3. 动态拨备理论与博弈</h3><ul>
+<li><strong>动态拨备理论</strong>：上行期多计提、下行期少计提并动用积累拨备，逆周期操作。</li>
+<li>经济下行若仍死守 150% 拨备覆盖率，拨贷比将从 2.5% 升至 4.5%，几乎吃掉银行全部净息差，与”扩大信贷刺激经济”的宏观要求冲突。故监管会弹性调整。</li>
+<li>但监管也恐惧金融动荡（我国银行没经历过完整市场化周期），故降标准在”宏观需要”与”金融安全”之间博弈前行。工行 2013—2015 年的拨贷比不足 2.5%，正是用少提拨备把净利润增速”美化”为正数（如 2015 年实际约 -4.5% 被做成 0.52%）。</li>
+</ul>
+<hr>
+<h2 id="第九课-减值准备（下）：细读”黑屋子”"><a href="#第九课-减值准备（下）：细读”黑屋子”" class="headerlink" title="第九课　减值准备（下）：细读”黑屋子”"></a>第九课　减值准备（下）：细读”黑屋子”</h2><h3 id="1-流水账公式"><a href="#1-流水账公式" class="headerlink" title="1. 流水账公式"></a>1. 流水账公式</h3><p>这是”整份财报中最重要的表格”。投资者只看最后一列合计即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">期末减值准备余额 = 期初减值准备余额</span><br><span class="line">                  + 本期减值损失（本年新增 − 本年回拨）</span><br><span class="line">                  − 已减值贷款利息收入</span><br><span class="line">                  − 本年核销</span><br><span class="line">                  + 收回以前年度核销</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-各术语含义"><a href="#2-各术语含义" class="headerlink" title="2. 各术语含义"></a>2. 各术语含义</h3><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+<th>对利润表&#x2F;资产负债表影响</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>本年新增（本年计提）</strong></td>
+<td>当年新计提的拨备（与贷款平均余额之比称”信用成本”）</td>
+<td>减少当期利润</td>
+</tr>
+<tr>
+<td><strong>本年划转</strong></td>
+<td>单项&#x2F;组合评估之间”搬运工”，合计恒为 0</td>
+<td>无影响</td>
+</tr>
+<tr>
+<td><strong>本年回拨（转回）</strong></td>
+<td>收回本金或<strong>贷款升级</strong>（损失→可疑→次级→关注→正常）导致拨备搬出</td>
+<td>对冲新增，增厚利润</td>
+</tr>
+<tr>
+<td><strong>已减值贷款利息收入</strong></td>
+<td>对冲不良贷款”假利息收入”虚增的部分，减少拨备</td>
+<td>减少拨备</td>
+</tr>
+<tr>
+<td><strong>本年核销</strong></td>
+<td>损失确认后烧掉拨备（单独建账继续催收）</td>
+<td>不影响利润表；但改善不良率&#x2F;拨备覆盖率</td>
+</tr>
+<tr>
+<td><strong>收回以前年度核销</strong></td>
+<td>已核销的又收回来了，”月光宝盒”还原</td>
+<td>增加拨备</td>
+</tr>
+<tr>
+<td><strong>转出</strong></td>
+<td>债权 + 拨备一起没了（债转股、卖资产管理公司、抵债资产等）</td>
+<td>类似核销</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>拨备反哺利润</strong>：经济好转时，除正常收益改善外，贷款升级通过”本年回拨”减少当期支出、增厚利润，使银行利润增长优于经济复苏程度。</p>
+</blockquote>
+<h3 id="3-核销的”监管卡脖子”"><a href="#3-核销的”监管卡脖子”" class="headerlink" title="3. 核销的”监管卡脖子”"></a>3. 核销的”监管卡脖子”</h3><p>核销需证明”穷尽所有手段”（法院文书、公安立案两年等），且财政部&#x2F;银监会每年检查覆盖面不低于核销金额 20%。核销会减少国家财税收入，故审核严格。</p>
+<h3 id="4-以工行为例的完整账"><a href="#4-以工行为例的完整账" class="headerlink" title="4. 以工行为例的完整账"></a>4. 以工行为例的完整账</h3><p>2015 年：期初 2575.81 亿元 + 减值损失 860.22 亿 − 已减值贷款利息收入 41.56 亿 + 收购子公司 4.14 亿 − 核销 602.96 亿 + 收回 10.89 亿 &#x3D; 期末拨备 <strong>2806.54 亿元</strong>。<br>拨贷比 &#x3D; 2806.54 ÷ 119334.66 &#x3D; 2.35%；拨备覆盖率 &#x3D; 2806.54 ÷ 1795.18 &#x3D; 156.34%。</p>
+<hr>
+<h2 id="第十课-贷款的定价与管理"><a href="#第十课-贷款的定价与管理" class="headerlink" title="第十课　贷款的定价与管理"></a>第十课　贷款的定价与管理</h2><h3 id="1-违约风险溢价"><a href="#1-违约风险溢价" class="headerlink" title="1. 违约风险溢价"></a>1. 违约风险溢价</h3><p>银行无法避开不良贷款（这是宿命），故通过两种方式处理：① 计提减值准备（已谈）；② 在贷款定价中加<strong>违约风险溢价</strong>，把预期损失平摊到所有贷款人头上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">贷款利率 = 资金成本 + 运营成本 + 损失平摊(违约风险溢价) + 目标利润</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>例：1000 笔 100 万贷款，成本 3.5%、目标利润 2%、平均违约率 2%、违约后损失率 50% → 违约风险溢价约 1.055%，最终利率 ≈ 6.56%。</li>
+<li>关键认知：<strong>不良贷款并不可怕</strong>（拨贷比 2.5% 已把预期损失加进定价了）；真正可怕的是<strong>非预期损失</strong>——定价时预期违约率低、收贷时实际违约率高。</li>
+</ul>
+<h3 id="2-经济周期：银行的轮回"><a href="#2-经济周期：银行的轮回" class="headerlink" title="2. 经济周期：银行的轮回"></a>2. 经济周期：银行的轮回</h3><pre class="mermaid">flowchart LR
+  P["繁荣期&lt;br/&gt;低不良率 + 高利润&lt;br/&gt;高刺激高投入"] --&gt; D1["衰退初期&lt;br/&gt;企业硬撑还本付息&lt;br/&gt;银行仍赚额外利润"]
+  D1 --&gt; D2["萧条期&lt;br/&gt;违约率/损失率超预期&lt;br/&gt;动用超额拨备和资本补枪眼"]
+  D2 --&gt; R["复苏期&lt;br/&gt;过剩产能出清&lt;br/&gt;违约风险溢价高 → 超额利润"]
+  R --&gt; P</pre>
+
+<blockquote>
+<p><strong>银行股投资大原则</strong>：① 尽量选<strong>非预期损失小</strong>的银行（贷款覆盖行业多、地区广 → 资产相关性低 → 非预期损失波动小）；② 在市场预期经济将进入衰退&#x2F;萧条期的时间段寻找买点。资产相关性越高，非预期损失波动越大。</p>
+</blockquote>
+<h3 id="3-贷款定价与管理实践"><a href="#3-贷款定价与管理实践" class="headerlink" title="3. 贷款定价与管理实践"></a>3. 贷款定价与管理实践</h3><ul>
+<li>我国银行多采用<strong>基础利率加成法</strong>：对企业风险评级（5C&#x2F;5P&#x2F;5W 系统）→ 定浮动系数 → 加权平均后加在 <strong>LPR</strong>（贷款基础利率，9 家报价行报价）上。</li>
+<li>贷前审查（审贷分离制）+ 贷后管理（还款能力下降的特征清单：经营性现金流为负、应收账款异常增加、涉及犯罪、抽逃资金等）。现状是”重贷前、轻贷后；重清收、轻预防”。</li>
+<li>贷款<strong>展期</strong>只允许一次；<strong>重组贷款</strong>至少划为次级（不良），半年观察期后可升关注。</li>
+</ul>
+<h3 id="4-不良贷款的四种处置"><a href="#4-不良贷款的四种处置" class="headerlink" title="4. 不良贷款的四种处置"></a>4. 不良贷款的四种处置</h3><pre class="mermaid">flowchart TB
+  不良处置["不良贷款处置"] --&gt; X1["① 回收现金&lt;br/&gt;催收/诉讼/破产清算/转让AMC"]
+  不良处置 --&gt; X2["② 资产抵债&lt;br/&gt;抵债资产2年内处置(权重100%)&lt;br/&gt;超2年权重升至1250%"]
+  不良处置 --&gt; X3["③ 债转股&lt;br/&gt;'先售后转'模式&lt;br/&gt;隔离银行持股风险"]
+  不良处置 --&gt; X4["④ 坏账核销&lt;br/&gt;单独建账继续催收"]</pre>
+
+<ul>
+<li>2016 年 10 月《市场化债转股指导意见》确定”先售后转”：银行先把债权转让给实施机构（AMC、保险资管、银行附属机构等），由实施机构转股持股，隔离风险、减少资本消耗。</li>
+<li>不良资产证券化 2016 年 2 月破冰（工建农中交招 6 家试点 500 亿元）。</li>
+</ul>
+<hr>
+<h2 id="第十一课-票据贴现"><a href="#第十一课-票据贴现" class="headerlink" title="第十一课　票据贴现"></a>第十一课　票据贴现</h2><h3 id="1-基本概念-1"><a href="#1-基本概念-1" class="headerlink" title="1. 基本概念"></a>1. 基本概念</h3><ul>
+<li>票据贴现＝银行买进未到期商业汇票而发放的<strong>特殊贷款</strong>：先扣利息（”砍头息”）、期限≤6 个月、背后是真实贸易、可转贴现&#x2F;再贴现。</li>
+<li><strong>贴现</strong>（直贴）→ 企业拿汇票向银行换现金；<strong>转贴现</strong> → 银行间转让（≤6 个月）；<strong>再贴现</strong> → 卖给央行（≤4 个月）。</li>
+<li>商业汇票分<strong>银行承兑汇票</strong>（银行承诺兑现）与<strong>商业承兑汇票</strong>（企业承诺兑现）；前者安全性更高。</li>
+</ul>
+<h3 id="2-银行承兑汇票的流程与变形"><a href="#2-银行承兑汇票的流程与变形" class="headerlink" title="2. 银行承兑汇票的流程与变形"></a>2. 银行承兑汇票的流程与变形</h3><pre class="mermaid">flowchart LR
+  A["甲公司(买方)&lt;br/&gt;资金紧张"] --&gt;|"存保证金+承诺费+手续费"| B["银行A&lt;br/&gt;开银行承兑汇票"]
+  B --&gt;|"背书/贴现"| C["乙公司(卖方)&lt;br/&gt;如期收款"]
+  C --&gt;|"贴现"| D["银行B&lt;br/&gt;转贴现/再贴现"]</pre>
+
+<ul>
+<li>银行承兑＝表外业务（不计资产负债表），垫款时才计入”客户贷款与垫款”。收益：保证金存款 + 承诺费（风险暴露的 1% 以下）+ 手续费（万五）。</li>
+<li><strong>变形风险</strong>：保证金比例循环开票贴现，可放大杠杆、编造贸易背景（假合同&#x2F;假发票），是票据业务主要风险点。</li>
+<li>工行 2015 年票据贴现平均收益率 4.53% &lt; 公司贷款 5.58%，但银行热衷票据是为”制造存款 + 配置低风险资产 + 腾挪信贷额度”。</li>
+<li>趋势：电子票据强制推进（2017 年 300 万以上、2018 年 100 万以上原则上走电票），以遏制纸票的灰色腾挪。</li>
+</ul>
+<h3 id="3-保函与信用证"><a href="#3-保函与信用证" class="headerlink" title="3. 保函与信用证"></a>3. 保函与信用证</h3><ul>
+<li><strong>保函</strong>：银行担保申请人履约的书面付款承诺，第一责任人是申请人；可设计成有条件保函。</li>
+<li><strong>信用证</strong>：解决贸易双方互不信任的支付工具（类支付宝），流程为”买方开证 → 卖方发货 → 交单收钱 → 买方赎货”。</li>
+</ul>
+<hr>
+<h2 id="第十二课-风险加权资产"><a href="#第十二课-风险加权资产" class="headerlink" title="第十二课　风险加权资产"></a>第十二课　风险加权资产</h2><h3 id="1-八大风险"><a href="#1-八大风险" class="headerlink" title="1. 八大风险"></a>1. 八大风险</h3><p>信用风险、市场风险、流动性风险、操作风险、法律风险（特殊操作风险）、声誉风险、国别风险、战略风险。<br>与资产加权相关的是<strong>信用风险、市场风险、操作风险</strong>三项。</p>
+<pre class="mermaid">flowchart TB
+  RWA["风险加权资产"] --&gt; CR["信用风险加权资产&lt;br/&gt;权重法 或 内部评级法"]
+  RWA --&gt; MR["市场风险加权资产&lt;br/&gt;标准法 或 内部模型法&lt;br/&gt;= 市场风险资本要求 × 12.5"]
+  RWA --&gt; OR["操作风险加权资产&lt;br/&gt;基本指标法 / 标准法 / 高级计量法&lt;br/&gt;= 操作风险资本要求 × 12.5"]</pre>
+
+<h3 id="2-信用风险加权资产"><a href="#2-信用风险加权资产" class="headerlink" title="2. 信用风险加权资产"></a>2. 信用风险加权资产</h3><ul>
+<li><strong>权重法</strong>（六家高级法银行之外的银行用）：表内资产（账面值 − 减值准备）× 风险权重；表外资产 × 信用转换系数后按表内处理。对银行债权：3 个月内 20%、3 个月以上 25%；对企业债权基本 100%。</li>
+<li><strong>内部评级法</strong>（工建农中交招 6 家）：预期损失 &#x3D; <strong>PD（违约概率）× LGD（违约损失率）× EAD（违约风险暴露）</strong>，再按剩余期限修正。</li>
+<li>内部评级法更省资本，但 2008 危机暴露了模型”黑箱”问题，巴塞尔委员会 2016 年拟收紧。</li>
+<li>资本底线要求：高级法结果不得低于权重法的 95%&#x2F;90%&#x2F;80%。</li>
+</ul>
+<h3 id="3-风险加权资产透露的信息"><a href="#3-风险加权资产透露的信息" class="headerlink" title="3. 风险加权资产透露的信息"></a>3. 风险加权资产透露的信息</h3><p><strong>风险加权资产 &#x2F; 总资产</strong>变大 → 银行更多配置高权重资产，对未来乐观、呈进攻姿态；变小 → 悲观、保守退守。这是观察银行资产配置态度的窗口。</p>
+<hr>
+<h2 id="第十三课-利润表（上）"><a href="#第十三课-利润表（上）" class="headerlink" title="第十三课　利润表（上）"></a>第十三课　利润表（上）</h2><h3 id="1-利润表结构"><a href="#1-利润表结构" class="headerlink" title="1. 利润表结构"></a>1. 利润表结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">营业收入 − 营业支出 = 营业利润</span><br><span class="line">营业利润 + 营业外收支净额 = 税前利润（利润总额）</span><br><span class="line">税前利润 − 所得税费用 = 净利润</span><br><span class="line">净利润 − 少数股东损益 = 归属母公司股东的净利润</span><br><span class="line">归属母公司净利润 / 股本 = 每股收益（EPS）</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>银行利润极容易调节（贷款分类、拨备腾挪即可产生巨大差异），所以作者阅读时更侧重资产负债表。</p>
+</blockquote>
+<h3 id="2-其他综合收益"><a href="#2-其他综合收益" class="headerlink" title="2. 其他综合收益"></a>2. 其他综合收益</h3><ul>
+<li>其他综合收益＝影响净资产、不影响净利润的利得和损失（税后净额），分两类：以后<strong>不能</strong>重分类进损益的（受益计划精算、权益法下相应份额）与以后<strong>可以</strong>重分类进损益的（可供出售金融资产公允价值变动、现金流量套期有效部分、外币报表折算差额等）。</li>
+<li>关系式：资产负债表其他综合收益年初余额 + 利润表归属母公司其他综合收益税后净额 &#x3D; 年末余额。</li>
+<li>其他综合收益影响净资产 → 影响资本（多为核心一级资本）→ 影响资本充足率。</li>
+</ul>
+<h3 id="3-营业收入三大板块"><a href="#3-营业收入三大板块" class="headerlink" title="3. 营业收入三大板块"></a>3. 营业收入三大板块</h3><table>
+<thead>
+<tr>
+<th>板块</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>利差业务</strong></td>
+<td>利息净收入 &#x3D; 利息收入 − 利息支出（工行 2015 年 5078.67 亿元）</td>
+</tr>
+<tr>
+<td><strong>中间业务</strong></td>
+<td>手续费及佣金净收入（银行卡、理财、投行、托管、结算等）</td>
+</tr>
+<tr>
+<td><strong>其他业务</strong></td>
+<td>投资收益 + 公允价值变动净收益 + 汇兑及汇率产品净收益 + 其他业务收入</td>
+</tr>
+</tbody></table>
+<h4 id="FTP：内部资金转移定价"><a href="#FTP：内部资金转移定价" class="headerlink" title="FTP：内部资金转移定价"></a>FTP：内部资金转移定价</h4><pre class="mermaid">flowchart LR
+  A["负债部门&lt;br/&gt;(吸收存款)"] --&gt;|"按FTP价格卖资金"| V["虚拟资金中心"]
+  V --&gt;|"按FTP价格买资金"| B["资产部门&lt;br/&gt;(放贷/投资)"]
+  V -. "内部利息收入/支出&lt;br/&gt;独立核算绩效考核" .-&gt; C["引导资源按战略配置"]</pre>
+
+<ul>
+<li>FTP 是银行内部核算单笔业务资金成本&#x2F;收益的模式（美洲银行 20 世纪 80 年代首创），让负债业务成为可独立核算的”产品”。</li>
+</ul>
+<h4 id="中间业务"><a href="#中间业务" class="headerlink" title="中间业务"></a>中间业务</h4><ul>
+<li>国际先进银行中间业务收入占比 40%~70%，我国约 20% 上下（少数超 30%）。</li>
+<li>九大类：银行卡、个人理财及私人银行、结算清算及现金管理、投资银行、对公理财、资产托管、担保及承诺、代理收付及委托、其他。</li>
+<li>中间业务易形成<strong>客户黏性&#x2F;转换成本</strong>，故资本市场更青睐中间收入占比高的银行。</li>
+<li>概念区分：广义中间业务 &#x3D; 表外业务；狭义表外业务 &#x3D; 承担信用风险的中间业务（担保&#x2F;承诺类）。</li>
+</ul>
+<hr>
+<h2 id="第十四课-利润表（下）"><a href="#第十四课-利润表（下）" class="headerlink" title="第十四课　利润表（下）"></a>第十四课　利润表（下）</h2><h3 id="1-营业支出"><a href="#1-营业支出" class="headerlink" title="1. 营业支出"></a>1. 营业支出</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">营业支出 = 营业税金及附加 + 业务及管理费 + 资产减值损失 + 其他业务成本</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>营业税金及附加</strong>：营业税（应纳税营业收入 5%）、城建税（营业税 7%）、教育费附加（营业税 3%~5%）。2016 年 5 月营改增后税率改为增值部分的 6%，同业往来利息收入免税，但据测算银行税负可能轻微增加约 0.7%。</li>
+<li><strong>业务及管理费</strong> → 衍生出 <strong>成本收入比 &#x3D; 业务及管理费 &#x2F; 营业收入 ≤ 35%</strong>（越低效率越高）。</li>
+<li><strong>资产减值损失</strong>（拨备）：理解银行业最关键的成本项。</li>
+</ul>
+<h3 id="2-所得税费用"><a href="#2-所得税费用" class="headerlink" title="2. 所得税费用"></a>2. 所得税费用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所得税费用 = 当期应交所得税 + 递延所得税费用 + 以前年度所得税调整</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>递延所得税资产</strong>＝税务局多算了税（预缴）；<strong>递延所得税负债</strong>＝税务局少算了税（欠税）。</li>
+<li>差异来源：减值准备（会计计入费用、税法要实际发生才扣）、或有负债、公允价值波动、摊余成本法等。</li>
+<li>计算实例（演示 7 步）：应纳税所得额调整 → 应交所得税 → 递延所得税资产&#x2F;负债期末值 → 递延所得税费用 → 所得税费用 → 净利润。</li>
+</ul>
+<h3 id="3-如何观察利润表"><a href="#3-如何观察利润表" class="headerlink" title="3. 如何观察利润表"></a>3. 如何观察利润表</h3><ul>
+<li>做百分比表 + 多年趋势图 + 同行对比。</li>
+<li>关键数据：净利息收入比、中间收入比、成本收入比，以及<strong>拨备前利润</strong>（营业利润 + 资产减值损失加回）——用于剔除不同银行拨备政策差异看真实盈利能力。</li>
+<li>案例：2009 年”四万亿”使工行大幅降低拨备计提（拨备&#x2F;营收从 17.92% 降到 7.5%），净利率从 35.88% 飙至 41.8%——<strong>只是预期变化带来腾挪，而非经营立刻改善</strong>。</li>
+<li>结论：银行能通过”实际不良先多后少”腾挪成”报表不良大体平稳”，故利润表只能作辅助观察。</li>
+</ul>
+<hr>
+<h2 id="第十五课-重要的财务指标"><a href="#第十五课-重要的财务指标" class="headerlink" title="第十五课　重要的财务指标"></a>第十五课　重要的财务指标</h2><h3 id="1-监管体系：从骆驼到腕骨"><a href="#1-监管体系：从骆驼到腕骨" class="headerlink" title="1. 监管体系：从骆驼到腕骨"></a>1. 监管体系：从骆驼到腕骨</h3><pre class="mermaid">flowchart LR
+  CAMEL["骆驼评价体系 CAMEL&lt;br/&gt;Capital资本 / Asset资产质量&lt;br/&gt;Management管理 / Earnings盈利&lt;br/&gt;Liquidity流动性 (+S市场风险)"]
+  CAMEL --&gt; CARPALS["中国'腕骨'监管体系 CARPALS&lt;br/&gt;资本充足 / 资产质量 / 风险集中度&lt;br/&gt;拨备覆盖 / 附属机构 / 流动性 / 案件防控"]</pre>
+
+<h3 id="2-三类核心指标"><a href="#2-三类核心指标" class="headerlink" title="2. 三类核心指标"></a>2. 三类核心指标</h3><p><strong>风险水平类（静态）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>公式</th>
+<th>监管要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>流动性比例</td>
+<td>流动性资产 &#x2F; 流动性负债</td>
+<td>≥ 25%</td>
+</tr>
+<tr>
+<td>核心负债依存度</td>
+<td>核心负债 &#x2F; 总负债</td>
+<td>≥ 60%</td>
+</tr>
+<tr>
+<td>不良贷款率</td>
+<td>不良贷款 &#x2F; 贷款总额</td>
+<td>≤ 5%</td>
+</tr>
+<tr>
+<td>单一集团客户授信集中度</td>
+<td>最大集团授信 &#x2F; 资本</td>
+<td>≤ 15%</td>
+</tr>
+<tr>
+<td>单一客户贷款集中度</td>
+<td>最大客户贷款 &#x2F; 资本</td>
+<td>≤ 10%</td>
+</tr>
+<tr>
+<td>全部关联度</td>
+<td>关联方授信净额 &#x2F; 资本</td>
+<td>≤ 50%</td>
+</tr>
+</tbody></table>
+<p><strong>风险迁徙类（动态）</strong>：正常&#x2F;关注&#x2F;次级&#x2F;可疑类贷款迁徙率（衡量向下迁徙比例，无规定值）。</p>
+<p><strong>风险抵补类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>公式</th>
+<th>监管要求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>成本收入比</td>
+<td>业务及管理费 &#x2F; 营业收入</td>
+<td>≤ 35%</td>
+</tr>
+<tr>
+<td>资产利润率 ROA</td>
+<td>净利润 &#x2F; 资产平均余额</td>
+<td>≥ 0.6%</td>
+</tr>
+<tr>
+<td>资本利润率 ROE</td>
+<td>净利润 &#x2F; 所有者权益平均余额</td>
+<td>≥ 11%</td>
+</tr>
+<tr>
+<td>拨备覆盖率</td>
+<td>贷款损失准备 &#x2F; 不良贷款</td>
+<td>≥ 150%</td>
+</tr>
+<tr>
+<td>拨贷比</td>
+<td>贷款损失准备 &#x2F; 贷款余额</td>
+<td>≥ 2.5%</td>
+</tr>
+<tr>
+<td>资本充足率</td>
+<td>资本净额 &#x2F; 风险加权资产</td>
+<td>见第三课</td>
+</tr>
+<tr>
+<td>杠杆率</td>
+<td>一级资本净额 &#x2F; 调整后表内外资产</td>
+<td>≥ 4%</td>
+</tr>
+</tbody></table>
+<h3 id="3-央行-MPA-体系"><a href="#3-央行-MPA-体系" class="headerlink" title="3. 央行 MPA 体系"></a>3. 央行 MPA 体系</h3><ul>
+<li>MPA（宏观审慎评估体系）2016 年起实施，每季度末对商业银行<strong>全部资产</strong>（广义信贷：信贷、债券投资、股权及其他投资、委托贷款、对非银拆借）考核。</li>
+<li>七大方面 14 个指标，资本充足率是核心。90 分以上 A 档（给糖）、60-90 分 B 档（不奖不罚）、低于 60 分 C 档（吃鞭子）。</li>
+<li>“糖&#x2F;鞭子”＝法定准备金利率浮动、货币工具资格（SLF&#x2F;MLF&#x2F;SLO&#x2F;PSL）、同业存单发行许可、同业拆借准入资格。</li>
+</ul>
+<blockquote>
+<p>作者观点：对银行股东而言，拥有一个（乃至两个）苛刻的”婆婆”（银监会 + 央行）是好事——说明风险可控。</p>
+</blockquote>
+<hr>
+<h2 id="第十六课-银行股的选择（上）"><a href="#第十六课-银行股的选择（上）" class="headerlink" title="第十六课　银行股的选择（上）"></a>第十六课　银行股的选择（上）</h2><h3 id="1-银行业是否值得投资"><a href="#1-银行业是否值得投资" class="headerlink" title="1. 银行业是否值得投资"></a>1. 银行业是否值得投资</h3><ul>
+<li>“百业之母”：300 多年商业模式几乎没变。银行总资产始终以略高于 M2 的增速前进。</li>
+<li>三大优势：① 国家信用担保下吸收资金低成本；② 央行承诺<strong>最后的流动性</strong>（低价贷款特权）；③ 天然的<strong>进入壁垒</strong>（牌照审批 + 监管信用&#x2F;流动性便利不会无限提供）。</li>
+<li>十年复权回看（2006.6—2016.6）：上证涨 75%，而平安银行 380%、浦发 598%、民生 461%、招商 313%、华夏 323%，均数倍于大盘。</li>
+</ul>
+<h3 id="2-时机：银G比"><a href="#2-时机：银G比" class="headerlink" title="2. 时机：银G比"></a>2. 时机：银G比</h3><ul>
+<li>思路（东方证券王剑）：<strong>“银行利润&#x2F;产业利润”与银行股价反向</strong>。经济上行时企业抢着还本付息讨好银行，比值上行 → 股价将下行；经济恶化时银行利润滞后于产业利润恶化，比值触顶后下行 → 股价将回升。</li>
+<li>变通：用 GDP 替代产业利润，得”银G比 &#x3D; 银行业利润&#x2F;GDP”。逻辑上领先股价：占比升 → 股价可能跌；占比降 → 股价可能回升。</li>
+</ul>
+<h3 id="3-银行的差异化之路"><a href="#3-银行的差异化之路" class="headerlink" title="3. 银行的差异化之路"></a>3. 银行的差异化之路</h3><ul>
+<li>2015 年 10 月取消存款利率上限，利率市场化终结：付息成本提高、存贷利差收窄、净利息收入减少是趋势。</li>
+<li>利率市场化下真正算护城河的只有<strong>进入壁垒</strong>和<strong>转换成本</strong>（”麻烦”）。</li>
+<li>榜样富国银行：强调交叉销售，让每位客户用 8 种以上产品。</li>
+<li><strong>四大挑战</strong>：① 资产规模高速扩张难持续；② 金融脱媒（大企业转债券&#x2F;股权直接融资）；③ 互联网金融冲击；④ 混业经营。</li>
+<li>作者个人偏好：五大行里看好工行、建行；股份行里看好招行（零售）、民生（小微）、平安（集团交叉销售）；对城商行&#x2F;农商行抱有戒备（产业&#x2F;区域&#x2F;客户集中易出黑天鹅）。</li>
+</ul>
+<hr>
+<h2 id="第十七课-银行股的选择（下）：重点观察指标"><a href="#第十七课-银行股的选择（下）：重点观察指标" class="headerlink" title="第十七课　银行股的选择（下）：重点观察指标"></a>第十七课　银行股的选择（下）：重点观察指标</h2><p>只需关注两个角度：<strong>经营效益</strong> + <strong>资产质量</strong>。</p>
+<h3 id="1-经营效益"><a href="#1-经营效益" class="headerlink" title="1. 经营效益"></a>1. 经营效益</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>含义</th>
+<th>观察要点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>营业收入增速</td>
+<td>同级别银行对比相对强弱</td>
+<td>高增速 &#x3D; 抢到更多新蛋糕</td>
+</tr>
+<tr>
+<td>净利息收入比</td>
+<td>净利息收入 &#x2F; 营业收入</td>
+<td>越高，未来转型压力越大</td>
+</tr>
+<tr>
+<td>中间收入比</td>
+<td>手续费及佣金净收入 &#x2F; 营业收入</td>
+<td>越高，护城河越深，优先选择</td>
+</tr>
+<tr>
+<td>成本收入比</td>
+<td>业务及管理费 &#x2F; 营业收入</td>
+<td>过低&#x2F;过高都不好，需稳定区间</td>
+</tr>
+<tr>
+<td>资产利润率 ROA</td>
+<td>净利润 &#x2F; 资产平均余额</td>
+<td>下降时要分清是分子（利润）还是分母（生息资产）的原因</td>
+</tr>
+<tr>
+<td>净利息收益率 NIM</td>
+<td>利息净收入 &#x2F; 生息资产日均余额</td>
+<td>越高越好，需追问来源</td>
+</tr>
+</tbody></table>
+<p><strong>净息差 NIM vs 净利差 NIS</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">净利差 = 净息差 + (利息支出/生息资产日均余额 − 利息支出/付息负债日均余额)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>净利差是”利率之差”（近似存贷利差）；净息差是”收益率”（资金运用结果）。生息资产 &gt; 付息负债时，净利差 &lt; 净息差（常见）。</li>
+</ul>
+<p><strong>高净息差的层层追问</strong>：来源于低成本负债还是高收益资产？低成本的成因他人能否模仿？高收益是独特需求还是承担更大风险？若承担更大风险，拨备体现了吗？</p>
+<h3 id="2-资产质量"><a href="#2-资产质量" class="headerlink" title="2. 资产质量"></a>2. 资产质量</h3><pre class="mermaid">flowchart TB
+  A["资产质量"] --&gt; B["① 资本充足率&lt;br/&gt;距监管标准多远&lt;br/&gt;→ 扩张能力/融资需求/分红能力"]
+  A --&gt; C["② 不良与拨备"]
+  C --&gt; C1["先验证不良率可信度&lt;br/&gt;· 逾期90天以上/不良 &lt; 1&lt;br/&gt;· (逾期−不良)/贷款 趋势&lt;br/&gt;· 关注类/次级类迁徙率"]
+  C1 --&gt; C2["再看拨备是否充足&lt;br/&gt;· 拨备覆盖率&lt;br/&gt;· 保守口径：拨备/(逾期90天以上+重组贷款)"]
+  C2 --&gt; C3["看不良率趋势&lt;br/&gt;· GDP增速 / 产业调整 / 货币政策"]</pre>
+
+<ul>
+<li>拨备充足 → 利润含金量高 + 未来好转时有”拨备反哺”叠加效应。</li>
+<li><strong>贷款迁徙率</strong>：关注类迁徙率越低，说明”预计可收回”越可信；与宁波银行对比，工行的五级分类更值得信赖。</li>
+<li>保守替代口径：用”逾期 90 天以上贷款 + 重组贷款”替代不良贷款看拨备覆盖（&gt;100% 才安全）。</li>
+</ul>
+<h3 id="3-压力测试样本：晋商银行"><a href="#3-压力测试样本：晋商银行" class="headerlink" title="3. 压力测试样本：晋商银行"></a>3. 压力测试样本：晋商银行</h3><ul>
+<li>山西 GDP 从 2010 年 13.9% 断崖跌至 2015 年 3.1%，晋商银行营收仍稳定，净利润增速最多下滑 22%（因高拨备计提），依然保持盈利——拨备覆盖率从 400%+ 跌至 200%+。</li>
+<li>启示：即便极端悲观，银行”保持稳定盈利”概率仍极高；”无腾挪必悲惨”的假设对投资而言”正确但无意义”。</li>
+</ul>
+<hr>
+<h2 id="第十八课-估值与财报使用流程"><a href="#第十八课-估值与财报使用流程" class="headerlink" title="第十八课　估值与财报使用流程"></a>第十八课　估值与财报使用流程</h2><h3 id="1-估值方法"><a href="#1-估值方法" class="headerlink" title="1. 估值方法"></a>1. 估值方法</h3><p><strong>相对估值法</strong>（PE、PB、PS、PC 等）：选可比公司，用其市值&#x2F;因子 X 得出系数，套到目标公司。理论依据”市场给张三的价自有道理，李四像张三也值这价”。银行股常用 PB。</p>
+<ul>
+<li>老唐的 PB 用法（借斯蒂芬·彭曼”理解市场预期并质疑”）：不假设”报表为真则价值 X”，而是<strong>找市场低估值理由、判断多大概率真的那么糟、损失极限</strong>。</li>
+<li>例：民生 H 约 0.75 PB，反推市场认为其隐藏坏账约 1050 亿元，隐含总不良率约 13%。投资者判断这个”13%”是否明显错误，是则买入。</li>
+</ul>
+<p><strong>绝对估值法（现金流折现 &#x2F; 股利折现法）</strong>：唯一逻辑自洽的方法。</p>
+<pre class="mermaid">flowchart LR
+  A["股利折现法"] --&gt; B["价值A&lt;br/&gt;未来N年股利折现"]
+  A --&gt; C["价值B&lt;br/&gt;第N年净资产按一定PB出售折现"]
+  B --&gt; D["A + B = 银行价值"]
+  C --&gt; D
+  D --&gt; E["对比市值，留安全边际&lt;br/&gt;大师经验 4~7 折买入"]</pre>
+
+<ul>
+<li>演示：假设 ROE 19%（乐观）&#x2F;逐年降 1%（悲观）、分红比例 30%、折现率 7%、5 年后按 1.15 倍 PB 出手，工行乐观估值约 1.5 万亿元、悲观约 1.4 万亿元。</li>
+</ul>
+<h3 id="2-银行财报阅读九步流程"><a href="#2-银行财报阅读九步流程" class="headerlink" title="2. 银行财报阅读九步流程"></a>2. 银行财报阅读九步流程</h3><pre class="mermaid">flowchart TD
+  S1["① 审计意见：无保留意见"] --&gt; S2["② 资产负债表转百分比表&lt;br/&gt;找变化最大的科目"]
+  S2 --&gt; S3["③ 存款结构与付息率&lt;br/&gt;看获客能力"]
+  S3 --&gt; S4["④ 净利息差 / 净利息收益率&lt;br/&gt;看息差与生息资产"]
+  S4 --&gt; S5["⑤ 分析贷款质量（重心）&lt;br/&gt;不良/拨备/迁徙/逾期等"]
+  S5 --&gt; S6["⑥ 利润表百分比表&lt;br/&gt;四大项占比变化"]
+  S6 --&gt; S7["⑦ 财务概要监管指标&lt;br/&gt;ROA / 资本充足率 / RWA占比"]
+  S7 --&gt; S8["⑧ 对照董事长/行长致辞+讨论与分析&lt;br/&gt;拷问自己的认识"]
+  S8 --&gt; S9["⑨ 估值：相对估值 或 绝对估值&lt;br/&gt;决定买卖"]</pre>
+
+<blockquote>
+<p>第五步（贷款质量）是重心，关注指标：不良贷款率、拨备覆盖率、拨贷比、当年计提&#x2F;贷款余额、拨备前利润、（逾期+重组）&#x2F;贷款、当期新增逾期&#x2F;不良&#x2F;关注、90 天以上逾期&#x2F;不良、公司贷与个人贷占比、行业与地区分布。</p>
+</blockquote>
+<hr>
+<h2 id="全书核心要点速记"><a href="#全书核心要点速记" class="headerlink" title="全书核心要点速记"></a>全书核心要点速记</h2><ol>
+<li><strong>银行的三重身份</strong>：经营风险、依赖信用、合法”伪钞印刷厂”。</li>
+<li><strong>读懂银行的关键在资产负债表，不在利润表</strong>——利润可被拨备和分类腾挪；现金流量表可放弃。</li>
+<li><strong>贷款与拨备是重心</strong>：不良率 → 拨备覆盖率 &#x2F; 拨贷比 → 利润，是一条传导链。</li>
+<li><strong>拨备黑屋子流水账</strong>：期末 &#x3D; 期初 + 新增 − 回拨 − 已减值利息 − 核销 + 收回以前年度核销。</li>
+<li><strong>1.67% 是分水岭</strong>：不良率 &lt;1.67% 盯拨贷比 2.5%，≥1.67% 盯拨备覆盖率 150%。</li>
+<li><strong>真正危险的是非预期损失</strong>，不是不良贷款本身（预期损失已通过违约风险溢价转嫁）。</li>
+<li><strong>逾期 90 天以上&#x2F;不良 &gt;1</strong> 是五级分类可信度的警报。</li>
+<li><strong>资本充足率距监管线的差距</strong> &#x3D; 未来扩张&#x2F;融资&#x2F;分红能力的标尺。</li>
+<li><strong>风险加权资产&#x2F;总资产</strong> 的变化方向 &#x3D; 银行对未来的乐观&#x2F;悲观态度。</li>
+<li><strong>选股</strong>：经营效益（收入结构、ROA、NIM）+ 资产质量（资本充足率、不良与拨备）；<strong>估值</strong>用 PB 反推市场预期或股利折现。</li>
+<li><strong>时机</strong>可参考”银G比”反向指标；衰退&#x2F;萧条期寻找买点，选非预期损失小的银行。</li>
+<li>结尾金句：”<strong>能力大于理念！</strong>“深度研究创造价值——理念几分钟能说透，研究企业却要踏踏实实读财报、核数据。</li>
+</ol>
+<hr>
+<blockquote>
+<p><strong>延伸阅读</strong>：潘功胜《上市银行价值分析》、杰恩·德米内《银行估值与价值管理》、王胜春《中国上市银行年报分析》；以及作者前一本书《手把手教你读财报》（本笔记可在本站”阅读笔记”分类中找到对应篇目）。</p>
+</blockquote>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-23</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/23/%E8%AF%BB%E4%B9%A6/261023084617.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%93%88%E4%BD%9B%E3%80%81%E6%96%AF%E5%9D%A6%E7%A6%8F%E3%80%81%E8%80%B6%E9%B2%81%E5%A4%A7%E5%AD%A6%E7%BB%8F%E5%85%B8%E8%AF%BE%E7%A8%8B%E5%88%86%E4%BA%AB%EF%BC%88%E5%A5%97%E8%A3%8511%E5%86%8C%EF%BC%89%E3%80%8B/'>阅读笔记——《哈佛、斯坦福、耶鲁大学经典课程分享（套装11册）》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230846000001.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E9%BB%91%E5%AE%A2%E5%BF%83%E7%90%86%E5%AD%A6%EF%BC%9A%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%8E%9F%E7%90%86%E3%80%8B/">读书笔记——《黑客心理学：社会工程学原理》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

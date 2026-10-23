@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《审讯和供述心理学手册》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《审讯和供述心理学手册》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：22分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%AE%A1%E8%AE%AF%E5%92%8C%E4%BE%9B%E8%BF%B0%E5%BF%83%E7%90%86%E5%AD%A6%E6%89%8B%E5%86%8C%E3%80%8B"><span class="post-toc-text">阅读笔记——《审讯和供述心理学手册》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%AE%A1%E8%AE%AF%E5%92%8C%E4%BE%9B%E8%BF%B0"><span class="post-toc-text">第一部分：审讯和供述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%AE%A1%E8%AE%AF%E7%9A%84%E7%AD%96%E7%95%A5%E5%92%8C%E6%96%B9%E6%B3%95-%E2%80%94%E2%80%94-%E9%87%8C%E5%BE%B7%E6%8A%80%E6%9C%AF%EF%BC%88Reid-Technique%EF%BC%89"><span class="post-toc-text">第1章 审讯的策略和方法 —— 里德技术（Reid Technique）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC2%E2%80%934%E7%AB%A0-%E8%8B%B1%E5%9B%BD%E7%9A%84%E5%AE%A1%E8%AE%AF%E4%B8%8E%E2%80%9D%E5%BC%BA%E8%BF%AB%E5%BC%8F%E2%80%9D%E8%AE%AF%E9%97%AE"><span class="post-toc-text">第2–4章 英国的审讯与”强迫式”讯问</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC5%E2%80%936%E7%AB%A0-%E4%BE%9B%E8%BF%B0%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E9%AA%8C"><span class="post-toc-text">第5–6章 供述的原因：理论与实验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E6%B3%95%E5%BE%8B%E4%B8%8E%E5%BF%83%E7%90%86%E6%96%B9%E9%9D%A2"><span class="post-toc-text">第二部分：法律与心理方面</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC7%E7%AB%A0-%E8%AF%AF%E5%88%A4%E4%B8%8E%E8%99%9A%E5%81%87%E4%BE%9B%E8%BF%B0%EF%BC%88%E9%94%99%E6%A1%88%E7%A0%94%E7%A9%B6%EF%BC%89"><span class="post-toc-text">第7章 误判与虚假供述（错案研究）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC8%E2%80%9310%E7%AB%A0-%E8%99%9A%E5%81%87%E4%BE%9B%E8%BF%B0%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%AD%A6%EF%BC%88%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%EF%BC%89"><span class="post-toc-text">第8–10章 虚假供述的类型学（全书核心）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC11%E2%80%9312%E7%AB%A0-%E4%BE%9B%E8%BF%B0%E7%9A%84%E6%B3%95%E5%BE%8B%EF%BC%9A%E8%8B%B1%E5%9B%BD%E4%B8%8E%E7%BE%8E%E5%9B%BD"><span class="post-toc-text">第11–12章 供述的法律：英国与美国</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC13%E2%80%9314%E7%AB%A0-%E5%BF%83%E7%90%86%E5%AD%A6%E8%AF%84%E4%BC%B0%E4%B8%8E%E6%B3%95%E5%BA%AD%E6%8A%A5%E5%91%8A"><span class="post-toc-text">第13–14章 心理学评估与法庭报告</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E9%83%A8%E5%88%86%EF%BC%9A%E5%8F%97%E6%9A%97%E7%A4%BA%E6%80%A7%EF%BC%88Suggestibility%EF%BC%89"><span class="post-toc-text">第三部分：受暗示性（Suggestibility）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E5%8F%97%E6%9A%97%E7%A4%BA%E6%80%A7%EF%BC%9A%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%90%86%E8%AE%BA-%E2%80%94%E2%80%94-GSS-%E9%87%8F%E8%A1%A8"><span class="post-toc-text">第15章 受暗示性：历史与理论 —— GSS 量表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC16%E2%80%9317%E7%AB%A0-%E5%8F%97%E6%9A%97%E7%A4%BA%E6%80%A7%E7%9A%84%E7%9B%B8%E5%85%B3%E5%9B%A0%E7%B4%A0"><span class="post-toc-text">第16–17章 受暗示性的相关因素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC18%E7%AB%A0-%E5%BF%83%E7%90%86%E4%B8%8A%E7%9A%84%E6%98%93%E5%8F%97%E4%BC%A4%E5%AE%B3%E6%80%A7%EF%BC%88%E5%BF%83%E7%90%86%E8%84%86%E5%BC%B1%E5%9B%A0%E5%AD%90%EF%BC%89"><span class="post-toc-text">第18章 心理上的易受伤害性（心理脆弱因子）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%83%A8%E5%88%86%EF%BC%9A%E5%86%A4%E6%A1%88%E4%B8%8E%E6%A1%88%E4%BE%8B%E7%A0%94%E7%A9%B6"><span class="post-toc-text">第四部分：冤案与案例研究</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC19%E7%AB%A0-%E5%90%89%E5%B0%94%E7%A6%8F%E5%BE%B7%E5%9B%9B%E4%BA%BA%E6%A1%88-%E4%BC%AF%E6%98%8E%E7%BF%B0%E5%85%AD%E4%BA%BA%E6%A1%88%EF%BC%88%E8%8B%B1%E5%9B%BD%E5%8F%B8%E6%B3%95%E5%8F%B2%E7%9A%84%E6%A0%87%E5%BF%97%E6%80%A7%E5%86%A4%E6%A1%88%EF%BC%89"><span class="post-toc-text">第19章 吉尔福德四人案 &amp; 伯明翰六人案（英国司法史的标志性冤案）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC20%E2%80%9321%E7%AB%A0-%E8%84%86%E5%BC%B1%E4%B8%AA%E6%A1%88%E4%B8%8E%E8%AD%A6%E5%AF%9F%E7%9A%84%E4%B8%8D%E8%BD%A8%E8%A1%8C%E4%B8%BA"><span class="post-toc-text">第20–21章 脆弱个案与警察的不轨行为</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC22%E2%80%9323%E7%AB%A0-%E5%85%B6%E4%BB%96%E5%9B%BD%E5%AE%B6%E7%9A%84%E4%BA%89%E8%AE%AE%E6%A1%88%E4%BB%B6"><span class="post-toc-text">第22–23章 其他国家的争议案件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E8%B4%AF%E7%A9%BF%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">全书贯穿主线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E6%9D%A1%E6%9C%80%E8%AF%A5%E8%AE%B0%E4%BD%8F%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="post-toc-text">三条最该记住的知识点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%AF%B9%E6%99%AE%E9%80%9A%E8%AF%BB%E8%80%85%E7%9A%84%E4%BB%B7%E5%80%BC%EF%BC%88%E8%B6%85%E8%B6%8A%E5%8F%B8%E6%B3%95%E9%A2%86%E5%9F%9F%EF%BC%89"><span class="post-toc-text">对普通读者的价值（超越司法领域）</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《审讯和供述心理学手册》"><a href="#阅读笔记——《审讯和供述心理学手册》" class="headerlink" title="阅读笔记——《审讯和供述心理学手册》"></a>阅读笔记——《审讯和供述心理学手册》</h1><blockquote>
+<p><strong>英文原名</strong>：<em>The Psychology of Interrogations and Confessions: A Handbook</em><br><strong>作者</strong>：吉斯利·古德琼森（Gisli H. Gudjonsson），英国伦敦国王学院法医心理学教授，<strong>审讯暗示感受性研究的奠基人</strong><br><strong>中译本</strong>：司法心理学系列<br><strong>学科定位</strong>：法医心理学 &#x2F; 司法心理学的权威参考书<br><strong>核心主题</strong>：警察审讯策略、供述心理、虚假供述（false confessions）、审讯暗示感受性、误判（错案）</p>
+</blockquote>
+<p>这本书是<strong>审讯与供述心理学领域公认的”圣经”</strong>。它要回答一个残酷的问题：<strong>为什么一个无辜的人会承认自己没犯过的罪？</strong> 古德琼森用三十多年的实证研究和大量英国冤案，系统揭示了”审讯 → 供述 → 错判”这条链条上的每一个心理环节。</p>
+<hr>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><blockquote>
+<p>虚假供述不是罕见怪事，而是<strong>特定审讯技术 + 特定心理脆弱性</strong>相互作用的可预测产物——<strong>压力与欺骗的审讯手法，遇到易受暗示、心理脆弱的嫌疑人，就可能制造出”认罪”的冤案。</strong></p>
+</blockquote>
+<hr>
+<h2 id="全书地图"><a href="#全书地图" class="headerlink" title="全书地图"></a>全书地图</h2><pre class="mermaid">flowchart TB
+    BOOK["审讯和供述心理学手册&lt;br/&gt;Gudjonsson"]
+    INTRO["绪论&lt;br/&gt;一个17岁少年的讯问"]
+    P1["第一部分&lt;br/&gt;审讯和供述&lt;br/&gt;（警察如何审讯）"]
+    P2["第二部分&lt;br/&gt;法律与心理方面&lt;br/&gt;（供述与虚假供述）"]
+    P3["第三部分&lt;br/&gt;受暗示性&lt;br/&gt;（易受暗示的心理）"]
+    P4["第四部分&lt;br/&gt;冤案与案例研究&lt;br/&gt;（错判如何发生）"]
+
+    BOOK --&gt; INTRO
+    BOOK --&gt; P1 &amp; P2 &amp; P3 &amp; P4
+
+    P1 --&gt; A["1 审讯的策略和方法&lt;br/&gt;2 英国的审讯&lt;br/&gt;3 羁押中的危险人群&lt;br/&gt;4 强迫式讯问的测量&lt;br/&gt;5 供述原因的理论&lt;br/&gt;6 供述的实验研究"]
+    P2 --&gt; B["7 误判与虚假供述&lt;br/&gt;8 虚假供述心理学&lt;br/&gt;9 虚假供述的原因&lt;br/&gt;10 虚假供述案例&lt;br/&gt;11 英国供述法律&lt;br/&gt;12 美国供述法律&lt;br/&gt;13 心理学评估&lt;br/&gt;14 法庭报告"]
+    P3 --&gt; C["15 受暗示性：历史与理论&lt;br/&gt;16 受暗示性与实验者效应&lt;br/&gt;17 受暗示性与社会赞许/自信&lt;br/&gt;18 心理上的易受伤害性"]
+    P4 --&gt; D["19 吉尔福德四人案·伯明翰六人案&lt;br/&gt;20 一系列脆弱个案&lt;br/&gt;21 警察的不轨行为&lt;br/&gt;22-23 其他国家争议案件"]
+
+    style BOOK fill:#4a90d9,color:#fff
+    style INTRO fill:#9b59b6,color:#fff
+    style P1 fill:#5cb85c,color:#fff
+    style P2 fill:#f0ad4e,color:#fff
+    style P3 fill:#d9534f,color:#fff
+    style P4 fill:#e67e22,color:#fff</pre>
+
+<p><strong>全书逻辑</strong>：先讲”警察如何审讯”（第一部分）→ 再讲”为什么会产生供述和虚假供述”（第二部分）→ 再讲”什么人容易被审讯暗示”（第三部分）→ 最后用”真实冤案”验证一切（第四部分）。</p>
+<hr>
+<h2 id="第一部分：审讯和供述"><a href="#第一部分：审讯和供述" class="headerlink" title="第一部分：审讯和供述"></a>第一部分：审讯和供述</h2><h3 id="第1章-审讯的策略和方法-——-里德技术（Reid-Technique）"><a href="#第1章-审讯的策略和方法-——-里德技术（Reid-Technique）" class="headerlink" title="第1章 审讯的策略和方法 —— 里德技术（Reid Technique）"></a>第1章 审讯的策略和方法 —— 里德技术（Reid Technique）</h3><p><strong>核心命题</strong>：美国最主流的审讯手册（英博 Inbau、里德 Reid、巴克利 Buckley 所著）主张——<strong>“要揭露真相，一定的压力、欺骗、说服和操纵是必需的”</strong>。数十万侦查人员接受过这套训练。</p>
+<p><strong>里德技术”九步法”（Nine Steps of Interrogation）</strong>——审讯的标准化流程：</p>
+<pre class="mermaid">flowchart TB
+    S1["① 正面指控&lt;br/&gt;直接断言嫌疑人有罪"]
+    S2["② 展开主题&lt;br/&gt;提出合理化借口"]
+    S3["③ 阻止否认&lt;br/&gt;打断嫌疑人的否认"]
+    S4["④ 克服异议&lt;br/&gt;把嫌疑人的理由转为己用"]
+    S5["⑤ 保持注意&lt;br/&gt;拉近距离、减少心理距离"]
+    S6["⑥ 处理消极情绪&lt;br/&gt;当嫌疑人沉默时示弱"]
+    S7["⑦ 给出选择&lt;br/&gt;提供两个"故事"，一个有面子"]
+    S8["⑧ 引出供述&lt;br/&gt;从口头承认到书面供述"]
+    S9["⑨ 转化书面供述&lt;br/&gt;固定成证据"]
+
+    S1 --&gt; S2 --&gt; S3 --&gt; S4 --&gt; S5 --&gt; S6 --&gt; S7 --&gt; S8 --&gt; S9
+
+    style S1 fill:#4a90d9,color:#fff
+    style S2 fill:#5cb85c,color:#fff
+    style S3 fill:#f0ad4e,color:#fff
+    style S4 fill:#d9534f,color:#fff
+    style S5 fill:#9b59b6,color:#fff
+    style S6 fill:#1abc9c,color:#fff
+    style S7 fill:#e67e22,color:#fff
+    style S8 fill:#34495e,color:#fff
+    style S9 fill:#c0392b,color:#fff</pre>
+
+<p><strong>九步法的核心手法</strong>：</p>
+<ul>
+<li><strong>欺骗（deception）</strong>：提出虚假证据（如”你同伙已经招了”）、夸大证据的证明力、假装有测谎结果。</li>
+<li><strong>合理化（minimization &#x2F; 主题展开）</strong>：给嫌疑人一个”道德上有台阶”的借口（”换成谁都会这么干””你只是一时冲动”），降低供述的心理门槛。</li>
+<li><strong>不给否认机会</strong>：反复打断嫌疑人的否认，使其”习得性放弃抵抗”。</li>
+</ul>
+<p><strong>关键洞察</strong>：九步法是<strong>多年成功审讯经验的归纳</strong>，但它<strong>预设了”嫌疑人有罪”</strong>——这正是它制造虚假供述的根源：<strong>一套为”让有罪者招供”设计的技术，用在”无辜者”身上，同样有效。</strong></p>
+<blockquote>
+<p><strong>价值点</strong>：理解里德技术，是理解”为什么无辜者会认罪”的第一把钥匙。它的每一步都可能在削弱无辜者的抵抗能力。</p>
+</blockquote>
+<hr>
+<h3 id="第2–4章-英国的审讯与”强迫式”讯问"><a href="#第2–4章-英国的审讯与”强迫式”讯问" class="headerlink" title="第2–4章 英国的审讯与”强迫式”讯问"></a>第2–4章 英国的审讯与”强迫式”讯问</h3><p><strong>核心命题</strong>：英国警方传统上使用更”强迫式”（oppressive）的审讯策略，直到 1984 年《警察与刑事证据法》（PACE）改革。</p>
+<p><strong>关键概念</strong>：</p>
+<ul>
+<li><strong>“会见证人”（interview）术语的普及</strong>：英国后来用”会见”（interview）取代”审讯”（interrogation），并纳入警察培训（PEACE 模型：Planning、Engage、Account、Closure、Evaluate）。</li>
+<li><strong>PEACE 模型</strong>（英国式非强迫审讯）：强调**信息收集（investigative interviewing）**而非”逼供”，不预设嫌疑人有罪。</li>
+<li><strong>皇家委员会研究</strong>：识别警察羁押期间的危险人群（弱势群体）。</li>
+<li><strong>“强迫式”讯问策略的测量</strong>：用录音录像、统计方法鉴别警方是否使用了压迫性策略。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：英国从”强迫式审讯”转向”PEACE 信息收集式会见”的历史，是<strong>审讯制度改革的经典案例</strong>——证明”不逼供也能破案”是可能的。</p>
+</blockquote>
+<hr>
+<h3 id="第5–6章-供述的原因：理论与实验"><a href="#第5–6章-供述的原因：理论与实验" class="headerlink" title="第5–6章 供述的原因：理论与实验"></a>第5–6章 供述的原因：理论与实验</h3><p><strong>核心命题</strong>：嫌疑人为什么供述？是<strong>多因素综合</strong>，而非单一因素。</p>
+<p><strong>供述的三项相关因素</strong>：</p>
+<pre class="mermaid">flowchart TB
+    C["犯罪嫌疑人供述"]
+    F1["内在压力&lt;br/&gt;（自责感、倾诉犯罪的需要）"]
+    F2["外在压力&lt;br/&gt;（害怕惩罚、警方说服）"]
+    F3["证据感知&lt;br/&gt;（对控方证据强度的判断）"]
+    C --&gt; F1 &amp; F2 &amp; F3
+
+    F3 --&gt; F3a["有罪证据的强度&lt;br/&gt;是导致供述的&lt;br/&gt;唯一最强动机"]
+
+    style C fill:#4a90d9,color:#fff
+    style F1 fill:#5cb85c,color:#fff
+    style F2 fill:#f0ad4e,color:#fff
+    style F3 fill:#d9534f,color:#fff</pre>
+
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li><strong>有罪证据的强度</strong>是导致供述的<strong>唯一最强动机</strong>——当嫌疑人认为”证据确凿、翻不了案”时，最可能供述（哪怕认罪能换来从宽）。</li>
+<li><strong>供述的”满意度”差异</strong>：因”证据强大”或”内在倾诉需要”而供述的人，事后<strong>满足</strong>；而因”警方压力”供述的人，几年后仍<strong>极度不满</strong>。</li>
+<li><strong>供述是动态博弈</strong>：年龄、前科、罪行严重性、证据强度、是否获法律意见等因素<strong>交互作用</strong>，孤立研究单个变量会得出错误结论。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“证据强度”是供述的第一驱动力</strong>——这解释了为什么”证据不足时逼供”特别危险：既可能冤枉无辜，也会让有罪者事后翻供、不满。</p>
+</blockquote>
+<hr>
+<h2 id="第二部分：法律与心理方面"><a href="#第二部分：法律与心理方面" class="headerlink" title="第二部分：法律与心理方面"></a>第二部分：法律与心理方面</h2><h3 id="第7章-误判与虚假供述（错案研究）"><a href="#第7章-误判与虚假供述（错案研究）" class="headerlink" title="第7章 误判与虚假供述（错案研究）"></a>第7章 误判与虚假供述（错案研究）</h3><p><strong>核心命题</strong>：所有司法体系都<strong>不可避免地会出错</strong>。误判是多因素导致的，而<strong>虚假供述是重要原因之一</strong>。</p>
+<p><strong>误判研究的经典数据</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>研究</th>
+<th>样本</th>
+<th>关键发现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>博卡（Borchard, 1932）</td>
+<td>62 名美国 + 3 名英国被告</td>
+<td>首次系统研究误判；指出智力低下与虚假供述相关</td>
+</tr>
+<tr>
+<td>拉廷（Radin, 1964）</td>
+<td>约 300 个案件</td>
+<td>“公众抗议”导致警方草率结案（”呼警”现象）</td>
+</tr>
+<tr>
+<td>布朗登 &amp; 戴维斯（1973）</td>
+<td>英国 70 个错误羁押案件</td>
+<td>错误辨认 + 自证有罪的供述是两大主因</td>
+</tr>
+<tr>
+<td>贝道 &amp; 拉德莱（1987）</td>
+<td>美国 350 个死刑&#x2F;可能死刑错案</td>
+<td><strong>证人错误辨认占近 60%</strong>；虚假供述占约 14%</td>
+</tr>
+</tbody></table>
+<p><strong>核心结论</strong>：</p>
+<ul>
+<li><strong>证人错误辨认是最普遍的错案原因</strong>（约 49%–60%），<strong>虚假供述紧随其后</strong>（约 8%–14%）。</li>
+<li>错案很少是单一原因，常是<strong>辨认错误 + 虚假供述 + 警方不当行为 + 控方隐瞒证据</strong>的叠加。</li>
+<li><strong>公众强烈抗议会显著增加错案风险</strong>——舆论压力下警方急于结案、草率审讯。</li>
+<li>刑事司法体系<strong>自我纠错能力极弱</strong>：被错判者几乎都靠”他人的好意”（律师、记者、亲友）才能翻案。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“有口供 ≠ 有真相”</strong>。口供曾被称为”证据之王”，但大量错案研究证明它是”最危险的证据之一”。这一章是全书对司法实践最尖锐的警告。</p>
+</blockquote>
+<hr>
+<h3 id="第8–10章-虚假供述的类型学（全书核心）"><a href="#第8–10章-虚假供述的类型学（全书核心）" class="headerlink" title="第8–10章 虚假供述的类型学（全书核心）"></a>第8–10章 虚假供述的类型学（全书核心）</h3><p><strong>核心命题</strong>：虚假供述有<strong>三种类型</strong>（Kassin &amp; Wrightsman 分类），这是理解一切虚假供述的框架：</p>
+<pre class="mermaid">flowchart TB
+    FC["虚假供述&lt;br/&gt;False Confessions"]
+    T1["① 自愿型&lt;br/&gt;Voluntary&lt;br/&gt;（无外部压力）"]
+    T2["② 压迫-服从型&lt;br/&gt;Coerced-Compliant&lt;br/&gt;（有外部压力，内心不信）"]
+    T3["③ 压迫-内化型&lt;br/&gt;Coerced-Internalized&lt;br/&gt;（有外部压力，内心相信）"]
+
+    FC --&gt; T1 &amp; T2 &amp; T3
+
+    T1 --&gt; T1a["无外部压力，主动认罪&lt;br/&gt;如：为出名、掩护他人、&lt;br/&gt;病态罪恶感、&lt;br/&gt;无法区分现实与幻想"]
+    T2 --&gt; T2b["知道自己是无辜的&lt;br/&gt;但为了摆脱审讯压力&lt;br/&gt;（疲劳、恐惧、威胁）&lt;br/&gt;而"暂时"认罪&lt;br/&gt;→ 事后翻供"]
+    T3 --&gt; T3c["在审讯中逐渐"相信"&lt;br/&gt;自己真的犯了罪&lt;br/&gt;→ 记忆被污染&lt;br/&gt;→ 产生"虚假记忆""]
+
+    style FC fill:#4a90d9,color:#fff
+    style T1 fill:#5cb85c,color:#fff
+    style T2 fill:#f0ad4e,color:#fff
+    style T3 fill:#d9534f,color:#fff</pre>
+
+<p><strong>三种类型的核心区别</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>外部压力</th>
+<th>内心信念</th>
+<th>典型情境</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>自愿型</strong></td>
+<td>无</td>
+<td>明知无辜仍认罪</td>
+<td>为出名、保护真凶、精神病性幻想</td>
+</tr>
+<tr>
+<td><strong>压迫-服从型</strong></td>
+<td>有</td>
+<td>知道自己无辜</td>
+<td>熬不住审讯、想早点回家、害怕更糟后果</td>
+</tr>
+<tr>
+<td><strong>压迫-内化型</strong></td>
+<td>有</td>
+<td><strong>真的相信自己有罪</strong></td>
+<td>极度疲劳 + 虚假证据 + 易受暗示者</td>
+</tr>
+</tbody></table>
+<p><strong>为什么会产生”内化型”虚假供述</strong>（最危险的类型）：</p>
+<ul>
+<li>审讯中出示<strong>虚假证据</strong>（”我们有你指纹”）；</li>
+<li>嫌疑人<strong>记忆不可靠</strong>，开始自我怀疑（”也许我喝醉了不记得”）；</li>
+<li><strong>信任警方</strong>（”警察不会骗我，他们说有证据，那可能真的有”）；</li>
+<li>最终<strong>重构出一个”虚假记忆”</strong>，真心相信自己犯了罪。</li>
+</ul>
+<p><strong>供述模型</strong>：古德琼森还讨论了几种供述理论模型（如柯夫舒-里奥供述模型），强调供述是一个<strong>多因素决策过程</strong>。</p>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“压迫-内化型”虚假供述最颠覆常识</strong>——无辜者不是”被迫说谎”，而是”真的相信自己有罪”。这说明<strong>记忆是可被污染和重构的</strong>，而这正是审讯暗示感受性研究的意义所在。</p>
+</blockquote>
+<hr>
+<h3 id="第11–12章-供述的法律：英国与美国"><a href="#第11–12章-供述的法律：英国与美国" class="headerlink" title="第11–12章 供述的法律：英国与美国"></a>第11–12章 供述的法律：英国与美国</h3><p><strong>核心命题</strong>：法律对供述证据的规制，是防止虚假供述的第一道防线。</p>
+<p><strong>英国法</strong>：</p>
+<ul>
+<li>供述证据的**可采性（admissibility）与可信性（reliability）**是两回事——可采不等于可信。</li>
+<li>1984 年《警察与刑事证据法》（PACE）规定：<strong>通过压迫（oppression）获得的供述不可采</strong>。</li>
+<li>对<strong>心理脆弱（精神障碍）被告</strong>有特殊保护。</li>
+</ul>
+<p><strong>美国法</strong>：</p>
+<ul>
+<li><strong>米兰达权利（Miranda rights）</strong>：”你有权保持沉默……”——源自 1966 年米兰达诉亚利桑那州案。</li>
+<li>供述的自愿性（voluntariness）标准。</li>
+<li>英美的关键差异：<strong>美国更强调”自愿性”，英国更强调”可靠性”</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：法律不是万能的——即使有米兰达权利和 PACE，虚假供述依然发生。因为<strong>法律管的是”程序”，管不住”审讯室里的心理学”</strong>。这正是本书呼吁”心理学专家介入”的原因。</p>
+</blockquote>
+<hr>
+<h3 id="第13–14章-心理学评估与法庭报告"><a href="#第13–14章-心理学评估与法庭报告" class="headerlink" title="第13–14章 心理学评估与法庭报告"></a>第13–14章 心理学评估与法庭报告</h3><p><strong>核心命题</strong>：心理学家可以对”供述的可信性”和”嫌疑人的心理脆弱性”进行专业评估，并作为<strong>专家证据</strong>出庭。</p>
+<p><strong>评估框架</strong>：</p>
+<ul>
+<li><strong>智力障碍</strong>（学习障碍）——智力低下者更易受暗示、更易屈从；</li>
+<li><strong>人格障碍</strong>、<strong>精神疾病</strong>；</li>
+<li><strong>焦虑、低自尊、顺从性</strong>；</li>
+<li><strong>讯问中的心理状态</strong>（是否处于异常脆弱状态）。</li>
+</ul>
+<p><strong>专家证据</strong>：心理学家就”某供述的可靠性”或”某被告的易受暗示性”出具法庭报告、提供口头证词，帮助法庭理解”这个供述可能是怎么产生的”。</p>
+<blockquote>
+<p><strong>价值点</strong>：这一章确立了<strong>法医心理学家在错案纠偏中的角色</strong>——不是替被告开脱，而是向法庭提供”普通人不知道的心理学知识”。</p>
+</blockquote>
+<hr>
+<h2 id="第三部分：受暗示性（Suggestibility）"><a href="#第三部分：受暗示性（Suggestibility）" class="headerlink" title="第三部分：受暗示性（Suggestibility）"></a>第三部分：受暗示性（Suggestibility）</h2><h3 id="第15章-受暗示性：历史与理论-——-GSS-量表"><a href="#第15章-受暗示性：历史与理论-——-GSS-量表" class="headerlink" title="第15章 受暗示性：历史与理论 —— GSS 量表"></a>第15章 受暗示性：历史与理论 —— GSS 量表</h3><p><strong>核心命题</strong>：**审讯暗示感受性（interrogative suggestibility）**是古德琼森最重要的学术贡献——它回答”<strong>什么人在审讯中容易被误导而接受虚假信息</strong>“。</p>
+<p><strong>古德琼森暗示感受性量表（GSS 1 &#x2F; GSS 2）</strong>：</p>
+<pre class="mermaid">flowchart TB
+    GSS["审讯暗示感受性&lt;br/&gt;Interrogative Suggestibility"]
+    Y["屈服&lt;br/&gt;Yield&lt;br/&gt;（面对误导性问题时&lt;br/&gt;是否"接受"暗示）"]
+    S["转换&lt;br/&gt;Shift&lt;br/&gt;（受到负面反馈后&lt;br/&gt;是否"改变"答案）"]
+    GSS --&gt; Y
+    GSS --&gt; S
+
+    Y --&gt; Y1["测量：对误导性提问&lt;br/&gt;的顺从程度"]
+    S --&gt; S1["测量：被质疑后&lt;br/&gt;动摇、改变答案的程度"]
+
+    style GSS fill:#4a90d9,color:#fff
+    style Y fill:#5cb85c,color:#fff
+    style S fill:#f0ad4e,color:#fff</pre>
+
+<p><strong>GSS 的两个核心维度</strong>：</p>
+<ol>
+<li><strong>屈服（Yield）</strong>：面对”误导性问题”（问题里暗含未发生的事实）时，是否会”接受”并顺着说。</li>
+<li><strong>转换（Shift）</strong>：受到<strong>负面反馈</strong>（”你答得不好”）后，是否会动摇、改变自己原本正确的答案。</li>
+</ol>
+<p><strong>古德琼森 &amp; 克拉克的理论模型</strong>：暗示感受性取决于三个心理前提——<strong>不确定性、人际信任、对结果的预期</strong>。即：当一个人（1）对答案不确定、（2）信任提问者、（3）预期”顺从有好处”时，最容易接受暗示。</p>
+<blockquote>
+<p><strong>价值点</strong>：GSS 量表是**”易受暗示性”的第一个可量化测量工具**，也是法医心理学家评估”供述是否可靠”的核心工具。它把”这个人容易被逼供”从”感觉”变成了”可测量的分数”。</p>
+</blockquote>
+<hr>
+<h3 id="第16–17章-受暗示性的相关因素"><a href="#第16–17章-受暗示性的相关因素" class="headerlink" title="第16–17章 受暗示性的相关因素"></a>第16–17章 受暗示性的相关因素</h3><p><strong>核心命题</strong>：受暗示性与一系列心理变量相关，勾勒出”易受暗示者”的心理画像。</p>
+<p><strong>关键相关因素</strong>：</p>
+<ul>
+<li><strong>实验者效应</strong>：提问者的地位、权威、态度会显著影响被试的受暗示性。</li>
+<li><strong>社会赞许性</strong>：渴望被认可的人，更易屈从。</li>
+<li><strong>自信</strong>：自信越低，越易受暗示。</li>
+<li><strong>自尊心</strong>：低自尊者更易动摇。</li>
+<li><strong>测验地点 &#x2F; 警察会见</strong>：审讯的高压环境会放大受暗示性。</li>
+<li><strong>受暗示性与虚假认罪</strong>：GSS 分数高的人，更可能出现虚假供述。</li>
+<li><strong>受暗示性与目击证言 &#x2F; 恢复性记忆</strong>：受暗示性也会污染证人的记忆（”被引导出来的记忆”）。</li>
+<li><strong>药物和酒精</strong>：毒品、酒精戒断会大幅降低证言可靠性（书中收录”海洛因吸食者对谋杀的虚假供认”案例）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：<strong>“易受暗示”不是道德缺陷，而是一组可测量的心理特征</strong>（低自信、低自尊、高社会赞许、智力受限等）。理解它，才能理解为什么”同样一套审讯，有人扛得住，有人崩溃认罪”。</p>
+</blockquote>
+<hr>
+<h3 id="第18章-心理上的易受伤害性（心理脆弱因子）"><a href="#第18章-心理上的易受伤害性（心理脆弱因子）" class="headerlink" title="第18章 心理上的易受伤害性（心理脆弱因子）"></a>第18章 心理上的易受伤害性（心理脆弱因子）</h3><p><strong>核心命题</strong>：某些人的心理特质使其在审讯中<strong>特别脆弱</strong>，容易被诱导出虚假供述。</p>
+<p><strong>主要脆弱因子</strong>：</p>
+<pre class="mermaid">flowchart LR
+    V["心理脆弱性"]
+    V1["智力障碍&lt;br/&gt;（学习障碍）"]
+    V2["精神疾病&lt;br/&gt;（抑郁、精神病）"]
+    V3["人格障碍"]
+    V4["焦虑与顺从"]
+    V5["低自尊"]
+    V6["无法区分现实与幻想"]
+    V7["误诊的心因性遗忘症"]
+    V --&gt; V1 &amp; V2 &amp; V3 &amp; V4 &amp; V5 &amp; V6 &amp; V7
+
+    style V fill:#4a90d9,color:#fff
+    style V1 fill:#5cb85c,color:#fff
+    style V2 fill:#f0ad4e,color:#fff
+    style V3 fill:#d9534f,color:#fff
+    style V4 fill:#9b59b6,color:#fff
+    style V5 fill:#1abc9c,color:#fff
+    style V6 fill:#e67e22,color:#fff
+    style V7 fill:#34495e,color:#fff</pre>
+
+<blockquote>
+<p><strong>价值点</strong>：<strong>审讯不是”人人平等”的</strong>——同样的压力，对弱势者是碾压性的。这一章为”审讯中必须特殊保护弱势群体”提供了心理学依据。</p>
+</blockquote>
+<hr>
+<h2 id="第四部分：冤案与案例研究"><a href="#第四部分：冤案与案例研究" class="headerlink" title="第四部分：冤案与案例研究"></a>第四部分：冤案与案例研究</h2><h3 id="第19章-吉尔福德四人案-伯明翰六人案（英国司法史的标志性冤案）"><a href="#第19章-吉尔福德四人案-伯明翰六人案（英国司法史的标志性冤案）" class="headerlink" title="第19章 吉尔福德四人案 &amp; 伯明翰六人案（英国司法史的标志性冤案）"></a>第19章 吉尔福德四人案 &amp; 伯明翰六人案（英国司法史的标志性冤案）</h3><p><strong>核心命题</strong>：这两个案件是<strong>虚假供述导致错判</strong>的最著名案例，最终推动英国司法改革。</p>
+<p><strong>吉尔福德四人案（Guildford Four）</strong>：</p>
+<ul>
+<li>1974 年，爱尔兰共和军（IRA）爆炸案后，4 人被错误定罪。</li>
+<li>他们在高压审讯下作出虚假供述，被判处长期监禁。</li>
+<li><strong>1989 年，在关押 15 年后被平反</strong>——关键证据表明警方伪造&#x2F;篡改了供述记录。</li>
+</ul>
+<p><strong>伯明翰六人案（Birmingham Six）</strong>：</p>
+<ul>
+<li>1974 年伯明翰酒吧爆炸案，6 人被错误定罪。</li>
+<li>同样在高压审讯下”供述”，1991 年被平反。</li>
+<li>这些冤案暴露了<strong>强迫审讯、伪造证据、忽视心理脆弱性</strong>的系统性问题。</li>
+</ul>
+<p><strong>历史意义</strong>：这两个案件直接推动了**1984 年《警察与刑事证据法》（PACE）**的出台，规定审讯必须录音、压迫性供述不可采。</p>
+<blockquote>
+<p><strong>价值点</strong>：<strong>冤案是制度改革的催化剂</strong>。理解这两个案件，就理解了为什么”审讯录音录像””非强迫审讯””心理脆弱性评估”如此重要——它们不是技术细节，而是<strong>防止把人冤枉进监狱的底线</strong>。</p>
+</blockquote>
+<hr>
+<h3 id="第20–21章-脆弱个案与警察的不轨行为"><a href="#第20–21章-脆弱个案与警察的不轨行为" class="headerlink" title="第20–21章 脆弱个案与警察的不轨行为"></a>第20–21章 脆弱个案与警察的不轨行为</h3><p><strong>核心命题</strong>：一系列个案展示了”心理脆弱 + 审讯压力”如何制造虚假供述。</p>
+<p><strong>个案速览</strong>（每个都是”脆弱性”的活教材）：</p>
+<table>
+<thead>
+<tr>
+<th>个案</th>
+<th>脆弱性类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>卡特琳·弗莱彻</td>
+<td>“无法确认的临界智力”</td>
+</tr>
+<tr>
+<td>朱迪斯·沃德</td>
+<td>人格障碍</td>
+</tr>
+<tr>
+<td>大卫·麦肯齐</td>
+<td>无法区分现实和幻觉</td>
+</tr>
+<tr>
+<td>乔治·朗</td>
+<td>临床抑郁症</td>
+</tr>
+<tr>
+<td>帕特里克·凯恩</td>
+<td>焦虑和顺从</td>
+</tr>
+<tr>
+<td>安德鲁·埃文斯</td>
+<td>误诊的心因性遗忘症</td>
+</tr>
+<tr>
+<td>达伦·霍尔</td>
+<td>非精神病学诊断的人格障碍</td>
+</tr>
+<tr>
+<td>艾因·海·蕊登</td>
+<td>讯问中被利用性话题</td>
+</tr>
+<tr>
+<td>彼得·费尔</td>
+<td>低自尊</td>
+</tr>
+</tbody></table>
+<p><strong>警察的不轨行为</strong>：阿尔弗莱德·艾伦案（”四个北爱尔兰防卫团成员”案）、德里克·本特里案、达维尔兄弟案、唐纳德·彭德尔顿案——展示了警方<strong>伪造、胁迫、隐瞒无罪证据</strong>等系统性问题。</p>
+<blockquote>
+<p><strong>价值点</strong>：这些个案构成了一个”虚假供述高风险人群”的<strong>识别清单</strong>——智力边缘、精神疾病、人格障碍、低自尊、焦虑顺从者，是最需要保护的审讯对象。</p>
+</blockquote>
+<hr>
+<h3 id="第22–23章-其他国家的争议案件"><a href="#第22–23章-其他国家的争议案件" class="headerlink" title="第22–23章 其他国家的争议案件"></a>第22–23章 其他国家的争议案件</h3><p><strong>核心命题</strong>：虚假供述不是英国特有现象，而是<strong>全球司法体系的普遍风险</strong>。</p>
+<p><strong>挪威谋杀案（第23章）</strong>：<strong>“错误的信念导致错误的供认”</strong>——一个无辜者因为极度疲劳、虚假证据和信任警方，最终<strong>真心相信自己杀了人</strong>并供认。这是”压迫-内化型”虚假供述的教科书级案例，也是最令人不寒而栗的一种——<strong>连本人都不再相信自己的无辜</strong>。</p>
+<blockquote>
+<p><strong>价值点</strong>：这个案例是全书的高潮，它用真实悲剧证明了一个反直觉的事实：<strong>记忆可以被重构，无辜者可以被”说服”相信自己有罪。</strong></p>
+</blockquote>
+<hr>
+<h2 id="全书贯穿主线"><a href="#全书贯穿主线" class="headerlink" title="全书贯穿主线"></a>全书贯穿主线</h2><pre class="mermaid">flowchart LR
+    A["审讯技术&lt;br/&gt;（压力+欺骗+操纵）"]
+    B["心理脆弱性&lt;br/&gt;（低智/精神疾病/易受暗示）"]
+    C["虚假供述&lt;br/&gt;（自愿/服从/内化）"]
+    D["误判&lt;br/&gt;（错案）"]
+
+    A --&gt; C
+    B --&gt; C
+    C --&gt; D
+
+    E["制度防线&lt;br/&gt;（录音/PACE/米兰达/专家评估）"]
+    E -.-&gt;|"切断链条"| C
+
+    style A fill:#d9534f,color:#fff
+    style B fill:#f0ad4e,color:#fff
+    style C fill:#9b59b6,color:#fff
+    style D fill:#c0392b,color:#fff
+    style E fill:#5cb85c,color:#fff</pre>
+
+<p><strong>全书的核心逻辑链</strong>：审讯技术（压力+欺骗）× 心理脆弱性（易受暗示）→ 虚假供述 → 误判。而<strong>录音录像、非强迫审讯（PEACE）、法律规制（PACE&#x2F;米兰达）、心理脆弱性评估</strong>，是切断这条链条的四道防线。</p>
+<hr>
+<h2 id="三条最该记住的知识点"><a href="#三条最该记住的知识点" class="headerlink" title="三条最该记住的知识点"></a>三条最该记住的知识点</h2><ol>
+<li><p><strong>虚假供述有三种类型</strong>——自愿型、压迫-服从型、压迫-内化型。最危险的是”内化型”：无辜者<strong>真的相信自己有罪</strong>。这证明<strong>记忆是可被审讯污染的</strong>。</p>
+</li>
+<li><p><strong>“证据强度”是供述的第一驱动力</strong>——当嫌疑人认为”翻不了案”时最可能认罪。因此”证据不足时逼供”是双重灾难：既可能冤枉无辜，也会让真凶事后翻供。</p>
+</li>
+<li><p><strong>审讯暗示感受性是可测量的</strong>——古德琼森的 GSS 量表用”屈服（yield）”和”转换（shift）”两个维度量化”易受暗示性”，把”这个人容易被逼供”变成了科学证据。</p>
+</li>
+</ol>
+<hr>
+<h2 id="对普通读者的价值（超越司法领域）"><a href="#对普通读者的价值（超越司法领域）" class="headerlink" title="对普通读者的价值（超越司法领域）"></a>对普通读者的价值（超越司法领域）</h2><p>这本书讲的是审讯，但它的洞见远超法庭：</p>
+<ul>
+<li><strong>警惕”权威 + 压力 + 虚假信息”的组合</strong>：这套组合能让人”相信自己没做过的事”——在职场、家庭、谈判、乃至 PUA 中都存在同样的机制。</li>
+<li><strong>理解”虚假记忆”</strong>：人的记忆不是录像，是<strong>可被重构的叙述</strong>。别人反复告诉你”你当时如何如何”，可能真的会”植入”记忆。</li>
+<li><strong>识别”脆弱性”</strong>：疲劳、焦虑、低自尊、信息不对称时，人最容易接受暗示——所以<strong>重要决定不要在疲惫或被施压时做</strong>。</li>
+<li><strong>制度防线的意义</strong>：录音、书面记录、第三方监督、程序正义——这些看似繁琐的”程序”，其实是<strong>保护每一个普通人</strong>的最后防线。</li>
+</ul>
+<hr>
+<blockquote>
+<p><strong>一句话总结全书</strong>：审讯室是一面”人性实验室”的放大镜——<strong>当权威、压力、欺骗与一个人的脆弱相遇，无辜者也可能”供述”；而虚假供述，是司法体系最隐蔽、最危险的错误之一。</strong> 理解它，既是理解司法正义的脆弱，也是理解人性在压力下的可塑性。</p>
+</blockquote>
+<hr>
+<p><em>本笔记基于古德琼森《审讯和供述心理学手册》中文译本全文系统梳理，涵盖审讯技术、供述理论、虚假供述类型学、受暗示性（GSS 量表）、心理脆弱性及著名冤案案例研究。</em></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230845000001.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%20%E5%8D%B72%EF%BC%9A%E8%A7%A3%E8%AF%BB%E8%82%A2%E4%BD%93%E8%AF%AD%E8%A8%80%E3%80%8B/'>读书笔记——《社会工程 卷2：解读肢体语言》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001865.%E3%80%8A%E6%9D%83%E5%8A%9B%E7%9A%8448%E6%9D%A1%E6%B3%95%E5%88%99%E3%80%8B/">阅读笔记——《权力的48条法则》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="财富自由革命之路 读书笔记" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    财富自由革命之路 读书笔记
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：4分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%B4%A2%E5%AF%8C%E8%87%AA%E7%94%B1%E9%9D%A9%E5%91%BD%E4%B9%8B%E8%B7%AF-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">财富自由革命之路 读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E6%A0%B8%E5%BF%83%E7%9A%84%E4%B8%80%E4%B8%AA%E8%A7%82%E7%82%B9%EF%BC%9A%E8%B4%A2%E5%AF%8C%E8%87%AA%E7%94%B1%E9%A6%96%E5%85%88%E6%98%AF%E7%B2%BE%E7%A5%9E%E8%87%AA%E7%94%B1"><span class="post-toc-text">最核心的一个观点：财富自由首先是精神自由</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E2%80%9C%E6%8A%8A%E8%87%AA%E5%B7%B1%E5%BD%93%E4%BD%9C%E6%88%98%E7%95%A5%E2%80%9D"><span class="post-toc-text">“把自己当作战略”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E8%B4%A2%E5%AF%8C%E4%B8%8E%E6%8A%95%E8%B5%84%E7%9A%84%E9%83%A8%E5%88%86"><span class="post-toc-text">关于财富与投资的部分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E5%A9%9A%E5%A7%BB%E3%80%81%E7%88%B6%E6%AF%8D%E3%80%81%E6%95%99%E8%82%B2%E7%9A%84%E4%BA%89%E8%AE%AE%E8%A7%82%E7%82%B9"><span class="post-toc-text">关于婚姻、父母、教育的争议观点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">我的几点感悟</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="财富自由革命之路-读书笔记"><a href="#财富自由革命之路-读书笔记" class="headerlink" title="财富自由革命之路 读书笔记"></a>财富自由革命之路 读书笔记</h1><p>2026年10月21日</p>
+<p>作者：艾迪</p>
+<p>这本书（或更准确地说，这份逐字稿合集）是孙宇晨（Justin Sun）在喜马拉雅的音频节目《财富自由革命之路》的文字整理，一共 156 篇。马东、冯仑、吴晓波、鲁豫、同道大叔都写了推荐语。它的内容非常庞杂：有投资方法论、有价值观输出、有时事评论，也有大量关于个人成长、婚姻、父母关系的观点。<strong>这是一本需要带着批判性去读的书。</strong></p>
+<h2 id="最核心的一个观点：财富自由首先是精神自由"><a href="#最核心的一个观点：财富自由首先是精神自由" class="headerlink" title="最核心的一个观点：财富自由首先是精神自由"></a>最核心的一个观点：财富自由首先是精神自由</h2><p>节目开篇就反复强调，这也是我认为全书最有价值的一句话：</p>
+<blockquote>
+<p>财富自由本身首先是一种精神自由，并不是说钱多到花不完。</p>
+</blockquote>
+<p>孙宇晨的论证很有意思：在北京，只要你不买房、不买车、不结婚，月薪一万就已经”花不完”了。所以很多人真正缺的不是钱，而是<strong>精神上的自由——找到归宿，知道自己是什么样的人，愿意在什么样的事业中奋斗。</strong> 他把自己 2011、2012 年的状态描述为”很迷茫”，认为这种迷茫比缺钱更可怕。</p>
+<h2 id="“把自己当作战略”"><a href="#“把自己当作战略”" class="headerlink" title="“把自己当作战略”"></a>“把自己当作战略”</h2><p>这是贯穿全书的方法论。孙宇晨批评很多人”把结婚当战略、生小孩当战略、买房当战略、把父母当战略、把老婆当战略、把小孩当战略”，唯独<strong>没有把自己的人生当作战略</strong>。</p>
+<p>他说，一个公司要有战略，一个人也要有战略。最基本的战略是：先想清楚自己要做什么样的人、走什么样的路，而不是被社会时钟推着走。这个观点对 90 后、00 后有直接的冲击力——它本质上是在说，<strong>先想清楚”我是谁、要往哪去”，再谈买房买车结婚这些具体选项。</strong></p>
+<h2 id="关于财富与投资的部分"><a href="#关于财富与投资的部分" class="headerlink" title="关于财富与投资的部分"></a>关于财富与投资的部分</h2><p>书里大量篇幅在讲他的投资经历和方法论。孙宇晨反复提到自己 2011 到 2014 年这三年的投资（早期押注比特币等）让他实现了财务自由。相关章节还涉及：</p>
+<ul>
+<li><strong>全球流动性过剩与杠杆</strong>：他认为这个时代”激进而非保守”，应该利用可控负债、利用杠杆来增加财富（第 034、036、037 篇）。</li>
+<li><strong>布雷顿森林体系的建立与崩塌、黄金与货币</strong>（第 032、033 篇）：讲法币、黄金、比特币的货币史逻辑。</li>
+<li><strong>如何利用好你的 100 万</strong>（第 031 篇）：创业与资金的思考。</li>
+</ul>
+<p>这部分需要特别警惕：杠杆和”激进”的叙事，对普通人来说风险极大。孙宇晨本人和他的加密资产事业也长期充满争议。<strong>读他的投资观点，适合当”一种激进世界观的样本”来看，而不是当操作指南。</strong></p>
+<h2 id="关于婚姻、父母、教育的争议观点"><a href="#关于婚姻、父母、教育的争议观点" class="headerlink" title="关于婚姻、父母、教育的争议观点"></a>关于婚姻、父母、教育的争议观点</h2><p>书里有大量篇幅讲”90 后不结婚””找到正确的婚姻合伙人””你与父母的关系””穷人思维下的教育问题”等。核心逻辑还是那条：先把自己活明白，再处理与他人的关系。其中很多说法有启发性（比如不要用孩子的成就来补偿自己的人生），但也有不少过于绝对化、以偏概全的地方。</p>
+<h2 id="我的几点感悟"><a href="#我的几点感悟" class="headerlink" title="我的几点感悟"></a>我的几点感悟</h2><ol>
+<li><p><strong>“把自己当战略”值得认真对待。</strong> 抛开孙宇晨本人的争议，这句话本身是对的：人生最怕的不是选错，而是从来不选、被惯性推着走。先想清楚自己的方向和事业认同，再谈其他。</p>
+</li>
+<li><p><strong>“精神自由先于财富自由”是一个被低估的洞察。</strong> 很多人把财务自由想象成”钱多到花不完就自由了”，但真到了那一步，若没有精神归宿，反而会空虚。自由的核心是知道自己要什么，而不是拥有多少。</p>
+</li>
+<li><p><strong>要区分”观点”和”方法”和”人设”。</strong> 这本书是逐字稿，口语化、情绪化、金句密集，非常容易让人热血上头。但其中关于杠杆、激进投资的部分，必须和”这是一位加密创业者的自我叙事”这个背景放在一起看，<strong>切不可把他的个人路径当成可复制的模板。</strong></p>
+</li>
+<li><p><strong>作为一本”三观样本”读，比作为”致富指南”读更有价值。</strong> 它的意义在于展示一种 90 后创业者是如何思考财富、自由、婚姻和人生的，让你照见自己的选择。</p>
+</li>
+</ol>
+<p>一句话总结：<strong>书里最值得带走的是”先精神自由、再把自己当战略”这两句话；至于杠杆和暴富叙事，请保持清醒。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212126003682.%E8%B0%88%E8%B0%88%E6%96%B9%E6%B3%95/'>谈谈方法（Discourse on Method）读书笔记</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212122007128.%E4%B8%8E%E7%86%8A%E5%85%B1%E8%88%9E/">与熊共舞：软件项目风险管理 读书笔记</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

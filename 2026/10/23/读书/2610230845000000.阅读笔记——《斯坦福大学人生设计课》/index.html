@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《斯坦福大学人生设计课》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《斯坦福大学人生设计课》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-23</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：9.6k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：34分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%A4%A7%E5%AD%A6%E4%BA%BA%E7%94%9F%E8%AE%BE%E8%AE%A1%E8%AF%BE%E3%80%8B"><span class="post-toc-text">阅读笔记——《斯坦福大学人生设计课》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E4%BA%94%E7%A7%8D%E5%BF%83%E6%80%81%EF%BC%88%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B4%E7%9A%84%E2%80%9D%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E2%80%9D%EF%BC%89"><span class="post-toc-text">贯穿全书的五种心态（设计思维的”操作系统”）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0-%C2%B7-%E5%88%86%E6%9E%90%E6%B5%8B%E8%AF%84%E4%BD%A0%E7%9B%AE%E5%89%8D%E7%9A%84%E7%94%9F%E6%B4%BB"><span class="post-toc-text">第 1 章 · 分析测评你目前的生活</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%EF%BC%9A%E5%8F%91%E7%8E%B0%E9%97%AE%E9%A2%98%E6%AF%94%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%E6%9B%B4%E9%87%8D%E8%A6%81"><span class="post-toc-text">核心：发现问题比解决问题更重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%8D%E5%8A%9B%E9%97%AE%E9%A2%98%EF%BC%9A%E6%97%A0%E6%B3%95%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98%E4%B8%8D%E6%98%AF%E9%97%AE%E9%A2%98"><span class="post-toc-text">重力问题：无法解决的问题不是问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HWPL-%E4%BB%AA%E8%A1%A8%E7%9B%98%EF%BC%9A%E8%AF%84%E4%BC%B0%E2%80%9D%E4%BD%A0%E5%9C%A8%E8%BF%99%E9%87%8C%E2%80%9D"><span class="post-toc-text">HWPL 仪表盘：评估”你在这里”</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0-%C2%B7-%E5%88%9B%E5%BB%BA%E4%BA%BA%E7%94%9F%E7%9A%84%E6%8C%87%E5%8D%97%E9%92%88"><span class="post-toc-text">第 2 章 · 创建人生的指南针</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B7%A5%E4%BD%9C%E8%A7%82-%E4%BA%BA%E7%94%9F%E8%A7%82-%E6%8C%87%E5%8D%97%E9%92%88"><span class="post-toc-text">工作观 + 人生观 &#x3D; 指南针</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%80%E8%87%B4%E6%80%A7%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="post-toc-text">一致性的力量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0-%C2%B7-%E5%AF%BB%E8%B7%AF%EF%BC%88Wayfinding%EF%BC%89"><span class="post-toc-text">第 3 章 · 寻路（Wayfinding）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%BB%E8%B7%AF%E9%9D%A0%E6%8C%87%E5%8D%97%E9%92%88%EF%BC%8C%E4%B8%8D%E9%9D%A0%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">寻路靠指南针，不靠地图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E6%9D%A1%E7%BA%BF%E7%B4%A2%EF%BC%9A%E5%BF%83%E6%B5%81-%E8%83%BD%E9%87%8F"><span class="post-toc-text">两条线索：心流 + 能量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BE%8E%E5%A5%BD%E6%97%B6%E5%85%89%E6%97%A5%E5%BF%97"><span class="post-toc-text">美好时光日志</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AEIOU-%E6%B3%95%EF%BC%88%E6%94%BE%E5%A4%A7%E7%BB%86%E8%8A%82%E7%9A%84-5-%E5%A5%97%E9%97%AE%E9%A2%98%EF%BC%89"><span class="post-toc-text">AEIOU 法（放大细节的 5 套问题）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9E%E9%A1%BE%E9%AB%98%E5%B3%B0%E4%BD%93%E9%AA%8C"><span class="post-toc-text">回顾高峰体验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0-%C2%B7-%E6%91%86%E8%84%B1%E5%9B%B0%E5%A2%83"><span class="post-toc-text">第 4 章 · 摆脱困境</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9E%84%E6%80%9D%EF%BC%9A%E6%83%B3%E6%B3%95%E5%A4%9A%E5%A4%9A%E7%9B%8A%E5%96%84"><span class="post-toc-text">构思：想法多多益善</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%9D%E7%BB%B4%E5%AF%BC%E5%9B%BE%EF%BC%88%E4%B8%89%E6%AD%A5%EF%BC%89"><span class="post-toc-text">思维导图（三步）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%94%9A%E9%97%AE%E9%A2%98-vs-%E9%87%8D%E5%8A%9B%E9%97%AE%E9%A2%98%EF%BC%88%E9%87%8D%E8%A6%81%E5%8C%BA%E5%88%86%EF%BC%89"><span class="post-toc-text">锚问题 vs 重力问题（重要区分）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0-%C2%B7-%E5%88%B6%E8%AE%A2%E4%BD%A0%E7%9A%84%E2%80%9D%E5%A5%A5%E5%BE%B7%E8%B5%9B%E8%AE%A1%E5%88%92%E2%80%9D"><span class="post-toc-text">第 5 章 · 制订你的”奥德赛计划”</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E4%B8%AA%E5%8F%AF%E6%9B%BF%E6%8D%A2%E7%9A%84-5-%E5%B9%B4%E8%AE%A1%E5%88%92"><span class="post-toc-text">三个可替换的 5 年计划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%8F%E4%B8%AA%E8%AE%A1%E5%88%92%E5%BF%85%E9%A1%BB%E5%8C%85%E5%90%AB%E7%9A%84%E5%86%85%E5%AE%B9"><span class="post-toc-text">每个计划必须包含的内容</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0-%C2%B7-%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="post-toc-text">第 6 章 · 原型设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%EF%BC%9A%E5%BB%BA%E9%80%A0%E5%8D%B3%E6%80%9D%E8%80%83"><span class="post-toc-text">核心：建造即思考</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E5%8E%9F%E5%9E%8B%E5%B7%A5%E5%85%B7"><span class="post-toc-text">三种原型工具</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0-%C2%B7-%E6%88%90%E5%8A%9F%E6%B1%82%E8%81%8C%E7%9A%84%E7%A7%98%E5%AF%86"><span class="post-toc-text">第 7 章 · 成功求职的秘密</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A4%B1%E8%B4%A5"><span class="post-toc-text">标准模式为什么失败</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AF%BB%E6%87%82%E8%81%8C%E4%BD%8D%E6%8F%8F%E8%BF%B0%E4%B9%8B%E5%A4%96%E7%9A%84%E5%90%AB%E4%B9%89"><span class="post-toc-text">读懂职位描述之外的含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%A7%8D%E8%A6%81%E8%AD%A6%E6%83%95%E7%9A%84%E6%8B%9B%E8%81%98%E9%99%B7%E9%98%B1"><span class="post-toc-text">三种要警惕的招聘陷阱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8F%90%E9%AB%98%E7%BD%91%E7%BB%9C%E6%B1%82%E8%81%8C%E5%91%BD%E4%B8%AD%E7%8E%87%E7%9A%84%E5%AE%9E%E6%93%8D%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">提高网络求职命中率的实操建议</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0-%C2%B7-%E5%A5%BD%E5%B7%A5%E4%BD%9C%E6%98%AF%E8%AE%BE%E8%AE%A1%E5%87%BA%E6%9D%A5%E7%9A%84"><span class="post-toc-text">第 8 章 · 好工作是设计出来的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9A%90%E5%BD%A2%E5%B0%B1%E4%B8%9A%E5%B8%82%E5%9C%BA%EF%BC%9A80-%E7%9A%84%E5%B7%A5%E4%BD%9C%E4%B8%8D%E5%85%AC%E5%BC%80%E6%8B%9B%E8%81%98"><span class="post-toc-text">隐形就业市场：80% 的工作不公开招聘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E7%B3%BB%E7%BD%91-%E9%97%AE%E8%B7%AF%EF%BC%88%E9%87%8D%E6%96%B0%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="post-toc-text">关系网 &#x3D; 问路（重新定义）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%BB%E6%89%BE%E5%B7%A5%E4%BD%9C%E6%9C%BA%E4%BC%9A%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%B7%A5%E4%BD%9C"><span class="post-toc-text">寻找工作机会，而不是工作</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0-%C2%B7-%E4%B8%BB%E5%8A%A8%E9%80%89%E6%8B%A9%E5%B9%B8%E7%A6%8F"><span class="post-toc-text">第 9 章 · 主动选择幸福</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B9%B8%E7%A6%8F%E6%98%AF%E5%AD%A6%E4%BC%9A%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9"><span class="post-toc-text">幸福是学会如何选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%89%E6%8B%A9%E5%9B%9B%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">选择四步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0-%C2%B7-%E4%BD%A0%E5%8F%AF%E4%BB%A5%E5%AF%B9%E5%A4%B1%E8%B4%A5%E5%85%8D%E7%96%AB"><span class="post-toc-text">第 10 章 · 你可以对失败免疫</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%9A%E6%AF%85-%E6%97%A0%E9%99%90%E6%B8%B8%E6%88%8F%E5%BF%83%E6%80%81"><span class="post-toc-text">坚毅 + 无限游戏心态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%B1%E8%B4%A5%E9%87%8D%E6%9E%84%E7%BB%83%E4%B9%A0%EF%BC%88%E4%B8%89%E6%AD%A5%EF%BC%89"><span class="post-toc-text">失败重构练习（三步）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%C2%B7-%E5%88%9B%E5%BB%BA%E5%9B%A2%E9%98%9F"><span class="post-toc-text">第 11 章 · 创建团队</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E2%80%9C%E6%88%91%E4%BB%AC%E2%80%9D%E7%9A%84%E5%8A%9B%E9%87%8F%E5%A4%A7%E4%BA%8E%E2%80%9D%E6%88%91%E2%80%9D%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="post-toc-text">“我们”的力量大于”我”的力量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%A2%E9%98%9F%E7%9A%84%E5%9B%9B%E7%B1%BB%E8%A7%92%E8%89%B2"><span class="post-toc-text">团队的四类角色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BC%95%E5%AF%BC-vs-%E5%BB%BA%E8%AE%AE%EF%BC%88%E5%AF%BB%E6%89%BE%E5%AF%BC%E5%B8%88%E7%9A%84%E5%85%B3%E9%94%AE%EF%BC%89"><span class="post-toc-text">引导 vs 建议（寻找导师的关键）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%A4%BE%E7%BE%A4%E5%9B%9B%E7%89%B9%E7%82%B9"><span class="post-toc-text">社群四特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%93%E8%AF%AD-%C2%B7-%E4%BA%BA%E7%94%9F%E8%AE%BE%E8%AE%A1%E6%98%AF%E7%94%9F%E6%B4%BB%E6%96%B9%E5%BC%8F"><span class="post-toc-text">结语 · 人生设计是生活方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E4%B8%AA%E6%94%B6%E5%B0%BE%E6%B4%9E%E8%A7%81"><span class="post-toc-text">三个收尾洞见</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%B4%E6%8C%81%E7%B2%BE%E5%BF%83%E8%AE%BE%E8%AE%A1%E4%BA%BA%E7%94%9F%E7%9A%84%E4%B8%A4%E4%BB%B6%E4%BA%8B"><span class="post-toc-text">维持精心设计人生的两件事</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%94%E5%A4%A7%E5%BF%83%E6%80%81%E7%9A%84%E2%80%9D%E8%87%AA%E9%97%AE%E6%B8%85%E5%8D%95%E2%80%9D%EF%BC%88%E7%BB%93%E8%AF%AD%E7%B2%BE%E5%8D%8E%EF%BC%89"><span class="post-toc-text">五大心态的”自问清单”（结语精华）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%91%E5%8F%A5%E6%91%98%E5%BD%95"><span class="post-toc-text">金句摘录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%BC%A0%E5%9B%BE%E6%80%BB%E7%BB%93%EF%BC%9A%E4%BA%BA%E7%94%9F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%AE%8C%E6%95%B4%E9%97%AD%E7%8E%AF"><span class="post-toc-text">一张图总结：人生设计的完整闭环</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《斯坦福大学人生设计课》"><a href="#阅读笔记——《斯坦福大学人生设计课》" class="headerlink" title="阅读笔记——《斯坦福大学人生设计课》"></a>阅读笔记——《斯坦福大学人生设计课》</h1><blockquote>
+<p>作者：[美] 比尔·博内特（Bill Burnett）、戴夫·伊万斯（Dave Evans）<br>英文原名：<em>Designing Your Life: How to Build a Well-Lived, Joyful Life</em><br>一句话定位：把斯坦福大学设计学院（d.school）的<strong>设计思维</strong>搬到人生规划上——人生不是”想清楚再行动”的规划题，而是”用原型不断试出来”的设计题。</p>
+</blockquote>
+<p>这本书回答一个核心问题：<strong>如何设计充实且快乐的人生？</strong> 它的答案不是”找到你唯一正确的使命”，而是教你像设计师一样，<strong>发现问题 → 构思多个方案 → 制作原型 → 快速试错 → 做出选择并放手</strong>。全书 11 章，配套大量可立即执行的练习（仪表盘、美好时光日志、思维导图、奥德赛计划、原型采访、失败重构等）。</p>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p>人生设计 &#x3D; 用设计思维（好奇、尝试、重新定义、专注、合作）作为操作系统，用<strong>仪表盘</strong>定位当下、用<strong>指南针</strong>（工作观+人生观）确定方向、用<strong>寻路</strong>（心流+能量）找线索、用<strong>思维导图</strong>发散选项、用<strong>奥德赛计划</strong>设计多条人生、用<strong>原型</strong>低成本试错、用<strong>选择四步骤</strong>做决定、用<strong>失败重构</strong>对失败免疫、用<strong>团队</strong>对抗孤独。</p>
+<h2 id="全书地图"><a href="#全书地图" class="headerlink" title="全书地图"></a>全书地图</h2><pre class="mermaid">flowchart TB
+    A["起点&lt;br/&gt;你在这里 · 接受现实"] --&gt; B["第1章&lt;br/&gt;HWPL 仪表盘&lt;br/&gt;健康/工作/娱乐/爱"]
+    B --&gt; C["第2章&lt;br/&gt;指南针&lt;br/&gt;工作观 + 人生观"]
+    C --&gt; D["第3章&lt;br/&gt;寻路&lt;br/&gt;心流 + 能量 + 美好时光日志"]
+    D --&gt; E["第4章&lt;br/&gt;摆脱困境&lt;br/&gt;构思 + 思维导图 + 锚问题"]
+    E --&gt; F["第5章&lt;br/&gt;奥德赛计划&lt;br/&gt;三个 5 年人生版本"]
+    F --&gt; G["第6章&lt;br/&gt;原型设计&lt;br/&gt;对话 + 体验 + 头脑风暴"]
+    G --&gt; H["第7-8章&lt;br/&gt;求职&lt;br/&gt;隐形就业市场 + 关系网"]
+    H --&gt; I["第9章&lt;br/&gt;选择幸福&lt;br/&gt;选择四步骤"]
+    I --&gt; J["第10章&lt;br/&gt;失败免疫&lt;br/&gt;失败重构练习"]
+    J --&gt; K["第11章&lt;br/&gt;创建团队&lt;br/&gt;支持者 + 导师 + 社群"]
+    K --&gt; L["结语&lt;br/&gt;人生设计是生活方式"]</pre>
+
+<h2 id="贯穿全书的五种心态（设计思维的”操作系统”）"><a href="#贯穿全书的五种心态（设计思维的”操作系统”）" class="headerlink" title="贯穿全书的五种心态（设计思维的”操作系统”）"></a>贯穿全书的五种心态（设计思维的”操作系统”）</h2><p>这是整本书的底层逻辑，每一章都在重复调用它们。结语部分明确总结为”5 件简单的事情”：</p>
+<pre class="mermaid">mindmap
+  root((设计思维五大心态))
+    保持好奇
+      每件事都有有趣的一面
+      追逐潜在的精彩
+    不断尝试
+      注重行动，不焦虑不过度思考
+      原型体验
+    重新定义问题
+      切换视角
+      锚问题 → 可操作问题
+    专注
+      人生设计是一个过程
+      不放弃不泄气
+    深度合作
+      寻求帮助
+      组建团队与社群</pre>
+
+<hr>
+<h2 id="第-1-章-·-分析测评你目前的生活"><a href="#第-1-章-·-分析测评你目前的生活" class="headerlink" title="第 1 章 · 分析测评你目前的生活"></a>第 1 章 · 分析测评你目前的生活</h2><h3 id="核心：发现问题比解决问题更重要"><a href="#核心：发现问题比解决问题更重要" class="headerlink" title="核心：发现问题比解决问题更重要"></a>核心：发现问题比解决问题更重要</h3><p>设计思维最独特的一点：<strong>不仅重视解决问题，更重视发现问题</strong>。很多人花数年甚至毕生精力去解决一个”错误的问题”。</p>
+<blockquote>
+<p>戴夫的例子：他以为自己的问题是”如何成为海洋生物学家”（成绩不好、不够努力），为此纠结两年半；真正的问题是”我根本不该选生物专业”。别人两周就能想明白的事，他浪费了两年半——这就是**”成功灾难”**（如果聪明且幸运地坚持了错误选择，十年后才会醒悟：”我为什么不幸福？”）。</p>
+</blockquote>
+<p><strong>发现问题 + 解决问题 &#x3D; 精心设计的人生</strong></p>
+<pre class="mermaid">flowchart LR
+    A["模糊的不满&lt;br/&gt;想要更好的工作/钱/成功"] --&gt; B{"先问：&lt;br/&gt;真正的问题是什么？"}
+    B --&gt; C["可解决的问题"] --&gt; D["设计并解决"]
+    B --&gt; E["重力问题&lt;br/&gt;无法解决"] --&gt; F["接受现实，重新定向"]</pre>
+
+<h3 id="重力问题：无法解决的问题不是问题"><a href="#重力问题：无法解决的问题不是问题" class="headerlink" title="重力问题：无法解决的问题不是问题"></a>重力问题：无法解决的问题不是问题</h3><p>这是全书最重要的”止损”概念。作者反复强调一句话：</p>
+<blockquote>
+<p><strong>如果一个问题不能被解决，那么它就不是一个问题。它只是一种情况、一种环境、一种生活现实；它像重力一样，是一个无法解决的问题。</strong></p>
+</blockquote>
+<p>重力问题分两种：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>例子</th>
+<th>处理方式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>完全无法解决的</td>
+<td>地球重力、改变雇主对长期失业者的看法</td>
+<td>接受现实</td>
+</tr>
+<tr>
+<td>不具有可操作性的</td>
+<td>提高诗人的平均收入、家族企业外姓人想当副总裁</td>
+<td>重新定义，找可操作的路径</td>
+</tr>
+</tbody></table>
+<p>经典案例：<strong>骑自行车上坡嫌”重力”太重</strong>——你不能改变重力，但可以换更轻的车、减肥、学爬坡技术。<strong>接受现实是设计人生的起点</strong>，而不是你希望到达的地方。</p>
+<h3 id="HWPL-仪表盘：评估”你在这里”"><a href="#HWPL-仪表盘：评估”你在这里”" class="headerlink" title="HWPL 仪表盘：评估”你在这里”"></a>HWPL 仪表盘：评估”你在这里”</h3><p>用四个维度盘点当下生活，像汽车仪表盘一样给自己亮红绿灯：</p>
+<pre class="mermaid">flowchart TB
+    subgraph HWPL["健康 / 工作 / 娱乐 / 爱 仪表盘"]
+        H["❤️ 健康&lt;br/&gt;情绪 + 身体 + 心理&lt;br/&gt;（最底层，是其他一切的基础）"]
+        W["💼 工作&lt;br/&gt;你参与的人类探险&lt;br/&gt;（不一定有报酬，主妇/志愿者也算）"]
+        P["🎨 娱乐&lt;br/&gt;单纯为了快乐&lt;br/&gt;（目的必须是快乐，不是为了赢/进步）"]
+        L["💗 爱&lt;br/&gt;双向的情感连接&lt;br/&gt;（亲情/友情/爱情）"]
+    end
+    H --- W --- P --- L</pre>
+
+<p>关键提醒：</p>
+<ul>
+<li><strong>健康在最下面</strong>——失去健康，其他一切无从谈起。</li>
+<li><strong>不存在完美平衡</strong>——不同人生阶段配比不同，追求的是”一段时间内的均衡”，不是绝对均等。</li>
+<li>每个维度按 0～完美打分，标出自己的位置，问自己：<strong>哪些方面需要重新设计？</strong></li>
+</ul>
+<hr>
+<h2 id="第-2-章-·-创建人生的指南针"><a href="#第-2-章-·-创建人生的指南针" class="headerlink" title="第 2 章 · 创建人生的指南针"></a>第 2 章 · 创建人生的指南针</h2><h3 id="工作观-人生观-指南针"><a href="#工作观-人生观-指南针" class="headerlink" title="工作观 + 人生观 &#x3D; 指南针"></a>工作观 + 人生观 &#x3D; 指南针</h3><p>回答”你想要什么”很难，但设计人生不需要先知道目的地，只需要<strong>一个指南针</strong>（方向），而不是地图。</p>
+<pre class="mermaid">flowchart TB
+    WP["工作观&lt;br/&gt;为什么工作？&lt;br/&gt;工作意味着什么？&lt;br/&gt;什么是好工作？&lt;br/&gt;工作与金钱/成长的关系？"]
+    LP["人生观&lt;br/&gt;我为什么在这里？&lt;br/&gt;生活的意义？&lt;br/&gt;什么是善恶？&lt;br/&gt;我与世界的联结？"]
+    WP --&gt; C["一致性 = 你是谁&lt;br/&gt;+ 你信仰什么&lt;br/&gt;+ 你正在做什么"]
+    LP --&gt; C
+    C --&gt; N["指南针&lt;br/&gt;（正北方向，偏离时提醒你）"]</pre>
+
+<p><strong>工作观</strong>要解决的不是”你想做什么工作”，而是”<strong>你为什么想要工作</strong>“——这是你的工作宣言。<br><strong>人生观</strong>是对世界如何运行的看法——什么赋予人生意义、你与家庭&#x2F;社区&#x2F;世界的联结。</p>
+<h3 id="一致性的力量"><a href="#一致性的力量" class="headerlink" title="一致性的力量"></a>一致性的力量</h3><p>当你的人生观、工作观与你正在做的事三者一致时，你就”走在正轨上”，能清楚知道何时有压力、何时该妥协、何时该换专业。</p>
+<blockquote>
+<p>例子：你坚信要保护地球环境，却在破坏环境、给你高薪的公司上班——信仰与行动之间就缺了一致性，你会感到失望、没有满足感。</p>
+</blockquote>
+<p>反例警示（帕克·帕尔默）：他模仿偶像马丁·路德·金和甘地走相同的路，结果”做着一份崇高的工作，却在过着他人的生活”。<strong>不要跟随他人的指南针。</strong></p>
+<blockquote>
+<p>积极心理学家塞利格曼发现：把工作与有意义的社会事务建立联系的人，会获得更多满足感、更能适应压力、更愿意妥协。</p>
+</blockquote>
+<p><strong>思维误区 → 重新定义</strong>（本书每章的标志性结构）：</p>
+<ul>
+<li>误区：”我应该知道前进的目标。”</li>
+<li>重新定义：”我不可能一直知道前进的目标，但我会清楚自己的方向是否正确。”</li>
+</ul>
+<p><strong>建议：指南针至少每年校准一次</strong>，就像换轮胎、换烟雾报警器电池一样。</p>
+<hr>
+<h2 id="第-3-章-·-寻路（Wayfinding）"><a href="#第-3-章-·-寻路（Wayfinding）" class="headerlink" title="第 3 章 · 寻路（Wayfinding）"></a>第 3 章 · 寻路（Wayfinding）</h2><h3 id="寻路靠指南针，不靠地图"><a href="#寻路靠指南针，不靠地图" class="headerlink" title="寻路靠指南针，不靠地图"></a>寻路靠指南针，不靠地图</h3><p>像刘易斯和克拉克探索美国西部（靠 140 张沿途绘制的路线图，而不是一张现成地图）——<strong>人生没有必须到达的目的地，无法用 GPS 规划直线路径</strong>。你能做的是关注眼前出现的线索，而<strong>寻路的第一线索就是”投入”和”能量”</strong>。</p>
+<h3 id="两条线索：心流-能量"><a href="#两条线索：心流-能量" class="headerlink" title="两条线索：心流 + 能量"></a>两条线索：心流 + 能量</h3><pre class="mermaid">flowchart LR
+    subgraph 线索1["线索 1：投入（心流）"]
+        F1["完全投入"]
+        F2["极度兴奋/狂喜"]
+        F3["内心清明，知道做什么怎么做"]
+        F4["出奇镇定冷静"]
+        F5["时间静止或倏忽而逝"]
+    end
+    subgraph 线索2["线索 2：能量"]
+        E1["哪些活动维持能量"]
+        E2["哪些活动消耗能量"]
+        E3["无聊是巨大能量消耗源"]
+    end</pre>
+
+<p><strong>心流</strong>（米哈里·契克森米哈赖提出）：全身心投入的心理状态，活动难度与技能匹配——既不无聊也不紧张。<strong>心流状态就是成年人的娱乐活动</strong>。</p>
+<p><strong>能量</strong>：大脑只占体重 2%，却消耗每天总能量的 25%（每天约 500 卡路里）。所以精力会严重影响专注力。注意：<strong>高投入和充沛精力通常一致，但并非必须</strong>——有人赢得辩论却精疲力竭（参与辩论消耗能量，即使赢了）。</p>
+<blockquote>
+<p>关键认知：人生设计大多是<strong>改进、完善你现在的生活</strong>，而不是非要换工作、搬家、重返校园。迈克尔（土木工程师）通过日志发现自己喜欢”解决复杂工程问题”、讨厌”行政事务和费用谈判”，于是选择读博深造、专攻技术，而不是去商学院——省下一场灾难。</p>
+</blockquote>
+<h3 id="美好时光日志"><a href="#美好时光日志" class="headerlink" title="美好时光日志"></a>美好时光日志</h3><p>这是全书第一个可立即执行的工具，连续记录三周：</p>
+<ul>
+<li><strong>活动记录</strong>：记录让你全身心投入、能量充沛的时刻，以及分心&#x2F;烦躁的时刻，<strong>越具体越好</strong>（不是”今天不错”，而是”员工会议——我复述了乔恩的话后大家赞同，感觉很棒”）。</li>
+<li><strong>反思</strong>：每周一次，哪些活动有收获？收获是什么？</li>
+</ul>
+<h3 id="AEIOU-法（放大细节的-5-套问题）"><a href="#AEIOU-法（放大细节的-5-套问题）" class="headerlink" title="AEIOU 法（放大细节的 5 套问题）"></a>AEIOU 法（放大细节的 5 套问题）</h3><p>对日志进行反思时，用 AEIOU 拉近镜头、放大细节：</p>
+<table>
+<thead>
+<tr>
+<th>字母</th>
+<th>问题</th>
+<th>例子（莉迪娅）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A 活动</td>
+<td>你在做什么？结构性还是非结构性？领导还是参与者？</td>
+<td>发现喜欢”人少的头脑风暴”，讨厌 6 人以上的计划会议</td>
+</tr>
+<tr>
+<td>E 环境</td>
+<td>什么环境？带给你什么感觉？</td>
+<td>巴斯拉：只要在大学校园就幸福，但 30 岁后”角色”比环境更重要</td>
+</tr>
+<tr>
+<td>I 互动</td>
+<td>和人或机器如何互动？正式还是非正式？</td>
+<td>专注者被”合作形式”决定是激发还是崩溃</td>
+</tr>
+<tr>
+<td>O 物体</td>
+<td>和什么设备&#x2F;物品互动？有投入感吗？</td>
+<td>平板、智能手机、球棍、帆船……</td>
+</tr>
+<tr>
+<td>U 用户</td>
+<td>还有谁？带来正面还是负面影响？</td>
+<td>其他人（用户）让你更专注还是崩溃</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>记录时<strong>不要自我评判</strong>——体验没有对错之分。</p>
+</blockquote>
+<h3 id="回顾高峰体验"><a href="#回顾高峰体验" class="headerlink" title="回顾高峰体验"></a>回顾高峰体验</h3><p>尤其是刚入职场或失业、没有足够当下素材时，<strong>回顾过去的高峰体验</strong>（哪怕是几十年前的），以叙事形式写下来。注意防止”修正主义倾向”：不要夸大美好时光，也不要对困难过于严苛。</p>
+<hr>
+<h2 id="第-4-章-·-摆脱困境"><a href="#第-4-章-·-摆脱困境" class="headerlink" title="第 4 章 · 摆脱困境"></a>第 4 章 · 摆脱困境</h2><h3 id="构思：想法多多益善"><a href="#构思：想法多多益善" class="headerlink" title="构思：想法多多益善"></a>构思：想法多多益善</h3><pre class="mermaid">flowchart LR
+    A["困住的感觉&lt;br/&gt;我只能做现在的工作"] --&gt; B["构思&lt;br/&gt;想出很多点子（包括疯狂想法）"]
+    B --&gt; C["数量本身含质量&lt;br/&gt;好点子多 → 好设计多"]
+    C --&gt; D["不评判&lt;br/&gt;创造力最大的敌人是评判"]
+    D --&gt; E["摆脱困境"]</pre>
+
+<p>设计师的两种核心观点：</p>
+<ol>
+<li><strong>只有好点子足够多，你才能从中选出更好的。</strong></li>
+<li><strong>对于任何问题，都不要选择第一个解决方案</strong>——大脑很懒，喜欢尽快摆脱问题，第一个想法几乎从来不起作用。</li>
+</ol>
+<blockquote>
+<p>“创造力最大的敌人是评判。”我们的大脑最善于评论、挑毛病。允许疯狂想法出现，才能进入创造性空间。斯坦福设计学院创始人戴维·凯利：”经常有疯狂的想法出现，你才会得到切实可行的好主意。”</p>
+</blockquote>
+<p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”我陷入了困境。”</li>
+<li>重新定义：”我从来不会被困住，因为我总是能想出很多点子。”</li>
+</ul>
+<h3 id="思维导图（三步）"><a href="#思维导图（三步）" class="headerlink" title="思维导图（三步）"></a>思维导图（三步）</h3><ol>
+<li><strong>选取一个主题</strong>（从美好时光日志里挑一个让你投入&#x2F;有活力&#x2F;有心流的活动，如格兰特选”户外”）。</li>
+<li><strong>制作思维导图</strong>：围绕中心词自由联想 5<del>6 个词，再往外联想 3</del>4 层，<strong>3~5 分钟快速完成，不自我审查</strong>。</li>
+<li><strong>制作次级连接、创造概念</strong>：从最外层挑几个不相干的词，混搭成”工作描述”，再画一幅草图。</li>
+</ol>
+<pre class="mermaid">flowchart TB
+    C["中心词&lt;br/&gt;户外"] --&gt; A1["远足"]
+    C --&gt; A2["旅行"]
+    C --&gt; A3["冲浪"]
+    A1 --&gt; B1["高山"] --&gt; C1["探险"]
+    A2 --&gt; B2["夏威夷"] --&gt; C2["热带海滩"]
+    A3 --&gt; B3["海滩"] --&gt; C3["潮汐/赛车"]
+    C1 &amp; C2 &amp; C3 --&gt; D["混搭：海盗冲浪营地&lt;br/&gt;+ 儿童探险 + 圣克鲁斯门店"]</pre>
+
+<blockquote>
+<p>格兰特最终不是找到了”完美工作”，而是<strong>学会了让现在的工作变得完美</strong>——思维从”找完美工作”转向”设计工作”。</p>
+</blockquote>
+<h3 id="锚问题-vs-重力问题（重要区分）"><a href="#锚问题-vs-重力问题（重要区分）" class="headerlink" title="锚问题 vs 重力问题（重要区分）"></a>锚问题 vs 重力问题（重要区分）</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>锚问题</th>
+<th>重力问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>本质</td>
+<td>现实问题，<strong>难以解决但可操作</strong></td>
+<td><strong>不是真实问题</strong>，是你无法改变的情况</td>
+</tr>
+<tr>
+<td>根源</td>
+<td>固执地只接受一个行不通的解决方案</td>
+<td>自然规律或市场规律</td>
+</tr>
+<tr>
+<td>处理</td>
+<td><strong>重新定义</strong>，探索其他可能性，做原型测试</td>
+<td><strong>接受现实</strong>，重新定向</td>
+</tr>
+</tbody></table>
+<p>锚问题暴露的其实是<strong>恐惧</strong>：”我担心尝试了其他方法如果没用，就不得不承认自己永久陷入困境。”</p>
+<blockquote>
+<p>梅拉妮的例子：她以为问题是要”筹资 1500 万美元建社会创新学院”（第一个解决方案），真正的问题是”让社会创新给学校带来持久影响”。重新定义后，她用一个”社会创新主题宿舍”的原型，最终成为该项目指导老师和副校长，同样带来了深远影响。</p>
+</blockquote>
+<p><strong>设计思维原则：”快速失败，在失败中前进。”</strong> 通过一系列小的原型测试，降低失败的风险（和恐惧）。</p>
+<hr>
+<h2 id="第-5-章-·-制订你的”奥德赛计划”"><a href="#第-5-章-·-制订你的”奥德赛计划”" class="headerlink" title="第 5 章 · 制订你的”奥德赛计划”"></a>第 5 章 · 制订你的”奥德赛计划”</h2><h3 id="三个可替换的-5-年计划"><a href="#三个可替换的-5-年计划" class="headerlink" title="三个可替换的 5 年计划"></a>三个可替换的 5 年计划</h3><blockquote>
+<p>人是多面体，每个人都有很多面。通向幸福、高效的路有很多条。<strong>没有最好的生活方式，只有多种可能的美好生活。</strong></p>
+</blockquote>
+<p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”我需要找到最佳的生活方式，然后制订计划实现它。”</li>
+<li>重新定义：”有无数美好的生活（和计划）等着我，我可以自主做出选择。”</li>
+</ul>
+<p><strong>为什么是 5 年？</strong> 2 年太短（想得不够长远），7 年太长（很多事会变）；人的生活其实由一系列 <strong>2~4 年的时间段</strong>串联起来，5 年 &#x3D; 4 年 + 1 年机动。</p>
+<p>三种选择的”配方”（帮想不出三个方案的人）：</p>
+<pre class="mermaid">flowchart TB
+    A["奥德赛计划&lt;br/&gt;三个 5 年版本"]
+    A --&gt; B["计划一：你已经在做的事&lt;br/&gt;（当前生活的延展 / 酝酿已久的好主意）"]
+    A --&gt; C["计划二：如果突然无法做计划一，你想做的事&lt;br/&gt;（假设第一种选择消失了）"]
+    A --&gt; D["计划三：不考虑金钱和形象，你想做的事&lt;br/&gt;（大胆、疯狂也可以）"]</pre>
+
+<p><strong>关键：不要把它们看成”A 很棒 &#x2F; B 凑合 &#x2F; C 勉强接受”——每一个奥德赛计划都应是计划 A</strong>，都是你真正的渴望、有可能实现。</p>
+<h3 id="每个计划必须包含的内容"><a href="#每个计划必须包含的内容" class="headerlink" title="每个计划必须包含的内容"></a>每个计划必须包含的内容</h3><ol>
+<li><strong>时间明细表</strong>（图解形式，含私人&#x2F;与工作无关的事）。</li>
+<li><strong>一个六字标题</strong>（描述核心内容，如”全力以赴——硅谷故事””酒吧——一次一杯！”）。</li>
+<li><strong>两到三个问题</strong>（优秀设计师通过提问测试新想法）。</li>
+<li><strong>仪表盘评估</strong>：物力（时间&#x2F;金钱&#x2F;人脉）、喜欢程度、自信心、一致性（与工作观人生观是否匹配）。</li>
+</ol>
+<blockquote>
+<p>研究佐证（丹·施瓦茨团队，斯坦福教育学院）：同时构思三个想法的小组，比”只完善一个方案”的小组<strong>提出更多方案、最终方案也更好</strong>。只打磨一个方案不会带来真正的创新。</p>
+</blockquote>
+<hr>
+<h2 id="第-6-章-·-原型设计"><a href="#第-6-章-·-原型设计" class="headerlink" title="第 6 章 · 原型设计"></a>第 6 章 · 原型设计</h2><h3 id="核心：建造即思考"><a href="#核心：建造即思考" class="headerlink" title="核心：建造即思考"></a>核心：建造即思考</h3><blockquote>
+<p>“建造即思考”（Build to think）。设计人生时没有关于未来的可靠数据，传统因果思维失效。<strong>原型设计是提问的形式</strong>：就一个问题设计一种体验，让你对潜在的未来进行”尝试”。</p>
+</blockquote>
+<pre class="mermaid">flowchart LR
+    Q["提出有建设意义的问题&lt;br/&gt;暴露内心偏好和设想"] --&gt; E["创造一种真实体验&lt;br/&gt;（对话/观摩/实习）"]
+    E --&gt; F["快速失败，在失败中前进"]
+    F --&gt; R["获得真实世界的数据"]
+    R --&gt; I["悄悄走近你的未来"]</pre>
+
+<p><strong>要点</strong>：原型设计<strong>不是大脑中的思维实验</strong>，必须是现实生活里的一次实际体验；有益的数据只存在于真实世界。</p>
+<blockquote>
+<p>埃莉斯的教训：想开托斯卡纳熟食店，未做原型直接开店，”把经营咖啡馆和去咖啡馆喝咖啡当成同一件事了”。她讨厌招人、盘库存、进货、维修，最后卖掉店、换到餐厅室内设计，却再次痛苦。若先做原型（先承办几次酒席、去美食店擦桌子、采访三个快乐店主和三个暴躁店主），就能省下大量时间和痛苦。</p>
+</blockquote>
+<h3 id="三种原型工具"><a href="#三种原型工具" class="headerlink" title="三种原型工具"></a>三种原型工具</h3><pre class="mermaid">flowchart TB
+    subgraph 原型设计
+        D["原型对话（人生设计采访）&lt;br/&gt;最简单、最容易"]
+        E["原型体验&lt;br/&gt;观摩一天 / 探索项目 / 三个月实习"]
+        B["头脑风暴&lt;br/&gt;4~6 人，20~60 分钟"]
+    end</pre>
+
+<p><strong>人生设计采访</strong>：本质不是”采访”，而是一次<strong>谈话</strong>，更不是工作面试。了解对象”如何开始从事现在的事””如何获得技能””每天的生活什么样””职业道路怎么开辟的”。</p>
+<ul>
+<li>约谈话术：”我想请你喝杯咖啡，时间和地点你来定，谈话大约 30 分钟。”（<strong>别用”采访”这个词</strong>，会让人误以为是求职面试。）</li>
+<li>多数人失败不是因为没天赋，而是因为<strong>缺乏想象力</strong>。</li>
+</ul>
+<p><strong>头脑风暴四步</strong>：</p>
+<pre class="mermaid">flowchart LR
+    S1["步骤1&lt;br/&gt;提出合适的问题"] --&gt; S2["步骤2&lt;br/&gt;热身"]
+    S2 --&gt; S3["步骤3&lt;br/&gt;集思广益"]
+    S3 --&gt; S4["步骤4&lt;br/&gt;为结果命名并规划"]
+    S4 --&gt; V["投票选出&lt;br/&gt;要原型设计的想法"]</pre>
+
+<ul>
+<li><strong>合适的问题</strong>：开放式（”对……我们可以想出多少种方法”）、<strong>不包含解决方案</strong>（”做梯子”是错误问题，应是”帮助人够到高处储物柜”）、不过于宽泛（”让鲍勃幸福”是错误问题）。</li>
+<li><strong>头脑风暴 4 条规则</strong>：① 重量不重质；② 不评判、不修改他人想法；③ 在他人的想法上创新；④ 鼓励大胆疯狂的想法。</li>
+<li><strong>步骤 4 最常被忽略</strong>：要给想法计数、分类命名、<strong>投票</strong>（投票时不要说话，用彩色圆点），最后才决定对哪个想法做原型。</li>
+</ul>
+<hr>
+<h2 id="第-7-章-·-成功求职的秘密"><a href="#第-7-章-·-成功求职的秘密" class="headerlink" title="第 7 章 · 成功求职的秘密"></a>第 7 章 · 成功求职的秘密</h2><h3 id="标准模式为什么失败"><a href="#标准模式为什么失败" class="headerlink" title="标准模式为什么失败"></a>标准模式为什么失败</h3><blockquote>
+<p>乔布斯和盖茨从没写过简历。90% 的美国人用”标准求职模式”，成功率却不到 5%。</p>
+</blockquote>
+<p>标准模式 &#x3D; 查招聘列表 → 读要求 → 投简历 → 等电话 → 等待 → 继续等待。问题在于：<strong>52% 的雇主只回复极少数投递者</strong>，且”适合你的完美工作正在那里等着你”这个前提本身就是错的。</p>
+<h3 id="读懂职位描述之外的含义"><a href="#读懂职位描述之外的含义" class="headerlink" title="读懂职位描述之外的含义"></a>读懂职位描述之外的含义</h3><p>网络职位描述的三个真相：</p>
+<ol>
+<li><strong>通常不是人事经理或真正了解工作的人写的</strong>。</li>
+<li><strong>几乎从不写出成功获取这份工作所需要的条件</strong>。</li>
+</ol>
+<p>职位描述的隐藏信号：</p>
+<table>
+<thead>
+<tr>
+<th>招聘原文</th>
+<th>真正含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>“只适合久经考验、有成功记录的求职者”</td>
+<td>“疯了才会想要这份工作”</td>
+</tr>
+<tr>
+<td>“寻找能在短时间内完成海量工作的超级英雄”</td>
+<td>“这份工作不可能完成，没人能做到”</td>
+</tr>
+<tr>
+<td>“除了提出完美方案，还要有洞察力和说服力”</td>
+<td>“一厢情愿”的要求，筛选时毫无作用</td>
+</tr>
+</tbody></table>
+<h3 id="三种要警惕的招聘陷阱"><a href="#三种要警惕的招聘陷阱" class="headerlink" title="三种要警惕的招聘陷阱"></a>三种要警惕的招聘陷阱</h3><ul>
+<li><strong>超级工作</strong>：公司按离职员工”简”的标准 + 想象中”更强的简”来招”超级简”，无人能胜任。判断：招聘信息挂出超过 4~6 周、已超过 8 人面试仍无人入选——尽早放弃。</li>
+<li><strong>幽灵招聘</strong>：公司为走”必须公示”的流程，职位描述照着已内定的人写。判断：招聘信息只挂一两周就消失。</li>
+<li><strong>假阳性&#x2F;伪阴性</strong>：大公司（谷歌、苹果、脸书）人才过剩，最怕”假阳性”（招错人），所以<strong>高度容忍”伪阴性”（漏掉优秀人才）</strong>。放走几个优秀人才损失小，这是它们的理性决策，也是”重力问题”——只能接受并遵守游戏规则。</li>
+</ul>
+<h3 id="提高网络求职命中率的实操建议"><a href="#提高网络求职命中率的实操建议" class="headerlink" title="提高网络求职命中率的实操建议"></a>提高网络求职命中率的实操建议</h3><p><strong>首要原则是”适合”</strong>：简历关键词要和职位描述一致（首次筛选是关键词系统，不是人）。</p>
+<ol>
+<li><strong>重写简历，用职位描述里的原词</strong>（”写作能力强、沟通良好”→”良好的书写和口头沟通能力”）。</li>
+<li>具备的技能用原词写进简历；没有的想办法用同样词汇介绍相近技能。</li>
+<li>突出职位描述提到的关键技能，<strong>不要把自己写成”通才”</strong>。</li>
+<li>面试一定带最新、干净整洁的简历。</li>
+</ol>
+<p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”找工作时，首先关注你自己的需求。”</li>
+<li>重新定义：”你应该关注人事经理的需求——他想找到一个合适的人。”（同理心，也是设计思维的一部分）</li>
+</ul>
+<hr>
+<h2 id="第-8-章-·-好工作是设计出来的"><a href="#第-8-章-·-好工作是设计出来的" class="headerlink" title="第 8 章 · 好工作是设计出来的"></a>第 8 章 · 好工作是设计出来的</h2><h3 id="隐形就业市场：80-的工作不公开招聘"><a href="#隐形就业市场：80-的工作不公开招聘" class="headerlink" title="隐形就业市场：80% 的工作不公开招聘"></a>隐形就业市场：80% 的工作不公开招聘</h3><pre class="mermaid">flowchart LR
+    A["公开市场&lt;br/&gt;约 20% 的工作"] --&gt; B["人人可投 → 竞争激烈 → 成功率 &lt;5%"]
+    C["隐形就业市场&lt;br/&gt;约 80% 的工作"] --&gt; D["靠专业关系网内部流通"]
+    D --&gt; E["进入方式：原型对话&lt;br/&gt;（人生设计采访）"]</pre>
+
+<blockquote>
+<p>你无法”叩开”隐形就业市场的大门——它只对已形成专业关系网的人开放。但作为一个<strong>感兴趣的询问者（寻找故事经历，不是工作的人）</strong>，你有可能撕开一条裂缝。</p>
+</blockquote>
+<p><strong>库尔特的对比数据</strong>（全书最有说服力的案例）：</p>
+<ul>
+<li>耶鲁 + 斯坦福学历，投 38 份申请 → 8 封拒绝、30 封无回应、0 个 offer。</li>
+<li>改用设计思维，做 56 次诚恳的原型对话 → <strong>7 份高品质 offer</strong>，且 6 份是对方主动提出的。</li>
+</ul>
+<h3 id="关系网-问路（重新定义）"><a href="#关系网-问路（重新定义）" class="headerlink" title="关系网 &#x3D; 问路（重新定义）"></a>关系网 &#x3D; 问路（重新定义）</h3><p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”关系网就是一群虚伪的人。”</li>
+<li>重新定义：”关系网只是为了咨询方向。”</li>
+</ul>
+<p>就像开车的人向你问路，你不会觉得被利用，反而乐于帮助——<strong>人性本善，互相帮助让我们心情愉悦</strong>。职场上”问路”就是：获得引荐、认识一些人、倾听他们的经历。</p>
+<blockquote>
+<p>“关系网”与其说是名词，不如说是动词。不是”利用”关系网，而是”加入”关系网。大多数人都有两张网：工作关系网 + 私人关系网，不同行业的人最常见通过<strong>私人关系网引荐</strong>认识。</p>
+</blockquote>
+<p>贝拉的数据：为进入”影响力投资”领域，<strong>6 个月、200 次谈话</strong>，其中超过一半人通过谷歌和领英发现并联系，最终拿到包括现在公司在内的 3 个 offer。</p>
+<h3 id="寻找工作机会，而不是工作"><a href="#寻找工作机会，而不是工作" class="headerlink" title="寻找工作机会，而不是工作"></a>寻找工作机会，而不是工作</h3><p><strong>思维误区 → 重新定义</strong>（作者称之为职业设计时最重要的重构）：</p>
+<ul>
+<li>误区：”我正在找工作。”</li>
+<li>重新定义：”我正在寻找大量的工作机会。”</li>
+</ul>
+<p>区别在于心态：找”工作”时你试图说服对方、假装充满激情（因为你对工作性质其实一无所知，要么说谎要么放弃）；找”机会”时你可以<strong>真诚地表达好奇心</strong>——你确实想评估这个机会。</p>
+<blockquote>
+<p>“追逐潜在的精彩”：问自己”在这个公司里，我发现有趣事情的概率有 20% 吗？”如果有，就没有理由拒绝。真诚、有活力、更坚毅、更开心的求职者，反而更容易拿到 offer。</p>
+</blockquote>
+<p><strong>从听故事到拿 offer 的转折话术</strong>（不要说”你们还有空缺吗”，答案当然是”没有”）：</p>
+<blockquote>
+<p>“对贵行业了解得越多，我就越有兴趣。我想知道，像我这样的人，怎样才能进入这样的公司呢？”</p>
+</blockquote>
+<hr>
+<h2 id="第-9-章-·-主动选择幸福"><a href="#第-9-章-·-主动选择幸福" class="headerlink" title="第 9 章 · 主动选择幸福"></a>第 9 章 · 主动选择幸福</h2><h3 id="幸福是学会如何选择"><a href="#幸福是学会如何选择" class="headerlink" title="幸福是学会如何选择"></a>幸福是学会如何选择</h3><p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”要想幸福，我就不得不做出正确的选择。”</li>
+<li>重新定义：”没有正确的选择——只有好的选择。”</li>
+</ul>
+<blockquote>
+<p>拥有幸福的秘诀不是做出正确的选择，而是<strong>学会如何选择</strong>。选择不当会白费所有努力，因为<strong>不是选错了，而是心态有偏差</strong>。</p>
+</blockquote>
+<h3 id="选择四步骤"><a href="#选择四步骤" class="headerlink" title="选择四步骤"></a>选择四步骤</h3><pre class="mermaid">flowchart LR
+    S1["步骤1&lt;br/&gt;收集和创建选项"] --&gt; S2["步骤2&lt;br/&gt;缩小列表范围&lt;br/&gt;（删到 ≤5 个）"]
+    S2 --&gt; S3["步骤3&lt;br/&gt;明智地选择&lt;br/&gt;（多种知觉方式 + 神交）"]
+    S3 --&gt; S4["步骤4&lt;br/&gt;放手，继续前进"]</pre>
+
+<p><strong>步骤 2：缩小列表范围——“果酱实验”（希娜·艾扬格）</strong></p>
+<table>
+<thead>
+<tr>
+<th>展示口味</th>
+<th>停下来试吃</th>
+<th>实际购买</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6 种</td>
+<td>40%</td>
+<td><strong>13%</strong></td>
+</tr>
+<tr>
+<td>24 种</td>
+<td>60%（更多）</td>
+<td><strong>3%</strong></td>
+</tr>
+</tbody></table>
+<p>结论：<strong>选项只有 3~5 个时，绝大多数人能有效做出选择</strong>；选项过多时决策能力下降。<strong>“24 &#x3D; 0”</strong>——选项只有被选择、被实现才能创造价值，选不出来就等于一个选项都没有。</p>
+<ul>
+<li>如果有 12 个选项，删掉 7 个，重写一张 5 个的列表。<strong>删错了会发现</strong>（”比萨—中餐效应”：直到别人说出你不喜欢的决定，你才知道自己有所偏好）。</li>
+<li>面对 5 个选项仍纠结，常见原因是<strong>对删掉的 7 个无法放手</strong>。</li>
+</ul>
+<p><strong>步骤 3：明智地选择——情商 + 多种知觉方式 + 神交</strong></p>
+<ul>
+<li>做决定的部位在大脑的<strong>基底神经节</strong>（通过情感交流和直觉感受传递信息），即戈尔曼说的”情感智慧”。</li>
+<li>错误反应是”我需要更多信息”——<strong>信息不足通常不是核心问题</strong>，这是大脑对情感和直觉的干扰。</li>
+<li><strong>辨别力 &#x3D; 决策力</strong>：利用多种知觉方式（认知、直觉、精神、情绪、社会、运动知觉），不只靠认知判断。</li>
+<li><strong>神交（grok）</strong>：选一个选项，在接下来 1<del>3 天里<strong>假设自己已经选择了它、真实地生活在其中</strong>（从早上刷牙开始），然后休息 1</del>2 天，再依次体验其他选项，最后反思”你最想成为哪种人”。</li>
+</ul>
+<blockquote>
+<p>准备步骤 3 的最佳时间是<strong>开始选择前的几个月甚至几年</strong>——通过个人修行练习（记日志、冥想、瑜伽、太极）培养情商。<strong>现在就是开始准备的最佳时间。</strong></p>
+</blockquote>
+<p><strong>步骤 4：放手，继续前进——为什么不是”苦苦思索”？</strong></p>
+<blockquote>
+<p>“越刻意不去想蓝色马，越满脑子都是蓝色马。”放手的关键在于<strong>专注于某件事，而不是远离某件事</strong>。</p>
+</blockquote>
+<ul>
+<li>丹·吉伯特研究：被告知”可以更换画作”的人，对选择的满意度<strong>更低</strong>。<strong>可更换性&#x2F;保留选择权会降低选择的价值。</strong></li>
+<li>巴里·施瓦茨《选择的悖论》：大量选项（甚至只是”以为有”的选项）都会降低我们对已做选择的满意度。</li>
+<li>“最佳选择”在结果呈现前不存在，追求它只会让你一直纠结于放弃的选项。</li>
+</ul>
+<p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”幸福就是拥有一切。”</li>
+<li>重新定义：”幸福是断舍离。”</li>
+</ul>
+<hr>
+<h2 id="第-10-章-·-你可以对失败免疫"><a href="#第-10-章-·-你可以对失败免疫" class="headerlink" title="第 10 章 · 你可以对失败免疫"></a>第 10 章 · 你可以对失败免疫</h2><h3 id="坚毅-无限游戏心态"><a href="#坚毅-无限游戏心态" class="headerlink" title="坚毅 + 无限游戏心态"></a>坚毅 + 无限游戏心态</h3><pre class="mermaid">flowchart TB
+    A["坚毅 Grit&lt;br/&gt;（安杰拉·达克沃思）&lt;br/&gt;比智商、情商更关键"] --&gt; B["失败免疫"]
+    B --&gt; L1["层次一：快速失败&lt;br/&gt;小失败影响小，能吸取经验"]
+    B --&gt; L2["层次二：重大失败免疫&lt;br/&gt;人生是过程，不是结果"]
+    L2 --&gt; G["有限游戏 vs 无限游戏&lt;br/&gt;（詹姆斯·卡斯）"]</pre>
+
+<p><strong>思维误区 → 重新定义</strong>（全书最深刻的一对）：</p>
+<ul>
+<li>误区：”我们以结果评判我们的人生。”</li>
+<li>重新定义：”<strong>人生是一个过程，而不是一个结果。</strong>“</li>
+</ul>
+<blockquote>
+<p>詹姆斯·卡斯《有限与无限的游戏》：考 A 是有限游戏（为获胜守规则）；了解世界如何形成、让自己活得更好是无限游戏（玩的是规则，为让游戏继续下去）。<strong>人生设计是无限游戏——你越来越接近真实的自己，就不会失败。</strong></p>
+</blockquote>
+<p><strong>做人还是做事？</strong> 人生设计认为这种两分法是错误的——生活是一个永远无法被”解决”的问题，只有全力以赴走下去。循环：<strong>我是谁 → 想出主意 → 采取行动 → 做出选择 → 身心发展（更充分的自我）→ 进入下一轮</strong>。</p>
+<h3 id="失败重构练习（三步）"><a href="#失败重构练习（三步）" class="headerlink" title="失败重构练习（三步）"></a>失败重构练习（三步）</h3><pre class="mermaid">flowchart LR
+    R1["① 记录失败经历&lt;br/&gt;一个月 1~2 次，养成习惯"] --&gt; R2["② 对失败分类"]
+    R2 --&gt; C1["低级错误&lt;br/&gt;一般不犯的错&lt;br/&gt;→ 承认、反省、继续前进"]
+    R2 --&gt; C2["自身弱点&lt;br/&gt;反复犯的错&lt;br/&gt;→ 接受，避免接触这类事"]
+    R2 --&gt; C3["成长机会&lt;br/&gt;可避免的失败&lt;br/&gt;→ 重点分析，找出教训"]
+    C3 --&gt; R3["③ 鉴别蕴含成长机会的失败&lt;br/&gt;根本原因？下次怎么做？"]</pre>
+
+<p>关键：<strong>重点只看第三类”成长机会”</strong>。前两类（低级错误、弱点）即使花很多时间也改进有限，别死磕。</p>
+<blockquote>
+<p>戴夫的例子：忘了女儿生日（弱点→用日历提醒）、熬夜赶预算（拖延症→改不了）、电话中客户发怒（成长机会→发现”跳过寒暄直接进议程”是失误，应快速核查信息和议程）。一个小小的失败重构，对培养失败免疫大有帮助。</p>
+</blockquote>
+<hr>
+<h2 id="第-11-章-·-创建团队"><a href="#第-11-章-·-创建团队" class="headerlink" title="第 11 章 · 创建团队"></a>第 11 章 · 创建团队</h2><h3 id="“我们”的力量大于”我”的力量"><a href="#“我们”的力量大于”我”的力量" class="headerlink" title="“我们”的力量大于”我”的力量"></a>“我们”的力量大于”我”的力量</h3><p><strong>思维误区 → 重新定义</strong>：</p>
+<ul>
+<li>误区：”这是我的生活，我可以独立完成设计。”</li>
+<li>重新定义：”要想活出自己的人生、设计人生，就需要与他人合作。”</li>
+</ul>
+<blockquote>
+<p>人生设计从本质上来讲就需要团队共同努力。你遇到的、邀请参与的、原型设计过的、交谈过的人，都会成为设计团队的一员。<strong>“每个人”都很重要。</strong></p>
+</blockquote>
+<h3 id="团队的四类角色"><a href="#团队的四类角色" class="headerlink" title="团队的四类角色"></a>团队的四类角色</h3><pre class="mermaid">flowchart TB
+    T["人生设计团队"]
+    T --&gt; S["支持者&lt;br/&gt;可靠的、值得信赖的人&lt;br/&gt;鼓励你 + 有实际作用的反馈"]
+    T --&gt; P["参与者&lt;br/&gt;和你共事的人&lt;br/&gt;（工作/娱乐/原型设计）"]
+    T --&gt; F["亲友&lt;br/&gt;最可能受你设计影响的人&lt;br/&gt;要让他们了解你的设计"]
+    T --&gt; G["团队&lt;br/&gt;定期会面、持续关注的人&lt;br/&gt;一起讨论奥德赛计划"]</pre>
+
+<ul>
+<li><strong>团队规模</strong>：2<del>6 人，**最佳 3</del>5 人**（2 人只有说者和听者；超过 6 人会分化阵营、发言受限）。</li>
+<li><strong>团队 4 条规则</strong>：① 尊重；② 保密；③ 积极参与（不退缩）；④ 生成性（建设性，不质疑、不评判）。</li>
+<li>协调者不是队长、裁判或指挥，只是”确定时间、维持谈话秩序、确保人人有发言机会”。</li>
+</ul>
+<h3 id="引导-vs-建议（寻找导师的关键）"><a href="#引导-vs-建议（寻找导师的关键）" class="headerlink" title="引导 vs 建议（寻找导师的关键）"></a>引导 vs 建议（寻找导师的关键）</h3><pre class="mermaid">flowchart LR
+    A["建议&lt;br/&gt;『如果我是你，我会……』"] --&gt; B["其实是『如果你是我』&lt;br/&gt;告诉你他会怎么做"]
+    C["引导&lt;br/&gt;围绕问题、多次提问、总结重述"] --&gt; D["帮你发现自己的想法&lt;br/&gt;从新视角看现实"]
+    D --&gt; E["这才是导师的真正价值"]</pre>
+
+<ul>
+<li><strong>好建议由专业人士给出</strong>（税务、医疗），但<strong>人生设计没有专家</strong>。”我接受了一个糟糕的建议”其实往往是”好建议但不适合我”。</li>
+<li><strong>引导总是有益的</strong>：好导师多次从不同角度提问，总结&#x2F;重述你的话并问”我说的对吗？”——让你觉得焦点在你，而不是他。</li>
+<li><strong>你不需要”大师级”导师</strong>：主动去找那些阅历丰富、善于倾听的人，”能给你提供指导的人”就够了。谦虚的被指导者会主动求助。</li>
+</ul>
+<h3 id="社群四特点"><a href="#社群四特点" class="headerlink" title="社群四特点"></a>社群四特点</h3><pre class="mermaid">mindmap
+  root((有效社群))
+    目的相同
+      明确使命，不为聚会而聚会
+    定期见面
+      固定时间，让参与成为习惯
+    共享立场
+      价值观或理念一致
+    了解与被了解
+      交流私人信息，参与彼此生活</pre>
+
+<blockquote>
+<p>读书俱乐部”共读一本书”不等于社群——关键区别在于<strong>是否参与彼此的生活</strong>（评论家 vs 参与者）。社群需要的是”正当的动机和出席率”，而不是专业或见多识广。</p>
+</blockquote>
+<hr>
+<h2 id="结语-·-人生设计是生活方式"><a href="#结语-·-人生设计是生活方式" class="headerlink" title="结语 · 人生设计是生活方式"></a>结语 · 人生设计是生活方式</h2><h3 id="三个收尾洞见"><a href="#三个收尾洞见" class="headerlink" title="三个收尾洞见"></a>三个收尾洞见</h3><ol>
+<li><p><strong>均衡是神话</strong>——比尔·盖茨 1985 年推 Windows、1986 年公司上市，那时的他不是慈善家，也没能力在”应对垄断指控”上投入等量时间。<strong>平衡发展 &#x3D; 一段时间内的均衡</strong>，纠结于绝对均衡只会痛苦。</p>
+</li>
+<li><p><strong>人生设计没有尽头</strong>——它不是”完成设计就一帆风顺”的一次性项目，而是一个<strong>动词</strong>、一种生活方式。</p>
+<ul>
+<li>误区：”我完成了人生设计，从此一切顺利。”</li>
+<li>重新定义：”人生设计是没有尽头的——生活是一个有趣且不间断的设计项目，我永远在前行。”</li>
+</ul>
+</li>
+<li><p><strong>人本设计（HCD）</strong>——1963 年斯坦福首开人生设计课，坚持”以人为本”的设计重心（背离以技术&#x2F;艺术&#x2F;工程为中心的传统设计）。你的生活只能是一项关于”人”的事业。</p>
+</li>
+</ol>
+<h3 id="维持精心设计人生的两件事"><a href="#维持精心设计人生的两件事" class="headerlink" title="维持精心设计人生的两件事"></a>维持精心设计人生的两件事</h3><pre class="mermaid">flowchart LR
+    A["指南针&lt;br/&gt;（工作观 + 人生观）"] --&gt; B["每年至少校准一次&lt;br/&gt;观点不变，但细节和优先事项会变"]
+    C["个人修行练习&lt;br/&gt;（冥想/瑜伽/写作/祈祷）"] --&gt; D["控制情绪、加强辨别力&lt;br/&gt;每天都有收获"]</pre>
+
+<h3 id="五大心态的”自问清单”（结语精华）"><a href="#五大心态的”自问清单”（结语精华）" class="headerlink" title="五大心态的”自问清单”（结语精华）"></a>五大心态的”自问清单”（结语精华）</h3><table>
+<thead>
+<tr>
+<th>心态</th>
+<th>可自问的问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>保持好奇</td>
+<td>对此感兴趣的人都想知道什么？这里发生过最有趣的事是什么？</td>
+</tr>
+<tr>
+<td>不断尝试</td>
+<td>天黑之前我可以试试怎么做？如果我尝试了会学到什么？</td>
+</tr>
+<tr>
+<td>重新定义问题</td>
+<td>其他人有哪些视角？一年后这个问题又会怎样？</td>
+</tr>
+<tr>
+<td>了解人生设计是过程</td>
+<td>最坏的情况是什么？发生的可能性多大？如果发生我会怎么做？</td>
+</tr>
+<tr>
+<td>深度合作</td>
+<td>和谁谈过？谁参与了？没有就行动起来</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="金句摘录"><a href="#金句摘录" class="headerlink" title="金句摘录"></a>金句摘录</h2><ul>
+<li>“如果一个问题不能被解决，那么它就不是一个问题。它只是一种情况、一种环境、一种生活现实。”</li>
+<li>“接受现实，是设计人生的起点。人生设计的起点不是你希望到达的地方，而是你当下所处的真实位置。”</li>
+<li>“发现问题 + 解决问题 &#x3D; 精心设计的人生。”</li>
+<li>“乐趣会指引你找到适合你的工作。”</li>
+<li>“没有错误的答案，因此也不存在错误的人生观。”</li>
+<li>“你从来不是在找工作，你寻找的一直是工作机会。”</li>
+<li>“幸福是断舍离。”</li>
+<li>“人生是一个过程，而不是一个结果。”</li>
+<li>“人生是一个无限游戏，无所谓输赢。”</li>
+<li>“失败是创造成功的原材料。”</li>
+<li>“我们总是以自己所缺少的事物来定义问题。”</li>
+<li>“不要恋上你的第一个想法，它几乎从来不会起作用。”</li>
+</ul>
+<hr>
+<h2 id="一张图总结：人生设计的完整闭环"><a href="#一张图总结：人生设计的完整闭环" class="headerlink" title="一张图总结：人生设计的完整闭环"></a>一张图总结：人生设计的完整闭环</h2><pre class="mermaid">flowchart TB
+    Start["你在这里&lt;br/&gt;接受现实 · 评估当下"] --&gt; Compass["指南针&lt;br/&gt;工作观 + 人生观"]
+    Compass --&gt; Find["寻路&lt;br/&gt;心流 + 能量 + 美好时光日志"]
+    Find --&gt; Diverge["发散&lt;br/&gt;思维导图 · 奥德赛计划"]
+    Diverge --&gt; Prototype["原型&lt;br/&gt;对话 · 体验 · 头脑风暴"]
+    Prototype --&gt; Network["进入市场&lt;br/&gt;关系网 · 找机会不找工作"]
+    Network --&gt; Choose["选择&lt;br/&gt;四步骤 · 放手"]
+    Choose --&gt; Fail["失败&lt;br/&gt;重构 · 免疫"]
+    Fail --&gt; Team["团队&lt;br/&gt;支持者 · 导师 · 社群"]
+    Team --&gt; |"五大心态贯穿始终"| Start
+    Team --&gt; Life["人生设计 = 生活方式&lt;br/&gt;永不停歇"]</pre>
+
+<blockquote>
+<p>真正要回答的问题不是”我该过什么样的人生”，而是那个老生常谈、却值得认真回答的问题——<strong>“你最近怎么样？”</strong></p>
+</blockquote>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-23</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230845000001.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%96%AF%E5%9D%A6%E7%A6%8F%E5%95%86%E4%B8%9A%E5%86%B3%E7%AD%96%E8%AF%BE%E3%80%8B/'>读书笔记——《斯坦福商业决策课》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230845000001.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%20%E5%8D%B72%EF%BC%9A%E8%A7%A3%E8%AF%BB%E8%82%A2%E4%BD%93%E8%AF%AD%E8%A8%80%E3%80%8B/">读书笔记——《社会工程 卷2：解读肢体语言》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

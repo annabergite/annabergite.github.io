@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="读书笔记——《态度改变与社会影响》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    读书笔记——《态度改变与社会影响》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：8.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：32分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E6%80%81%E5%BA%A6%E6%94%B9%E5%8F%98%E4%B8%8E%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《态度改变与社会影响》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E5%85%A8%E4%B9%A6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">1. 全书框架与核心主线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%88%86%E7%B1%BB%E4%B8%8E%E4%B8%89%E5%A4%A7%E6%83%85%E5%A2%83"><span class="post-toc-text">2. 社会影响的基本分类与三大情境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E6%80%81%E5%BA%A6%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%85%A8%E4%B9%A6%E7%BB%84%E7%BB%87%E4%B8%BB%E9%A2%98%EF%BC%89"><span class="post-toc-text">3. 态度系统（全书组织主题）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E5%AF%B9%E8%A1%8C%E4%B8%BA%E7%9A%84%E7%9B%B4%E6%8E%A5%E5%BD%B1%E5%93%8D"><span class="post-toc-text">4. 第2章：对行为的直接影响</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-%E5%AD%A6%E4%B9%A0%EF%BC%9A%E8%A1%8C%E4%B8%BA%E5%BE%97%E4%BB%A5%E5%BC%BA%E5%8C%96%E6%97%B6"><span class="post-toc-text">4.1 学习：行为得以强化时</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-%E8%AE%A4%E5%8F%AF%E4%B8%8E%E4%B8%8D%E8%AE%A4%E5%8F%AF%EF%BC%9A%E7%A4%BE%E4%BC%9A%E5%A5%96%E8%B5%8F%E7%9A%84%E5%8A%9B%E9%87%8F"><span class="post-toc-text">4.2 认可与不认可：社会奖赏的力量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-%E4%BB%8E%E4%BC%97%EF%BC%88Conformity%EF%BC%89"><span class="post-toc-text">4.3 从众（Conformity）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-%E6%9C%8D%E4%BB%8E%EF%BC%88Obedience%EF%BC%89%E2%80%94%E2%80%94-%E7%B1%B3%E5%B0%94%E6%A0%BC%E6%8B%89%E5%A7%86%E7%94%B5%E5%87%BB%E5%AE%9E%E9%AA%8C"><span class="post-toc-text">4.4 服从（Obedience）—— 米尔格拉姆电击实验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-5-%E4%BE%9D%E4%BB%8E%E6%8A%80%E5%B7%A7%EF%BC%88%E7%9B%B4%E8%A7%89%E5%88%A4%E6%96%AD%E7%9A%84%E8%BF%90%E7%94%A8%EF%BC%89"><span class="post-toc-text">4.5 依从技巧（直觉判断的运用）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%A1%8C%E4%B8%BA%E5%A6%82%E4%BD%95%E5%8F%98%E6%88%90%E4%BF%A1%E5%BF%B5"><span class="post-toc-text">5. 第3章：行为如何变成信念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-%E5%BD%92%E5%9B%A0%E7%90%86%E8%AE%BA"><span class="post-toc-text">5.1 归因理论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-%E8%87%AA%E6%88%91%E7%9F%A5%E8%A7%89%E7%90%86%E8%AE%BA%EF%BC%88%E8%B4%9D%E5%A7%86%EF%BC%89"><span class="post-toc-text">5.2 自我知觉理论（贝姆）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-%E8%87%AA%E6%88%91%E8%AF%B4%E6%9C%8D%E4%B8%8E%E8%A7%92%E8%89%B2%E6%89%AE%E6%BC%94"><span class="post-toc-text">5.3 自我说服与角色扮演</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-%E8%AE%A4%E7%9F%A5%E4%B8%8D%E5%8D%8F%E8%B0%83%E7%90%86%E8%AE%BA%EF%BC%88%E8%B4%B9%E6%96%AF%E6%B1%80%E6%A0%BC%EF%BC%89"><span class="post-toc-text">5.4 认知不协调理论（费斯汀格）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E9%80%9A%E8%BF%87%E8%AF%B4%E6%9C%8D%E6%94%B9%E5%8F%98%E6%80%81%E5%BA%A6"><span class="post-toc-text">6. 第4章：通过说服改变态度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-1-%E7%A4%BE%E4%BC%9A%E6%AF%94%E8%BE%83%E8%BF%87%E7%A8%8B"><span class="post-toc-text">6.1 社会比较过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-%E8%AF%B4%E6%9C%8D%E7%9A%84-6-%E4%B8%AA%E5%BF%83%E7%90%86%E9%98%B6%E6%AE%B5"><span class="post-toc-text">6.2 说服的 6 个心理阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-%E7%B2%BE%E7%BB%86%E5%8A%A0%E5%B7%A5%E5%8F%AF%E8%83%BD%E6%80%A7%E6%A8%A1%E5%9E%8B%EF%BC%88ELM%EF%BC%89%E2%80%94%E2%80%94-%E8%AF%B4%E6%9C%8D%E7%9A%84%E4%B8%A4%E6%9D%A1%E8%B7%AF%E5%BE%84"><span class="post-toc-text">6.3 精细加工可能性模型（ELM）—— 说服的两条路径</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E8%AE%A9%E8%AF%B4%E6%9C%8D%E6%9B%B4%E6%8C%81%E4%B9%85"><span class="post-toc-text">7. 第5章：让说服更持久</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-%E9%87%8D%E5%A4%8D%E4%B8%8E%E6%9B%9D%E5%85%89"><span class="post-toc-text">7.1 重复与曝光</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-%E7%9D%A1%E7%9C%A0%E8%80%85%E6%95%88%E5%BA%94%E3%80%81%E9%A6%96%E5%9B%A0%E4%B8%8E%E8%BF%91%E5%9B%A0"><span class="post-toc-text">7.2 睡眠者效应、首因与近因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-3-%E6%80%81%E5%BA%A6-%E2%86%92-%E8%A1%8C%E4%B8%BA%EF%BC%88%E6%9C%80%E7%BB%88%E7%9A%84%E8%AF%B4%E6%9C%8D%EF%BC%89"><span class="post-toc-text">7.3 态度 → 行为（最终的说服）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E5%BD%B1%E5%93%8D%E7%9A%84%E6%8A%B5%E5%88%B6%E4%B8%8E%E6%8E%A5%E5%8F%97"><span class="post-toc-text">8. 第6章：影响的抵制与接受</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-%E8%AE%A4%E7%9F%A5%E4%BF%9D%E5%AE%88%E4%B8%BB%E4%B9%89%EF%BC%9A%E6%9E%81%E6%9D%83%E4%B8%BB%E4%B9%89%E8%87%AA%E6%88%91"><span class="post-toc-text">8.1 认知保守主义：极权主义自我</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-%E5%8D%B7%E5%85%A5%E7%8A%B6%E6%80%81"><span class="post-toc-text">8.2 卷入状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-3-%E5%85%8B%E6%9C%8D%E6%8A%B5%E5%88%B6%E7%9A%84-4-%E7%A7%8D%E7%AD%96%E7%95%A5"><span class="post-toc-text">8.3 克服抵制的 4 种策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-4-%E5%BD%A2%E6%88%90%E6%8A%B5%E5%88%B6%E8%83%BD%E5%8A%9B%EF%BC%88%E8%AF%B4%E6%9C%8D%E7%9A%84%E5%8F%8D%E9%9D%A2%EF%BC%89"><span class="post-toc-text">8.4 形成抵制能力（说服的反面）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-5-%E5%81%8F%E8%A7%81"><span class="post-toc-text">8.5 偏见</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-%E7%AC%AC7%E7%AB%A0%EF%BC%9A%E6%97%A0%E6%84%8F%E8%AF%86%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="post-toc-text">9. 第7章：无意识的影响</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-%E6%97%A0%E6%84%8F%E8%AF%86%E5%8A%A0%E5%B7%A5"><span class="post-toc-text">9.1 无意识加工</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-%E9%9D%9E%E8%A8%80%E8%AF%AD%E6%B2%9F%E9%80%9A"><span class="post-toc-text">9.2 非言语沟通</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-%E9%98%88%E4%B8%8B%E5%88%BA%E6%BF%80"><span class="post-toc-text">9.3 阈下刺激</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E5%BD%B1%E5%93%8D%E4%B8%8E%E5%8F%B8%E6%B3%95%E5%88%B6%E5%BA%A6"><span class="post-toc-text">10. 第8章：影响与司法制度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-%E6%8A%97%E8%BE%A9%E5%88%B6-vs-%E8%AE%AF%E9%97%AE%E5%88%B6"><span class="post-toc-text">10.1 抗辩制 vs 讯问制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-%E7%9B%AE%E5%87%BB%E8%80%85%E8%AF%81%E8%AF%8D"><span class="post-toc-text">10.2 目击者证词</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-%E5%AE%A1%E8%AE%AF%E4%B8%8E%E6%8B%9B%E4%BE%9B"><span class="post-toc-text">10.3 审讯与招供</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-4-%E6%B3%95%E5%BA%AD%EF%BC%9A%E8%AF%B4%E6%9C%8D%E7%9A%84%E6%88%98%E5%9C%BA"><span class="post-toc-text">10.4 法庭：说服的战场</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-5-%E9%99%AA%E5%AE%A1%E5%9B%A2%E8%AF%84%E8%AE%AE"><span class="post-toc-text">10.5 陪审团评议</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E5%81%A5%E5%BA%B7%E4%B8%8E%E5%B9%B8%E7%A6%8F%E6%9C%8D%E5%8A%A1%E4%B8%AD%E7%9A%84%E7%A4%BE%E4%BC%9A%E5%BD%B1%E5%93%8D"><span class="post-toc-text">11. 第9章：健康与幸福服务中的社会影响</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-%E4%BA%B2%E7%8E%AF%E5%A2%83%E8%A1%8C%E4%B8%BA"><span class="post-toc-text">11.1 亲环境行为</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-%E5%81%A5%E5%BA%B7%E4%BF%83%E8%BF%9B"><span class="post-toc-text">11.2 健康促进</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-%E5%8C%BB%E5%98%B1%E4%BE%9D%E4%BB%8E"><span class="post-toc-text">11.3 医嘱依从</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-4-%E5%BF%83%E7%90%86%E6%B2%BB%E7%96%97-%E5%BD%B1%E5%93%8D"><span class="post-toc-text">11.4 心理治疗 &#x3D; 影响</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-%E9%99%84%E5%BD%95A-B%EF%BC%9A%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95%E4%B8%8E%E6%80%81%E5%BA%A6%E6%B5%8B%E9%87%8F"><span class="post-toc-text">12. 附录A&#x2F;B：研究方法与态度测量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%84%E5%BD%95A-%E7%A0%94%E7%A9%B6%E6%96%B9%E6%B3%95"><span class="post-toc-text">附录A 研究方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%99%84%E5%BD%95B-%E6%80%81%E5%BA%A6%E6%B5%8B%E9%87%8F"><span class="post-toc-text">附录B 态度测量</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="post-toc-text">13. 核心理论速查表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%91%E5%8F%A5%E9%9B%86%E9%94%A6"><span class="post-toc-text">金句集锦</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%EF%BC%9A%E5%85%A8%E4%B9%A6%E4%B8%80%E5%BC%A0%E5%9B%BE%EF%BC%88%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E5%85%B3%E7%B3%BB%EF%BC%89"><span class="post-toc-text">附：全书一张图（核心概念关系）</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《态度改变与社会影响》读书笔记"><a href="#《态度改变与社会影响》读书笔记" class="headerlink" title="《态度改变与社会影响》读书笔记"></a>《态度改变与社会影响》读书笔记</h1><blockquote>
+<p><strong>书名</strong>：态度改变与社会影响（The Psychology of Attitude Change and Social Influence）<br><strong>作者</strong>：菲利普·津巴多（Philip G. Zimbardo）、迈克尔·利佩（Michael R. Leippe）<br><strong>译者</strong>：邓羽、肖莉、唐小艳 等<br><strong>主编</strong>：彭凯平（清华大学心理学系主任）<br><strong>出版</strong>：人民邮电出版社（社会心理学精品译丛）</p>
+<p><strong>一句话概括</strong>：这本书系统总结”态度形成与改变 + 社会影响”的全部核心理论，回答两个根本问题——<strong>你如何影响他人，他人又如何（常常在你毫无觉察时）影响你</strong>。核心概念是”态度系统”：态度、认知、情感、行为意向、行为五者相互关联，<strong>改变其中任何一个，都会引起其他部分的连锁变化</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>全书框架与核心主线</li>
+<li>社会影响的基本分类与三大情境</li>
+<li>态度系统（全书组织主题）</li>
+<li>第2章：对行为的直接影响（学习、从众、服从、依从）</li>
+<li>第3章：行为如何变成信念（归因、自我知觉、认知不协调）</li>
+<li>第4章：通过说服改变态度（说服的6个阶段 + 精细加工可能性模型）</li>
+<li>第5章：让说服更持久（重复、睡眠者效应、态度→行为）</li>
+<li>第6章：影响的抵制与接受（认知保守主义、预防接种、偏见）</li>
+<li>第7章：无意识的影响（条件反射、非言语沟通、阈下刺激）</li>
+<li>第8章：影响与司法制度（目击者、审讯、法庭、陪审团）</li>
+<li>第9章：健康与幸福服务中的社会影响</li>
+<li>附录A&#x2F;B：研究方法与态度测量</li>
+<li>核心理论速查表 + 金句</li>
+</ol>
+<hr>
+<h2 id="1-全书框架与核心主线"><a href="#1-全书框架与核心主线" class="headerlink" title="1. 全书框架与核心主线"></a>1. 全书框架与核心主线</h2><pre class="mermaid">flowchart TB
+    subgraph 影响的对象["影响的对象：态度系统"]
+        A[态度]
+        B[认知/信念]
+        C[情感反应]
+        D[行为意向]
+        E[行为]
+    end
+
+    subgraph 三条影响途径["三条影响途径"]
+        P1[直接改变行为&lt;br/&gt;第2章&lt;br/&gt;学习/从众/服从/依从]
+        P2[行为反过来改变态度&lt;br/&gt;第3章&lt;br/&gt;归因/自我知觉/认知不协调]
+        P3[说服改变信念进而改变态度&lt;br/&gt;第4-5章&lt;br/&gt;说服的6个阶段]
+    end
+
+    P1 --&gt; E
+    E --&gt; P2
+    P2 --&gt; A
+    P3 --&gt; B --&gt; A
+
+    subgraph 极端与无意识["两端与暗处"]
+        R1[抵制 vs 接受&lt;br/&gt;第6章]
+        R2[无意识影响&lt;br/&gt;第7章]
+        R3[应用：司法/健康&lt;br/&gt;第8-9章]
+    end
+
+    A --&gt; R1
+    A --&gt; R2
+    R2 --&gt; R3</pre>
+
+<p><strong>核心主线</strong>：社会影响的最终目标是<strong>改变行为</strong>，但通向行为的必经之路是<strong>态度</strong>。全书围绕”态度系统”这一组织概念展开——因为系统的各成分相互关联，所以”<strong>变化导致变化</strong>“。</p>
+<p><strong>社会心理学研究方式的 4 个特点</strong>：</p>
+<ol>
+<li>关注<strong>个体</strong>行为与内在心理过程（而非群体&#x2F;机构）。</li>
+<li>强调<strong>情境</strong>对行为的决定性作用（勒温公式：行为 &#x3D; 人格 × 情境的函数）。</li>
+<li>强调<strong>主观知觉</strong>（人们对情境的”定义”比客观现实更重要）。</li>
+<li>依赖<strong>科学实验方法</strong>（控制变量、随机分配）。</li>
+</ol>
+<hr>
+<h2 id="2-社会影响的基本分类与三大情境"><a href="#2-社会影响的基本分类与三大情境" class="headerlink" title="2. 社会影响的基本分类与三大情境"></a>2. 社会影响的基本分类与三大情境</h2><p><strong>社会影响（social influence）</strong> &#x3D; 由他人行为所导致的个人变化。</p>
+<table>
+<thead>
+<tr>
+<th>术语</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>接受（依从&#x2F;服从）</strong></td>
+<td>行为上的变化，不要求同意</td>
+</tr>
+<tr>
+<td><strong>说服</strong></td>
+<td>态度上的变化（含情感改变），效果更持久</td>
+</tr>
+<tr>
+<td><strong>宣传&#x2F;教育</strong></td>
+<td>信念的改变（宣传&#x3D;让对方相信他本不相信的东西）</td>
+</tr>
+<tr>
+<td><strong>洗脑&#x2F;思想控制</strong></td>
+<td>通过强力操纵剥夺自主性（不算正常社会影响）</td>
+</tr>
+</tbody></table>
+<pre class="mermaid">flowchart LR
+    SI[社会影响] --&gt; A[人际情境&lt;br/&gt;一对一/少数对少数&lt;br/&gt;个体化程度最高]
+    SI --&gt; B[说服情境&lt;br/&gt;一个影响源→很多人&lt;br/&gt;演讲/布道]
+    SI --&gt; C[大众媒体情境&lt;br/&gt;通过媒介影响亿万受众&lt;br/&gt;个体化程度最低]</pre>
+
+<p><strong>影响者&#x2F;被影响者的四种情形</strong>：① 影响者改变他人；② 影响者改变自己（自我改变）；③ 影响者就是被影响对象（自我影响，如心理治疗）；④ 自己既是影响者又是影响对象（如减肥、戒烟的新年誓言）。</p>
+<p><strong>案例（”名人堂&#x2F;恶人堂”）</strong>：</p>
+<ul>
+<li><strong>统一教招募</strong>：从小承诺逐级升级 → 屡次说服 → 群体动力 → 忙碌无暇异议 → 积极强化。约 1&#x2F;3 被邀请者多逗留，约 1&#x2F;10 最终入会。</li>
+<li><strong>马丁·路德·金</strong>：建立与听众的”感知共同性”（”我们”）、创造积极联想、信息简明、”呼唤与反应”技术。</li>
+<li><strong>里根</strong>：简明、真诚的面孔、乐观主题。</li>
+<li><strong>希特勒</strong>：简明标语、壮观场面、情绪渲染。</li>
+<li><strong>吉米·琼斯（人民圣殿教）</strong>：利用信誉 + “问题解决结构”（制造问题→给出唯一解决）+ 消灭异议者 → 913 人集体自杀。</li>
+<li><strong>烟草广告</strong>：低焦油”健康”暗示、把吸烟与快乐&#x2F;性感&#x2F;自由&#x2F;体育赞助关联、市场细分（女性、黑人、青少年）。</li>
+</ul>
+<hr>
+<h2 id="3-态度系统（全书组织主题）"><a href="#3-态度系统（全书组织主题）" class="headerlink" title="3. 态度系统（全书组织主题）"></a>3. 态度系统（全书组织主题）</h2><p><strong>态度</strong> &#x3D; 对某特定目标的<strong>评价倾向</strong>（喜欢—不喜欢、赞成—不赞成的评价）。</p>
+<pre class="mermaid">flowchart TB
+    C[认知 Cognition&lt;br/&gt;信念与知识]
+    A[态度 Attitude&lt;br/&gt;整体评价]
+    F[情感反应 Affect&lt;br/&gt;情绪/生理唤醒]
+    I[行为意向 Intention&lt;br/&gt;计划/期望]
+    B[行为 Behavior&lt;br/&gt;实际行动]
+
+    A &lt;--&gt; C
+    A &lt;--&gt; F
+    A &lt;--&gt; I
+    A &lt;--&gt; B
+    C &lt;--&gt; F
+    C &lt;--&gt; I
+    I &lt;--&gt; B</pre>
+
+<p><strong>四个核心主题</strong>：</p>
+<ol>
+<li><strong>态度系统是有组织的</strong>——改变一方面常引起其他方面变化。</li>
+<li><strong>态度引导知觉和认知</strong>——已有的评价影响我们如何解释新信息。</li>
+<li><strong>态度是可轻易提取的评价性总结</strong>——面对不重要选择时走”底线”，召唤一般态度。</li>
+<li><strong>态度具有自我定义功能</strong>——重要态度构成”我们是谁”（标牌性价值 badge value），因此难以改变。</li>
+</ol>
+<blockquote>
+<p>社会影响的最终目标是行为改变，但必须经过”态度”这条复杂的信道。</p>
+</blockquote>
+<hr>
+<h2 id="4-第2章：对行为的直接影响"><a href="#4-第2章：对行为的直接影响" class="headerlink" title="4. 第2章：对行为的直接影响"></a>4. 第2章：对行为的直接影响</h2><h3 id="4-1-学习：行为得以强化时"><a href="#4-1-学习：行为得以强化时" class="headerlink" title="4.1 学习：行为得以强化时"></a>4.1 学习：行为得以强化时</h3><ul>
+<li><strong>工具性学习（操作性学习）</strong>：行为是改变环境的手段。<strong>强化</strong>增加行为频率，<strong>惩罚</strong>减少行为，<strong>消退</strong>（强化消失）导致行为频率降低，<strong>塑造</strong>是逐步提高标准的强化程序。</li>
+<li><strong>社会学习理论（班杜拉）</strong>：<ul>
+<li><strong>观察性学习（替代性学习）</strong>：观察榜样的行为及其结果（波波玩偶实验——“暴力衍生暴力”；慷慨榜样使儿童捐款 8 倍于自私榜样）。</li>
+<li><strong>规则学习</strong>：通过言语指导习得行为规则（内化后成为”我自己的规则”）。</li>
+<li><strong>自我效能感</strong>：对自己能否完成任务的判断 → 影响努力与坚持 → 影响成败 → 反过来影响自我效能（成功经验提升效能）。</li>
+</ul>
+</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    P[个人&lt;br/&gt;思想/信念/期望] &lt;--&gt; B[行为]
+    B &lt;--&gt; E[环境&lt;br/&gt;强化/惩罚]
+    E &lt;--&gt; P</pre>
+
+<ul>
+<li><strong>辨别性刺激</strong>：提示”此时此地行为 X 会得到结果 Y”的信号（同一行为在不同信号下结果不同）。</li>
+<li>案例：工厂抽奖计划使旷工迟到降 75%；学生通过行为矫正”反向塑造”老师（积极接触 8→32 次，消极 18→0）。</li>
+</ul>
+<h3 id="4-2-认可与不认可：社会奖赏的力量"><a href="#4-2-认可与不认可：社会奖赏的力量" class="headerlink" title="4.2 认可与不认可：社会奖赏的力量"></a>4.2 认可与不认可：社会奖赏的力量</h3><ul>
+<li><strong>规范性社会影响</strong>：为获得喜欢&#x2F;接纳、避免拒绝而表面采纳群体规范（偏离者遭”沉默对待”，沙克特实验）。</li>
+<li><strong>信息性社会影响</strong>：把他人当作”正确性”的信息来源（社会比较理论，费斯汀格）。</li>
+</ul>
+<h3 id="4-3-从众（Conformity）"><a href="#4-3-从众（Conformity）" class="headerlink" title="4.3 从众（Conformity）"></a>4.3 从众（Conformity）</h3><blockquote>
+<p>定义：没有直接要求、没有充分理由的情况下，为适应真实&#x2F;想象中团体压力而改变行为或信念。</p>
+</blockquote>
+<ul>
+<li><strong>谢里夫似动实验</strong>（模糊刺激）：群体规范形成，且<strong>持续一年以上</strong>。</li>
+<li><strong>阿施线段实验</strong>（清晰刺激）：<strong>约 1&#x2F;3 的回答从众</strong>；70% 被试至少从众一次；仅 25% 从未从众。只要有一个”异议伙伴”支持，从众率降至 6%。</li>
+<li>从众成因：规范性影响为主（私下作答从众大减）；信息性影响在不确定+有”专家”时更强。</li>
+<li>从众 vs 独立：创造性异议者特征&#x3D;高自尊、低社交焦虑、强个性化倾向。</li>
+</ul>
+<h3 id="4-4-服从（Obedience）——-米尔格拉姆电击实验"><a href="#4-4-服从（Obedience）——-米尔格拉姆电击实验" class="headerlink" title="4.4 服从（Obedience）—— 米尔格拉姆电击实验"></a>4.4 服从（Obedience）—— 米尔格拉姆电击实验</h3><pre class="mermaid">flowchart TB
+    A[权威实验者命令&lt;br/&gt;继续电击] --&gt; B{被试服从?}
+    B --&gt;|63-65%| C[一直加到 450 伏特&lt;br/&gt;最大电击]
+    B --&gt;|35-37%| D[中途拒绝]
+    E[改变情境] --&gt;|权威来自普通机构| F[服从降至 48%]
+    E --&gt;|命令来自普通人| G[服从降至 20%]
+    E --&gt;|有反抗的榜样| H[服从进一步降低]
+    E --&gt;|权威地位更高| I[服从升至 80%]</pre>
+
+<ul>
+<li>解释：信息性影响（新异情境+权威是”专家”）+ 规范性影响（怕被权威嘲笑）+ <strong>服从权威是根深蒂固的”直觉判断”</strong>（社会化习得的经验规则）。</li>
+<li>关键洞察：权威象征（白大褂、头衔、科学气氛）触发自动服从；连拒绝者也不会”英雄式”离开座位帮助受害者（”待在座位上”这一早期规则被内化）。</li>
+<li><strong>不服从的退出按钮</strong>：意识到”似乎不对劲”→ 不接受他人对情境的解释 → 考虑糟糕情形 → 制定逃脱计划 → 预演。</li>
+</ul>
+<h3 id="4-5-依从技巧（直觉判断的运用）"><a href="#4-5-依从技巧（直觉判断的运用）" class="headerlink" title="4.5 依从技巧（直觉判断的运用）"></a>4.5 依从技巧（直觉判断的运用）</h3><p><strong>两个核心社会规则</strong>：</p>
+<ul>
+<li><strong>互惠规则</strong>：回报帮助过自己的人（古尔德纳：普遍存在、人性基础）。</li>
+<li><strong>承诺规则</strong>：履行自己的诺言。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+    subgraph 依从技巧["依从诱导技巧"]
+        A[闭门羹技术&lt;br/&gt;door-in-the-face&lt;br/&gt;先大请求被拒→再小请求]
+        B[折扣技巧&lt;br/&gt;先出价→再"优惠加码"]
+        C[虚报低价 lowballing&lt;br/&gt;先诱人低价→再找借口提价]
+        D[登门槛技术&lt;br/&gt;foot-in-the-door&lt;br/&gt;先小请求→再大请求]
+    end
+    A --&gt; E[互惠规则&lt;br/&gt;对方的让步=让步]
+    B --&gt; E
+    C --&gt; F[承诺规则&lt;br/&gt;已同意=一致性压力]
+    D --&gt; F
+    E --&gt; G[知觉对比效应]</pre>
+
+<p><strong>恰尔迪尼的 6 种依从背景与原则</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>对应背景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>互惠</td>
+<td>义务感</td>
+</tr>
+<tr>
+<td>承诺&#x2F;一致性</td>
+<td>承诺</td>
+</tr>
+<tr>
+<td>权威</td>
+<td>可信度</td>
+</tr>
+<tr>
+<td>稀缺</td>
+<td>竞争</td>
+</tr>
+<tr>
+<td>喜欢</td>
+<td>友谊</td>
+</tr>
+<tr>
+<td>共识</td>
+<td>社会确认</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>实验数据：闭门羹技术使同意率 29%→53%；虚报低价使 31%→56% 愿意早 7 点参加实验；登门槛使捐款率 61%→95%。</p>
+</blockquote>
+<hr>
+<h2 id="5-第3章：行为如何变成信念"><a href="#5-第3章：行为如何变成信念" class="headerlink" title="5. 第3章：行为如何变成信念"></a>5. 第3章：行为如何变成信念</h2><h3 id="5-1-归因理论"><a href="#5-1-归因理论" class="headerlink" title="5.1 归因理论"></a>5.1 归因理论</h3><ul>
+<li><strong>特质归因（内部归因）</strong>：行为反映个体属性。</li>
+<li><strong>情境归因（外部归因）</strong>：行为反映情境。</li>
+<li><strong>凯利的三个因素</strong>：非常规性、一贯性、特异性（三者都指向个体时做特质归因）。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+    Q[观察到一个行为] --&gt; A{行为非常规?}
+    A --&gt;|是| T1[倾向特质归因]
+    A --&gt;|否| B{行为一贯?}
+    B --&gt;|是| T2[倾向特质归因]
+    B --&gt;|否| C{行为特异?}
+    C --&gt;|非特异/跨情境| T3[倾向特质归因]
+    C --&gt;|特异于某情境| S[情境归因]</pre>
+
+<p><strong>归因偏差</strong>：</p>
+<ul>
+<li><strong>基本归因错误</strong>：高估个人因素、低估情境因素（米尔格拉姆实验前，40 名精神科医生预测仅 1‰ 会服从到底；竞答游戏观察者高估提问者智力）。</li>
+<li><strong>显著性效应</strong>：对最显眼、最吸引注意的因素赋予更大权重。</li>
+<li>归因并不总是理性的（过分简单化、因果图式）。</li>
+</ul>
+<h3 id="5-2-自我知觉理论（贝姆）"><a href="#5-2-自我知觉理论（贝姆）" class="headerlink" title="5.2 自我知觉理论（贝姆）"></a>5.2 自我知觉理论（贝姆）</h3><blockquote>
+<p>当内部线索微弱、模糊时，人们<strong>像观察者一样</strong>从自己的行为推断态度。</p>
+</blockquote>
+<ul>
+<li>“登门槛”效应的解释：从过去的助人行为推断”我是乐于助人的人”。</li>
+<li>只有当<strong>态度不坚定&#x2F;不明确</strong>时才发生；态度坚定者不受影响。</li>
+</ul>
+<h3 id="5-3-自我说服与角色扮演"><a href="#5-3-自我说服与角色扮演" class="headerlink" title="5.3 自我说服与角色扮演"></a>5.3 自我说服与角色扮演</h3><ul>
+<li><strong>角色扮演</strong>（即兴扮演与自己立场相反的角色）比被动听讲更能改变态度。</li>
+<li>吸烟者角色扮演研究：扮演”得知患肺癌”的病人，两周后日吸烟量平均减少 10.5 支（对照组 4.8 支），6 个月后差异仍存在。</li>
+<li>机制：自我归因 + <strong>自我说服</strong>（自己产生的论据更难忘、更个人相关）。</li>
+</ul>
+<h3 id="5-4-认知不协调理论（费斯汀格）"><a href="#5-4-认知不协调理论（费斯汀格）" class="headerlink" title="5.4 认知不协调理论（费斯汀格）"></a>5.4 认知不协调理论（费斯汀格）</h3><blockquote>
+<p>认知之间存在不一致 → 产生不舒适的驱力状态 → 通过改变认知降低不协调。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    A[行为与态度矛盾] --&gt; B{知觉到自由选择?}
+    B --&gt;|否| C[有外部理由&lt;br/&gt;"我不得不做"&lt;br/&gt;不协调低]
+    B --&gt;|是| D{诱因大小?}
+    D --&gt;|诱因大| E[20美元证明谎言合理&lt;br/&gt;态度不变]
+    D --&gt;|诱因恰好够| F[1美元不够合理化&lt;br/&gt;态度改变以自洽]
+    F --&gt; G[理由不足效应&lt;br/&gt;越少越好]</pre>
+
+<ul>
+<li><strong>费斯汀格 &amp; 卡尔史密斯（1959）</strong>：1 美元报酬者比 20 美元报酬者更相信”无聊任务是愉悦的”。</li>
+<li><strong>引发认知不协调的必要条件</strong>：① 知觉到自由选择；② 对后果负有个人责任；③ 预见到令人厌恶的结果；（公开行为更强）。</li>
+<li><strong>降低认知不协调的 4 种模式</strong>：① 放弃&#x2F;改变决定、态度或行为；② 降低重要性；③ 增加协调认知；④ 用药物&#x2F;酒精直接降低唤醒。</li>
+<li>总原则：<strong>采纳最小阻抗的途径</strong>（最容易改变的认知先改变）。</li>
+<li><strong>过度合理化效应</strong>：为已主动发生的行为提供过多外部奖赏 → 内部兴趣降低（奖赏把”游戏”变成”工作”）。</li>
+<li><strong>自我肯定理论（斯蒂尔）</strong>：若有机会肯定自我概念（如表达重要价值观），则无需通过态度改变来降低不协调。</li>
+<li>案例：Beech-Nut 假苹果汁案——副总裁把”卖假果汁给婴儿”逐步合理化为”我热爱公司”。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+    subgraph 三个过程对比["行为影响态度的三个过程"]
+        A[自我归因&lt;br/&gt;认知性/态度形成&lt;br/&gt;态度不明确时]
+        B[自我说服&lt;br/&gt;自己生成论据&lt;br/&gt;角色扮演]
+        C[自我辩解/认知不协调&lt;br/&gt;动机性/态度改变&lt;br/&gt;态度明确时]
+    end
+    A --&gt; D[共同结果：&lt;br/&gt;行为塑造态度与自我意象]
+    B --&gt; D
+    C --&gt; D</pre>
+
+<hr>
+<h2 id="6-第4章：通过说服改变态度"><a href="#6-第4章：通过说服改变态度" class="headerlink" title="6. 第4章：通过说服改变态度"></a>6. 第4章：通过说服改变态度</h2><h3 id="6-1-社会比较过程"><a href="#6-1-社会比较过程" class="headerlink" title="6.1 社会比较过程"></a>6.1 社会比较过程</h3><ul>
+<li>我们主动寻求说服信息来验证观点正确性。</li>
+<li><strong>相似的人</strong>：主观偏好（评价性）时找相似者比较（寻求证实+快速评价）。</li>
+<li><strong>相异的人</strong>：① 涉及可证实的事实时；② 担心自己看法不妥当（需要更广视角）时。</li>
+<li>两类信息：<strong>证实性信息</strong>（证明自己正确）+ <strong>评价性信息</strong>（指导完善态度）。</li>
+</ul>
+<h3 id="6-2-说服的-6-个心理阶段"><a href="#6-2-说服的-6-个心理阶段" class="headerlink" title="6.2 说服的 6 个心理阶段"></a>6.2 说服的 6 个心理阶段</h3><pre class="mermaid">flowchart LR
+    A[1 曝光&lt;br/&gt;接收到信息] --&gt; B[2 注意&lt;br/&gt;注意到信息]
+    B --&gt; C[3 理解&lt;br/&gt;理解要点]
+    C --&gt; D[4 接受&lt;br/&gt;采纳结论为新态度]
+    D --&gt; E[5 保持&lt;br/&gt;记住新态度]
+    E --&gt; F[6 行为&lt;br/&gt;态度指导行为]</pre>
+
+<ul>
+<li><strong>曝光阶段</strong>：选择性曝光（生活方式过滤 + 政府&#x2F;媒体审查）；媒体”议程设置”（决定人们评价的标准）。</li>
+<li><strong>注意阶段</strong>：注意是有限加工的；选择性注意（偏好支持性信息）；新异有用信息能突破屏蔽。</li>
+<li><strong>理解阶段</strong>：复杂信息<strong>书面</strong>呈现更有说服力（可复读暂停）；”印刷晓之以理，电视动之以情”。</li>
+<li><strong>接受阶段</strong>（最大障碍）：认知反应观点——态度改变取决于信息引发的<strong>认知反应</strong>（赞同或反对的思想）。信息质量（有力论据）+ 了解受众。</li>
+</ul>
+<h3 id="6-3-精细加工可能性模型（ELM）——-说服的两条路径"><a href="#6-3-精细加工可能性模型（ELM）——-说服的两条路径" class="headerlink" title="6.3 精细加工可能性模型（ELM）—— 说服的两条路径"></a>6.3 精细加工可能性模型（ELM）—— 说服的两条路径</h3><pre class="mermaid">flowchart TB
+    M[说服信息] --&gt; Q{有动机?&lt;br/&gt;个人相关性高?}
+    Q --&gt;|是| S[系统化加工&lt;br/&gt;仔细分析论据]
+    Q --&gt;|否| H[直觉捷径/外周线索]
+    Q --&gt;|能力低&lt;br/&gt;分心/信息难懂| H2[被迫依赖外周线索]
+    S --&gt; R1[态度改变取决于&lt;br/&gt;论据质量：强则服/弱则拒]
+    H --&gt; R2[态度改变取决于&lt;br/&gt;外周线索：专家/可爱/喝彩/长度]</pre>
+
+<ul>
+<li><strong>外周线索</strong>：信息源权威性、可爱度、喝彩声、信息长度、乐观基调等（”专家可信赖”、”大多数人相信的对”）。</li>
+<li>佩蒂、卡乔波、戈德曼（1981）实验：高相关组（明年就考）被<strong>论据质量</strong>说服；低相关组（10 年后才考）被<strong>专家</strong>说服。</li>
+<li>分散注意力可让<strong>软弱论据也产生说服力</strong>（干扰反驳），但同时削弱有力论据。</li>
+<li>广播电视使外周线索双重增强（突出 + 分散对内容的注意）→ 1988 年总统大选”形象代替实质”。</li>
+<li><strong>系统加工的偏差</strong>：即使努力客观，已有态度仍扭曲解释（死刑研究：双方读同样混合证据后<strong>态度极化</strong>）。</li>
+</ul>
+<hr>
+<h2 id="7-第5章：让说服更持久"><a href="#7-第5章：让说服更持久" class="headerlink" title="7. 第5章：让说服更持久"></a>7. 第5章：让说服更持久</h2><h3 id="7-1-重复与曝光"><a href="#7-1-重复与曝光" class="headerlink" title="7.1 重复与曝光"></a>7.1 重复与曝光</h3><ul>
+<li><strong>单纯曝光效应（扎伊翁茨）</strong>：曝光越多越喜欢（熟悉&#x3D;舒适）。</li>
+<li><strong>极化现象</strong>：重复呈现已喜欢的刺激 → 更喜欢；已不喜欢的 → 更不喜欢。</li>
+<li><strong>评价一致性原则</strong>：思考产生与已有态度评价一致的认知，使态度更极端（图式引导思维）。</li>
+<li><strong>复杂信息重复</strong>：1→3 次说服力上升，5 次下降（思维饱和、厌倦、<strong>心理阻抗</strong>）。</li>
+<li>重复使态度更持久（专家信息听 5 次者 4 周后态度不衰退）。</li>
+</ul>
+<h3 id="7-2-睡眠者效应、首因与近因"><a href="#7-2-睡眠者效应、首因与近因" class="headerlink" title="7.2 睡眠者效应、首因与近因"></a>7.2 睡眠者效应、首因与近因</h3><pre class="mermaid">flowchart TB
+    A[有力信息] --&gt; B[折扣线索在后&lt;br/&gt;如"来源不可信"] --&gt; C[立即：拒绝信息]
+    C --&gt; D[随时间推移：态度与来源分离&lt;br/&gt;信息内容被记住&lt;br/&gt;折扣线索被遗忘]
+    D --&gt; E[睡眠者效应&lt;br/&gt;延迟的说服增强]</pre>
+
+<ul>
+<li>睡眠者效应条件：信息被系统加工（比折扣线索更难忘）+ 折扣线索在信息<strong>之后</strong>呈现。</li>
+<li><strong>首因效应</strong>：先呈现的信息影响更大（先形成图式引导后续解释）。</li>
+<li><strong>近因效应</strong>：两条信息后立即测量，则后一条（更鲜活）占优。</li>
+</ul>
+<h3 id="7-3-态度-→-行为（最终的说服）"><a href="#7-3-态度-→-行为（最终的说服）" class="headerlink" title="7.3 态度 → 行为（最终的说服）"></a>7.3 态度 → 行为（最终的说服）</h3><pre class="mermaid">flowchart TB
+    subgraph 理性行为理论["理性行为理论 Ajzen &amp; Fishbein"]
+        B1[行为信念] --&gt; A1[对行为的态度]
+        B2[规范信念] --&gt; A2[主体规范&lt;br/&gt;重要他人是否赞成]
+        A1 --&gt; I[行为意向]
+        A2 --&gt; I
+        I --&gt; B[行为]
+    end</pre>
+
+<p><strong>态度-行为一致性的 4 个条件</strong>：</p>
+<ol>
+<li>态度<strong>强烈且清晰</strong>（系统加工&#x2F;直接经验形成，能自动激活）。</li>
+<li>态度与当前情境所要求的行为<strong>相关联</strong>（特定态度预测特定行为）。</li>
+<li>态度与行为在<strong>同一成分</strong>（认知或情感）上相关联（Alka-Seltzer：喜欢广告但买的是理性选择的新产品）。</li>
+<li>态度对个体<strong>重要</strong>（个人相关性高）。</li>
+</ol>
+<hr>
+<h2 id="8-第6章：影响的抵制与接受"><a href="#8-第6章：影响的抵制与接受" class="headerlink" title="8. 第6章：影响的抵制与接受"></a>8. 第6章：影响的抵制与接受</h2><h3 id="8-1-认知保守主义：极权主义自我"><a href="#8-1-认知保守主义：极权主义自我" class="headerlink" title="8.1 认知保守主义：极权主义自我"></a>8.1 认知保守主义：极权主义自我</h3><pre class="mermaid">flowchart TB
+    A[已有信念/态度] --&gt; B[确认策略&lt;br/&gt;只收集证实性信息]
+    A --&gt; C[记忆重构&lt;br/&gt;回忆与当前信念一致的事]
+    A --&gt; D[信念长出自己的腿&lt;br/&gt;原信息被否定仍坚持]
+    B --&gt; E[态度更牢固、更不可动摇]
+    C --&gt; E
+    D --&gt; E</pre>
+
+<h3 id="8-2-卷入状态"><a href="#8-2-卷入状态" class="headerlink" title="8.2 卷入状态"></a>8.2 卷入状态</h3><ul>
+<li><strong>建构性动机</strong>：寻求正确态度，对新信息开放（结果关联性卷入）。</li>
+<li><strong>确认性动机</strong>：捍卫已有立场，对新信息封闭（承诺 + 自我界定价值观 + 重要他人共有）。</li>
+<li><strong>自我卷入</strong>：态度与自我界定价值观紧密联系 → 狭窄接受区、宽拒绝区（相近立场被”同化”，稍异立场被”对比”放大）。</li>
+</ul>
+<h3 id="8-3-克服抵制的-4-种策略"><a href="#8-3-克服抵制的-4-种策略" class="headerlink" title="8.3 克服抵制的 4 种策略"></a>8.3 克服抵制的 4 种策略</h3><ol>
+<li><strong>可解释性</strong>：使人感到须向他人证明立场合理性 → 更复杂、平衡的思考。</li>
+<li><strong>考虑对立面</strong>：”如果真理在反方会怎样”——消除极化（死刑研究验证）。</li>
+<li><strong>导向性问题&#x2F;两难策略</strong>：用提问诱导与态度不一致的自我归因；对高度自信者用”两难策略”（提出更极端的立场激发其向中立自我归因）。</li>
+<li><strong>击中适当心弦（态度功能）</strong>：价值表达 &#x2F; 自我防御 &#x2F; 知识 &#x2F; 社会适应功能——信息针对态度所满足的功能。</li>
+</ol>
+<h3 id="8-4-形成抵制能力（说服的反面）"><a href="#8-4-形成抵制能力（说服的反面）" class="headerlink" title="8.4 形成抵制能力（说服的反面）"></a>8.4 形成抵制能力（说服的反面）</h3><pre class="mermaid">flowchart TB
+    subgraph 四种防御["构建心理防御"]
+        A[承诺&lt;br/&gt;公开表明立场]
+        B[知识&lt;br/&gt;丰富的知识便于反驳]
+        C[预防接种&lt;br/&gt;先接受轻微攻击→产生认知抗体]
+        D[预先警告&lt;br/&gt;得知将被攻击→生成反驳]
+    end
+    A --&gt; R[更强的抵制]
+    B --&gt; R
+    C --&gt; R
+    D --&gt; R</pre>
+
+<ul>
+<li><strong>接种防御优于支持性防御</strong>（麦圭尔）：对”自明之理”先轻微攻击再反驳，比只给支持性信息更能抵抗后来的强攻击。</li>
+</ul>
+<h3 id="8-5-偏见"><a href="#8-5-偏见" class="headerlink" title="8.5 偏见"></a>8.5 偏见</h3><ul>
+<li><strong>偏见</strong> &#x3D; 对目标群体的习得性负面态度（消极情感 + 消极信念 + 回避&#x2F;支配的行为意向）。</li>
+<li><strong>刻板印象</strong> &#x3D; 支持偏见的信念（心理图式）。</li>
+<li><strong>歧视</strong> &#x3D; 偏见付诸行动。</li>
+<li>起源：历史&#x2F;社会文化根源、经济&#x2F;政治基础、<strong>权威人格</strong>（自我防御功能）、知识&#x2F;社会适应&#x2F;价值表达功能。</li>
+<li>偏见一旦形成，通过确认策略和释义偏差不断”自我证实”，极难改变。</li>
+</ul>
+<hr>
+<h2 id="9-第7章：无意识的影响"><a href="#9-第7章：无意识的影响" class="headerlink" title="9. 第7章：无意识的影响"></a>9. 第7章：无意识的影响</h2><h3 id="9-1-无意识加工"><a href="#9-1-无意识加工" class="headerlink" title="9.1 无意识加工"></a>9.1 无意识加工</h3><ul>
+<li>注意是容量有限的；未注意的信息可被<strong>平行加工</strong>，影响思维与行为。</li>
+<li><strong>经典条件反射</strong>：中性刺激 + 情绪刺激重复配对 → 中性刺激获得情绪力量（巴甫洛夫、华生小阿尔伯特；广告音乐；”光明&#x2F;黑暗”与电击配对实验——被试未觉察两个实验的联系却改变了词语偏好）。</li>
+<li><strong>晕轮效应</strong>：对目标的总体评价（积极&#x2F;消极）以相同方式影响对其所有方面的评价（热情版 vs 冷漠版教授）。</li>
+<li><strong>不留神</strong>：自动化反应（兰格复印机实验：”因为我有东西要复印”使同意率 60%→93%）；分类标签约束思维。</li>
+</ul>
+<h3 id="9-2-非言语沟通"><a href="#9-2-非言语沟通" class="headerlink" title="9.2 非言语沟通"></a>9.2 非言语沟通</h3><pre class="mermaid">flowchart TB
+    NV[非言语信息] --&gt; P[副语言途径&lt;br/&gt;语速/音高/音量/语调]
+    NV --&gt; V[可见途径&lt;br/&gt;手势/姿态/表情/目光/衣着]
+    P --&gt; I1[印象形成&lt;br/&gt;能力/可信度/支配性]
+    V --&gt; I1
+    I1 --&gt; I2[说服与归因]
+    I2 --&gt; I3[自我知觉&lt;br/&gt;点头=同意]</pre>
+
+<ul>
+<li><strong>7 种跨文化基本情绪表情</strong>：高兴、惊讶、愤怒、恐惧、悲伤、轻视、厌恶（艾克曼）。</li>
+<li><strong>视觉主导比率</strong>：主导者说话时注视对方多于倾听时。</li>
+<li><strong>语速快</strong>传递可信度与知识性 → 更有说服力（但被识别为”推销”时失效）。</li>
+<li><strong>说谎与泄漏</strong>：谎言泄漏（焦虑从难控制的通道泄出——身体动作、声音）+ 认知干预（编谎增加心理负担→停顿、生硬）。人们识别谎言的正确率仅 57%。</li>
+<li><strong>自我知觉</strong>：点头促进赞同思想，摇头促进反对思想（身体反应与认知反应相容性）。</li>
+</ul>
+<h3 id="9-3-阈下刺激"><a href="#9-3-阈下刺激" class="headerlink" title="9.3 阈下刺激"></a>9.3 阈下刺激</h3><ul>
+<li>定义：低于觉察阈限的刺激（如 1 毫秒呈现的八角形）。</li>
+<li>实验证据：阈下呈现的刺激本身更受喜爱；阈下情绪词可”启动”对后续刺激的判断（含种族刻板印象的阈下启动 → 在无辜陌生人身上看到敌意）。</li>
+<li>局限：效果短暂、能否导致真实行为改变未知；阈下音频信息、嵌入式印刷广告<strong>不太可能</strong>有效（自助磁带实验：只有期望效应，14 项客观测量零改善）。</li>
+<li><strong>伦理判断的 3 个标准</strong>：① 依赖欺骗；② 压制反面信息；③ 阻碍防御（阈下刺激因无法觉察而无法防御 → 若在广告中有效则极不道德）。</li>
+</ul>
+<hr>
+<h2 id="10-第8章：影响与司法制度"><a href="#10-第8章：影响与司法制度" class="headerlink" title="10. 第8章：影响与司法制度"></a>10. 第8章：影响与司法制度</h2><h3 id="10-1-抗辩制-vs-讯问制"><a href="#10-1-抗辩制-vs-讯问制" class="headerlink" title="10.1 抗辩制 vs 讯问制"></a>10.1 抗辩制 vs 讯问制</h3><pre class="mermaid">flowchart LR
+    A[抗辩制&lt;br/&gt;adversarial] --&gt;|双方竞争呈现证据| B[双方都被激励&lt;br/&gt;缩小优势差距]
+    C[讯问制&lt;br/&gt;inquisitorial] --&gt;|中立法庭调查| D[更客观但&lt;br/&gt;法官也有偏见]</pre>
+
+<ul>
+<li>人们认为抗辩制更公平（即使败诉也不满较少）。</li>
+<li>微妙效应：同一证据由原告方&#x2F;被告方引入会产生完全不同的解释。</li>
+</ul>
+<h3 id="10-2-目击者证词"><a href="#10-2-目击者证词" class="headerlink" title="10.2 目击者证词"></a>10.2 目击者证词</h3><ul>
+<li><strong>不可靠</strong>：加州袭击案回忆平均正确率仅 25%；74% 定罪的案件唯一证据是目击证词。</li>
+<li><strong>误导信息效应（洛夫特斯）</strong>：提问措辞可把错误细节”植入”记忆（退让标志→停止标志）。</li>
+<li><strong>列队指认偏差</strong>：有偏差指导语使错误指认率 33%→78%；不公平队列增加错误。</li>
+<li><strong>信心与准确性弱相关</strong>：自信不等于准确；重复提问、做出选择都会增强信心但不改善记忆。</li>
+</ul>
+<h3 id="10-3-审讯与招供"><a href="#10-3-审讯与招供" class="headerlink" title="10.3 审讯与招供"></a>10.3 审讯与招供</h3><ul>
+<li>80% 被提审嫌疑人认罪（含无辜者的假供）。</li>
+<li>审讯策略：心理环境控制（陌生、无分心、权威角色）→ 知觉扭曲（最小化&#x2F;夸大罪行、虚张声势）→ 移情错觉（”马特和杰夫”好警察&#x2F;坏警察）→ 鼓励对罪行的自我归因 → 测谎仪（安慰剂效应）。</li>
+</ul>
+<h3 id="10-4-法庭：说服的战场"><a href="#10-4-法庭：说服的战场" class="headerlink" title="10.4 法庭：说服的战场"></a>10.4 法庭：说服的战场</h3><ul>
+<li>首因&#x2F;近因效应取决于陪审员认知需求（高认知需求&#x3D;首因；低&#x3D;近因）。</li>
+<li><strong>叙述性 vs 片断式</strong>证词：叙述性（流畅、未被打断）者被认为更称职。</li>
+<li><strong>无力言辞</strong>（模棱两可、礼貌用语、反义疑问句、空洞形容词）降低可信度。</li>
+<li>律师用诱导性提问、逻辑陷阱、自我归因陷阱控制证人。</li>
+<li>目击证词被<strong>过度信任</strong>：有目击者时定罪率 18%→72%；降低可信度也只降到 68%。</li>
+</ul>
+<h3 id="10-5-陪审团评议"><a href="#10-5-陪审团评议" class="headerlink" title="10.5 陪审团评议"></a>10.5 陪审团评议</h3><pre class="mermaid">flowchart TB
+    A[评议开始] --&gt; B{证据明确?}
+    B --&gt;|是| C[证据权重决定裁决&lt;br/&gt;多数派获胜]
+    B --&gt;|否/势均力敌| D[信息性影响&lt;br/&gt;论据更多的一方]
+    D --&gt; E[规范性影响&lt;br/&gt;从众压力]
+    E --&gt; F[群体极化&lt;br/&gt;朝初始倾向更极端]
+    F --&gt; G[多数派通常获胜]
+    G --&gt; H[少数派力量&lt;br/&gt;坚持+自信+技能&lt;br/&gt;慈悲宽厚偏差]</pre>
+
+<ul>
+<li><strong>慈悲宽厚偏差</strong>：支持无罪的少数派更易获胜（误判风险厌恶）。</li>
+<li>少数派坚持能促使群体更深入思考 → 更高质量决策。</li>
+</ul>
+<hr>
+<h2 id="11-第9章：健康与幸福服务中的社会影响"><a href="#11-第9章：健康与幸福服务中的社会影响" class="headerlink" title="11. 第9章：健康与幸福服务中的社会影响"></a>11. 第9章：健康与幸福服务中的社会影响</h2><h3 id="11-1-亲环境行为"><a href="#11-1-亲环境行为" class="headerlink" title="11.1 亲环境行为"></a>11.1 亲环境行为</h3><ul>
+<li>障碍：危害<strong>不显著</strong>（眼不见心不烦、危机效应）+ <strong>低动机</strong>（与便利&#x2F;金钱竞争）。</li>
+<li>策略：<ul>
+<li><strong>增强动机</strong>：金钱奖赏（瓶子押金、公交礼券、节能返现）、<strong>反馈</strong>（每日反馈使节电 13%，停止后仍持续）。</li>
+<li><strong>增加显著性</strong>：提示（”垃圾入箱”）、生动呈现（”漏风处加起来有一个篮球大”）、<strong>损失框架</strong>（强调”扔到窗外的金钱”）、塑造环保者积极形象、承诺与登门槛、引发认知不协调。</li>
+</ul>
+</li>
+</ul>
+<h3 id="11-2-健康促进"><a href="#11-2-健康促进" class="headerlink" title="11.2 健康促进"></a>11.2 健康促进</h3><pre class="mermaid">flowchart TB
+    subgraph 障碍["健康说服的4个障碍"]
+        O1[不健康习惯的乐趣]
+        O2[盲目乐观&lt;br/&gt;比我安全综合症]
+        O3[对健康信息的讥讽]
+        O4[逆向信息的竞争]
+    end
+    O1 --&gt; F[恐惧诉求]
+    O2 --&gt; F
+    O3 --&gt; F
+    O4 --&gt; F
+    F --&gt; M[防卫动机理论&lt;br/&gt;Rogers]
+    M --&gt; C1[①威胁是有害的]
+    M --&gt; C2[②自己易受攻击]
+    M --&gt; C3[③行为能克服威胁&lt;br/&gt;反应效能]
+    M --&gt; C4[④自己能做到&lt;br/&gt;自我效能]</pre>
+
+<ul>
+<li><strong>损失框架 vs 收益框架</strong>（乳房自检研究）：强调”不检查会损失”比”检查会获益”效果更强、更持久。</li>
+<li><strong>斯坦福心脏病预防计划</strong>：大众媒体宣传有效，但”媒体 + 人际工作坊”效果更大。</li>
+</ul>
+<h3 id="11-3-医嘱依从"><a href="#11-3-医嘱依从" class="headerlink" title="11.3 医嘱依从"></a>11.3 医嘱依从</h3><ul>
+<li>不依从普遍（半数以上病人不按医嘱服药）。</li>
+<li>原因：对医生缺乏信任、医生沟通差（敌意音调→病人不遵从）、病人压力（防御性回避 vs 过度警觉）。</li>
+<li>对策：良好设计的恐惧诉求（4 成分）、获得承诺（口头&#x2F;行为契约）、合理化觉察、非言语关怀。</li>
+</ul>
+<h3 id="11-4-心理治疗-影响"><a href="#11-4-心理治疗-影响" class="headerlink" title="11.4 心理治疗 &#x3D; 影响"></a>11.4 心理治疗 &#x3D; 影响</h3><ul>
+<li><strong>认知-行为治疗</strong>：纠正消极归因（抑郁者”消沉性归因”→情境归因）+ 行为作业（成功→自我归因→自我效能）。</li>
+<li><strong>归因治疗</strong>：把困难归于可克服的情境因素（大一新生综合征）；适度”有益健康的错觉”（认为自己控制力大于实际）。</li>
+<li><strong>认知不协调与治疗</strong>：<strong>选择 + 努力辩解</strong>（库珀恐蛇实验：高选择空间组无论真实&#x2F;虚假治疗都显著改善，甚至有 3 人敢触摸蟒蛇）。</li>
+</ul>
+<hr>
+<h2 id="12-附录A-B：研究方法与态度测量"><a href="#12-附录A-B：研究方法与态度测量" class="headerlink" title="12. 附录A&#x2F;B：研究方法与态度测量"></a>12. 附录A&#x2F;B：研究方法与态度测量</h2><h3 id="附录A-研究方法"><a href="#附录A-研究方法" class="headerlink" title="附录A 研究方法"></a>附录A 研究方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>特点</th>
+<th>局限</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>相关法（现场研究）</strong></td>
+<td>观察自然变量、不干预</td>
+<td>无法确定因果</td>
+</tr>
+<tr>
+<td><strong>实验法</strong></td>
+<td>操纵自变量、控制变量、随机分配</td>
+<td>可能丧失生活真实</td>
+</tr>
+</tbody></table>
+<ul>
+<li>关键概念：自变量、因变量、随机分配、<strong>信度</strong>（一致性）、<strong>效度</strong>（真实性）、<strong>内部效度</strong>（无混淆）、<strong>外部效度</strong>（可推广）、<strong>Ⅰ型错误</strong>（错误拒绝真实原假设&#x3D;推断关系存在而实际不存在）、<strong>Ⅱ型错误</strong>（未拒绝虚假原假设）、<strong>实验真实</strong> vs <strong>生活真实</strong>。</li>
+</ul>
+<h3 id="附录B-态度测量"><a href="#附录B-态度测量" class="headerlink" title="附录B 态度测量"></a>附录B 态度测量</h3><ul>
+<li><strong>瑟斯顿等距量表</strong>：对 20 个陈述排序，取所赞同陈述的平均量表值。</li>
+<li><strong>利克特累积评定法</strong>：5 点量表（非常同意~非常不同意），求和。</li>
+<li><strong>格特曼量表图分析</strong>：项目按难易排列。</li>
+<li><strong>奥斯古德语义区分</strong>：在评价维度（好—坏等）上评分。</li>
+</ul>
+<hr>
+<h2 id="13-核心理论速查表"><a href="#13-核心理论速查表" class="headerlink" title="13. 核心理论速查表"></a>13. 核心理论速查表</h2><table>
+<thead>
+<tr>
+<th>理论&#x2F;效应</th>
+<th>提出者</th>
+<th>一句话概括</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>态度系统</td>
+<td>本书主题</td>
+<td>态度&#x2F;认知&#x2F;情感&#x2F;意向&#x2F;行为五者关联，变化导致变化</td>
+</tr>
+<tr>
+<td>工具性学习</td>
+<td>斯金纳</td>
+<td>强化增加、惩罚减少行为频率</td>
+</tr>
+<tr>
+<td>社会学习理论</td>
+<td>班杜拉</td>
+<td>观察榜样 + 自我效能</td>
+</tr>
+<tr>
+<td>规范性&#x2F;信息性影响</td>
+<td>多伊奇&amp;杰勒德</td>
+<td>为被喜欢 &#x2F; 为正确</td>
+</tr>
+<tr>
+<td>从众</td>
+<td>谢里夫、阿施</td>
+<td>无直接要求下顺从群体</td>
+</tr>
+<tr>
+<td>服从</td>
+<td>米尔格拉姆</td>
+<td>63-65% 服从权威施加致命电击</td>
+</tr>
+<tr>
+<td>互惠&#x2F;承诺规则</td>
+<td>恰尔迪尼</td>
+<td>闭门羹&#x2F;折扣&#x2F;虚报低价&#x2F;登门槛的基础</td>
+</tr>
+<tr>
+<td>归因理论</td>
+<td>海德、凯利</td>
+<td>特质 vs 情境归因（三因素）</td>
+</tr>
+<tr>
+<td>基本归因错误</td>
+<td>罗斯</td>
+<td>高估个人、低估情境</td>
+</tr>
+<tr>
+<td>自我知觉理论</td>
+<td>贝姆</td>
+<td>从行为推断态度</td>
+</tr>
+<tr>
+<td>认知不协调</td>
+<td>费斯汀格</td>
+<td>不一致→驱力→改变认知（越少越好）</td>
+</tr>
+<tr>
+<td>过度合理化</td>
+<td>莱珀</td>
+<td>过多奖赏降低内在兴趣</td>
+</tr>
+<tr>
+<td>社会比较理论</td>
+<td>费斯汀格</td>
+<td>与相似者比较观点</td>
+</tr>
+<tr>
+<td>说服 6 阶段</td>
+<td>霍夫兰&#x2F;麦圭尔</td>
+<td>曝光→注意→理解→接受→保持→行为</td>
+</tr>
+<tr>
+<td>精细加工可能性模型</td>
+<td>佩蒂&amp;卡乔波</td>
+<td>系统加工 vs 直觉捷径（外周线索）</td>
+</tr>
+<tr>
+<td>单纯曝光效应</td>
+<td>扎伊翁茨</td>
+<td>曝光越多越喜欢</td>
+</tr>
+<tr>
+<td>睡眠者效应</td>
+<td>霍夫兰</td>
+<td>折扣线索后信息延迟起效</td>
+</tr>
+<tr>
+<td>首因&#x2F;近因效应</td>
+<td>—</td>
+<td>先入为主 &#x2F; 后发鲜活</td>
+</tr>
+<tr>
+<td>理性行为理论</td>
+<td>阿杰恩&amp;菲什拜因</td>
+<td>态度+主体规范→意向→行为</td>
+</tr>
+<tr>
+<td>心理阻抗</td>
+<td>布雷姆</td>
+<td>自由受威胁→逆反</td>
+</tr>
+<tr>
+<td>接种理论</td>
+<td>麦圭尔</td>
+<td>先轻微攻击→产生抗体</td>
+</tr>
+<tr>
+<td>态度功能理论</td>
+<td>卡茨&#x2F;史密斯</td>
+<td>价值表达&#x2F;自我防御&#x2F;知识&#x2F;社会适应</td>
+</tr>
+<tr>
+<td>晕轮效应</td>
+<td>—</td>
+<td>总体评价泛化到所有方面</td>
+</tr>
+<tr>
+<td>误导信息效应</td>
+<td>洛夫特斯</td>
+<td>提问措辞扭曲记忆</td>
+</tr>
+<tr>
+<td>群体极化</td>
+<td>斯通纳</td>
+<td>讨论使群体朝初始倾向更极端</td>
+</tr>
+<tr>
+<td>防卫动机理论</td>
+<td>罗杰斯</td>
+<td>恐惧诉求需 4 成分（含自我效能）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="金句集锦"><a href="#金句集锦" class="headerlink" title="金句集锦"></a>金句集锦</h2><blockquote>
+<ul>
+<li>“影响他人的能力，以及抵制影响的能力，与一个人在生活中的成功紧密相关。”</li>
+<li>“社会影响就是由他人行为所导致的个人变化。”</li>
+<li>“改变态度的一个方面，经常会引起其他方面的变化。”</li>
+<li>“态度是影响策略的最重要突破口。”</li>
+<li>“暴力衍生暴力。”</li>
+<li>“如果诱因过多，你会得到依从；如果诱因刚好够，你会得到态度改变。”（越少越好）</li>
+<li>“在投资（说服）中，越少越好——当目标是态度改变时。”</li>
+<li>“人们不是通过说服来改变，而是通过首先改变行为来改变态度。”</li>
+<li>“他人最重要的影响，常常发生在我们意识觉察水平之下。”</li>
+<li>“偏好不需要推论。”（扎伊翁茨）</li>
+<li>“做一个开放而不人云亦云的人。”</li>
+<li>“我们是被自己的行为塑造的。”</li>
+<li>“态度的改变是说服的起点，行为的改变是说服的终点。”</li>
+<li>“说’不’的困难，源于我们不知道如何不伤害他人地退出。”</li>
+<li>“社会影响既是毒药，也是解药。”</li>
+<li>“人们没有觉察到他们是如何被操纵以及被什么所操纵的。”</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="附：全书一张图（核心概念关系）"><a href="#附：全书一张图（核心概念关系）" class="headerlink" title="附：全书一张图（核心概念关系）"></a>附：全书一张图（核心概念关系）</h2><pre class="mermaid">flowchart TB
+    subgraph 影响来源["影响来源"]
+        S1[人际：一对一]
+        S2[说服：一对多]
+        S3[大众媒体]
+    end
+
+    S1 &amp; S2 &amp; S3 --&gt; T[态度系统]
+
+    subgraph 过程["影响过程"]
+        P1[直接行为改变&lt;br/&gt;学习/从众/服从/依从]
+        P2[行为→态度&lt;br/&gt;归因/自我知觉/认知不协调]
+        P3[信念→态度&lt;br/&gt;说服6阶段/ELM]
+        P4[无意识&lt;br/&gt;条件反射/非言语/阈下]
+        P5[抵制与接受&lt;br/&gt;认知保守/接种/偏见]
+    end
+
+    T &lt;--&gt; P1 &amp; P2 &amp; P3 &amp; P4 &amp; P5
+
+    P1 &amp; P2 &amp; P3 &amp; P4 &amp; P5 --&gt; O[行为改变]
+    O --&gt; A1[应用1：司法制度]
+    O --&gt; A2[应用2：健康与幸福]</pre>
+
+<blockquote>
+<p><strong>读完全书的两个收获</strong>（作者序言承诺）：① 使你成为更有影响力的改变者；② 帮助你抵制不需要的从众、屈服与盲从。</p>
+</blockquote>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222056000000.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8APython%E9%87%91%E8%9E%8D%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B/'>阅读笔记——《Python金融大数据分析》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222042000003.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%AF%92%E6%AD%A6%E7%BA%AA%E7%9A%84%E9%B3%84%E9%B1%BC%E3%80%8B/">阅读笔记——《寒武纪的鳄鱼》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

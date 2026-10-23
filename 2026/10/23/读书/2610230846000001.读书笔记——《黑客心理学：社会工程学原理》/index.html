@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="读书笔记——《黑客心理学：社会工程学原理》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    读书笔记——《黑客心理学：社会工程学原理》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-23</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.8k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：13分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E9%BB%91%E5%AE%A2%E5%BF%83%E7%90%86%E5%AD%A6%EF%BC%9A%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%E5%AD%A6%E5%8E%9F%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《黑客心理学：社会工程学原理》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E5%85%A8%E4%B9%A6%E4%B8%BB%E7%BA%BF%EF%BC%9A%E6%8A%8A%E2%80%9D%E4%BA%BA%E2%80%9D%E6%94%BE%E5%9B%9E%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB"><span class="post-toc-text">1. 全书主线：把”人”放回安全体系</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E4%B8%89%E7%B1%BB%E4%BA%BA%E7%9A%84%E5%BF%83%E7%90%86%EF%BC%9A%E9%BB%91%E5%AE%A2%C2%B7%E5%8F%97%E5%AE%B3%E8%80%85%C2%B7%E7%94%A8%E6%88%B7"><span class="post-toc-text">2. 三类人的心理：黑客·受害者·用户</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-%E9%BB%91%E5%AE%A2%E5%8F%91%E5%8A%A8%E6%94%BB%E5%87%BB%E7%9A%84-6-%E7%A7%8D%E5%BF%83%E7%90%86%E5%8A%A8%E6%9C%BA"><span class="post-toc-text">2.1 黑客发动攻击的 6 种心理动机</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E5%88%A9%E7%94%A8%E7%9A%84%E5%8F%97%E5%AE%B3%E8%80%85-4-%E7%A7%8D%E5%BF%83%E7%90%86"><span class="post-toc-text">2.2 黑客攻击利用的受害者 4 种心理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-%E7%94%A8%E6%88%B7%E4%B8%8E%E4%BF%9D%E5%8D%AB%E8%80%85%E7%9A%84-6-%E7%A7%8D%E4%B8%8D%E5%AE%89%E5%85%A8%E5%BF%83%E7%90%86"><span class="post-toc-text">2.3 用户与保卫者的 6 种不安全心理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E9%BB%91%E5%AE%A2%E6%94%BB%E5%87%BB%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%88%86%E7%B1%BB%E4%B8%8E%E6%9C%AC%E8%83%BD%E8%AF%B4%EF%BC%88%E7%AC%AC-1-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">3. 黑客攻击行为的分类与本能说（第 1 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-%E6%8C%89%E7%9B%AE%E7%9A%84%E5%88%86-4-%E7%B1%BB"><span class="post-toc-text">3.1 按目的分 4 类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-2-%E6%94%BB%E5%87%BB%E6%9C%AC%E8%83%BD%E8%AF%B4-vs-%E9%9D%9E%E6%9C%AC%E8%83%BD%E8%AF%B4"><span class="post-toc-text">3.2 攻击本能说 vs 非本能说</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%A4%BE%E5%B7%A5%E9%BB%91%E5%AE%A2%E7%9A%84%E5%BF%83%E7%90%86%E7%89%B9%E5%BE%81%EF%BC%88%E7%AC%AC-2-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">4. 社工黑客的心理特征（第 2 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-%E7%A4%BE%E5%B7%A5%E6%94%BB%E5%87%BB%E7%9A%84-5-%E4%B8%AA%E7%89%B9%E7%82%B9"><span class="post-toc-text">4.1 社工攻击的 5 个特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-%E9%BB%91%E5%AE%A2%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E4%B8%AA%E4%BD%93%EF%BC%9A%E4%BA%BA-%E2%80%9C%E7%83%AD%E8%A1%80%E7%94%B5%E8%84%91%E2%80%9D"><span class="post-toc-text">4.2 黑客如何看待个体：人 &#x3D; “热血电脑”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-%E9%BB%91%E5%AE%A2%E5%A6%82%E4%BD%95%E7%9C%8B%E5%BE%85%E7%BE%A4%E4%BD%93%EF%BC%9A%E7%BE%A4%E4%BD%93-%E2%80%9C%E7%83%AD%E8%A1%80%E7%BD%91%E7%BB%9C%E2%80%9D"><span class="post-toc-text">4.3 黑客如何看待群体：群体 &#x3D; “热血网络”</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E6%84%9F%E7%9F%A5%E8%A7%89%E7%9A%84%E6%BC%8F%E6%B4%9E%EF%BC%9A%E6%84%9F%E8%A7%89%E4%B8%8E%E7%9F%A5%E8%A7%89%EF%BC%88%E7%AC%AC-3-4-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">5. 感知觉的漏洞：感觉与知觉（第 3-4 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-%E6%84%9F%E8%A7%89%E7%9A%84%E6%BC%8F%E6%B4%9E"><span class="post-toc-text">5.1 感觉的漏洞</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-%E7%9F%A5%E8%A7%89%E7%9A%84%E6%BC%8F%E6%B4%9E"><span class="post-toc-text">5.2 知觉的漏洞</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E8%AE%B0%E5%BF%86%C2%B7%E6%83%85%E7%BB%AA%C2%B7%E6%B3%A8%E6%84%8F%C2%B7%E5%8A%A8%E6%9C%BA%E7%9A%84%E5%8D%9A%E5%BC%88%EF%BC%88%E7%AC%AC-5-8-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">6. 记忆·情绪·注意·动机的博弈（第 5-8 章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E5%BE%AE%E8%A1%A8%E6%83%85%C2%B7%E8%82%A2%E4%BD%93%E8%AF%AD%E8%A8%80%C2%B7%E5%A7%BF%E5%8A%BF%E7%9A%84%E6%B3%84%E5%AF%86%EF%BC%88%E7%AC%AC-9-11-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">7. 微表情·肢体语言·姿势的泄密（第 9-11 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-%E5%BE%AE%E8%A1%A8%E6%83%85%E6%B3%84%E5%AF%86%EF%BC%88%E2%80%9D%E8%BE%B9%E4%BF%A1%E6%81%AF%E6%94%BB%E5%87%BB%E2%80%9D%EF%BC%89"><span class="post-toc-text">7.1 微表情泄密（”边信息攻击”）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-%E8%82%A2%E4%BD%93%E8%AF%AD%E8%A8%80%E6%B3%84%E5%AF%86"><span class="post-toc-text">7.2 肢体语言泄密</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-3-%E5%A7%BF%E5%8A%BF%E6%B3%84%E5%AF%86"><span class="post-toc-text">7.3 姿势泄密</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E5%96%9C%E6%AC%A2%C2%B7%E5%88%A9%E4%BB%96%C2%B7%E6%80%81%E5%BA%A6%C2%B7%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E7%9A%84%E5%A5%A5%E7%A7%98%EF%BC%88%E7%AC%AC-12-15-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">8. 喜欢·利他·态度·人际关系的奥秘（第 12-15 章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-%E5%BF%83%E7%90%86%E5%AD%A6%E5%9C%A8%E7%A4%BE%E5%B7%A5%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8%EF%BC%88%E7%AC%AC-16-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">9. 心理学在社工中的应用（第 16 章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-%E6%A0%B8%E5%BF%83%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="post-toc-text">10. 核心速查表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%87%91%E5%8F%A5"><span class="post-toc-text">金句</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《黑客心理学：社会工程学原理》读书笔记"><a href="#《黑客心理学：社会工程学原理》读书笔记" class="headerlink" title="《黑客心理学：社会工程学原理》读书笔记"></a>《黑客心理学：社会工程学原理》读书笔记</h1><blockquote>
+<p><strong>书名</strong>：黑客心理学：社会工程学原理（又名”信息安全心理学”）<br><strong>作者</strong>：杨义先、钮心忻（北京邮电大学教授，安全科普作家）<br><strong>出版</strong>：2019</p>
+<p><strong>一句话概括</strong>：这本书从<strong>心理学</strong>的视角，把信息安全问题”归因于人”——破坏者（黑客）、保卫者（红客）和使用者（用户）。作者借”社会工程学”这面镜子，系统梳理了三百年来心理学界”能够用于了解和对抗黑客”的成果，把无穷无尽的社工攻击手法还原成<strong>有限个心理”元素”</strong>（如同门捷列夫元素周期表），试图穷尽”人性漏洞”的底层原理。核心观点：<strong>“人”就像一个木偶，而”心理”才是拉动木偶的提线；赢人者，赢天下。</strong></p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>全书主线：把”人”放回安全体系</li>
+<li>三类人的心理：黑客·受害者·用户</li>
+<li>黑客攻击行为的分类与本能说（第 1 章）</li>
+<li>社工黑客的心理特征：热血电脑与热血网络（第 2 章）</li>
+<li>感知觉的漏洞：感觉与知觉（第 3-4 章）</li>
+<li>记忆·情绪·注意·动机的博弈（第 5-8 章）</li>
+<li>微表情·肢体语言·姿势的泄密（第 9-11 章）</li>
+<li>喜欢·利他·态度·人际关系的奥秘（第 12-15 章）</li>
+<li>心理学在社工中的应用（第 16 章）</li>
+<li>核心速查表 + 金句</li>
+</ol>
+<hr>
+<h2 id="1-全书主线：把”人”放回安全体系"><a href="#1-全书主线：把”人”放回安全体系" class="headerlink" title="1. 全书主线：把”人”放回安全体系"></a>1. 全书主线：把”人”放回安全体系</h2><blockquote>
+<p>过去数十年，全球信息安全界几乎把”人”给忘了，主要埋头于技术对抗；反而是黑客们常常利用”社会工程学”来攻击”人”。</p>
+</blockquote>
+<p>作者的核心论断：</p>
+<ul>
+<li><strong>所有信息安全问题，几乎都可以归因于人</strong>——具体是三类人：破坏者（黑客）、保卫者（红客）、使用者（用户）。</li>
+<li>完整的安全闭环 &#x3D; <strong>软件 + 硬件 + 人</strong>。软硬件没有”天敌”，只要”水涨船高”总能解决；但”人”是有天敌的。</li>
+<li>在心理学家眼里，<strong>“人”像木偶，”心理”才是拉线</strong>；”人”是”魄”，”心理”是”魂”。所以网络空间安全的根本，藏在人的心里。</li>
+<li>社工攻击的具体方法无穷无尽，但都是由**有限个心理”元素”**融合而成——正如门捷列夫周期表中上百种元素能组成宇宙无数种物质。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    A["信息安全&lt;br/&gt;真正的闭环"] --&gt; B["软件"]
+    A --&gt; C["硬件"]
+    A --&gt; D["人（最薄弱环节）"]
+    D --&gt; D1["黑客（破坏者）&lt;br/&gt;攻击心理"]
+    D --&gt; D2["红客（保卫者）&lt;br/&gt;防御心理"]
+    D --&gt; D3["用户（使用者）&lt;br/&gt;不安全行为心理"]
+    B --&gt; E["无天敌，水涨船高"]
+    C --&gt; E
+    D --&gt; F["有天敌，可用心理学攻防"]</pre>
+
+<hr>
+<h2 id="2-三类人的心理：黑客·受害者·用户"><a href="#2-三类人的心理：黑客·受害者·用户" class="headerlink" title="2. 三类人的心理：黑客·受害者·用户"></a>2. 三类人的心理：黑客·受害者·用户</h2><h3 id="2-1-黑客发动攻击的-6-种心理动机"><a href="#2-1-黑客发动攻击的-6-种心理动机" class="headerlink" title="2.1 黑客发动攻击的 6 种心理动机"></a>2.1 黑客发动攻击的 6 种心理动机</h3><table>
+<thead>
+<tr>
+<th>动机</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>自我表现心理</strong></td>
+<td>想显示”高人一等的才能”，把入侵当智力挑战，成功后倍感刺激</td>
+</tr>
+<tr>
+<td><strong>好奇探秘心理</strong></td>
+<td>猎奇侵入、发现漏洞、公开分享（多为逆反的青少年）</td>
+</tr>
+<tr>
+<td><strong>义愤抗议心理</strong></td>
+<td>讲义气、为”弱者”出气、抗议”不公事件”</td>
+</tr>
+<tr>
+<td><strong>戏谑心理</strong></td>
+<td>恶作剧型：删除文件、篡改主页为乐</td>
+</tr>
+<tr>
+<td><strong>非法占有心理</strong></td>
+<td>物欲型，以获取财富&#x2F;数据资源为目的，典型犯罪</td>
+</tr>
+<tr>
+<td><strong>渴望认同心理</strong></td>
+<td>追求归属感，想获其他黑客认可、比拼技能</td>
+</tr>
+</tbody></table>
+<p>另加：自我解嘲心理、发泄心理，以及少数”心理变态型黑客”（家庭变异、心理创伤，报复社会）。</p>
+<h3 id="2-2-黑客攻击利用的受害者-4-种心理"><a href="#2-2-黑客攻击利用的受害者-4-种心理" class="headerlink" title="2.2 黑客攻击利用的受害者 4 种心理"></a>2.2 黑客攻击利用的受害者 4 种心理</h3><ul>
+<li><strong>恐惧心理</strong>：营造”血光之灾”般的威胁，逼受害者”赶紧汇款”。</li>
+<li><strong>服从心理</strong>：假借权威（执法机构等）迫使受害者服从命令。</li>
+<li><strong>贪婪心理</strong>：利用”中大奖””贪小便宜”的占有欲。</li>
+<li><strong>同情心理</strong>：声称自己&#x2F;亲友有难，诱发同情心。</li>
+</ul>
+<h3 id="2-3-用户与保卫者的-6-种不安全心理"><a href="#2-3-用户与保卫者的-6-种不安全心理" class="headerlink" title="2.3 用户与保卫者的 6 种不安全心理"></a>2.3 用户与保卫者的 6 种不安全心理</h3><table>
+<thead>
+<tr>
+<th>心理</th>
+<th>表现</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>省能心理</strong></td>
+<td>以最小付出求最大效果；密码用 000000&#x2F;123456，略去”繁琐”环节</td>
+</tr>
+<tr>
+<td><strong>侥幸心理</strong></td>
+<td>误以为”安全事件是小概率事件”，违章后安然无恙 → 放松警惕</td>
+</tr>
+<tr>
+<td><strong>逆反心理</strong></td>
+<td>明知有危险，偏要”以身试法”</td>
+</tr>
+<tr>
+<td><strong>凑兴心理</strong></td>
+<td>从众+好奇，”凑热闹”，助长病毒扩散</td>
+</tr>
+<tr>
+<td><strong>群体心理</strong></td>
+<td>认同&#x2F;归属&#x2F;排外&#x2F;整体意识，受群体支配（正负两面）</td>
+</tr>
+<tr>
+<td><strong>注意与不注意</strong></td>
+<td>注意某物必同时忽略其他；”不注意”是意识状态的结果，无法根除</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-黑客攻击行为的分类与本能说（第-1-章）"><a href="#3-黑客攻击行为的分类与本能说（第-1-章）" class="headerlink" title="3. 黑客攻击行为的分类与本能说（第 1 章）"></a>3. 黑客攻击行为的分类与本能说（第 1 章）</h2><h3 id="3-1-按目的分-4-类"><a href="#3-1-按目的分-4-类" class="headerlink" title="3.1 按目的分 4 类"></a>3.1 按目的分 4 类</h3><ol>
+<li><strong>观点表达型</strong>：骂人帖、诽谤谩骂，偶发、无组织、后果较轻。</li>
+<li><strong>情绪宣泄型</strong>：积怨借”导火索”爆发，非理性，可能”共振”成群体玩偶。</li>
+<li><strong>利益诉求型</strong>：借网络施压维权，多数合法，少数突破法律（”网络水军”）。</li>
+<li><strong>网络犯罪型</strong>（狭义黑客攻击）：窃密、破坏、瘫痪系统，科技含量高、目标明确。</li>
+</ol>
+<p>另按动机分：主动性&#x2F;报复性&#x2F;工具性攻击；按是否违反规范分：反社会&#x2F;亲社会&#x2F;被认可的攻击。</p>
+<h3 id="3-2-攻击本能说-vs-非本能说"><a href="#3-2-攻击本能说-vs-非本能说" class="headerlink" title="3.2 攻击本能说 vs 非本能说"></a>3.2 攻击本能说 vs 非本能说</h3><ul>
+<li><strong>本能说</strong>：威廉·詹姆斯——人类有好斗的”劣根性”，攻击是遗传本能；弗洛伊德——“死亡本能”，攻击是”自我保存”（以攻为守，不让死亡愿望指向自身）。推论：黑客攻击不可避免。</li>
+<li><strong>非本能说（挫折-攻击理论）</strong>：多拉德——攻击源于挫折；伯克威茨修正——挫折只让人处于”攻击唤醒状态”，还需环境提供”导火索”（多对一关系）。黑客攻击需要外部诱因，且具”传染性”（观察学习）。</li>
+</ul>
+<hr>
+<h2 id="4-社工黑客的心理特征（第-2-章）"><a href="#4-社工黑客的心理特征（第-2-章）" class="headerlink" title="4. 社工黑客的心理特征（第 2 章）"></a>4. 社工黑客的心理特征（第 2 章）</h2><h3 id="4-1-社工攻击的-5-个特点"><a href="#4-1-社工攻击的-5-个特点" class="headerlink" title="4.1 社工攻击的 5 个特点"></a>4.1 社工攻击的 5 个特点</h3><ol>
+<li>直接对象是鲜活的”人”（用户&#x2F;红客），而非”冷血”设备；</li>
+<li>与”人”之间<strong>无直接身体接触</strong>，武器和成果都是”信息”（被卖了还帮数钱）；</li>
+<li>是<strong>赛博式攻击</strong>——“反馈→微调→迭代”循环链，诱导受害者一步步协助逼近目标（电信诈骗剧本即是）；</li>
+<li>正在成为黑客攻击的<strong>主力军</strong>；</li>
+<li><strong>知道它正在攻击你，就容易化解</strong>——所以必须”全民皆兵”。</li>
+</ol>
+<blockquote>
+<p>社工思路古已有之：《三十六计》计计皆含社工精华，《孙子兵法》篇篇都是社工杰作；伊甸园之蛇、蚩尤之战、张飞长坂坡、诸葛亮七擒孟获，皆是社工。</p>
+</blockquote>
+<h3 id="4-2-黑客如何看待个体：人-“热血电脑”"><a href="#4-2-黑客如何看待个体：人-“热血电脑”" class="headerlink" title="4.2 黑客如何看待个体：人 &#x3D; “热血电脑”"></a>4.2 黑客如何看待个体：人 &#x3D; “热血电脑”</h3><p>社工黑客把个体”人”看成一台特殊的”计算机”，也有四大部分：</p>
+<pre class="mermaid">flowchart LR
+    H["个体「热血电脑」"] --&gt; IN["输入&lt;br/&gt;外部输入(视觉/感觉)&lt;br/&gt;内部反馈(知觉/动机/情绪)&lt;br/&gt;噪声(无意识)"]
+    H --&gt; OUT["输出&lt;br/&gt;信息(语言)/行为&lt;br/&gt;内部反馈/噪声(无意识泄密)"]
+    H --&gt; STORE["存储&lt;br/&gt;记忆/习惯/无意识"]
+    H --&gt; PROC["处理&lt;br/&gt;计算(思维/联想/认知)&lt;br/&gt;去噪(思考/注意)&lt;br/&gt;优化(学习/推理)"]
+    IN -.反馈循环.-&gt; OUT</pre>
+
+<ul>
+<li><strong>攻击思路</strong>：欲攻破”热血电脑”，使其<strong>信息失控</strong>；攻破输入&#x2F;输出&#x2F;存储&#x2F;处理任一部分即可。</li>
+<li><strong>“无意识”是重点</strong>：无意识的动作、表情是”含义丰富的噪声”——微表情&#x2F;肢体语言泄密的正解。</li>
+<li><strong>品质关键指标</strong>：”能力”和”人格”。</li>
+</ul>
+<h3 id="4-3-黑客如何看待群体：群体-“热血网络”"><a href="#4-3-黑客如何看待群体：群体-“热血网络”" class="headerlink" title="4.3 黑客如何看待群体：群体 &#x3D; “热血网络”"></a>4.3 黑客如何看待群体：群体 &#x3D; “热血网络”</h3><p>群体 &#x3D; 若干”热血电脑”连成的”热血网络”，可借用攻击互联网的思路来攻击。三个攻击机会：</p>
+<ol>
+<li><strong>合群机会</strong>：合群是人类本能（害怕时更想合群、靠合群比较对错）。黑客借此”打入敌人内部”，攻破一个成员后”相似成员全被攻破”，且便于隐藏自身、以人做跳板。</li>
+<li><strong>遵从和依从机会</strong>：人普遍有遵从&#x2F;依从意识。黑客伪造”假冒群体”（托儿足够多、可信度足够高、意见一致），选低自信者下手，辅以名利诱惑、循序渐进（先小后大，或先大后小）。</li>
+<li><strong>意见领袖模式</strong>：几乎所有群体中总有人说得很多（最健谈者至少完成 40% 交流信息量，且信息量呈指数递减）。黑客可攻击”核心节点”（意见领袖）或伪装成意见领袖。</li>
+</ol>
+<hr>
+<h2 id="5-感知觉的漏洞：感觉与知觉（第-3-4-章）"><a href="#5-感知觉的漏洞：感觉与知觉（第-3-4-章）" class="headerlink" title="5. 感知觉的漏洞：感觉与知觉（第 3-4 章）"></a>5. 感知觉的漏洞：感觉与知觉（第 3-4 章）</h2><h3 id="5-1-感觉的漏洞"><a href="#5-1-感觉的漏洞" class="headerlink" title="5.1 感觉的漏洞"></a>5.1 感觉的漏洞</h3><ul>
+<li><strong>漏洞思维</strong>：安全即”找漏洞、堵漏洞”；人脑的感知通道本身就是漏洞源。</li>
+<li><strong>视觉漏洞</strong>：视错觉、视觉惰性、对比、眩光等使人看错信号（如误把数字 0 当字母 o）。</li>
+<li><strong>听觉漏洞</strong>：听错、漏听、噪声干扰。</li>
+<li><strong>感觉漏洞的极限</strong>：人的感官有生理阈值（看清一个信号约 0.3 秒，听清一个声音约 1 秒）——信息呈现太快&#x2F;太弱即产生”认知滞后”。</li>
+</ul>
+<h3 id="5-2-知觉的漏洞"><a href="#5-2-知觉的漏洞" class="headerlink" title="5.2 知觉的漏洞"></a>5.2 知觉的漏洞</h3><ul>
+<li>知觉是”在感觉基础上对事物整体属性的反映”；会<strong>自动修补、简单化、对称化、主观同化</strong>——把感知图像变成”主观期望的样子”。</li>
+<li><strong>错觉性漏洞</strong>：错觉是”在客观刺激下主观造成的歪曲知觉”（非幻觉）。钓鱼网站正是利用”真假网址只差一丁点”的判别失误。</li>
+</ul>
+<hr>
+<h2 id="6-记忆·情绪·注意·动机的博弈（第-5-8-章）"><a href="#6-记忆·情绪·注意·动机的博弈（第-5-8-章）" class="headerlink" title="6. 记忆·情绪·注意·动机的博弈（第 5-8 章）"></a>6. 记忆·情绪·注意·动机的博弈（第 5-8 章）</h2><table>
+<thead>
+<tr>
+<th>章节</th>
+<th>核心知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>记忆博弈</strong></td>
+<td>短时记忆容量有限（约 7±2 组块），可被干扰&#x2F;覆盖；长时记忆是重构的（会随文化、信念修改）。记忆加强可用于”反复强化”，攻击极限在于记忆不可靠</td>
+</tr>
+<tr>
+<td><strong>情绪博弈</strong></td>
+<td>积极情绪”增益”、消极情绪”减损”安全；恐惧&#x2F;贪婪&#x2F;同情可被调控。情绪失控（愤怒、恐慌）会抑制理性推理，是攻击最佳时机</td>
+</tr>
+<tr>
+<td><strong>注意的控制</strong></td>
+<td>注意有选择特征，”注意”某物即”不注意”他物；黑客制造”不注意”漏洞（注意力被转移时下手）。客观指标：瞳孔、眼动等</td>
+</tr>
+<tr>
+<td><strong>动机诱惑</strong></td>
+<td>动机由”需求”驱动；诱惑 &#x3D; 满足需求（马斯洛式）。特殊动机（好奇、自尊、归属）与”诱惑强动机”（名利色）是社工常见抓手</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="7-微表情·肢体语言·姿势的泄密（第-9-11-章）"><a href="#7-微表情·肢体语言·姿势的泄密（第-9-11-章）" class="headerlink" title="7. 微表情·肢体语言·姿势的泄密（第 9-11 章）"></a>7. 微表情·肢体语言·姿势的泄密（第 9-11 章）</h2><h3 id="7-1-微表情泄密（”边信息攻击”）"><a href="#7-1-微表情泄密（”边信息攻击”）" class="headerlink" title="7.1 微表情泄密（”边信息攻击”）"></a>7.1 微表情泄密（”边信息攻击”）</h3><p>黑客通过”边信息”（说话内容之外泄露的信息）读取真实情绪。泄密部位：</p>
+<ul>
+<li><strong>眼睛</strong>：瞳孔变化、眼神方向、眨眼频率；</li>
+<li><strong>眉毛</strong>：上扬（惊讶&#x2F;疑问）、下压（愤怒&#x2F;专注）、内角上抬（悲伤）；</li>
+<li><strong>鼻子</strong>：皱鼻（厌恶）；</li>
+<li><strong>嘴巴</strong>：抿唇（压抑愤怒）、撅嘴（不确定）、咬唇（焦虑）；</li>
+<li><strong>头</strong>：点头&#x2F;摇头（文化差异）、倾斜（友善）；</li>
+<li><strong>笑</strong>：真笑（眼轮匝肌参与）vs 假笑（只有颧大肌）——杜兴微笑；</li>
+<li><strong>哭</strong>：悲伤&#x2F;委屈&#x2F;喜悦之泪的区别。</li>
+</ul>
+<h3 id="7-2-肢体语言泄密"><a href="#7-2-肢体语言泄密" class="headerlink" title="7.2 肢体语言泄密"></a>7.2 肢体语言泄密</h3><ul>
+<li><strong>手势</strong>：开放手掌（真诚）、尖塔形（自信）、搓手（紧张）、触摸脖子（安抚）。</li>
+<li><strong>说话</strong>：语速、音调、停顿、代词切换、口吃——都是”边信息”。</li>
+<li><strong>综合</strong>：肢体语言要与言语匹配，矛盾即”热点”。</li>
+</ul>
+<h3 id="7-3-姿势泄密"><a href="#7-3-姿势泄密" class="headerlink" title="7.3 姿势泄密"></a>7.3 姿势泄密</h3><ul>
+<li><strong>坐姿&#x2F;站姿&#x2F;走姿</strong>：开放 vs 封闭；前倾（兴趣）vs 后仰（抗拒）。</li>
+<li><strong>躯干</strong>：朝向喜欢的人；耸肩 &#x3D; “我不知道”（言语与肢体矛盾是线索）。</li>
+<li><strong>间距</strong>（人际距离学，霍尔）：公共空间 4<del>8 米、社交 1.2</del>3 米、私人 0.6~1.2 米、亲密 &lt;0.3 米；侵犯距离会让人不适。</li>
+</ul>
+<hr>
+<h2 id="8-喜欢·利他·态度·人际关系的奥秘（第-12-15-章）"><a href="#8-喜欢·利他·态度·人际关系的奥秘（第-12-15-章）" class="headerlink" title="8. 喜欢·利他·态度·人际关系的奥秘（第 12-15 章）"></a>8. 喜欢·利他·态度·人际关系的奥秘（第 12-15 章）</h2><ul>
+<li><strong>喜欢的奥秘</strong>：邻近性、个人品质、熟悉度、报答（互惠）、认识平衡、相似性导致喜欢。<strong>如何让别人喜欢你</strong>：真诚关心、多倾听、满足需求、相似性、赞美。</li>
+<li><strong>利他与易控行为</strong>：利他行为可被唤醒与促进（同情、责任扩散等）；”易控行为”是社会工程可利用的顺从行为。</li>
+<li><strong>态度的奥秘</strong>：态度影响行为；态度由认知&#x2F;情感&#x2F;行为意向构成；态度可通过说服、认知失调等改变。</li>
+<li><strong>人际关系的奥秘</strong>：人际关系影响安全行为；形成于接触、相似、互补、互惠；沟通是信息与情感的交换。</li>
+</ul>
+<hr>
+<h2 id="9-心理学在社工中的应用（第-16-章）"><a href="#9-心理学在社工中的应用（第-16-章）" class="headerlink" title="9. 心理学在社工中的应用（第 16 章）"></a>9. 心理学在社工中的应用（第 16 章）</h2><p>六大应用（每项都是社会工程的”元技能”）：</p>
+<ol>
+<li><strong>读人</strong>：通过微表情、肢体语言、穿着、言语风格判断对方的性格、情绪、动机。</li>
+<li><strong>欺骗</strong>：欺骗的核心是”营造可信的假象”；被识破的风险取决于细节与一致性。</li>
+<li><strong>谣言</strong>：利用传播心理学（简化、强化、同化）制造和扩散信息。</li>
+<li><strong>说服</strong>：态度改变的科学（权威、社会认同、互惠、承诺一致等）。</li>
+<li><strong>诱惑</strong>：满足目标需求（马斯洛层次），激发动机。</li>
+<li><strong>影响</strong>：综合运用上述元素，让目标采取行动。</li>
+</ol>
+<hr>
+<h2 id="10-核心速查表"><a href="#10-核心速查表" class="headerlink" title="10. 核心速查表"></a>10. 核心速查表</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>核心知识点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>安全本质</td>
+<td>归因于人：黑客·红客·用户三类人</td>
+</tr>
+<tr>
+<td>黑客 6 动机</td>
+<td>自我表现·好奇探秘·义愤抗议·戏谑·非法占有·渴望认同</td>
+</tr>
+<tr>
+<td>受害者 4 心理</td>
+<td>恐惧·服从·贪婪·同情</td>
+</tr>
+<tr>
+<td>用户 6 不安全心理</td>
+<td>省能·侥幸·逆反·凑兴·群体·注意与不注意</td>
+</tr>
+<tr>
+<td>攻击 4 分类</td>
+<td>观点表达·情绪宣泄·利益诉求·网络犯罪</td>
+</tr>
+<tr>
+<td>个体观</td>
+<td>人&#x3D;热血电脑（输入&#x2F;输出&#x2F;存储&#x2F;处理 + 无意识噪声）</td>
+</tr>
+<tr>
+<td>群体观</td>
+<td>群体&#x3D;热血网络（合群·遵从依从·意见领袖）</td>
+</tr>
+<tr>
+<td>感知觉漏洞</td>
+<td>视错觉·听觉阈值·知觉自动修补·判别失误</td>
+</tr>
+<tr>
+<td>记忆&#x2F;情绪&#x2F;注意&#x2F;动机</td>
+<td>7±2 组块·情绪增益减损·注意选择性·需求驱动</td>
+</tr>
+<tr>
+<td>泄密部位</td>
+<td>眼·眉·鼻·嘴·头·笑·哭·手势·姿势·间距</td>
+</tr>
+<tr>
+<td>喜欢&#x2F;利他&#x2F;态度&#x2F;关系</td>
+<td>相似性·互惠·同情唤醒·认知失调·沟通</td>
+</tr>
+</tbody></table>
+<h2 id="金句"><a href="#金句" class="headerlink" title="金句"></a>金句</h2><ul>
+<li>“<strong>赢人者，赢天下；胜人者，胜世界！</strong>“</li>
+<li>“人只不过是一台’热血电脑’，心理才是它的操作系统。”</li>
+<li>“社工攻击的特点是：<strong>如果你不了解它，它将威力无穷；如果你知道它正在攻击你，那么你很容易化解。</strong>“</li>
+<li>“攻击者的武器是’信息’，攻击的成果也是’信息’。”</li>
+<li>“《三十六计》计计皆含社工精华，《孙子兵法》篇篇都是社工杰作。”</li>
+<li>“如果不把’人’放回安全体系，那么所有技术对抗都只是在补一个缺了最关键一块的闭环。”</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-23</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/23/%E8%AF%BB%E4%B9%A6/261023084604.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E8%AF%BB%E8%B4%A2%E6%8A%A52%E3%80%8B/'>阅读笔记——《手把手教你读财报2：18节课看透银行业》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/23/%E8%AF%BB%E4%B9%A6/2610230846000000.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%B7%A5%E7%A8%8B%EF%BC%9A%E5%AE%89%E5%85%A8%E4%BD%93%E7%B3%BB%E4%B8%AD%E7%9A%84%E4%BA%BA%E6%80%A7%E6%BC%8F%E6%B4%9E%E3%80%8B/">读书笔记——《社会工程：安全体系中的人性漏洞》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

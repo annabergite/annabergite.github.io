@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《人力资源管理》（第14版）" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《人力资源管理》（第14版）
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：7.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：26分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E9%AA%A8%E6%9E%B6%EF%BC%9A5-%E7%AF%87-18-%E7%AB%A0%EF%BC%8C%E4%B8%80%E6%9D%A1%E8%B4%AF%E7%A9%BF%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">一、这本书的骨架：5 篇 18 章，一条贯穿主线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC-1-%E7%AF%87%EF%BC%9A%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC-1%E2%80%943-%E7%AB%A0%EF%BC%89%E2%80%94%E2%80%94HR-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%8D%E8%A6%81"><span class="post-toc-text">二、第 1 篇：导论（第 1—3 章）——HR 为什么重要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0-%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%AF%BC%E8%AE%BA"><span class="post-toc-text">第 1 章 人力资源管理导论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0-%E5%85%AC%E5%B9%B3%E5%B0%B1%E4%B8%9A%E6%9C%BA%E4%BC%9A%E5%92%8C%E7%9B%B8%E5%85%B3%E6%B3%95%E5%BE%8B"><span class="post-toc-text">第 2 章 公平就业机会和相关法律</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0-%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%88%98%E7%95%A5%E4%B8%8E%E5%88%86%E6%9E%90"><span class="post-toc-text">第 3 章 人力资源管理战略与分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC-2-%E7%AF%87%EF%BC%9A%E6%8B%9B%E5%8B%9F%E3%80%81%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BA%BA%E6%89%8D%E7%AE%A1%E7%90%86%EF%BC%88%E7%AC%AC-4%E2%80%947-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">三、第 2 篇：招募、配置与人才管理（第 4—7 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0-%E8%81%8C%E4%BD%8D%E5%88%86%E6%9E%90%E4%B8%8E%E4%BA%BA%E6%89%8D%E7%AE%A1%E7%90%86%E8%BF%87%E7%A8%8B"><span class="post-toc-text">第 4 章 职位分析与人才管理过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0-%E4%BA%BA%E4%BA%8B%E8%A7%84%E5%88%92%E4%B8%8E%E6%8B%9B%E5%8B%9F"><span class="post-toc-text">第 5 章 人事规划与招募</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0-%E5%91%98%E5%B7%A5%E6%B5%8B%E8%AF%95%E4%B8%8E%E7%94%84%E9%80%89"><span class="post-toc-text">第 6 章 员工测试与甄选</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0-%E6%B1%82%E8%81%8C%E8%80%85%E9%9D%A2%E8%AF%95"><span class="post-toc-text">第 7 章 求职者面试</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC-3-%E7%AF%87%EF%BC%9A%E5%9F%B9%E8%AE%AD%E5%BC%80%E5%8F%91%E4%B8%8E%E7%BB%A9%E6%95%88%EF%BC%88%E7%AC%AC-8%E2%80%9410-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">四、第 3 篇：培训开发与绩效（第 8—10 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0-%E5%91%98%E5%B7%A5%E5%9F%B9%E8%AE%AD%E4%B8%8E%E5%BC%80%E5%8F%91"><span class="post-toc-text">第 8 章 员工培训与开发</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0-%E7%BB%A9%E6%95%88%E7%AE%A1%E7%90%86%E4%B8%8E%E8%AF%84%E4%BB%B7"><span class="post-toc-text">第 9 章 绩效管理与评价</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0-%E5%91%98%E5%B7%A5%E4%BF%9D%E7%95%99%E3%80%81%E6%95%AC%E4%B8%9A%E5%BA%A6%E5%8F%8A%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E7%AE%A1%E7%90%86"><span class="post-toc-text">第 10 章 员工保留、敬业度及职业生涯管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC-4-%E7%AF%87%EF%BC%9A%E8%96%AA%E9%85%AC%E7%AE%A1%E7%90%86%EF%BC%88%E7%AC%AC-11%E2%80%9413-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">五、第 4 篇：薪酬管理（第 11—13 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%E5%88%B6%E5%AE%9A%E6%88%98%E7%95%A5%E6%80%A7%E8%96%AA%E9%85%AC%E8%AE%A1%E5%88%92"><span class="post-toc-text">第 11 章 制定战略性薪酬计划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E7%BB%A9%E6%95%88%E8%96%AA%E9%85%AC%E5%92%8C%E7%BB%8F%E6%B5%8E%E6%80%A7%E5%A5%96%E5%8A%B1"><span class="post-toc-text">第 12 章 绩效薪酬和经济性奖励</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0-%E7%A6%8F%E5%88%A9%E4%B8%8E%E6%9C%8D%E5%8A%A1"><span class="post-toc-text">第 13 章 福利与服务</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC-5-%E7%AF%87%EF%BC%9A%E5%91%98%E5%B7%A5%E5%85%B3%E7%B3%BB%EF%BC%88%E7%AC%AC-14%E2%80%9418-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">六、第 5 篇：员工关系（第 14—18 章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0-%E4%BC%A6%E7%90%86%E9%81%93%E5%BE%B7%E3%80%81%E5%91%98%E5%B7%A5%E5%85%B3%E7%B3%BB%E5%8F%8A%E5%B7%A5%E4%BD%9C%E4%B8%AD%E7%9A%84%E5%85%AC%E5%B9%B3%E5%AF%B9%E5%BE%85"><span class="post-toc-text">第 14 章 伦理道德、员工关系及工作中的公平对待</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-%E5%8A%B3%E8%B5%84%E5%85%B3%E7%B3%BB%E4%B8%8E%E9%9B%86%E4%BD%93%E8%B0%88%E5%88%A4"><span class="post-toc-text">第 15 章 劳资关系与集体谈判</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-16-%E7%AB%A0-%E5%91%98%E5%B7%A5%E5%AE%89%E5%85%A8%E4%B8%8E%E5%81%A5%E5%BA%B7"><span class="post-toc-text">第 16 章 员工安全与健康</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-17-%E7%AB%A0-%E5%85%A8%E7%90%83%E5%8C%96%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-text">第 17 章 全球化人力资源管理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-18-%E7%AB%A0-%E5%B0%8F%E4%BC%81%E4%B8%9A%E5%8F%8A%E5%88%9B%E4%B8%9A%E4%BC%81%E4%B8%9A%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="post-toc-text">第 18 章 小企业及创业企业人力资源管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E5%85%A8%E4%B9%A6%E6%9C%80%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84%E5%87%A0%E4%B8%AA%E6%80%9D%E7%BB%B4%E6%A8%A1%E5%9E%8B%EF%BC%88%E6%8F%90%E7%82%BC%EF%BC%89"><span class="post-toc-text">七、全书最有价值的几个思维模型（提炼）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">八、我的几点感悟</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 10 月</p>
+<p>最近把加里·德斯勒（Gary Dessler）的《人力资源管理》第 14 版（中国人民大学出版社，工商管理经典译丛）通读了一遍。这是全球使用最广、销量最大的 HRM 教科书——从 1978 年第 1 版至今不断修订，几乎定义了”人力资源管理”这门学科的教学体系。国内很多商学院 MBA 用的就是它的中译本：1996 年由彭剑锋老师推荐，他的学生团队开始系统翻译第 6 版并引入中国，此后第 9 版、第 12 版、第 14 版一路迭代，可以说是”中国一代 HR 从业者的启蒙教材”。</p>
+<p>这本书和我们平时读的管理类”快餐书”完全不同——它不给你几个金句技巧，而是给你一套<strong>覆盖人力资源管理全部职能的完整知识体系</strong>：从”招人”到”留人”，从”给钱”到”开人”，从”合规”到”全球布局”。下面是我的读书笔记。</p>
+<p>一句话概括：<strong>人力资源管理（HRM）就是获取（acquiring）、培训（training）、评价（appraising）和报酬（compensating）员工，并处理他们的劳资关系、健康安全与公平问题的过程——而这一切的目的，是让公司获得实现战略目标所需的员工胜任素质和绩效。</strong></p>
+<h2 id="一、这本书的骨架：5-篇-18-章，一条贯穿主线"><a href="#一、这本书的骨架：5-篇-18-章，一条贯穿主线" class="headerlink" title="一、这本书的骨架：5 篇 18 章，一条贯穿主线"></a>一、这本书的骨架：5 篇 18 章，一条贯穿主线</h2><p>全书结构极其清晰，就是 HRM 从”入口”到”出口”的一条完整流水线：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">第 1 篇  导论（第 1—3 章）          为什么 HR 重要 + 法律底线 + 战略导向</span><br><span class="line">第 2 篇  招募、配置与人才管理（4—7）  职位分析 → 规划招募 → 测试甄选 → 面试</span><br><span class="line">第 3 篇  培训开发与绩效（8—10）      培训开发 → 绩效评价 → 保留/敬业/职业生涯</span><br><span class="line">第 4 篇  薪酬管理（11—13）           基本薪酬 → 绩效薪酬 → 福利</span><br><span class="line">第 5 篇  员工关系（14—18）           伦理公平 → 劳资关系 → 安全健康 → 全球化 → 小企业</span><br></pre></td></tr></table></figure>
+
+<p>每章都配有同一套”标配”栏目：<strong>巴黎酒店国际集团</strong>的贯穿案例（战略如何转化为 HR 政策）、<strong>卡特洗衣公司</strong>连续案例（小企业视角）、”改进绩效”专栏、”企业需要了解的雇用法律”专栏、体验式练习和讨论题。这套结构本身就是一种教学方法——<strong>先给战略视角，再给操作工具，最后回到案例闭环</strong>。</p>
+<h2 id="二、第-1-篇：导论（第-1—3-章）——HR-为什么重要"><a href="#二、第-1-篇：导论（第-1—3-章）——HR-为什么重要" class="headerlink" title="二、第 1 篇：导论（第 1—3 章）——HR 为什么重要"></a>二、第 1 篇：导论（第 1—3 章）——HR 为什么重要</h2><h3 id="第-1-章-人力资源管理导论"><a href="#第-1-章-人力资源管理导论" class="headerlink" title="第 1 章 人力资源管理导论"></a>第 1 章 人力资源管理导论</h3><p>这一章先立起全书的地基：什么是管理、什么是 HRM、为什么所有管理者（不只是 HR）都需要懂 HR。</p>
+<p><strong>管理的五种职能</strong>是全书出现频率最高的一个框架：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">管理过程 = 计划 → 组织 → 人事 → 领导 → 控制</span><br><span class="line">  计划：定目标、定标准、定规则、做预测</span><br><span class="line">  组织：给下属分任务、设部门、授权、建指挥链和沟通渠道</span><br><span class="line">  人事：决定雇谁、招募、甄选、培训开发、定绩效标准、评价、发薪</span><br><span class="line">  领导：促使他人完成工作、维持士气、激励</span><br><span class="line">  控制：定标准（销量/质量/产量）→ 对照检查实际绩效 → 必要时纠正</span><br></pre></td></tr></table></figure>
+
+<p>注意第 3 条：<strong>“人事”是五项管理职能之一，所以它天然是每一位直线经理的日常工作</strong>，而不是 HR 部门的专利。这是德斯勒反复强调的底层观点——<strong>直线经理才是真正执行 HRM 的人</strong>，HR 部门只是提供专业支持。</p>
+<p>影响 HRM 的几大趋势（本章另一重点）：</p>
+<ul>
+<li><strong>全球化</strong>：企业要”走出去”，就不得不懂外国的劳工法律和用工习惯；</li>
+<li><strong>技术</strong>：社交媒体招聘、在线学习、HR 信息系统（HRIS）、远程办公；</li>
+<li><strong>劳动力结构</strong>：非传统型劳动者（自由职业、零工）大增——美国约有 1700 万人至少每月有一次远程办公，”联合办公地点”兴起；H-1B 签证项目每年引入约 18.1 万外国专业工作者；</li>
+<li><strong>人口结构</strong>：婴儿潮一代退休、千禧一代&#x2F;数字原住民进入职场；</li>
+<li><strong>经济挑战</strong>：2008 年后经济衰退让企业转向”人工成本控制”，美国就业人口比例一度低至 59%、失业率高达 9.1% 以上。</li>
+</ul>
+<p>新型人力资源管理者需要具备 <strong>SHRM 定义的胜任素质</strong>：HR 专业知识、商业知识、领导力、学习与变革能力（外加职业道德）。这背后是一个转型信号：<strong>HR 正在从”行政事务部门”变成”战略伙伴”和”利润中心”</strong>——书中”改进绩效：作为利润中心的人力资源管理”专栏专门讲 HR 如何通过降本&#x2F;增收为企业创造价值。</p>
+<h3 id="第-2-章-公平就业机会和相关法律"><a href="#第-2-章-公平就业机会和相关法律" class="headerlink" title="第 2 章 公平就业机会和相关法律"></a>第 2 章 公平就业机会和相关法律</h3><p>这一章是”底线思维”——<strong>管理者做的每一件事（面试、培训、评价、发薪）都可能触法</strong>。作者甚至说，中国企业要”走出去”，最容易忽略的就是这些国际通用的用工法律。</p>
+<p>核心法律框架（以美国为例，但逻辑可迁移）：</p>
+<table>
+<thead>
+<tr>
+<th>法律</th>
+<th>关键内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1964 年《民权法案》第七章</td>
+<td>禁止基于种族、肤色、宗教、性别、国籍的雇佣歧视；适用于 15 人以上雇主；设立 EEOC</td>
+</tr>
+<tr>
+<td>1963 年《公平薪酬法》</td>
+<td>同工同酬（男女）</td>
+</tr>
+<tr>
+<td>1967 年《就业年龄歧视法》</td>
+<td>保护 40 岁以上员工</td>
+</tr>
+<tr>
+<td>1978 年《怀孕歧视法》</td>
+<td>禁止因怀孕、生育歧视</td>
+</tr>
+<tr>
+<td>1990 年《美国残疾人法》(ADA)</td>
+<td>禁止歧视合格残疾人，要求合理便利</td>
+</tr>
+<tr>
+<td>1991 年《民权法案》</td>
+<td>允许陪审团审理、惩罚性赔偿</td>
+</tr>
+</tbody></table>
+<p><strong>两个必须区分的概念</strong>（全书最重要的法律概念对）：</p>
+<ul>
+<li><strong>差别对待（disparate treatment）</strong>：故意因受保护特征区别对待某人（”你就是因为年龄大不录用你”）；</li>
+<li><strong>差别影响（adverse impact &#x2F; disparate impact）</strong>：看似中性的政策，却对某一群体产生不成比例的负面结果（”身高 175cm 以上”的招聘条件会淘汰大量女性）。</li>
+</ul>
+<p>企业的两种<strong>辩护理由</strong>：<strong>真实职业资格（BFOQ）</strong>（性别&#x2F;宗教等确实是岗位必需）和<strong>商业必要性（business necessity）</strong>。</p>
+<p>性骚扰分两类：<strong>交换型</strong>（quid pro quo，用性好处换晋升&#x2F;录用）和<strong>敌意环境型</strong>（hostile environment，让工作环境充满敌意）。作者提醒：企业要主动建立反骚扰政策和投诉渠道，而不是等出事才应对。</p>
+<p>EEOC 的执法流程（本章给了完整的”收到指控后雇主自查清单”）：提出指控（一般 180&#x2F;300 天内，薪酬歧视按《礼来·莱德贝特公平薪酬法》可随时提出）→ 受理 → 10 天内通知雇主 → 调查取证 → 调解&#x2F;诉讼。2012 财年 EEOC 收到 99412 起个人指控，最大两类是<strong>报复性指控</strong>（37836 起）和<strong>种族歧视</strong>（33512 起）——注意，报复是雇主最容易踩的雷。</p>
+<h3 id="第-3-章-人力资源管理战略与分析"><a href="#第-3-章-人力资源管理战略与分析" class="headerlink" title="第 3 章 人力资源管理战略与分析"></a>第 3 章 人力资源管理战略与分析</h3><p>这一章回答”HR 怎么和战略挂钩”，是全书的方法论制高点。</p>
+<p><strong>战略管理过程（8 步）</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">界定公司当前业务与使命 → 外部/内部审计（SWOT）→ 制定新方向</span><br><span class="line">→ 把使命转化为战略目标 → 制定战略 → 实施战略 → 评估绩效 → 调整</span><br></pre></td></tr></table></figure>
+
+<p><strong>战略类型</strong>（波特框架）：<strong>成本领先、差异化、聚焦</strong>（公司层还有多元化、纵向&#x2F;横向整合、收缩）。关键点是——<strong>不同战略要求完全不同的 HR 政策</strong>：成本领先战略要求”精简高效、控制薪酬成本”，差异化战略要求”高技能、强培训、留人”。</p>
+<p>由此引出<strong>战略性人力资源管理（SHRM）</strong>：把 HRM 政策和实践与公司战略目标<strong>连接</strong>起来，并且用指标证明 HR 在贡献战略成果。配套工具是：</p>
+<ul>
+<li><strong>HR 衡量指标（HR metrics）</strong>：人均招聘成本、离职率、培训投资回报、单位人工成本产出等；</li>
+<li><strong>标杆管理（benchmarking）</strong>：拿同行业优秀公司的指标对标；</li>
+<li><strong>高绩效工作系统（HPWS）</strong>：一整套相互配合的 HR 实践（严格甄选 + 持续培训 + 参与式管理 + 绩效薪酬 + 信息共享）协同产生高绩效；</li>
+<li><strong>HR 计分卡（HR scorecard）</strong>：把 HR 活动量化为”员工行为 → 绩效结果 → 战略目标”的因果链。</li>
+</ul>
+<p>本章的丽嘉酒店&#x2F;波特曼酒店案例讲得很透：<strong>战略是”一流的顾客服务”，那么 HR 就必须在甄选、培训、薪酬、管理实践上全部围绕”服务”重新设计</strong>。这就是 SHRM 的完整闭环。</p>
+<h2 id="三、第-2-篇：招募、配置与人才管理（第-4—7-章）"><a href="#三、第-2-篇：招募、配置与人才管理（第-4—7-章）" class="headerlink" title="三、第 2 篇：招募、配置与人才管理（第 4—7 章）"></a>三、第 2 篇：招募、配置与人才管理（第 4—7 章）</h2><h3 id="第-4-章-职位分析与人才管理过程"><a href="#第-4-章-职位分析与人才管理过程" class="headerlink" title="第 4 章 职位分析与人才管理过程"></a>第 4 章 职位分析与人才管理过程</h3><p>这一章的起点逻辑：<strong>先搞清楚”这个职位要干什么、需要什么样的人”，才能去招人</strong>。</p>
+<p><strong>人才管理（talent management）</strong>：不是零散的招聘，而是把规划、招募、甄选、培训、评价、薪酬整合成一个目标导向的整体流程。</p>
+<p><strong>职位分析（job analysis）</strong> 的产出是两份文件：</p>
+<ul>
+<li><strong>职位描述（job description）</strong>：这个职位<strong>干什么</strong>（职责清单）；</li>
+<li><strong>任职资格（job specification）</strong>：干这个职位<strong>需要什么人</strong>（知识、技能、能力等）。</li>
+</ul>
+<p>收集职位分析信息的方法：<strong>访谈法、问卷调查法、观察法、工作日志&#x2F;参与者日记法</strong>，以及量化的 <strong>PAQ（职位分析问卷）</strong>。梅赛德斯-奔驰的案例很有代表性——员工以自我管理团队工作、职责天天变，传统职位分析失效，于是改用<strong>胜任素质模型（competency model）</strong>：用”可观察、可衡量的行为”（如”团队协作””解决问题”）而不是固定职责来描述任职要求。</p>
+<h3 id="第-5-章-人事规划与招募"><a href="#第-5-章-人事规划与招募" class="headerlink" title="第 5 章 人事规划与招募"></a>第 5 章 人事规划与招募</h3><p>职位分析之后是<strong>人事规划与预测</strong>，工具包括：</p>
+<ul>
+<li><strong>趋势分析</strong>（历史人员数据外推）、<strong>比率分析</strong>（如”每名销售配几名客服”）、<strong>散点图</strong>（人员数量 vs 业务量）、<strong>马尔可夫分析</strong>（预测内部人员流动）；</li>
+<li><strong>继任计划（succession planning）</strong>：为关键岗位提前准备后备人选。</li>
+</ul>
+<p>招募分<strong>内部来源</strong>（内部公告、员工推荐、继任者池）和<strong>外部来源</strong>（招聘网站、社交网络、猎头、校园招聘、就业机构）。一个很实用的工具是<strong>招募收益金字塔（recruiting yield pyramid）</strong>——反推”要发多少 offer 需要多少面试、多少简历、多少候选人”。</p>
+<p>本章最扎眼的数字：<strong>星巴克 6.5 万个职位吸引了 760 万份申请</strong>；萨特医疗 1 万个职位收到超 30 万份申请。它揭示了一个反直觉的真相——<strong>在线申请太容易，反而让”海投”淹没了 HR</strong>，所以招募的真正难题不是”没人来”，而是”如何高效筛选”，这正好引出下一章。</p>
+<h3 id="第-6-章-员工测试与甄选"><a href="#第-6-章-员工测试与甄选" class="headerlink" title="第 6 章 员工测试与甄选"></a>第 6 章 员工测试与甄选</h3><p>甄选的核心目标是**”人岗匹配”**。这一章的两个基石概念：</p>
+<ul>
+<li><strong>信度（reliability）</strong>：测试结果的一致性和稳定性（重测信度、复本信度、内部一致性）；</li>
+<li><strong>效度（validity）</strong>：测试是否真的测到了想测的东西（<strong>效标效度</strong>&#x3D;预测未来绩效的准确性，<strong>内容效度</strong>&#x3D;是否覆盖了岗位所需内容）。</li>
+</ul>
+<p>测试类型：<strong>认知能力测试</strong>（智力、机械理解、语言）、<strong>人格测试</strong>（大五人格：外向性、宜人性、尽责性、情绪稳定性、开放性——其中<strong>尽责性</strong>对多数岗位的预测力最强）、<strong>兴趣量表</strong>、<strong>成就测试</strong>、<strong>诚信测试</strong>。</p>
+<p>书中反复强调的一个实证结论：<strong>“工作样本 + 认知能力测试 + 结构化面试”的组合，预测效度最高</strong>；而笔迹分析、年龄、单纯的人格测试等预测力很弱。澳拜客牛排的案例（餐饮业离职率常达 100%+）说明：甄选不当的隐性成本远超想象——一个笨拙的新服务员可能让顾客”再也不来”。</p>
+<h3 id="第-7-章-求职者面试"><a href="#第-7-章-求职者面试" class="headerlink" title="第 7 章 求职者面试"></a>第 7 章 求职者面试</h3><p>面试是<strong>使用最广泛、但往往效度最差</strong>的甄选工具（因为常被做成了无结构的”闲聊”）。</p>
+<p>面试类型：<strong>非结构化&#x2F;非指导性、结构化&#x2F;指导性、情境面试、行为面试、压力面试、小组面试、系列面试</strong>。</p>
+<p>影响面试效度的常见错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">首因效应（第一印象定生死）   晕轮效应（某一点好=全好）</span><br><span class="line">对比效应（被前一个候选人影响） 与我相似偏见（喜欢像自己的人）</span><br><span class="line">过早下判断                  负面信息偏重（一个缺点盖过所有优点）</span><br></pre></td></tr></table></figure>
+
+<p>解药是<strong>结构化情境面试（structured situational interview）</strong>：对所有候选人问同样的、事先设计好的问题——<strong>情境性问题</strong>（”如果……你会怎么做”）、<strong>行为性问题</strong>（”讲一个你过去的例子”）、<strong>背景性问题</strong>（”你的经历&#x2F;教育”）。行为面试的底层假设是**”过去的行为是未来行为的最佳预测指标”**。</p>
+<h2 id="四、第-3-篇：培训开发与绩效（第-8—10-章）"><a href="#四、第-3-篇：培训开发与绩效（第-8—10-章）" class="headerlink" title="四、第 3 篇：培训开发与绩效（第 8—10 章）"></a>四、第 3 篇：培训开发与绩效（第 8—10 章）</h2><h3 id="第-8-章-员工培训与开发"><a href="#第-8-章-员工培训与开发" class="headerlink" title="第 8 章 员工培训与开发"></a>第 8 章 员工培训与开发</h3><p>“雇对了人还不够，还得让他们知道该做什么、怎么做。” 培训流程就是经典的 <strong>ADDIE 模型</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">分析（Analyze）→ 设计（Design）→ 开发（Develop）→ 实施（Implement）→ 评估（Evaluate）</span><br></pre></td></tr></table></figure>
+
+<p>第一步永远是<strong>入职引导（onboarding）</strong>——让新员工快速融入、降低前 90 天的高离职风险。</p>
+<p>培训技术：<strong>在职培训（OJT）、学徒制、非正式学习、讲授法、程序化学习、视听&#x2F;模拟培训、电子学习（e-learning）、移动学习</strong>。管理开发则用<strong>岗位轮换、教练辅导、行动学习、案例研究、管理游戏</strong>。</p>
+<p>组织变革管理引用的是勒温（Lewin）三阶段：<strong>解冻 → 变革 → 再冻结</strong>。</p>
+<p>培训评估是本章最值得记住的方法论——<strong>柯克帕特里克（Kirkpatrick）四层次</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第 1 层 反应（学员觉得培训怎么样）</span><br><span class="line">第 2 层 学习（学到了什么知识/技能）</span><br><span class="line">第 3 层 行为（回到岗位后行为是否改变）</span><br><span class="line">第 4 层 结果（是否带来绩效/利润改善）</span><br></pre></td></tr></table></figure>
+
+<p>绝大多数公司只做到第 1 层（发张满意度问卷），而作者强调**控制性实验（培训组 vs 对照组）**才是评估培训真正效果的最优方法。</p>
+<h3 id="第-9-章-绩效管理与评价"><a href="#第-9-章-绩效管理与评价" class="headerlink" title="第 9 章 绩效管理与评价"></a>第 9 章 绩效管理与评价</h3><p>这一章是全书实操性最强的部分之一。先纠正一个常见误区：<strong>绩效管理 ≠ 绩效评价（打分）</strong>。</p>
+<blockquote>
+<p><strong>绩效管理（performance management）＝识别、衡量以及开发个人及团队绩效，并且使这些绩效与组织的目标保持一致的一个持续性过程。</strong></p>
+</blockquote>
+<p>书中把绩效管理拆成<strong>六大基本要素</strong>：<strong>目标共享</strong>（把公司目标分解到部门、团队、个人）、持续的目标达成评价、实时反馈与纠正、为员工提供达成目标所需的资源和培训、对优良绩效付酬、持续检查。</p>
+<p>绩效评价的经典技术：</p>
+<ul>
+<li><strong>图尺度评价法</strong>（最常用：一张表上对各项打分）；</li>
+<li><strong>交替排序法</strong>（最好→最差交替排）；</li>
+<li><strong>配对比较法</strong>（两两比较）；</li>
+<li><strong>强制分布法</strong>（按比例硬性分出”优秀&#x2F;一般&#x2F;待改进”，如”末位淘汰”）；</li>
+<li><strong>关键事件法</strong>（记录典型的好&#x2F;坏行为）；</li>
+<li><strong>行为锚定等级评价法（BARS）</strong>（把”关键事件”做成评分锚点，最精确但最费工）；</li>
+<li><strong>目标管理法（MBO）</strong>（对照目标评价结果，最强调员工参与）。</li>
+</ul>
+<p>评价者误差（和面试错误高度同源）：<strong>晕轮效应、宽大&#x2F;严格倾向、居中趋势、近因效应</strong>。作者的建议是：培训评价者、用行为锚点、多个评价者交叉验证。</p>
+<p><strong>360 度反馈</strong>（上司、同事、下属、客户、自我多源评价）适合用于”开发”而非”发薪”——因为各源评价动机不同，用于薪酬容易失真。</p>
+<h3 id="第-10-章-员工保留、敬业度及职业生涯管理"><a href="#第-10-章-员工保留、敬业度及职业生涯管理" class="headerlink" title="第 10 章 员工保留、敬业度及职业生涯管理"></a>第 10 章 员工保留、敬业度及职业生涯管理</h3><p>“花了大力气招来、培训好的人，怎么能留住？” 这一章的关键词是<strong>员工敬业度（engagement）</strong>——敬业的员工不只是”不离职”，而是<strong>心理上投入、愿意为组织多付出</strong>。</p>
+<p>留人不是单点动作，而是一套组合：<strong>有竞争力的薪酬 + 有意义的工作 + 成长机会 + 好的上级 + 公平对待</strong>。IBM 案例（百年企业靠”适应顾客需求变化”持续换血）说明：保留不等于”一个都不走”，而是<strong>留住对公司未来仍有价值的人</strong>。</p>
+<p>职业生涯管理：企业要做的是<strong>导师制、职业发展通道、培训机会、坦诚的职业反馈</strong>；晋升决策的核心是<strong>资历 vs 能力</strong>的权衡（作者倾向以能力为主、资历为辅）。</p>
+<p>解雇管理是这一章的”硬核”部分。解雇的正当理由主要有四类：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">绩效不达标 → 不当行为 → 资格不足（无法胜任）→ 职位要求变化（裁员）</span><br></pre></td></tr></table></figure>
+
+<p>配套工具：<strong>渐进式惩戒（口头警告 → 书面警告 → 停职 → 解雇）</strong>、离职面谈（了解真实离职原因）、无过失离职政策、遣散费与再就业支持。</p>
+<h2 id="五、第-4-篇：薪酬管理（第-11—13-章）"><a href="#五、第-4-篇：薪酬管理（第-11—13-章）" class="headerlink" title="五、第 4 篇：薪酬管理（第 11—13 章）"></a>五、第 4 篇：薪酬管理（第 11—13 章）</h2><h3 id="第-11-章-制定战略性薪酬计划"><a href="#第-11-章-制定战略性薪酬计划" class="headerlink" title="第 11 章 制定战略性薪酬计划"></a>第 11 章 制定战略性薪酬计划</h3><blockquote>
+<p><strong>员工薪酬（employee compensation）＝员工因雇佣关系而获得的所有报酬</strong>（直接现金 + 间接福利）。</p>
+</blockquote>
+<p>薪酬设计首先要满足<strong>四种公平</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">外部公平（和别人公司比）  内部公平（和公司内其他岗位比）</span><br><span class="line">个人公平（和同岗位同事比）  程序公平（决定过程是否透明公正）</span><br></pre></td></tr></table></figure>
+
+<p>决定薪酬水平的基本要素：<strong>法律、工会、公司薪酬政策、公平性</strong>。</p>
+<p><strong>职位评价（job evaluation）</strong>——给不同职位”定相对价值”的系统方法，有四种：</p>
+<ul>
+<li><strong>排序法</strong>（简单，把职位从高到低排）；</li>
+<li><strong>职位分类法</strong>（先定义等级，再把职位套进去）；</li>
+<li><strong>计点法（point method）</strong>（对”技能、责任、努力、工作条件”等报酬要素打分加权，最精确、最常用）；</li>
+<li><strong>要素比较法</strong>（把职位按报酬要素与”标杆职位”逐一比较）。</li>
+</ul>
+<p>制定<strong>市场竞争力薪酬</strong>的流程：<strong>薪酬调查 → 划分薪酬等级 → 绘制工资曲线 → 设定薪酬区间</strong>。现代趋势是<strong>宽带薪酬</strong>（减少等级、拉宽区间，更灵活）和<strong>基于胜任素质的薪酬</strong>（按”能力”而非”职位”付薪，鼓励员工横向成长）。</p>
+<p>本章的威格曼斯超市 vs 沃尔玛案例很有张力：面对沃尔玛的低成本打法，威格曼斯选择**”高薪酬 → 高素质员工 → 高服务质量 → 高利润”**的差异化路径，证明薪酬不一定是”成本”，也可以是”投资”。</p>
+<h3 id="第-12-章-绩效薪酬和经济性奖励"><a href="#第-12-章-绩效薪酬和经济性奖励" class="headerlink" title="第 12 章 绩效薪酬和经济性奖励"></a>第 12 章 绩效薪酬和经济性奖励</h3><p>这一章回答”钱能不能激励人、怎么激励”。</p>
+<p>先立理论——<strong>四种激励理论</strong>：</p>
+<ul>
+<li><strong>期望理论（expectancy theory）</strong>：激励 &#x3D; 期望（努力→绩效）× 工具性（绩效→报酬）× 效价（报酬有多想要）；</li>
+<li><strong>强化理论</strong>：行为被奖励就重复，被惩罚就消退；</li>
+<li><strong>公平理论（equity theory）</strong>：员工会拿自己的”投入产出比”和别人比；</li>
+<li><strong>代理理论（agency theory）</strong>：老板（委托人）和员工（代理人）目标不一致，薪酬要让二者利益对齐。</li>
+</ul>
+<p>奖励计划按对象分层：</p>
+<ul>
+<li><strong>个人</strong>：计件工资、绩效加薪（merit pay）、奖金、认可计划（非现金表扬也有效）；</li>
+<li><strong>销售</strong>：纯佣金、纯工资、组合制（各有利弊，佣金强激励但可能伤客情、伤长期）；</li>
+<li><strong>高管</strong>：股票期权、限制性股票、金色降落伞（争议：激励 vs 过度冒险）；</li>
+<li><strong>团队&#x2F;组织</strong>：<strong>收益分享计划（gainsharing，如斯坎伦计划 Scanlon Plan）</strong>、<strong>利润分享</strong>、<strong>员工持股计划（ESOP）</strong>。</li>
+</ul>
+<p>核心洞察：<strong>激励要”精准对靶”</strong>——激励什么行为，就奖励什么结果；把奖励和太多行为挂钩，员工反而分不清主次。</p>
+<h3 id="第-13-章-福利与服务"><a href="#第-13-章-福利与服务" class="headerlink" title="第 13 章 福利与服务"></a>第 13 章 福利与服务</h3><p>福利是薪酬包的”第三块”（前两块是基本工资 + 绩效薪酬），在中国语境下往往占用人成本的很大比重。</p>
+<p>福利的几大类别：</p>
+<ul>
+<li><strong>非工作时间薪酬</strong>：带薪休假、病假、法定节假日、失业保险；</li>
+<li><strong>保险福利</strong>：工伤保险、医疗保险（HMO&#x2F;PPO 等模式）；</li>
+<li><strong>退休福利</strong>：社会保障、养老金计划（<strong>待遇确定型 DB</strong>——承诺退休后给多少 vs <strong>缴费确定型 DC</strong>——如 401(k)，风险由员工承担，是主流趋势）；</li>
+<li><strong>个人服务与家庭友好型福利</strong>：弹性工作时间、儿童照管、健身、EAP（员工援助计划）。</li>
+</ul>
+<p>本章最有操作价值的概念是<strong>弹性福利计划（自助餐式&#x2F;cafeteria plan）</strong>：给员工一笔”福利额度”，让他们按需选择组合——<strong>用同样的钱，满足不同人生阶段员工的不同需求</strong>（单身 vs 有娃 vs 临近退休）。</p>
+<h2 id="六、第-5-篇：员工关系（第-14—18-章）"><a href="#六、第-5-篇：员工关系（第-14—18-章）" class="headerlink" title="六、第 5 篇：员工关系（第 14—18 章）"></a>六、第 5 篇：员工关系（第 14—18 章）</h2><h3 id="第-14-章-伦理道德、员工关系及工作中的公平对待"><a href="#第-14-章-伦理道德、员工关系及工作中的公平对待" class="headerlink" title="第 14 章 伦理道德、员工关系及工作中的公平对待"></a>第 14 章 伦理道德、员工关系及工作中的公平对待</h3><p>德斯勒特别强调这一章（和中译者前言呼应）：<strong>HR 的技术和实践最终都源于组织的价值观——价值观错了，工具再漂亮也会跑偏</strong>。</p>
+<p>核心内容：</p>
+<ul>
+<li>**伦理道德（ethics）**与组织文化的关系：高层的言行塑造文化，文化决定员工的日常决策；</li>
+<li><strong>公平对待</strong>：程序公平 + 互动公平（解释清楚、尊重人）；</li>
+<li><strong>员工惩戒</strong>：要有<strong>正当理由（just cause）</strong>，用渐进式惩戒，惩戒要<strong>及时、一致、对事不对人</strong>；</li>
+<li><strong>员工关系管理</strong>：坦诚沟通、公平程序、员工参与，是避免劳资冲突和诉讼的根本；</li>
+<li><strong>EAP（员工援助计划）</strong>：帮员工处理心理、家庭、成瘾等个人问题，防止其影响工作。</li>
+</ul>
+<p>富士康&#x2F;苹果案例是这章的现实注脚：供应链上的劳工问题最终会反噬品牌，所以大公司越来越重视”用工伦理”的向下传导。</p>
+<h3 id="第-15-章-劳资关系与集体谈判"><a href="#第-15-章-劳资关系与集体谈判" class="headerlink" title="第 15 章 劳资关系与集体谈判"></a>第 15 章 劳资关系与集体谈判</h3><p>这一章讲工会和集体谈判（美国语境，但对中国企业”走出去”很有参考价值）。</p>
+<p>美国劳工法律三部曲：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1932 年《诺里斯-拉瓜迪亚法》  限制法院对工会的禁令，保障工人结社权</span><br><span class="line">1935 年《国家劳资关系法》(瓦格纳法)  保障员工组织工会、集体谈判的权利，设 NLRB</span><br><span class="line">1947 年《塔夫脱-哈特利法》  平衡：限制工会的某些行为，允许各州&quot;工作权利法&quot;</span><br></pre></td></tr></table></figure>
+
+<p>集体谈判过程：<strong>准备 → 谈判（面对面）→ 达成协议 → 履行协议</strong>。关键概念：<strong>“无诚意谈判”（surface bargaining）</strong>——假装谈判但无意达成协议，属不当劳动行为。</p>
+<p>争议处理靠<strong>申诉程序（grievance procedure）</strong>：员工 → 主管 → 更高管理层 → 仲裁（有约束力）。</p>
+<p>好市多 vs 沃尔玛的对比很经典：好市多对员工和工会好（高薪高福利），利润反而更高——<strong>积极的劳资关系可以是竞争优势，而不是成本负担</strong>。</p>
+<h3 id="第-16-章-员工安全与健康"><a href="#第-16-章-员工安全与健康" class="headerlink" title="第 16 章 员工安全与健康"></a>第 16 章 员工安全与健康</h3><p>安全是”最容易被人忽略、但一出事就是大事”的领域。</p>
+<ul>
+<li><strong>法律</strong>：美国 1970 年《职业安全与健康法》（OSHA），授权制定标准、现场检查；</li>
+<li><strong>事故原因</strong>：分为<strong>不安全条件</strong>（设备、环境）和<strong>不安全行为</strong>（人的因素，占多数）；</li>
+<li><strong>预防五法</strong>：减少不安全条件、减少不安全行为（通过甄选、培训、激励、树立安全文化）、建立安全计划、营造安全氛围、高层亲自带头。</li>
+</ul>
+<p>这一章最有价值的提醒：<strong>安全首先是”管理者的责任”</strong>，而不是安全员的——基层主管每天在现场，才是最有效的安全防线。另外还涉及压力与倦怠（burnout）、职场暴力等现代健康议题。</p>
+<h3 id="第-17-章-全球化人力资源管理"><a href="#第-17-章-全球化人力资源管理" class="headerlink" title="第 17 章 全球化人力资源管理"></a>第 17 章 全球化人力资源管理</h3><p>全球化的核心难题：<strong>在一个国家奏效的管理，换个国家可能适得其反</strong>（书中例子：美国式的创新激励在东欧反而失败，因为当地员工更需要”可预测的周薪”来买生活必需品）。</p>
+<p>文化差异是底层变量——霍夫斯泰德（Hofstede）的维度：<strong>权力距离、个人主义&#x2F;集体主义、不确定性规避、男性化&#x2F;女性化、长期导向</strong>。</p>
+<p>国际人员配置的三种导向：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">民族中心（ethnocentric）  关键岗位都派母国外派人员</span><br><span class="line">多中心（polycentric）     用东道国本地人管理本地</span><br><span class="line">全球中心（geocentric）    全球范围内找最合适的人，不分国籍</span><br></pre></td></tr></table></figure>
+
+<p>人员来源分<strong>外派人员（expatriate）、东道国员工（HCN）、第三国员工（TCN）</strong>。外派管理的最大坑是<strong>遣返（repatriation）</strong>——外派回来的人常常”水土不服”、很快离职，所以”派出去”和”接回来”要同样重视。沃尔玛在中国遇工会的案例说明：<strong>全球化必须适应本地制度，而不是硬套母国打法</strong>。</p>
+<h3 id="第-18-章-小企业及创业企业人力资源管理"><a href="#第-18-章-小企业及创业企业人力资源管理" class="headerlink" title="第 18 章 小企业及创业企业人力资源管理"></a>第 18 章 小企业及创业企业人力资源管理</h3><p>最后一章很实用：<strong>大多数人都在小企业工作</strong>（美国约 99% 的企业是小企业），而小企业往往没有专职 HR。</p>
+<p>小企业的挑战：<strong>资源少、一人多岗、没有正规 HR 系统、容易踩法律红线</strong>。</p>
+<p>小企业的优势与打法：</p>
+<ul>
+<li>利用<strong>规模小的优势</strong>：熟悉性（老板认识每个人）、灵活性（政策可快速调整）、非正式性（沟通成本低）；</li>
+<li>善用<strong>互联网与政府工具</strong>：在线招聘、云端 HRIS、政府小企业服务机构（美国 SBA）等；</li>
+<li>借助<strong>专业性雇主组织（PEO）</strong>：把薪酬发放、社保、合规等外包给 PEO，小企业”团购”大公司的 HR 能力；</li>
+<li>建立<strong>最低限度的 HR 系统</strong>：哪怕只是一份员工手册、一套招聘记录、一套合法合规的文档。</li>
+</ul>
+<p>雪佛兰经销商老板卡洛斯·里德兹马的案例点题：<strong>小企业靠”友好的长期员工”留住回头客来盈利</strong>——HR 对小企业不是奢侈品，而是竞争武器。</p>
+<h2 id="七、全书最有价值的几个思维模型（提炼）"><a href="#七、全书最有价值的几个思维模型（提炼）" class="headerlink" title="七、全书最有价值的几个思维模型（提炼）"></a>七、全书最有价值的几个思维模型（提炼）</h2><p>跨章节看，这本书反复使用的几个底层模型，比单个知识点更值得带走：</p>
+<ol>
+<li><p><strong>“人岗匹配”主线</strong>：职位分析（要什么）→ 甄选（找对人）→ 培训（补差距）→ 绩效（衡量差距）→ 薪酬（奖励贡献）——HR 的一切活动都围绕”让人和岗位匹配”。</p>
+</li>
+<li><p><strong>“战略 → 行为 → 绩效”因果链</strong>：公司战略决定需要什么样的员工行为，HR 政策塑造这些行为，行为产生绩效。HR 的合法性来自它能否证明这条链成立（HR 计分卡）。</p>
+</li>
+<li><p><strong>“公平四象限”</strong>：外部&#x2F;内部&#x2F;个人&#x2F;程序公平，是薪酬、晋升、惩戒几乎所有 HR 决策的通用检验标准——员工最在意的往往不是绝对数字，而是”公不公平”。</p>
+</li>
+<li><p><strong>“信度&#x2F;效度”思维</strong>：任何测量（测试、面试、绩效打分）都要先问”稳不稳定（信度）”和”准不准（效度）”——这套标准可以迁移到技术领域的一切度量设计。</p>
+</li>
+<li><p><strong>“多源交叉验证”</strong>：面试要结构化、绩效要 360 度、培训评估要对照组、甄选要”测试+面试+背景调查”组合——<strong>单一信息源永远不可靠</strong>。</p>
+</li>
+<li><p><strong>“渐进式”与”正当理由”</strong>：解雇、惩戒都要有据可依、逐步升级——它保护的不只是员工，更是企业自己免于诉讼。</p>
+</li>
+</ol>
+<h2 id="八、我的几点感悟"><a href="#八、我的几点感悟" class="headerlink" title="八、我的几点感悟"></a>八、我的几点感悟</h2><ol>
+<li><p><strong>HR 不是”人事部”，是”经营杠杆”。</strong> 这本书最大的观念冲击是：把 HR 从”发工资、办入职的行政活”重新定义为”通过人来实现战略”。招错一个人、留不住一个骨干、发错一套激励，对利润的影响不亚于一笔失败的投资。对技术人做管理也一样——<strong>你的产出不再是代码，而是”团队的行为和绩效”</strong>。</p>
+</li>
+<li><p><strong>“公平”是被低估的管理基础设施。</strong> 薪酬、晋升、惩戒、解雇……员工对每件事的第一反应都是”公不公平”。程序公平（过程透明、解释清楚）很多时候比结果本身更能决定满意度。一个技术上再完美的方案，如果让人觉得”不公”，执行时一定会出问题。</p>
+</li>
+<li><p><strong>结构化是反直觉的。</strong> 面试和绩效评价最容易”凭感觉”，而这本书反复证明：<strong>结构化（提前定好问题和标准）能把”感觉”变成”可比较的数据”</strong>，效度显著更高。这和工程里”把隐式规则显式化”是同一个道理——<strong>感觉不可靠，流程和标准才可靠</strong>。</p>
+</li>
+<li><p><strong>“价值观”决定 HR 的天花板。</strong> 德斯勒坚持保留”伦理公平””安全健康”这些”看起来和 HR 核心关系不大”的章节，理由是：<strong>工具再好，价值观错了就会跑偏</strong>。中国企业出问题的根源往往不是缺技术，而是缺基本的价值观底线。这和”先做对的事，再把事做对”是相通的。</p>
+</li>
+<li><p><strong>所有”人的问题”背后都有一条因果链。</strong> 高离职 → 追溯到甄选标准&#x2F;薪酬公平&#x2F;上级关系；绩效差 → 追溯到培训&#x2F;目标&#x2F;反馈。好的管理者不治标，而是<strong>沿着因果链往上找根源</strong>。这本书给的每一个工具，本质上都是帮你在某一段因果链上”精准干预”。</p>
+</li>
+<li><p><strong>合规是”成本”，但更是”护城河”。</strong> 歧视指控、劳资纠纷、安全事故——每一件都可能让公司赔几百万美元（书里那个”经理降门卫赔 340 万美元”的案例触目惊心）。<strong>提前把流程做合规，比事后打官司便宜太多</strong>。</p>
+</li>
+</ol>
+<hr>
+<p><strong>一句话总结：人力资源管理的全部智慧，就是沿着”战略需要什么行为 → 行为需要什么人来产生 → 怎么找到、培养、激励、留住这些人 → 怎么合法公平地处理人与人的关系”这条因果链，把每一个环节都做成可衡量、可复制的流程——而它的最终目的，是让组织持续拥有实现战略目标所需的员工胜任素质和绩效。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610220009005491.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%95%A3%E6%88%B7%E4%B9%99%E9%9B%AA%E7%90%83%E5%8F%91%E8%A8%80%E6%B1%87%E7%BC%96%EF%BC%882014%E2%80%942023%EF%BC%89%E3%80%8B/'>阅读笔记——《散户乙雪球发言汇编（2014—2023）》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212358003917.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A2%E5%8A%A1%E8%AF%A1%E8%AE%A1%E3%80%8B/">阅读笔记——《财务诡计》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

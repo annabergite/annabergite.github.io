@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《成果管理》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《成果管理》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.2k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：11分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E6%88%90%E6%9E%9C%E7%AE%A1%E7%90%86%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《成果管理》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E7%BB%93%E6%9E%84"><span class="post-toc-text">全书核心结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%B7%E9%B2%81%E5%85%8B%E7%9A%84%E4%B8%89%E9%A1%B9%E7%BB%8F%E6%B5%8E%E4%BB%BB%E5%8A%A1"><span class="post-toc-text">德鲁克的三项经济任务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%9A%84%E7%8E%B0%E5%AE%9E"><span class="post-toc-text">第 1 章：企业的现实</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E7%BB%84%EF%BC%9A%E6%88%90%E6%9E%9C%E4%B8%8E%E8%B5%84%E6%BA%90"><span class="post-toc-text">第一组：成果与资源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%BB%84%EF%BC%9A%E5%8A%AA%E5%8A%9B%E4%B8%8E%E6%88%90%E6%9C%AC"><span class="post-toc-text">第二组：努力与成本</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%90%E6%9C%AC%E4%BC%9A%E8%AE%A1%E4%B8%8D%E5%A4%9F"><span class="post-toc-text">为什么成本会计不够</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-8-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A-X-%E5%85%89"><span class="post-toc-text">第 2~8 章：企业 X 光</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0%EF%BC%9A%E6%88%90%E6%9E%9C%E5%8C%BA"><span class="post-toc-text">第 2 章：成果区</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E6%94%B6%E5%85%A5%E3%80%81%E8%B5%84%E6%BA%90%E4%B8%8E%E5%89%8D%E6%99%AF"><span class="post-toc-text">第 3 章：收入、资源与前景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E6%88%91%E4%BB%AC%E6%80%8E%E4%B9%88%E5%81%9A"><span class="post-toc-text">第 4 章：我们怎么做</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0%EF%BC%9A%E6%88%90%E6%9C%AC%E4%B8%AD%E5%BF%83%E5%92%8C%E6%88%90%E6%9C%AC%E7%BB%93%E6%9E%84"><span class="post-toc-text">第 5 章：成本中心和成本结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BB%8F%E8%90%A5%E7%9A%84%E6%98%AF%E9%A1%BE%E5%AE%A2"><span class="post-toc-text">第 6 章：企业经营的是顾客</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A%E7%BB%8F%E8%90%A5%E7%9A%84%E6%98%AF%E7%9F%A5%E8%AF%86"><span class="post-toc-text">第 7 章：企业经营的是知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E8%BF%99%E5%B0%B1%E6%98%AF%E6%88%91%E4%BB%AC%E7%9A%84%E4%BC%81%E4%B8%9A"><span class="post-toc-text">第 8 章：这就是我们的企业</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-11-%E7%AB%A0%EF%BC%9A%E6%9C%BA%E4%BC%9A%E4%B8%8E%E6%9C%AA%E6%9D%A5"><span class="post-toc-text">第 9~11 章：机会与未来</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0%EF%BC%9A%E5%8F%91%E5%B1%95%E9%9D%A0%E4%BC%98%E5%8A%BF"><span class="post-toc-text">第 9 章：发展靠优势</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E6%8C%96%E6%8E%98%E4%BC%81%E4%B8%9A%E7%9A%84%E6%BD%9C%E5%8A%9B"><span class="post-toc-text">第 10 章：挖掘企业的潜力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%9C%AA%E6%9D%A5%E5%8F%96%E5%86%B3%E4%BA%8E%E4%BB%8A%E5%A4%A9"><span class="post-toc-text">第 11 章：未来取决于今天</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0%EF%BC%9A%E5%85%B3%E9%94%AE%E6%80%A7%E5%86%B3%E7%AD%96"><span class="post-toc-text">第 12 章：关键性决策</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A%E6%88%98%E7%95%A5"><span class="post-toc-text">第 13 章：企业战略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E7%B1%BB%E6%9C%BA%E4%BC%9A"><span class="post-toc-text">三类机会</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0%EF%BC%9A%E4%BC%81%E4%B8%9A%E4%BB%A5%E7%BB%8F%E6%B5%8E%E7%BB%A9%E6%95%88%E4%B8%BA%E6%9C%AC"><span class="post-toc-text">第 14 章：企业以经济绩效为本</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%8C%96%E6%94%BE%E5%BC%83"><span class="post-toc-text">系统化放弃</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%94%A8%E6%8F%90%E6%8B%94%E5%A1%91%E9%80%A0%E7%BB%84%E7%BB%87%E7%B2%BE%E7%A5%9E"><span class="post-toc-text">用提拔塑造组织精神</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%BE%B7%E9%B2%81%E5%85%8B%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E5%88%A4%E6%96%AD"><span class="post-toc-text">德鲁克最重要的判断</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%8E%E6%97%A5%E5%B8%B8%E7%AE%A1%E7%90%86%E7%9A%84%E8%81%94%E7%B3%BB"><span class="post-toc-text">与日常管理的联系</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《成果管理》读书笔记"><a href="#《成果管理》读书笔记" class="headerlink" title="《成果管理》读书笔记"></a>《成果管理》读书笔记</h1><blockquote>
+<p>作者：彼得·德鲁克（Peter F. Drucker）<br>中译本：朱雁斌 译，机械工业出版社<br>英文原名：<em>Managing for Results</em></p>
+</blockquote>
+<p>《成果管理》是第一部真正讨论“企业战略”和“商业企业经济绩效”的书。德鲁克在这里回答的不是“如何把事做对”，而是更根本的问题：<strong>企业应该做什么，才能持续创造成果</strong>。它把战略、经济任务、组织绩效和人的工作连成一体。</p>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p>企业的成果和资源都在外部，内部只有成本中心；管理者的经济任务是同时做好三件事：让今天的业务有效运转、挖掘企业潜力、创造明天的企业。</p>
+<h2 id="全书核心结构"><a href="#全书核心结构" class="headerlink" title="全书核心结构"></a>全书核心结构</h2><pre class="mermaid">flowchart TD
+    A["三项经济任务"] --&gt; B["让现在的企业有效"]
+    A --&gt; C["挖掘企业的潜力"]
+    A --&gt; D["创造企业的未来"]
+
+    B --&gt; B1["分析成果区"]
+    B --&gt; B2["分析成本结构"]
+    B --&gt; B3["分析市场与知识"]
+
+    C --&gt; C1["发展靠优势"]
+    C --&gt; C2["把弱点变机会"]
+
+    D --&gt; D1["未来取决于今天"]
+    D --&gt; D2["关键性决策"]
+    D --&gt; D3["企业战略"]
+    D --&gt; D4["以经济绩效为本"]</pre>
+
+<h2 id="德鲁克的三项经济任务"><a href="#德鲁克的三项经济任务" class="headerlink" title="德鲁克的三项经济任务"></a>德鲁克的三项经济任务</h2><pre class="mermaid">flowchart LR
+    A["今天&lt;br/&gt;让现有业务有效"] --&gt; B["潜力&lt;br/&gt;识别并挖掘潜能"]
+    B --&gt; C["明天&lt;br/&gt;让未来成为现实"]
+    C --&gt; A
+
+    A -. "同一个组织、同一套资源" .- B
+    B -. "今天决策，今天行动" .- C</pre>
+
+<p>三项任务不能先后排队，必须同时处理。创造未来不是明天才做的事，而是今天的决策和行动。它们要求一个统一的战略。</p>
+<h2 id="第-1-章：企业的现实"><a href="#第-1-章：企业的现实" class="headerlink" title="第 1 章：企业的现实"></a>第 1 章：企业的现实</h2><p>德鲁克提出 8 个几乎适用于所有企业的假设。这是全书最有价值的部分。</p>
+<h3 id="第一组：成果与资源"><a href="#第一组：成果与资源" class="headerlink" title="第一组：成果与资源"></a>第一组：成果与资源</h3><ol>
+<li><p><strong>成果和资源都在企业外部，内部只有成本中心。</strong><br>企业内部没有利润中心。设计、制造、销售、会计都产生成本，但能否创造成果，由外部顾客决定。</p>
+</li>
+<li><p><strong>成果来自挖掘机会，而不是解决问题。</strong><br>解决问题最多让企业恢复正常，成果必须来自机会。</p>
+</li>
+<li><p><strong>资源必须分配给机会，而不是问题。</strong><br>企业追求的不应是抽象的“利润最大化”，而是<strong>机会最大化</strong>。</p>
+</li>
+<li><p><strong>只有保持领先，企业才能创造成果。</strong><br>大不等于领先。真正的利润来自在某个对顾客有意义的领域做出独特贡献。</p>
+</li>
+<li><p><strong>任何领先都是短暂的。</strong><br>市场与知识都是普遍可及的，领先只是暂时优势。管理者的责任是不断把企业拉回机会，避免滑向平庸。</p>
+</li>
+</ol>
+<h3 id="第二组：努力与成本"><a href="#第二组：努力与成本" class="headerlink" title="第二组：努力与成本"></a>第二组：努力与成本</h3><ol start="6">
+<li><p><strong>企业现状会不断变老。</strong><br>今天拥有的都是昨天的决策和产品。管理者往往不是在解决今天的问题，而是在修补昨天。</p>
+</li>
+<li><p><strong>企业现状通常存在资源错配。</strong><br>社会现象服从“少数事件创造多数成果”的规律，不是自然界的正态分布。约 10% 到 20% 的产品、顾客、市场、销售员或研究项目，创造约 90% 的成果。</p>
+</li>
+<li><p><strong>集中是经济成果的关键。</strong><br>要把资源集中到少数高成果领域，而不是在所有产品、顾客和活动上平均用力。</p>
+</li>
+</ol>
+<h2 id="为什么成本会计不够"><a href="#为什么成本会计不够" class="headerlink" title="为什么成本会计不够"></a>为什么成本会计不够</h2><p>德鲁克特别指出，传统成本会计会误导经营判断：</p>
+<ul>
+<li>大订单和小订单的文书、排程、收款成本几乎相同；</li>
+<li>设计失败产品和成功产品的成本几乎相同；</li>
+<li>大部分现代成本不是直接成本，而是与时间、事务量相关的成本。</li>
+</ul>
+<p>因此，成本应按<strong>事务量</strong>而非按销量或售价分摊。否则，高销量的小产品会被误认为赚钱，而真正贡献利润的大产品却被错误负担成本。</p>
+<h2 id="第-2-8-章：企业-X-光"><a href="#第-2-8-章：企业-X-光" class="headerlink" title="第 2~8 章：企业 X 光"></a>第 2~8 章：企业 X 光</h2><p>德鲁克把分析现有企业称为“企业 X 光”，依次从四个方面照出企业的真实经济结构。</p>
+<pre class="mermaid">flowchart LR
+    A["成果、收入与资源分析"] --&gt; D["临时诊断"]
+    B["成本中心与成本结构分析"] --&gt; D
+    C["市场营销分析"] --&gt; E["重新定义企业"]
+    C2["知识分析"] --&gt; E
+    D --&gt; E --&gt; F["这是我们的企业"]</pre>
+
+<h3 id="第-2-章：成果区"><a href="#第-2-章：成果区" class="headerlink" title="第 2 章：成果区"></a>第 2 章：成果区</h3><p>成果区是能够用数字衡量成果的地方：</p>
+<ul>
+<li>产品和服务；</li>
+<li>市场，包括顾客和最终用户；</li>
+<li>分销渠道。</li>
+</ul>
+<p>德鲁克反复强调：<strong>市场和分销渠道常常比产品更重要</strong>。产品是次要的，渠道决定产品能否抵达顾客。</p>
+<p>分析成果区时，最危险的不是工具复杂，而是没有把真正的问题摆在最高管理层面前。要寻找的是“正确的问题”，而不是马上给出“正确的答案”。</p>
+<h3 id="第-3-章：收入、资源与前景"><a href="#第-3-章：收入、资源与前景" class="headerlink" title="第 3 章：收入、资源与前景"></a>第 3 章：收入、资源与前景</h3><p>企业分析的基本事实来自第 1 章的 80&#x2F;20 规律：</p>
+<ul>
+<li>少数产品、顾客、市场创造大部分收入；</li>
+<li>大部分成本由大量低价值事务产生；</li>
+<li>收入流和成本流不是同一条流。</li>
+</ul>
+<p>分析时不能只问“这个产品赚不赚钱”，还要看它占用了多少关键资源，以及它在市场中的领先地位和前景。</p>
+<h3 id="第-4-章：我们怎么做"><a href="#第-4-章：我们怎么做" class="headerlink" title="第 4 章：我们怎么做"></a>第 4 章：我们怎么做</h3><p>这一章把成果区与成本、资源结合起来，做出初步诊断。关键不是证明现状合理，而是找到失衡和值得讨论的地方。</p>
+<h3 id="第-5-章：成本中心和成本结构"><a href="#第-5-章：成本中心和成本结构" class="headerlink" title="第 5 章：成本中心和成本结构"></a>第 5 章：成本中心和成本结构</h3><p>成本分析的目标不是“每个地方都省 5%”，而是找到：</p>
+<ul>
+<li>真正的成本中心在哪里；</li>
+<li>哪些成本支持成果，哪些成本只是沉没；</li>
+<li>哪些事务消耗资源却不产生收入。</li>
+</ul>
+<p>德鲁克反对“一刀切”降成本。它会削弱最需要投入的成果领域，却很少触碰真正浪费的地方。</p>
+<h3 id="第-6-章：企业经营的是顾客"><a href="#第-6-章：企业经营的是顾客" class="headerlink" title="第 6 章：企业经营的是顾客"></a>第 6 章：企业经营的是顾客</h3><p>企业要问的不是“我们的市场在哪里”，而是“哪里有市场”。顾客、最终用户和购买决策者可能完全不同。</p>
+<p>案例：医用设备企业以为顾客是医生，实际采购决策者是医院行政人员；保险产品白天向家庭主妇销售，比晚上向疲惫的丈夫推销更有效。</p>
+<h3 id="第-7-章：企业经营的是知识"><a href="#第-7-章：企业经营的是知识" class="headerlink" title="第 7 章：企业经营的是知识"></a>第 7 章：企业经营的是知识</h3><p>知识是企业唯一真正独特的资源。分析知识要回答：</p>
+<ul>
+<li>我们擅长做什么，而且不费吹灰之力？</li>
+<li>别人做起来很失败，我们却做得好？</li>
+<li>我们不了解什么，却在哪些方面自以为是？</li>
+</ul>
+<p>通用电气擅长从零建立新业务，通用汽车擅长收购后改造企业。能力不同，战略就必须不同。</p>
+<h3 id="第-8-章：这就是我们的企业"><a href="#第-8-章：这就是我们的企业" class="headerlink" title="第 8 章：这就是我们的企业"></a>第 8 章：这就是我们的企业</h3><p>把前四类分析合在一起，重新审视企业：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">成果、收入和资源分析</span><br><span class="line">+ 成本中心与成本结构分析</span><br><span class="line">+ 市场营销分析</span><br><span class="line">+ 知识分析</span><br><span class="line">= 对“我们的企业是什么”的真正理解</span><br></pre></td></tr></table></figure>
+
+<p>最后要回答三个问题：</p>
+<ul>
+<li>我们经营的是什么？</li>
+<li>它现在是什么？</li>
+<li>它将来必须是什么？</li>
+</ul>
+<h2 id="第-9-11-章：机会与未来"><a href="#第-9-11-章：机会与未来" class="headerlink" title="第 9~11 章：机会与未来"></a>第 9~11 章：机会与未来</h2><h3 id="第-9-章：发展靠优势"><a href="#第-9-章：发展靠优势" class="headerlink" title="第 9 章：发展靠优势"></a>第 9 章：发展靠优势</h3><p>德鲁克提出三种经过检验的发展方法：</p>
+<ol>
+<li><strong>理想化企业</strong>：按照市场机会重新设计企业；</li>
+<li><strong>机会最大化</strong>：把资源集中在最有吸引力的希望上；</li>
+<li><strong>资源最大化</strong>：用现有优质资源发现和创造新机会。</li>
+</ol>
+<p>通用汽车通过“理想化企业”设计五档车型，从而击败福特；西门子和爱迪生通过“机会最大化”创建了电气工业。</p>
+<h3 id="第-10-章：挖掘企业的潜力"><a href="#第-10-章：挖掘企业的潜力" class="headerlink" title="第 10 章：挖掘企业的潜力"></a>第 10 章：挖掘企业的潜力</h3><p>企业的实际绩效通常低于最佳绩效。挖掘潜力的三个问题：</p>
+<ol>
+<li>哪些制约因素让企业不堪一击？</li>
+<li>企业在哪些方面发展失衡？</li>
+<li>我们担心什么威胁？如何把威胁变为机会？</li>
+</ol>
+<p>德鲁克的判断是：<strong>薄弱环节往往就是最大机会</strong>。美国钢铁工业因固守传统工艺而扩张，结果被新工艺和新材料抢走市场；及时识别制约因素的企业则能占据主动。</p>
+<h3 id="第-11-章：未来取决于今天"><a href="#第-11-章：未来取决于今天" class="headerlink" title="第 11 章：未来取决于今天"></a>第 11 章：未来取决于今天</h3><p>未来不是预测出来的，而是由今天的行动创造的。要创造明天，就必须：</p>
+<ul>
+<li>识别已经发生的变化；</li>
+<li>问“如果这个趋势继续，会怎样”；</li>
+<li>主动让代表新现实的事情发生。</li>
+</ul>
+<p>德鲁克说：“创造未来不是为了确定明天做什么，而是为了确定今天做什么，才能拥有明天。”</p>
+<h2 id="第-12-章：关键性决策"><a href="#第-12-章：关键性决策" class="headerlink" title="第 12 章：关键性决策"></a>第 12 章：关键性决策</h2><p>现在的效率和未来的发展会争夺同一套资源，因此需要一个统一决策框架。所有重大行动必须：</p>
+<ul>
+<li>与企业的宗旨、优势、优先事项一致；</li>
+<li>明确需要什么资源；</li>
+<li>明确准备放弃什么旧业务；</li>
+<li>明确衡量成果的标准。</li>
+</ul>
+<p>决策的要害是取舍：不能既要今天的安全，又要明天的所有可能，却什么也不放弃。</p>
+<h2 id="第-13-章：企业战略"><a href="#第-13-章：企业战略" class="headerlink" title="第 13 章：企业战略"></a>第 13 章：企业战略</h2><p>战略是几个结构性取舍的组合。</p>
+<pre class="mermaid">flowchart TD
+    A["企业战略"] --&gt; B["机会与风险"]
+    A --&gt; C["经营范围与结构"]
+    A --&gt; D["时间与金钱 / 自建与收购"]
+    A --&gt; E["组织结构"]
+
+    B --&gt; B1["锦上添花型"]
+    B --&gt; B2["互补型"]
+    B --&gt; B3["突破型"]
+
+    C --&gt; C1["专业化"]
+    C --&gt; C2["多元化"]
+    C --&gt; C3["一体化"]</pre>
+
+<h3 id="三类机会"><a href="#三类机会" class="headerlink" title="三类机会"></a>三类机会</h3><table>
+<thead>
+<tr>
+<th>机会类型</th>
+<th>特点</th>
+<th>风险</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>锦上添花型</td>
+<td>利用现有资源，不改变企业性质</td>
+<td>低</td>
+</tr>
+<tr>
+<td>互补型</td>
+<td>增加新东西，与现有业务产生 1+1&gt;2</td>
+<td>中高</td>
+</tr>
+<tr>
+<td>突破型</td>
+<td>改变企业的基本经济特征</td>
+<td>很高，但可能开创行业</td>
+</tr>
+</tbody></table>
+<p>机会还要与企业匹配。别人觉得容易的事，自己未必做得来；违背企业能力的机会，风险会放大。</p>
+<h2 id="第-14-章：企业以经济绩效为本"><a href="#第-14-章：企业以经济绩效为本" class="headerlink" title="第 14 章：企业以经济绩效为本"></a>第 14 章：企业以经济绩效为本</h2><p>战略只有转化为人的工作和组织精神，才能变成绩效。</p>
+<pre class="mermaid">flowchart LR
+    A["统一工作计划"] --&gt; B["专人负责"]
+    B --&gt; C["设定截止期限"]
+    C --&gt; D["明确资源与衡量标准"]
+    D --&gt; E["系统化放弃旧业务"]
+    E --&gt; F["人事提拔奖励经济绩效"]</pre>
+
+<h3 id="系统化放弃"><a href="#系统化放弃" class="headerlink" title="系统化放弃"></a>系统化放弃</h3><p>每隔三年左右，企业都应重新评估所有产品、活动和部门，并问：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果我们今天还没有这个产品、活动或部门，</span><br><span class="line">我们会开始做这件事吗？</span><br><span class="line"></span><br><span class="line">如果答案是“不”，那就问：</span><br><span class="line">我们应该继续吗？为什么？</span><br></pre></td></tr></table></figure>
+
+<p>只有主动放弃旧事物，新生事物才能得到人才和资金。</p>
+<h3 id="用提拔塑造组织精神"><a href="#用提拔塑造组织精神" class="headerlink" title="用提拔塑造组织精神"></a>用提拔塑造组织精神</h3><p>知识工作者不能被监督，只能被激励。要让知识工作者做贡献，企业必须明确目标和衡量标准。</p>
+<p>组织的真正价值观体现在人事提拔上，尤其是“关键性升职”。如果企业希望以经济绩效为本，就必须把完成经济任务的能力纳入晋升决策。</p>
+<h2 id="德鲁克最重要的判断"><a href="#德鲁克最重要的判断" class="headerlink" title="德鲁克最重要的判断"></a>德鲁克最重要的判断</h2><ol>
+<li>成果在外部，内部只有成本。</li>
+<li>机会创造成果，解决问题最多恢复原状。</li>
+<li>把资源分配给机会，而不是问题。</li>
+<li>利润来自领先地位，不来自规模。</li>
+<li>领先是短暂的，企业必须持续重新定位。</li>
+<li>少数事件创造多数成果，资源却常常按事务量平均分配。</li>
+<li>市场和渠道比产品更重要。</li>
+<li>企业经营的是顾客，企业经营的是知识。</li>
+<li>未来取决于今天的行动，不是明天的预测。</li>
+<li>没有系统化放弃，就没有真正的创新。</li>
+</ol>
+<h2 id="与日常管理的联系"><a href="#与日常管理的联系" class="headerlink" title="与日常管理的联系"></a>与日常管理的联系</h2><ul>
+<li><strong>年度规划</strong>：不要只做预算，要先分析成果区、成本结构和机会。</li>
+<li><strong>产品线管理</strong>：给产品分类，区分今天的生计来源、明天的生计来源和昨天的生计来源。</li>
+<li><strong>资源分配</strong>：把最优秀的人才放到少数高成果机会上，而不是让所有人都去救火。</li>
+<li><strong>降本</strong>：不要平均削减，要找到真正的成本中心和事务驱动成本。</li>
+<li><strong>战略会</strong>：讨论机会、风险和放弃清单，而不是只讨论增长。</li>
+<li><strong>人才与晋升</strong>：如果晋升奖励的是救火能力，而不是创造经济成果的能力，战略就很难落地。</li>
+</ul>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222110000001.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%B8%8D%E7%A1%AE%E5%AE%9A%E4%B8%96%E7%95%8C%E7%9A%84%E7%90%86%E6%80%A7%E9%80%89%E6%8B%A9%E3%80%8B/'>阅读笔记——《不确定世界的理性选择》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222106000000.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%BB%9F%E8%AE%A1%E5%AD%A6%E3%80%8B/">阅读笔记——《深入浅出统计学》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

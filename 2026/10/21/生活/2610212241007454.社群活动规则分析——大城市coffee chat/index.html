@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="社群活动规则分析——大城市coffee chat" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    社群活动规则分析——大城市coffee chat
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-04-04</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：10分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AF%B9%E4%BA%8E%E5%8F%82%E4%B8%8E%E8%80%85"><span class="post-toc-text">对于参与者</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%9B%BA%E5%AE%9A%E6%88%90%E6%9C%AC"><span class="post-toc-text">固定成本</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%94%B6%E7%9B%8A%E4%B8%8D%E7%A1%AE%E5%AE%9A"><span class="post-toc-text">收益不确定</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%A3%8E%E9%99%A9"><span class="post-toc-text">风险</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%8F%90%E9%97%AE%E8%80%85%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B%EF%BC%9F"><span class="post-toc-text">提问者如何改进？</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我之前学习过一些博弈论的基础知识，其实实际上还是没太用得上的，但是本次参加活动突然发现一个活动，发现如果实际上如果使用博弈论分析活动，就能得出来是否值得参加，以及如果作为组局者是否有价值。</p>
+<p>（本人认为是否需要做到对参加者和组局者都有用的活动规则存疑，取决于双赢是否对博弈结局有好处）</p>
+<p>OK我们来看一下这个活动信息：</p>
+<p><a href="/images/zhihu/v2-70f88cab5cf2de2680085ebfa72a56d7.jpg" class="gallery-item" style="box-shadow: none;"> <img src="/images/zhihu/v2-70f88cab5cf2de2680085ebfa72a56d7.jpg"></a></p>
+<blockquote>
+<p>北京请100位陌生人喝咖啡 北京|请100位陌生人喝咖啡|INTJ紫老头的破圈计划 大数据把人困在信息茧房里太久了，每天对着数据、逻辑、代码，好想跳出屏幕，认真认识100个真实的人，所以我决定: 在北京，请100位陌生人喝咖啡，我买单，你带故事就好 [参与方式] 评论&#x2F;私信:简单说下你想来的原因，优先同意匿名公开对话片段的朋友，职业&#x2F;性别&#x2F;年龄不限，只要愿意认真聊天，长期有效，约满100人为止，每次见面后会写无隐私匿名笔记，记录一场温柔又真实的相遇，在北京，我们见一面吧，在这个快节奏的城市里，留一小时，给陌生人，也给自己，请一百个人喝咖啡 [关于我] 女生前产品经理&#x2F;数据分析师现自由职业，INTJ紫老头，偏内向，但超爱观察人类，喜欢深度对话，只和同频者慢慢聊，爱好:金融&#x2F;科技&#x2F;艺术&#x2F;武术&#x2F;商业 [为什么做这件事] 受够了算法推送，想打破信息茧房，跳出数据世界，聊点真正鲜活的人生，认识不同领域、不同经历的新朋友， 锻炼表达，也认真倾听别人的故事 [活动规则|慢节奏版]，每天只约1位，慢慢聊，不赶场，时长1小时左右，轻松不尴尬，北京线下，咖啡馆&#x2F;公园长椅&#x2F;散步都可，咖啡我请，无任何费用、无推销、无利益交换，纯粹聊天，真诚社交 [可以聊什么] 工作|生活|成长|读书|旅行，职业困惑|人生选择城市感受|小众爱好，没有主题限制，想到什么聊什么，自由碰撞，才最有意思</p>
+</blockquote>
+<p>看起来似乎是参加后对你好处多多，至少可以喝一杯咖啡，但是实际上</p>
+<h1 id="对于参与者"><a href="#对于参与者" class="headerlink" title="对于参与者"></a>对于参与者</h1><p>结论先行：不推荐参加</p>
+<p>因为对于参加者，组局者的能力、活动的规则、活动的目的、活动的好处对参加者都是负数，唯一正数的是参与者的风险和成本</p>
+<p>我们先来讲解一下理由</p>
+<h1 id="固定成本"><a href="#固定成本" class="headerlink" title="固定成本"></a>固定成本</h1><ul>
+<li><p>时间：考虑到北京城市半径，通勤可能2h，聊天可能2-3h，陌生的社交导致的后续恢复，需要花掉一部分时间<br>声明聊天花费1h，没说时间配比，没说强制停止保障，有时间花销增多风险</p>
+</li>
+<li><p>机会成本&#x2F;沉没成本：花费的时间本可用于低风险的原有事务，包括但不限于休息，和熟人聊天，和有真正背书的人聊天通勤热场的时间精力金钱，不论和这个人交流效果好坏，必然会消耗掉</p>
+</li>
+<li><p>社交成本：根据活动要求的”匿名公开对话片段”，无法保证，没有背书，霸王条款</p>
+</li>
+<li><p>信息风险：”超爱观察人类”——正常人一般不会这么说，是外来生物吗？</p>
+</li>
+<li><p>交通：10¥以上</p>
+</li>
+</ul>
+<h1 id="收益不确定"><a href="#收益不确定" class="headerlink" title="收益不确定"></a>收益不确定</h1><p>除了基本的成本消耗、风险，还有收益的不确定性：</p>
+<ul>
+<li>活动目的：他的目的是“突破信息茧房、认识鲜活人生，认识不同领域的人、锻炼表达”<br>所以参与者会成为信息来源而不是信息获取方</li>
+</ul>
+<p>好的生活的传播的人而非接收组局者的美好生活外溢的人</p>
+<p>成为组局者不同领域的素材而非被组局者积极影响的人</p>
+<p>锻炼了组局者的表达能力而不是锻炼了自己的表达能力</p>
+<p>所以这个只会是一个单赢活动，对参加者是单输活动</p>
+<ul>
+<li>组局者能力：<br>无业，无业务深度沉淀</li>
+</ul>
+<p>“自由碰撞”？能聊的东西只有话题，没有个人优势，没有个人优势的人组局，除了虚心学习，还有另一种情况——无成本的刺探别人生活的人</p>
+<p>自诩时间设计，实际上无法有任何背书，很有可能导致参与者的时间浪费</p>
+<p>“深度对话”？“只和同频者慢慢聊”？难以量化，难以证明啊，该不会是通过让参与者多多说话，成为组局者的素材的另一种说法吧</p>
+<ul>
+<li><p>”后续影响：<br>几乎没有，目前来看无任何后续机制，也就是说要求参与者一开始就深度聊天，然后后续出了有风险的匿名笔记，再然后就没有了，整个大量初期投入几乎没有任何后续收益（我们代入组局者视角，每个人都深度对话，是不是代表组局者为了节省精力，会必然让参与者优先讲，多讲？）</p>
+</li>
+<li><p>爱好多<br>但是没有成果，不具备把爱好变成有价值，对参与者有用的成果，甚至过于广泛以至于有价值的词条是存疑的（能和武术平级的商业水平，理财水平会是什么样子？</p>
+</li>
+</ul>
+<h1 id="风险"><a href="#风险" class="headerlink" title="风险"></a>风险</h1><ul>
+<li><p>成本过高<br>只要求参与者真心愿意交流——但是不提出有效的信息证明自己的真心，比如对他整个的消耗是买了杯咖啡，但是却要求参与者真心交流，真心在社会上成本极高</p>
+</li>
+<li><p>柠檬市场&#x2F;信息不对称<br>有价值的人不会和成就模糊的人交流</p>
+</li>
+</ul>
+<p>真心的人的真心，比一杯咖啡钱重要的多</p>
+<p>有价值的人不会想让故事公开</p>
+<p>真正有能力的人不会参加评价模糊的活动</p>
+<p>有规划并执行的人不会参加活动流程模糊，成本模糊，风险大概率高，效果模糊并且可能为0的活动</p>
+<p>所以如果组局者真的想凑齐100个北京数码宝贝，必然会吸引很多和她一样，以有价值的人的成果为食的人，他们时间弹性大、社交需求强、可能有隐藏 agenda（寻找客户、寻找情感连接、寻找内容素材）</p>
+<ul>
+<li>伪装太多：<br>”每天只约1位，慢慢聊”——让参与者放松警惕，增加讲的内容，增加他的内容产出</li>
+</ul>
+<p>筛选器过于宽泛——可能在聊天过程中催促，诱导参加活动，让参与者陷入不合理的社交活动</p>
+<p>对话质量和慢不慢&#x2F;组局者的想法&#x2F;筛选器&#x2F;时间多少无必然关系，只和参与者的能力有关系，但是组局者没有任何能力背书——但是他又期望有深度聊天，又期望可以把内容自行整理商用，可能代表她真的没能力，只能通过各种活动找人</p>
+<ul>
+<li><p>信息泄露大风险<br>只能寄希望于参与者人品正常，但是在大城市，无后续影响——组局者如果能将参与者信息和观点进行传播&#x2F;魔改后能赚更多，那她必然会做，因为无后续后果</p>
+</li>
+<li><p>一次性博弈<br>双方可能都会选择背叛，万一组局者是个大龄青年，只筛选年轻漂亮妹妹，表面上聊天，实际上可能会变成相亲局，借钱局，因为无后续处罚</p>
+</li>
+</ul>
+<p>而且他吸引的可能更多是低价值人群，他可能会觉得别人那里没获得的可以在你这里找补，反正不用担心后顾之忧</p>
+<ul>
+<li>无效信息传递<br>虽然文中有说“无推销、无利益交换”——无法证明</li>
+</ul>
+<p>感兴趣的是”金融&#x2F;科技&#x2F;艺术&#x2F;武术&#x2F;商业”交叉领域的人，可能金融领域的人看到武术这个信息会觉得没干货，武术领域的人看到艺术这个信息会觉得提问者没干货</p>
+<p>能和理财能力挂钩的武术能力，既然组局说没说什么成就，那我就当作是武术能力和理财能力一样差了，而且如果这的牛，活在活动的自我介绍中讲解</p>
+<ul>
+<li><p>混用技能交流和情感交流<br>组局者想享受情感交流，但是又只说自己的技能能力（虽然也模糊化了成就），让人怀疑是披着情感交流的外衣白嫖别人的技能的交流，别人的技能可能1k&#x2F;h，在他这里可能就30块&#x2F;h，披着情感交流的外衣其实就相当于是变相低价收购有价值的材料</p>
+</li>
+<li><p>动机怀疑<br>核心目的：低成本获取可商用的IP资产——对组局者确实性价比高，对参与者绝对亏了，为什么她要创建一个只对组局者有好处的活动？</p>
+</li>
+</ul>
+<p>筛选各个领域人脉——更好方案是通过参加工作，创业获取人脉&#x2F;参加知识星球等小众沙龙&#x2F;从前的人际关系网络，而不是通过便宜的coffee chat ，为什么不通过商业活动？因为没工作，自由职业就是家里蹲；为什么不搞付费社群？因为没钱，付费社群参加基本上不便宜；为什么不使用从前的人际关系网络？可能工作能力不达标，没能产生私人关系。</p>
+<p>打造个人IP——对自己确实性价比高，但是更好的方案是优先通过干货&#x2F;有价值的过去访谈证明，如果没这么做，那我可以认为是没有真材实料</p>
+<p>情感需求——平替是参加活动而不是主导活动，组局者没说过任何去中心化的想法，那我认为他就是想情绪上主导（把参与者当成情绪垃圾桶），技能上让参加者主导（白嫖知识技能）</p>
+<p>如果你有价值，认为他不错，那可能要想一下，那么她的价值对你而言是负数，因为他的池子里绝大部分是和他一样甚至不如他，可能从他那里得到好处的人，甚至这个人不如你在北京公园随机抽取一个看起来体面的人聊聊天来的价值高</p>
+<p>这100个北京数码宝贝可不好抓啊hhh</p>
+<h1 id="提问者如何改进？"><a href="#提问者如何改进？" class="headerlink" title="提问者如何改进？"></a>提问者如何改进？</h1><ul>
+<li><p>转化为长期博弈——做<strong>10个人的深度追踪</strong><br>正常人都知道一锤子买卖不坑人就亏了，怎么可能还会细水长流</p>
+</li>
+<li><p>通过其它方式实现自己的目的<br>别太贪心了</p>
+</li>
+<li><p>降低参与者风险、成本<br>先通过文字、视频的方式进行校准，在通过线下等高风险方式进行互动</p>
+</li>
+</ul>
+<p>去除掉商用声明，优先体验一下真实的人生再做个人IP</p>
+<p>明确是双方交流，通过可信保证声明不会白嫖技能，把别人当作情绪垃圾桶</p>
+<ul>
+<li>提高参与者收益<br>没能力就不要组局，先提升一下自己的能力、比如学历、社会价值认证、第三方共同好友&#x2F;熟人等</li>
+</ul>
+<p>提升一下自己的个人能力，没技能就学技能然后交换技能</p>
+<p>想做情感交流就不要披着这层皮搞白嫖技能</p>
+<ul>
+<li>多去线下看看<br>不要再高强度上网冲浪了</li>
+</ul>
+<p>祝愿组局者能好好设计一下活动规则，达成双赢局面哈</p>
+<hr>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-04-04</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E7%94%9F%E6%B4%BB/'>
+                            生活
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212239009904.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%8D%9A%E5%BC%88%E4%B8%8E%E7%A4%BE%E4%BC%9A%E3%80%8B/'>阅读笔记——《博弈与社会》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E7%94%9F%E6%B4%BB/2610212242008138.%E7%A7%91%E5%AD%A6%E5%B9%BB%E6%83%B3%EF%BC%9AAI%E6%98%AF%E5%B7%A5%E5%85%B7%E8%BF%98%E6%98%AF%E4%BA%BA%EF%BC%9F/">科学幻想：AI是工具还是人？</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

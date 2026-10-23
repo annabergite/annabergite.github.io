@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="Go、Gin 与 ghttp 快速学习笔记" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    Go、Gin 与 ghttp 快速学习笔记
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：1.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：8分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Go%E3%80%81Gin-%E4%B8%8E-ghttp-%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="post-toc-text">Go、Gin 与 ghttp 快速学习笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81Go-%E8%AF%AD%E6%B3%95%E6%A0%B8%E5%BF%83"><span class="post-toc-text">一、Go 语法核心</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84"><span class="post-toc-text">1. 程序结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F"><span class="post-toc-text">2. 变量与常量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">3. 基本类型</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%87%BD%E6%95%B0%EF%BC%9A%E6%94%AF%E6%8C%81%E5%A4%9A%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="post-toc-text">4. 函数：支持多返回值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E6%8E%A7%E5%88%B6%E6%B5%81"><span class="post-toc-text">5. 控制流</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E5%A4%8D%E5%90%88%E7%B1%BB%E5%9E%8B%EF%BC%9Aslice-%E4%B8%8E-map"><span class="post-toc-text">6. 复合类型：slice 与 map</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-%E7%BB%93%E6%9E%84%E4%BD%93-%E6%96%B9%E6%B3%95-%E6%8E%A5%E5%8F%A3"><span class="post-toc-text">7. 结构体 + 方法 + 接口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-%E6%8C%87%E9%92%88"><span class="post-toc-text">8. 指针</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86%EF%BC%9A%E6%B2%A1%E6%9C%89-try-catch"><span class="post-toc-text">9. 错误处理：没有 try&#x2F;catch</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-%E5%B9%B6%E5%8F%91%EF%BC%9Agoroutine-channel"><span class="post-toc-text">10. 并发：goroutine + channel</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81gin-%E2%80%94%E2%80%94-%E8%BD%BB%E9%87%8F-Web-%E6%A1%86%E6%9E%B6"><span class="post-toc-text">二、gin —— 轻量 Web 框架</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85"><span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8F%AF%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B"><span class="post-toc-text">最小可运行示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B7%AF%E7%94%B1%E5%88%86%E7%BB%84-%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="post-toc-text">路由分组 + 中间件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#gin-%E5%85%B3%E9%94%AE%E7%82%B9%E9%80%9F%E8%AE%B0"><span class="post-toc-text">gin 关键点速记</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81ghttp-%E2%80%94%E2%80%94-GoFrame-%E6%A1%86%E6%9E%B6%E7%9A%84-HTTP-%E6%A8%A1%E5%9D%97"><span class="post-toc-text">三、ghttp —— GoFrame 框架的 HTTP 模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%B0%8F%E5%8F%AF%E8%BF%90%E8%A1%8C%E7%A4%BA%E4%BE%8B-1"><span class="post-toc-text">最小可运行示例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6%EF%BC%88Hook-%E6%9C%BA%E5%88%B6%EF%BC%8CGoFrame-%E7%89%B9%E8%89%B2%EF%BC%89"><span class="post-toc-text">中间件（Hook 机制，GoFrame 特色）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ghttp-%E5%85%B3%E9%94%AE%E7%82%B9%E9%80%9F%E8%AE%B0"><span class="post-toc-text">ghttp 关键点速记</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E5%AD%A6%E4%B9%A0%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">四、学习建议</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="Go、Gin-与-ghttp-快速学习笔记"><a href="#Go、Gin-与-ghttp-快速学习笔记" class="headerlink" title="Go、Gin 与 ghttp 快速学习笔记"></a>Go、Gin 与 ghttp 快速学习笔记</h1><blockquote>
+<p>面向有其它语言基础、想快速上手 Go 服务端开发的人。环境：Go 1.25（darwin&#x2F;arm64）。<br>本文覆盖三块：<strong>Go 语法核心</strong>、<strong>gin 轻量 Web 框架</strong>、<strong>ghttp（GoFrame）全家桶</strong>。</p>
+</blockquote>
+<hr>
+<h2 id="一、Go-语法核心"><a href="#一、Go-语法核心" class="headerlink" title="一、Go 语法核心"></a>一、Go 语法核心</h2><h3 id="1-程序结构"><a href="#1-程序结构" class="headerlink" title="1. 程序结构"></a>1. 程序结构</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main          <span class="comment">// 每个文件属于一个包，可执行程序必须是 main 包</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span>          <span class="comment">// 导入标准库</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;         <span class="comment">// 程序入口</span></span><br><span class="line">    fmt.Println(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-变量与常量"><a href="#2-变量与常量" class="headerlink" title="2. 变量与常量"></a>2. 变量与常量</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="type">int</span> = <span class="number">1</span>          <span class="comment">// 完整声明</span></span><br><span class="line"><span class="keyword">var</span> b = <span class="string">&quot;text&quot;</span>         <span class="comment">// 类型推断</span></span><br><span class="line">c := <span class="number">3.14</span>              <span class="comment">// 短声明，只能在函数内使用</span></span><br><span class="line"><span class="keyword">const</span> Pi = <span class="number">3.14159</span>     <span class="comment">// 常量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x, y = <span class="number">1</span>, <span class="number">2</span>        <span class="comment">// 多变量同时声明</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-基本类型"><a href="#3-基本类型" class="headerlink" title="3. 基本类型"></a>3. 基本类型</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span>, <span class="type">string</span></span><br><span class="line"><span class="type">int</span>, <span class="type">int8</span>/<span class="number">16</span>/<span class="number">32</span>/<span class="number">64</span>, <span class="type">uint</span>, <span class="type">uintptr</span></span><br><span class="line"><span class="type">float32</span>, <span class="type">float64</span></span><br><span class="line"><span class="type">byte</span>  <span class="comment">// = uint8</span></span><br><span class="line"><span class="type">rune</span>  <span class="comment">// = int32，表示一个 Unicode 码点</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-函数：支持多返回值"><a href="#4-函数：支持多返回值" class="headerlink" title="4. 函数：支持多返回值"></a>4. 函数：支持多返回值</h3><p>多返回值 + <code>error</code> 是 Go 最核心的惯用法：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(a, b <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">divide</span><span class="params">(a, b <span class="type">int</span>)</span></span> (<span class="type">int</span>, <span class="type">error</span>) &#123;   <span class="comment">// 返回 (结果, 错误)</span></span><br><span class="line">    <span class="keyword">if</span> b == <span class="number">0</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>, fmt.Errorf(<span class="string">&quot;不能除以 0&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a / b, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(nums ...<span class="type">int</span>)</span></span> <span class="type">int</span> &#123;             <span class="comment">// 变参</span></span><br><span class="line">    total := <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> _, n := <span class="keyword">range</span> nums &#123;</span><br><span class="line">        total += n</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> total</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-控制流"><a href="#5-控制流" class="headerlink" title="5. 控制流"></a>5. 控制流</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// if 可以带初始化语句</span></span><br><span class="line"><span class="keyword">if</span> n := <span class="built_in">len</span>(s); n &gt; <span class="number">10</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// for 是唯一的循环关键字（没有 while）</span></span><br><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123; &#125;      <span class="comment">// 经典 for</span></span><br><span class="line"><span class="keyword">for</span> i &lt; <span class="number">10</span> &#123; i++ &#125;               <span class="comment">// 相当于 while</span></span><br><span class="line"><span class="keyword">for</span> &#123; &#125;                          <span class="comment">// 死循环</span></span><br><span class="line"><span class="keyword">for</span> i, v := <span class="keyword">range</span> sliceOrMap &#123; &#125; <span class="comment">// range 遍历</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// switch 不需要 break，自动终止</span></span><br><span class="line"><span class="keyword">switch</span> v &#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-复合类型：slice-与-map"><a href="#6-复合类型：slice-与-map" class="headerlink" title="6. 复合类型：slice 与 map"></a>6. 复合类型：slice 与 map</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// slice：动态数组，比数组常用得多</span></span><br><span class="line">s := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">s = <span class="built_in">append</span>(s, <span class="number">4</span>)          <span class="comment">// 追加</span></span><br><span class="line"><span class="built_in">len</span>(s)                    <span class="comment">// 长度</span></span><br><span class="line">s[<span class="number">1</span>:<span class="number">3</span>]                    <span class="comment">// 切片</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// map</span></span><br><span class="line">m := <span class="keyword">map</span>[<span class="type">string</span>]<span class="type">int</span>&#123;<span class="string">&quot;a&quot;</span>: <span class="number">1</span>&#125;</span><br><span class="line">m[<span class="string">&quot;b&quot;</span>] = <span class="number">2</span></span><br><span class="line">v, ok := m[<span class="string">&quot;c&quot;</span>]           <span class="comment">// ok 判断 key 是否存在</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="7-结构体-方法-接口"><a href="#7-结构体-方法-接口" class="headerlink" title="7. 结构体 + 方法 + 接口"></a>7. 结构体 + 方法 + 接口</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> User <span class="keyword">struct</span> &#123;</span><br><span class="line">    Name <span class="type">string</span></span><br><span class="line">    Age  <span class="type">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 值接收者：不修改原对象</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u User)</span></span> Greet() <span class="type">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Hi &quot;</span> + u.Name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指针接收者：可修改原对象</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u *User)</span></span> Birthday() &#123;</span><br><span class="line">    u.Age++</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口：隐式实现，不需要写 implements</span></span><br><span class="line"><span class="keyword">type</span> Speaker <span class="keyword">interface</span> &#123;</span><br><span class="line">    Greet() <span class="type">string</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// User 有 Greet() 方法，所以自动实现了 Speaker</span></span><br><span class="line"><span class="keyword">var</span> s Speaker = User&#123;Name: <span class="string">&quot;Tom&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-指针"><a href="#8-指针" class="headerlink" title="8. 指针"></a>8. 指针</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x := <span class="number">10</span></span><br><span class="line">p := &amp;x      <span class="comment">// 取地址</span></span><br><span class="line">*p = <span class="number">20</span>      <span class="comment">// 解引用</span></span><br><span class="line"><span class="comment">// Go 没有指针运算，比 C 简单很多</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="9-错误处理：没有-try-catch"><a href="#9-错误处理：没有-try-catch" class="headerlink" title="9. 错误处理：没有 try&#x2F;catch"></a>9. 错误处理：没有 try&#x2F;catch</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doSomething</span><span class="params">()</span></span> <span class="type">error</span> &#123;</span><br><span class="line">    <span class="comment">// 出错就 return err，由调用方判断</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> err := doSomething(); err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// 处理错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-并发：goroutine-channel"><a href="#10-并发：goroutine-channel" class="headerlink" title="10. 并发：goroutine + channel"></a>10. 并发：goroutine + channel</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ch := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;              <span class="comment">// 启动一个 goroutine</span></span><br><span class="line">    ch &lt;- <span class="number">42</span>             <span class="comment">// 向 channel 发送</span></span><br><span class="line">&#125;()</span><br><span class="line"></span><br><span class="line">v := &lt;-ch                <span class="comment">// 接收（阻塞直到有值）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">defer</span> file.Close()       <span class="comment">// defer：函数返回前执行，常用于释放资源</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二、gin-——-轻量-Web-框架"><a href="#二、gin-——-轻量-Web-框架" class="headerlink" title="二、gin —— 轻量 Web 框架"></a>二、gin —— 轻量 Web 框架</h2><p><strong>特点</strong>：轻量、高性能、路由强大，只做 Web 层，ORM 等其它组件自己搭配。国内使用极广。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go mod init demo</span><br><span class="line">go get github.com/gin-gonic/gin</span><br></pre></td></tr></table></figure>
+
+<h3 id="最小可运行示例"><a href="#最小可运行示例" class="headerlink" title="最小可运行示例"></a>最小可运行示例</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;net/http&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    r := gin.Default()          <span class="comment">// 带 Logger + Recovery 中间件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 基础路由</span></span><br><span class="line">    r.GET(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        c.JSON(http.StatusOK, gin.H&#123;<span class="string">&quot;message&quot;</span>: <span class="string">&quot;pong&quot;</span>&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 路径参数</span></span><br><span class="line">    r.GET(<span class="string">&quot;/user/:id&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        id := c.Param(<span class="string">&quot;id&quot;</span>)</span><br><span class="line">        c.String(<span class="number">200</span>, <span class="string">&quot;user id = &quot;</span>+id)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. Query 参数  ?name=xx&amp;age=20</span></span><br><span class="line">    r.GET(<span class="string">&quot;/search&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        name := c.Query(<span class="string">&quot;name&quot;</span>)          <span class="comment">// 默认 &quot;&quot;</span></span><br><span class="line">        age := c.DefaultQuery(<span class="string">&quot;age&quot;</span>, <span class="string">&quot;18&quot;</span>)</span><br><span class="line">        c.JSON(<span class="number">200</span>, gin.H&#123;<span class="string">&quot;name&quot;</span>: name, <span class="string">&quot;age&quot;</span>: age&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. POST 表单</span></span><br><span class="line">    r.POST(<span class="string">&quot;/login&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        username := c.PostForm(<span class="string">&quot;username&quot;</span>)</span><br><span class="line">        password := c.PostForm(<span class="string">&quot;password&quot;</span>)</span><br><span class="line">        c.JSON(<span class="number">200</span>, gin.H&#123;<span class="string">&quot;u&quot;</span>: username, <span class="string">&quot;p&quot;</span>: password&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. POST JSON 绑定到结构体</span></span><br><span class="line">    r.POST(<span class="string">&quot;/user&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        <span class="keyword">var</span> u <span class="keyword">struct</span> &#123;</span><br><span class="line">            Name <span class="type">string</span> <span class="string">`json:&quot;name&quot;`</span></span><br><span class="line">            Age  <span class="type">int</span>    <span class="string">`json:&quot;age&quot;`</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> err := c.ShouldBindJSON(&amp;u); err != <span class="literal">nil</span> &#123;</span><br><span class="line">            c.JSON(<span class="number">400</span>, gin.H&#123;<span class="string">&quot;error&quot;</span>: err.Error()&#125;)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        c.JSON(<span class="number">200</span>, u)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    r.Run(<span class="string">&quot;:8080&quot;</span>)        <span class="comment">// 默认 8080</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="路由分组-中间件"><a href="#路由分组-中间件" class="headerlink" title="路由分组 + 中间件"></a>路由分组 + 中间件</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定义中间件</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">authMiddleware</span><span class="params">()</span></span> gin.HandlerFunc &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(c *gin.Context)</span></span> &#123;</span><br><span class="line">        token := c.GetHeader(<span class="string">&quot;Authorization&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> token == <span class="string">&quot;&quot;</span> &#123;</span><br><span class="line">            c.AbortWithStatusJSON(<span class="number">401</span>, gin.H&#123;<span class="string">&quot;error&quot;</span>: <span class="string">&quot;未认证&quot;</span>&#125;)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        c.Next()   <span class="comment">// 放行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分组</span></span><br><span class="line">api := r.Group(<span class="string">&quot;/api&quot;</span>, authMiddleware())</span><br><span class="line">&#123;</span><br><span class="line">    api.GET(<span class="string">&quot;/list&quot;</span>, handler1)</span><br><span class="line">    api.POST(<span class="string">&quot;/create&quot;</span>, handler2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gin-关键点速记"><a href="#gin-关键点速记" class="headerlink" title="gin 关键点速记"></a>gin 关键点速记</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>gin.Default()</code></td>
+<td>带默认中间件的引擎</td>
+</tr>
+<tr>
+<td><code>gin.New()</code></td>
+<td>空引擎，自己加中间件</td>
+</tr>
+<tr>
+<td><code>c.Param(&quot;:id&quot;)</code></td>
+<td>路径参数</td>
+</tr>
+<tr>
+<td><code>c.Query</code> &#x2F; <code>DefaultQuery</code></td>
+<td>URL 查询参数</td>
+</tr>
+<tr>
+<td><code>c.PostForm</code></td>
+<td>表单参数</td>
+</tr>
+<tr>
+<td><code>c.ShouldBindJSON(&amp;obj)</code></td>
+<td>JSON → 结构体（依赖 <code>json:&quot;xx&quot;</code> tag）</td>
+</tr>
+<tr>
+<td><code>c.Next()</code> &#x2F; <code>c.Abort()</code></td>
+<td>中间件控制</td>
+</tr>
+<tr>
+<td><code>gin.H</code></td>
+<td><code>map[string]any</code> 别名，快速构造 JSON</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="三、ghttp-——-GoFrame-框架的-HTTP-模块"><a href="#三、ghttp-——-GoFrame-框架的-HTTP-模块" class="headerlink" title="三、ghttp —— GoFrame 框架的 HTTP 模块"></a>三、ghttp —— GoFrame 框架的 HTTP 模块</h2><p><strong>注意</strong>：<code>ghttp</code> 不是独立库，是 <strong>GoFrame（gf）</strong> 全家桶里的 HTTP 组件。GoFrame 是国产重型框架，自带 ORM、缓存、日志、配置、i18n 等，<code>ghttp</code> 是它的 Web 层。</p>
+<p><strong>定位区别</strong>：gin &#x3D; 轻量单点；GoFrame &#x3D; 一站式全家桶。</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go get github.com/gogf/gf/v2</span><br></pre></td></tr></table></figure>
+
+<h3 id="最小可运行示例-1"><a href="#最小可运行示例-1" class="headerlink" title="最小可运行示例"></a>最小可运行示例</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;github.com/gogf/gf/v2/frame/g&quot;</span></span><br><span class="line">    <span class="string">&quot;github.com/gogf/gf/v2/net/ghttp&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    s := g.Server()          <span class="comment">// 获取默认 Server</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 基础路由</span></span><br><span class="line">    s.BindHandler(<span class="string">&quot;/ping&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123;</span><br><span class="line">        r.Response.Write(<span class="string">&quot;pong&quot;</span>)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 路径参数</span></span><br><span class="line">    s.BindHandler(<span class="string">&quot;/user/&#123;id&#125;&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123;</span><br><span class="line">        id := r.Get(<span class="string">&quot;id&quot;</span>)            <span class="comment">// 通用取值：路由参数/query/form 都能取</span></span><br><span class="line">        r.Response.WriteJson(g.Map&#123;<span class="string">&quot;id&quot;</span>: id&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 返回 JSON</span></span><br><span class="line">    s.BindHandler(<span class="string">&quot;/json&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123;</span><br><span class="line">        r.Response.WriteJson(g.Map&#123;</span><br><span class="line">            <span class="string">&quot;code&quot;</span>: <span class="number">0</span>,</span><br><span class="line">            <span class="string">&quot;msg&quot;</span>:  <span class="string">&quot;ok&quot;</span>,</span><br><span class="line">            <span class="string">&quot;data&quot;</span>: g.Map&#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;gf&quot;</span>&#125;,</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 获取请求参数</span></span><br><span class="line">    s.BindHandler(<span class="string">&quot;/query&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123;</span><br><span class="line">        name := r.Get(<span class="string">&quot;name&quot;</span>).String()</span><br><span class="line">        age  := r.Get(<span class="string">&quot;age&quot;</span>).Int()</span><br><span class="line">        r.Response.WriteJson(g.Map&#123;<span class="string">&quot;name&quot;</span>: name, <span class="string">&quot;age&quot;</span>: age&#125;)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 5. 结构化路由：绑定到对象方法</span></span><br><span class="line">    s.BindHandler(<span class="string">&quot;/user/info&quot;</span>, (&amp;UserController&#123;&#125;).Info)</span><br><span class="line"></span><br><span class="line">    s.SetPort(<span class="number">8080</span>)</span><br><span class="line">    s.Run()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 控制器风格</span></span><br><span class="line"><span class="keyword">type</span> UserController <span class="keyword">struct</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *UserController)</span></span> Info(r *ghttp.Request) &#123;</span><br><span class="line">    r.Response.WriteJson(g.Map&#123;<span class="string">&quot;status&quot;</span>: <span class="string">&quot;active&quot;</span>&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="中间件（Hook-机制，GoFrame-特色）"><a href="#中间件（Hook-机制，GoFrame-特色）" class="headerlink" title="中间件（Hook 机制，GoFrame 特色）"></a>中间件（Hook 机制，GoFrame 特色）</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局中间件</span></span><br><span class="line">s.BindHookHandler(<span class="string">&quot;/*&quot;</span>, ghttp.HookBeforeServe, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123;</span><br><span class="line">    r.Response.CORSDefault()          <span class="comment">// 跨域</span></span><br><span class="line">    r.Middleware.Next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 分组中间件</span></span><br><span class="line">group := s.Group(<span class="string">&quot;/api&quot;</span>)</span><br><span class="line">group.Middleware(authMiddleware)</span><br><span class="line">group.GET(<span class="string">&quot;/list&quot;</span>, <span class="function"><span class="keyword">func</span><span class="params">(r *ghttp.Request)</span></span> &#123; ... &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ghttp-关键点速记"><a href="#ghttp-关键点速记" class="headerlink" title="ghttp 关键点速记"></a>ghttp 关键点速记</h3><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>g.Server()</code></td>
+<td>获取默认 HTTP Server</td>
+</tr>
+<tr>
+<td><code>s.BindHandler</code></td>
+<td>绑定路由</td>
+</tr>
+<tr>
+<td><code>r.Get(&quot;key&quot;)</code></td>
+<td><strong>万能取值</strong>，路由&#x2F;query&#x2F;form 通吃，比 gin 省心</td>
+</tr>
+<tr>
+<td><code>r.Response.WriteJson</code></td>
+<td>输出 JSON</td>
+</tr>
+<tr>
+<td><code>g.Map</code></td>
+<td><code>map[string]any</code> 别名（对应 gin 的 <code>gin.H</code>）</td>
+</tr>
+<tr>
+<td><code>s.Group</code></td>
+<td>分组路由</td>
+</tr>
+<tr>
+<td>Hook 机制</td>
+<td>比 gin 中间件更细，可挂在 <code>HookBeforeServe</code> 等节点</td>
+</tr>
+<tr>
+<td>全家桶</td>
+<td>可顺便用 <code>gdb</code>(ORM)、<code>gcache</code>、<code>glog</code>、<code>gcfg</code> 等</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="四、学习建议"><a href="#四、学习建议" class="headerlink" title="四、学习建议"></a>四、学习建议</h2><ol>
+<li><strong>先跑通语法</strong>：把第一部分每个小例子复制到 <code>main.go</code>，<code>go run main.go</code> 跑一遍。</li>
+<li><strong>gin 和 ghttp 选一个先学</strong>：<ul>
+<li>只想做 HTTP 接口、上手快 → <strong>gin</strong></li>
+<li>想要一个框架搞定 ORM&#x2F;配置&#x2F;日志&#x2F;缓存 → <strong>GoFrame ghttp</strong></li>
+</ul>
+</li>
+<li><strong>对比着记</strong>：两者核心都是「路由 → 拿参数 → 返回 JSON」，只是 API 名字不同。</li>
+</ol>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E6%8A%80%E6%9C%AF/'>
+                            技术
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610212350001673.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%A4%BE%E4%BC%9A%E5%86%B2%E7%AA%81%EF%BC%9A%E5%8D%87%E7%BA%A7%E3%80%81%E5%83%B5%E5%B1%80%E5%8F%8A%E8%A7%A3%E5%86%B3%E3%80%8B/'>阅读笔记——《社会冲突：升级、僵局及解决》（第3版）</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222240000006.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6%E3%80%8B/">阅读笔记——《货币金融学》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《城市猎人的知乎想法合集·第1卷》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《城市猎人的知乎想法合集·第1卷》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：18分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E5%9F%8E%E5%B8%82%E7%8C%8E%E4%BA%BA%E7%9A%84%E7%9F%A5%E4%B9%8E%E6%83%B3%E6%B3%95%E5%90%88%E9%9B%86%C2%B7%E7%AC%AC1%E5%8D%B7%E3%80%8B%E7%B3%BB%E7%BB%9F%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《城市猎人的知乎想法合集·第1卷》系统阅读笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E4%B9%A6%E6%A6%82%E8%A7%88%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%94%BB%E5%83%8F"><span class="post-toc-text">一、全书概览与数据画像</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88%E4%B9%A6"><span class="post-toc-text">1. 这是什么书</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%95%B0%E6%8D%AE%E7%94%BB%E5%83%8F"><span class="post-toc-text">2. 数据画像</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E9%AB%98%E9%A2%91%E5%85%B3%E9%94%AE%E8%AF%8D%EF%BC%88%E5%8F%8D%E6%98%A0%E5%86%85%E5%AE%B9%E9%87%8D%E5%BF%83%EF%BC%89"><span class="post-toc-text">3. 高频关键词（反映内容重心）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E5%86%85%E5%AE%B9%E6%80%A7%E8%B4%A8%E4%B8%8E%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95"><span class="post-toc-text">二、内容性质与阅读方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E4%B8%89%E6%9D%A1%E9%98%85%E8%AF%BB%E5%89%8D%E6%8F%90"><span class="post-toc-text">1. 三条阅读前提</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%8E%A8%E8%8D%90%E7%9A%84%E8%AF%BB%E6%B3%95"><span class="post-toc-text">2. 推荐的读法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%EF%BC%88%E8%AF%BB%E6%87%82%E2%80%9D%E5%9F%8E%E5%B8%82%E7%8C%8E%E4%BA%BA%E2%80%9D%E7%9A%84%E9%92%A5%E5%8C%99%EF%BC%89"><span class="post-toc-text">三、核心理论框架（读懂”城市猎人”的钥匙）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BF%9B%E5%8C%96%E5%BF%83%E7%90%86%E5%AD%A6%EF%BC%88Evolutionary-Psychology%EF%BC%89%E2%80%94%E2%80%94%E7%90%86%E8%AE%BA%E5%BA%95%E5%BA%A7"><span class="post-toc-text">1. 进化心理学（Evolutionary Psychology）——理论底座</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E6%B4%97%E8%84%91%E4%B8%8E%E5%8F%8D%E6%B4%97%E8%84%91%E2%80%94%E2%80%94%E8%87%AA%E6%88%91%E5%AE%9A%E4%BD%8D%E7%9A%84%E2%80%9D%E4%BD%BF%E5%91%BD%E2%80%9D"><span class="post-toc-text">2. 洗脑与反洗脑——自我定位的”使命”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E9%BB%91%E5%8C%96%E8%AE%BA%E2%80%94%E2%80%94%E8%A1%8C%E5%8A%A8%E7%BA%B2%E9%A2%86"><span class="post-toc-text">3. 黑化论——行动纲领</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E6%B1%82%E7%9C%9F%E7%B2%BE%E7%A5%9E%E2%80%94%E2%80%94%E4%BB%B7%E5%80%BC%E8%A7%82%E5%BA%95%E8%89%B2"><span class="post-toc-text">4. 求真精神——价值观底色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-%E7%8C%8E%E5%AD%A6-vs-%E5%90%9B%E5%AD%A6%E2%80%94%E2%80%94%E4%B8%A4%E5%A5%97%E8%B7%AF%E5%BE%84%E7%9A%84%E5%B9%B6%E7%BD%AE"><span class="post-toc-text">5. 猎学 vs 君学——两套路径的并置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-%E5%AE%97%E6%95%99%E4%BD%9C%E4%B8%BA%E2%80%9D%E5%8F%A6%E4%B8%80%E6%9D%A1%E8%B7%AF%E2%80%9D"><span class="post-toc-text">6. 宗教作为”另一条路”</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E4%B8%BB%E8%A6%81%E8%A7%82%E7%82%B9%E5%88%86%E4%B8%BB%E9%A2%98%E6%95%B4%E7%90%86"><span class="post-toc-text">四、主要观点分主题整理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-1%EF%BC%9A%E4%B8%A4%E6%80%A7%E5%B8%82%E5%9C%BA%E4%B8%8E%E6%8B%A9%E5%81%B6"><span class="post-toc-text">主题 1：两性市场与择偶</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-2%EF%BC%9A%E5%A9%9A%E5%A7%BB%E3%80%81%E5%BD%A9%E7%A4%BC%E4%B8%8E%E5%A4%84%E5%A5%B3%E6%83%85%E7%BB%93"><span class="post-toc-text">主题 2：婚姻、彩礼与处女情结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-3%EF%BC%9A%E5%A5%B3%E6%9D%83-%E2%80%9C%E5%A5%B3%E6%8B%B3%E2%80%9D%E6%89%B9%E8%AF%84"><span class="post-toc-text">主题 3：女权 &#x2F; “女拳”批评</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-4%EF%BC%9A%E7%94%B7%E6%80%A7%E8%A7%89%E9%86%92%E4%B8%8E%E2%80%9D%E8%80%81%E5%AE%9E%E4%BA%BA%E2%80%9D%E7%B1%BB%E5%9E%8B%E5%AD%A6"><span class="post-toc-text">主题 4：男性觉醒与”老实人”类型学</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-5%EF%BC%9A%E7%88%B1%E6%83%85%E8%A7%82%E2%80%94%E2%80%94%E2%80%9C%E5%9D%87%E8%A1%A1%E2%80%9D%E4%B8%8E%E2%80%9D%E6%9C%89%E9%99%90%E8%B4%A3%E4%BB%BB%E2%80%9D"><span class="post-toc-text">主题 5：爱情观——“均衡”与”有限责任”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E9%A2%98-6%EF%BC%9A%E6%95%99%E8%82%B2%E4%B8%8B%E4%B8%80%E4%BB%A3"><span class="post-toc-text">主题 6：教育下一代</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E4%B9%A6%E5%BD%B1%E9%9F%B3%E4%B8%8E%E6%80%9D%E6%83%B3%E8%B5%84%E6%BA%90%EF%BC%88%E4%BB%96%E7%9A%84%E7%9F%A5%E8%AF%86%E8%B0%B1%E7%B3%BB%EF%BC%89"><span class="post-toc-text">五、书影音与思想资源（他的知识谱系）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3%E6%BA%90%E5%A4%B4%EF%BC%88%E4%BB%96%E5%8F%8D%E5%A4%8D%E5%BC%95%E7%94%A8-%E6%8E%A8%E8%8D%90%E7%9A%84%E2%80%9D%E5%BF%85%E8%AF%BB%E4%B9%A6%E2%80%9D%EF%BC%89"><span class="post-toc-text">1. 核心思想源头（他反复引用&#x2F;推荐的”必读书”）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%BD%B1%E9%9F%B3%E6%8E%A8%E8%8D%90%EF%BC%88%E4%BB%96%E5%A4%A7%E9%87%8F%E6%8E%A8%E8%8D%90%E6%97%A5%E5%89%A7%E3%80%81%E6%97%A5%E5%BD%B1%E3%80%81%E8%80%81%E6%AD%8C%EF%BC%89"><span class="post-toc-text">2. 影音推荐（他大量推荐日剧、日影、老歌）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%9F%A5%E8%AF%86%E8%B6%A3%E5%91%B3"><span class="post-toc-text">3. 知识趣味</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E6%97%B6%E9%97%B4%E7%BA%BF%E6%BC%94%E5%8F%98%EF%BC%882018%E2%80%932023%EF%BC%89"><span class="post-toc-text">六、时间线演变（2018–2023）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E6%89%B9%E5%88%A4%E6%80%A7%E6%80%9D%E8%80%83%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">七、批判性思考与使用建议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E5%AE%83%E7%9A%84%E4%BB%B7%E5%80%BC%EF%BC%88%E5%8F%AF%E4%BB%A5%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88%EF%BC%89"><span class="post-toc-text">1. 它的价值（可以学到什么）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%AE%83%E7%9A%84%E9%A3%8E%E9%99%A9%EF%BC%88%E9%9C%80%E8%A6%81%E8%AD%A6%E6%83%95%E4%BB%80%E4%B9%88%EF%BC%89"><span class="post-toc-text">2. 它的风险（需要警惕什么）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%9C%80%E5%81%A5%E5%BA%B7%E7%9A%84%E8%AF%BB%E6%B3%95"><span class="post-toc-text">3. 最健康的读法</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《城市猎人的知乎想法合集·第1卷》系统阅读笔记"><a href="#《城市猎人的知乎想法合集·第1卷》系统阅读笔记" class="headerlink" title="《城市猎人的知乎想法合集·第1卷》系统阅读笔记"></a>《城市猎人的知乎想法合集·第1卷》系统阅读笔记</h1><blockquote>
+<p><strong>书名</strong>：城市猎人的知乎想法合集·第1卷（截止到 2023-03-17）<br><strong>作者</strong>：城市猎人（知乎博主，网名，”猎学”提出者）<br><strong>平台&#x2F;体裁</strong>：知乎”想法”（短动态）合集，非传统书籍<br><strong>体量</strong>：PDF 7899 页，约 218 万字，收录约 <strong>5000 条</strong>想法<br><strong>时间跨度</strong>：2018-10-11 至 2023-02-17<br><strong>主题定位</strong>：以”男性视角的两性关系&#x2F;婚恋博弈”为核心，兼及社会观察、历史、哲学、书影音推荐</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E4%B8%80%E5%85%A8%E4%B9%A6%E6%A6%82%E8%A7%88%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%94%BB%E5%83%8F">全书概览与数据画像</a></li>
+<li><a href="#%E4%BA%8C%E5%86%85%E5%AE%B9%E6%80%A7%E8%B4%A8%E4%B8%8E%E9%98%85%E8%AF%BB%E6%96%B9%E6%B3%95">内容性质与阅读方法</a></li>
+<li><a href="#%E4%B8%89%E6%A0%B8%E5%BF%83%E7%90%86%E8%AE%BA%E6%A1%86%E6%9E%B6%E8%AF%BB%E6%87%82%E5%9F%8E%E5%B8%82%E7%8C%8E%E4%BA%BA%E7%9A%84%E9%92%A5%E5%8C%99">核心理论框架（读懂”城市猎人”的钥匙）</a></li>
+<li><a href="#%E5%9B%9B%E4%B8%BB%E8%A6%81%E8%A7%82%E7%82%B9%E5%88%86%E4%B8%BB%E9%A2%98%E6%95%B4%E7%90%86">主要观点分主题整理</a></li>
+<li><a href="#%E4%BA%94%E4%B9%A6%E5%BD%B1%E9%9F%B3%E4%B8%8E%E6%80%9D%E6%83%B3%E8%B5%84%E6%BA%90%E4%BB%96%E7%9A%84%E7%9F%A5%E8%AF%86%E8%B0%B1%E7%B3%BB">书影音与思想资源（他的知识谱系）</a></li>
+<li><a href="#%E5%85%AD%E6%97%B6%E9%97%B4%E7%BA%BF%E6%BC%94%E5%8F%9820182023">时间线演变（2018–2023）</a></li>
+<li><a href="#%E4%B8%83%E6%89%B9%E5%88%A4%E6%80%A7%E6%80%9D%E8%80%83%E4%B8%8E%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE">批判性思考与使用建议</a></li>
+</ol>
+<hr>
+<h2 id="一、全书概览与数据画像"><a href="#一、全书概览与数据画像" class="headerlink" title="一、全书概览与数据画像"></a>一、全书概览与数据画像</h2><h3 id="1-这是什么书"><a href="#1-这是什么书" class="headerlink" title="1. 这是什么书"></a>1. 这是什么书</h3><p>这不是一本”写出来的书”，而是作者<strong>在知乎平台上五年多（2018–2023）发布的”想法”（短动态）的原始存档</strong>。每一条想法都保留了完整信息：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>标题</td>
+<td>日期 + 内容摘要（如”2019-01-31: 这年月做老实男人真难”）</td>
+</tr>
+<tr>
+<td>赞同 &#x2F; 评论</td>
+<td>点赞数、评论数、最后更新时间</td>
+</tr>
+<tr>
+<td>作者</td>
+<td>城市猎人</td>
+</tr>
+<tr>
+<td>正文</td>
+<td>想法全文</td>
+</tr>
+<tr>
+<td>常附</td>
+<td>作者长文链接、读者评论摘录、书影音推荐</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注：原 PDF 中夹杂大量”加 vx 获取更多两性电子书”的推广水印，属于该电子书制作者（非作者本人）附加的商业信息，可忽略。</p>
+</blockquote>
+<h3 id="2-数据画像"><a href="#2-数据画像" class="headerlink" title="2. 数据画像"></a>2. 数据画像</h3><ul>
+<li><strong>帖子总量</strong>：约 5000 条（以”创建时间”计数）</li>
+<li><strong>总获赞</strong>：约 15 万；单条最高赞约 510</li>
+<li><strong>年份分布</strong>：<ul>
+<li>2018 年：9 条（起步期）</li>
+<li>2019 年：1057 条（爆发期，火力最集中）</li>
+<li>2020 年：1043 条</li>
+<li>2021 年：1579 条（高峰期）</li>
+<li>2022 年：1208 条</li>
+<li>2023 年（至 2 月）：104 条</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-高频关键词（反映内容重心）"><a href="#3-高频关键词（反映内容重心）" class="headerlink" title="3. 高频关键词（反映内容重心）"></a>3. 高频关键词（反映内容重心）</h3><table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>出现次数</th>
+<th>关键词</th>
+<th>出现次数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>结婚</td>
+<td>877</td>
+<td>女权</td>
+<td>647</td>
+</tr>
+<tr>
+<td>婚姻</td>
+<td>747</td>
+<td>处女</td>
+<td>605</td>
+</tr>
+<tr>
+<td>进化心理学</td>
+<td>416</td>
+<td>黑化</td>
+<td>411</td>
+</tr>
+<tr>
+<td>择偶</td>
+<td>273</td>
+<td>洗脑</td>
+<td>185</td>
+</tr>
+<tr>
+<td>求真</td>
+<td>148</td>
+<td>彩礼</td>
+<td>141</td>
+</tr>
+<tr>
+<td>无神论</td>
+<td>133</td>
+<td>老实人</td>
+<td>38</td>
+</tr>
+</tbody></table>
+<p>从数据可以清晰看出：<strong>这本书的核心是”婚姻&#x2F;择偶&#x2F;两性博弈”，其理论工具是”进化心理学”，其行动纲领是”黑化”（男性策略觉醒），其世界观是”洗脑与反洗脑”。</strong></p>
+<hr>
+<h2 id="二、内容性质与阅读方法"><a href="#二、内容性质与阅读方法" class="headerlink" title="二、内容性质与阅读方法"></a>二、内容性质与阅读方法</h2><h3 id="1-三条阅读前提"><a href="#1-三条阅读前提" class="headerlink" title="1. 三条阅读前提"></a>1. 三条阅读前提</h3><ol>
+<li><strong>它是”想法合集”，不是”论著”</strong>——内容高度碎片化、随性、口语化，有大量重复、情绪化表达、对评论区质疑的即时回应。要把它当作**一个持续思考者的”思想日记”**来读，而非严谨的体系著作。</li>
+<li><strong>它是”男性视角的对抗性文本”</strong>——作者明确站在”中国普通男性”立场，对抗他眼中的”女权思潮”与”洗脑”。立场鲜明、用词尖锐（”舔狗””伪老实男””傻白甜”等），读者需自行判断其论证质量。</li>
+<li><strong>它是”博弈论&#x2F;策略文本”，不是”道德文本”</strong>——与《权力的48条法则》类似，作者讨论的是”什么策略在真实的两性市场里有效”，而非”什么是道德的”。</li>
+</ol>
+<h3 id="2-推荐的读法"><a href="#2-推荐的读法" class="headerlink" title="2. 推荐的读法"></a>2. 推荐的读法</h3><ul>
+<li><strong>当作”中国两性舆论场”的一手田野材料</strong>：它真实记录了一个男性博主在 2018–2023 年间如何与评论区、其他大 V 反复论战。</li>
+<li><strong>跳读 + 主题检索</strong>：5000 条碎片不必通读，按主题（黑化、处女情结、彩礼、洗脑等）抽取代表性条目即可。</li>
+<li><strong>关注其”理论骨架”而非”情绪外壳”</strong>：剥离攻击性语言后，能看出他其实有一以贯之的逻辑框架（见下一节）。</li>
+</ul>
+<hr>
+<h2 id="三、核心理论框架（读懂”城市猎人”的钥匙）"><a href="#三、核心理论框架（读懂”城市猎人”的钥匙）" class="headerlink" title="三、核心理论框架（读懂”城市猎人”的钥匙）"></a>三、核心理论框架（读懂”城市猎人”的钥匙）</h2><p>这是全书的”骨”，理解了这六块积木，5000 条碎片就能串起来。</p>
+<h3 id="1-进化心理学（Evolutionary-Psychology）——理论底座"><a href="#1-进化心理学（Evolutionary-Psychology）——理论底座" class="headerlink" title="1. 进化心理学（Evolutionary Psychology）——理论底座"></a>1. 进化心理学（Evolutionary Psychology）——理论底座</h3><p>作者反复引用并推荐<strong>戴维·巴斯（David Buss）的《欲望的演化》（The Evolution of Desire）</strong>，这是他的”第一性原理”。他以此解释：</p>
+<ul>
+<li><strong>两性择偶偏好的差异</strong>：男性更看重年轻&#x2F;外貌（生育力信号），女性更看重资源&#x2F;地位（供养力信号）。</li>
+<li><strong>“处女情结”的进化根源</strong>：男性对”亲子不确定性”的焦虑，演化出对女性婚前贞洁的在意。</li>
+<li><strong>婚姻的本质</strong>：一场基于资源的”交换契约”，而非纯粹的浪漫。</li>
+</ul>
+<blockquote>
+<p>他自述：”进化心理学与’猎学’对国人婚恋心理模式最大的颠覆之处”——即戳破”真爱至上”的浪漫叙事，把婚恋还原为”可分析的博弈”。</p>
+</blockquote>
+<h3 id="2-洗脑与反洗脑——自我定位的”使命”"><a href="#2-洗脑与反洗脑——自我定位的”使命”" class="headerlink" title="2. 洗脑与反洗脑——自我定位的”使命”"></a>2. 洗脑与反洗脑——自我定位的”使命”</h3><p>作者多次明确：”<strong>我在知乎的发言的中心之一就是洗脑与反洗脑。</strong>“</p>
+<ul>
+<li>他把”洗脑”从政治领域（希特勒、斯大林的宣传）<strong>扩展到民间领域</strong>：他认为在政府不干预的两性舆论场里，一些”民间势力”（暗指激进女权、消费主义等）会自觉或不自觉地纠集起来给大众洗脑。</li>
+<li>他给自己的定位是”<strong>知乎反洗脑第一人</strong>“（指最频繁提醒洗脑存在的人）。</li>
+<li><strong>反洗脑的方法论</strong>：开阔的视野、逻辑思维能力、统计思维能力。</li>
+</ul>
+<blockquote>
+<p>关键句：”很多人觉得自己的智商够了，其实也真的够。但他还是被洗脑了，而且是被权力、金钱、文化低于他们的人洗成功了。我看出来了、讲出来了，这就是我的本事。”</p>
+</blockquote>
+<h3 id="3-黑化论——行动纲领"><a href="#3-黑化论——行动纲领" class="headerlink" title="3. 黑化论——行动纲领"></a>3. 黑化论——行动纲领</h3><p>“黑化”是全书的最高频概念之一（411 次）。作者给出了一个明确的操作性定义：</p>
+<blockquote>
+<p><strong>“黑化，指性道德向全社会男性均值趋同。”</strong></p>
+</blockquote>
+<p>意思是：<strong>当一个男性坚守”老实&#x2F;纯情&#x2F;专一”的性道德，却处于一个”大多数男性并不如此”的环境里时，他就是”吃亏的少数”</strong>。作者劝这类男性”黑化”——即把自己调整到社会平均水平，不再做”道德上的高个子”。</p>
+<ul>
+<li><strong>黑化的对象</strong>：主要是”无神论 + 两性领域傻白甜”的男性（作者认为这是最吃亏的组合）。</li>
+<li><strong>黑化的内容</strong>：包括”打分”（理性评估异性与自身）、不再盲目付出、警惕被”养鱼”、婚前博弈等（具体操作作者大多点到为止，引导读者自行探索）。</li>
+<li><strong>黑化 ≠ 作恶</strong>：作者多次强调，黑化是”防身”和”对齐市场”，而非”骗人”。</li>
+</ul>
+<blockquote>
+<p>关键句：”千万不能让儿子同时兼有’无神论者’与’两性领域傻白甜’的特质，那只会让他吃亏、愤懑。”</p>
+</blockquote>
+<h3 id="4-求真精神——价值观底色"><a href="#4-求真精神——价值观底色" class="headerlink" title="4. 求真精神——价值观底色"></a>4. 求真精神——价值观底色</h3><p>“求真”出现 148 次，是作者反复标举的价值观：</p>
+<ul>
+<li>他认为真相常常是”不政治正确”、令人不适的，但<strong>追求真相本身有价值</strong>。</li>
+<li>他自述自己的发言风格是”犀利直接，一句话恨不得’一刀毙命’”。</li>
+<li>他警惕”基于错误的因果律行善”——即”好心办坏事”，用错误认知去做道德正确的事，结果更糟。</li>
+</ul>
+<blockquote>
+<p>关键句：”求真以及揭穿真相，可能会在短期、局部造成痛苦，但长期看是有益的。”</p>
+</blockquote>
+<h3 id="5-猎学-vs-君学——两套路径的并置"><a href="#5-猎学-vs-君学——两套路径的并置" class="headerlink" title="5. 猎学 vs 君学——两套路径的并置"></a>5. 猎学 vs 君学——两套路径的并置</h3><p>作者把自己的体系称为”<strong>猎学</strong>“（以进化心理学为基础的现实博弈），同时推荐并赞赏另一条路径——“<strong>君学</strong>“（知友”君子一心”的体系，更理想化、重德性）：</p>
+<ul>
+<li><strong>猎学</strong>：偏”现实&#x2F;博弈&#x2F;自保”，适合想清楚”市场真相”的人。</li>
+<li><strong>君学</strong>：偏”理想&#x2F;修行&#x2F;道德”，适合无法接受冷酷现实的人。</li>
+<li>作者对<strong>经济实力好但性魅力（颜值、仪态）不佳的男性</strong>，推荐”君学 + 猎学合看”。</li>
+</ul>
+<blockquote>
+<p>关键句：”如果鸡汤不被打破，那就是奸诈的一方剥削蒙昧的一方。鸡汤被打破在短期内让好人很痛苦，在长期内会让坏人对好人的剥削减少。”</p>
+</blockquote>
+<h3 id="6-宗教作为”另一条路”"><a href="#6-宗教作为”另一条路”" class="headerlink" title="6. 宗教作为”另一条路”"></a>6. 宗教作为”另一条路”</h3><p>作者有一个反复出现的洞见：<strong>在缺乏宗教约束的无神论社会里，两性博弈会无限内卷；宗教（传统性道德）其实是”黑化”之外的另一种自我保护机制。</strong></p>
+<ul>
+<li>对无法接受进化心理学&#x2F;猎学的男性，他建议”老老实实信他的教”。</li>
+<li>他认为中国两性市场乱象的根源之一就是”<strong>没有宗教以及类宗教约束</strong>“。</li>
+</ul>
+<hr>
+<h2 id="四、主要观点分主题整理"><a href="#四、主要观点分主题整理" class="headerlink" title="四、主要观点分主题整理"></a>四、主要观点分主题整理</h2><h3 id="主题-1：两性市场与择偶"><a href="#主题-1：两性市场与择偶" class="headerlink" title="主题 1：两性市场与择偶"></a>主题 1：两性市场与择偶</h3><p><strong>核心判断：中国两性市场是一个”信息不透明、缺乏规则”的博弈场。</strong></p>
+<ul>
+<li><strong>信息不透明</strong>：作者反复强调，在两性领域”欺骗的普遍存在”，且法律管不了、信息不对称，导致”老实人”处于劣势。</li>
+<li><strong>择偶是”打分”</strong>：他提出”黑化论中的打分”，主张男性应该像评估投资一样，理性评估异性与自身，而非凭冲动和幻想。</li>
+<li><strong>“判断男女喜欢什么样的异性，正确的办法是看他们怎么做，而不是听他们怎么说”</strong>——行为比语言更真实。</li>
+<li><strong>女性可以靠”自然属性”（外貌、青春）吸引人</strong>，而男性更多靠”资源&#x2F;能力”，这是两性市场的不对称。</li>
+</ul>
+<h3 id="主题-2：婚姻、彩礼与处女情结"><a href="#主题-2：婚姻、彩礼与处女情结" class="headerlink" title="主题 2：婚姻、彩礼与处女情结"></a>主题 2：婚姻、彩礼与处女情结</h3><p>这是全书争议最大的板块，也是讨论密度最高的板块（处女 605 次、彩礼 141 次）。</p>
+<p><strong>关于婚姻</strong>：</p>
+<ul>
+<li>作者早期（2018 年末）就提出著名论断：”<strong>中国有三个特点：一、结婚率太高了，男方及其家长太猴急了；二、离婚率太低了；三、没有宗教以及类宗教约束。以上三点才是中国男性憋屈的根源。</strong>“</li>
+<li>他主张”<strong>降低结婚率、提升离婚率</strong>“，认为当男性不再”抢”女性、不再”舍不得”时，市场博弈才会趋于平衡。</li>
+</ul>
+<p><strong>关于彩礼</strong>：</p>
+<ul>
+<li>他多次批评彩礼的”准敲诈”性质，并关注”内卷化”背景下女方把婚姻当作阶层跃迁工具的倾向。</li>
+<li>他反复讨论”郎朗娶美娇娘”等案例，说明”顶级资源”如何改写两性市场规则。</li>
+</ul>
+<p><strong>关于处女情结</strong>：</p>
+<ul>
+<li>他<strong>承认处女情结在进化心理学上的合理性</strong>（亲子不确定性焦虑），但不主张教条化。</li>
+<li>他给保守男性的建议是”<strong>人性化</strong>“——即承认自己的情结，但理解现实（婚前性行为已普及），避免陷入”既要又要”的拧巴。</li>
+<li>他同时指出一个悖论：如果全社会女性都反对处女情结，那么”家有儿子的父亲的最优选择就是催儿子黑化”，这股力量会”反噬到女性身上”。</li>
+</ul>
+<h3 id="主题-3：女权-“女拳”批评"><a href="#主题-3：女权-“女拳”批评" class="headerlink" title="主题 3：女权 &#x2F; “女拳”批评"></a>主题 3：女权 &#x2F; “女拳”批评</h3><p><strong>作者对”女权思潮”的批评，是他最具标签性的内容。</strong></p>
+<ul>
+<li><strong>核心判断</strong>：”‘女权思潮’统治中国数十载，固然有客观形势的原因，也与参与斗争的中国男性的逻辑思辨、论述能力差有关。”——他把”男性失语”归因于男性自身的论证能力不足。</li>
+<li><strong>流量论</strong>：他反复指出”为什么那么多人打女拳？因为有流量能挣钱。”他认为一部分极端女权是”生意”，而非”主义”。</li>
+<li><strong>双标批判</strong>：他大量记录”镜像问题”（同一问题问男女，答案数量与立场差异悬殊），用此证明舆论场的”双标”。</li>
+<li><strong>他并非反对女性权利本身</strong>：他明确说”堂堂正正的男人就是要对苦难中的女性有共情……当舔狗不是真的爱女性，爱女性是要让这个性别更善良、更正直、更理性。”</li>
+</ul>
+<h3 id="主题-4：男性觉醒与”老实人”类型学"><a href="#主题-4：男性觉醒与”老实人”类型学" class="headerlink" title="主题 4：男性觉醒与”老实人”类型学"></a>主题 4：男性觉醒与”老实人”类型学</h3><p><strong>作者对”老实男”有一套细致的分类</strong>（这是全书方法论上最有价值的部分）：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>特征</th>
+<th>作者态度</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>无能型老实男</strong></td>
+<td>真·缺乏魅力与能力，但保持沉默</td>
+<td>同情：沉默者无罪，被奚落是不公</td>
+</tr>
+<tr>
+<td><strong>无能型老实男（不沉默）</strong></td>
+<td>没能力却爱抱怨、攻击女性</td>
+<td>批评：咎由自取</td>
+</tr>
+<tr>
+<td><strong>伪老实男</strong></td>
+<td>有硬实力却装老实，或”想不老实却不敢”</td>
+<td>奚落：被高收入男嘲讽为”没本事”</td>
+</tr>
+<tr>
+<td><strong>主动型保守男</strong></td>
+<td>有能力但主动选择传统性道德</td>
+<td>尊重：这是”选择”，不是”无奈”</td>
+</tr>
+</tbody></table>
+<p><strong>核心观点</strong>：</p>
+<ul>
+<li>真正的”老实”是一种<strong>主动选择</strong>（有能力却不做），而非”被迫无能”。</li>
+<li>他劝”无神论 + 傻白甜”的男性尽早觉醒，要么黑化，要么信教。</li>
+<li>他反对”通过嫖妓黑化”和”通过欺骗良家女黑化”的极端做法，认为有更体面的路径。</li>
+</ul>
+<h3 id="主题-5：爱情观——“均衡”与”有限责任”"><a href="#主题-5：爱情观——“均衡”与”有限责任”" class="headerlink" title="主题 5：爱情观——“均衡”与”有限责任”"></a>主题 5：爱情观——“均衡”与”有限责任”</h3><p>这是作者少见的、相对温和的板块，体现他其实有自洽的”爱情哲学”：</p>
+<blockquote>
+<p>“我的爱情观其实挺圆融的：<strong>如果你俗气，最好不要求对方很不俗气；如果你易变，最好不要求对方很专一；如果你只肯承担有限责任，最好不要求对方相濡以沫、不离不弃。</strong> 说白了，就是大体平衡、均衡。”</p>
+</blockquote>
+<ul>
+<li>他主张<strong>综合平衡</strong>，而非”单项平衡”（不必”男方买房女方也买房”）。</li>
+<li>他提出”<strong>有限责任、互不讹诈</strong>“作为低配版的婚姻伦理，与”一起向上提升、培养恩情亲情”作为高配版。</li>
+<li>核心是<strong>反对双标</strong>：自己做不到的，不要求对方。</li>
+</ul>
+<h3 id="主题-6：教育下一代"><a href="#主题-6：教育下一代" class="headerlink" title="主题 6：教育下一代"></a>主题 6：教育下一代</h3><p>作者对”如何教育儿子”有大量思考，这是他长期主义的一面：</p>
+<ul>
+<li><strong>核心警告</strong>：”千万不要让儿子同时兼有’无神论者’与’两性领域傻白甜’的特质。”</li>
+<li><strong>两条路</strong>：要么教他进化心理学&#x2F;猎学（理性博弈），要么让他信宗教（传统性道德），二选一。</li>
+<li><strong>“黑化要从娃娃抓起”</strong>：他曾在 2019 年计划把劝黑化的文字整合成长文、做成 PDF 在男中学生中传播（后因立场调整而搁置）。</li>
+<li><strong>“表面一套、内心一套”</strong>：他提出”有儿子的家庭就应该从小教育他’表面一套、内心一套’，表面是政治正确，内心是真相”——这一条是全书最具争议的表述之一。</li>
+</ul>
+<hr>
+<h2 id="五、书影音与思想资源（他的知识谱系）"><a href="#五、书影音与思想资源（他的知识谱系）" class="headerlink" title="五、书影音与思想资源（他的知识谱系）"></a>五、书影音与思想资源（他的知识谱系）</h2><p>这本书的一个意外价值，是<strong>作者在碎片化论战之余，持续输出高质量的书影音推荐</strong>，透露出其知识结构。以下按类别整理：</p>
+<h3 id="1-核心思想源头（他反复引用-推荐的”必读书”）"><a href="#1-核心思想源头（他反复引用-推荐的”必读书”）" class="headerlink" title="1. 核心思想源头（他反复引用&#x2F;推荐的”必读书”）"></a>1. 核心思想源头（他反复引用&#x2F;推荐的”必读书”）</h3><table>
+<thead>
+<tr>
+<th>领域</th>
+<th>关键人物&#x2F;著作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>进化心理学</td>
+<td>戴维·巴斯《欲望的演化》（他反复推荐、做”金句集锦”）</td>
+</tr>
+<tr>
+<td>处世&#x2F;权力</td>
+<td>（与《48条法则》同源的）马基雅维利、葛拉西安传统</td>
+</tr>
+<tr>
+<td>中国哲学</td>
+<td>劳思光、徐复观（他建议”中国哲学入门的关键人物”）</td>
+</tr>
+<tr>
+<td>佛学</td>
+<td>《大乘起信论》（他用来类比”中国化的理论”）</td>
+</tr>
+<tr>
+<td>政治哲学</td>
+<td>柏拉图”哲人王”、新加坡治理案例</td>
+</tr>
+<tr>
+<td>社会学</td>
+<td>《美国种族简史》、新加坡”种族混居”政策</td>
+</tr>
+<tr>
+<td>历史</td>
+<td>任不寐《灾变论》、毛泽东《新民主主义论》</td>
+</tr>
+</tbody></table>
+<h3 id="2-影音推荐（他大量推荐日剧、日影、老歌）"><a href="#2-影音推荐（他大量推荐日剧、日影、老歌）" class="headerlink" title="2. 影音推荐（他大量推荐日剧、日影、老歌）"></a>2. 影音推荐（他大量推荐日剧、日影、老歌）</h3><ul>
+<li><strong>电视剧</strong>：《我的天才女友》（他评为”2018 第一剧”）、《悠长假期》《小豆豆电视台》《女王的教室》</li>
+<li><strong>电影</strong>：泰国《小情人》、韩国《恐怖直播》等（他常以周末”荐片”形式出现）</li>
+<li><strong>音乐</strong>：濑川三惠子《紅い花》、长渕刚、财津和夫等（日本老歌为主）</li>
+<li><strong>动漫&#x2F;视频</strong>：B站《封神演义》动画、香港电台《文化树下·黄霑》、YouTube 城规三部曲（新加坡篇）</li>
+</ul>
+<h3 id="3-知识趣味"><a href="#3-知识趣味" class="headerlink" title="3. 知识趣味"></a>3. 知识趣味</h3><p>他展现出一种”<strong>讲道理要一刀毙命，但审美要细腻含蓄</strong>“的矛盾人格（他自己也承认：”我真是奇怪啊！”）。这提醒读者：<strong>他的犀利是”修辞选择”，而非”认知局限”</strong>——他完全知道温柔、细腻、复杂是什么样，只是刻意选择犀利。</p>
+<hr>
+<h2 id="六、时间线演变（2018–2023）"><a href="#六、时间线演变（2018–2023）" class="headerlink" title="六、时间线演变（2018–2023）"></a>六、时间线演变（2018–2023）</h2><p>理解这个博主的<strong>变化轨迹</strong>，比记住任何单条观点都更重要：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>2018（起步）</strong></td>
+<td>仅 9 条，多为荐歌荐剧、零散观点，尚未聚焦</td>
+</tr>
+<tr>
+<td><strong>2019（爆发）</strong></td>
+<td>1057 条，火力最集中：密集输出”黑化论”、女权批评、处女情结、老实人类型学，与杜嘟嘟、混沌椰子王等大 V 反复论战</td>
+</tr>
+<tr>
+<td><strong>2019-08-30</strong></td>
+<td>关键转折：宣布”<strong>从明天起不在知乎劝黑化，有效期一年，改谈哲学、政治哲学</strong>“——原因是觉得自己”讲道理的能力已到极限”，且开始被限流</td>
+</tr>
+<tr>
+<td><strong>2020（转型）</strong></td>
+<td>转向更广话题（哲学、政治哲学、历史、书影音），但仍回两性；开始系统谈”猎学 vs 君学”</td>
+</tr>
+<tr>
+<td><strong>2021（高峰）</strong></td>
+<td>1579 条，最高产；话题更加混杂，历史&#x2F;政治&#x2F;社会观察占比上升</td>
+</tr>
+<tr>
+<td><strong>2022（沉淀）</strong></td>
+<td>1208 条，继续多元化</td>
+</tr>
+<tr>
+<td><strong>2023（至 2 月）</strong></td>
+<td>104 条，进入低产期</td>
+</tr>
+</tbody></table>
+<p><strong>演变规律</strong>：他经历了从”<strong>两性斗士</strong>“到”<strong>泛话题思想者</strong>“的转型，从”劝黑化”退到”谈哲学”，但<strong>始终没有放弃”洗脑与反洗脑”这条主线</strong>——只是战场从”两性”扩大到了”历史、政治、社会”。</p>
+<hr>
+<h2 id="七、批判性思考与使用建议"><a href="#七、批判性思考与使用建议" class="headerlink" title="七、批判性思考与使用建议"></a>七、批判性思考与使用建议</h2><p>这本书（及作者）是<strong>高度争议</strong>的，读者必须带着清醒的判断力阅读。以下是中肯的评估：</p>
+<h3 id="1-它的价值（可以学到什么）"><a href="#1-它的价值（可以学到什么）" class="headerlink" title="1. 它的价值（可以学到什么）"></a>1. 它的价值（可以学到什么）</h3><ul>
+<li><strong>一个罕见的”男性立场”系统性文本</strong>：无论是否认同，它提供了一个完整的、自洽的、基于进化心理学的男性两性观，是理解当代中国两性舆论撕裂的重要一手材料。</li>
+<li><strong>“反洗脑”方法论有普遍意义</strong>：他反复强调的”开阔视野、逻辑思维、统计思维、警惕双标、用行为而非语言判断人”——这些是<strong>放之四海而皆准的批判性思维训练</strong>，不局限于两性话题。</li>
+<li><strong>“老实人类型学”有洞察力</strong>：区分”主动选择的保守”与”被迫的无能”，区分”沉默的受害者”与”抱怨的施暴者”，是有价值的分析框架。</li>
+<li><strong>书影音推荐质量高</strong>：作为”思想引路人”，他推荐的作品确实有水准。</li>
+</ul>
+<h3 id="2-它的风险（需要警惕什么）"><a href="#2-它的风险（需要警惕什么）" class="headerlink" title="2. 它的风险（需要警惕什么）"></a>2. 它的风险（需要警惕什么）</h3><ul>
+<li><strong>“黑化”的滑坡风险</strong>：从”对齐市场均值”滑向”算计、物化、不信任”，会让人在两性关系里失去真诚的能力——而真诚恰恰是长期亲密关系的根基。</li>
+<li><strong>“表面一套、内心一套”的危险</strong>：把”虚伪”当生存策略，短期自保，长期会腐蚀自我认同、破坏信任（这一条与《48条法则》里的”伪装”同源，但作者本人对”看破不说破”的推崇，会导向一种犬儒）。</li>
+<li><strong>以”求真”之名的情绪化表达</strong>：大量内容其实是”反击”和”姿态”，而非”求真”。读者容易被其犀利感染，却忽略其论证中的选择性取证。</li>
+<li><strong>对抗性立场会强化对立</strong>：他的很多”女权批评”虽有洞见，但整体上加剧而非弥合性别对立。他把问题主要归因于”一方”，这本身就不符合他自己推崇的”均衡”原则。</li>
+</ul>
+<h3 id="3-最健康的读法"><a href="#3-最健康的读法" class="headerlink" title="3. 最健康的读法"></a>3. 最健康的读法</h3><p>把这本书当作三样东西来读：</p>
+<ol>
+<li><strong>一面”两性舆论场的镜子”</strong>：理解为什么会有大量男性感到”憋屈”、为什么”黑化”这样的词能收获共鸣——这是理解时代情绪的钥匙。</li>
+<li><strong>一套”批判性思维习题集”</strong>：每一条想法都可以拿来练手——“他的证据充分吗？他的逻辑成立吗？换一个立场看会怎样？”这种阅读能极大锻炼思辨能力。</li>
+<li><strong>一份”知识导图”</strong>：顺着他的书影音推荐，可以摸到进化心理学、政治哲学、中国哲学、社会学的一串经典。</li>
+</ol>
+<p><strong>一句话总结全书</strong>：</p>
+<blockquote>
+<p>这是一位男性博主用 5000 条碎片、五年时间，基于进化心理学，对中国两性市场进行的”反洗脑”式持续评论——其核心命题是”<strong>在信息不透明、规则缺失的两性博弈场里，无神论又天真的男性最吃亏，因此要么理性觉醒（黑化&#x2F;猎学），要么回归传统（宗教&#x2F;君学），绝不能做’傻白甜’</strong>“。读它，应取其”批判性思维与知识视野”之珠，而去其”对抗与犬儒”之粕。</p>
+</blockquote>
+<hr>
+<p><em>本笔记基于《城市猎人的知乎想法合集·第1卷》原文全文（约 5000 条想法、218 万字）系统梳理，涵盖作者的理论框架、主要观点、知识谱系、时间线演变及批判性评估。</em></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001867.%E3%80%8A%E8%87%AA%E6%88%91%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B/'>阅读笔记——《自我（第2版）》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610212350001987.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%8E%A7%E5%88%B6%E8%AE%BA%EF%BC%9A%E6%88%96%E5%85%B3%E4%BA%8E%E5%9C%A8%E5%8A%A8%E7%89%A9%E5%92%8C%E6%9C%BA%E5%99%A8%E4%B8%AD%E6%8E%A7%E5%88%B6%E5%92%8C%E9%80%9A%E4%BF%A1%E7%9A%84%E7%A7%91%E5%AD%A6%E3%80%8B/">阅读笔记——《控制论：或关于在动物和机器中控制和通信的科学》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《散户乙雪球发言汇编（2014—2023）》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《散户乙雪球发言汇编（2014—2023）》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5.5k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：18分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%85%88%E6%8A%8A%E2%80%9D%E4%BA%BA%E8%84%91-%E8%AE%A1%E7%AE%97%E6%9C%BA%E2%80%9D%E8%BF%99%E4%B8%AA%E5%BA%95%E5%B1%82%E6%A8%A1%E5%9E%8B%E7%AB%8B%E8%B5%B7%E6%9D%A5"><span class="post-toc-text">一、先把”人脑 &#x3D; 计算机”这个底层模型立起来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E6%8A%95%E8%B5%84%E8%A7%82%E7%9A%84%E6%A0%B9%E6%9C%AC%E5%88%86%E5%B2%94%EF%BC%9A%E8%B5%9A%E8%B0%81%E7%9A%84%E9%92%B1%EF%BC%9F"><span class="post-toc-text">二、投资观的根本分岔：赚谁的钱？</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E8%A1%A1%E9%87%8F%E6%8A%95%E8%B5%84%E7%9A%84%E9%82%A3%E6%8A%8A%E5%B0%BA%EF%BC%9A%E9%95%BF%E6%9C%9F%E8%82%A1%E4%B8%9C%E5%9B%9E%E6%8A%A5%E7%8E%87%EF%BC%88ROE%EF%BC%89"><span class="post-toc-text">三、衡量投资的那把尺：长期股东回报率（ROE）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E9%80%89%E8%82%A1%E7%9A%84%E2%80%9D%E7%AC%A8%E5%8A%9E%E6%B3%95%E2%80%9D%EF%BC%9A%E4%B8%89%E6%9D%A1%E7%A1%AC%E6%8C%87%E6%A0%87"><span class="post-toc-text">四、选股的”笨办法”：三条硬指标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E5%8E%9F%E5%88%99%EF%BC%9A%E5%8D%81%E5%B9%B4%E5%88%86%E7%BA%A2%E6%94%B6%E5%9B%9E%E6%88%90%E6%9C%AC"><span class="post-toc-text">五、最重要的原则：十年分红收回成本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E6%9C%80%E5%8F%8D%E7%9B%B4%E8%A7%89%E7%9A%84%E4%B8%80%E6%9D%A1%EF%BC%9A%E8%82%A1%E4%BB%B7%E4%B8%8A%E6%B6%A8%E6%8D%9F%E5%AE%B3%E9%95%BF%E6%9C%9F%E6%8A%95%E8%B5%84%E8%80%85"><span class="post-toc-text">六、最反直觉的一条：股价上涨损害长期投资者</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E6%8A%95%E8%B5%84%E5%9B%9B%E9%98%B6%E6%AE%B5%EF%BC%9A%E4%B8%80%E4%B8%AA%E6%95%A3%E6%88%B7%E7%9A%84%E8%BF%9B%E5%8C%96%E5%8F%B2"><span class="post-toc-text">七、投资四阶段：一个散户的进化史</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E4%B8%A4%E4%B8%AA%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%EF%BC%9A%E8%80%81%E7%AA%96%E4%B8%8E%E7%A5%9E%E5%8D%8E"><span class="post-toc-text">八、两个实战案例：老窖与神华</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%B8%E5%B7%9E%E8%80%81%E7%AA%96%EF%BC%882013%E2%80%942021%EF%BC%8C%E7%AC%AC%E4%B8%80%E6%A1%B6%E9%87%91%E5%88%B0%E7%88%86%E5%8F%91%EF%BC%89"><span class="post-toc-text">泸州老窖（2013—2021，第一桶金到爆发）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E5%9B%BD%E7%A5%9E%E5%8D%8E%EF%BC%882021-%E8%B5%B7%EF%BC%8C%E4%BB%8E%E7%99%BD%E9%85%92%E5%88%B0%E7%85%A4%E7%82%AD%E7%9A%84%E8%BD%AC%E6%8D%A2%EF%BC%89"><span class="post-toc-text">中国神华（2021 起，从白酒到煤炭的转换）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E6%95%A3%E6%88%B7%E4%B9%99%E7%9A%84%E2%80%9D%E6%8A%95%E8%B5%84%E5%8D%81%E8%AF%AB%E2%80%9D%EF%BC%88%E6%8A%8A%E6%95%A3%E8%90%BD%E7%9A%84%E5%8E%9F%E5%88%99%E6%94%B6%E6%8B%A2%EF%BC%89"><span class="post-toc-text">九、散户乙的”投资十诫”（把散落的原则收拢）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E5%BF%83%E6%80%81%E4%B8%8E%E4%BA%BA%E7%94%9F%EF%BC%9A%E6%8A%95%E8%B5%84%E4%B9%8B%E5%A4%96%E7%9A%84%E6%95%A3%E6%88%B7%E4%B9%99"><span class="post-toc-text">十、心态与人生：投资之外的散户乙</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">十一、我的几点感悟</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 10 月</p>
+<p>最近把《散户乙雪球发言汇编（2014—2023）》通读了一遍。这不是一本正式出版的书，而是网友”汇编室”整理的雪球传奇投资者<strong>散户乙</strong>十年间（2014—2023）的发言合集，约 11 万字：近八年 6 万字发言 + 5 万字补充发言 + 2023 年发言。</p>
+<p>先交代一下这个人为什么值得读。散户乙 1990 年入市（股东代码卡 6 位数，全国大概第 50 万个股民），2013—2022 十年间主要只买了两只股票：<strong>泸州老窖</strong>和<strong>中国神华</strong>（其余长江电力、陕西煤业可忽略不计）。十年保守估计获得约 <strong>30 倍收益</strong>，个人资产从大约 1000 万做到 3—4 亿，年化 35%—40%。2022 年 4 月，他突然注销雪球账号、删光所有发言——“他不会拉黑任何人，于是他决定拉黑他自己”，留下这部被粉丝抢救下来的发言汇编。</p>
+<p>这和我们平时读的投资书完全不同：<strong>它不是一个体系化的教材，而是一个真实的成功投资者十年的思想裸奔</strong>——有早年幼稚的投机，有踩坑的教训，有慢慢想通的过程，也有想通之后的从容。读它的价值在于：你能看到一个普通人（他反复自称”智商平庸的普通散户”）是如何一步步走到”用屁股赚钱”的境界的。下面是我的读书笔记。</p>
+<p>一句话概括：<strong>散户乙的整套投资体系，就是一句话——“买股票就是买了公司的一部分”；由此派生出赚公司的钱（分红 + 长期股东回报率）而不是赚市场的钱（差价）、把股票当资产而不是当筹码、以”十年分红收回成本”作为买入标尺。</strong></p>
+<h2 id="一、先把”人脑-计算机”这个底层模型立起来"><a href="#一、先把”人脑-计算机”这个底层模型立起来" class="headerlink" title="一、先把”人脑 &#x3D; 计算机”这个底层模型立起来"></a>一、先把”人脑 &#x3D; 计算机”这个底层模型立起来</h2><p>散户乙反复用一个比喻解释”为什么人和人的投资观无法互相说服”：</p>
+<blockquote>
+<p><strong>每个人的脑袋就是一台计算机。硬件（基因、智商）加操作系统（三观、阅历、认知），遇到事情时输入各种参数，程序运算后给你一个指令。这台电脑人人都有，型号却人人不同。</strong></p>
+</blockquote>
+<p>所以他得出一个贯穿全书的结论：<strong>辩论没用。程序不同，结果必然不同。</strong> 你无法通过吵架改变别人的程序，就像巴以双方都认为自己为正义而战。这个模型解释了很多现象：</p>
+<ul>
+<li>为什么”别人恐惧我贪婪”这句话人人会背，但大多数人做不出来？因为那不是一个技巧，而是对方整台电脑运算出的结果，你只抄了最后的”指令”，没有他的”参数”。</li>
+<li>为什么我们无法真正模仿别人？因为”你必须把程序和参数改成和他一样才行”——双胞胎都做不到。</li>
+<li>由此推导出学习心法：<strong>能学的只有”共性”（巴菲特那一句话），学不来的是”个性”（每个人的参数）。</strong></li>
+</ul>
+<p>这一层想通了，后面所有内容都好理解：散户乙说的不是”你该怎么做”，而是”我这部电脑是怎么算的，供你参考”。</p>
+<h2 id="二、投资观的根本分岔：赚谁的钱？"><a href="#二、投资观的根本分岔：赚谁的钱？" class="headerlink" title="二、投资观的根本分岔：赚谁的钱？"></a>二、投资观的根本分岔：赚谁的钱？</h2><p>全书最核心的分岔，是把投资者分成两类（散落在几十篇帖子里反复出现）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">赚市场的钱（筹码思维）          赚公司的钱（股权思维）</span><br><span class="line">─────────────────────────────────────────────────────</span><br><span class="line">把股票当筹码                   把股票当公司的一部分</span><br><span class="line">盈利 = 卖出价 - 买入价         盈利 = 分红 + 长期股东回报率</span><br><span class="line">关注股价、K线、牛熊、热点      关注 ROE、分红、企业长期现金流</span><br><span class="line">靠卖出那一刻兑现              靠企业持续盈利兑现</span><br><span class="line">落袋为安，天天盯盘            满仓就是落袋为安，几乎不看盘</span><br></pre></td></tr></table></figure>
+
+<p>他有一个极其反直觉、但最能体现境界的认知反转：</p>
+<blockquote>
+<p><strong>曾经我把银行账户当避风港，股市是惊涛骇浪的深海。现在我反过来了：股票账户才是最安全的港湾（尽管数字每天波动，但资产长期趋势向上），银行账户反而风险很大（尽管数字不变，但长期铁定贬值）。</strong></p>
+</blockquote>
+<p>支撑这个反转的是两句话：<strong>“现金长期看是铁定贬值的”</strong>（美元近百年贬值 87%）和**”优质公司的资产是最可靠的”**。所以对股权思维的人而言，<strong>满仓买入股票就是落袋为安</strong>，而”落袋为安”这四个字，恰恰是筹码思维者的心理动作——散户乙说，落袋为安的人”其实只是安了很短时间，接着就又不安了”。</p>
+<h2 id="三、衡量投资的那把尺：长期股东回报率（ROE）"><a href="#三、衡量投资的那把尺：长期股东回报率（ROE）" class="headerlink" title="三、衡量投资的那把尺：长期股东回报率（ROE）"></a>三、衡量投资的那把尺：长期股东回报率（ROE）</h2><p>这是散户乙区别于绝大多数”价值投资者”的地方——<strong>他几乎不谈 PE、不谈利润增速、不谈牛熊，只盯一个指标：净资产收益率（ROE，他叫股东权益回报率）。</strong></p>
+<p>核心逻辑链条是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">长期投资回报率 ≈ 公司的长期平均 ROE（前提：以接近净资产的价格买入）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>一个不需要借债的企业，如果<strong>长期平均 ROE</strong>（不是短期三两年业绩）高于社会平均资产收益率，那么长期投资它的回报就一定高于社会平均数。</li>
+<li>但要注意两个前提：<strong>① 你的买入价要接近净资产</strong>。如果你以净资产 4 倍的价格买入一家 ROE 20% 的公司，你的真实回报率只有 5%，可能还跑不赢社会平均。<strong>② 看 ROE 的成色</strong>——要看总资产收益率是否接近 ROE（排除靠高负债堆出来的高 ROE）。</li>
+</ul>
+<p>由此他引出那句名言式的判断：</p>
+<blockquote>
+<p><strong>不讲价值是盲目的，计算价值是可笑的。</strong>（巴菲特说”一眼定胖瘦”——如果一个人要站到秤上才知道他胖，那他还不够胖。）</p>
+</blockquote>
+<p>企业价值 &#x3D; 存续期自由现金流的折现，这个公式里”活多久、未来现金流、折现率”三个变量全靠估计，”拿起计算器算，就会显得很滑稽”。所以他的方法是**”一眼定胖瘦”**：不看精确估值，看”长期 ROE 高不高、稳不稳、贵不贵”。</p>
+<p><strong>为什么他不关心牛熊和短期业绩？</strong> 因为对一个打算持有十年二十年的人，企业去年赚 20 亿、今年 22 亿还是 18 亿，折算到长期 ROE 上几乎没差别；但这三个数字在市场上会被当成短期估值依据，把股价搅得天翻地覆。<strong>持股成本决定维度</strong>——成本远低于净资产的人，只看影响企业长期的大事；高价买入的人，才会揪着季度增速不放。</p>
+<h2 id="四、选股的”笨办法”：三条硬指标"><a href="#四、选股的”笨办法”：三条硬指标" class="headerlink" title="四、选股的”笨办法”：三条硬指标"></a>四、选股的”笨办法”：三条硬指标</h2><p>散户乙反复强调自己”财务很水”（分不清营业税和消费税）、”不太看财报”，但他有一套极其朴素的选股标准（2021.10 原文）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1. 净资产收益率（ROE）——决定长期投资回报的重要参数</span><br><span class="line">2. 总资产收益率（ROA）——两者越接近越好，检验 ROE 成色，</span><br><span class="line">   也决定该 ROE 是否适合作为长期回报率的参数</span><br><span class="line">3. 业绩的长期稳定性——保证 ROE 能长期稳定；若波动大，看历史最差是多少</span><br></pre></td></tr></table></figure>
+
+<p>符合这三条的公司，<strong>现金流和分红率一般都好</strong>；如果这两个不行他也不要——“这基本就把造假公司也排除了”。最后再看”股价比净资产高出多少”，这决定了他多久能真正开始以 ROE 得到回报。</p>
+<p>这套标准天然<strong>排除了银行、地产、保险和高负债公司</strong>（因为它们靠负债赚钱，越赚钱负债越大，ROE 是虚的）。所以老窖和神华，一个白酒一个煤炭，看似毫不搭界，但”标准没变”。</p>
+<h2 id="五、最重要的原则：十年分红收回成本"><a href="#五、最重要的原则：十年分红收回成本" class="headerlink" title="五、最重要的原则：十年分红收回成本"></a>五、最重要的原则：十年分红收回成本</h2><p>这是散户乙所有操作的总纲（2018.4 原文）：</p>
+<blockquote>
+<p><strong>投资老窖是否成功，主要看什么时候能靠分红收回成本。从目前情况来看，10 年内收回成本已经基本铁定了。</strong></p>
+</blockquote>
+<p>他的中期目标是”投资十年，靠分红收回投资”；长期目标是”投资二十年，一年分红是当初投资额的一半”。这背后是对”盈利”定义的彻底重构：</p>
+<ul>
+<li><strong>他不把市值当盈利，只把分红当盈利。</strong> “一个老牌餐厅的长期股东，是把餐厅今年的分红当盈利，还是把昨天有人来办公室想买你股权开出的价格当盈利？”</li>
+<li><strong>年终总结只看分红</strong>：”2018 年我的投资回报是从公司得到了每股 1.25 元的现金（含税）。这就是我关于 2018 年投资的总结。”</li>
+</ul>
+<p>配套还有一个极重要的洞察——<strong>现金分红的三个作用</strong>（2019.4）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 排除财务造假：大比例分红的公司若造假，只会有&quot;隐瞒利润&quot;的动机</span><br><span class="line">   （你买的公司实际比看起来更好）；不分红的公司造假则是夸大利润</span><br><span class="line">2. 制约大股东：大比例分红 = 少数有权支配资金的人放弃权力，</span><br><span class="line">   让小股东能自由支配公司利润</span><br><span class="line">3. 复利加速：分红再买入，是复利威力体现的重要一环</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、最反直觉的一条：股价上涨损害长期投资者"><a href="#六、最反直觉的一条：股价上涨损害长期投资者" class="headerlink" title="六、最反直觉的一条：股价上涨损害长期投资者"></a>六、最反直觉的一条：股价上涨损害长期投资者</h2><p>这是全书最”毁三观”、也最体现股权思维的一点，散户乙反复引用球友”宁静的冬日”的那篇著名计算帖：</p>
+<blockquote>
+<p><strong>前提是”分红再投入”——股价上涨，反而降低了长期投资者的收益。</strong>（因为同样的分红，股价越高，能买回的股数越少。）</p>
+</blockquote>
+<p>推导出的两个结论：</p>
+<ol>
+<li><strong>对长期投资者，股数是变量，不是定数。</strong> <code>市值 = 股数 × 股价</code>，短线客的股数是个定数，长期投资者的股数 &#x3D; 初始股数 + 累计分红再买入的股数。所以价投盯的是<strong>股数的增加</strong>，新手盯的是<strong>股价的涨跌</strong>。</li>
+<li><strong>这就是”夹头希望股价长期不涨”的真正含义</strong>——不是装深沉，而是分红再投入的复利需要低股价。美股有史以来分红再投资回报第一的公司，恰恰是一家常年因烟民诉讼缠身、股价长期不怎么涨的烟草公司。</li>
+</ol>
+<p>所以他能在老窖飙升时写出那个著名的”矛盾”：<strong>“我本来的房子山清水秀，突然开发商不断开高价逼我搬走”</strong>——股票涨到不得不考虑”卖不卖”，对他反而是烦恼，不是喜悦。</p>
+<h2 id="七、投资四阶段：一个散户的进化史"><a href="#七、投资四阶段：一个散户的进化史" class="headerlink" title="七、投资四阶段：一个散户的进化史"></a>七、投资四阶段：一个散户的进化史</h2><p>散户乙 2019.2 完整复盘了自己从”炒股票”到”买公司”的四个阶段，这是他思想演化的时间轴，也是最有共鸣的部分：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">阶段一：低买高卖（90年代）</span><br><span class="line">  画坐标纸、看技术指标、追高低点。发现短线要像机器一样执行，</span><br><span class="line">  自己做不到，赚钱靠&quot;高了卖、被套死等&quot;。</span><br><span class="line"></span><br><span class="line">阶段二：做趋势、判牛熊</span><br><span class="line">  判断资金进出、箱体突破、年线。赚了钱，但&quot;确认牛市时已涨一大截，</span><br><span class="line">  确认熊市时已跌一大截&quot;，再被热点股打几个耳光，所剩不多。</span><br><span class="line"></span><br><span class="line">阶段三：业绩为王（所谓&quot;价值投资&quot;）</span><br><span class="line">  预判业绩拐点、找&quot;更好的标的&quot;不断换股。&quot;买一个十年十倍难，</span><br><span class="line">  买三个一年一倍容易&quot;——结果被&quot;更好的标的&quot;反复打脸。</span><br><span class="line"></span><br><span class="line">阶段四：买股票就是买公司的一部分</span><br><span class="line">  &quot;到了我这个年纪，生活要悠闲，状态要笃定，表情要轻松，举止要从容。&quot;</span><br><span class="line">  选下一季度看不清（所以不贵）、但看十年清楚的企业，</span><br><span class="line">  只赚企业的钱，衡量标准换成分红和股东权益回报率。</span><br></pre></td></tr></table></figure>
+
+<p>他总结前三个阶段都”赚了钱，但赚的不多”，且都”太紧张，总在起点上”。这个进化史的价值在于：<strong>它不是天才顿悟，而是一个普通人用二十多年、靠真金白银的教训慢慢走过来的</strong>——“看到新手，就看到了从前的自己。”</p>
+<h2 id="八、两个实战案例：老窖与神华"><a href="#八、两个实战案例：老窖与神华" class="headerlink" title="八、两个实战案例：老窖与神华"></a>八、两个实战案例：老窖与神华</h2><h3 id="泸州老窖（2013—2021，第一桶金到爆发）"><a href="#泸州老窖（2013—2021，第一桶金到爆发）" class="headerlink" title="泸州老窖（2013—2021，第一桶金到爆发）"></a>泸州老窖（2013—2021，第一桶金到爆发）</h3><ul>
+<li><strong>买入逻辑</strong>：2013 年白酒遇”八项规定 + 塑化剂”双黑天鹅，老窖股价暴跌。他研究发现白酒行业”毛利高、负债低、先款后货、好酒不怕积压、品牌门槛高”。</li>
+<li><strong>选老窖的三个理由</strong>：① 打算长期持股；② 行业特点好 + 分红率高；③ 公司争议大但能永续经营。（注意：他明确说这三个理由”排名不分先后”，且都不是”选股重点”——因为选股重点其实是 ROE 和分红。）</li>
+<li><strong>操作</strong>：20 多块开始买，跌到 20 以下加大买入，最低点 15.55，他 15.73 买最后一笔。他测算老窖真实销售约 80 亿、真实业绩每股 2 元，”20 元以下背后的真实市盈率不到 10 倍，分红不低于 1 元，股息大于 5%”。</li>
+<li><strong>持有与收获</strong>：期间经历塑化剂、2015 股灾、2018 大熊市、2020 疫情，一直不动，且用分红不断加仓。2016 年业绩跌到每股 6 毛时，公司还分 8 毛，让他”很感动”——<strong>“高分红就是老窖最大的诚信。”</strong></li>
+</ul>
+<h3 id="中国神华（2021-起，从白酒到煤炭的转换）"><a href="#中国神华（2021-起，从白酒到煤炭的转换）" class="headerlink" title="中国神华（2021 起，从白酒到煤炭的转换）"></a>中国神华（2021 起，从白酒到煤炭的转换）</h3><ul>
+<li><strong>转换逻辑</strong>（这是被最多人追问的一步）：2021 年老窖涨到”视力所及的股票都不便宜”了，他卖掉一部分老窖换神华。他自己解释得极朴素——<strong>“我本应该存银行等下次机会的钱，我买成了资产，且比存银行的利率更高。”</strong></li>
+<li><strong>神华的底层逻辑</strong>（2023.3 那篇经典帖）：市场给神华的”定性”是”煤炭夕阳行业、碳达峰限制”。他”稍微定量一下”就推翻了：全国煤炭用量 40 亿吨，神华产量才 3 亿吨，且是环保、机械化、安全最领先的；限产不会平均分摊，先关的是老破小，神华反而受益。<strong>“不用很复杂的定量，只要了解几个数据和正在发生的事实，定性就被否定了。”</strong></li>
+<li><strong>算账</strong>：前十年以净资产买入神华、分红再投入，回报率约 15%，非常贴近它的平均 ROE——<strong>“胜在以净资产甚至低于净资产买入，马上、立刻就享受到真实的股东回报。”</strong> 他称之为”一鸟在手”（保底回报），煤价电价提升、估值修复是”两鸟在林”。</li>
+<li><strong>拖累神华 ROE 的因素</strong>：1300 亿现金没收益、几百亿被叫停的火电投资没回报——这些正在好转（电厂复产、承诺不再投火电、加大分红），所以他判断未来十年回报会高于前十年。</li>
+</ul>
+<h2 id="九、散户乙的”投资十诫”（把散落的原则收拢）"><a href="#九、散户乙的”投资十诫”（把散落的原则收拢）" class="headerlink" title="九、散户乙的”投资十诫”（把散落的原则收拢）"></a>九、散户乙的”投资十诫”（把散落的原则收拢）</h2><ol>
+<li><strong>买股票就是买公司的一部分</strong>——这是总纲，其余九条都从它派生。</li>
+<li><strong>不懂不做</strong>（但”懂了≠能做”，持有≠买入）——看不懂的不碰；看懂一个做一个，不为分散而凑数。</li>
+<li><strong>别人恐惧我贪婪</strong>——只有在”公司长期价值没受损、只是股价大跌”时才成立。</li>
+<li><strong>股价波动不是风险</strong>——真正的风险是”企业长期价值受损”（他区分了”茅台式回撤”和”融创式回撤”）。</li>
+<li><strong>十年分红收回成本</strong>——买入前先算这笔账，算不清就不买。</li>
+<li><strong>一眼定胖瘦</strong>——不计算精确价值，只看”长期 ROE 高不高、贵不贵”。</li>
+<li><strong>学巴菲特要学全套</strong>——价值投资是套餐不是自助餐，不能只挑”长期持有”却拒绝”慢慢变富”。</li>
+<li><strong>价值投资不违反人性</strong>——它只是”违反还没适合做价值投资的人的人性”。</li>
+<li><strong>投资要趁早，犯错也要趁早</strong>——年轻时损失再惨重，也只是漫长人生总财富的一小部分；五十岁再犯重大错误，就只剩教训能讲给别人听了。</li>
+<li><strong>保持乐观</strong>——“悲观的人经常正确，乐观的人经常成功。”（这也是他总结自己赚钱的三条自身因素之一）</li>
+</ol>
+<h2 id="十、心态与人生：投资之外的散户乙"><a href="#十、心态与人生：投资之外的散户乙" class="headerlink" title="十、心态与人生：投资之外的散户乙"></a>十、心态与人生：投资之外的散户乙</h2><p>这本书有一半篇幅其实是在谈人生、谈心态、谈认知，而且质量很高。几个反复出现的主题：</p>
+<ul>
+<li><strong>认识自己、接受自己</strong>：他总结自己最容易犯的两个基本错误——“① 以为很了解自己；② 以为自己看到的世界就是全世界。”（他说要当座右铭）</li>
+<li><strong>不抱怨</strong>：”抱怨是把失败的根本原因归因于外部世界，它最大的危害是让我们以为找到了问题的关键。”他信”一个总是抱怨的人运气就会绕道走”——唯物解释是：抱怨削弱了你解决问题和另辟新路的能力，合作者变少，机会自然变少。</li>
+<li><strong>不极端</strong>：”绝对的真理只有一个：人总是要死的。”几乎所有辩论都是”不同角度之间的辩论”，最佳方法是把它们合起来看，而不是各自极端化。</li>
+<li><strong>豁达来自开放</strong>：”拒绝改变就是拒绝进步，时间一久就成了老顽固。世界上真正涉及大是大非的问题极少。”</li>
+<li><strong>不试图改变别人</strong>：他引用巴菲特对他影响最大的两句话之一——“我不会花一秒钟去改变别人，除非他自己想改变。””帮助别人和改变别人是两回事：当别人需要帮助时你去帮他，那才是帮他。”</li>
+<li><strong>快乐投资是真的</strong>：”我从不觉得价值投资寂寞或痛苦。满仓面对暴跌，情绪不受影响，该干嘛干嘛，依然保持微笑，才算做到快乐投资。”——他的答案是：<strong>认识到位了，心态自然好，不用硬扛。</strong> 而他自己也确实过上了那种生活：一年有半年独自在大连，散步、拍照、看人打扑克，”自由妙不可言”。</li>
+</ul>
+<h2 id="十一、我的几点感悟"><a href="#十一、我的几点感悟" class="headerlink" title="十一、我的几点感悟"></a>十一、我的几点感悟</h2><ol>
+<li><p><strong>“买股票就是买公司”这八个字，认识论上的差距比方法论的差距大得多。</strong> 这句话人人会背，但散户乙的老窖论坛里那位朋友，20 块时能把老窖分析得头头是道，30 块却因为”强阻力位”卖飞了——他知道”买什么、什么价买”，但没真正接受”买了就是股东、不该天天想卖”。<strong>知道和相信是两码事，相信和按相信的做又是两码事。</strong></p>
+</li>
+<li><p><strong>他把”投资”从一个技巧问题，降维成了一个”自洽”问题。</strong> 散户乙几乎不教任何可复制的技法（他甚至承认自己不会看财报），他反复讲的其实是：<strong>你得先想清楚自己赚谁的钱，然后让选股、持有、心态、生活方式全部自洽。</strong> 赚公司的钱，就配”十年分红回本”的耐心；赚市场的钱，就得接受天天盯盘的紧张。<strong>痛苦往往来自不自洽——用赚公司的钱的标准选股，却用赚市场的钱的节奏操作。</strong></p>
+</li>
+<li><p><strong>“十年分红收回成本”是一个极其强大的心理锚。</strong> 它把投资从”猜别人出价”变成了”算自己能拿回什么”，于是股价涨跌、牛熊周期全部退居背景。这对我做任何长期决策都有启发：<strong>给一件事设定一个不依赖外部反馈的内部衡量标准，就能屏蔽掉绝大多数噪音。</strong></p>
+</li>
+<li><p><strong>他的”定量”是反宏大叙事的。</strong> 市场说神华”夕阳行业”，他只问三个数：全国用煤 40 亿吨、神华产 3 亿吨、限产先关老破小——定性就被推翻了。<strong>宏大叙事最怕具体的、扎实的几个数字。</strong> 这和技术上”别信’XX 是未来’的宏大叙事，去看真实数据和正在发生的事实”完全相通。</p>
+</li>
+<li><p><strong>他把”运气”放在台面上，反而是一种高级的清醒。</strong> 他反复说自己赚钱”是运气、是国家发展、是幸存者偏差”，”操作越少，赚得越多”。这种谦卑不是客套，而是对”不可控”的深刻认知——上了车，司机、路况、车况都不归你管。<strong>承认大部分结果不可控，才能把精力集中在那一点点可控的事情上（选对车、坐得住）。</strong></p>
+</li>
+<li><p><strong>这本书最打动我的，其实是”投资即人生”。</strong> 散户乙的投资进化，本质是一个人认知的进化：从焦虑地赚差价，到从容地当股东；从”以为看到全世界”，到”知道自己的局限”。他最后留下的状态是”悠闲、笃定、轻松、从容”——<strong>这八个字，可能比 30 倍收益更值得追求。</strong></p>
+</li>
+</ol>
+<hr>
+<p><strong>一句话总结：散户乙用十年、两只股票、约 30 倍收益证明了一件事——投资赚钱的功夫不在”预测”而在”自洽”：想清楚”买股票就是买公司的一部分”，然后用”长期股东回报率（ROE）”选股、用”十年分红收回成本”衡量、用”股价波动不是风险”持股，最后用”悠闲、笃定、轻松、从容”生活——这套系统环环相扣，缺了任何一环，都会退回”赚市场差价”的焦虑里去。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222037000001.%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8ACFA%E4%B8%89%E7%BA%A7%E4%B8%AD%E6%96%87%E7%B2%BE%E8%AE%B2%EF%BC%88%E7%AC%AC3%E5%86%8C%EF%BC%89%E3%80%8B/'>读书笔记——《CFA三级中文精讲（第3册）》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212359001862.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E3%80%8B%EF%BC%88%E7%AC%AC14%E7%89%88%EF%BC%89/">阅读笔记——《人力资源管理》（第14版）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《人性的弱点：增订全译版》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《人性的弱点：增订全译版》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：24分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9%EF%BC%9A%E5%A2%9E%E8%AE%A2%E5%85%A8%E8%AF%91%E7%89%88%E3%80%8B"><span class="post-toc-text">阅读笔记——《人性的弱点：增订全译版》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E5%88%B0%E5%BA%95%E5%9C%A8%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="post-toc-text">一、这本书到底在解决什么问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6"><span class="post-toc-text">二、贯穿全书的底层机制</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC%E4%B8%80%E7%AF%87%EF%BC%9A%E5%9F%BA%E6%9C%AC%E6%8A%80%E5%B7%A7"><span class="post-toc-text">三、第一篇：基本技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#01-%E5%BE%85%E4%BA%BA%E6%8E%A5%E7%89%A9%E7%9A%84%E7%AC%AC%E4%B8%80%E5%A4%A7%E5%BF%8C"><span class="post-toc-text">01 待人接物的第一大忌</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#02-%E8%BF%99%E7%A7%8D%E8%AF%B4%E8%AF%9D%E6%96%B9%E5%BC%8F%E9%9D%9E%E5%B8%B8%E5%80%BC%E9%92%B1"><span class="post-toc-text">02 这种说话方式非常值钱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#03-%E8%AE%A9%E6%95%B4%E4%B8%AA%E4%B8%96%E7%95%8C%E5%89%8D%E6%9D%A5%E4%B8%BA%E4%BD%A0%E5%8A%A9%E5%8A%9B"><span class="post-toc-text">03 让整个世界前来为你助力</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC%E4%BA%8C%E7%AF%87%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E5%A4%A7%E5%AE%B6%E9%83%BD%E5%96%9C%E6%AC%A2%E4%BD%A0"><span class="post-toc-text">四、第二篇：如何让大家都喜欢你</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#04-%E8%BF%99%E6%A0%B7%E5%81%9A%EF%BC%8C%E8%B0%81%E4%BC%9A%E4%B8%8D%E5%96%9C%E6%AC%A2%E4%BD%A0%EF%BC%9F"><span class="post-toc-text">04 这样做，谁会不喜欢你？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#05-%E8%BF%99%E8%83%BD%E7%95%99%E4%B8%8B%E7%BE%8E%E5%A5%BD%E7%9A%84%E7%AC%AC%E4%B8%80%E5%8D%B0%E8%B1%A1"><span class="post-toc-text">05 这能留下美好的第一印象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#06-%E8%BF%99%E4%BC%9A%E8%AE%A9%E4%BA%BA%E4%B8%80%E4%B8%8B%E5%AD%90%E5%96%9C%E6%AC%A2%E4%B8%8A%E4%BD%A0"><span class="post-toc-text">06 这会让人一下子喜欢上你</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#07-%E6%80%8E%E6%A0%B7%E6%89%8D%E5%8F%AB%E2%80%9C%E4%BC%9A%E8%81%8A%E5%A4%A9%E2%80%9D"><span class="post-toc-text">07 怎样才叫“会聊天”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#08-%E6%8F%90%E9%AB%98%E4%BD%A0%E7%9A%84%E5%BD%B1%E5%93%8D%E5%8A%9B"><span class="post-toc-text">08 提高你的影响力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#09-%E4%B8%80%E5%8F%A5%E8%AF%9D%E7%84%90%E7%83%AD%E4%BA%BA%E5%BF%83"><span class="post-toc-text">09 一句话焐热人心</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC%E4%B8%89%E7%AF%87%EF%BC%9A%E5%A6%82%E4%BD%95%E6%9C%89%E9%80%BB%E8%BE%91%E5%9C%B0%E8%AF%B4%E6%9C%8D%E4%BB%96%E4%BA%BA"><span class="post-toc-text">五、第三篇：如何有逻辑地说服他人</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-%E7%AC%AC%E4%B8%80%E5%A4%A7%E5%BF%8C%EF%BC%9A%E4%BC%A4%E6%95%8C%E4%B8%80%E4%B8%87%EF%BC%8C%E8%87%AA%E6%8D%9F%E5%85%AB%E5%8D%83"><span class="post-toc-text">10 第一大忌：伤敌一万，自损八千</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-%E7%AC%AC%E4%BA%8C%E5%A4%A7%E5%BF%8C%EF%BC%9A%E4%B8%80%E5%8F%A5%E6%83%B9%E6%80%92%E5%85%A8%E4%B8%96%E7%95%8C%E7%9A%84%E8%AF%9D"><span class="post-toc-text">11 第二大忌：一句惹怒全世界的话</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-%E6%8B%86%E6%8B%9B%E5%8D%B8%E5%8A%9B"><span class="post-toc-text">12 拆招卸力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-%E5%BC%80%E5%8F%A3%E5%89%8D%E7%BB%93%E5%B1%80%E5%B7%B2%E5%AE%9A"><span class="post-toc-text">13 开口前结局已定</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-%E5%A6%82%E4%BD%95%E5%BC%95%E5%AF%BC%E5%AF%B9%E6%96%B9%E7%9A%84%E6%80%9D%E8%B7%AF"><span class="post-toc-text">14 如何引导对方的思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-%E8%B4%B5%E4%BA%BA%E8%AF%AD%E8%BF%9F"><span class="post-toc-text">15 贵人语迟</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#16-%E6%B4%97%E8%84%91%E6%9C%AF%EF%BC%9A%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BA%BA%E6%B7%B1%E4%BF%A1%E4%B8%8D%E7%96%91"><span class="post-toc-text">16 洗脑术：如何让人深信不疑</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#17-%E5%A6%82%E4%BD%95%E8%AE%A9%E5%88%AB%E4%BA%BA%E5%85%B3%E6%B3%A8%E4%BD%A0"><span class="post-toc-text">17 如何让别人关注你</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#18-%E6%8F%90%E9%AB%98%E4%BD%A0%E7%9A%84%E4%BA%BA%E6%A0%BC%E9%AD%85%E5%8A%9B"><span class="post-toc-text">18 提高你的人格魅力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#19-%E5%A6%82%E4%BD%95%E8%AE%A9%E4%BA%BA%E4%B9%90%E6%84%8F%E6%9C%8D%E4%BD%A0"><span class="post-toc-text">19 如何让人乐意服你</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#20-%E8%AF%B4%E4%B8%8D%E9%80%8F%E6%97%B6%EF%BC%8C%E5%8D%96%E4%B8%AA%E6%95%85%E4%BA%8B"><span class="post-toc-text">20 说不透时，卖个故事</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-%E6%9C%80%E5%90%8E%E4%B8%80%E6%8B%9B%EF%BC%8C%E4%B8%8B%E5%B0%81%E6%88%98%E4%B9%A6"><span class="post-toc-text">21 最后一招，下封战书</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC%E5%9B%9B%E7%AF%87%EF%BC%9A%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E9%A2%86%E8%A2%96"><span class="post-toc-text">六、第四篇：成为一个领袖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-%E5%A6%82%E4%BD%95%E8%AE%A9%E5%A4%A7%E5%AE%B6%E9%83%BD%E5%B0%8A%E9%87%8D%E4%BD%A0"><span class="post-toc-text">22 如何让大家都尊重你</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-%E6%89%B9%E8%AF%84%E4%BD%86%E4%B8%8D%E6%8B%9B%E4%BA%BA%E6%81%A8"><span class="post-toc-text">23 批评但不招人恨</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#24-%E6%9C%8D%E4%BA%BA%E8%80%8C%E4%B8%8D%E5%BE%97%E7%BD%AA%E4%BA%BA"><span class="post-toc-text">24 服人而不得罪人</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#25-%E4%B8%96%E7%95%8C%E4%B8%8A%E6%B2%A1%E6%9C%89%E4%BB%BB%E4%BD%95%E4%BA%BA%E8%83%BD%E6%8C%87%E4%BD%BF%E6%88%91"><span class="post-toc-text">25 世界上没有任何人能指使我</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#26-%E7%AC%AC%E4%B8%80%E5%A4%A7%E5%BF%8C%EF%BC%9A%E7%8A%AF%E4%BC%97%E6%80%92"><span class="post-toc-text">26 第一大忌：犯众怒</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#27-%E6%B0%B4%E6%B6%A8%E8%88%B9%E9%AB%98%EF%BC%9A%E6%BF%80%E5%8A%B1%E4%B8%8B%E5%B1%9E%E6%88%90%E4%BA%8B%E5%84%BF"><span class="post-toc-text">27 水涨船高：激励下属成事儿</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#28-%E4%BD%A0%E7%9A%84%E6%9C%9F%E6%9C%9B%E6%B0%B8%E8%BF%9C%E4%B8%8D%E4%BC%9A%E8%90%BD%E7%A9%BA"><span class="post-toc-text">28 你的期望永远不会落空</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#29-%E8%AE%A9%E4%BA%BA%E4%B9%90%E6%84%8F%E7%85%A7%E4%BD%A0%E8%AF%B4%E7%9A%84%E5%8E%BB%E6%94%B9"><span class="post-toc-text">29 让人乐意照你说的去改</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#30-%E8%AE%A9%E4%BA%BA%E4%B9%90%E6%84%8F%E7%85%A7%E4%BD%A0%E8%AF%B4%E7%9A%84%E5%8E%BB%E5%81%9A"><span class="post-toc-text">30 让人乐意照你说的去做</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E6%80%8E%E4%B9%88%E6%8A%8A%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%94%A8%E8%B5%B7%E6%9D%A5"><span class="post-toc-text">七、怎么把这本书用起来</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E6%88%91%E7%9A%84%E6%80%BB%E7%BB%93"><span class="post-toc-text">八、我的总结</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《人性的弱点：增订全译版》"><a href="#阅读笔记——《人性的弱点：增订全译版》" class="headerlink" title="阅读笔记——《人性的弱点：增订全译版》"></a>阅读笔记——《人性的弱点：增订全译版》</h1><blockquote>
+<p>这本书的英文原名是 <em>How to Win Friends and Influence People</em>，直译是“如何赢得朋友并影响他人”。它不是在讲操控，而是在讲一种更真诚、更少摩擦的相处方式。</p>
+</blockquote>
+<h2 id="一、这本书到底在解决什么问题"><a href="#一、这本书到底在解决什么问题" class="headerlink" title="一、这本书到底在解决什么问题"></a>一、这本书到底在解决什么问题</h2><p>卡耐基在作者序里给出几个值得记住的判断：</p>
+<ul>
+<li><strong>经济成就中，只有 15% 左右来自专业技术，85% 来自人格和领导能力。</strong> 即使对工程师、会计等技术工种，也大致成立。</li>
+<li><strong>“与人打交道的能力是一种商品”</strong>。洛克菲勒说他愿意为这种能力付高于任何其他商品的价钱。</li>
+<li>芝加哥大学和基督教青年会联合学校的一项调查显示，成年人第二关心的成长主题是“人”：如何读懂别人、如何相处、如何让别人同意自己。排在它前面的只有健康。</li>
+<li>本书不是理论推演，而是从 1912 年起的成人课堂、访谈近百位成功人士、阅读大量传记后逐步长出来的“实操手册”。</li>
+</ul>
+<p>全书可以概括成四个问题：</p>
+<ol>
+<li>如何减少人际摩擦，先不伤害关系？</li>
+<li>如何让别人喜欢你、愿意与你合作？</li>
+<li>如何有逻辑、有策略地说服别人？</li>
+<li>如何以领导者身份改变别人，同时不激起反感？</li>
+</ol>
+<pre class="mermaid">flowchart LR
+  A["《人性的弱点》"] --&gt; B["第一篇 基本技巧&lt;br/&gt;不批评 / 真诚赞美 / 诉诸需要"]
+  A --&gt; C["第二篇 让人喜欢你&lt;br/&gt;真诚关心 / 微笑 / 名字 / 倾听 / 兴趣 / 重要感"]
+  A --&gt; D["第三篇 有逻辑地说服&lt;br/&gt;不争 / 不判错 / 认错 / 友善 / 获得是 / 让对方说 / 自主意 / 视角 / 共情 / 高尚动机 / 故事 / 挑战"]
+  A --&gt; E["第四篇 领袖式改变&lt;br/&gt;先赞赏 / 间接批评 / 先说自己错 / 问句 / 保面子 / 夸进步 / 给好评 / 鼓励 / 让人乐意"]</pre>
+
+<h2 id="二、贯穿全书的底层机制"><a href="#二、贯穿全书的底层机制" class="headerlink" title="二、贯穿全书的底层机制"></a>二、贯穿全书的底层机制</h2><p>书里反复出现的核心不是“技巧”，而是对一种人性的判断：</p>
+<blockquote>
+<p><strong>每个人都强烈地渴望“自己很重要、被尊重、被赞赏”。</strong></p>
+</blockquote>
+<p>弗洛伊德称之为“对伟大的渴望”，约翰·杜威称之为“渴望感觉自己很重要”，威廉·詹姆斯则说这是“人性最深的原则”。这个判断可以解释很多现象：</p>
+<ul>
+<li>人为什么被批评后第一反应是辩解，而不是反思。</li>
+<li>为什么销售失败往往不是因为产品，而是因为只谈自己的需求。</li>
+<li>为什么真诚赞美会让人愿意重复好行为，而惩罚常常只带来暂时的服从。</li>
+<li>为什么领导力不是“命令得对”，而是“让人愿意做”。</li>
+</ul>
+<pre class="mermaid">flowchart TD
+  N["底层需要：&lt;br/&gt;感到自己重要、被尊重、被赞赏"] --&gt; R["人的反应：&lt;br/&gt;被认可时开放与合作；被否定时防御与对抗"]
+  R --&gt; P["正向路径：&lt;br/&gt;赞美、倾听、名字、兴趣、鼓励"]
+  R --&gt; M["负向路径：&lt;br/&gt;批评、争辩、证明对方错、命令"]
+  P --&gt; O["结果：&lt;br/&gt;善意、信任、持续行动"]
+  M --&gt; B["结果：&lt;br/&gt;自尊受伤、怨恨、表面服从"]</pre>
+
+<p>卡耐基反复强调一个使用边界：<strong>这些原则必须真诚。</strong> 谄媚是“对方觉得自己是什么样的人，你就照准了告诉他”，它像假币，短期或许有用，长期会反噬。</p>
+<h2 id="三、第一篇：基本技巧"><a href="#三、第一篇：基本技巧" class="headerlink" title="三、第一篇：基本技巧"></a>三、第一篇：基本技巧</h2><h3 id="01-待人接物的第一大忌"><a href="#01-待人接物的第一大忌" class="headerlink" title="01 待人接物的第一大忌"></a>01 待人接物的第一大忌</h3><p><strong>原则：不要批评、指责或抱怨任何人。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>人们 99% 的情况下不会因为任何事情真正批评自己；即使错了，也会把行为合理化。</li>
+<li>批评会打开对方的防御模式，伤害自尊，换来辩解和怨恨，而不会带来持久改变。</li>
+<li>斯金纳的行为实验说明：奖励形成的好行为更容易保持，惩罚消除的坏行为消退更慢。</li>
+<li>人不是在和“纯理性动物”打交道，而是在和“充满执念、为自尊和虚荣所驱动的情感动物”打交道。</li>
+</ul>
+<p>书中用大量案例证明：罪犯、政客、将军、普通人被指责后都很少真心认错。林肯年轻时因公开讥讽他人几乎决斗，此后一生几乎不再尖锐批评别人；他给弥德将军写下的严厉信最终没有寄出。更可操作的例子是试飞员鲍勃·胡佛：加油工加错燃料，胡佛没有责骂，反而让他第二天继续为自己的飞机加油。</p>
+<h3 id="02-这种说话方式非常值钱"><a href="#02-这种说话方式非常值钱" class="headerlink" title="02 这种说话方式非常值钱"></a>02 这种说话方式非常值钱</h3><p><strong>原则：请不要吝啬发自内心的、不做作的赞美。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>天底下唯一能让人做事的方法，是“让人乐意去做”；强制、威胁、命令都有副作用。</li>
+<li>大部分需求都能被满足，但“自我价值感”长期处于饥饿状态。</li>
+<li>真诚赞美与谄媚的区别：前者发自内心、不求回报，后者言不由衷、暗藏私心。</li>
+<li>查理·施瓦布的年薪秘诀是“欣赏和鼓励”：急于称赞，迟于挑刺。</li>
+</ul>
+<p>案例：洛克菲勒在合伙人亏损 100 多万美元后，没有指责，反而祝贺他保住了 60% 的本金；一位丈夫不列妻子的 6 个缺点，而送 6 朵玫瑰并说“我爱你现在的样子”。</p>
+<h3 id="03-让整个世界前来为你助力"><a href="#03-让整个世界前来为你助力" class="headerlink" title="03 让整个世界前来为你助力"></a>03 让整个世界前来为你助力</h3><p><strong>原则：诉诸对方的内在需要。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>钓鱼要放鱼喜欢的饵，而不是自己喜欢的草莓和奶酪。</li>
+<li>影响他人的起点不是“我想要什么”，而是“他想要什么，我如何帮他得到”。</li>
+<li>说服应当双赢：对方从协商中也必须有所得，否则就是操纵。</li>
+<li>亨利·福特的判断：成功的秘诀在于能看到对方的视角，并像自己的视角一样站在他的位置看问题。</li>
+</ul>
+<p>案例：卡耐基与酒店经理谈租金时，全程不强调自己不想涨价，而是分析涨价对酒店的利弊，结果涨幅从 300% 降到 50%；一个 3 岁孩子为了“长大能打败欺负人的大孩子”而开始好好吃饭，因为父母把“我要他吃饭”转化成了“他自己的需要”。</p>
+<h2 id="四、第二篇：如何让大家都喜欢你"><a href="#四、第二篇：如何让大家都喜欢你" class="headerlink" title="四、第二篇：如何让大家都喜欢你"></a>四、第二篇：如何让大家都喜欢你</h2><h3 id="04-这样做，谁会不喜欢你？"><a href="#04-这样做，谁会不喜欢你？" class="headerlink" title="04 这样做，谁会不喜欢你？"></a>04 这样做，谁会不喜欢你？</h3><p><strong>原则：真的喜欢别人。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>真正关心别人的人，两个月交到的朋友，比只想让别人喜欢自己的人两年交到的更多。</li>
+<li>阿德勒说：不关心别人的人会活得最苦，也最贻害他人，所有的人类失败都来自这些人。</li>
+<li>纽约电话公司调查发现，500 次通话中“我”出现了 3990 次，说明人天然更关注自己。</li>
+</ul>
+<p>案例：魔术大师霍华德·塞斯顿的秘诀不是魔术知识，而是真的热爱观众；瓦尔特斯先用邮票满足了总裁对儿子的关心，随后总裁主动提供他需要的一整份调查报告。</p>
+<h3 id="05-这能留下美好的第一印象"><a href="#05-这能留下美好的第一印象" class="headerlink" title="05 这能留下美好的第一印象"></a>05 这能留下美好的第一印象</h3><p><strong>原则：你，一笑值千金。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>一个人的表情比背上的皮草更值钱；行动比语言更雄辩。</li>
+<li>微笑传递的信息是：“我喜欢你，你让我高兴，看到你真的很开心。”</li>
+<li>真笑无法伪装，假笑会让人讨厌。</li>
+<li>行为和感觉会互相影响：强迫自己微笑、吹口哨、表现出快乐，情绪也会跟着改变。</li>
+</ul>
+<p>案例：一位股票经纪人坚持一周微笑着与妻子、电梯员、门卫和客户说话，两个月里给家庭带来的幸福比过去一年还多，工作也变得更顺。</p>
+<h3 id="06-这会让人一下子喜欢上你"><a href="#06-这会让人一下子喜欢上你" class="headerlink" title="06 这会让人一下子喜欢上你"></a>06 这会让人一下子喜欢上你</h3><p><strong>原则：记住对方的名字，因为名字对一个人来说是世界上最悦耳和最重要的声音。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>人很在意自己的姓名，甚于全世界的姓名之和。</li>
+<li>记不住名字通常不是能力问题，而是不肯花时间和精力。</li>
+<li>政治家常说：你记不住选民，选民就记不住你。</li>
+<li>记住名字的要领：没听清就问，不常见的名字问怎么写，反复在脑中与长相、表情、整体外形连接，必要时写下来。</li>
+</ul>
+<p>案例：吉姆·法雷靠记住 5 万个名字帮助罗斯福竞选；安德鲁·卡耐基小时候用“以孩子的名字命名小兔子”换来合作，后来把钢铁厂命名为“埃德加·汤姆生钢铁厂”。</p>
+<h3 id="07-怎样才叫“会聊天”"><a href="#07-怎样才叫“会聊天”" class="headerlink" title="07 怎样才叫“会聊天”"></a>07 怎样才叫“会聊天”</h3><p><strong>原则：倾听，鼓励对方多聊自己。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>倾听是我们能给予任何人的最高赞美；全心关注是一种微妙的恭维。</li>
+<li>会聊天的人往往不是最会说话的人，而是最会听并鼓励对方继续说的人。</li>
+<li>人们喜欢会听的人，甚于喜欢会说的人。</li>
+<li>很多客户发火时真正需要的不是解决方案，而是“我很重要”的感觉。</li>
+</ul>
+<p>案例：卡耐基与植物学家聊了几个小时，几乎没说话，却被评价“特别会聊天”；纽约电话公司的问题专家耐心听投诉者咆哮近 3 小时，第四次见面时对方主动付款并撤销投诉。</p>
+<h3 id="08-提高你的影响力"><a href="#08-提高你的影响力" class="headerlink" title="08 提高你的影响力"></a>08 提高你的影响力</h3><p><strong>原则：聊对方感兴趣的话题。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>直抵心底的康庄大道，就是聊对方最关注的话题。</li>
+<li>罗斯福会见来客前，会提前一晚研究对方感兴趣的话题。</li>
+<li>先找到对方真正关心的事，再进入正题，往往比直接提要求更有效。</li>
+</ul>
+<p>案例：童子军负责人没有直接要求赞助，而是先请总裁展示那张 100 万美元支票，最终获得超预期资助；面包商跟了酒店经理四年没谈成，改成聊酒店高管协会后，订单自然到来。</p>
+<h3 id="09-一句话焐热人心"><a href="#09-一句话焐热人心" class="headerlink" title="09 一句话焐热人心"></a>09 一句话焐热人心</h3><p><strong>原则：使对方感到自己是重要的，要真心实意。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>这条原则是全书最古老的训诫：你希望别人如何待你，你就怎样去对待别人。</li>
+<li>爱默生说：我遇到的每个人都在某个方面长于我，所以可以为我师。</li>
+<li>让别人感到重要，不是靠廉价的奉承，而是靠真诚地看见对方真正的价值。</li>
+</ul>
+<p>案例：R 先生真诚欣赏老姑的房子和收藏，老太太感动得要把丈夫生前买的车送给他；詹姆斯·亚当森通过欣赏伊斯特曼的办公室，最终拿到 9 万美元座椅订单。</p>
+<h2 id="五、第三篇：如何有逻辑地说服他人"><a href="#五、第三篇：如何有逻辑地说服他人" class="headerlink" title="五、第三篇：如何有逻辑地说服他人"></a>五、第三篇：如何有逻辑地说服他人</h2><p>这一篇的 12 条原则，本质上是一条不断降低阻力、增加共识的流程。</p>
+<pre class="mermaid">flowchart TD
+  A["避免争论，不直接说对方错"] --&gt; B["错了就立即真心承认"]
+  B --&gt; C["先友善开场，建立关系"]
+  C --&gt; D["让对方连续回答“是”"]
+  D --&gt; E["尽量让对方多说"]
+  E --&gt; F["让方案成为对方自己的想法"]
+  F --&gt; G["努力从对方视角看问题"]
+  G --&gt; H["真正体会对方的感受和渴望"]
+  H --&gt; I["诉诸高尚的情操"]
+  I --&gt; J["用故事和戏剧化呈现观点"]
+  J --&gt; K["最后抛出挑战，激发行动"]</pre>
+
+<h3 id="10-第一大忌：伤敌一万，自损八千"><a href="#10-第一大忌：伤敌一万，自损八千" class="headerlink" title="10 第一大忌：伤敌一万，自损八千"></a>10 第一大忌：伤敌一万，自损八千</h3><p><strong>原则：赢得争论的唯一方法是避免争论。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>争吵的 10 次中有 9 次，双方会更坚信自己是对的。</li>
+<li>你吵输了就是输了；吵赢了，对方自尊受伤，仍然输了。</li>
+<li>误会不会因为辩论清楚而消除，只能靠策略、怀柔、理解和看到对方视角。</li>
+<li>避免争执的步骤：欢迎不同意见，不要相信第一直觉，控制脾气，先听，寻找共同点，诚实认错，认真考虑对方观点，感谢对方，拖延时间再下结论。</li>
+</ul>
+<p>案例：帕特里克·欧海尔从“总想教客户做人”的失败销售，变成“先认同对手，再讲自己产品优点”的明星销售。</p>
+<h3 id="11-第二大忌：一句惹怒全世界的话"><a href="#11-第二大忌：一句惹怒全世界的话" class="headerlink" title="11 第二大忌：一句惹怒全世界的话"></a>11 第二大忌：一句惹怒全世界的话</h3><p><strong>原则：尊重对方的观点，永远别说“你不对”。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>直接说对方错，等于打击他的智力、判断力、骄傲和自尊。</li>
+<li>“我可能是错的，我常犯错，让我们再检查一遍事实”，比“我证明给你看”更有效。</li>
+<li>富兰克林戒掉武断字眼，改用“我想”“我觉得”“目前我感觉”，50 年几乎没说过一句武断的话。</li>
+<li>与其把事实塞进对方喉咙，不如温柔地让他自己看见事实。</li>
+</ul>
+<p>案例：木材销售克罗雷不再直接说质检员错了，而是不断请教、合作式提问，最终质检员自己重新验收，公司拿到全额货款。</p>
+<h3 id="12-拆招卸力"><a href="#12-拆招卸力" class="headerlink" title="12 拆招卸力"></a>12 拆招卸力</h3><p><strong>原则：假如你错了，立刻真心诚意地承认。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>在对方开口之前先责备自己，对方反而会大度地替你辩护。</li>
+<li>自我批评能同时消除内疚感、自卫感和对方的攻击欲。</li>
+<li>承认错误让人超越群氓，也会赢得尊重。</li>
+</ul>
+<p>案例：卡耐基没有给狗戴口笼被警察抓到，主动认错，警察反而替他开脱；李将军在皮克特进攻失败后说“这都是我的错”，展示了领导者的人格。</p>
+<h3 id="13-开口前结局已定"><a href="#13-开口前结局已定" class="headerlink" title="13 开口前结局已定"></a>13 开口前结局已定</h3><p><strong>原则：先说友善的话，气氛对了之后再说别的。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>“一滴蜂蜜比三升胆汁能够捉到更多的飞虫。”</li>
+<li>如果对方内心烦你，再完美的逻辑也无法说服他；但友善可以先把对方“焐热”。</li>
+<li>太阳和风的寓言说明：温柔友善比暴怒强力更有力量。</li>
+</ul>
+<p>案例：洛克菲勒面对敌意矿工，不是争辩，而是用“我们是朋友”“我去了你们家”开场，最终让工人们平静回去工作；斯特劳布用友好和欣赏让顽固房东主动降租。</p>
+<h3 id="14-如何引导对方的思路"><a href="#14-如何引导对方的思路" class="headerlink" title="14 如何引导对方的思路"></a>14 如何引导对方的思路</h3><p><strong>原则：先让对方回答“对”“是的”。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>一开始就避免让“不”出现；一个“不”会让对方全身进入抗拒状态。</li>
+<li>一连串“对”就像让球朝正确方向滚起来，之后转向更容易。</li>
+<li>苏格拉底法的核心就是通过提问，让对方不断肯定，直到自己接受结论。</li>
+</ul>
+<p>案例：电机销售埃里森面对“你的电机太烫”的拒绝，先连续让对方确认行业标准、室温、总温度，最后让客户自己得出结论并下单。</p>
+<h3 id="15-贵人语迟"><a href="#15-贵人语迟" class="headerlink" title="15 贵人语迟"></a>15 贵人语迟</h3><p><strong>原则：尽量让对方多说。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>很多人说服失败，是因为说太多。</li>
+<li>对方对自己的问题最了解，先让他把话说完，才轮到你表达。</li>
+<li>如果想让朋友喜欢你，就让他们胜你一筹；如果总想处处压人，就会树敌。</li>
+</ul>
+<p>案例：销售代表临时失声，只能让汽车公司总裁替自己介绍样品，反而签下 160 万美元订单；芭芭拉·威尔逊停止说教、开始听女儿说话后，母女关系迅速改善。</p>
+<h3 id="16-洗脑术：如何让人深信不疑"><a href="#16-洗脑术：如何让人深信不疑" class="headerlink" title="16 洗脑术：如何让人深信不疑"></a>16 洗脑术：如何让人深信不疑</h3><p><strong>原则：让对方感觉，那是他自己的主意。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>人们更喜欢相信和接受自己发现的结论。</li>
+<li>没有人喜欢被说服，人们更喜欢认为自己是根据自己的意志购买或决定。</li>
+<li>把建议“种”在对方心里，让他自己思考，往往比硬塞更有效。</li>
+</ul>
+<p>案例：豪斯上校影响威尔逊总统的方法是“漫不经心地种在他心里，让他自己思考”；X 光设备商写信请医生提改良意见，医生最终觉得买设备是自己的决定。</p>
+<h3 id="17-如何让别人关注你"><a href="#17-如何让别人关注你" class="headerlink" title="17 如何让别人关注你"></a>17 如何让别人关注你</h3><p><strong>原则：努力从对方的视角看问题，要诚实。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>对方那么想、那么做，一定有他的道理；找到原因，就能理解他的行为。</li>
+<li>关注因，就不会太憎恶果。</li>
+<li>哈佛商学院多纳姆院长说，见人之前如果不够了解对方的兴趣和动机，宁愿先在他办公室外走两小时。</li>
+</ul>
+<p>案例：卡耐基不再对公园里生火的孩子发号施令，而是理解他们想野餐，再解释火灾风险，孩子们很乐意配合；诺瓦卡从催款员的角度看问题，真诚道歉后获得宽松安排。</p>
+<h3 id="18-提高你的人格魅力"><a href="#18-提高你的人格魅力" class="headerlink" title="18 提高你的人格魅力"></a>18 提高你的人格魅力</h3><p><strong>原则：真正体会和感受对方的观点和渴望。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>一句有魔力的话是：“你现在这样感觉，我没有任何理由怪你，如果我是你，我一定也会是那个感觉。”</li>
+<li>每天遇到的人中，3&#x2F;4 都渴望被理解。</li>
+<li>共情不是认同对方的错误，而是承认他的情绪、处境和内在逻辑。</li>
+</ul>
+<p>案例：胡洛克理解夏里亚宾的紧张和任性，用共情让这位男低音一次次如期登台；诺里斯老师理解女孩珍惜长指甲，反而让女孩自己决定剪掉。</p>
+<h3 id="19-如何让人乐意服你"><a href="#19-如何让人乐意服你" class="headerlink" title="19 如何让人乐意服你"></a>19 如何让人乐意服你</h3><p><strong>原则：诉诸高尚的情操。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>摩根说，人们做一件事通常有两重理由：一重好听，一重真实。大多数人愿意相信自己有高尚动机。</li>
+<li>想要改变人的意志，就要诉诸他“理想中的自己”，而不是羞辱他的现实。</li>
+<li>没有对任何事都有效的方法，但对长期无效的旧方法，值得换这个角度试一次。</li>
+</ul>
+<p>案例：诺斯克里夫不让报纸刊登照片时说“我母亲不喜欢”；托马斯去收账时先承认客户“讲信用、懂公平”，结果 6 个客户中有 5 个主动核对并付款，两年内 6 人都买了新车。</p>
+<h3 id="20-说不透时，卖个故事"><a href="#20-说不透时，卖个故事" class="headerlink" title="20 说不透时，卖个故事"></a>20 说不透时，卖个故事</h3><p><strong>原则：把你的观点，演成故事。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>这是看戏的时代：事实要生动、有趣、让人身临其境，光靠说是不够的。</li>
+<li>橱窗广告、电视广告都靠戏剧化，而不是只靠语言。</li>
+<li>面对难以沟通的对象，用可视化、可体验、可参与的方式呈现事实，效果会明显不同。</li>
+</ul>
+<p>案例：收银机销售把一把硬币扔到地上，说“你实际上是在扔钱”；市场研究员把 32 个竞品瓶子倒在客户桌上，每张标签讲一个故事，客户从 10 分钟聊到一个多小时。</p>
+<h3 id="21-最后一招，下封战书"><a href="#21-最后一招，下封战书" class="headerlink" title="21 最后一招，下封战书"></a>21 最后一招，下封战书</h3><p><strong>原则：抛出挑战。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>施瓦布通过在地上写“6”和“7”，让两个班次竞争产量。</li>
+<li>对有血气的人，最有效的激励常常不是钱，而是“战胜挑战”的渴望。</li>
+<li>赫茨伯格研究发现，最大的激励因素是工作本身，而不是薪水和环境；人们渴望表达自己、证明自己能赢。</li>
+</ul>
+<p>案例：州长史密斯用“有胆色的人才能待住”激将劳斯，让他接下新新监狱；反对者用“圣胡安山的英雄原来是个懦夫”激将罗斯福继续战斗。</p>
+<h2 id="六、第四篇：成为一个领袖"><a href="#六、第四篇：成为一个领袖" class="headerlink" title="六、第四篇：成为一个领袖"></a>六、第四篇：成为一个领袖</h2><p>这一篇的核心问题，是如何改变他人，却不让对方感到被冒犯。它的要点可以形成一个领导力闭环。</p>
+<pre class="mermaid">flowchart LR
+  A["先真诚称赞对方"] --&gt; B["间接指出错误，避免生硬“但是”"]
+  B --&gt; C["先说说自己犯过的错"]
+  C --&gt; D["用问句代替直接命令"]
+  D --&gt; E["让对方保全颜面"]
+  E --&gt; F["具体称赞每一个细小进步"]
+  F --&gt; G["给对方一个无法辜负的好名声"]
+  G --&gt; H["用鼓励让改变显得容易"]
+  H --&gt; I["让对方乐意去做"]
+  I --&gt; A</pre>
+
+<h3 id="22-如何让大家都尊重你"><a href="#22-如何让大家都尊重你" class="headerlink" title="22 如何让大家都尊重你"></a>22 如何让大家都尊重你</h3><p><strong>原则：先要懂得欣赏，不做作地称赞。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>先称赞，再提出需要改进的地方，就像理发师先涂泡沫再刮胡子。</li>
+<li>柯立芝先夸秘书的衣服漂亮，再提醒标点符号问题。</li>
+<li>林肯写给虎克将军的信，先用“我任命你是因为看到了充分理由”“你骁勇善战”铺垫，再指出不满。</li>
+</ul>
+<p>案例：W.P.高去纽约催货，先聊对方罕见的姓氏、家族和工厂，午饭后对方主动保证按期交货。</p>
+<h3 id="23-批评但不招人恨"><a href="#23-批评但不招人恨" class="headerlink" title="23 批评但不招人恨"></a>23 批评但不招人恨</h3><p><strong>原则：让人们注意自己的错误时，间接一点儿。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>施瓦布看到工人违规吸烟，没有揭穿，反而递给每人一根雪茄，请他们到外面抽。</li>
+<li>把“但是”换成“而”，能让前面的肯定显得更可信：“你这学期进步了，而如果代数再努力一点，成绩会更好。”</li>
+<li>对敏感的人，间接提醒尤其有效。</li>
+</ul>
+<p>案例：雅各布太太没有指责工人把院子弄乱，反而说“前院草地很干净”，工人从此主动收拾；军士长没有命令学员理发，而是让他们照镜子判断自己是否像好榜样。</p>
+<h3 id="24-服人而不得罪人"><a href="#24-服人而不得罪人" class="headerlink" title="24 服人而不得罪人"></a>24 服人而不得罪人</h3><p><strong>原则：批评对方之前，不妨先说说自己犯过的错。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>批评者先自降身段，说自己远非完美，对方更容易接受。</li>
+<li>用“我像你这么大的时候也犯过类似的错”比直接数落更有力量。</li>
+<li>认错但不改，也能影响对方。</li>
+</ul>
+<p>案例：卡耐基批评侄女约瑟芬时，先承认自己 19 岁远不如她；工程师用“这个字我也常写错”提醒秘书，错别字大幅减少。</p>
+<h3 id="25-世界上没有任何人能指使我"><a href="#25-世界上没有任何人能指使我" class="headerlink" title="25 世界上没有任何人能指使我"></a>25 世界上没有任何人能指使我</h3><p><strong>原则：不要直接下命令，而要利用问句。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>欧文·杨格 3 年里几乎从不直接命令，总是说“你可以考虑一下”“你觉得这样改会不会更好”。</li>
+<li>问句保全对方的骄傲，给他尊重感，促进合作而不是抗拒。</li>
+<li>人们更乐意执行一个指令，如果他们参与了指令下达前的决定过程。</li>
+</ul>
+<p>案例：麦克唐纳接到超量订单，没有催工人赶工，而是问“我们能做些什么”“有没有别的办法”，工人主动说“我们能做到”。</p>
+<h3 id="26-第一大忌：犯众怒"><a href="#26-第一大忌：犯众怒" class="headerlink" title="26 第一大忌：犯众怒"></a>26 第一大忌：犯众怒</h3><p><strong>原则：让对方保全颜面。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>顾全别人的面子非常重要，但多数人在批评时却忽视对他人自尊的伤害。</li>
+<li>即使自己完全正确、对方完全错误，如果让对方丢脸，也只是挫伤了他的自我。</li>
+<li>圣埃克苏佩里说：伤害一个人的尊严是犯罪行为。</li>
+</ul>
+<p>案例：通用电气用“工程总顾问”新头衔保住了斯坦梅茨的面子，同时解决了管理问题；马佐内做错项目后，老板当众肯定她的努力，让她决心不再让老板失望。</p>
+<h3 id="27-水涨船高：激励下属成事儿"><a href="#27-水涨船高：激励下属成事儿" class="headerlink" title="27 水涨船高：激励下属成事儿"></a>27 水涨船高：激励下属成事儿</h3><p><strong>原则：称赞最细小的进步，称赞每一个进步。不要吝啬你的嘉许和赞扬，要真诚。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>驯兽师用肉而不是鞭子，我们却常对身边人施加“批评的寒风”。</li>
+<li>斯金纳的观点：多关注可称赞的部分，优点会增强；缺点则会因缺乏关注而萎缩。</li>
+<li>表扬必须具体，泛泛而谈会显得虚假。</li>
+</ul>
+<p>案例：卡鲁索、狄更斯、H.G.威尔斯都曾因一句鼓励而改变人生；林格尔斯波不再唠叨孩子的缺点，而是找到一个可表扬的优点，孩子的其他缺点也开始消失。</p>
+<h3 id="28-你的期望永远不会落空"><a href="#28-你的期望永远不会落空" class="headerlink" title="28 你的期望永远不会落空"></a>28 你的期望永远不会落空</h3><p><strong>原则：给人一个无法抗拒、无法辜负的好评。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>想改善一个人某方面，就表现得仿佛那个优点已经存在。</li>
+<li>公开给人一个好名声，让他去维护，他往往会努力不辜负期待。</li>
+<li>莎士比亚说：如果你没有某种品德，就假设你已经有了。</li>
+</ul>
+<p>案例：四年级老师对最难管的汤米说“你是个天生的领袖，我要依靠你”，汤米真的朝这个方向改变；菲茨休医生给清洁工一个“一直做得很好”的名声，第二天杯托被擦得闪闪发亮。</p>
+<h3 id="29-让人乐意照你说的去改"><a href="#29-让人乐意照你说的去改" class="headerlink" title="29 让人乐意照你说的去改"></a>29 让人乐意照你说的去改</h3><p><strong>原则：学会鼓励人，鼓励会使改变看起来很容易。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>说对方“笨、没天分、完全不对”，会摧毁进取动力；相反，鼓励会让困难显得可行。</li>
+<li>要让对方知道，你相信他有能力、还有尚待开发的天分。</li>
+<li>进步越小越值得庆祝，减少练习时间本身也是成功。</li>
+</ul>
+<p>案例：一位父亲用卡片、秒表和每一次进步庆祝，帮被诊断为“脑损伤”、留级两年的儿子从乘法表都困难，一路进入高中荣誉生会。</p>
+<h3 id="30-让人乐意照你说的去做"><a href="#30-让人乐意照你说的去做" class="headerlink" title="30 让人乐意照你说的去做"></a>30 让人乐意照你说的去做</h3><p><strong>原则：使人们乐意去做你要他们做的事。</strong></p>
+<p>知识点：</p>
+<ul>
+<li>豪斯上校让布莱恩接受落选，方式不是拒绝，而是“你太重要，所以不适合以官方名义去”。</li>
+<li>领导发出要求前，应真诚、明确地知道对方要什么，并把“这么做对他的好处”讲清楚。</li>
+<li>可以先清楚告诉对方你要他做什么，同时让他感到自己才是受益者。</li>
+<li>给一个头衔、权威感或责任感，常能改变一个人的态度。</li>
+</ul>
+<p>案例：施密特把粗心员工任命为“贴价签总监”，她从此完美履职；珍特夫人给踩草坪的男孩“侦探”头衔，让他负责阻止别人踩草坪。</p>
+<h2 id="七、怎么把这本书用起来"><a href="#七、怎么把这本书用起来" class="headerlink" title="七、怎么把这本书用起来"></a>七、怎么把这本书用起来</h2><p>这本书的价值不在“读完”，而在“练习”。它自己给出的使用方法是：</p>
+<ol>
+<li><strong>不要读得太快</strong>。每读一个原则，停下来想：我在什么场景可以用它。</li>
+<li><strong>遇到问题再翻回来</strong>。把 30 条原则当手册，按问题检索。</li>
+<li><strong>定期复盘</strong>。每天或每周回顾：对谁、在什么场景、用了哪条、结果如何、还能怎么改进。</li>
+<li><strong>接受滞后反应</strong>。效果不会全部立刻显现，很多变化会在几个月、几年后沉淀出来。</li>
+<li><strong>不要只看原则的最后一句</strong>。如果脱离真诚，这些技巧会滑向操纵，最终反噬自己。</li>
+</ol>
+<pre class="mermaid">flowchart LR
+  A["从 30 条原则中选 1 条"] --&gt; B["本周刻意练习"]
+  B --&gt; C["记录场景、反应、结果"]
+  C --&gt; D["复盘：哪里真诚，哪里机械"]
+  D --&gt; E["调整后继续练习"]
+  E --&gt; A</pre>
+
+<h2 id="八、我的总结"><a href="#八、我的总结" class="headerlink" title="八、我的总结"></a>八、我的总结</h2><p>《人性的弱点》最有价值的地方，不是它提供了多少“说话公式”，而是它把人际关系拉回了一个简单前提：<strong>先理解对方需要什么，再决定自己怎么表达。</strong> 批评、争辩、命令之所以低效，不是因为道理不对，而是因为它们先伤害了对方“我很重要”的感觉。</p>
+<p>如果只记一句，我会记这句：</p>
+<blockquote>
+<p><strong>你希望别人如何待你，你就怎样去对待别人。</strong></p>
+</blockquote>
+<p>但更重要的是：<strong>不要把它当成操纵技巧，而要把真诚、赞赏、倾听和共情变成日常习惯。</strong> 技巧能赢得一次，真诚才能维系很久。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000000.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%88%86%E5%B8%83%E5%BC%8F%E8%AE%A1%E7%AE%97%EF%BC%9A%E5%8E%9F%E7%90%86%E3%80%81%E7%AE%97%E6%B3%95%E4%B8%8E%E7%B3%BB%E7%BB%9F%E3%80%8B/'>阅读笔记——《分布式计算：原理、算法与系统》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222158000000.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%AE%A1%E7%90%86%E5%AD%A6%E3%80%8B%EF%BC%88%E7%AC%AC13%E7%89%88%EF%BC%89/">阅读笔记——《管理学》（第13版）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

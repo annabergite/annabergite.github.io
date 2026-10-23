@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《深入浅出统计学》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《深入浅出统计学》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.7k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：14分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E7%BB%9F%E8%AE%A1%E5%AD%A6%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《深入浅出统计学》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%A6%82%E6%8B%AC"><span class="post-toc-text">一句话概括</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书地图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BB%9F%E8%AE%A1%E6%80%9D%E7%BB%B4%E6%80%BB%E6%B5%81%E7%A8%8B"><span class="post-toc-text">统计思维总流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0%EF%BC%9A%E4%BF%A1%E6%81%AF%E5%9B%BE%E5%BD%A2%E5%8C%96"><span class="post-toc-text">第 1 章：信息图形化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E4%BB%BB%E5%8A%A1"><span class="post-toc-text">核心任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E5%9B%BE%E5%BD%A2%E4%B8%8E%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="post-toc-text">常见图形与适用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E4%B8%89%E6%AD%A5"><span class="post-toc-text">直方图三步</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0%EF%BC%9A%E9%9B%86%E4%B8%AD%E8%B6%8B%E5%8A%BF"><span class="post-toc-text">第 2 章：集中趋势</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%87%E5%80%BC%E4%B8%8E%E4%B8%AD%E4%BD%8D%E6%95%B0"><span class="post-toc-text">均值与中位数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%94%AE%E5%85%AC%E5%BC%8F"><span class="post-toc-text">关键公式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0%EF%BC%9A%E5%88%86%E6%95%A3%E6%80%A7%E4%B8%8E%E5%8F%98%E5%BC%82%E6%80%A7"><span class="post-toc-text">第 3 章：分散性与变异性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%99%BE%E5%88%86%E4%BD%8D%E6%95%B0%E4%B8%8E%E7%AE%B1%E7%BA%BF%E5%9B%BE"><span class="post-toc-text">百分位数与箱线图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%B7%AE%E4%B8%8E%E6%A0%87%E5%87%86%E5%B7%AE"><span class="post-toc-text">方差与标准差</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E5%88%86"><span class="post-toc-text">标准分</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0%EF%BC%9A%E6%A6%82%E7%8E%87%E8%AE%A1%E7%AE%97"><span class="post-toc-text">第 4 章：概率计算</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E7%8E%87%E5%9F%BA%E7%A1%80"><span class="post-toc-text">概率基础</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%B4%E6%81%A9%E5%9B%BE%E4%B8%8E%E4%BA%8B%E4%BB%B6%E5%85%B3%E7%B3%BB"><span class="post-toc-text">维恩图与事件关系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%A6%82%E7%8E%87"><span class="post-toc-text">条件概率</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A6%82%E7%8E%87%E6%A0%91%E4%B8%8E%E5%85%A8%E6%A6%82%E7%8E%87%E5%85%AC%E5%BC%8F"><span class="post-toc-text">概率树与全概率公式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86"><span class="post-toc-text">贝叶斯定理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8B%AC%E7%AB%8B%E4%BA%8B%E4%BB%B6"><span class="post-toc-text">独立事件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0%EF%BC%9A%E7%A6%BB%E6%95%A3%E6%A6%82%E7%8E%87%E5%88%86%E5%B8%83%E7%9A%84%E8%BF%90%E7%94%A8"><span class="post-toc-text">第 5 章：离散概率分布的运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%98%E6%8D%A2"><span class="post-toc-text">线性变换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E4%B8%AA%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E5%92%8C"><span class="post-toc-text">两个随机变量的和</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0%EF%BC%9A%E6%8E%92%E5%88%97%E4%B8%8E%E7%BB%84%E5%90%88"><span class="post-toc-text">第 6 章：排列与组合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%92%E5%88%97%EF%BC%9A%E9%A1%BA%E5%BA%8F%E9%87%8D%E8%A6%81"><span class="post-toc-text">排列：顺序重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%84%E5%90%88%EF%BC%9A%E9%A1%BA%E5%BA%8F%E4%B8%8D%E9%87%8D%E8%A6%81"><span class="post-toc-text">组合：顺序不重要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E6%83%85%E5%86%B5"><span class="post-toc-text">其他情况</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0%EF%BC%9A%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83%E3%80%81%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83%E3%80%81%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="post-toc-text">第 7 章：几何分布、二项分布、泊松分布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%86%E5%B8%83%E9%80%89%E6%8B%A9%E5%9B%BE"><span class="post-toc-text">分布选择图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%A0%E4%BD%95%E5%88%86%E5%B8%83"><span class="post-toc-text">几何分布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="post-toc-text">二项分布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="post-toc-text">泊松分布</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0%EF%BC%9A%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="post-toc-text">第 8 章：正态分布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="post-toc-text">正态分布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%87%E5%87%86%E5%8C%96"><span class="post-toc-text">标准化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0%EF%BC%9A%E5%86%8D%E8%B0%88%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83"><span class="post-toc-text">第 9 章：再谈正态分布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8B%AC%E7%AB%8B%E6%AD%A3%E6%80%81%E5%8F%98%E9%87%8F%E4%B9%8B%E5%92%8C"><span class="post-toc-text">独立正态变量之和</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A3%E6%80%81%E8%BF%91%E4%BC%BC%E4%BA%8C%E9%A1%B9%E5%88%86%E5%B8%83"><span class="post-toc-text">正态近似二项分布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AD%A3%E6%80%81%E8%BF%91%E4%BC%BC%E6%B3%8A%E6%9D%BE%E5%88%86%E5%B8%83"><span class="post-toc-text">正态近似泊松分布</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0%EF%BC%9A%E7%BB%9F%E8%AE%A1%E6%8A%BD%E6%A0%B7"><span class="post-toc-text">第 10 章：统计抽样</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E4%BD%93%E4%B8%8E%E6%A0%B7%E6%9C%AC"><span class="post-toc-text">总体与样本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%BD%E6%A0%B7%E5%81%8F%E5%80%9A"><span class="post-toc-text">抽样偏倚</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%BD%E6%A0%B7%E6%96%B9%E6%B3%95"><span class="post-toc-text">抽样方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0%EF%BC%9A%E6%80%BB%E4%BD%93%E5%92%8C%E6%A0%B7%E6%9C%AC%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="post-toc-text">第 11 章：总体和样本的估计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%82%B9%E4%BC%B0%E8%AE%A1%E9%87%8F"><span class="post-toc-text">点估计量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E5%BF%83%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86"><span class="post-toc-text">中心极限定理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0%EF%BC%9A%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="post-toc-text">第 12 章：置信区间</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%87%E5%80%BC%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4%EF%BC%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E5%B7%B2%E7%9F%A5"><span class="post-toc-text">均值置信区间，总体方差已知</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%87%E5%80%BC%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4%EF%BC%8C%E6%80%BB%E4%BD%93%E6%96%B9%E5%B7%AE%E6%9C%AA%E7%9F%A5"><span class="post-toc-text">均值置信区间，总体方差未知</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%AF%94%E4%BE%8B%E7%BD%AE%E4%BF%A1%E5%8C%BA%E9%97%B4"><span class="post-toc-text">比例置信区间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%9B%E6%AD%A5%E6%B3%95"><span class="post-toc-text">四步法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0%EF%BC%9A%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C"><span class="post-toc-text">第 13 章：假设检验</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="post-toc-text">核心思想</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%AD%E6%AD%A5%E9%AA%A4"><span class="post-toc-text">六步骤</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E7%B1%BB%E9%94%99%E8%AF%AF"><span class="post-toc-text">两类错误</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0%EF%BC%9A%E5%8D%A1%E6%96%B9%E5%88%86%E5%B8%83"><span class="post-toc-text">第 14 章：卡方分布</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8B%9F%E5%90%88%E4%BC%98%E5%BA%A6%E6%A3%80%E9%AA%8C"><span class="post-toc-text">拟合优度检验</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8B%AC%E7%AB%8B%E6%80%A7%E6%A3%80%E9%AA%8C"><span class="post-toc-text">独立性检验</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-15-%E7%AB%A0%EF%BC%9A%E7%9B%B8%E5%85%B3%E4%B8%8E%E5%9B%9E%E5%BD%92"><span class="post-toc-text">第 15 章：相关与回归</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E5%85%B3%E4%B8%8D%E7%AD%89%E4%BA%8E%E5%9B%A0%E6%9E%9C"><span class="post-toc-text">相关不等于因果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E5%9B%9E%E5%BD%92"><span class="post-toc-text">最小二乘回归</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E5%85%B3%E7%B3%BB%E6%95%B0"><span class="post-toc-text">相关系数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%99%84%E5%BD%95%EF%BC%9A%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E6%89%A9%E5%B1%95"><span class="post-toc-text">附录：两个重要扩展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B3%E5%AE%9A%E7%B3%BB%E6%95%B0%E4%B8%8E%E9%9D%9E%E7%BA%BF%E6%80%A7"><span class="post-toc-text">决定系数与非线性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%A4%E4%B8%AA%E6%A0%B7%E6%9C%AC%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="post-toc-text">两个样本的差异</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9C%80%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84-10-%E4%B8%AA%E5%88%A4%E6%96%AD"><span class="post-toc-text">最有价值的 10 个判断</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E5%BC%A0%E5%85%AC%E5%BC%8F%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="post-toc-text">一张公式速查表</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《深入浅出统计学》读书笔记"><a href="#《深入浅出统计学》读书笔记" class="headerlink" title="《深入浅出统计学》读书笔记"></a>《深入浅出统计学》读书笔记</h1><blockquote>
+<p>作者：Dawn Griffiths<br>中译本：李芳 译，电子工业出版社<br>英文原名：<em>Head First Statistics</em></p>
+</blockquote>
+<p>这是一本用直觉和图形讲统计学的书。它的目标不是让人背公式，而是建立一个完整的统计推理框架：<strong>从描述数据，到理解概率，再到用样本推断总体，最后判断证据是否可靠</strong>。全书 15 章，覆盖 AP&#x2F;A Level 统计范围，并延伸到假设检验、卡方检验、相关与回归。</p>
+<h2 id="一句话概括"><a href="#一句话概括" class="headerlink" title="一句话概括"></a>一句话概括</h2><p>统计学处理的是“不确定条件下的判断”：先描述数据，再建立概率模型，再用抽样和置信区间量化不确定性，最后用假设检验在证据面前做决策。</p>
+<h2 id="全书地图"><a href="#全书地图" class="headerlink" title="全书地图"></a>全书地图</h2><pre class="mermaid">flowchart LR
+    A["描述统计&lt;br/&gt;数据是什么样"] --&gt; B["概率&lt;br/&gt;不确定性如何表示"]
+    B --&gt; C["概率分布&lt;br/&gt;长期结果如何预测"]
+    C --&gt; D["抽样&lt;br/&gt;怎样获得好样本"]
+    D --&gt; E["推断&lt;br/&gt;样本如何代表总体"]
+    E --&gt; F["决策&lt;br/&gt;证据是否支持结论"]
+
+    A --&gt; A1["图形化"]
+    A --&gt; A2["集中趋势"]
+    A --&gt; A3["分散性"]
+
+    B --&gt; B1["概率计算"]
+    B --&gt; B2["贝叶斯定理"]
+
+    C --&gt; C1["离散分布"]
+    C --&gt; C2["正态分布"]
+
+    E --&gt; E1["置信区间"]
+    E --&gt; E2["假设检验"]
+    E --&gt; E3["相关与回归"]</pre>
+
+<h2 id="统计思维总流程"><a href="#统计思维总流程" class="headerlink" title="统计思维总流程"></a>统计思维总流程</h2><pre class="mermaid">flowchart TD
+    A["原始数据"] --&gt; B["可视化"]
+    A --&gt; C["汇总统计量"]
+    B --&gt; D["发现模式与异常"]
+    C --&gt; D
+    D --&gt; E["建立概率模型"]
+    E --&gt; F["抽样设计"]
+    F --&gt; G["推断总体参数"]
+    G --&gt; H["置信区间 / 假设检验"]
+    H --&gt; I["决策与解释"]</pre>
+
+<h2 id="第-1-章：信息图形化"><a href="#第-1-章：信息图形化" class="headerlink" title="第 1 章：信息图形化"></a>第 1 章：信息图形化</h2><h3 id="核心任务"><a href="#核心任务" class="headerlink" title="核心任务"></a>核心任务</h3><p>统计量是对原始数据的提炼。图表的作用是让模式、比较和异常值变得可见。</p>
+<h3 id="常见图形与适用场景"><a href="#常见图形与适用场景" class="headerlink" title="常见图形与适用场景"></a>常见图形与适用场景</h3><table>
+<thead>
+<tr>
+<th>图形</th>
+<th>适合</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>饼图</td>
+<td>展示各部分占总体的比例，但难以精确比较</td>
+</tr>
+<tr>
+<td>垂直&#x2F;水平条形图</td>
+<td>分类数据的频数或数值比较</td>
+</tr>
+<tr>
+<td>直方图</td>
+<td>连续数值数据的分布形状</td>
+</tr>
+<tr>
+<td>累积频数图</td>
+<td>累计数量和“低于某值”的比例</td>
+</tr>
+</tbody></table>
+<h3 id="直方图三步"><a href="#直方图三步" class="headerlink" title="直方图三步"></a>直方图三步</h3><ol>
+<li>求组距和长方形宽度；</li>
+<li>根据频数或频数密度求高度；</li>
+<li>画出长方形。</li>
+</ol>
+<p>容易误导人的地方：</p>
+<ul>
+<li>改变坐标轴标度会改变图形的视觉印象；</li>
+<li>同一批数据可以用“利润稳定”或“利润波动”两种方式呈现；</li>
+<li>比较分组数据时要注意组距是否一致。</li>
+</ul>
+<h2 id="第-2-章：集中趋势"><a href="#第-2-章：集中趋势" class="headerlink" title="第 2 章：集中趋势"></a>第 2 章：集中趋势</h2><p>三个最常见的集中量数：</p>
+<table>
+<thead>
+<tr>
+<th>统计量</th>
+<th>定义</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>均值</td>
+<td>总和除以数量</td>
+<td>无极端值时最常用</td>
+</tr>
+<tr>
+<td>中位数</td>
+<td>排序后中间值</td>
+<td>数据偏斜或有异常值时更稳健</td>
+</tr>
+<tr>
+<td>众数</td>
+<td>出现次数最多的值</td>
+<td>分类数据、双峰分布</td>
+</tr>
+</tbody></table>
+<h3 id="均值与中位数"><a href="#均值与中位数" class="headerlink" title="均值与中位数"></a>均值与中位数</h3><ul>
+<li>均值受异常值影响很大；</li>
+<li>中位数只关心排序位置，不关心具体数值，因此更稳健；</li>
+<li>数据偏斜时，均值会向长尾方向偏移。</li>
+</ul>
+<h3 id="关键公式"><a href="#关键公式" class="headerlink" title="关键公式"></a>关键公式</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">均值 x̄ = Σx / n</span><br><span class="line">中位数 = 排序后第 (n + 1) / 2 个位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="第-3-章：分散性与变异性"><a href="#第-3-章：分散性与变异性" class="headerlink" title="第 3 章：分散性与变异性"></a>第 3 章：分散性与变异性</h2><p>只有中心不够，还需要知道数据“散得多开”。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">全距 range = 最大值 - 最小值</span><br><span class="line">四分位距 IQR = Q3 - Q1</span><br></pre></td></tr></table></figure>
+
+<h3 id="百分位数与箱线图"><a href="#百分位数与箱线图" class="headerlink" title="百分位数与箱线图"></a>百分位数与箱线图</h3><ul>
+<li>中位数是第 50 百分位数；</li>
+<li><code>Q1</code> 是第 25 百分位数，<code>Q3</code> 是第 75 百分位数；</li>
+<li>箱线图展示最小值、<code>Q1</code>、中位数、<code>Q3</code>、最大值，也常标出异常值。</li>
+</ul>
+<h3 id="方差与标准差"><a href="#方差与标准差" class="headerlink" title="方差与标准差"></a>方差与标准差</h3><p>总体方差：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">σ² = Σ(x - μ)² / n</span><br></pre></td></tr></table></figure>
+
+<p>样本方差：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s² = Σ(x - x̄)² / (n - 1)</span><br></pre></td></tr></table></figure>
+
+<p>样本方差分母是 <code>n - 1</code>，因为它作为总体方差的无偏估计，需要补偿“样本均值已经消耗了一个自由度”。</p>
+<p>标准差是方差的平方根，单位和原始数据一致，因此更直观。</p>
+<h3 id="标准分"><a href="#标准分" class="headerlink" title="标准分"></a>标准分</h3><p>标准分把一个数据点放到标准尺度上：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">z = (x - μ) / σ</span><br></pre></td></tr></table></figure>
+
+<p>它表示“某个值与均值相差几个标准差”，用于比较来自不同数据集、不同单位的数值。</p>
+<h2 id="第-4-章：概率计算"><a href="#第-4-章：概率计算" class="headerlink" title="第 4 章：概率计算"></a>第 4 章：概率计算</h2><h3 id="概率基础"><a href="#概率基础" class="headerlink" title="概率基础"></a>概率基础</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">P(A) = 事件 A 的可能结果数 / 所有等可能结果数</span><br><span class="line">0 ≤ P(A) ≤ 1</span><br></pre></td></tr></table></figure>
+
+<h3 id="维恩图与事件关系"><a href="#维恩图与事件关系" class="headerlink" title="维恩图与事件关系"></a>维恩图与事件关系</h3><ul>
+<li><strong>互斥事件</strong>：不能同时发生，<code>P(A ∩ B) = 0</code>；</li>
+<li><strong>相交事件</strong>：可以同时发生；</li>
+<li><strong>加法法则</strong>：</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(A ∪ B) = P(A) + P(B) - P(A ∩ B)</span><br></pre></td></tr></table></figure>
+
+<p>如果互斥，则简化为 <code>P(A ∪ B) = P(A) + P(B)</code>。</p>
+<h3 id="条件概率"><a href="#条件概率" class="headerlink" title="条件概率"></a>条件概率</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(A | B) = P(A ∩ B) / P(B)</span><br></pre></td></tr></table></figure>
+
+<p>意思是“在 B 已经发生的前提下，A 发生的概率”。</p>
+<h3 id="概率树与全概率公式"><a href="#概率树与全概率公式" class="headerlink" title="概率树与全概率公式"></a>概率树与全概率公式</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(B) = Σ P(B | Ai) × P(Ai)</span><br></pre></td></tr></table></figure>
+
+<p>概率树把复杂问题拆成按顺序发生的分支，再把路径概率相乘。</p>
+<h3 id="贝叶斯定理"><a href="#贝叶斯定理" class="headerlink" title="贝叶斯定理"></a>贝叶斯定理</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(A | B) = P(B | A) × P(A) / P(B)</span><br></pre></td></tr></table></figure>
+
+<p>贝叶斯定理的价值是：从“结果 B 已发生”反推“原因 A 的概率”。它把先验概率和新证据结合起来更新判断。</p>
+<h3 id="独立事件"><a href="#独立事件" class="headerlink" title="独立事件"></a>独立事件</h3><p>若 <code>A</code>、<code>B</code> 独立：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(A ∩ B) = P(A) × P(B)</span><br></pre></td></tr></table></figure>
+
+<p>独立不等于互斥：互斥事件几乎总是相关，因为一个发生会排除另一个。</p>
+<h2 id="第-5-章：离散概率分布的运用"><a href="#第-5-章：离散概率分布的运用" class="headerlink" title="第 5 章：离散概率分布的运用"></a>第 5 章：离散概率分布的运用</h2><p>概率分布描述随机变量的每个取值及其概率。对离散随机变量 <code>X</code>：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E(X) = Σ x × P(X = x)</span><br><span class="line">Var(X) = Σ (x - μ)² × P(X = x)</span><br></pre></td></tr></table></figure>
+
+<p>也常用：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Var(X) = E(X²) - [E(X)]²</span><br></pre></td></tr></table></figure>
+
+<h3 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E(aX + b) = aE(X) + b</span><br><span class="line">Var(aX + b) = a²Var(X)</span><br></pre></td></tr></table></figure>
+
+<p>加常数只平移期望，不改变方差；乘常数会按平方改变方差。</p>
+<h3 id="两个随机变量的和"><a href="#两个随机变量的和" class="headerlink" title="两个随机变量的和"></a>两个随机变量的和</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(X + Y) = E(X) + E(Y)</span><br></pre></td></tr></table></figure>
+
+<p>当 <code>X</code>、<code>Y</code> 独立时：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Var(X + Y) = Var(X) + Var(Y)</span><br><span class="line">Var(X - Y) = Var(X) + Var(Y)</span><br></pre></td></tr></table></figure>
+
+<p>注意：方差相减仍然是相加，因为波动性不会抵消。</p>
+<h2 id="第-6-章：排列与组合"><a href="#第-6-章：排列与组合" class="headerlink" title="第 6 章：排列与组合"></a>第 6 章：排列与组合</h2><h3 id="排列：顺序重要"><a href="#排列：顺序重要" class="headerlink" title="排列：顺序重要"></a>排列：顺序重要</h3><p>从 <code>n</code> 个不同物体中取 <code>r</code> 个并排序：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">P(n, r) = n! / (n - r)!</span><br></pre></td></tr></table></figure>
+
+<h3 id="组合：顺序不重要"><a href="#组合：顺序不重要" class="headerlink" title="组合：顺序不重要"></a>组合：顺序不重要</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C(n, r) = n! / [r!(n - r)!]</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他情况"><a href="#其他情况" class="headerlink" title="其他情况"></a>其他情况</h3><ul>
+<li>全排列：<code>n!</code>；</li>
+<li>圆形排列：<code>(n - 1)!</code>；</li>
+<li>有重复元素的排列：用重复元素的阶乘做除法。</li>
+</ul>
+<p>判断口诀：先问“顺序是否重要”，再决定用排列还是组合。</p>
+<h2 id="第-7-章：几何分布、二项分布、泊松分布"><a href="#第-7-章：几何分布、二项分布、泊松分布" class="headerlink" title="第 7 章：几何分布、二项分布、泊松分布"></a>第 7 章：几何分布、二项分布、泊松分布</h2><h3 id="分布选择图"><a href="#分布选择图" class="headerlink" title="分布选择图"></a>分布选择图</h3><pre class="mermaid">flowchart TD
+    A["离散随机试验"] --&gt; B{"关注第一次成功？"}
+    B --&gt;|是| G["几何分布&lt;br/&gt;P(X=r)=q^(r-1) p"]
+    B --&gt;|否| C{"固定试验次数 n？"}
+    C --&gt;|是| D["二项分布&lt;br/&gt;P(X=r)=C(n,r)p^r q^(n-r)"]
+    C --&gt;|否| E{"事件在时间/空间中随机发生？"}
+    E --&gt;|是| P["泊松分布&lt;br/&gt;P(X=r)=λ^r e^-λ / r!"]</pre>
+
+<h3 id="几何分布"><a href="#几何分布" class="headerlink" title="几何分布"></a>几何分布</h3><p>描述“第 <code>r</code> 次试验才第一次成功”的概率：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">P(X = r) = q^(r-1) × p</span><br><span class="line">q = 1 - p</span><br><span class="line">E(X) = 1 / p</span><br><span class="line">Var(X) = q / p²</span><br></pre></td></tr></table></figure>
+
+<h3 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h3><p>描述 <code>n</code> 次独立试验中成功 <code>r</code> 次的概率：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P(X = r) = C(n, r) × p^r × q^(n-r)</span><br><span class="line">E(X) = np</span><br><span class="line">Var(X) = npq</span><br></pre></td></tr></table></figure>
+
+<p>条件：每次试验成功概率相同，试验相互独立，结果只有成功&#x2F;失败两种。</p>
+<h3 id="泊松分布"><a href="#泊松分布" class="headerlink" title="泊松分布"></a>泊松分布</h3><p>描述单位时间或单位空间中事件发生次数：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P(X = r) = λ^r × e^-λ / r!</span><br><span class="line">E(X) = λ</span><br><span class="line">Var(X) = λ</span><br></pre></td></tr></table></figure>
+
+<p>泊松分布常被伪装在其他情境中：电话呼叫、缺陷数、顾客到达数等。</p>
+<h2 id="第-8-章：正态分布"><a href="#第-8-章：正态分布" class="headerlink" title="第 8 章：正态分布"></a>第 8 章：正态分布</h2><p>连续随机变量用概率密度函数描述，概率是曲线下的面积。</p>
+<h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X ~ N(μ, σ²)</span><br></pre></td></tr></table></figure>
+
+<p>性质：</p>
+<ul>
+<li>以均值为中心对称；</li>
+<li>68% 数据在 <code>μ ± σ</code>；</li>
+<li>95% 数据在 <code>μ ± 2σ</code>；</li>
+<li>99.7% 数据在 <code>μ ± 3σ</code>。</li>
+</ul>
+<h3 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h3><p>把任意正态分布转为标准正态：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Z = (X - μ) / σ</span><br><span class="line">Z ~ N(0, 1)</span><br></pre></td></tr></table></figure>
+
+<p>然后查标准正态表得到概率。</p>
+<h2 id="第-9-章：再谈正态分布"><a href="#第-9-章：再谈正态分布" class="headerlink" title="第 9 章：再谈正态分布"></a>第 9 章：再谈正态分布</h2><h3 id="独立正态变量之和"><a href="#独立正态变量之和" class="headerlink" title="独立正态变量之和"></a>独立正态变量之和</h3><p>若 <code>X ~ N(μx, σx²)</code>，<code>Y ~ N(μy, σy²)</code> 且独立：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X + Y ~ N(μx + μy, σx² + σy²)</span><br><span class="line">aX + bY ~ N(aμx + bμy, a²σx² + b²σy²)</span><br></pre></td></tr></table></figure>
+
+<h3 id="正态近似二项分布"><a href="#正态近似二项分布" class="headerlink" title="正态近似二项分布"></a>正态近似二项分布</h3><p>当 <code>n</code> 足够大时，二项分布近似正态：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">近似条件：np &gt; 5 且 nq &gt; 5</span><br><span class="line">近似分布：N(np, npq)</span><br></pre></td></tr></table></figure>
+
+<p>由于二项是离散分布、正态是连续分布，计算概率时要进行<strong>连续性修正</strong>，例如 <code>P(X = r)</code> 用 <code>r ± 0.5</code> 的范围近似。</p>
+<h3 id="正态近似泊松分布"><a href="#正态近似泊松分布" class="headerlink" title="正态近似泊松分布"></a>正态近似泊松分布</h3><p>当 <code>λ</code> 足够大时，泊松分布可近似为：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X ~ N(λ, λ)</span><br></pre></td></tr></table></figure>
+
+<p>同样需要连续性修正。</p>
+<h2 id="第-10-章：统计抽样"><a href="#第-10-章：统计抽样" class="headerlink" title="第 10 章：统计抽样"></a>第 10 章：统计抽样</h2><h3 id="总体与样本"><a href="#总体与样本" class="headerlink" title="总体与样本"></a>总体与样本</h3><ul>
+<li>总体：我们想研究的所有对象；</li>
+<li>样本：实际调查的对象；</li>
+<li>样本的目标是用较少成本，获得能代表总体的信息。</li>
+</ul>
+<h3 id="抽样偏倚"><a href="#抽样偏倚" class="headerlink" title="抽样偏倚"></a>抽样偏倚</h3><p>偏倚不是随机误差，而是系统性地偏离总体。常见来源：</p>
+<ul>
+<li>只调查方便获得的对象；</li>
+<li>自愿参与；</li>
+<li>样本框不完整；</li>
+<li>无回应偏倚。</li>
+</ul>
+<h3 id="抽样方法"><a href="#抽样方法" class="headerlink" title="抽样方法"></a>抽样方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>简单随机抽样</td>
+<td>每个成员被抽中的概率相同</td>
+</tr>
+<tr>
+<td>分层抽样</td>
+<td>先按层分组，再从每层随机抽</td>
+</tr>
+<tr>
+<td>整群抽样</td>
+<td>随机抽取整群</td>
+</tr>
+<tr>
+<td>系统抽样</td>
+<td>按固定间隔抽取</td>
+</tr>
+</tbody></table>
+<h2 id="第-11-章：总体和样本的估计"><a href="#第-11-章：总体和样本的估计" class="headerlink" title="第 11 章：总体和样本的估计"></a>第 11 章：总体和样本的估计</h2><h3 id="点估计量"><a href="#点估计量" class="headerlink" title="点估计量"></a>点估计量</h3><table>
+<thead>
+<tr>
+<th>总体参数</th>
+<th>点估计量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>均值 <code>μ</code></td>
+<td>样本均值 <code>x̄</code></td>
+</tr>
+<tr>
+<td>方差 <code>σ²</code></td>
+<td>样本方差 <code>s²</code></td>
+</tr>
+<tr>
+<td>比例 <code>p</code></td>
+<td>样本比例 <code>p̂</code></td>
+</tr>
+</tbody></table>
+<p>样本方差使用 <code>n - 1</code>，是为了得到总体方差的无偏估计。</p>
+<h3 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h3><p>这是统计学最重要的定理之一：当样本量足够大时，无论总体分布如何，样本均值的抽样分布都近似正态。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x̄ 近似服从 N(μ, σ² / n)</span><br><span class="line">标准误 SE = σ / √n</span><br></pre></td></tr></table></figure>
+
+<p>当总体标准差未知时，用 <code>s / √n</code> 估计标准误。</p>
+<h2 id="第-12-章：置信区间"><a href="#第-12-章：置信区间" class="headerlink" title="第 12 章：置信区间"></a>第 12 章：置信区间</h2><p>点估计只是一个数，置信区间给出“合理范围”和不确定性。</p>
+<h3 id="均值置信区间，总体方差已知"><a href="#均值置信区间，总体方差已知" class="headerlink" title="均值置信区间，总体方差已知"></a>均值置信区间，总体方差已知</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x̄ ± z(α/2) × σ / √n</span><br></pre></td></tr></table></figure>
+
+<h3 id="均值置信区间，总体方差未知"><a href="#均值置信区间，总体方差未知" class="headerlink" title="均值置信区间，总体方差未知"></a>均值置信区间，总体方差未知</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x̄ ± t(n-1, α/2) × s / √n</span><br></pre></td></tr></table></figure>
+
+<p>小样本且总体方差未知时使用 <code>t</code> 分布；样本增大后，<code>t</code> 分布逼近正态分布。</p>
+<h3 id="比例置信区间"><a href="#比例置信区间" class="headerlink" title="比例置信区间"></a>比例置信区间</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p̂ ± z(α/2) × √(p̂q̂ / n)</span><br></pre></td></tr></table></figure>
+
+<h3 id="四步法"><a href="#四步法" class="headerlink" title="四步法"></a>四步法</h3><ol>
+<li>选择要估计的总体统计量；</li>
+<li>求该统计量的抽样分布；</li>
+<li>决定置信水平；</li>
+<li>求置信上下限。</li>
+</ol>
+<p>注意：置信水平是“方法长期成功的概率”，不是“某一个区间包含参数的概率”。</p>
+<h2 id="第-13-章：假设检验"><a href="#第-13-章：假设检验" class="headerlink" title="第 13 章：假设检验"></a>第 13 章：假设检验</h2><h3 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h3><p>假设检验不是证明结论一定正确，而是判断样本证据是否足够强，能否拒绝原假设。</p>
+<pre class="mermaid">flowchart LR
+    A["提出 H0 与 H1"] --&gt; B["选择检验统计量"]
+    B --&gt; C["确定拒绝域"]
+    C --&gt; D["计算 p 值"]
+    D --&gt; E["比较 p 与 α"]
+    E --&gt; F["拒绝 H0 / 不拒绝 H0"]</pre>
+
+<h3 id="六步骤"><a href="#六步骤" class="headerlink" title="六步骤"></a>六步骤</h3><ol>
+<li>确定原假设 <code>H0</code> 和备择假设 <code>H1</code>；</li>
+<li>选择检验统计量；</li>
+<li>确定显著性水平 <code>α</code> 和拒绝域；</li>
+<li>求 <code>p</code> 值；</li>
+<li>看样本结果是否落入拒绝域；</li>
+<li>做决策并解释。</li>
+</ol>
+<h3 id="两类错误"><a href="#两类错误" class="headerlink" title="两类错误"></a>两类错误</h3><table>
+<thead>
+<tr>
+<th>决策</th>
+<th>H0 为真</th>
+<th>H0 为假</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>不拒绝 H0</td>
+<td>正确</td>
+<td>第二类错误 <code>β</code></td>
+</tr>
+<tr>
+<td>拒绝 H0</td>
+<td>第一类错误 <code>α</code></td>
+<td>正确</td>
+</tr>
+</tbody></table>
+<ul>
+<li>第一类错误：没有差异时却说有差异，即“假阳性”；</li>
+<li>第二类错误：有差异时却没发现，即“假阴性”；</li>
+<li>检验功效 <code>power = 1 - β</code>，表示真实差异被检测出来的能力。</li>
+</ul>
+<h2 id="第-14-章：卡方分布"><a href="#第-14-章：卡方分布" class="headerlink" title="第 14 章：卡方分布"></a>第 14 章：卡方分布</h2><p>卡方检验用于比较“观察频数”和“期望频数”的差异。</p>
+<h3 id="拟合优度检验"><a href="#拟合优度检验" class="headerlink" title="拟合优度检验"></a>拟合优度检验</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">χ² = Σ (O - E)² / E</span><br><span class="line">df = n - 1</span><br></pre></td></tr></table></figure>
+
+<p>用于检验一组频数是否符合某个指定分布。</p>
+<h3 id="独立性检验"><a href="#独立性检验" class="headerlink" title="独立性检验"></a>独立性检验</h3><p>用于判断两个分类变量是否独立。自由度：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = (行数 - 1) × (列数 - 1)</span><br></pre></td></tr></table></figure>
+
+<p>期望频数由行合计、列合计和总样本量推出。若 <code>χ²</code> 很大，说明观察频数与独立模型下的期望频数相差太远，有理由怀疑独立性。</p>
+<h2 id="第-15-章：相关与回归"><a href="#第-15-章：相关与回归" class="headerlink" title="第 15 章：相关与回归"></a>第 15 章：相关与回归</h2><h3 id="相关不等于因果"><a href="#相关不等于因果" class="headerlink" title="相关不等于因果"></a>相关不等于因果</h3><p>两个变量一起变化，不代表一个导致另一个。可能存在第三变量、反向因果或纯属偶然。</p>
+<h3 id="最小二乘回归"><a href="#最小二乘回归" class="headerlink" title="最小二乘回归"></a>最小二乘回归</h3><p>最佳拟合线：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ŷ = a + bx</span><br></pre></td></tr></table></figure>
+
+<p>斜率：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">b = Sxy / Sxx</span><br></pre></td></tr></table></figure>
+
+<p>截距：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = ȳ - b x̄</span><br></pre></td></tr></table></figure>
+
+<p>最小二乘法最小化误差平方和 <code>Σ(y - ŷ)²</code>。</p>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><p><code>r</code> 衡量线性关系的强度和方向：</p>
+<ul>
+<li><code>r</code> 接近 <code>1</code>：强正相关；</li>
+<li><code>r</code> 接近 <code>-1</code>：强负相关；</li>
+<li><code>r</code> 接近 <code>0</code>：几乎没有线性关系；</li>
+<li><code>r²</code> 表示因变量变异中可由自变量解释的比例。</li>
+</ul>
+<p>相关系数只衡量<strong>线性</strong>关系，强非线性关系也可能得到很低的 <code>r</code>。</p>
+<h2 id="附录：两个重要扩展"><a href="#附录：两个重要扩展" class="headerlink" title="附录：两个重要扩展"></a>附录：两个重要扩展</h2><h3 id="决定系数与非线性"><a href="#决定系数与非线性" class="headerlink" title="决定系数与非线性"></a>决定系数与非线性</h3><ul>
+<li><code>r²</code> 是决定系数，衡量回归模型的解释力；</li>
+<li>非线性关系需要变换、多项式回归或其他模型。</li>
+</ul>
+<h3 id="两个样本的差异"><a href="#两个样本的差异" class="headerlink" title="两个样本的差异"></a>两个样本的差异</h3><ul>
+<li>两个均值差异的抽样分布；</li>
+<li>两个比例差异的抽样分布；</li>
+<li>常用于 A&#x2F;B 测试和组间比较。</li>
+</ul>
+<h2 id="最有价值的-10-个判断"><a href="#最有价值的-10-个判断" class="headerlink" title="最有价值的 10 个判断"></a>最有价值的 10 个判断</h2><ol>
+<li>先描述数据，再做推断；图形化常常比单一数字更能暴露问题。</li>
+<li>均值会被异常值拉偏，中位数更稳健，分析时要同时看两者。</li>
+<li>标准差比方差直观，但方差在数学性质上更方便组合。</li>
+<li>标准分让我们可以在不同尺度和不同分布间比较。</li>
+<li>条件概率和贝叶斯定理是“根据证据更新判断”的通用工具。</li>
+<li>方差在随机变量相减时仍然相加，因为不确定性不会抵消。</li>
+<li>正态分布不是所有数据的现实，但它是很多统计方法的近似基础。</li>
+<li>抽样偏倚比随机误差更危险，随机误差可以量化，偏倚会让结论系统性地错。</li>
+<li>置信区间表达不确定性，假设检验表达证据强度，两者常常要一起看。</li>
+<li>相关不是因果；最小二乘回归只能给出条件关系，不能替代实验设计。</li>
+</ol>
+<h2 id="一张公式速查表"><a href="#一张公式速查表" class="headerlink" title="一张公式速查表"></a>一张公式速查表</h2><table>
+<thead>
+<tr>
+<th>概念</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>样本均值</td>
+<td><code>x̄ = Σx / n</code></td>
+</tr>
+<tr>
+<td>样本方差</td>
+<td><code>s² = Σ(x - x̄)² / (n - 1)</code></td>
+</tr>
+<tr>
+<td>标准分</td>
+<td><code>z = (x - μ) / σ</code></td>
+</tr>
+<tr>
+<td>条件概率</td>
+<td>&#96;P(A</td>
+</tr>
+<tr>
+<td>贝叶斯定理</td>
+<td>&#96;P(A</td>
+</tr>
+<tr>
+<td>二项分布</td>
+<td><code>P(X=r)=C(n,r)p^r q^(n-r)</code></td>
+</tr>
+<tr>
+<td>泊松分布</td>
+<td><code>P(X=r)=λ^r e^-λ / r!</code></td>
+</tr>
+<tr>
+<td>正态标准化</td>
+<td><code>Z = (X - μ) / σ</code></td>
+</tr>
+<tr>
+<td>置信区间</td>
+<td><code>x̄ ± z(α/2) σ/√n</code></td>
+</tr>
+<tr>
+<td>卡方统计量</td>
+<td><code>χ² = Σ(O-E)²/E</code></td>
+</tr>
+<tr>
+<td>回归斜率</td>
+<td><code>b = Sxy / Sxx</code></td>
+</tr>
+</tbody></table>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222106000001.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%88%90%E6%9E%9C%E7%AE%A1%E7%90%86%E3%80%8B/'>阅读笔记——《成果管理》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222056000000.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8APython%E9%87%91%E8%9E%8D%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E3%80%8B/">阅读笔记——《Python金融大数据分析》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

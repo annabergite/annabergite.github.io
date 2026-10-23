@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《货币金融学》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《货币金融学》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：11.4k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：40分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A7%E5%B8%81%E9%87%91%E8%9E%8D%E5%AD%A6%E3%80%8B"><span class="post-toc-text">阅读笔记——《货币金融学》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">全书知识地图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AF%87-%E5%BC%95%E8%A8%80"><span class="post-toc-text">第 1 篇　引言</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1-%E7%AB%A0-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%A0%94%E7%A9%B6%E8%B4%A7%E5%B8%81%E3%80%81%E9%93%B6%E8%A1%8C%E4%B8%8E%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA"><span class="post-toc-text">第 1 章　为什么研究货币、银行与金融市场</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AB%A0-%E9%87%91%E8%9E%8D%E4%BD%93%E7%B3%BB%E6%A6%82%E8%A7%88"><span class="post-toc-text">第 2 章　金融体系概览</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="post-toc-text">金融市场的功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA%E7%9A%84%E7%BB%93%E6%9E%84"><span class="post-toc-text">金融市场的结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E4%B8%AD%E4%BB%8B%E6%9C%BA%E6%9E%84%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%9A%E9%97%B4%E6%8E%A5%E8%9E%8D%E8%B5%84"><span class="post-toc-text">金融中介机构的功能：间接融资</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AB%A0-%E4%BB%80%E4%B9%88%E6%98%AF%E8%B4%A7%E5%B8%81"><span class="post-toc-text">第 3 章　什么是货币</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E7%9A%84%E5%90%AB%E4%B9%89%E4%B8%8E%E5%8A%9F%E8%83%BD"><span class="post-toc-text">货币的含义与功能</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%AF%E4%BB%98%E4%BD%93%E7%B3%BB%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="post-toc-text">支付体系的演进</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E7%9A%84%E8%AE%A1%E9%87%8F"><span class="post-toc-text">货币的计量</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-2-%E7%AF%87-%E9%87%91%E8%9E%8D%E5%B8%82%E5%9C%BA"><span class="post-toc-text">第 2 篇　金融市场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AB%A0-%E7%90%86%E8%A7%A3%E5%88%A9%E7%8E%87"><span class="post-toc-text">第 4 章　理解利率</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%8E%B0%E5%80%BC%E4%B8%8E%E5%88%B0%E6%9C%9F%E6%94%B6%E7%9B%8A%E7%8E%87"><span class="post-toc-text">现值与到期收益率</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A9%E7%8E%87%E4%B8%8E%E5%9B%9E%E6%8A%A5%E7%8E%87%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="post-toc-text">利率与回报率的区别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%8D%E4%B9%89%E5%88%A9%E7%8E%87%E4%B8%8E%E5%AE%9E%E9%99%85%E5%88%A9%E7%8E%87"><span class="post-toc-text">名义利率与实际利率</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AB%A0-%E5%88%A9%E7%8E%87%E8%A1%8C%E4%B8%BA"><span class="post-toc-text">第 5 章　利率行为</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B5%84%E4%BA%A7%E9%9C%80%E6%B1%82%E7%9A%84%E5%86%B3%E5%AE%9A%E5%9B%A0%E7%B4%A0%EF%BC%88%E6%8A%95%E8%B5%84%E7%BB%84%E5%90%88%E9%80%89%E6%8B%A9%E7%90%86%E8%AE%BA%EF%BC%89"><span class="post-toc-text">资产需求的决定因素（投资组合选择理论）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%80%BA%E5%88%B8%E5%B8%82%E5%9C%BA%E7%9A%84%E4%BE%9B%E7%BB%99%E4%B8%8E%E9%9C%80%E6%B1%82"><span class="post-toc-text">债券市场的供给与需求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B5%81%E5%8A%A8%E6%80%A7%E5%81%8F%E5%A5%BD%E7%90%86%E8%AE%BA%EF%BC%9A%E8%B4%A7%E5%B8%81%E5%B8%82%E5%9C%BA%E7%9A%84%E4%BE%9B%E6%B1%82"><span class="post-toc-text">流动性偏好理论：货币市场的供求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E4%B8%8E%E5%88%A9%E7%8E%87%EF%BC%88%E5%BC%97%E9%87%8C%E5%BE%B7%E6%9B%BC%E5%AF%B9%E6%B5%81%E5%8A%A8%E6%80%A7%E6%95%88%E5%BA%94%E7%9A%84%E8%A1%A5%E5%85%85%EF%BC%89"><span class="post-toc-text">货币与利率（弗里德曼对流动性效应的补充）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AB%A0-%E5%88%A9%E7%8E%87%E7%9A%84%E9%A3%8E%E9%99%A9%E7%BB%93%E6%9E%84%E4%B8%8E%E6%9C%9F%E9%99%90%E7%BB%93%E6%9E%84"><span class="post-toc-text">第 6 章　利率的风险结构与期限结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A9%E7%8E%87%E7%9A%84%E9%A3%8E%E9%99%A9%E7%BB%93%E6%9E%84"><span class="post-toc-text">利率的风险结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A9%E7%8E%87%E7%9A%84%E6%9C%9F%E9%99%90%E7%BB%93%E6%9E%84"><span class="post-toc-text">利率的期限结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-7-%E7%AB%A0-%E8%82%A1%E7%A5%A8%E5%B8%82%E5%9C%BA%E3%80%81%E7%90%86%E6%80%A7%E9%A2%84%E6%9C%9F%E7%90%86%E8%AE%BA%E4%B8%8E%E6%9C%89%E6%95%88%E5%B8%82%E5%9C%BA%E5%81%87%E8%AF%B4"><span class="post-toc-text">第 7 章　股票市场、理性预期理论与有效市场假说</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%82%A1%E7%A5%A8%E4%BC%B0%E5%80%BC"><span class="post-toc-text">股票估值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%90%86%E6%80%A7%E9%A2%84%E6%9C%9F%E7%90%86%E8%AE%BA"><span class="post-toc-text">理性预期理论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9C%89%E6%95%88%E5%B8%82%E5%9C%BA%E5%81%87%E8%AF%B4%EF%BC%88EMH%EF%BC%89"><span class="post-toc-text">有效市场假说（EMH）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A1%8C%E4%B8%BA%E9%87%91%E8%9E%8D"><span class="post-toc-text">行为金融</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-3-%E7%AF%87-%E9%87%91%E8%9E%8D%E6%9C%BA%E6%9E%84"><span class="post-toc-text">第 3 篇　金融机构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-8-%E7%AB%A0-%E9%87%91%E8%9E%8D%E7%BB%93%E6%9E%84%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90"><span class="post-toc-text">第 8 章　金融结构的经济学分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%96%E7%95%8C%E5%90%84%E5%9B%BD%E9%87%91%E8%9E%8D%E7%BB%93%E6%9E%84%E7%9A%84%E5%85%AB%E4%B8%AA%E5%9F%BA%E6%9C%AC%E4%BA%8B%E5%AE%9E"><span class="post-toc-text">世界各国金融结构的八个基本事实</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BA%A4%E6%98%93%E6%88%90%E6%9C%AC%E4%B8%8E%E4%BF%A1%E6%81%AF%E4%B8%8D%E5%AF%B9%E7%A7%B0"><span class="post-toc-text">交易成本与信息不对称</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-9-%E7%AB%A0-%E9%93%B6%E8%A1%8C%E4%B8%9A%E4%B8%8E%E9%87%91%E8%9E%8D%E6%9C%BA%E6%9E%84%E7%9A%84%E7%AE%A1%E7%90%86"><span class="post-toc-text">第 9 章　银行业与金融机构的管理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%93%B6%E8%A1%8C%E7%9A%84%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8"><span class="post-toc-text">银行的资产负债表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%93%B6%E8%A1%8C%E7%AE%A1%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="post-toc-text">银行管理的基本原则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%A1%E7%94%A8%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%EF%BC%88%E4%BA%94%E5%8E%9F%E5%88%99%EF%BC%89"><span class="post-toc-text">信用风险管理（五原则）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%88%A9%E7%8E%87%E9%A3%8E%E9%99%A9%E7%AE%A1%E7%90%86%E4%B8%8E%E8%A1%A8%E5%A4%96%E4%B8%9A%E5%8A%A1"><span class="post-toc-text">利率风险管理与表外业务</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-10-%E7%AB%A0-%E9%87%91%E8%9E%8D%E7%9B%91%E7%AE%A1%E7%9A%84%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%88%86%E6%9E%90"><span class="post-toc-text">第 10 章　金融监管的经济学分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E7%9B%91%E7%AE%A1%E5%AD%98%E5%9C%A8%E7%9A%84%E5%8E%9F%E5%9B%A0%EF%BC%9A%E4%BF%A1%E6%81%AF%E4%B8%8D%E5%AF%B9%E7%A7%B0"><span class="post-toc-text">金融监管存在的原因：信息不对称</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%94%BF%E5%BA%9C%E5%AE%89%E5%85%A8%E7%BD%91"><span class="post-toc-text">政府安全网</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E7%9B%91%E7%AE%A1%E7%9A%84%E5%85%AB%E7%A7%8D%E7%B1%BB%E5%9E%8B"><span class="post-toc-text">金融监管的八种类型</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-11-%E7%AB%A0-%E9%93%B6%E8%A1%8C%E4%B8%9A%EF%BC%9A%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AB%9E%E4%BA%89"><span class="post-toc-text">第 11 章　银行业：结构与竞争</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%87%91%E8%9E%8D%E5%88%9B%E6%96%B0%E4%B8%8E%E5%BD%B1%E5%AD%90%E9%93%B6%E8%A1%8C%E4%BD%93%E7%B3%BB"><span class="post-toc-text">金融创新与影子银行体系</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BE%8E%E5%9B%BD%E9%93%B6%E8%A1%8C%E4%B8%9A%E7%BB%93%E6%9E%84"><span class="post-toc-text">美国银行业结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-12-%E7%AB%A0-%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA"><span class="post-toc-text">第 12 章　金融危机</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%91%E8%BE%BE%E7%BB%8F%E6%B5%8E%E4%BD%93%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA%E7%9A%84%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5"><span class="post-toc-text">发达经济体金融危机的发展阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2007%E2%80%942009-%E5%B9%B4%E5%85%A8%E7%90%83%E9%87%91%E8%9E%8D%E5%8D%B1%E6%9C%BA"><span class="post-toc-text">2007—2009 年全球金融危机</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-4-%E7%AF%87-%E4%B8%AD%E5%A4%AE%E9%93%B6%E8%A1%8C%E4%B8%8E%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E5%AE%9E%E6%96%BD"><span class="post-toc-text">第 4 篇　中央银行与货币政策的实施</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-13-%E7%AB%A0-%E4%B8%AD%E5%A4%AE%E9%93%B6%E8%A1%8C%E4%B8%8E%E8%81%94%E9%82%A6%E5%82%A8%E5%A4%87%E4%BD%93%E7%B3%BB"><span class="post-toc-text">第 13 章　中央银行与联邦储备体系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BE%8E%E8%81%94%E5%82%A8%E7%9A%84%E7%BB%93%E6%9E%84"><span class="post-toc-text">美联储的结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%AD%E5%A4%AE%E9%93%B6%E8%A1%8C%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7"><span class="post-toc-text">中央银行的独立性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-14-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E4%BE%9B%E7%BB%99%E8%BF%87%E7%A8%8B"><span class="post-toc-text">第 14 章　货币供给过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E4%BD%8D%E5%8F%82%E4%B8%8E%E8%80%85%E4%B8%8E%E5%9F%BA%E7%A1%80%E8%B4%A7%E5%B8%81"><span class="post-toc-text">三位参与者与基础货币</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%9A%E5%80%8D%E5%AD%98%E6%AC%BE%E5%88%9B%E9%80%A0"><span class="post-toc-text">多倍存款创造</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E4%B9%98%E6%95%B0"><span class="post-toc-text">货币乘数</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-15-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E5%B7%A5%E5%85%B7"><span class="post-toc-text">第 15 章　货币政策工具</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%86%E5%A4%87%E9%87%91%E5%B8%82%E5%9C%BA%E4%B8%8E%E8%81%94%E9%82%A6%E5%9F%BA%E9%87%91%E5%88%A9%E7%8E%87"><span class="post-toc-text">准备金市场与联邦基金利率</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%89%E5%A4%A7%E5%B8%B8%E8%A7%84%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E5%B7%A5%E5%85%B7"><span class="post-toc-text">三大常规货币政策工具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9D%9E%E5%B8%B8%E8%A7%84%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E5%B7%A5%E5%85%B7%E4%B8%8E%E9%87%8F%E5%8C%96%E5%AE%BD%E6%9D%BE"><span class="post-toc-text">非常规货币政策工具与量化宽松</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-16-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E6%93%8D%E4%BD%9C%EF%BC%9A%E6%88%98%E7%95%A5%E4%B8%8E%E6%88%98%E6%9C%AF"><span class="post-toc-text">第 16 章　货币政策操作：战略与战术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%89%A9%E4%BB%B7%E7%A8%B3%E5%AE%9A%E7%9B%AE%E6%A0%87%E4%B8%8E%E5%90%8D%E4%B9%89%E9%94%9A"><span class="post-toc-text">物价稳定目标与名义锚</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E5%85%B6%E4%BB%96%E7%9B%AE%E6%A0%87"><span class="post-toc-text">货币政策的其他目标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80%E7%9B%AE%E6%A0%87%E5%88%B6"><span class="post-toc-text">通货膨胀目标制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B3%B0%E5%8B%92%E8%A7%84%E5%88%99"><span class="post-toc-text">泰勒规则</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%AE%E8%A1%8C%E6%98%AF%E5%90%A6%E5%BA%94%E5%88%BA%E7%A0%B4%E8%B5%84%E4%BA%A7%E4%BB%B7%E6%A0%BC%E6%B3%A1%E6%B2%AB"><span class="post-toc-text">央行是否应刺破资产价格泡沫</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-5-%E7%AF%87-%E5%9B%BD%E9%99%85%E9%87%91%E8%9E%8D%E4%B8%8E%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96"><span class="post-toc-text">第 5 篇　国际金融与货币政策</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-17-%E7%AB%A0-%E5%A4%96%E6%B1%87%E5%B8%82%E5%9C%BA"><span class="post-toc-text">第 17 章　外汇市场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B1%87%E7%8E%87%E4%B8%8E%E6%A0%87%E4%BB%B7"><span class="post-toc-text">汇率与标价</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B1%87%E7%8E%87%E5%86%B3%E5%AE%9A%E7%9A%84%E9%95%BF%E6%9C%9F%E5%9B%A0%E7%B4%A0%EF%BC%9A%E8%B4%AD%E4%B9%B0%E5%8A%9B%E5%B9%B3%E4%BB%B7%EF%BC%88PPP%EF%BC%89"><span class="post-toc-text">汇率决定的长期因素：购买力平价（PPP）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9F%AD%E6%9C%9F%E6%B1%87%E7%8E%87%EF%BC%9A%E4%BE%9B%E6%B1%82%E5%88%86%E6%9E%90"><span class="post-toc-text">短期汇率：供求分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-18-%E7%AB%A0-%E5%9B%BD%E9%99%85%E9%87%91%E8%9E%8D%E4%BD%93%E7%B3%BB"><span class="post-toc-text">第 18 章　国际金融体系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%96%E6%B1%87%E5%B9%B2%E9%A2%84"><span class="post-toc-text">外汇干预</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9B%BD%E9%99%85%E6%94%B6%E6%94%AF%E5%B9%B3%E8%A1%A1%E8%A1%A8"><span class="post-toc-text">国际收支平衡表</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%B1%87%E7%8E%87%E5%88%B6%E5%BA%A6%E4%B8%8E%E5%9B%BD%E9%99%85%E8%B4%A7%E5%B8%81%E4%BD%93%E7%B3%BB%E6%BC%94%E8%BF%9B"><span class="post-toc-text">汇率制度与国际货币体系演进</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%AC%AC-6-%E7%AF%87-%E8%B4%A7%E5%B8%81%E7%90%86%E8%AE%BA"><span class="post-toc-text">第 6 篇　货币理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-19-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%95%B0%E9%87%8F%E8%AE%BA%E3%80%81%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80%E4%B8%8E%E8%B4%A7%E5%B8%81%E9%9C%80%E6%B1%82"><span class="post-toc-text">第 19 章　货币数量论、通货膨胀与货币需求</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E6%95%B0%E9%87%8F%E8%AE%BA"><span class="post-toc-text">货币数量论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%A2%84%E7%AE%97%E8%B5%A4%E5%AD%97%E4%B8%8E%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80"><span class="post-toc-text">预算赤字与通货膨胀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%AF%E6%81%A9%E6%96%AF%E7%9A%84%E6%B5%81%E5%8A%A8%E6%80%A7%E5%81%8F%E5%A5%BD%E7%90%86%E8%AE%BA"><span class="post-toc-text">凯恩斯的流动性偏好理论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E9%9C%80%E6%B1%82%E7%9A%84%E7%BB%84%E5%90%88%E7%90%86%E8%AE%BA"><span class="post-toc-text">货币需求的组合理论</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-20-%E7%AB%A0-IS-%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">第 20 章　IS 曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%AE%A1%E5%88%92%E6%94%AF%E5%87%BA%E4%B8%8E%E6%80%BB%E9%9C%80%E6%B1%82"><span class="post-toc-text">计划支出与总需求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%95%86%E5%93%81%E5%B8%82%E5%9C%BA%E5%9D%87%E8%A1%A1%E4%B8%8E-IS-%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">商品市场均衡与 IS 曲线</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-21-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E4%B8%8E%E6%80%BB%E9%9C%80%E6%B1%82%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">第 21 章　货币政策与总需求曲线</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%EF%BC%88MP%EF%BC%89%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">货币政策（MP）曲线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E9%9C%80%E6%B1%82%EF%BC%88AD%EF%BC%89%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">总需求（AD）曲线</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-22-%E7%AB%A0-%E6%80%BB%E9%9C%80%E6%B1%82-%E6%80%BB%E4%BE%9B%E7%BB%99%E5%88%86%E6%9E%90"><span class="post-toc-text">第 22 章　总需求-总供给分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%80%BB%E4%BE%9B%E7%BB%99%E6%9B%B2%E7%BA%BF"><span class="post-toc-text">总供给曲线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9D%87%E8%A1%A1%E4%B8%8E%E8%87%AA%E6%88%91%E7%BA%A0%E9%94%99%E6%9C%BA%E5%88%B6"><span class="post-toc-text">均衡与自我纠错机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%86%B2%E5%87%BB%E5%88%86%E6%9E%90"><span class="post-toc-text">冲击分析</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-23-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%90%86%E8%AE%BA"><span class="post-toc-text">第 23 章　货币政策理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E5%AF%B9%E5%86%B2%E5%87%BB%E7%9A%84%E5%8F%8D%E5%BA%94"><span class="post-toc-text">货币政策对冲击的反应</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%97%B6%E6%BB%9E%E4%B8%8E%E6%94%BF%E7%AD%96%E5%AE%9E%E6%96%BD"><span class="post-toc-text">时滞与政策实施</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80%E6%98%AF%E4%B8%80%E7%A7%8D%E8%B4%A7%E5%B8%81%E7%8E%B0%E8%B1%A1"><span class="post-toc-text">通货膨胀是一种货币现象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80%E5%9E%8B%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E8%B5%B7%E5%9B%A0"><span class="post-toc-text">通货膨胀型货币政策的起因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9B%B6%E5%88%A9%E7%8E%87%E4%B8%8B%E9%99%90%E4%B8%8B%E7%9A%84%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96"><span class="post-toc-text">零利率下限下的货币政策</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-24-%E7%AB%A0-%E7%90%86%E6%80%A7%E9%A2%84%E6%9C%9F%E5%AF%B9%E4%BA%8E%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E6%84%8F%E4%B9%89"><span class="post-toc-text">第 24 章　理性预期对于货币政策的意义</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8D%A2%E5%8D%A1%E6%96%AF%E6%89%B9%E5%88%A4"><span class="post-toc-text">卢卡斯批判</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%84%E5%88%99%E8%BF%98%E6%98%AF%E7%9B%B8%E6%9C%BA%E6%8A%89%E6%8B%A9"><span class="post-toc-text">规则还是相机抉择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8F%AF%E4%BF%A1%E5%BA%A6%E4%B8%8E%E5%90%8D%E4%B9%89%E9%94%9A"><span class="post-toc-text">可信度与名义锚</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-25-%E7%AB%A0-%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E4%BC%A0%E5%AF%BC%E6%9C%BA%E5%88%B6"><span class="post-toc-text">第 25 章　货币政策的传导机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%90%84%E7%A7%8D%E4%BC%A0%E5%AF%BC%E9%80%94%E5%BE%84%E8%AF%A6%E8%A7%A3"><span class="post-toc-text">各种传导途径详解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E8%B4%A7%E5%B8%81%E6%94%BF%E7%AD%96%E7%9A%84%E5%90%AF%E7%A4%BA"><span class="post-toc-text">对货币政策的启示</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E8%84%89%E7%BB%9C%EF%BC%9A%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%E4%B8%8E%E4%B8%89%E6%8A%8A%E9%92%A5%E5%8C%99"><span class="post-toc-text">全书核心脉络：一条主线与三把钥匙</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《货币金融学》"><a href="#阅读笔记——《货币金融学》" class="headerlink" title="阅读笔记——《货币金融学》"></a>阅读笔记——《货币金融学》</h1><blockquote>
+<p>本文是米什金《货币金融学》（第 11 版）配套笔记与课后习题详解的读书笔记。全书以 <strong>金融市场—金融机构—中央银行—国际金融—货币理论</strong> 为主线，用一套统一的分析工具（供求分析、信息不对称、预期理论）串起货币、银行与金融市场三大主题。本文按书的六篇结构整理知识点，并配 Mermaid 图辅助理解。</p>
+</blockquote>
+<h2 id="全书知识地图"><a href="#全书知识地图" class="headerlink" title="全书知识地图"></a>全书知识地图</h2><pre class="mermaid">flowchart LR
+  A["《货币金融学》&lt;br/&gt;（米什金 第11版）"] --&gt; B["第1篇 引言&lt;br/&gt;Ch1-3"]
+  A --&gt; C["第2篇 金融市场&lt;br/&gt;Ch4-7"]
+  A --&gt; D["第3篇 金融机构&lt;br/&gt;Ch8-12"]
+  A --&gt; E["第4篇 中央银行与货币政策&lt;br/&gt;Ch13-16"]
+  A --&gt; F["第5篇 国际金融与货币政策&lt;br/&gt;Ch17-18"]
+  A --&gt; G["第6篇 货币理论&lt;br/&gt;Ch19-25"]
+  B --&gt; B1["为什么研究货币/银行/金融市场&lt;br/&gt;金融体系概览&lt;br/&gt;什么是货币"]
+  C --&gt; C1["理解利率 / 利率行为&lt;br/&gt;利率的风险与期限结构&lt;br/&gt;股票市场与有效市场假说"]
+  D --&gt; D1["金融结构的经济学分析&lt;br/&gt;银行管理 / 金融监管&lt;br/&gt;银行业结构与竞争 / 金融危机"]
+  E --&gt; E1["中央银行与美联储&lt;br/&gt;货币供给过程 / 货币政策工具&lt;br/&gt;货币政策操作"]
+  F --&gt; F1["外汇市场&lt;br/&gt;国际金融体系"]
+  G --&gt; G1["货币数量论与货币需求&lt;br/&gt;IS曲线 / 货币政策与AD&lt;br/&gt;AD-AS分析 / 货币政策理论&lt;br/&gt;理性预期 / 传导机制"]</pre>
+
+<hr>
+<h1 id="第-1-篇-引言"><a href="#第-1-篇-引言" class="headerlink" title="第 1 篇　引言"></a>第 1 篇　引言</h1><h2 id="第-1-章-为什么研究货币、银行与金融市场"><a href="#第-1-章-为什么研究货币、银行与金融市场" class="headerlink" title="第 1 章　为什么研究货币、银行与金融市场"></a>第 1 章　为什么研究货币、银行与金融市场</h2><p><strong>金融市场</strong>是把资金从”有剩余资金的人”转移到”有资金短缺的人”的市场。它通过债券市场、股票市场让资金从没有生产性用途的人流向有生产性用途的人，从而提高经济效率。</p>
+<ul>
+<li><strong>债券</strong>是债务证券，承诺在特定时间段内定期支付；债券市场帮助政府和企业筹资，也是<strong>决定利率的场所</strong>。</li>
+<li><strong>利率</strong>是借款的成本（一定时期内利息额与本金的比率）。利率过高→个人减少消费、增加储蓄；利率高低决定企业投资成本。</li>
+<li>**普通股（股票）**代表对公司的所有权，是对公司收益和资产的索取权。股价影响人们的财富水平，进而影响消费；股价高低也决定企业通过发行股票能筹集多少资金。</li>
+</ul>
+<p><strong>银行与金融机构</strong>是金融市场运行的关键。<strong>金融中介</strong>是向拥有储蓄的人借入资金、转而贷给资金需求者的金融机构。金融体系由银行、保险公司、共同基金、财务公司、投资银行等构成。</p>
+<ul>
+<li><strong>金融创新</strong>：新金融产品和服务的开发，既能拓宽利润空间，有时也会制造金融灾难。</li>
+<li><strong>金融危机</strong>：金融市场出现混乱，伴随资产价格暴跌与众多金融机构和非金融企业破产，通常随后出现经济周期下滑。</li>
+</ul>
+<p><strong>货币与货币政策</strong>：</p>
+<ul>
+<li><strong>货币</strong>是在商品或服务支付及债务偿还中被广泛接受的东西。</li>
+<li><strong>经济周期</strong>是经济社会总产出的上下波动；每次衰退前的货币增长率下降表明货币供给变动是经济周期波动的推动力之一。</li>
+<li><strong>通货膨胀</strong>是物价水平的持续上涨；货币供应量持续上升是造成通货膨胀的重要因素。<strong>通货膨胀率</strong>是物价水平的年变动百分比。</li>
+<li><strong>货币政策</strong>是对货币和利率的管理，由中央银行负责（美国是美联储）。</li>
+<li><strong>财政政策</strong>是有关政府支出和税收的决策。<strong>预算赤字</strong>＝政府支出超过税收收入的差额；<strong>预算盈余</strong>＝税收收入超过政府支出。</li>
+</ul>
+<p><strong>国际金融</strong>：<strong>外汇市场</strong>是货币兑换的场所；<strong>汇率</strong>是以一种货币表示的另一种货币的价格。本币贬值→外国商品变贵、本国商品更有竞争力；本币升值→本国消费者获利、但损害本国企业。</p>
+<pre class="mermaid">flowchart TD
+  A["货币金融学要回答的核心问题"] --&gt; B["金融市场：资金如何流动、利率如何决定"]
+  A --&gt; C["金融机构：银行为什么存在、如何管理"]
+  A --&gt; D["货币与货币政策：货币如何影响经济"]
+  A --&gt; E["国际金融：汇率与国际资本流动"]
+  B --&gt; F["债券市场 / 股票市场"]
+  C --&gt; G["金融中介 / 金融创新 / 金融危机"]
+  D --&gt; H["经济周期 / 通货膨胀 / 货币政策"]
+  E --&gt; I["外汇市场 / 汇率"]</pre>
+
+<hr>
+<h2 id="第-2-章-金融体系概览"><a href="#第-2-章-金融体系概览" class="headerlink" title="第 2 章　金融体系概览"></a>第 2 章　金融体系概览</h2><h3 id="金融市场的功能"><a href="#金融市场的功能" class="headerlink" title="金融市场的功能"></a>金融市场的功能</h3><p>金融市场的基本经济功能是<strong>把资金从支出小于收入而有多余资金的人手中，转移到支出大于收入而短缺资金的人手中</strong>。</p>
+<p>资金有两条流动路线：</p>
+<pre class="mermaid">flowchart LR
+  A["贷款-储蓄者&lt;br/&gt;（家庭、企业、政府、外国人）"] --&gt;|"间接融资"| B["金融中介机构"]
+  B --&gt;|"发放贷款"| D["借款-支出者&lt;br/&gt;（企业、政府、家庭、外国人）"]
+  A --&gt;|"直接融资：出售证券"| C["金融市场"]
+  C --&gt; D</pre>
+
+<ul>
+<li><strong>直接融资</strong>：借款人通过在金融市场上向贷款人出售证券直接借入资金。</li>
+<li><strong>间接融资</strong>：贷款-储蓄者与借款-支出者之间有金融中介机构，中介先向储蓄者借入资金，再向借款者发放贷款。</li>
+</ul>
+<h3 id="金融市场的结构"><a href="#金融市场的结构" class="headerlink" title="金融市场的结构"></a>金融市场的结构</h3><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>债务与股权</td>
+<td>债务工具（契约约定定期支付）；股票（分享净收入和资产的凭证，股权持有者是剩余索取人）</td>
+</tr>
+<tr>
+<td>一级&#x2F;二级市场</td>
+<td>一级市场&#x3D;新证券发行；二级市场&#x3D;已发行证券的交易（提供流动性、决定发行价格）</td>
+</tr>
+<tr>
+<td>交易所&#x2F;场外</td>
+<td>交易所&#x3D;集中地点交易；OTC&#x3D;分散交易商在场外买卖</td>
+</tr>
+<tr>
+<td>货币&#x2F;资本市场</td>
+<td>货币市场&#x3D;1年期以下短期债务工具；资本市场&#x3D;1年期以上长期债务+股权</td>
+</tr>
+</tbody></table>
+<p><strong>金融市场工具</strong>：货币市场工具（国库券、存单、商业票据、回购协议、联邦基金）；资本市场工具（股票、抵押贷款与抵押支持证券、企业债券、政府证券等）。</p>
+<p><strong>国际化</strong>：<strong>外国债券</strong>＝在国外发行且以发行国货币计价的债券；<strong>欧洲债券</strong>＝在外国发行但并非以发行国货币计价；<strong>欧洲货币</strong>＝存放在货币发行国之外的外国货币；<strong>欧洲美元</strong>＝存放在美国境外的美元。</p>
+<h3 id="金融中介机构的功能：间接融资"><a href="#金融中介机构的功能：间接融资" class="headerlink" title="金融中介机构的功能：间接融资"></a>金融中介机构的功能：间接融资</h3><p>金融中介化的优势：</p>
+<ol>
+<li><strong>降低交易成本</strong>（专业手段＋规模经济）。</li>
+<li><strong>风险分担</strong>（资产转换＋多样化）。</li>
+<li><strong>缓解信息不对称</strong>：<ul>
+<li><strong>逆向选择</strong>（交易前）：最可能制造信贷风险的潜在借款人，往往是最积极寻求贷款、最可能获得贷款的人。</li>
+<li><strong>道德风险</strong>（交易后）：借款人可能从事不利于贷款人的活动，加大贷款无法清偿的概率。</li>
+</ul>
+</li>
+<li><strong>范围经济与利益冲突</strong>：同一信息源用于多种服务可降低成本，但也可能产生利益冲突。</li>
+</ol>
+<p>金融中介三类：<strong>存款机构</strong>（银行）、<strong>契约性储蓄机构</strong>（保险、养老基金）、<strong>投资中介机构</strong>（财务公司、共同基金、投资银行）。</p>
+<hr>
+<h2 id="第-3-章-什么是货币"><a href="#第-3-章-什么是货币" class="headerlink" title="第 3 章　什么是货币"></a>第 3 章　什么是货币</h2><h3 id="货币的含义与功能"><a href="#货币的含义与功能" class="headerlink" title="货币的含义与功能"></a>货币的含义与功能</h3><ul>
+<li><strong>货币</strong>（存量概念）与<strong>收入</strong>（单位时间的流量）、<strong>财富</strong>（价值储藏的各项财产总和）要区分开。</li>
+</ul>
+<p>货币的三大功能：</p>
+<ol>
+<li><strong>交易媒介</strong>：用于购买产品和服务，减少物物交换的时间成本（必须便于标准化、被广泛接受、易分割、便于携带、不易变质）。</li>
+<li><strong>记账单位</strong>：用于衡量价值，减少需要报价的价格数量。</li>
+<li><strong>价值储藏</strong>：超越时间的购买力储藏。货币是流动性最高的资产（本身就是交易媒介）。</li>
+</ol>
+<h3 id="支付体系的演进"><a href="#支付体系的演进" class="headerlink" title="支付体系的演进"></a>支付体系的演进</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">商品货币 → 不兑现纸币 → 支票 → 电子支付 → 电子货币</span><br></pre></td></tr></table></figure>
+
+<h3 id="货币的计量"><a href="#货币的计量" class="headerlink" title="货币的计量"></a>货币的计量</h3><ul>
+<li><strong>美国</strong>：M1＝通货＋旅行支票＋活期存款＋其他支票存款；M2＝M1＋小额定期存款＋储蓄存款与货币市场存款账户＋货币市场共同基金份额（零售）。</li>
+<li><strong>中国</strong>：M0＝流通中现金；M1＝M0＋企业活期存款＋机关团体存款＋农村存款＋个人信用卡存款；M2＝M1＋居民储蓄存款＋企业定期存款＋外币存款＋信托类存款。</li>
+</ul>
+<pre class="mermaid">flowchart TD
+  M1["M1（狭义货币）"] --&gt; A["通货（纸币+硬币）"]
+  M1 --&gt; B["旅行支票"]
+  M1 --&gt; C["活期存款 + 其他支票存款"]
+  M2["M2（广义货币）"] --&gt; M1
+  M2 --&gt; D["小额定期存款"]
+  M2 --&gt; E["储蓄存款与货币市场存款账户"]
+  M2 --&gt; F["货币市场共同基金份额（零售）"]</pre>
+
+<hr>
+<h1 id="第-2-篇-金融市场"><a href="#第-2-篇-金融市场" class="headerlink" title="第 2 篇　金融市场"></a>第 2 篇　金融市场</h1><h2 id="第-4-章-理解利率"><a href="#第-4-章-理解利率" class="headerlink" title="第 4 章　理解利率"></a>第 4 章　理解利率</h2><h3 id="现值与到期收益率"><a href="#现值与到期收益率" class="headerlink" title="现值与到期收益率"></a>现值与到期收益率</h3><ul>
+<li><strong>现值</strong>：未来一笔货币收入折算成今天的价值，<code>PV = CF / (1+i)^n</code>。</li>
+<li><strong>四种信用市场工具</strong>：普通贷款、固定支付贷款（分期偿还）、息票债券、贴现发行债券（零息债券）。</li>
+<li><strong>到期收益率（YTM）</strong>：使债券工具未来现金流现值等于其现在价值的利率，是<strong>最精确的利率衡量指标</strong>。</li>
+</ul>
+<p>息票债券三个规律：①价格＝面值时，到期收益率＝息票利率；②价格与到期收益率负相关；③价格低于面值时，到期收益率高于息票利率。</p>
+<p><strong>永续债券（统一公债）</strong>：没有到期日、永远支付固定利息的债券，<code>P = C/i</code>，其到期收益率就是<strong>当期收益率</strong> <code>i = C/P</code>。</p>
+<h3 id="利率与回报率的区别"><a href="#利率与回报率的区别" class="headerlink" title="利率与回报率的区别"></a>利率与回报率的区别</h3><p><strong>回报率</strong>＝当期收益率＋资本利得率，即 <code>R = i_c + g</code>。即使债券的当期收益率准确反映到期收益率，回报率仍可能与利率差别很大（当价格波动导致资本利得或损失时）。</p>
+<p><strong>利率风险</strong>：由利率变动引起的资产回报率风险。期限越长的债券，价格对利率变动越敏感，回报率越不稳定；<strong>到期期限与持有期相同的债券没有利率风险</strong>（持有期结束时价格固定为面值）。</p>
+<h3 id="名义利率与实际利率"><a href="#名义利率与实际利率" class="headerlink" title="名义利率与实际利率"></a>名义利率与实际利率</h3><p><strong>费雪方程式</strong>：<code>i = r + π^e</code>（名义利率＝实际利率＋预期通货膨胀率）。实际利率更准确地反映借入资金的真实成本。</p>
+<hr>
+<h2 id="第-5-章-利率行为"><a href="#第-5-章-利率行为" class="headerlink" title="第 5 章　利率行为"></a>第 5 章　利率行为</h2><h3 id="资产需求的决定因素（投资组合选择理论）"><a href="#资产需求的决定因素（投资组合选择理论）" class="headerlink" title="资产需求的决定因素（投资组合选择理论）"></a>资产需求的决定因素（投资组合选择理论）</h3><p>资产需求数量与四因素的关系：</p>
+<ol>
+<li><strong>财富</strong>：正相关。</li>
+<li><strong>相对预期回报率</strong>：正相关。</li>
+<li><strong>相对风险</strong>：负相关。</li>
+<li><strong>相对流动性</strong>：正相关。</li>
+</ol>
+<h3 id="债券市场的供给与需求"><a href="#债券市场的供给与需求" class="headerlink" title="债券市场的供给与需求"></a>债券市场的供给与需求</h3><ul>
+<li>债券需求曲线向下倾斜（预期回报率越高&#x2F;价格越低，需求量越大）。</li>
+<li>债券供给曲线向上倾斜。</li>
+<li>均衡价格（市场出清价格）对应均衡利率。</li>
+</ul>
+<p><strong>需求曲线位移因素</strong>：财富、预期回报率（未来利率预期、替代资产回报率、预期通胀）、风险、流动性。</p>
+<p><strong>供给曲线位移因素</strong>：投资机会的预期盈利性、预期通货膨胀率、政府预算赤字。</p>
+<h3 id="流动性偏好理论：货币市场的供求"><a href="#流动性偏好理论：货币市场的供求" class="headerlink" title="流动性偏好理论：货币市场的供求"></a>流动性偏好理论：货币市场的供求</h3><p>凯恩斯假定财富只有<strong>货币</strong>和<strong>债券</strong>两种形式，且债券市场与货币市场联动。持有货币的<strong>机会成本</strong>是放弃债券的利息，利率上升→货币需求下降。</p>
+<ul>
+<li>货币需求曲线位移：<strong>收入</strong>（收入↑→需求右移）与<strong>价格水平</strong>（物价↑→需求右移）。</li>
+<li>货币供给曲线位移：由中央银行货币政策决定（扩张性→右移；紧缩性→左移）。</li>
+<li>均衡利率变动：收入或物价上升→利率上升；货币供给增加→利率下降（<strong>流动性效应</strong>）。</li>
+</ul>
+<h3 id="货币与利率（弗里德曼对流动性效应的补充）"><a href="#货币与利率（弗里德曼对流动性效应的补充）" class="headerlink" title="货币与利率（弗里德曼对流动性效应的补充）"></a>货币与利率（弗里德曼对流动性效应的补充）</h3><p>货币供给增加除了<strong>流动性效应</strong>（使利率下降）外，还有三个使利率上升的效应：<strong>收入效应、价格效应、通货膨胀预期效应</strong>。最终利率走势取决于这些效应的相对大小与调整速度。</p>
+<hr>
+<h2 id="第-6-章-利率的风险结构与期限结构"><a href="#第-6-章-利率的风险结构与期限结构" class="headerlink" title="第 6 章　利率的风险结构与期限结构"></a>第 6 章　利率的风险结构与期限结构</h2><h3 id="利率的风险结构"><a href="#利率的风险结构" class="headerlink" title="利率的风险结构"></a>利率的风险结构</h3><p>期限相同的债券因<strong>违约风险、流动性、所得税</strong>不同而利率不同。</p>
+<ol>
+<li><strong>违约风险</strong>：有违约风险债券与无违约风险债券（国债）之间的利差叫<strong>风险溢价</strong>，风险溢价总为正，且随违约风险上升而增加。信用评级：Baa（或 BBB）及以上为<strong>投资级</strong>，以下为<strong>投机级&#x2F;垃圾债券&#x2F;高收益债券</strong>。</li>
+<li><strong>流动性</strong>：流动性越强的资产利率越低（国债流动性最高）。</li>
+<li><strong>所得税</strong>：税率越高的债券，税前利率应越高；有税收优惠的债券利率更低。</li>
+</ol>
+<h3 id="利率的期限结构"><a href="#利率的期限结构" class="headerlink" title="利率的期限结构"></a>利率的期限结构</h3><p><strong>收益率曲线</strong>：期限不同但风险、流动性、税收特征相同的债券收益率连成的曲线，可分为向上倾斜、水平、向下倾斜（反向）。三个经验事实：①不同期限债券利率随时间一起变动；②短期利率低时曲线更可能向上倾斜，高时更可能向下倾斜；③收益率曲线几乎总是向上倾斜。</p>
+<p>三个解释理论：</p>
+<table>
+<thead>
+<tr>
+<th>理论</th>
+<th>基本命题</th>
+<th>能解释的事实</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>预期理论</td>
+<td>长期利率＝期限内预期短期利率的平均值（不同期限债券是完全替代品）</td>
+<td>事实①②，不能解释③</td>
+</tr>
+<tr>
+<td>分割市场理论</td>
+<td>不同期限债券市场完全分割，各自由自身供求决定</td>
+<td>事实③，不能解释①②</td>
+</tr>
+<tr>
+<td>流动性溢价理论</td>
+<td>长期利率＝预期短期利率平均值＋正的流动性溢价（期限溢价随期限上升）</td>
+<td>①②③全部</td>
+</tr>
+</tbody></table>
+<pre class="mermaid">flowchart TD
+  A["利率的期限结构理论"] --&gt; B["预期理论&lt;br/&gt;长期利率=预期短期利率平均值"]
+  A --&gt; C["分割市场理论&lt;br/&gt;市场完全分割"]
+  A --&gt; D["流动性溢价理论&lt;br/&gt;=预期理论+正的流动性溢价"]
+  B --&gt; B1["解释：利率同向变动、短期利率低时曲线向上"]
+  C --&gt; C1["解释：收益率曲线通常向上倾斜"]
+  D --&gt; D1["综合解释三个经验事实"]</pre>
+
+<p><strong>流动性溢价理论的实用价值</strong>：只需观察收益率曲线的斜率，就能读出市场对未来短期利率的预测——陡峭上升&#x3D;预期短期利率上升；平缓上升&#x3D;预期不变；水平&#x3D;预期略降；向下倾斜&#x3D;预期显著下降。</p>
+<hr>
+<h2 id="第-7-章-股票市场、理性预期理论与有效市场假说"><a href="#第-7-章-股票市场、理性预期理论与有效市场假说" class="headerlink" title="第 7 章　股票市场、理性预期理论与有效市场假说"></a>第 7 章　股票市场、理性预期理论与有效市场假说</h2><h3 id="股票估值"><a href="#股票估值" class="headerlink" title="股票估值"></a>股票估值</h3><ul>
+<li><strong>单阶段估值模型</strong>：<code>P₀ = Div₁/(1+k_e) + P₁/(1+k_e)</code>。</li>
+<li><strong>推广的股利估值模型</strong>：股票价值＝未来所有现金流（股利＋最终售价）的现值。</li>
+<li><strong>戈登增长模型</strong>（股利按不变比率 g 增长）：<code>P₀ = D₀(1+g)/(k_e - g)</code>。价格由愿意支付最高价格的买主确定，信息越充分准确，越能降低风险、提高价值。</li>
+</ul>
+<h3 id="理性预期理论"><a href="#理性预期理论" class="headerlink" title="理性预期理论"></a>理性预期理论</h3><ul>
+<li><strong>适应性预期</strong>仅基于过去经验，预期随时间缓慢变化。</li>
+<li><strong>理性预期</strong>：<code>X^e = X^of</code>，即对变量的预期＝基于所有可得信息的最优预测。含义：①变量运动方式变化时，预期形成方式也随之改变；②预测误差平均为零且事先无法预知。</li>
+</ul>
+<h3 id="有效市场假说（EMH）"><a href="#有效市场假说（EMH）" class="headerlink" title="有效市场假说（EMH）"></a>有效市场假说（EMH）</h3><p>有效市场中证券价格反映所有可得信息，<code>R^of = R*</code>（最优预测回报率＝均衡回报率）。套利机制会消除所有未被利用的盈利机会，因此<strong>股票价格遵循随机游走</strong>——未来价格变动无法预测。</p>
+<ul>
+<li>三种形式：<strong>弱式</strong>（反映历史信息）、<strong>半强式</strong>（反映所有公开信息）、<strong>强式</strong>（反映一切公开与内部信息）。</li>
+<li><strong>高级版本</strong>：价格反映真实内在价值，所有价格都正确。</li>
+</ul>
+<h3 id="行为金融"><a href="#行为金融" class="headerlink" title="行为金融"></a>行为金融</h3><p>用心理学解释证券价格行为：<strong>损失厌恶</strong>（解释做空稀少）、<strong>过度自信</strong>（解释交易量过大）、<strong>社会传染&#x2F;狂热</strong>（解释股票市场泡沫）。泡沫与市场震荡质疑 EMH 的高级版本，但无法否定 EMH 的基本原则。</p>
+<hr>
+<h1 id="第-3-篇-金融机构"><a href="#第-3-篇-金融机构" class="headerlink" title="第 3 篇　金融机构"></a>第 3 篇　金融机构</h1><h2 id="第-8-章-金融结构的经济学分析"><a href="#第-8-章-金融结构的经济学分析" class="headerlink" title="第 8 章　金融结构的经济学分析"></a>第 8 章　金融结构的经济学分析</h2><h3 id="世界各国金融结构的八个基本事实"><a href="#世界各国金融结构的八个基本事实" class="headerlink" title="世界各国金融结构的八个基本事实"></a>世界各国金融结构的八个基本事实</h3><ol>
+<li>股票不是企业最主要的外部融资来源。</li>
+<li>发行可流通债务和股权证券不是企业筹资的主要方式。</li>
+<li><strong>间接融资比直接融资重要数倍</strong>。</li>
+<li><strong>银行是企业外部资金最重要的来源</strong>。</li>
+<li>金融体系是经济中受监管最严格的部门。</li>
+<li>只有信誉卓著的大公司才能进入金融市场筹资。</li>
+<li>抵押是居民和企业债务合约的普遍特征。</li>
+<li>债务合约是对借款人行为设置无数限制条件的复杂法律文本。</li>
+</ol>
+<h3 id="交易成本与信息不对称"><a href="#交易成本与信息不对称" class="headerlink" title="交易成本与信息不对称"></a>交易成本与信息不对称</h3><p><strong>交易成本</strong>是阻碍金融交易达成的重要原因，金融中介通过<strong>规模经济</strong>和<strong>专门技术</strong>降低交易成本。</p>
+<p><strong>信息不对称</strong>的两个问题：</p>
+<pre class="mermaid">flowchart TD
+  A["信息不对称"] --&gt; B["逆向选择&lt;br/&gt;（交易前）"]
+  A --&gt; C["道德风险&lt;br/&gt;（交易后）"]
+  B --&gt; B1["最可能违约的人最积极寻求贷款"]
+  C --&gt; C1["借款人从事高风险活动损害贷款人"]
+  B --&gt; B2["次品车问题：劣质企业驱逐优质企业"]
+  C --&gt; C2["股权合约：委托-代理问题"]</pre>
+
+<p><strong>逆向选择的解决</strong>：①信息的私人生产与销售（存在免费搭车问题）；②政府监管（强制信息披露）；③金融中介（银行发放私人贷款，避免免费搭车）；④抵押品和净值。</p>
+<p><strong>道德风险的解决</strong>：①信息生产&#x2F;监督（高额核实成本）；②政府监管（会计准则）；③金融中介（风险投资公司）；④债务合约（查证成本低）；⑤净值与激励相容；⑥限制性条款。</p>
+<hr>
+<h2 id="第-9-章-银行业与金融机构的管理"><a href="#第-9-章-银行业与金融机构的管理" class="headerlink" title="第 9 章　银行业与金融机构的管理"></a>第 9 章　银行业与金融机构的管理</h2><h3 id="银行的资产负债表"><a href="#银行的资产负债表" class="headerlink" title="银行的资产负债表"></a>银行的资产负债表</h3><p><strong>总资产＝总负债＋资本</strong>。</p>
+<ul>
+<li><strong>负债（资金来源）</strong>：支票存款（成本最低）、非交易存款（储蓄账户、定期存单 CDs）、借款（贴现贷款、联邦基金）、银行资本（净值）。</li>
+<li><strong>资产（资金运用）</strong>：准备金（法定＋超额，美联储不付息）、托收中款项、银行同业存款、证券（二级准备金）、贷款（回报率最高但流动性差、违约风险高）、其他资产（实物资本）。</li>
+</ul>
+<p><strong>贷款五级分类</strong>：正常、关注、次级、可疑、损失（后三类为不良贷款）。</p>
+<h3 id="银行管理的基本原则"><a href="#银行管理的基本原则" class="headerlink" title="银行管理的基本原则"></a>银行管理的基本原则</h3><p>银行最关心四个问题：<strong>流动性管理、资产管理、负债管理、资本充足性管理</strong>。</p>
+<ul>
+<li><strong>流动性管理</strong>：存款外流时，银行可用四种方式补充准备金——同业拆借、出售证券、向央行借款、收回&#x2F;出售贷款。持有超额准备金是对存款外流成本的保险。</li>
+<li><strong>资产管理</strong>：找低违约借款人、买高回报低风险证券、资产多样化、管理流动性（持有二级准备金）。</li>
+<li><strong>负债管理</strong>：主动为资产增长确定目标，需要资金时通过发行负债获取。</li>
+<li><strong>资本充足性管理</strong>：资本金防范破产、影响股东收益、满足监管要求。核心公式：<code>ROE = ROA × EM</code>（股本乘数 EM＝资产&#x2F;股权资本）。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+  A["银行管理四大支柱"] --&gt; B["流动性管理&lt;br/&gt;持有充足准备金"]
+  A --&gt; C["资产管理&lt;br/&gt;高回报/低风险/多样化"]
+  A --&gt; D["负债管理&lt;br/&gt;低成本获取资金"]
+  A --&gt; E["资本充足性管理&lt;br/&gt;ROE = ROA × EM"]</pre>
+
+<h3 id="信用风险管理（五原则）"><a href="#信用风险管理（五原则）" class="headerlink" title="信用风险管理（五原则）"></a>信用风险管理（五原则）</h3><ol>
+<li><strong>甄别和监督</strong>（筛选借款人＋贷款专业化＋限制性条款）。</li>
+<li><strong>长期客户联系</strong>（降低信息成本、抑制道德风险）。</li>
+<li><strong>贷款承诺</strong>（建立长期联系、持续获取信息）。</li>
+<li><strong>抵押品和补偿余额</strong>（补偿余额帮助企业监控借款人）。</li>
+<li><strong>信用配给</strong>（即使借款人愿付高利率也拒绝放贷或限额放贷，防范逆向选择与道德风险）。</li>
+</ol>
+<h3 id="利率风险管理与表外业务"><a href="#利率风险管理与表外业务" class="headerlink" title="利率风险管理与表外业务"></a>利率风险管理与表外业务</h3><ul>
+<li><strong>缺口分析</strong>：利率敏感型资产－利率敏感型负债＝缺口；缺口×利率变动幅度＝对银行利润的影响。</li>
+<li><strong>久期分析</strong>：衡量银行资产负债市值对利率变动的敏感度（久期是证券现金流加权平均期限）。</li>
+<li><strong>表外业务</strong>：贷款出售、费用收入（担保、备用信用额度）、交易活动与风险管理工具（期货、期权、利率互换）。</li>
+</ul>
+<hr>
+<h2 id="第-10-章-金融监管的经济学分析"><a href="#第-10-章-金融监管的经济学分析" class="headerlink" title="第 10 章　金融监管的经济学分析"></a>第 10 章　金融监管的经济学分析</h2><h3 id="金融监管存在的原因：信息不对称"><a href="#金融监管存在的原因：信息不对称" class="headerlink" title="金融监管存在的原因：信息不对称"></a>金融监管存在的原因：信息不对称</h3><p>信息不对称导致逆向选择和道德风险，是金融监管存在的根本原因。</p>
+<h3 id="政府安全网"><a href="#政府安全网" class="headerlink" title="政府安全网"></a>政府安全网</h3><ul>
+<li><strong>形式</strong>：存款保险、中央银行最后贷款人职能、政府直接注资或接管（国有化）。</li>
+<li><strong>处理破产银行</strong>：偿付法（银行破产、限额内足额偿付）与收购接管法（找合伙人接管所有负债）。</li>
+<li><strong>缺陷</strong>：<strong>道德风险</strong>（受保银行冒更大风险）＋<strong>逆向选择</strong>（冒险者涌入银行业）＋<strong>“太大不能倒闭”</strong>（大机构道德风险动机增加）。</li>
+</ul>
+<h3 id="金融监管的八种类型"><a href="#金融监管的八种类型" class="headerlink" title="金融监管的八种类型"></a>金融监管的八种类型</h3><ol>
+<li>对资产持有的限制（禁止持有普通股等风险资产）。</li>
+<li>资本金要求（杠杆比率≥5%；《巴塞尔协议》风险加权资本≥8%）。</li>
+<li>即时整改行动（银行陷入困境时尽早干预）。</li>
+<li>注册与检查（CAMELS 评级：资本充足率、资产质量、管理、盈利、流动性、市场风险敏感度）。</li>
+<li>风险管理评估（压力测试、在险价值 VaR）。</li>
+<li>信息披露要求。</li>
+<li>消费者保护。</li>
+<li>对竞争的限制。</li>
+</ol>
+<hr>
+<h2 id="第-11-章-银行业：结构与竞争"><a href="#第-11-章-银行业：结构与竞争" class="headerlink" title="第 11 章　银行业：结构与竞争"></a>第 11 章　银行业：结构与竞争</h2><h3 id="金融创新与影子银行体系"><a href="#金融创新与影子银行体系" class="headerlink" title="金融创新与影子银行体系"></a>金融创新与影子银行体系</h3><p>金融创新三类原因：<strong>适应需求变化</strong>（利率波动→可变利率抵押贷款、衍生工具）、<strong>适应供给变化</strong>（信息技术→信用卡、电子银行、证券化）、<strong>规避监管</strong>（法定准备金和 Q 条例→货币市场共同基金、流动账户）。</p>
+<p><strong>证券化</strong>：把众多小额、不具流动性的金融资产（抵押贷款、汽车贷款、信用卡应付款）打包转化为可流通资本市场证券的过程，是<strong>影子银行体系</strong>最基本的构成。</p>
+<p><strong>影子银行运作顺序</strong>：发起贷款 → 贷款服务 → 捆绑 → 分销（”发起-分销”模式）。</p>
+<h3 id="美国银行业结构"><a href="#美国银行业结构" class="headerlink" title="美国银行业结构"></a>美国银行业结构</h3><ul>
+<li><strong>双重银行体系</strong>：国民银行（通货监理署特许）与州银行（州银行委员会特许）并存。</li>
+<li><strong>对分支机构的限制</strong>：《麦克法登法案》禁止跨州设分支机构，促成了<strong>银行持股公司</strong>和<strong>自动提款机</strong>两项创新。</li>
+<li>**1994 年《里格-尼尔法案》**废除州际银行业务限制；**1999 年《金融服务现代化法案》**废止《格拉斯-斯蒂格尔法案》，终结银行业与证券业分离。</li>
+</ul>
+<p><strong>金融业三种经营模式</strong>：全能银行模式（德国）、英格兰式全能银行（英国&#x2F;美国，附属公司分立）、法律上分离模式（日本）。</p>
+<hr>
+<h2 id="第-12-章-金融危机"><a href="#第-12-章-金融危机" class="headerlink" title="第 12 章　金融危机"></a>第 12 章　金融危机</h2><h3 id="发达经济体金融危机的发展阶段"><a href="#发达经济体金融危机的发展阶段" class="headerlink" title="发达经济体金融危机的发展阶段"></a>发达经济体金融危机的发展阶段</h3><pre class="mermaid">flowchart TD
+  A["阶段一：金融危机爆发"] --&gt; A1["信贷繁荣与破灭"]
+  A --&gt; A2["资产价格繁荣与破灭（泡沫）"]
+  A --&gt; A3["不确定性增加"]
+  A1 --&gt; B["银行净值下降→去杠杆化→信贷冻结"]
+  A2 --&gt; B
+  A3 --&gt; B
+  B --&gt; C["阶段二：银行业危机&lt;br/&gt;挤兑→信息损失→逆向选择/道德风险加剧"]
+  C --&gt; D["阶段三：债务萎缩&lt;br/&gt;物价意外下跌→企业债务负担加重→净值恶化"]</pre>
+
+<h3 id="2007—2009-年全球金融危机"><a href="#2007—2009-年全球金融危机" class="headerlink" title="2007—2009 年全球金融危机"></a>2007—2009 年全球金融危机</h3><p><strong>起因</strong>：①抵押市场的金融创新（次级抵押贷款证券化、CDO 结构化信用产品）；②抵押市场的代理问题（发起-分销模式导致抵押经纪人只顾自身利益）；③信息不对称与信用评级机构的利益冲突。</p>
+<p><strong>影响</strong>：房地产泡沫积聚与崩溃 → 金融机构资产负债表恶化（去杠杆化）→ 影子银行体系挤提（估值折扣上升、紧急抛售）→ 全球传染 → 雷曼兄弟等破产 → “大衰退”。</p>
+<p><strong>监管反应</strong>：从<strong>微观审慎监管</strong>转向<strong>宏观审慎监管</strong>（逆周期资本金要求、净稳定资金比率）；2010 年《多德-弗兰克法案》明确消费者保护、清算权力、系统性风险监管、沃尔克法则、衍生品监管五类监管。</p>
+<p><strong>“太大不能倒闭”的应对</strong>：分拆系统重要性金融机构、提高资本金要求、交由《多德-弗兰克法案》严格监管。</p>
+<hr>
+<h1 id="第-4-篇-中央银行与货币政策的实施"><a href="#第-4-篇-中央银行与货币政策的实施" class="headerlink" title="第 4 篇　中央银行与货币政策的实施"></a>第 4 篇　中央银行与货币政策的实施</h1><h2 id="第-13-章-中央银行与联邦储备体系"><a href="#第-13-章-中央银行与联邦储备体系" class="headerlink" title="第 13 章　中央银行与联邦储备体系"></a>第 13 章　中央银行与联邦储备体系</h2><h3 id="美联储的结构"><a href="#美联储的结构" class="headerlink" title="美联储的结构"></a>美联储的结构</h3><p>美联储由<strong>12 家地区联邦储备银行、联邦储备委员会（7 名委员、任期 14 年）、联邦公开市场委员会（FOMC）、联邦咨询委员会</strong>及约 2000 家成员商业银行构成。三大政策工具：公开市场操作、贴现率、法定准备金率。</p>
+<pre class="mermaid">flowchart TD
+  A["联邦储备体系"] --&gt; B["联邦储备委员会&lt;br/&gt;7名委员，任期14年"]
+  A --&gt; C["12家联邦储备银行&lt;br/&gt;（纽约联储最重要）"]
+  A --&gt; D["联邦公开市场委员会 FOMC&lt;br/&gt;7名委员+纽约联储行长+4名轮值行长"]
+  A --&gt; E["成员商业银行&lt;br/&gt;约2000家"]
+  D --&gt; F["公开市场操作"]
+  B --&gt; G["法定准备金率"]
+  C --&gt; H["贴现率"]</pre>
+
+<h3 id="中央银行的独立性"><a href="#中央银行的独立性" class="headerlink" title="中央银行的独立性"></a>中央银行的独立性</h3><ul>
+<li>两种独立性：<strong>工具独立性</strong>（使用货币政策工具的能力）与<strong>目标独立性</strong>（设定货币政策目标的能力）。</li>
+<li>支持独立的理由：避免政治经济周期、避免短期通胀倾向、政治家委托代理问题更严重。</li>
+<li>反对独立的理由：不民主、需与财政政策协调、独立央行未必总能成功。</li>
+<li>欧洲央行是独立性最强的央行（《马斯特里赫特条约》）；日本银行独立性有限。</li>
+</ul>
+<hr>
+<h2 id="第-14-章-货币供给过程"><a href="#第-14-章-货币供给过程" class="headerlink" title="第 14 章　货币供给过程"></a>第 14 章　货币供给过程</h2><h3 id="三位参与者与基础货币"><a href="#三位参与者与基础货币" class="headerlink" title="三位参与者与基础货币"></a>三位参与者与基础货币</h3><p>参与者：<strong>中央银行、银行（存款机构）、储户</strong>。</p>
+<p><strong>基础货币 MB＝流通中现金 C＋银行体系准备金总额 R</strong>。美联储通过<strong>公开市场操作</strong>和<strong>贴现贷款</strong>控制基础货币。浮款和在美联储的财政存款是美联储无法完全控制的短期波动因素。</p>
+<p><strong>非借入基础货币</strong> <code>MB_n = MB - BR</code>（BR 为向美联储借入的准备金）。</p>
+<h3 id="多倍存款创造"><a href="#多倍存款创造" class="headerlink" title="多倍存款创造"></a>多倍存款创造</h3><p>整个银行体系可以进行多倍存款扩张：<code>ΔD = (1/rr) × ΔR</code>（简单存款乘数＝法定准备金率的倒数）。当公众保留现金、银行持有超额准备金时，实际存款创造会小于简单模型。</p>
+<h3 id="货币乘数"><a href="#货币乘数" class="headerlink" title="货币乘数"></a>货币乘数</h3><p><code>M = m × MB</code>，货币乘数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m = (1 + c) / (rr + e + c)</span><br></pre></td></tr></table></figure>
+
+<p>其中 c＝通货-支票存款比率（储户决定）、e＝超额准备金率（银行决定）、rr＝法定准备金率（央行决定）。</p>
+<p><strong>货币供给与变量关系</strong>：与非借入基础货币、借入准备金正相关；与法定准备金率、超额准备金、现金持有水平负相关。</p>
+<hr>
+<h2 id="第-15-章-货币政策工具"><a href="#第-15-章-货币政策工具" class="headerlink" title="第 15 章　货币政策工具"></a>第 15 章　货币政策工具</h2><h3 id="准备金市场与联邦基金利率"><a href="#准备金市场与联邦基金利率" class="headerlink" title="准备金市场与联邦基金利率"></a>准备金市场与联邦基金利率</h3><ul>
+<li>准备金需求曲线：随联邦基金利率下降而下倾，在准备金利率处变为水平（无限弹性）。</li>
+<li>准备金供给曲线：非借入准备金部分垂直，在贴现率处变为水平。</li>
+<li>公开市场购买→联邦基金利率下跌；贴现率变动通常不影响联邦基金利率（因贴现率通常高于联邦基金利率目标）；提高法定准备金率→联邦基金利率上升。</li>
+</ul>
+<h3 id="三大常规货币政策工具"><a href="#三大常规货币政策工具" class="headerlink" title="三大常规货币政策工具"></a>三大常规货币政策工具</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>特点</th>
+<th>优点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>公开市场操作</strong></td>
+<td>买卖政府证券</td>
+<td>最常用：主动、灵活精确、易对冲、立即执行、无管理时滞</td>
+</tr>
+<tr>
+<td><strong>贴现政策（最后贷款人）</strong></td>
+<td>一级&#x2F;二级&#x2F;季节性信贷</td>
+<td>防止金融恐慌，是向银行体系提供准备金最有效的途径</td>
+</tr>
+<tr>
+<td><strong>法定准备金率</strong></td>
+<td>调整缴存比率</td>
+<td>作用最猛烈，但不轻易使用</td>
+</tr>
+</tbody></table>
+<h3 id="非常规货币政策工具与量化宽松"><a href="#非常规货币政策工具与量化宽松" class="headerlink" title="非常规货币政策工具与量化宽松"></a>非常规货币政策工具与量化宽松</h3><p>常规工具失效的两个原因：金融体系停摆 + <strong>利率零下限问题</strong>（名义利率不能为负）。</p>
+<p>非常规工具三种形式：①<strong>提供流动性</strong>（扩张贴现窗口、短期资金标售工具 TAF、新贷款项目）；②<strong>大规模购买资产（LSAP）</strong>；③<strong>前瞻性指引</strong>（对未来货币政策行动的承诺，管理预期以压低长期利率）。</p>
+<ul>
+<li><strong>量化宽松（QE）</strong>：资产负债表大幅扩张，但可能不会带来贷款和货币供给扩张（资金变成超额准备金）。</li>
+<li><strong>信贷宽松</strong>：调整资产负债表构成，促进特定信贷市场正常运转。</li>
+</ul>
+<hr>
+<h2 id="第-16-章-货币政策操作：战略与战术"><a href="#第-16-章-货币政策操作：战略与战术" class="headerlink" title="第 16 章　货币政策操作：战略与战术"></a>第 16 章　货币政策操作：战略与战术</h2><h3 id="物价稳定目标与名义锚"><a href="#物价稳定目标与名义锚" class="headerlink" title="物价稳定目标与名义锚"></a>物价稳定目标与名义锚</h3><ul>
+<li><strong>名义锚</strong>：锁定物价水平以实现物价稳定目标的名义变量，能锚定通胀预期、限制<strong>时间不一致性问题</strong>（着眼于短期目标的自由放任货币政策导致长期不良后果）。</li>
+</ul>
+<h3 id="货币政策的其他目标"><a href="#货币政策的其他目标" class="headerlink" title="货币政策的其他目标"></a>货币政策的其他目标</h3><p>高就业（自然失业率对应的潜在产出）、经济增长、金融市场稳定、利率稳定、外汇市场稳定。</p>
+<p><strong>阶梯目标</strong>（物价稳定优先）vs <strong>双重目标</strong>（物价稳定与充分就业并列）。</p>
+<h3 id="通货膨胀目标制"><a href="#通货膨胀目标制" class="headerlink" title="通货膨胀目标制"></a>通货膨胀目标制</h3><p>公布中期通胀率目标、制度上承诺物价稳定为首要长期目标、使用多变量信息、提高透明度、增强问责。实行国：新西兰、加拿大、英国。</p>
+<h3 id="泰勒规则"><a href="#泰勒规则" class="headerlink" title="泰勒规则"></a>泰勒规则</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">联邦基金利率指标 = 通货膨胀率 + 均衡实际联邦基金利率</span><br><span class="line">                  + 1/2 × 通货膨胀缺口 + 1/2 × 产出缺口</span><br></pre></td></tr></table></figure>
+
+<p><strong>泰勒定理</strong>：货币当局提高名义利率的幅度应当超过通货膨胀率的上升幅度（通胀缺口系数为正）。这样在通胀上升时实际利率才会上升，避免通胀螺旋。</p>
+<h3 id="央行是否应刺破资产价格泡沫"><a href="#央行是否应刺破资产价格泡沫" class="headerlink" title="央行是否应刺破资产价格泡沫"></a>央行是否应刺破资产价格泡沫</h3><ul>
+<li><strong>反方（格林斯潘立场）</strong>：泡沫难以识别，加息手段过于生硬，等到泡沫破裂后清理更稳妥。</li>
+<li><strong>正方</strong>：信贷驱动型泡沫破裂代价巨大且难以清理，应提前压制（宏观审慎监管＋货币政策”冒险渠道”）。</li>
+</ul>
+<hr>
+<h1 id="第-5-篇-国际金融与货币政策"><a href="#第-5-篇-国际金融与货币政策" class="headerlink" title="第 5 篇　国际金融与货币政策"></a>第 5 篇　国际金融与货币政策</h1><h2 id="第-17-章-外汇市场"><a href="#第-17-章-外汇市场" class="headerlink" title="第 17 章　外汇市场"></a>第 17 章　外汇市场</h2><h3 id="汇率与标价"><a href="#汇率与标价" class="headerlink" title="汇率与标价"></a>汇率与标价</h3><ul>
+<li><strong>即期汇率</strong>（两个营业日内交割）与<strong>远期汇率</strong>（未来约定日期交割）。</li>
+<li><strong>直接标价法</strong>：以一定单位外币折算本币；<strong>间接标价法</strong>：以一定单位本币折算外币。</li>
+<li>本币升值→本国商品国外变贵、外国商品国内变便宜。</li>
+</ul>
+<h3 id="汇率决定的长期因素：购买力平价（PPP）"><a href="#汇率决定的长期因素：购买力平价（PPP）" class="headerlink" title="汇率决定的长期因素：购买力平价（PPP）"></a>汇率决定的长期因素：购买力平价（PPP）</h3><p><strong>一价定律</strong>：同质商品在世界范围内价格应相同。<strong>购买力平价理论</strong>是一价定律在国家物价水平上的应用，预测实际汇率应恒等于 1。一国物价水平相对上升→该国货币长期贬值。</p>
+<p>PPP 不能充分解释汇率的原因：一价定律不适用于所有商品，许多商品和劳务没有跨境交易。</p>
+<p>长期内影响汇率的因素：相对物价水平、贸易壁垒（关税&#x2F;配额）、对国内外商品的偏好、生产力。</p>
+<h3 id="短期汇率：供求分析"><a href="#短期汇率：供求分析" class="headerlink" title="短期汇率：供求分析"></a>短期汇率：供求分析</h3><p>国内利率上升→本币升值；外国利率上升→本币贬值；预期未来汇率上升→本币升值。</p>
+<hr>
+<h2 id="第-18-章-国际金融体系"><a href="#第-18-章-国际金融体系" class="headerlink" title="第 18 章　国际金融体系"></a>第 18 章　国际金融体系</h2><h3 id="外汇干预"><a href="#外汇干预" class="headerlink" title="外汇干预"></a>外汇干预</h3><ul>
+<li><strong>非冲销性干预</strong>：央行买卖本币直接影响基础货币和货币供给。</li>
+<li><strong>冲销性干预</strong>：同时进行反向公开市场操作，保持基础货币不变。</li>
+</ul>
+<h3 id="国际收支平衡表"><a href="#国际收支平衡表" class="headerlink" title="国际收支平衡表"></a>国际收支平衡表</h3><p><strong>经常项目＋资本项目＝官方储备资产的变动</strong>。经常项目记录商品、服务、投资收入和单方面转移；资本项目记录资本流出与流入。</p>
+<h3 id="汇率制度与国际货币体系演进"><a href="#汇率制度与国际货币体系演进" class="headerlink" title="汇率制度与国际货币体系演进"></a>汇率制度与国际货币体系演进</h3><table>
+<thead>
+<tr>
+<th>制度</th>
+<th>特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>金本位</strong></td>
+<td>黄金充当国际货币，固定汇率，价格-铸币流动机制自动调节国际收支</td>
+</tr>
+<tr>
+<td><strong>布雷顿森林体系</strong></td>
+<td>美元与黄金挂钩（35美元&#x2F;盎司），各国货币与美元挂钩，可调整固定汇率，IMF 提供短期融资</td>
+</tr>
+<tr>
+<td><strong>有管理的浮动</strong></td>
+<td>汇率随市场波动但央行干预</td>
+</tr>
+</tbody></table>
+<p><strong>政策三难困境（不可能三角）</strong>：一国不能同时实现<strong>自由的资本流动、固定汇率制度、独立的货币政策</strong>。</p>
+<pre class="mermaid">flowchart TD
+  A["不可能三角"] --&gt; B["自由的资本流动"]
+  A --&gt; C["固定汇率制度"]
+  A --&gt; D["独立的货币政策"]
+  B -.-&gt;|"只能三选二"| C
+  C -.-&gt; D
+  D -.-&gt; B</pre>
+
+<p><strong>货币局</strong>（本币 100% 由外币支持）与<strong>美元化</strong>（直接采用他国货币）是固定汇率目标制的延伸，提供更强承诺机制，但丧失独立货币政策和最后贷款人能力。</p>
+<hr>
+<h1 id="第-6-篇-货币理论"><a href="#第-6-篇-货币理论" class="headerlink" title="第 6 篇　货币理论"></a>第 6 篇　货币理论</h1><h2 id="第-19-章-货币数量论、通货膨胀与货币需求"><a href="#第-19-章-货币数量论、通货膨胀与货币需求" class="headerlink" title="第 19 章　货币数量论、通货膨胀与货币需求"></a>第 19 章　货币数量论、通货膨胀与货币需求</h2><h3 id="货币数量论"><a href="#货币数量论" class="headerlink" title="货币数量论"></a>货币数量论</h3><ul>
+<li><strong>交易方程式</strong>：<code>M × V = P × Y</code>（货币数量×流通速度＝名义收入）。</li>
+<li>费雪认为流通速度短期内稳定，于是货币数量论：<strong>名义收入只取决于货币数量 M 的变动</strong>。</li>
+<li>古典经济学假设工资价格完全弹性、产出固定在充分就业水平，故<strong>货币数量变动引起物价水平成比例变动</strong>。</li>
+<li><strong>通货膨胀的数量论</strong>：通货膨胀率＝货币供给增长率－总产出增长率。</li>
+</ul>
+<h3 id="预算赤字与通货膨胀"><a href="#预算赤字与通货膨胀" class="headerlink" title="预算赤字与通货膨胀"></a>预算赤字与通货膨胀</h3><p>政府预算约束：<code>DEF = G - T = ΔMB + ΔB</code>（赤字＝基础货币增量＋公众持有政府债券增量）。若通过增发货币弥补赤字（<strong>债务货币化&#x2F;印钞</strong>），长期会导致持续通货膨胀。<strong>恶性通货膨胀</strong>＝月通胀率超过 50%。</p>
+<h3 id="凯恩斯的流动性偏好理论"><a href="#凯恩斯的流动性偏好理论" class="headerlink" title="凯恩斯的流动性偏好理论"></a>凯恩斯的流动性偏好理论</h3><p>货币需求三个动机：<strong>交易动机、预防动机、投机动机</strong>。货币需求与实际收入正相关、与名义利率负相关：<code>M^d/P = L(i, Y)</code>。</p>
+<p>利率上升→货币流通速度加快（凯恩斯因此认为流通速度不是常量，而是顺周期波动的）。</p>
+<h3 id="货币需求的组合理论"><a href="#货币需求的组合理论" class="headerlink" title="货币需求的组合理论"></a>货币需求的组合理论</h3><p>影响货币需求的七个因素：利率（-）、收入（+）、支付技术（-）、财富（+）、其他资产的风险（+）、通货膨胀风险（-）、其他资产的流动性（-）。</p>
+<p><strong>流动性陷阱</strong>：利率极低时货币需求对利率无限敏感，货币供给变化不影响利率，货币政策失效。</p>
+<hr>
+<h2 id="第-20-章-IS-曲线"><a href="#第-20-章-IS-曲线" class="headerlink" title="第 20 章　IS 曲线"></a>第 20 章　IS 曲线</h2><h3 id="计划支出与总需求"><a href="#计划支出与总需求" class="headerlink" title="计划支出与总需求"></a>计划支出与总需求</h3><p><code>Y^ad = C + I + G + NX</code>（消费＋计划投资＋政府购买＋净出口）。</p>
+<ul>
+<li><strong>消费函数</strong>：<code>C = C̄ + mpc × (Y - T)</code>（自主性消费＋边际消费倾向×可支配收入）。</li>
+<li><strong>投资函数</strong>：<code>I = Ī - d(r + f̄)</code>，其中实际利率 <code>r</code> 由央行控制，<code>f̄</code> 是<strong>金融脆弱性</strong>（额外借款成本）。</li>
+<li><strong>净出口函数</strong>：<code>NX = N̄X - x·r</code>。</li>
+</ul>
+<h3 id="商品市场均衡与-IS-曲线"><a href="#商品市场均衡与-IS-曲线" class="headerlink" title="商品市场均衡与 IS 曲线"></a>商品市场均衡与 IS 曲线</h3><p>当总产出＝计划支出时商品市场均衡。<strong>IS 曲线</strong>向下倾斜（实际利率上升→投资和净出口下降→总产出下降）。</p>
+<p>推动 IS 曲线位移的因素：政府购买增加、减税、自主性消费&#x2F;投资&#x2F;净出口增加、金融脆弱性缓解 → 右移；反之左移。</p>
+<hr>
+<h2 id="第-21-章-货币政策与总需求曲线"><a href="#第-21-章-货币政策与总需求曲线" class="headerlink" title="第 21 章　货币政策与总需求曲线"></a>第 21 章　货币政策与总需求曲线</h2><h3 id="货币政策（MP）曲线"><a href="#货币政策（MP）曲线" class="headerlink" title="货币政策（MP）曲线"></a>货币政策（MP）曲线</h3><p><code>r = r̄ + λπ</code>。MP 曲线向上倾斜（泰勒定理：通胀上升时央行提高实际利率）。<code>r̄</code> 是实际利率的自主性部分；λ 是实际利率对通胀的敏感性。</p>
+<ul>
+<li><strong>自主性紧缩货币政策</strong>（r̄ 上升）→ MP 曲线上移；<strong>自主性宽松货币政策</strong>（r̄ 下降）→ MP 曲线下移。</li>
+<li>沿 MP 曲线的移动是央行对通胀变动的自动反应，不引起曲线位移。</li>
+</ul>
+<h3 id="总需求（AD）曲线"><a href="#总需求（AD）曲线" class="headerlink" title="总需求（AD）曲线"></a>总需求（AD）曲线</h3><p>由 IS 曲线与 MP 曲线推导而来，向下倾斜（通胀上升→实际利率上升→投资和净出口下降→产出下降）。任何使 IS 曲线位移的因素（财政政策、自主性支出、金融脆弱性）或使 MP 曲线位移的因素（自主性货币政策）都会推动 AD 曲线同向位移。</p>
+<hr>
+<h2 id="第-22-章-总需求-总供给分析"><a href="#第-22-章-总需求-总供给分析" class="headerlink" title="第 22 章　总需求-总供给分析"></a>第 22 章　总需求-总供给分析</h2><h3 id="总供给曲线"><a href="#总供给曲线" class="headerlink" title="总供给曲线"></a>总供给曲线</h3><ul>
+<li><strong>长期总供给曲线（LRAS）</strong>：穿过潜在产出的垂直线（长期产出由资本、劳动、技术决定）。</li>
+<li><strong>短期总供给曲线（AS）</strong>：向上倾斜。方程：<code>π = π^e + γ(Y - Y^P) + ρ</code>（通胀＝预期通胀＋γ×产出缺口＋通胀冲击）。</li>
+</ul>
+<p>推动短期 AS 曲线位移的因素：预期通胀率、通胀（供给）冲击、持续的产出缺口。</p>
+<h3 id="均衡与自我纠错机制"><a href="#均衡与自我纠错机制" class="headerlink" title="均衡与自我纠错机制"></a>均衡与自我纠错机制</h3><ul>
+<li>短期均衡：AD 与 AS 交点。</li>
+<li><strong>自我纠错机制</strong>：无论产出初始在何位置，最终回到自然率水平（产出缺口为正→工资上升→AS 上移；缺口为负→工资下降→AS 下移）。</li>
+<li><strong>凯恩斯学派</strong>认为自我纠错缓慢（工资黏性）→ 主张积极干预；<strong>货币主义</strong>认为调整迅速 → 主张非积极干预。</li>
+</ul>
+<h3 id="冲击分析"><a href="#冲击分析" class="headerlink" title="冲击分析"></a>冲击分析</h3><ul>
+<li><strong>需求冲击</strong>：正面需求冲击短期推高通胀与产出，长期只推高通胀、产出回到潜在水平。</li>
+<li><strong>暂时性供给冲击</strong>：负面冲击短期推高通胀、降低产出，长期两者都回到原位。</li>
+<li><strong>持续性供给冲击</strong>：负面冲击永久降低潜在产出、永久升高通胀（真实经济周期理论）。</li>
+</ul>
+<hr>
+<h2 id="第-23-章-货币政策理论"><a href="#第-23-章-货币政策理论" class="headerlink" title="第 23 章　货币政策理论"></a>第 23 章　货币政策理论</h2><h3 id="货币政策对冲击的反应"><a href="#货币政策对冲击的反应" class="headerlink" title="货币政策对冲击的反应"></a>货币政策对冲击的反应</h3><ul>
+<li><strong>总需求冲击</strong>：稳定通胀与稳定经济活动的政策完全一致（奥利维尔·布兰查德称之为**”神作之合”**）。</li>
+<li><strong>持续性供给冲击</strong>：稳定通胀与稳定经济活动也无冲突。</li>
+<li><strong>暂时性供给冲击</strong>：稳定通胀会加剧产出波动，稳定产出会加剧通胀波动，存在短期权衡。</li>
+</ul>
+<h3 id="时滞与政策实施"><a href="#时滞与政策实施" class="headerlink" title="时滞与政策实施"></a>时滞与政策实施</h3><p>五种时滞：<strong>数据时滞、认识时滞、立法时滞、执行时滞、作用时滞</strong>。时滞削弱积极干预的主张；当政策时滞长于自我纠错时间时，非积极干预更优。</p>
+<h3 id="通货膨胀是一种货币现象"><a href="#通货膨胀是一种货币现象" class="headerlink" title="通货膨胀是一种货币现象"></a>通货膨胀是一种货币现象</h3><p>货币当局在长期可通过自主性货币政策实现任何通胀率指标；但潜在产出（长期总产出）独立于货币政策。</p>
+<h3 id="通货膨胀型货币政策的起因"><a href="#通货膨胀型货币政策的起因" class="headerlink" title="通货膨胀型货币政策的起因"></a>通货膨胀型货币政策的起因</h3><ul>
+<li><strong>成本推进型通胀</strong>：暂时性负面供给冲击或工资涨幅超产出增长，政策持续刺激总需求导致通胀螺旋。</li>
+<li><strong>需求拉动型通胀</strong>：过低的失业率目标（高产出目标）导致持续扩张，工资上升推动通胀螺旋。</li>
+</ul>
+<h3 id="零利率下限下的货币政策"><a href="#零利率下限下的货币政策" class="headerlink" title="零利率下限下的货币政策"></a>零利率下限下的货币政策</h3><p>零利率下限使 MP 曲线在低通胀区域向下倾斜，AD 曲线出现向上倾斜的折弯；此时<strong>自我纠错机制失效</strong>，经济可能陷入通胀与产出螺旋式下降。</p>
+<hr>
+<h2 id="第-24-章-理性预期对于货币政策的意义"><a href="#第-24-章-理性预期对于货币政策的意义" class="headerlink" title="第 24 章　理性预期对于货币政策的意义"></a>第 24 章　理性预期对于货币政策的意义</h2><h3 id="卢卡斯批判"><a href="#卢卡斯批判" class="headerlink" title="卢卡斯批判"></a>卢卡斯批判</h3><p>当被预测变量的行为改变时，预期形成方式也随之改变。因此基于历史数据估计的传统计量经济模型<strong>不能用于评估政策效果</strong>——公众预期会极大地影响政策效果。</p>
+<h3 id="规则还是相机抉择"><a href="#规则还是相机抉择" class="headerlink" title="规则还是相机抉择"></a>规则还是相机抉择</h3><ul>
+<li><strong>相机抉择</strong>：政策制定者不对未来做出承诺，按当下情况决策，易陷入时间不一致性问题。</li>
+<li><strong>规则</strong>：有约束力的计划。货币主义主张<strong>单一货币增长率规则</strong>；积极干预者主张<strong>泰勒规则</strong>。</li>
+<li><strong>有约束的相机抉择</strong>：结合规则与相机抉择优点，承诺一个名义锚。</li>
+</ul>
+<h3 id="可信度与名义锚"><a href="#可信度与名义锚" class="headerlink" title="可信度与名义锚"></a>可信度与名义锚</h3><p>具有可信度的名义锚能：①克服时间不一致问题；②锚定通胀预期、降低通胀波动。可信度越高，反通胀时通胀下降越快、产出损失越小。建立可信度的方法：名义 GDP 目标制、任命保守派央行官员。</p>
+<hr>
+<h2 id="第-25-章-货币政策的传导机制"><a href="#第-25-章-货币政策的传导机制" class="headerlink" title="第 25 章　货币政策的传导机制"></a>第 25 章　货币政策的传导机制</h2><pre class="mermaid">flowchart TD
+  A["货币政策传导机制"] --&gt; B["利率途径"]
+  A --&gt; C["其他资产价格途径"]
+  A --&gt; D["信用途径"]
+  B --&gt; B1["r↓ → I↑ → Y↑"]
+  C --&gt; C1["汇率：r↓ → E↓ → NX↑ → Y↑"]
+  C --&gt; C2["托宾q：r↓ → 股价↑ → q↑ → I↑ → Y↑"]
+  C --&gt; C3["财富效应：股价↑ → 财富↑ → 消费↑ → Y↑"]
+  D --&gt; D1["银行贷款：准备金↑ → 存款↑ → 贷款↑ → I↑ → Y↑"]
+  D --&gt; D2["资产负债表：股价↑ → 净值↑ → 逆向选择/道德风险↓ → 贷款↑ → I↑"]
+  D --&gt; D3["现金流：i↓ → 现金流↑ → 逆向选择/道德风险↓ → 贷款↑ → I↑"]
+  D --&gt; D4["家庭流动性：股价↑ → 财务困境概率↓ → 耐用品/住房支出↑"]</pre>
+
+<h3 id="各种传导途径详解"><a href="#各种传导途径详解" class="headerlink" title="各种传导途径详解"></a>各种传导途径详解</h3><ol>
+<li><strong>传统利率途径</strong>：<code>r↓ → I↑ → Y↑</code>。强调<strong>实际利率</strong>和<strong>长期利率</strong>对支出的影响。</li>
+<li><strong>汇率途径</strong>：<code>r↓ → 本币贬值 → NX↑ → Y↑</code>。</li>
+<li><strong>托宾 q 理论</strong>：q＝企业市场价值&#x2F;资本重置成本；货币政策影响股价→影响 q→影响投资。</li>
+<li><strong>财富效应</strong>：股价（和房价）上涨→金融财富增加→消费增加。</li>
+<li><strong>信用途径</strong>：银行贷款途径、资产负债表途径、现金流途径、意料之外的价格水平途径、对家庭流动性的作用。信用途径的核心是<strong>信息不对称造成的金融脆弱性</strong>。</li>
+</ol>
+<h3 id="对货币政策的启示"><a href="#对货币政策的启示" class="headerlink" title="对货币政策的启示"></a>对货币政策的启示</h3><ol>
+<li>不能简单把货币政策松紧与短期名义利率挂钩（起作用的是实际利率）。</li>
+<li>利率以外的资产价格（股价、汇率、房价）也包含货币政策的重要信息。</li>
+<li>即使短期利率接近零，货币政策仍可能有效。</li>
+<li>保持价格水平稳定应是货币政策的长期目标。</li>
+</ol>
+<hr>
+<h1 id="全书核心脉络：一条主线与三把钥匙"><a href="#全书核心脉络：一条主线与三把钥匙" class="headerlink" title="全书核心脉络：一条主线与三把钥匙"></a>全书核心脉络：一条主线与三把钥匙</h1><p>米什金这本书最精妙的地方，是用<strong>三把分析钥匙</strong>贯穿全部内容：</p>
+<ol>
+<li><strong>供求分析</strong>——从债券市场、货币市场到外汇市场、准备金市场，均衡价格（利率、汇率）都由供求决定，而供求曲线的位移又由少数几个变量驱动。</li>
+<li><strong>信息不对称</strong>——逆向选择与道德风险解释了金融中介为什么存在、金融结构为什么长这样、银行如何管理风险、金融危机为什么爆发、监管为什么必要。</li>
+<li><strong>预期</strong>——理性预期、有效市场假说、利率期限结构、卢卡斯批判、政策可信度，全部建立在”人们对未来如何形成预期”这一基石之上。</li>
+</ol>
+<pre class="mermaid">flowchart TD
+  A["三大分析工具"] --&gt; B["供求分析&lt;br/&gt;→ 利率/汇率/准备金市场均衡"]
+  A --&gt; C["信息不对称&lt;br/&gt;→ 逆向选择与道德风险"]
+  A --&gt; D["预期&lt;br/&gt;→ 理性预期/有效市场/可信度"]
+  B --&gt; E["解释利率、汇率、货币供给的决定"]
+  C --&gt; F["解释金融中介、金融监管、金融危机"]
+  D --&gt; G["解释股价、期限结构、政策效果"]</pre>
+
+<p>从金融市场到金融机构，从中央银行到国际金融，再到货币理论，全书始终围绕一个中心问题展开：<strong>货币、金融体系与经济活动之间如何相互作用</strong>。理解了这条主线，货币金融学的知识就不再是零散的名词，而是一套可以反复使用的思维框架。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E6%8A%80%E6%9C%AF/Go-gin-ghttp-%E5%BF%AB%E9%80%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/'>Go、Gin 与 ghttp 快速学习笔记</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000005.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%88%90%E6%9E%9C%E7%AE%A1%E7%90%86%E3%80%8B/">阅读笔记——《成果管理》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

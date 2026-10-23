@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《自我（第2版）》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《自我（第2版）》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：7.3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：27分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E3%80%8A%E8%87%AA%E6%88%91%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89%E3%80%8B%E7%B3%BB%E7%BB%9F%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0"><span class="post-toc-text">《自我（第2版）》系统读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E4%B9%A6%E6%A6%82%E8%A7%88%E4%B8%8E%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE"><span class="post-toc-text">一、全书概览与知识地图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BF%99%E6%98%AF%E4%B8%80%E6%9C%AC%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E4%B9%A6"><span class="post-toc-text">1. 这是一本什么样的书</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E5%85%A8%E4%B9%A6-10-%E7%AB%A0%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="post-toc-text">2. 全书 10 章结构图</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E7%AC%AC1%E7%AB%A0-%E5%AF%BC%E8%A8%80%EF%BC%9A%E4%B8%BB%E6%88%91%E4%B8%8E%E5%AE%BE%E6%88%91"><span class="post-toc-text">二、第1章 导言：主我与宾我</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E7%AC%AC2%E7%AB%A0-%E8%87%AA%E6%88%91%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A%E7%BB%8F%E9%AA%8C%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%89%E4%B8%AA%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86"><span class="post-toc-text">三、第2章 自我的特点：经验自我的三个组成部分</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A%E8%A9%B9%E5%A7%86%E6%96%AF%E7%9A%84%E2%80%9D%E7%BB%8F%E9%AA%8C%E8%87%AA%E6%88%91%E2%80%9D"><span class="post-toc-text">核心知识点：詹姆斯的”经验自我”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E6%88%91%E7%9A%84%E7%89%B9%E7%82%B9%EF%BC%9A%E4%B8%AA%E4%BA%BA%E5%90%8C%E4%B8%80%E6%80%A7%EF%BC%88personal-identity%EF%BC%89%E4%B9%8B%E8%B0%9C"><span class="post-toc-text">主我的特点：个人同一性（personal identity）之谜</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%AC%AC3%E7%AB%A0-%E5%AF%BB%E6%B1%82%E8%87%AA%E6%88%91%E8%AE%A4%E8%AF%86"><span class="post-toc-text">四、第3章 寻求自我认识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-1"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%AC%AC4%E7%AB%A0-%E8%87%AA%E6%88%91%E7%9A%84%E5%8F%91%E5%B1%95"><span class="post-toc-text">五、第4章 自我的发展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-2"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E7%AC%AC5%E7%AB%A0-%E4%BB%8E%E8%AE%A4%E7%9F%A5%E8%A7%82%E7%82%B9%E7%9C%8B%E8%87%AA%E6%88%91"><span class="post-toc-text">六、第5章 从认知观点看自我</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-3"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E7%AC%AC6%E7%AB%A0-%E8%A1%8C%E4%B8%BA%E7%9A%84%E8%87%AA%E6%88%91%E8%B0%83%E8%8A%82"><span class="post-toc-text">七、第6章 行为的自我调节</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-4"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E7%AC%AC7%E7%AB%A0-%E8%87%AA%E6%88%91%E5%B1%95%E7%A4%BA"><span class="post-toc-text">八、第7章 自我展示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-5"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E7%AC%AC8%E7%AB%A0-%E8%87%AA%E5%B0%8A"><span class="post-toc-text">九、第8章 自尊</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-6"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E7%AC%AC9%E7%AB%A0-%E6%8A%91%E9%83%81"><span class="post-toc-text">十、第9章 抑郁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-7"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E7%AC%AC10%E7%AB%A0-%E9%94%99%E8%A7%89%E4%B8%8E%E5%81%A5%E5%BA%B7"><span class="post-toc-text">十一、第10章 错觉与健康</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9-8"><span class="post-toc-text">核心知识点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E4%B8%BB%E7%BA%BF%E4%B8%8E%E4%BB%B7%E5%80%BC%E7%82%B9"><span class="post-toc-text">十二、贯穿全书的主线与价值点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E7%BA%BF-1%EF%BC%9A%E4%B8%BB%E8%A7%82%E5%9B%BE%E5%83%8F-%E5%AE%A2%E8%A7%82%E7%8E%B0%E5%AE%9E"><span class="post-toc-text">主线 1：主观图像 &gt; 客观现实</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E7%BA%BF-2%EF%BC%9A%E8%87%AA%E6%88%91%E7%9A%84%E7%A4%BE%E4%BC%9A%E6%80%A7"><span class="post-toc-text">主线 2：自我的社会性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E7%BA%BF-3%EF%BC%9A%E5%8A%A8%E6%9C%BA%E9%A9%B1%E5%8A%A8%E7%9A%84%E8%87%AA%E6%88%91%E5%8A%A0%E5%B7%A5"><span class="post-toc-text">主线 3：动机驱动的自我加工</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E7%BA%BF-4%EF%BC%9A%E7%A8%B3%E5%AE%9A%E4%B8%8E%E5%8F%AF%E5%A1%91%E7%9A%84%E5%BC%A0%E5%8A%9B"><span class="post-toc-text">主线 4：稳定与可塑的张力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%BB%E7%BA%BF-5%EF%BC%9A%E8%87%AA%E5%B0%8A%E7%9A%84%E2%80%9D%E6%84%9F%E8%A7%89%E6%9C%AC%E8%B4%A8%E2%80%9D"><span class="post-toc-text">主线 5：自尊的”感觉本质”</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E6%89%B9%E5%88%A4%E6%80%A7%E6%80%9D%E8%80%83%E4%B8%8E%E9%98%85%E8%AF%BB%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">十三、批判性思考与阅读建议</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E4%BB%B7%E5%80%BC%EF%BC%88%E8%AF%BB%E5%AE%83%E5%BE%97%E5%88%B0%E4%BB%80%E4%B9%88%EF%BC%89"><span class="post-toc-text">1. 这本书的价值（读它得到什么）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E5%B1%80%E9%99%90"><span class="post-toc-text">2. 需要注意的局限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E6%9C%80%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E5%87%A0%E5%8F%A5%E8%AF%9D%EF%BC%88%E9%87%91%E5%8F%A5%EF%BC%89"><span class="post-toc-text">3. 最值得记住的几句话（金句）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93%E5%85%A8%E4%B9%A6"><span class="post-toc-text">4. 一句话总结全书</span></a></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="《自我（第2版）》系统读书笔记"><a href="#《自我（第2版）》系统读书笔记" class="headerlink" title="《自我（第2版）》系统读书笔记"></a>《自我（第2版）》系统读书笔记</h1><blockquote>
+<p><strong>英文书名</strong>：The Self（2nd Edition）<br><strong>作者</strong>：乔纳森·布朗（Jonathan D. Brown）、玛格丽特·布朗（Margaret A. Brown）<br><strong>译者</strong>：王伟平、陈浩莺（”社会心理学精品译丛”，彭凯平主编）<br><strong>学科定位</strong>：社会心理学 &#x2F; 人格心理学 · 自我（the self）专题的经典教材<br><strong>体量</strong>：约 71.8 万字，正文 10 章<br><strong>一句话定位</strong>：系统回答”我是谁、我如何看待自己、我如何调节自己、我如何展示自己、我为何有时会抑郁、我为何需要一点错觉”——关于”自我”的现代心理学全景图。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li><a href="#%E4%B8%80%E5%85%A8%E4%B9%A6%E6%A6%82%E8%A7%88%E4%B8%8E%E7%9F%A5%E8%AF%86%E5%9C%B0%E5%9B%BE">全书概览与知识地图</a></li>
+<li><a href="#%E4%BA%8C%E7%AC%AC1%E7%AB%A0%E5%AF%BC%E8%A8%80%E4%B8%BB%E6%88%91%E4%B8%8E%E5%AE%BE%E6%88%91">第1章 导言：主我与宾我</a></li>
+<li><a href="#%E4%B8%89%E7%AC%AC2%E7%AB%A0%E8%87%AA%E6%88%91%E7%9A%84%E7%89%B9%E7%82%B9%E7%BB%8F%E9%AA%8C%E8%87%AA%E6%88%91%E7%9A%84%E4%B8%89%E4%B8%AA%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86">第2章 自我的特点：经验自我的三个组成部分</a></li>
+<li><a href="#%E5%9B%9B%E7%AC%AC3%E7%AB%A0%E5%AF%BB%E6%B1%82%E8%87%AA%E6%88%91%E8%AE%A4%E8%AF%86">第3章 寻求自我认识：人如何认识自己（以及如何高估自己）</a></li>
+<li><a href="#%E4%BA%94%E7%AC%AC4%E7%AB%A0%E8%87%AA%E6%88%91%E7%9A%84%E5%8F%91%E5%B1%95">第4章 自我的发展：从婴儿到一生</a></li>
+<li><a href="#%E5%85%AD%E7%AC%AC5%E7%AB%A0%E4%BB%8E%E8%AE%A4%E7%9F%A5%E8%A7%82%E7%82%B9%E7%9C%8B%E8%87%AA%E6%88%91">第5章 从认知观点看自我：自我图式</a></li>
+<li><a href="#%E4%B8%83%E7%AC%AC6%E7%AB%A0%E8%A1%8C%E4%B8%BA%E7%9A%84%E8%87%AA%E6%88%91%E8%B0%83%E8%8A%82">第6章 行为的自我调节：目标、效能与可能自我</a></li>
+<li><a href="#%E5%85%AB%E7%AC%AC7%E7%AB%A0%E8%87%AA%E6%88%91%E5%B1%95%E7%A4%BA">第7章 自我展示：印象管理</a></li>
+<li><a href="#%E4%B9%9D%E7%AC%AC8%E7%AB%A0%E8%87%AA%E5%B0%8A">第8章 自尊：三种模型</a></li>
+<li><a href="#%E5%8D%81%E7%AC%AC9%E7%AB%A0%E6%8A%91%E9%83%81">第9章 抑郁：自我视角下的抑郁</a></li>
+<li><a href="#%E5%8D%81%E4%B8%80%E7%AC%AC10%E7%AB%A0%E9%94%99%E8%A7%89%E4%B8%8E%E5%81%A5%E5%BA%B7">第10章 错觉与健康：积极错觉</a></li>
+<li><a href="#%E5%8D%81%E4%BA%8C%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E4%B8%BB%E7%BA%BF%E4%B8%8E%E4%BB%B7%E5%80%BC%E7%82%B9">贯穿全书的主线与价值点</a></li>
+<li><a href="#%E5%8D%81%E4%B8%89%E6%89%B9%E5%88%A4%E6%80%A7%E6%80%9D%E8%80%83%E4%B8%8E%E9%98%85%E8%AF%BB%E5%BB%BA%E8%AE%AE">批判性思考与阅读建议</a></li>
+</ol>
+<hr>
+<h2 id="一、全书概览与知识地图"><a href="#一、全书概览与知识地图" class="headerlink" title="一、全书概览与知识地图"></a>一、全书概览与知识地图</h2><h3 id="1-这是一本什么样的书"><a href="#1-这是一本什么样的书" class="headerlink" title="1. 这是一本什么样的书"></a>1. 这是一本什么样的书</h3><p>《自我》是”社会心理学精品译丛”中的核心教材，由华盛顿大学教授乔纳森·布朗撰写（第2版与玛格丽特·布朗合著）。它把心理学中关于”自我”的研究——从威廉·詹姆斯（1890）到当代的自我图式、自我效能、自尊、积极错觉——整合成一条清晰的逻辑链。</p>
+<p>全书有一个贯穿始终的<strong>二元框架</strong>（源自威廉·詹姆斯），是理解一切的基础：</p>
+<pre class="mermaid">flowchart TB
+    SELF["自我（Self）"]
+    I["主我（I）&lt;br/&gt;主动体验世界、思考、感知的部分&lt;br/&gt;——'我是观察者'"]
+    ME["宾我（Me）&lt;br/&gt;被注意、被思考的客体部分&lt;br/&gt;——'我是被观察者'"]
+    ME1["自我概念&lt;br/&gt;Self-Concept&lt;br/&gt;（我怎么想自己）"]
+    ME2["自尊&lt;br/&gt;Self-Esteem&lt;br/&gt;（我怎么感受自己）"]
+    SELF --&gt; I
+    SELF --&gt; ME
+    ME --&gt; ME1
+    ME --&gt; ME2
+
+    style SELF fill:#4a90d9,color:#fff
+    style I fill:#5cb85c,color:#fff
+    style ME fill:#f0ad4e,color:#fff
+    style ME1 fill:#d9534f,color:#fff
+    style ME2 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>主我（I）</strong>：自我中”主动地体验、感知、思考”的那部分——我们对”正在思考”这件事本身的意识。</li>
+<li><strong>宾我（Me）</strong>：自我中”被注意、被思考、被感知”的那部分——即”我是一个什么样的人”。</li>
+<li>宾我进一步分为两翼：<strong>自我概念</strong>（想法层面）与<strong>自尊</strong>（感受层面）。</li>
+</ul>
+<blockquote>
+<p>关键点：这本书的一个核心主题是——<strong>心理学主要研究”宾我”</strong>（人们如何看待和感受自己），因为主我更像哲学问题。</p>
+</blockquote>
+<h3 id="2-全书-10-章结构图"><a href="#2-全书-10-章结构图" class="headerlink" title="2. 全书 10 章结构图"></a>2. 全书 10 章结构图</h3><pre class="mermaid">flowchart LR
+    CH1["1 导言&lt;br/&gt;主我/宾我"]
+    CH2["2 自我的特点&lt;br/&gt;物质/社会/精神自我"]
+    CH3["3 寻求自我认识&lt;br/&gt;来源与偏差"]
+    CH4["4 自我的发展&lt;br/&gt;米德/皮亚杰/艾里克森"]
+    CH5["5 认知观点&lt;br/&gt;自我图式"]
+    CH6["6 行为自我调节&lt;br/&gt;TOTE/自我效能"]
+    CH7["7 自我展示&lt;br/&gt;印象管理"]
+    CH8["8 自尊&lt;br/&gt;三种模型"]
+    CH9["9 抑郁&lt;br/&gt;自尊与归因"]
+    CH10["10 错觉与健康&lt;br/&gt;积极错觉"]
+
+    CH1 --&gt; CH2 --&gt; CH3 --&gt; CH4 --&gt; CH5 --&gt; CH6 --&gt; CH7 --&gt; CH8 --&gt; CH9 --&gt; CH10
+
+    style CH1 fill:#4a90d9,color:#fff
+    style CH2 fill:#5cb85c,color:#fff
+    style CH3 fill:#f0ad4e,color:#fff
+    style CH4 fill:#d9534f,color:#fff
+    style CH5 fill:#9b59b6,color:#fff
+    style CH6 fill:#e67e22,color:#fff
+    style CH7 fill:#1abc9c,color:#fff
+    style CH8 fill:#34495e,color:#fff
+    style CH9 fill:#c0392b,color:#fff
+    style CH10 fill:#16a085,color:#fff</pre>
+
+<p><strong>逻辑链条</strong>：先定义自我（1、2章）→ 再讲”认识自我”（3、4、5章）→ 再讲”运用自我”（6、7章）→ 最后讲”自我的结果”（8、9、10章：自尊、抑郁、健康）。</p>
+<hr>
+<h2 id="二、第1章-导言：主我与宾我"><a href="#二、第1章-导言：主我与宾我" class="headerlink" title="二、第1章 导言：主我与宾我"></a>二、第1章 导言：主我与宾我</h2><h3 id="核心知识点"><a href="#核心知识点" class="headerlink" title="核心知识点"></a>核心知识点</h3><ol>
+<li><p><strong>自反性（Reflexivity）</strong>：自我最独特的性质。人能把自己当作注意的客体——“我看到我”（I see me）这一句中，人同时是看的主体和看的对象。</p>
+</li>
+<li><p><strong>自我心理学 vs 人格心理学</strong>（全书第一组重要区分）：</p>
+<ul>
+<li><strong>人格心理学</strong>：研究人”实际上”是什么样（客观）。</li>
+<li><strong>自我心理学</strong>：研究人”认为”自己是什么样（主观）。</li>
+<li>两者会互相影响（人格影响自我看法；自我看法本身也是人格的一部分），但<strong>核心差别是”主观图像 vs 客观现实”</strong>。</li>
+</ul>
+</li>
+<li><p><strong>自我心理学 vs 现象学</strong>：自我研究有强烈的现象学取向——<strong>是主观感知而非客观世界支配我们的心理活动</strong>。例子：格式塔视错觉说明”人的心理世界 ≠ 物质世界”。</p>
+</li>
+<li><p><strong>历史脉络</strong>：行为主义曾长期打压自我研究（认为太主观、不值得研究），直到认知革命后”自我”才重新成为心理学中心主题。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>价值点</strong>：理解”主我&#x2F;宾我”和”主观&#x2F;客观”这两组区分，是打开整本书乃至整个自我心理学的钥匙。</p>
+</blockquote>
+<hr>
+<h2 id="三、第2章-自我的特点：经验自我的三个组成部分"><a href="#三、第2章-自我的特点：经验自我的三个组成部分" class="headerlink" title="三、第2章 自我的特点：经验自我的三个组成部分"></a>三、第2章 自我的特点：经验自我的三个组成部分</h2><h3 id="核心知识点：詹姆斯的”经验自我”"><a href="#核心知识点：詹姆斯的”经验自我”" class="headerlink" title="核心知识点：詹姆斯的”经验自我”"></a>核心知识点：詹姆斯的”经验自我”</h3><p>威廉·詹姆斯把”宾我”（经验自我）分为三类，这是全书最重要的框架之一：</p>
+<pre class="mermaid">flowchart TB
+    ES["经验自我（宾我）&lt;br/&gt;James, 1890"]
+    M1["物质自我&lt;br/&gt;Material Self"]
+    M2["社会自我&lt;br/&gt;Social Self"]
+    M3["精神自我&lt;br/&gt;Spiritual Self"]
+    M1a["躯体自我：我的身体"]
+    M1b["延伸自我：&lt;br/&gt;我的孩子、宠物、财产、&lt;br/&gt;家乡、劳动成果"]
+    M2a["社会身份：&lt;br/&gt;私人关系/种族宗教/&lt;br/&gt;政治/职业等"]
+    M2b["本质：我们以为&lt;br/&gt;他人如何评价我们"]
+    M3a["内在心理品质：&lt;br/&gt;能力、态度、情绪、&lt;br/&gt;动机、信念"]
+    ES --&gt; M1 --&gt; M1a
+    M1 --&gt; M1b
+    ES --&gt; M2 --&gt; M2a
+    M2 --&gt; M2b
+    ES --&gt; M3 --&gt; M3a
+
+    style ES fill:#4a90d9,color:#fff
+    style M1 fill:#5cb85c,color:#fff
+    style M2 fill:#f0ad4e,color:#fff
+    style M3 fill:#d9534f,color:#fff</pre>
+
+<ol>
+<li><p><strong>物质自我</strong>：承载”我的”的一切有形物。核心洞察是——<strong>物质自我不是”实体本身”，而是我们对实体的”心理占有感”</strong>。判断某物是否属于自我，看两点：①我们对它是否有情感投入（被攻击时是否愤怒）；②我们是否关注并努力提升它。</p>
+<ul>
+<li>实证支持：<strong>“纯粹占有效应”</strong>（mere ownership effect）——一旦某物属于我，我就会更高评价它；<strong>“人名字母效应”</strong>（name-letter effect）——人们更喜欢自己名字里包含的字母。</li>
+</ul>
+</li>
+<li><p><strong>社会自我</strong>：他人如何认识和对待我们（&#x3D; 社会同一性）。关键命题：</p>
+<ul>
+<li>“<strong>有多少群体认可我，我就有多少个社会自我</strong>“。</li>
+<li>不同情境下，我们的自我不同（在父母面前 vs 同伴面前）。</li>
+<li>争论点：<strong>是否存在超越社会角色的”真实自我”？</strong> 詹姆斯认为”有”，社会角色只是自我的一部分，不是全部。</li>
+</ul>
+</li>
+<li><p><strong>精神自我</strong>：内在&#x2F;心理自我——我们感知到的能力、态度、情绪、兴趣、动机、观点、特质、愿望（&#x3D; 个人同一性）。这是”最持久、最私密、最真实”的自我。</p>
+</li>
+</ol>
+<h3 id="主我的特点：个人同一性（personal-identity）之谜"><a href="#主我的特点：个人同一性（personal-identity）之谜" class="headerlink" title="主我的特点：个人同一性（personal identity）之谜"></a>主我的特点：个人同一性（personal identity）之谜</h3><p>本章后半部分把”主我”的问题，回溯到哲学上的”个人同一性”问题——“<strong>是什么让今天的我和昨天的我是同一个人？</strong>“四种答案：</p>
+<table>
+<thead>
+<tr>
+<th>学派</th>
+<th>核心主张</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实体论（灵魂说）</td>
+<td>灵魂是联结的纽带</td>
+</tr>
+<tr>
+<td>洛克（Locke）</td>
+<td><strong>同一性 &#x3D; 记忆</strong>（记住过去，就是同一个人）</td>
+</tr>
+<tr>
+<td>休谟（Hume）</td>
+<td>同一性是一种<strong>假象</strong>（只是一堆知觉的集合）</td>
+</tr>
+<tr>
+<td>詹姆斯（James）</td>
+<td>同一性是一种<strong>持续感</strong>（”知道坐在这里的就是同一个我”）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>价值点</strong>：物质&#x2F;社会&#x2F;精神自我 + 延伸自我，帮你理解”为什么失恋、失业、丢失财物会那么痛”——因为它们都是”自我的损失”，会带来”人格的缩小感”。</p>
+</blockquote>
+<hr>
+<h2 id="四、第3章-寻求自我认识"><a href="#四、第3章-寻求自我认识" class="headerlink" title="四、第3章 寻求自我认识"></a>四、第3章 寻求自我认识</h2><h3 id="核心知识点-1"><a href="#核心知识点-1" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 自我认识的三个来源</strong>：</p>
+<pre class="mermaid">flowchart LR
+    SK["寻求自我认识"]
+    A["物理世界&lt;br/&gt;（通过行为观察自己）"]
+    B["社会世界&lt;br/&gt;（反射性评价、社会比较）"]
+    C["内部心理世界&lt;br/&gt;（内省）"]
+    SK --&gt; A
+    SK --&gt; B
+    SK --&gt; C
+
+    B --&gt; B1["镜像自我&lt;br/&gt;（库利）：我以为你如何看我"]
+    B --&gt; B2["社会比较&lt;br/&gt;：上行/下行比较"]
+    C --&gt; C1["内省&lt;br/&gt;（但常不可靠）"]
+
+    style SK fill:#4a90d9,color:#fff
+    style A fill:#5cb85c,color:#fff
+    style B fill:#f0ad4e,color:#fff
+    style C fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>物理世界</strong>：从自己的行为推断自己（”我看到自己总去健身房，所以我是个自律的人”）。</li>
+<li><strong>社会世界</strong>：<ul>
+<li><strong>镜像自我（库利 Cooley, 1902）</strong>：我们通过”想象别人如何看待我们”来形成自我感受。</li>
+<li><strong>社会比较</strong>：<strong>上行比较</strong>（和更强的人比，可带来灵感或打击）、<strong>下行比较</strong>（和更差的人比，让自己感觉更好——甚至”杜撰”一个更差的人来比，如乳腺癌患者的”我比她们好多了”）。</li>
+</ul>
+</li>
+<li><strong>内部世界</strong>：内省——但<strong>内省常常不可靠</strong>。</li>
+</ul>
+<p><strong>2. 正向偏见（人们普遍高估自己）</strong>：</p>
+<ul>
+<li><strong>优于平均效应（better-than-average effect）</strong>：绝大多数人认为自己比平均水平更聪明、更道德、更善良、更忠诚、更有同情心……（90% 的经理认为自己业绩更突出；94% 的教授认为自己工作高于平均水平）。</li>
+<li>成因之争：动机论（想感觉良好）vs 认知论（信息差异、焦点效应、自我中心等认知偏差）。</li>
+</ul>
+<p><strong>3. 如何保持积极自我观念</strong>：</p>
+<ul>
+<li><strong>自我服务归因</strong>（self-serving attribution）：成功归于自己（”我聪明”），失败归于外部（”题目太难”）。</li>
+<li><strong>选择性信息加工</strong>：不加批判地接受正面反馈，仔细审查、反驳负面反馈；更易记住积极信息。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这一章解释了**”为什么大多数人都自恋、都觉得自己比平均水平强”**——这不是个别人的毛病，而是人类普遍的心理规律。理解它，能帮你更客观地看待自己和他人的”迷之自信”。</p>
+</blockquote>
+<hr>
+<h2 id="五、第4章-自我的发展"><a href="#五、第4章-自我的发展" class="headerlink" title="五、第4章 自我的发展"></a>五、第4章 自我的发展</h2><h3 id="核心知识点-2"><a href="#核心知识点-2" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 三大发展理论</strong>：</p>
+<pre class="mermaid">flowchart TB
+    D["自我的发展"]
+    T1["米德：符号交互理论&lt;br/&gt;（社会互动塑造自我）"]
+    T2["皮亚杰：认知发展模型&lt;br/&gt;（认知能力是自我基础）"]
+    T3["艾里克森：心理社会性发展&lt;br/&gt;（八阶段论，贯穿一生）"]
+    D --&gt; T1
+    D --&gt; T2
+    D --&gt; T3
+
+    T1 --&gt; T1a["观点采择&lt;br/&gt;（站在他人角度看自己）"]
+    T1 --&gt; T1b["游戏阶段&lt;br/&gt;（角色扮演→棒球赛=同时采纳多角色）"]
+    T1 --&gt; T1c["广义他人&lt;br/&gt;（内化社会整体规范）"]
+
+    style D fill:#4a90d9,color:#fff
+    style T1 fill:#5cb85c,color:#fff
+    style T2 fill:#f0ad4e,color:#fff
+    style T3 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>米德（Mead）</strong>：自我的起源 &#x3D; <strong>观点采择（perspective-taking）</strong>——能”站在别人的角度看自己”，自我就诞生了。语言（符号沟通）和游戏是关键加速器：孩子从”独自玩”→”角色扮演”→”棒球赛（同时意识到所有角色的态度）”→内化”广义他人”（社会整体规范）。</li>
+<li><strong>皮亚杰（Piaget）</strong>：认知发展阶段（自我中心→观点采择→抽象思维）为自我发展提供认知基础。</li>
+<li><strong>艾里克森（Erikson）</strong>：心理社会性发展八阶段，把自我发展延伸到一生。</li>
+</ul>
+<p><strong>2. 自我意识是否人类独有？</strong></p>
+<ul>
+<li><strong>镜像识别实验</strong>（盖洛普 Gallup）：黑猩猩、猩猩能在镜中认出自己；但<strong>独立饲养（没有社会交往）的黑猩猩做不到</strong>——这支持了米德”自我发展离不开社会交往”的论断。</li>
+<li>但新研究也发现：新生儿就具备”尚未完全发展的自我感”（模仿能力、意志感），说明<strong>社会交往对自我的”完全发展”必要，但对”出现”不绝对必要</strong>。</li>
+</ul>
+<p><strong>3. 一生中的自我发展</strong>：</p>
+<ul>
+<li>儿童早期关注<strong>物质自我</strong>（物理特性、所有物）→ 儿童中期关注<strong>社会自我</strong>（社会比较、人际特征）→ 青春期关注<strong>精神自我</strong>（内在心理特性）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：米德的”观点采择”理论，是理解”自我与社会不可分割”的核心——<strong>人天生是社会动物，自我是社会的产物</strong>。这也解释了为什么”社会性孤立”会摧毁一个人的自我感。</p>
+</blockquote>
+<hr>
+<h2 id="六、第5章-从认知观点看自我"><a href="#六、第5章-从认知观点看自我" class="headerlink" title="六、第5章 从认知观点看自我"></a>六、第5章 从认知观点看自我</h2><h3 id="核心知识点-3"><a href="#核心知识点-3" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 自我图式（self-schema）</strong>：马库斯（Markus, 1977）提出的核心概念。</p>
+<pre class="mermaid">flowchart LR
+    SS["自我图式&lt;br/&gt;（关于自我的知识结构）"]
+    F1["引导信息加工：&lt;br/&gt;快速接受一致信息&lt;br/&gt;忽略不一致信息"]
+    F2["影响社会知觉：&lt;br/&gt;以自我为参照点&lt;br/&gt;判断他人"]
+    F3["影响行为：&lt;br/&gt;行为与图式&lt;br/&gt;更一致"]
+    SS --&gt; F1
+    SS --&gt; F2
+    SS --&gt; F3
+
+    style SS fill:#4a90d9,color:#fff
+    style F1 fill:#5cb85c,color:#fff
+    style F2 fill:#f0ad4e,color:#fff
+    style F3 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li>图式是一种”假设的知识结构”，指导信息加工。自我图式 &#x3D; 关于自我的图式。</li>
+<li>在某个特质上有图式的人（如”独立性”），会：①更快接受支持自己看法的信息；②更快注意到别人在该维度上的表现；③在行为上与该特质更一致。</li>
+</ul>
+<p><strong>2. 自我复杂性（self-complexity）</strong>：林维尔（Linville）提出——自我由多少个独立方面构成。<strong>高自我复杂性</strong>（自我有多个相对独立的方面）的人在某一领域受挫时，受到的冲击更小（因为还有别的自我方面可以支撑）。</p>
+<p><strong>3. 自我概念的稳定性与可塑性</strong>：自我概念既有稳定的一面，又会随情境、心境（mood）激活而变化——开心时想起优点，忧伤时想起缺点（心境一致性）。</p>
+<blockquote>
+<p><strong>价值点</strong>：<strong>自我图式</strong>和<strong>自我复杂性</strong>是两个极实用的概念——“你对自我的定义越单一，越容易被一次失败击垮；自我定义越多元，越有韧性。”</p>
+</blockquote>
+<hr>
+<h2 id="七、第6章-行为的自我调节"><a href="#七、第6章-行为的自我调节" class="headerlink" title="七、第6章 行为的自我调节"></a>七、第6章 行为的自我调节</h2><h3 id="核心知识点-4"><a href="#核心知识点-4" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 自我调节的一般模型：TOTE 环路</strong></p>
+<pre class="mermaid">flowchart LR
+    T["Test&lt;br/&gt;检验&lt;br/&gt;（比较现状与目标）"]
+    O["Operate&lt;br/&gt;操作&lt;br/&gt;（采取行动）"]
+    T2["Test&lt;br/&gt;再检验"]
+    E["Exit&lt;br/&gt;退出&lt;br/&gt;（目标达成）"]
+    T --&gt; O --&gt; T2 --&gt; E
+    T2 --&gt;|"仍有差距"| O
+
+    style T fill:#4a90d9,color:#fff
+    style O fill:#5cb85c,color:#fff
+    style T2 fill:#f0ad4e,color:#fff
+    style E fill:#5cb85c,color:#fff</pre>
+
+<ul>
+<li><strong>TOTE</strong>（Test-Operate-Test-Exit）：检验现状 → 操作 → 再检验 → 达成后退出。这是所有目标导向行为的底层环路。</li>
+</ul>
+<p><strong>2. 三个与自我有关的现象</strong>：</p>
+<ul>
+<li><strong>自我效能感（self-efficacy，班杜拉 Bandura）</strong>：对”我能否成功”的信念。关键洞察——<strong>高自我效能感的人并不一定真的更有能力</strong>，但他们：①选择更具挑战性的目标；②花更多时间练习；③想象自己成功的样子；④在困难时更持久地努力。<strong>信念本身就能改变结果。</strong></li>
+<li><strong>可能自我（possible selves，Markus &amp; Nurius）</strong>：关于”未来我可能成为什么样”的想象（”获得金牌的我”）。积极的可能自我提供方向，消极的可能自我（”重新酗酒的我”）提供警示。</li>
+<li><strong>自我意识</strong>：把注意指向自己。</li>
+</ul>
+<p><strong>3. 应用与失败</strong>：</p>
+<ul>
+<li><strong>防御性悲观主义（defensive pessimism）</strong>：一种看似矛盾却有效的策略——<strong>故意降低期望、预想最坏情况</strong>，把焦虑转化为准备动力。</li>
+<li><strong>自我调节失败</strong>：过度缺乏自我意识（如失控）与过度自我意识（如怯场）都会破坏行为。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这一章是全书”最实用”的一章——<strong>自我效能感、可能自我、防御性悲观主义</strong>可以直接用于目标管理、学习、运动、抗焦虑。核心启示：”你相信自己能做到”不是鸡汤，是有实验支撑的自我调节变量。</p>
+</blockquote>
+<hr>
+<h2 id="八、第7章-自我展示"><a href="#八、第7章-自我展示" class="headerlink" title="八、第7章 自我展示"></a>八、第7章 自我展示</h2><h3 id="核心知识点-5"><a href="#核心知识点-5" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 自我展示（self-presentation）的性质</strong>：我们如何向他人呈现自己，以塑造期望的印象。</p>
+<p><strong>2. 为什么进行自我展示</strong>：</p>
+<ul>
+<li><strong>工具性目标</strong>：影响他人以获得回报（如面试、约会）。</li>
+<li><strong>表达性&#x2F;符号性目标</strong>：维护和构建自我认同。</li>
+</ul>
+<p><strong>3. 符号自我完成理论（symbolic self-completion，Wicklund &amp; Gollwitzer）</strong>：</p>
+<ul>
+<li>当人们感到自己的某种身份不完整、受到威胁时，会通过<strong>展示该身份的”符号”</strong>（学位证书、名牌服饰、头衔）来”完成”自我。</li>
+<li>例子：刚获得博士学位的人会突出展示学位证书，以说服自己和他人”我确实是学者”。</li>
+</ul>
+<p><strong>4. 自我展示 vs 真诚</strong>：自我展示有”真诚&#x2F;真实”与”伪装&#x2F;欺骗”两个极端，以及中间地带——<strong>角色内化</strong>（演着演着，角色变成了自我的一部分）。</p>
+<blockquote>
+<p><strong>价值点</strong>：这一章解释了很多日常现象——<strong>“炫耀”的本质是自我完成</strong>（缺什么补什么）；也解释了”人设”如何通过持续展示而内化为真实自我。</p>
+</blockquote>
+<hr>
+<h2 id="九、第8章-自尊"><a href="#九、第8章-自尊" class="headerlink" title="九、第8章 自尊"></a>九、第8章 自尊</h2><h3 id="核心知识点-6"><a href="#核心知识点-6" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 自尊的三个含义</strong>：</p>
+<ol>
+<li><strong>整体自尊</strong>（trait）：对自己整体的情绪性感受。</li>
+<li><strong>领域特定自尊</strong>：对自己具体方面（能力、外貌等）的评价。</li>
+<li><strong>状态自尊</strong>：瞬间的自我价值感（如一次成功带来的短暂喜悦）。</li>
+</ol>
+<p><strong>2. 自尊的三种模型</strong>（全书重点）：</p>
+<pre class="mermaid">flowchart TB
+    SE["自尊"]
+    EM["情感模型&lt;br/&gt;（布朗本人主张）"]
+    CM["认知模型&lt;br/&gt;（主流观点）"]
+    SM["社会学模型"]
+    SE --&gt; EM
+    SE --&gt; CM
+    SE --&gt; SM
+
+    EM --&gt; EM1["自尊在早期形成&lt;br/&gt;（亲子关系→归属感+掌控感）&lt;br/&gt;自上而下：整体感觉→具体评价"]
+    CM --&gt; CM2["自尊=理性计算&lt;br/&gt;（詹姆斯：自尊=成功/抱负）&lt;br/&gt;自下而上：具体评价→整体感觉"]
+    SM --&gt; SM3["自尊=社会如何看待我&lt;br/&gt;（社会地位决定自尊）"]
+
+    style SE fill:#4a90d9,color:#fff
+    style EM fill:#5cb85c,color:#fff
+    style CM fill:#f0ad4e,color:#fff
+    style SM fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>认知模型</strong>（主流）：自尊 &#x3D; 对自己的理性评价。源头是詹姆斯的公式 <strong>“自尊 &#x3D; 成功 &#x2F; 抱负（pretensions）”</strong>——我们在”重要的方面”表现越好，自尊越高。三种计算方式：简单相加、重要性加权、现实自我 vs 理想自我差距。</li>
+<li><strong>社会学模型</strong>：自尊取决于社会如何评价我们（职业声望、收入、地位）。但<strong>证据很弱</strong>——社会劣势群体（少数族裔等）自尊并不低，因为有”群体自豪”（以黑人为荣、以同性恋为荣）和三种自我保护机制。</li>
+<li><strong>情感模型</strong>（作者本人的立场）：自尊本质上是<strong>早期形成的、对自己的一种”感觉”</strong>，而非理性计算。它像”滤镜”，自上而下地影响我们对具体品质的评价。</li>
+</ul>
+<p><strong>3. 高自尊 vs 低自尊的差异</strong>（重要实证发现）：</p>
+<ul>
+<li>高自尊者自我评价更积极，且<strong>自我概念更清晰、稳定</strong>。</li>
+<li><strong>低自尊者并不”消极”地评价自己</strong>——他们其实也觉得自己”比大多数人聪明、友善”！区别在于：低自尊者<strong>在失败时会感到羞耻、自我价值整体崩塌</strong>，且更倾向”自我保护”（回避风险、选择安全选项）；高自尊者失败后能”区隔”失败（”我只是这件事没做好，不代表我差”），并倾向”自我增强”（敢冒险）。</li>
+</ul>
+<p><strong>4. 提高自尊的建议（作者观点）</strong>：</p>
+<ul>
+<li>主流做法（鼓励关注优点、归因再训练）治标不治本，因为它<strong>仍然把自尊绑在”成就”上</strong>。</li>
+<li>作者的建议：<strong>帮助人建立”我做不好也没关系，那并不意味着我很差”的信念</strong>，这需要<strong>安全的人际关系</strong>（无条件地被接纳，类似罗杰斯”来访者中心疗法”）。</li>
+<li>金句：”<strong>自尊不是一个判断，而是一种感觉。</strong>“</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这一章颠覆了很多流行认知——“高自尊&#x3D;自信&#x3D;靠成就堆出来”是错的；<strong>真正的自尊来自早期安全感（归属感+掌控感），而非外在成就</strong>。对教育孩子、自我成长、心理咨询都极有启发。</p>
+</blockquote>
+<hr>
+<h2 id="十、第9章-抑郁"><a href="#十、第9章-抑郁" class="headerlink" title="十、第9章 抑郁"></a>十、第9章 抑郁</h2><h3 id="核心知识点-7"><a href="#核心知识点-7" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 抑郁的素质—应激模型（diathesis-stress model）</strong>：抑郁 &#x3D; 易感素质（如低自尊、易变自尊）× 应激事件（如失败、丧失）。</p>
+<p><strong>2. 抑郁中与自我有关的两个特点</strong>：<strong>无望（hopelessness）</strong> 与 <strong>无价值（worthlessness）</strong>。</p>
+<p><strong>3. 抑郁的三大理论模型</strong>：</p>
+<pre class="mermaid">flowchart TB
+    D["抑郁的自我理论"]
+    M1["自尊模型"]
+    M2["贝克认知理论"]
+    M3["归因模型"]
+    D --&gt; M1
+    D --&gt; M2
+    D --&gt; M3
+
+    M1 --&gt; M1a["低自尊是抑郁的高危因素&lt;br/&gt;易变的自尊更危险"]
+    M2 --&gt; M2b["抑郁者用消极图式&lt;br/&gt;加工信息（认知三联征）&lt;br/&gt;对自我/世界/未来的消极看法"]
+    M3 --&gt; M3c["抑郁者的归因风格：&lt;br/&gt;把坏事归于&lt;br/&gt;内部的、稳定的、普遍的&lt;br/&gt;（习得性无助）"]
+
+    style D fill:#4a90d9,color:#fff
+    style M1 fill:#5cb85c,color:#fff
+    style M2 fill:#f0ad4e,color:#fff
+    style M3 fill:#d9534f,color:#fff</pre>
+
+<ul>
+<li><strong>自尊模型</strong>：低自尊、尤其是<strong>易变自尊</strong>（随情境剧烈波动的自尊）是抑郁的高危因素。</li>
+<li><strong>贝克（Beck）认知理论</strong>：抑郁者的核心是<strong>消极自我图式</strong>——对自我、世界、未来的系统性消极认知（认知三联征），导致自动化的负面想法。</li>
+<li><strong>归因模型</strong>（塞利格曼等的习得性无助）：抑郁者倾向把消极事件归于**内部的（是我的错）、稳定的（永远这样）、普遍的（我什么都做不好）**因素。</li>
+</ul>
+<p><strong>4. 抑郁的注意过程与应对</strong>：</p>
+<ul>
+<li><strong>沉思默想（rumination）</strong>：反复咀嚼消极情绪和想法，会<strong>加重并延长抑郁</strong>。</li>
+<li><strong>自我觉知</strong>：过度的自我关注与抑郁相关。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这一章给出了理解抑郁的<strong>认知-自我框架</strong>——“抑郁不是简单的难过，而是自我系统（自尊、归因、注意）出了问题”。对识别抑郁、理解患者、以及自我调节（警惕”沉思默想”）都很有价值。</p>
+</blockquote>
+<hr>
+<h2 id="十一、第10章-错觉与健康"><a href="#十一、第10章-错觉与健康" class="headerlink" title="十一、第10章 错觉与健康"></a>十一、第10章 错觉与健康</h2><h3 id="核心知识点-8"><a href="#核心知识点-8" class="headerlink" title="核心知识点"></a>核心知识点</h3><p><strong>1. 经典争论：心理健康 &#x3D; 看清现实吗？</strong></p>
+<ul>
+<li>传统观点：心理健康需要”正确认识自我”。</li>
+<li><strong>泰勒与布朗（Taylor &amp; Brown, 1988）</strong> 的革命性论文《错觉与幸福感》提出反论：<strong>心理健康的人恰恰怀有”积极错觉”（positive illusions）</strong>。</li>
+</ul>
+<p><strong>2. 三种积极错觉</strong>：</p>
+<pre class="mermaid">flowchart TB
+    PI["积极错觉&lt;br/&gt;（Taylor &amp; Brown, 1988）"]
+    I1["① 自我提升偏差&lt;br/&gt;（不切实际地高看自己）"]
+    I2["② 控制错觉&lt;br/&gt;（高估自己对事件的掌控力）"]
+    I3["③ 不切实际的乐观&lt;br/&gt;（认为坏事不会降临自己）"]
+    PI --&gt; I1
+    PI --&gt; I2
+    PI --&gt; I3
+
+    PI --&gt; W["与幸福感、爱、&lt;br/&gt;工作成就、应对应激、&lt;br/&gt;应对存在恐惧 正相关"]
+
+    style PI fill:#4a90d9,color:#fff
+    style I1 fill:#5cb85c,color:#fff
+    style I2 fill:#f0ad4e,color:#fff
+    style I3 fill:#d9534f,color:#fff
+    style W fill:#9b59b6,color:#fff</pre>
+
+<ul>
+<li><strong>自我提升偏差</strong>：认为自己比真实的自己更好。</li>
+<li><strong>控制错觉</strong>：高估自己对随机事件的掌控力。</li>
+<li><strong>不切实际的乐观</strong>：认为好事更可能发生在自己身上，坏事更不可能。</li>
+</ul>
+<p><strong>3. 积极错觉的好处</strong>：与<strong>幸福感、爱情满意度、工作表现、应对压力、缓解存在恐惧（对死亡的焦虑）</strong> 都呈正相关。适度”骗自己”其实是心理健康的标志。</p>
+<p><strong>4. 积极错觉的局限与危害</strong>：</p>
+<ul>
+<li><strong>过度积极的自我观念</strong>：可能导致自负、忽视风险、拒绝真实反馈。</li>
+<li><strong>夸张的控制知觉</strong>：可能让人承担不该承担的责任（或反过来指责受害者）。</li>
+<li><strong>过分乐观</strong>：可能让人不采取必要的预防措施（如不系安全带）。</li>
+</ul>
+<blockquote>
+<p><strong>价值点</strong>：这是全书<strong>最具颠覆性的一章</strong>——“看清现实、完全客观认识自己”未必是健康的；<strong>适度自恋、适度乐观、适度错觉，才是心理健康的常态</strong>。关键是”度”：积极错觉是良药，过度就成了毒药。</p>
+</blockquote>
+<hr>
+<h2 id="十二、贯穿全书的主线与价值点"><a href="#十二、贯穿全书的主线与价值点" class="headerlink" title="十二、贯穿全书的主线与价值点"></a>十二、贯穿全书的主线与价值点</h2><h3 id="主线-1：主观图像-客观现实"><a href="#主线-1：主观图像-客观现实" class="headerlink" title="主线 1：主观图像 &gt; 客观现实"></a>主线 1：主观图像 &gt; 客观现实</h3><p>全书最核心的立场（现象学取向）：<strong>是”我们以为的自己”，而非”真实的自己”，支配着我们的感受与行为。</strong> 自我概念未必准确，但它真实地影响着一切。</p>
+<h3 id="主线-2：自我的社会性"><a href="#主线-2：自我的社会性" class="headerlink" title="主线 2：自我的社会性"></a>主线 2：自我的社会性</h3><p>从库利的”镜像自我”到米德的”观点采择”，再到社会比较、社会身份——<strong>自我不是孤岛，而是在与他人的互动中建构的</strong>。”我是谁”永远部分地是”我在别人眼中是谁”。</p>
+<h3 id="主线-3：动机驱动的自我加工"><a href="#主线-3：动机驱动的自我加工" class="headerlink" title="主线 3：动机驱动的自我加工"></a>主线 3：动机驱动的自我加工</h3><p>人不是在”客观地”认识自己，而是被<strong>自我增强动机</strong>（想感觉良好）驱动：自我服务归因、优于平均效应、选择性记忆、积极错觉，都是这一动机的产物。</p>
+<h3 id="主线-4：稳定与可塑的张力"><a href="#主线-4：稳定与可塑的张力" class="headerlink" title="主线 4：稳定与可塑的张力"></a>主线 4：稳定与可塑的张力</h3><p>自我既稳定（自我图式、自我一致性）又随情境变化（社会角色、心境激活）。<strong>健康的人格 &#x3D; 在稳定核心与情境灵活之间取得平衡</strong>。</p>
+<h3 id="主线-5：自尊的”感觉本质”"><a href="#主线-5：自尊的”感觉本质”" class="headerlink" title="主线 5：自尊的”感觉本质”"></a>主线 5：自尊的”感觉本质”</h3><p>作者反复强调：<strong>自尊更接近”感觉”而非”判断”</strong>。它是早期关系塑造的、前意识层面的自我价值感，而非对自身品质的理性核算。这一立场贯穿自尊章、抑郁章、错觉章。</p>
+<hr>
+<h2 id="十三、批判性思考与阅读建议"><a href="#十三、批判性思考与阅读建议" class="headerlink" title="十三、批判性思考与阅读建议"></a>十三、批判性思考与阅读建议</h2><h3 id="1-这本书的价值（读它得到什么）"><a href="#1-这本书的价值（读它得到什么）" class="headerlink" title="1. 这本书的价值（读它得到什么）"></a>1. 这本书的价值（读它得到什么）</h3><ul>
+<li><strong>一张完整的”自我”知识地图</strong>：从詹姆斯到当代，把散落的社会心理学知识整合成体系，是学习”自我”专题的最佳入门教材。</li>
+<li><strong>大量反直觉的实证发现</strong>：优于平均效应、低自尊者其实不消极、积极错觉有益健康、社会劣势群体自尊不低……这些能有效纠正流行误解。</li>
+<li><strong>实用工具</strong>：自我效能感、可能自我、防御性悲观主义、自我复杂性，可直接迁移到目标管理、教育与自我成长。</li>
+<li><strong>对”自尊”的深刻反思</strong>：作者对”认知模型”的批评（自尊是感觉不是判断），对”如何真正提高自尊”的建议（安全感而非成就），是本书最有思想深度的部分。</li>
+</ul>
+<h3 id="2-需要注意的局限"><a href="#2-需要注意的局限" class="headerlink" title="2. 需要注意的局限"></a>2. 需要注意的局限</h3><ul>
+<li><strong>西方样本为主</strong>：书中很多研究基于美国大学生样本。文化差异（如集体主义 vs 个人主义、自尊的跨文化差异）在书中有所提及但非重点。</li>
+<li><strong>“自我”研究的测量难题</strong>：自我报告法天然受”自我展示偏差”影响（人可能说谎或自我欺骗），这是该领域的方法论软肋。</li>
+<li><strong>教材属性</strong>：作为教材，它侧重”呈现理论”而非”给出确定答案”，很多问题（如自尊的起源）仍是开放争论。</li>
+</ul>
+<h3 id="3-最值得记住的几句话（金句）"><a href="#3-最值得记住的几句话（金句）" class="headerlink" title="3. 最值得记住的几句话（金句）"></a>3. 最值得记住的几句话（金句）</h3><ol>
+<li><strong>“自尊不是一个判断，而是一种感觉。”</strong>（第8章，作者核心立场）</li>
+<li><strong>“我做不好也没关系，那并不意味着我很差。”</strong>（提高自尊的真正方向）</li>
+<li><strong>“人们对自己的看法会受实际情况影响，但人们并不会忠实地反映自己的真实特征。”</strong>（第1章）</li>
+<li><strong>“有多少群体认可我，我就有多少个社会自我。”</strong>（詹姆斯，第2章）</li>
+<li><strong>“心理健康的人恰恰怀有积极错觉。”</strong>（第10章，Taylor &amp; Brown 的核心反论）</li>
+</ol>
+<h3 id="4-一句话总结全书"><a href="#4-一句话总结全书" class="headerlink" title="4. 一句话总结全书"></a>4. 一句话总结全书</h3><blockquote>
+<p>《自我》用 10 章回答了一个问题——<strong>“我是谁”这个问题本身：心理学告诉我们，”我”不是一件固定的事，而是一套系统</strong>：一个主观建构的（自我概念）、社会塑造的（镜像自我&#x2F;观点采择）、动机驱动的（自我增强）、能被自己调节的（自我效能&#x2F;可能自我）、需要一点错觉的（积极错觉）<strong>持续进行中的过程</strong>。理解这套系统，就是理解”人为什么是人”。</p>
+</blockquote>
+<hr>
+<p><em>本笔记基于《自我（第2版）》（乔纳森·布朗、玛格丽特·布朗 著）中文译本全文系统梳理，涵盖 10 章核心概念、关键理论模型、重要实证发现与批判性评估。</em></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001863.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E5%86%B3%E7%AD%96%E4%B8%8E%E5%88%A4%E6%96%AD%E3%80%8B/'>阅读笔记——《决策与判断》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222359001866.%E3%80%8A%E5%9F%8E%E5%B8%82%E7%8C%8E%E4%BA%BA%E7%9A%84%E7%9F%A5%E4%B9%8E%E6%83%B3%E6%B3%95%E5%90%88%E9%9B%86%C2%B7%E7%AC%AC1%E5%8D%B7%E3%80%8B/">阅读笔记——《城市猎人的知乎想法合集·第1卷》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

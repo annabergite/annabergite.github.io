@@ -291,3 +291,181 @@
         flex-basis: 82px;
     }
 }
+
+/* ===== 文章封面（cover） ===== */
+.post-cover {
+    flex: 0 0 100%;
+    margin: 0 0 16px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+}
+.post-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: cover;
+}
+
+/* ===== 列表 / 首页：卡片式条目 ===== */
+.archive li.archive-item,
+.home-recent-posts .archive li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 16px;
+    margin: 8px 0;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.archive li.archive-item:hover,
+.home-recent-posts .archive li:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.archive-cover-link {
+    flex: 0 0 auto;
+    display: block;
+    width: 76px;
+    height: 76px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.archive-cover {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.archive-cover-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4f7dde, #7ba3f5);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.archive li .archive-cover-placeholder span {
+    width: auto;
+    line-height: 1;
+    color: #fff;
+}
+
+.archive-item-body {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.archive-item-body .archive-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.archive-item-meta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--font-color-3);
+}
+.archive li .archive-item-meta span {
+    width: auto;
+    color: inherit;
+}
+.archive-item-top {
+    display: inline-block;
+    padding: 1px 9px;
+    border-radius: 999px;
+    background: #4f7dde;
+    color: #fff !important;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.archive-item-category {
+    color: var(--font-color-3);
+    text-decoration: none;
+}
+.archive-item-category:hover {
+    color: #4f7dde;
+    text-decoration: underline;
+}
+.archive-item-tags {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.archive-item-tag {
+    color: var(--font-color-3);
+    text-decoration: none;
+}
+.archive-item-tag:hover {
+    color: #4f7dde;
+    text-decoration: underline;
+}
+.archive-item-more,
+.archive-item-updated {
+    color: var(--font-color-3);
+}
+
+@media (max-width: 600px) {
+    .post-cover img {
+        max-height: 240px;
+    }
+    .archive li.archive-item,
+    .home-recent-posts .archive li {
+        gap: 12px;
+        padding: 12px;
+    }
+    .archive-cover-link {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* ===== 代码块超长行不撑宽文章页 =====
+   .post-main 是 flex 容器，.post-md 作为 flex item 默认 min-width:auto，
+   遇到超长的 <pre> 代码行会被内容撑到超出右侧边界。
+   这里允许它收缩，让 .highlight 自身的 overflow:auto 横向滚动生效。 */
+.post-md {
+    min-width: 0;
+}
+.post-md .highlight {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* ===== 文章版权声明（CC BY-NC-SA 4.0）===== */
+.post-copyright {
+    margin: 16px 0 8px;
+    padding: 12px 16px;
+    border-left: 3px solid #4f7dde;
+    background: rgba(79, 125, 222, 0.06);
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--font-color-3, #666);
+}
+.post-copyright p {
+    margin: 0;
+}
+.post-copyright a {
+    color: #4f7dde;
+    text-decoration: none;
+}
+.post-copyright a:hover {
+    text-decoration: underline;
+}

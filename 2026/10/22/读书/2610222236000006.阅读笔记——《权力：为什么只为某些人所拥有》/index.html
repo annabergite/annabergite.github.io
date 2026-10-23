@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《权力：为什么只为某些人所拥有》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《权力：为什么只为某些人所拥有》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-22</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：16.4k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：57分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%9D%83%E5%8A%9B%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E4%B8%BA%E6%9F%90%E4%BA%9B%E4%BA%BA%E6%89%80%E6%8B%A5%E6%9C%89%E3%80%8B"><span class="post-toc-text">阅读笔记——《权力：为什么只为某些人所拥有》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="post-toc-text">目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-%E5%85%A8%E4%B9%A6%E6%A1%86%E6%9E%B6%E4%B8%8E%E6%A0%B8%E5%BF%83%E4%B8%BB%E7%BA%BF"><span class="post-toc-text">1. 全书框架与核心主线</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-%E5%BA%8F%E8%A8%80%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%A0%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E6%9D%83%E5%8A%9B%EF%BC%88%E4%B8%89%E5%A4%A7%E7%90%86%E7%94%B1%EF%BC%89"><span class="post-toc-text">2. 序言：为什么你必须掌握权力（三大理由）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%80%EF%BC%9A%E6%9D%83%E5%8A%9B%E4%B8%8E%E5%81%A5%E5%BA%B7%E3%80%81%E5%AF%BF%E5%91%BD%E7%9B%B4%E6%8E%A5%E7%9B%B8%E5%85%B3"><span class="post-toc-text">理由一：权力与健康、寿命直接相关</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%90%86%E7%94%B1%E4%BA%8C%EF%BC%9A%E6%9D%83%E5%8A%9B%E8%83%BD%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%B4%A2%E5%AF%8C"><span class="post-toc-text">理由二：权力能转化为财富</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%90%86%E7%94%B1%E4%B8%89%EF%BC%9A%E6%9D%83%E5%8A%9B%E6%98%AF%E9%A2%86%E5%AF%BC%E5%8A%9B%E7%9A%84%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%8C%E6%98%AF%E5%81%9A%E6%88%90%E4%BA%8B%E7%9A%84%E5%89%8D%E6%8F%90"><span class="post-toc-text">理由三：权力是领导力的一部分，是做成事的前提</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-%E5%BA%8F%E8%A8%80%EF%BC%9A%E6%9D%83%E5%8A%9B%E4%B9%8B%E8%B7%AF%E4%B8%8A%E7%9A%84%E4%B8%89%E5%A4%A7%E9%9A%9C%E7%A2%8D"><span class="post-toc-text">3. 序言：权力之路上的三大障碍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9A%9C%E7%A2%8D%E4%B8%80%EF%BC%9A%E5%85%AC%E6%AD%A3%E4%B8%96%E7%95%8C%E5%81%87%E8%AE%BE%EF%BC%88Just-World-Hypothesis%EF%BC%89"><span class="post-toc-text">障碍一：公正世界假设（Just-World Hypothesis）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9A%9C%E7%A2%8D%E4%BA%8C%EF%BC%9A%E6%88%90%E5%8A%9F%E4%BA%BA%E5%A3%AB%E7%9A%84%E8%AF%B4%E6%95%99%EF%BC%88%E9%A2%86%E5%AF%BC%E5%8A%9B%E6%96%87%E7%8C%AE%EF%BC%89"><span class="post-toc-text">障碍二：成功人士的说教（领导力文献）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9A%9C%E7%A2%8D%E4%B8%89%EF%BC%9A%E4%BD%A0%E8%87%AA%E5%B7%B1%EF%BC%88%E8%87%AA%E6%88%91%E8%AE%BE%E9%99%90-self-handicapping%EF%BC%89"><span class="post-toc-text">障碍三：你自己（自我设限 self-handicapping）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-%E7%AC%AC1%E7%AB%A0%EF%BC%9A%E4%B8%9A%E7%BB%A9%E5%86%B3%E5%AE%9A%E4%BD%A0%E7%9A%84%E6%9D%83%E5%8A%9B%E5%9C%B0%E4%BD%8D%E5%90%97%EF%BC%9F%E2%80%94%E2%80%94%E4%B8%8D"><span class="post-toc-text">4. 第1章：业绩决定你的权力地位吗？——不</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-%E4%B8%9A%E7%BB%A9%E4%B8%8E%E8%81%8C%E4%B8%9A%E6%88%90%E5%B0%B1%E7%9A%84%E8%81%94%E7%B3%BB%E9%9D%9E%E5%B8%B8%E8%96%84%E5%BC%B1"><span class="post-toc-text">4.1 业绩与职业成就的联系非常薄弱</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-%E5%87%BA%E8%89%B2%E7%9A%84%E4%B8%9A%E7%BB%A9%E7%94%9A%E8%87%B3%E4%BC%9A%E5%9B%B0%E4%BD%8F%E4%BD%A0"><span class="post-toc-text">4.2 出色的业绩甚至会困住你</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-3-%E5%8F%8D%E4%BE%8B%EF%BC%9A%E4%B8%9A%E7%BB%A9%E5%B7%AE%E4%B9%9F%E8%83%BD%E7%A8%B3%E5%9D%90%E9%AB%98%E4%BD%8D"><span class="post-toc-text">4.3 反例：业绩差也能稳坐高位</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-4-%E4%BA%94%E4%B8%AA%E5%85%B3%E9%94%AE%E8%A1%8C%E5%8A%A8%EF%BC%88%E6%8A%8A%E2%80%9D%E4%B8%9A%E7%BB%A9%E2%80%9D%E8%BD%AC%E5%8C%96%E4%B8%BA%E2%80%9D%E6%9D%83%E5%8A%9B%E2%80%9D%EF%BC%89"><span class="post-toc-text">4.4 五个关键行动（把”业绩”转化为”权力”）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E4%B8%80%EF%BC%9A%E8%AE%A9%E5%88%AB%E4%BA%BA%E8%AE%B0%E4%BD%8F%E4%BD%A0%EF%BC%88%E5%88%AB%E4%BA%BA%E8%AE%B0%E4%BD%8F%E4%BA%86%E4%BD%A0%EF%BC%8C%E5%B0%B1%E7%AD%89%E4%BA%8E%E9%80%89%E6%8B%A9%E4%BA%86%E4%BD%A0%EF%BC%89"><span class="post-toc-text">行动一：让别人记住你（别人记住了你，就等于选择了你）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E4%BA%8C%EF%BC%9A%E8%AE%A9%E6%9C%89%E5%88%A9%E4%BA%8E%E4%BD%A0%E7%9A%84%E4%B8%9A%E7%BB%A9%E5%87%B8%E6%98%BE%E5%87%BA%E6%9D%A5%EF%BC%88%E5%AE%9A%E4%B9%89%E8%A1%A1%E9%87%8F%E6%A0%87%E5%87%86%EF%BC%89"><span class="post-toc-text">行动二：让有利于你的业绩凸显出来（定义衡量标准）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E4%B8%89%EF%BC%9A%E8%AE%B0%E4%BD%8F%E4%BD%A0%E7%9A%84%E8%80%81%E6%9D%BF%E8%AE%A4%E4%B8%BA%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E4%BA%8B"><span class="post-toc-text">行动三：记住你的老板认为最重要的事</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E5%9B%9B%EF%BC%9A%E6%81%AD%E7%BB%B4%EF%BC%8C%E4%B8%80%E4%BB%BD%E7%BE%8E%E5%A6%99%E7%9A%84%E7%A4%BC%E7%89%A9"><span class="post-toc-text">行动四：恭维，一份美妙的礼物</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A1%8C%E5%8A%A8%E4%BA%94%EF%BC%9A%E7%AE%A1%E7%90%86%E4%B8%8A%E5%8F%B8%EF%BC%88%E4%BD%A0%E4%B8%8E%E8%80%81%E6%9D%BF%E7%9A%84%E5%85%B3%E7%B3%BB%EF%BC%8C%E8%87%B3%E5%B0%91%E4%B8%8D%E4%BA%9A%E4%BA%8E%E4%B8%9A%E7%BB%A9%EF%BC%89"><span class="post-toc-text">行动五：管理上司（你与老板的关系，至少不亚于业绩）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-%E7%AC%AC2%E7%AB%A0%EF%BC%9A%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84%E6%9D%83%E5%8A%9B%E7%89%B9%E8%B4%A8%EF%BC%887-%E5%A4%A7%E7%89%B9%E8%B4%A8%EF%BC%89"><span class="post-toc-text">5. 第2章：打造你的权力特质（7 大特质）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-1-%E5%89%8D%E6%8F%90%EF%BC%9A%E4%BA%BA%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%94%B9%E5%8F%98%E7%9A%84"><span class="post-toc-text">5.1 前提：人是可以改变的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-2-%E4%BD%A0%E7%9C%9F%E7%9A%84%E4%BA%86%E8%A7%A3%E8%87%AA%E5%B7%B1%E5%90%97%EF%BC%9F%EF%BC%88%E8%87%AA%E6%88%91%E8%AF%84%E4%BC%B0%E7%9A%84%E4%B8%A4%E5%A4%A7%E6%8C%91%E6%88%98%EF%BC%89"><span class="post-toc-text">5.2 你真的了解自己吗？（自我评估的两大挑战）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-3-7-%E5%A4%A7%E7%89%B9%E8%B4%A8%EF%BC%9A%E6%84%8F%E6%84%BF%EF%BC%883%EF%BC%89-%E6%8A%80%E8%83%BD%EF%BC%884%EF%BC%89-%E6%99%BA%E5%8A%9B"><span class="post-toc-text">5.3 7 大特质：意愿（3）+ 技能（4）+ 智力</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A0-%E9%9B%84%E5%BF%83%EF%BC%88Ambition%EF%BC%89"><span class="post-toc-text">① 雄心（Ambition）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A1-%E7%B2%BE%E5%8A%9B%EF%BC%88Energy%EF%BC%89"><span class="post-toc-text">② 精力（Energy）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A2-%E4%B8%93%E6%B3%A8%EF%BC%88Focus%EF%BC%89"><span class="post-toc-text">③ 专注（Focus）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A3-%E8%87%AA%E7%9F%A5%E4%B9%8B%E6%98%8E%E4%B8%8E%E5%8F%8D%E7%9C%81%EF%BC%88Self-awareness%EF%BC%89"><span class="post-toc-text">④ 自知之明与反省（Self-awareness）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A4-%E4%BF%A1%E5%BF%83%EF%BC%88Confidence%EF%BC%89"><span class="post-toc-text">⑤ 信心（Confidence）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A5-%E6%8D%A2%E4%BD%8D%E6%80%9D%E8%80%83%EF%BC%88Perspective-taking%EF%BC%89"><span class="post-toc-text">⑥ 换位思考（Perspective-taking）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E2%91%A6-%E5%8C%96%E8%A7%A3%E5%86%B2%E7%AA%81%E7%9A%84%E8%83%BD%E5%8A%9B%EF%BC%88Conflict-resolution%EF%BC%89"><span class="post-toc-text">⑦ 化解冲突的能力（Conflict resolution）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-4-%E5%88%AB%E8%AE%A9%E8%81%AA%E6%98%8E%E5%9F%8B%E4%B8%8B%E6%BA%83%E8%B4%A5%E7%9A%84%E7%A7%8D%E5%AD%90%EF%BC%88%E6%99%BA%E5%8A%9B%E8%A2%AB%E9%AB%98%E4%BC%B0%EF%BC%89"><span class="post-toc-text">5.4 别让聪明埋下溃败的种子（智力被高估）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-%E7%AC%AC3%E7%AB%A0%EF%BC%9A%E8%B5%B7%E7%82%B9%E5%86%B3%E5%AE%9A%E9%AB%98%E5%BA%A6%EF%BC%88%E9%80%89%E5%AF%B9%E9%83%A8%E9%97%A8%EF%BC%89"><span class="post-toc-text">6. 第3章：起点决定高度（选对部门）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E2%80%9D%E6%9C%80%E7%86%9F%E6%82%89%E7%9A%84%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%98%AF%E6%9C%80%E9%80%82%E5%90%88%E7%9A%84%E2%80%9D"><span class="post-toc-text">6.1 为什么”最熟悉的不一定是最适合的”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-2-%E9%83%A8%E9%97%A8%E6%9D%83%E5%8A%9B%E7%9A%84%E4%B8%A4%E5%A4%A7%E6%9D%A5%E6%BA%90"><span class="post-toc-text">6.2 部门权力的两大来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-3-%E8%A1%A1%E9%87%8F%E9%83%A8%E9%97%A8%E6%9D%83%E5%8A%9B%E7%9A%84-3-%E5%A4%A7%E6%8C%87%E6%A0%87"><span class="post-toc-text">6.3 衡量部门权力的 3 大指标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-4-%E4%B8%A4%E9%9A%BE%EF%BC%9A%E6%9C%AA%E7%9F%A5%E9%A3%8E%E9%99%A9-vs-%E6%BF%80%E7%83%88%E7%AB%9E%E4%BA%89"><span class="post-toc-text">6.4 两难：未知风险 vs 激烈竞争</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-%E7%AC%AC4%E7%AB%A0%EF%BC%9A%E6%88%90%E4%B8%BA%E6%9C%80%E5%BC%95%E4%BA%BA%E6%B3%A8%E7%9B%AE%E7%9A%84%E9%82%A3%E4%B8%80%E4%B8%AA"><span class="post-toc-text">7. 第4章：成为最引人注目的那一个</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-1-%E6%8F%90%E5%87%BA%E4%BD%A0%E7%9A%84%E8%A6%81%E6%B1%82%EF%BC%88%E8%AF%B7%E6%B1%82%E5%8D%B3%E6%98%AF%E6%81%AD%E7%BB%B4%EF%BC%89"><span class="post-toc-text">7.1 提出你的要求（请求即是恭维）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-2-%E5%81%9A%E5%BC%95%E4%BA%BA%E6%B3%A8%E7%9B%AE%E7%9A%84%E2%80%9D%E5%9F%BA%E8%BE%9B%E6%A0%BC%E2%80%9D"><span class="post-toc-text">7.2 做引人注目的”基辛格”</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-3-%E8%B0%81%E8%AF%B4%E6%8B%9B%E4%BA%BA%E5%96%9C%E6%AC%A2%E5%B0%B1%E8%83%BD%E8%8E%B7%E5%BE%97%E6%9D%83%E5%8A%9B"><span class="post-toc-text">7.3 谁说招人喜欢就能获得权力</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-%E7%AC%AC5%E7%AB%A0%EF%BC%9A%E8%B0%81%E6%8B%A5%E6%9C%89%E8%B5%84%E6%BA%90%EF%BC%8C%E8%B0%81%E5%B0%B1%E6%9C%89%E6%9D%83%E5%8A%9B"><span class="post-toc-text">8. 第5章：谁拥有资源，谁就有权力</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-1-%E8%B5%84%E6%BA%90-%E6%9D%83%E5%8A%9B%E7%9A%84%E6%A0%B8%E5%BF%83%E6%9D%A5%E6%BA%90"><span class="post-toc-text">8.1 资源 &#x3D; 权力的核心来源</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-2-%E6%9D%83%E5%8A%9B%E4%B8%8E%E8%B5%84%E6%BA%90%E8%87%AA%E6%88%91%E5%BC%BA%E5%8C%96%E7%9A%84%E5%BE%AA%E7%8E%AF"><span class="post-toc-text">8.2 权力与资源自我强化的循环</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-3-%E8%B5%84%E6%BA%90%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%90%AB%E4%B9%89"><span class="post-toc-text">8.3 资源的两个含义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-4-%E4%B8%89%E4%B8%AA%E5%85%B7%E4%BD%93%E5%81%9A%E6%B3%95"><span class="post-toc-text">8.4 三个具体做法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%81%9A%E6%B3%95%E4%B8%80%EF%BC%9A%E5%B0%BD%E5%8F%AF%E8%83%BD%E5%96%84%E5%BE%85%E4%BB%96%E4%BA%BA%EF%BC%88%E5%AF%B9%E4%BA%BA%E5%8F%8B%E5%96%84%E4%BC%9A%E5%B8%A6%E6%9D%A5%E5%BD%B1%E5%93%8D%E5%8A%9B%EF%BC%89"><span class="post-toc-text">做法一：尽可能善待他人（对人友善会带来影响力）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%81%9A%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%81%9A%E9%87%8D%E8%A6%81%E7%9A%84%E5%B0%8F%E4%BA%8B"><span class="post-toc-text">做法二：做重要的小事</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%81%9A%E6%B3%95%E4%B8%89%EF%BC%9A%E7%A7%AF%E6%9E%81%E5%AF%BB%E6%89%BE%E5%92%8C%E5%88%A9%E7%94%A8%E8%B5%84%E6%BA%90-%E5%88%9B%E9%80%A0%E7%8B%AC%E4%B8%80%E6%97%A0%E4%BA%8C%E7%9A%84%E8%B5%84%E6%BA%90"><span class="post-toc-text">做法三：积极寻找和利用资源 + 创造独一无二的资源</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-%E7%AC%AC6%E7%AB%A0%EF%BC%9A%E5%85%B3%E7%B3%BB%EF%BC%8C%E6%B0%B8%E6%81%92%E7%9A%84%E7%8E%8B%E9%81%93"><span class="post-toc-text">9. 第6章：关系，永恒的王道</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E7%BD%91"><span class="post-toc-text">9.1 什么是人际关系网</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-2-%E5%85%B3%E7%B3%BB%E6%98%AF%E8%81%8C%E4%B8%9A%E7%94%9F%E6%B6%AF%E5%8F%91%E5%B1%95%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%B3%E5%AE%9A%E5%9B%A0%E7%B4%A0"><span class="post-toc-text">9.2 关系是职业生涯发展的重要决定因素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-3-%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E6%8A%80%E8%83%BD%E6%98%AF%E5%8F%AF%E4%BB%A5%E6%8F%90%E5%8D%87%E7%9A%84"><span class="post-toc-text">9.3 人际关系技能是可以提升的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-%E5%8F%91%E5%B1%95%E5%85%B3%E7%B3%BB%E9%9C%80%E8%A6%81%E7%9A%84%E4%B8%8D%E6%98%AF%E6%97%B6%E9%97%B4%EF%BC%8C%E8%80%8C%E6%98%AF%E8%A7%84%E5%88%92"><span class="post-toc-text">9.4 发展关系需要的不是时间，而是规划</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-5-%E4%B8%8D%E6%98%AF%E6%AF%8F%E4%B8%AA%E4%BA%BA%E7%9A%84%E4%BB%B7%E5%80%BC%E5%AF%B9%E4%BD%A0%E9%83%BD%E4%B8%80%E6%A0%B7%EF%BC%88%E5%BC%B1%E8%81%94%E7%B3%BB-%E5%BC%BA%E8%81%94%E7%B3%BB%EF%BC%89"><span class="post-toc-text">9.5 不是每个人的价值对你都一样（弱联系 &gt; 强联系）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-6-%E8%AE%A9%E8%87%AA%E5%B7%B1%E6%88%90%E4%B8%BA%E4%BA%BA%E9%99%85%E7%BD%91%E7%BB%9C%E7%9A%84%E4%B8%AD%E5%BF%83%EF%BC%88%E7%BB%93%E6%9E%84%E6%B4%9E%EF%BC%89"><span class="post-toc-text">9.6 让自己成为人际网络的中心（结构洞）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-7-%E4%B8%BA%E5%B7%A5%E4%BD%9C%E9%80%89%E6%8B%A9%E6%9C%80%E9%80%82%E5%AE%9C%E7%9A%84%E4%BA%BA%E9%99%85%E7%AD%96%E7%95%A5"><span class="post-toc-text">9.7 为工作选择最适宜的人际策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-%E7%AC%AC7%E7%AB%A0%EF%BC%9A%E6%9D%83%E5%8A%9B%E6%98%AF%E2%80%9D%E6%BC%94%E2%80%9D%E5%87%BA%E6%9D%A5%E7%9A%84%EF%BC%8C%E4%B9%9F%E6%98%AF%E2%80%9D%E8%AF%B4%E2%80%9D%E5%87%BA%E6%9D%A5%E7%9A%84"><span class="post-toc-text">10. 第7章：权力是”演”出来的，也是”说”出来的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-1-%E9%A2%86%E5%AF%BC%E5%8A%9B%E7%9A%84%E7%A7%98%E8%AF%80%E5%B0%B1%E6%98%AF%E8%A1%A8%E6%BC%94"><span class="post-toc-text">10.1 领导力的秘诀就是表演</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-2-%E2%80%9C%E6%BC%94%E2%80%9D%E5%87%BA%E6%9D%83%E5%8A%9B%E7%9A%84-6-%E5%A4%A7%E5%8E%9F%E5%88%99"><span class="post-toc-text">10.2 “演”出权力的 6 大原则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E4%B8%80%EF%BC%9A%E8%A1%A8%E7%8E%B0%E4%BF%A1%E5%BF%83%EF%BC%88%E2%80%9D%E6%AC%BA%E9%AA%97%E2%80%9D%E4%BC%9A%E5%8F%98%E6%88%90%E7%8E%B0%E5%AE%9E%EF%BC%89"><span class="post-toc-text">原则一：表现信心（”欺骗”会变成现实）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E4%BA%8C%EF%BC%9A%E7%95%99%E6%84%8F%E4%BD%A0%E7%9A%84%E8%A7%82%E4%BC%97%EF%BC%88%E4%BD%A0%E6%80%BB%E5%9C%A8%E2%80%9D%E8%88%9E%E5%8F%B0%E2%80%9D%E4%B8%8A%EF%BC%89"><span class="post-toc-text">原则二：留意你的观众（你总在”舞台”上）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E4%B8%89%EF%BC%9A%E8%A1%A8%E7%8E%B0%E6%84%A4%E6%80%92%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E6%82%B2%E4%BC%A4%E5%92%8C%E6%82%94%E6%81%A8"><span class="post-toc-text">原则三：表现愤怒，而不是悲伤和悔恨</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E5%9B%9B%EF%BC%9A%E6%B3%A8%E6%84%8F%E4%BD%A0%E7%9A%84%E5%A7%BF%E5%8A%BF%E5%92%8C%E6%89%8B%E5%8A%BF"><span class="post-toc-text">原则四：注意你的姿势和手势</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E4%BA%94%EF%BC%9A%E7%94%A8%E8%AE%B0%E5%BF%86%E8%8E%B7%E5%8F%96%E6%89%80%E9%9C%80%E7%9A%84%E6%83%85%E6%84%9F"><span class="post-toc-text">原则五：用记忆获取所需的情感</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%8E%9F%E5%88%99%E5%85%AD%EF%BC%9A%E8%AE%BE%E7%BD%AE%E8%88%9E%E5%8F%B0%E5%92%8C%E7%AE%A1%E7%90%86%E7%8E%AF%E5%A2%83"><span class="post-toc-text">原则六：设置舞台和管理环境</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-3-%E2%80%9C%E8%AF%B4%E2%80%9D%E5%87%BA%E6%9D%83%E5%8A%9B%E7%9A%84-3-%E5%A4%A7%E7%AD%96%E7%95%A5"><span class="post-toc-text">10.3 “说”出权力的 3 大策略</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AD%96%E7%95%A5%E4%B8%80%EF%BC%9A%E6%89%93%E6%96%AD"><span class="post-toc-text">策略一：打断</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AD%96%E7%95%A5%E4%BA%8C%EF%BC%9A%E8%B4%A8%E7%96%91%E8%AE%A8%E8%AE%BA%E7%9A%84%E5%89%8D%E6%8F%90"><span class="post-toc-text">策略二：质疑讨论的前提</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E7%AD%96%E7%95%A5%E4%B8%89%EF%BC%9A%E8%AF%AD%E8%A8%80%E6%9C%89%E8%AF%B4%E6%9C%8D%E5%8A%9B%EF%BC%885-%E4%B8%AA%E8%AF%AD%E8%A8%80%E6%8A%80%E5%B7%A7%EF%BC%89"><span class="post-toc-text">策略三：语言有说服力（5 个语言技巧）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-%E7%AC%AC8%E7%AB%A0%EF%BC%9A%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E5%A3%B0%E6%9C%9B"><span class="post-toc-text">11. 第8章：建立自己的声望</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-1-%E7%95%99%E4%B8%8B%E7%AC%AC%E4%B8%80%E5%8D%B0%E8%B1%A1%E7%9A%84%E6%9C%BA%E4%BC%9A%E5%8F%AA%E6%9C%89%E4%B8%80%E6%AC%A1"><span class="post-toc-text">11.1 留下第一印象的机会只有一次</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-2-%E7%B2%BE%E5%BF%83%E7%AD%96%E5%88%92%E5%92%8C%E6%A0%91%E7%AB%8B%E4%BD%A0%E7%9A%84%E5%BD%A2%E8%B1%A1"><span class="post-toc-text">11.2 精心策划和树立你的形象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-3-%E7%89%B9%E5%88%AB%E9%87%8D%E8%A7%86%E4%BD%A0%E5%9C%A8%E5%AA%92%E4%BD%93%E4%B8%AD%E7%9A%84%E5%BD%A2%E8%B1%A1"><span class="post-toc-text">11.3 特别重视你在媒体中的形象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-4-%E5%85%8B%E6%9C%8D%E8%87%AA%E6%88%91%E5%AE%A3%E4%BC%A0%E7%9A%84%E5%9B%B0%E5%A2%83%EF%BC%88%E8%AE%A9%E5%88%AB%E4%BA%BA%E8%B5%9E%E7%BE%8E%E4%BD%A0%EF%BC%89"><span class="post-toc-text">11.4 克服自我宣传的困境（让别人赞美你）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-5-%E8%B0%81%E8%AF%B4%E8%B4%9F%E9%9D%A2%E4%BF%A1%E6%81%AF%E9%83%BD%E6%98%AF%E6%9C%89%E5%AE%B3%E7%9A%84"><span class="post-toc-text">11.5 谁说负面信息都是有害的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-6-%E5%BD%A2%E8%B1%A1%E5%88%9B%E9%80%A0%E7%8E%B0%E5%AE%9E"><span class="post-toc-text">11.6 形象创造现实</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-%E7%AC%AC9%E7%AB%A0%EF%BC%9A%E6%8C%AB%E6%8A%98%E4%B9%9F%E6%98%AF%E4%B8%80%E7%A7%8D%E8%B4%A2%E5%AF%8C"><span class="post-toc-text">12. 第9章：挫折也是一种财富</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-%E5%BA%94%E5%AF%B9%E5%86%B2%E7%AA%81%E7%9A%84-8-%E6%9D%A1%E9%87%91%E5%BE%8B"><span class="post-toc-text">12.1 应对冲突的 8 条金律</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-%E5%8F%8D%E8%B4%A5%E4%B8%BA%E8%83%9C%E7%9A%84-3-%E5%A4%A7%E7%AD%96%E7%95%A5"><span class="post-toc-text">12.2 反败为胜的 3 大策略</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#13-%E7%AC%AC10%E7%AB%A0%EF%BC%9A%E4%B8%BA%E6%9D%83%E5%8A%9B%E5%BF%85%E9%A1%BB%E6%94%AF%E4%BB%98%E7%9A%84-5-%E5%A4%A7%E6%88%90%E6%9C%AC"><span class="post-toc-text">13. 第10章：为权力必须支付的 5 大成本</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#14-%E7%AC%AC11%E7%AB%A0%EF%BC%9A%E8%AD%A6%E6%83%95%E5%A4%B1%E5%8E%BB%E6%9D%83%E5%8A%9B%E7%9A%84-6-%E5%A4%A7%E5%9B%A0%E7%B4%A0"><span class="post-toc-text">14. 第11章：警惕失去权力的 6 大因素</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#15-%E7%AC%AC12%E2%80%9413%E7%AB%A0%EF%BC%9A%E8%B8%8F%E4%B8%8A%E4%BD%A0%E7%9A%84%E6%9D%83%E5%8A%9B%E4%B9%8B%E6%97%85"><span class="post-toc-text">15. 第12—13章：踏上你的权力之旅</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-1-%E8%BF%99%E6%98%AF%E4%B8%80%E4%B8%AA%E7%AD%89%E7%BA%A7%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E7%A4%BE%E4%BC%9A"><span class="post-toc-text">15.1 这是一个等级无处不在的社会</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-2-%E6%88%90%E4%B8%BA%E6%9D%83%E5%8A%9B%E8%BE%83%E9%87%8F%E4%B8%AD%E6%9C%80%E5%A4%A7%E7%9A%84%E8%B5%A2%E5%AE%B6"><span class="post-toc-text">15.2 成为权力较量中最大的赢家</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-3-%E9%80%9A%E5%BE%80%E6%9D%83%E5%8A%9B%E4%B9%8B%E8%B7%AF"><span class="post-toc-text">15.3 通往权力之路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-4-%E4%B8%8D%E8%A6%81%E8%BD%BB%E6%98%93%E6%94%BE%E5%BC%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9D%83%E5%8A%9B"><span class="post-toc-text">15.4 不要轻易放弃自己的权力</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-5-%E7%85%A7%E9%A1%BE%E5%A5%BD%E8%87%AA%E5%B7%B1%EF%BC%8C%E4%B8%8D%E8%A6%81%E6%9C%9F%E5%BE%85%E5%85%AC%E6%AD%A3"><span class="post-toc-text">15.5 照顾好自己，不要期待公正</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-6-%E5%B0%8F%E4%BB%BB%E5%8A%A1%E4%B9%9F%E6%9C%89%E5%A4%A7%E5%8A%9F%E6%95%88"><span class="post-toc-text">15.6 小任务也有大功效</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-7-%E4%B8%80%E5%88%87%E4%BC%9A%E6%AF%94%E4%BD%A0%E6%83%B3%E8%B1%A1%E7%9A%84%E5%AE%B9%E6%98%93"><span class="post-toc-text">15.7 一切会比你想象的容易</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#16-%E6%A0%B8%E5%BF%83%E9%87%91%E5%8F%A5"><span class="post-toc-text">16. 核心金句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#17-%E8%A1%8C%E5%8A%A8%E6%B8%85%E5%8D%95%EF%BC%88%E6%8A%8A%E4%B9%A6%E5%8F%98%E6%88%90%E8%A1%8C%E5%8A%A8%EF%BC%89"><span class="post-toc-text">17. 行动清单（把书变成行动）</span></a></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="阅读笔记——《权力：为什么只为某些人所拥有》"><a href="#阅读笔记——《权力：为什么只为某些人所拥有》" class="headerlink" title="阅读笔记——《权力：为什么只为某些人所拥有》"></a>阅读笔记——《权力：为什么只为某些人所拥有》</h1><blockquote>
+<p><strong>书名</strong>：权力：为什么只为某些人所拥有（<em>Power: Why Some People Have It and Others Don’t</em>）<br><strong>作者</strong>：杰弗瑞·菲佛（Jeffrey Pfeffer），斯坦福大学商学院组织行为学教授，研究组织权力 30 余年<br><strong>译者</strong>：杨洋</p>
+<p><strong>一句话概括</strong>：这本书戳破一个广泛流传的幻觉——<strong>“只要把工作做好、技术过硬，就一定能成功”</strong>。菲佛用大量实证研究证明：业绩只是成功的必要条件之一，远非充分条件。权力是**”争”来的，不是”等”来的**；它是一套可以学习、练习、刻意经营的技能（自我推销、管理上司、建立声望、经营关系、表演、掌控资源），而非与生俱来的天赋。</p>
+</blockquote>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>全书框架与核心主线</li>
+<li>序言：为什么你必须掌握权力（三大理由）</li>
+<li>序言：权力之路上的三大障碍</li>
+<li>第1章：业绩决定你的权力地位吗？——不</li>
+<li>第2章：打造你的权力特质（7 大特质）</li>
+<li>第3章：起点决定高度（选对部门）</li>
+<li>第4章：成为最引人注目的那一个</li>
+<li>第5章：谁拥有资源，谁就有权力</li>
+<li>第6章：关系，永恒的王道</li>
+<li>第7章：权力是”演”出来的，也是”说”出来的</li>
+<li>第8章：建立自己的声望</li>
+<li>第9章：挫折也是一种财富</li>
+<li>第10章：为权力必须支付的 5 大成本</li>
+<li>第11章：警惕失去权力的 6 大因素</li>
+<li>第12—13章：踏上你的权力之旅</li>
+<li>核心金句</li>
+<li>行动清单（把书变成行动）</li>
+</ol>
+<hr>
+<h2 id="1-全书框架与核心主线"><a href="#1-全书框架与核心主线" class="headerlink" title="1. 全书框架与核心主线"></a>1. 全书框架与核心主线</h2><p>全书可以看作一张”权力路线图”：<strong>破除幻觉 → 修炼个人 → 选对平台 → 争取曝光 → 掌握资源与关系 → 学会表演与声望 → 应对挫折 → 守住权力</strong>。</p>
+<pre class="mermaid">flowchart TB
+    A["破除幻觉&lt;br/&gt;业绩≠权力"] --&gt; B["修炼个人特质&lt;br/&gt;雄心/精力/专注/反省/信心"]
+    B --&gt; C["选对起点&lt;br/&gt;衡量部门权力，进入上升通道"]
+    C --&gt; D["争取曝光&lt;br/&gt;提出要求、脱颖而出"]
+    D --&gt; E["掌握资源&lt;br/&gt;互惠、做小事、创造独有资源"]
+    E --&gt; F["经营关系&lt;br/&gt;弱联系、结构洞、网络中心"]
+    F --&gt; G["表演与说话&lt;br/&gt;6大原则 + 3大策略"]
+    G --&gt; H["建立声望&lt;br/&gt;第一印象、媒体、让别人赞美你"]
+    H --&gt; I["应对挫折&lt;br/&gt;8条金律 + 3大反败为胜策略"]
+    I --&gt; J["守住权力&lt;br/&gt;警惕5大成本 + 6大失权因素"]
+    J --&gt; K["踏上权力之旅&lt;br/&gt;永不放弃"]
+
+    style A fill:#ffebee,stroke:#c62828
+    style K fill:#e8f5e9,stroke:#2e7d32</pre>
+
+<p><strong>核心主线一句话</strong>：权力 &#x3D; 意愿（想不想争）× 技能（会不会争）× 位置（在哪争）× 资源与关系（拿什么争）× 声望与表演（别人怎么看）。</p>
+<hr>
+<h2 id="2-序言：为什么你必须掌握权力（三大理由）"><a href="#2-序言：为什么你必须掌握权力（三大理由）" class="headerlink" title="2. 序言：为什么你必须掌握权力（三大理由）"></a>2. 序言：为什么你必须掌握权力（三大理由）</h2><p>很多人会想：”为什么不干脆避开权力，放弃雄心，知足常乐？”菲佛给出三个无法回避的理由：</p>
+<h3 id="理由一：权力与健康、寿命直接相关"><a href="#理由一：权力与健康、寿命直接相关" class="headerlink" title="理由一：权力与健康、寿命直接相关"></a>理由一：权力与健康、寿命直接相关</h3><p>迈克尔·马莫特（Michael Marmot）对 18 000 名英国公务员的”白厅研究”发现：</p>
+<ul>
+<li>职级越低，死亡风险越高（排除年龄因素后依然成立）。</li>
+<li>吸烟、胆固醇、高血压、肥胖等<strong>只能解释约 1&#x2F;4 的死亡率差异</strong>。</li>
+<li>真正的关键差异是<strong>权力和地位</strong>——它决定一个人对自己工作环境的<strong>控制程度</strong>。</li>
+<li>处在权力小、地位低的职位上会<strong>危害健康</strong>；拥有权力及控制权会<strong>延长寿命</strong>。</li>
+<li>底层公务员的死亡风险是顶层者的 <strong>4 倍</strong>。</li>
+</ul>
+<blockquote>
+<p>不能控制自己处境 → 产生无奈感与压力感 → 损害健康。权力本质上是<strong>对环境的控制感</strong>。</p>
+</blockquote>
+<h3 id="理由二：权力能转化为财富"><a href="#理由二：权力能转化为财富" class="headerlink" title="理由二：权力能转化为财富"></a>理由二：权力能转化为财富</h3><ul>
+<li>克林顿夫妇 2001 年离开白宫时欠债数百万，之后 8 年赚了 1.09 亿美元——靠的是<strong>名望 + 人际关系网络</strong>，而非资本。</li>
+<li>鲁迪·朱利亚尼卸任纽约市长后成为证券咨询公司合伙人，迅速改善经济状况。</li>
+<li>名望转化为财富的<strong>潜力</strong>始终存在（马丁·路德·金、甘地没转化，但那是因为他们选择不转化）。</li>
+</ul>
+<h3 id="理由三：权力是领导力的一部分，是做成事的前提"><a href="#理由三：权力是领导力的一部分，是做成事的前提" class="headerlink" title="理由三：权力是领导力的一部分，是做成事的前提"></a>理由三：权力是领导力的一部分，是做成事的前提</h3><ul>
+<li>约翰·加德纳（林登·约翰逊麾下健康教育与福利部长）指出：<strong>权力是领导力的一部分</strong>。</li>
+<li>无论改革医疗制度、让公司更人性化、还是影响社会政策，<strong>没有权力就做不成事</strong>。</li>
+<li>心理学家戴维·麦克莱兰：<strong>追求权力是人类的基本驱动力</strong>，跨文化普遍存在；你越有效追求它，就越快乐。</li>
+</ul>
+<pre class="mermaid">flowchart LR
+    P["权力"] --&gt; H["更健康、更长寿"]
+    P --&gt; W["转化为财富"]
+    P --&gt; L["领导力与做成事的前提"]
+    H --&gt; C["对工作环境的控制感"]
+    style P fill:#fff3e0,stroke:#ef6c00</pre>
+
+<hr>
+<h2 id="3-序言：权力之路上的三大障碍"><a href="#3-序言：权力之路上的三大障碍" class="headerlink" title="3. 序言：权力之路上的三大障碍"></a>3. 序言：权力之路上的三大障碍</h2><h3 id="障碍一：公正世界假设（Just-World-Hypothesis）"><a href="#障碍一：公正世界假设（Just-World-Hypothesis）" class="headerlink" title="障碍一：公正世界假设（Just-World Hypothesis）"></a>障碍一：公正世界假设（Just-World Hypothesis）</h3><ul>
+<li>人们倾向于相信”世界是公平的，好人有好报”，因为一个可预测的世界让人安心。</li>
+<li>这个信念带来<strong>两个负面影响</strong>：<ol>
+<li><strong>削弱学习能力</strong>：你只从”你喜欢&#x2F;认同”的人身上学习，拒绝从不喜欢的成功者身上学习。</li>
+<li><strong>麻痹警觉</strong>：看不到环境中的陷阱，以为”做好工作就水到渠成”。</li>
+</ol>
+</li>
+<li>它的反向运作更危险：<strong>只要看到某人成功，人们会自动为他的成功寻找优点</strong>（反之，受害者会被”谴责”，即”谴责受害者”现象）。</li>
+<li>实验证明：人们会排斥那些纯粹因偶然因素被惩罚的人，并认为他们”活该”。</li>
+</ul>
+<blockquote>
+<p>结论：不管一个人怎么获得成功，成功本身就会让别人努力为他找优点。<strong>所以，先赢下来，比纠结过程是否”体面”更重要。</strong></p>
+</blockquote>
+<h3 id="障碍二：成功人士的说教（领导力文献）"><a href="#障碍二：成功人士的说教（领导力文献）" class="headerlink" title="障碍二：成功人士的说教（领导力文献）"></a>障碍二：成功人士的说教（领导力文献）</h3><ul>
+<li>大多数领导力书籍&#x2F;课程应贴上警告：”当心，这些内容可能危害你的组织地位。”</li>
+<li>原因有三：<strong>自我展现</strong>（领导者只说好的一面）、<strong>历史由掌权者书写</strong>（成功者会粉饰自己用的权力手腕）、<strong>公正世界效应</strong>（人们把成功者的正面品质选择性放大）。</li>
+<li>吉姆·柯林斯《从优秀到卓越》描述的”谦虚、安静、含蓄”的领导者是<strong>极罕见的</strong>，且那是”登顶后”的行为，与”通往顶端的路上”所需的行为<strong>不一样</strong>。</li>
+<li>数据：1 000 份简历中超过 40% 存在大量不实之词——连可核查的学历都造假，何况不可核查的品格描述。</li>
+</ul>
+<blockquote>
+<p>正确姿势：<strong>相信社会科学研究 + 你自己的经验观察</strong>（看周围谁上去了、谁原地踏步、谁失败了，差异在哪），而不是成功者的自传。</p>
+</blockquote>
+<h3 id="障碍三：你自己（自我设限-self-handicapping）"><a href="#障碍三：你自己（自我设限-self-handicapping）" class="headerlink" title="障碍三：你自己（自我设限 self-handicapping）"></a>障碍三：你自己（自我设限 self-handicapping）</h3><ul>
+<li>人们为了保护自尊，会<strong>事先给自己设置障碍</strong>，这样失败就可以归咎于外部因素而非能力。</li>
+<li>典型表现：不练习、不准备、不争取，”我没得到这个职位只是因为我没认真玩”。</li>
+<li>贝思（书中的反例）对”玩权力游戏”的明显不热衷，本质是<strong>保护自尊免遭失败打击</strong>。</li>
+<li>讽刺的是：<strong>维护自尊最好的方式之一就是事先投降</strong>。</li>
+</ul>
+<blockquote>
+<p>破解：其他人不会特别惦记你，他们关注的是自己。别太在意别人的看法，别怕形象受损——<strong>你不尝试，就永远到不了顶峰。</strong></p>
+</blockquote>
+<hr>
+<h2 id="4-第1章：业绩决定你的权力地位吗？——不"><a href="#4-第1章：业绩决定你的权力地位吗？——不" class="headerlink" title="4. 第1章：业绩决定你的权力地位吗？——不"></a>4. 第1章：业绩决定你的权力地位吗？——不</h2><p>这是全书最反直觉、也最核心的一章。菲佛用大量研究证明：<strong>对大多数组织中的大多数人来说，工作业绩并没有那么重要。</strong></p>
+<h3 id="4-1-业绩与职业成就的联系非常薄弱"><a href="#4-1-业绩与职业成就的联系非常薄弱" class="headerlink" title="4.1 业绩与职业成就的联系非常薄弱"></a>4.1 业绩与职业成就的联系非常薄弱</h3><ul>
+<li><strong>斯库曼研究</strong>（354 名文职雇员）：上司是否参与并赞成聘用你，比你的实际绩效更能决定你的考核评价——<strong>上司对你的承诺与关系，比绩效更重要</strong>（”行为性承诺”效应）。</li>
+<li><strong>梅多夫 &amp; 亚伯拉罕研究</strong>（1980）：薪酬与<strong>年龄、任期</strong>的关系强于与绩效的关系。</li>
+<li><strong>福克公司研究</strong>：绩效”优秀”者比”良好”者晋升可能性只高 12%。</li>
+<li><strong>联邦公务员研究</strong>：绩效评级与实际生产率关系很弱；<strong>文凭更高者更容易晋升</strong>，即使并非最优秀。</li>
+<li><strong>CEO 研究</strong>：连续三年业绩很差甚至把公司带向破产的 CEO，只有约 50% 会失去工作。CEO 是否被解雇取决于<strong>他自己的权力</strong>（是否也是所有者、董事会中执行董事比例等）。</li>
+</ul>
+<h3 id="4-2-出色的业绩甚至会困住你"><a href="#4-2-出色的业绩甚至会困住你" class="headerlink" title="4.2 出色的业绩甚至会困住你"></a>4.2 出色的业绩甚至会困住你</h3><ul>
+<li><strong>菲尔</strong>：老板不愿放他去别的部门——“我不会让你走，因为你为我做的工作太好了。”</li>
+<li><strong>格伦达</strong>：擅长扭转工厂局面，但高层认为她在<strong>当前位置</strong>极有效率，于是不把她视为更高级职位的候选人。</li>
+</ul>
+<blockquote>
+<p>记住教训：<strong>出色的业绩可能会困住你</strong>，因为老板不想失去你，也因为”在现有位置有能力”≠”适合更高职位”。</p>
+</blockquote>
+<h3 id="4-3-反例：业绩差也能稳坐高位"><a href="#4-3-反例：业绩差也能稳坐高位" class="headerlink" title="4.3 反例：业绩差也能稳坐高位"></a>4.3 反例：业绩差也能稳坐高位</h3><ul>
+<li>LECG 公司 CEO 迈克尔·杰弗里：股价两年跌 80%，却因”管理董事会的能力”和”把问题推给前任”而多年不倒。</li>
+<li>一家医疗设备公司 CEO：十年业绩平平，但薪水快速增长，只因<strong>与董事会主席关系密切</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>记住教训</strong>：让老板高兴了，业绩真的不重要；让老板不高兴了，出色的业绩也救不了你。</p>
+</blockquote>
+<h3 id="4-4-五个关键行动（把”业绩”转化为”权力”）"><a href="#4-4-五个关键行动（把”业绩”转化为”权力”）" class="headerlink" title="4.4 五个关键行动（把”业绩”转化为”权力”）"></a>4.4 五个关键行动（把”业绩”转化为”权力”）</h3><h4 id="行动一：让别人记住你（别人记住了你，就等于选择了你）"><a href="#行动一：让别人记住你（别人记住了你，就等于选择了你）" class="headerlink" title="行动一：让别人记住你（别人记住了你，就等于选择了你）"></a>行动一：让别人记住你（别人记住了你，就等于选择了你）</h4><ul>
+<li>掌权者忙于自己的事，不会注意到你的成果。<strong>你的首要任务是让上面的人知道你的工作成果，最好的方法就是告诉他们。</strong></li>
+<li><strong>单纯曝光效应</strong>（扎荣茨）：人们更喜欢熟悉的东西；反复曝光增加好感、减少负面情绪。<strong>熟悉产生偏好。</strong></li>
+<li>很多人信”枪打出头鸟”，但作为职业生涯建议，<strong>这糟透了</strong>。</li>
+<li>“地基”隐喻：安静扎实工作的人可以成为优秀的中层经理，但<strong>登不上高位</strong>——因为没人记得你。</li>
+<li>一位经理：”即便几十年后我也会记住他（那个直言不讳的人），但会忘记大多数同事。”——<strong>你不会选择你不记得的人。</strong></li>
+</ul>
+<h4 id="行动二：让有利于你的业绩凸显出来（定义衡量标准）"><a href="#行动二：让有利于你的业绩凸显出来（定义衡量标准）" class="headerlink" title="行动二：让有利于你的业绩凸显出来（定义衡量标准）"></a>行动二：让有利于你的业绩凸显出来（定义衡量标准）</h4><ul>
+<li>没有人在所有方面都同样出色，你可以<strong>不断强调你做得好的方面</strong>。</li>
+<li>蒂娜·布朗（《名利场》编辑）案例：强调”广告收入增长、内容出色”，回避”杂志没赚钱”。</li>
+<li>克里斯（软件公司 CEO）案例：把”低价续约”重新定义为”增加递延收入、确保客户”，转移董事会对”为何靠降价保业务”的质疑。</li>
+<li>你影响衡量标准的程度有限，但可以<strong>突出有利于你的业绩维度，对抗竞争者</strong>。</li>
+</ul>
+<h4 id="行动三：记住你的老板认为最重要的事"><a href="#行动三：记住你的老板认为最重要的事" class="headerlink" title="行动三：记住你的老板认为最重要的事"></a>行动三：记住你的老板认为最重要的事</h4><ul>
+<li>业绩包含很多方面，<strong>老板认为重要的，未必是你看重的</strong>。别假设你知道老板关心什么——<strong>定期询问掌权者：哪些工作最关键、他们如何看待你该做的事。</strong></li>
+<li>杰米·戴蒙失去花旗工作，部分原因是他与桑迪·韦尔的女儿发生争执——韦尔关心家庭，不只是财务表现。</li>
+<li>以”展示能力、表现掌控局面”的方式寻求帮助，<strong>本身就是对上级的有效恭维</strong>。</li>
+</ul>
+<h4 id="行动四：恭维，一份美妙的礼物"><a href="#行动四：恭维，一份美妙的礼物" class="headerlink" title="行动四：恭维，一份美妙的礼物"></a>行动四：恭维，一份美妙的礼物</h4><ul>
+<li>人们喜欢良好的自我感觉（”自我增强”），普遍高估自己（”高于均数效应”）。</li>
+<li>人们喜欢<strong>和自己相似的人</strong>（内群体偏好）。</li>
+<li><strong>批评老板</strong>会让他感觉不好，尤其触及他不安全的软肋时，代价极大（梅琳达案例：批评首席信贷官的领导力，被延迟委任）。</li>
+<li><strong>恭维为什么有效</strong>：①人们天生喜欢恭维自己的人；②恭维遵循<strong>互惠规范</strong>（赞美是礼物的一种形式）；③恭维与自我增强动机一致。</li>
+<li>杰克·瓦伦蒂（美国电影协会会长 38 年）：几乎不间断地使用恭维策略，终身受益。</li>
+<li>珍妮弗·查特曼研究：恭维效果曲线可能呈倒 U 形，但**”恭维失效的那个点”在研究中始终没有被找到**——也就是说，<strong>大多数人都低估了恭维的有效性，没能充分利用它</strong>。</li>
+</ul>
+<h4 id="行动五：管理上司（你与老板的关系，至少不亚于业绩）"><a href="#行动五：管理上司（你与老板的关系，至少不亚于业绩）" class="headerlink" title="行动五：管理上司（你与老板的关系，至少不亚于业绩）"></a>行动五：管理上司（你与老板的关系，至少不亚于业绩）</h4><ul>
+<li>基思·法拉奇：<strong>为你的成功负责的人，是你的上司</strong>，是有权力提升你或阻止你的人。</li>
+<li>你的工作 &#x3D; 确保那些有影响力的人<strong>有强烈的愿望让你成功</strong>。</li>
+<li>业绩 + 职场政治技巧，二者结合才能帮你晋升；<strong>只靠业绩不够，有时业绩甚至不必要。</strong></li>
+</ul>
+<pre class="mermaid">flowchart LR
+    A["让老板高兴"] --&gt; D["保住位置/获得晋升"]
+    B["出色的业绩"] -.-&gt;|"若老板不知道或不高兴"| D
+    C["业绩 + 政治技巧"] --&gt; D
+    style D fill:#e8f5e9,stroke:#2e7d32</pre>
+
+<hr>
+<h2 id="5-第2章：打造你的权力特质（7-大特质）"><a href="#5-第2章：打造你的权力特质（7-大特质）" class="headerlink" title="5. 第2章：打造你的权力特质（7 大特质）"></a>5. 第2章：打造你的权力特质（7 大特质）</h2><h3 id="5-1-前提：人是可以改变的"><a href="#5-1-前提：人是可以改变的" class="headerlink" title="5.1 前提：人是可以改变的"></a>5.1 前提：人是可以改变的</h3><ul>
+<li>政治技能<strong>是一种技能</strong>，不是与生俱来的人格。研究显示：<strong>任何技能都可通过练习与辅导提高</strong>（天才研究的最大决定因素是练习 + 辅导，而非天赋）。</li>
+<li>罗恩·梅耶（环球电影总裁）：15 岁辍学 → 海军陆战队 → 司机 → 经纪人 → 好莱坞权贵，多次转型。</li>
+<li>威利·布朗（加州议长）：第一次参选失败、第一次竞选议长失败，后来通过培养耐心、同情心、人际能力成功。</li>
+<li>菲佛的滑雪比喻：滑雪不是天生的，但你学会了；权力特质同样可以学。</li>
+</ul>
+<h3 id="5-2-你真的了解自己吗？（自我评估的两大挑战）"><a href="#5-2-你真的了解自己吗？（自我评估的两大挑战）" class="headerlink" title="5.2 你真的了解自己吗？（自我评估的两大挑战）"></a>5.2 你真的了解自己吗？（自我评估的两大挑战）</h3><ul>
+<li><strong>挑战一</strong>：我们都高估自己、回避负面信息、为行为辩护。</li>
+<li>马歇尔·古德史密斯用”<strong>前馈</strong>“（你下一阶段需要什么）替代”反馈”（你过去哪里错）——避免激起防御心理。</li>
+<li><strong>挑战二</strong>：你可能不知道自己欠缺什么（<strong>邓宁-克鲁格效应</strong>：越欠缺越无知，越无法识别自己的无知）。</li>
+<li>破解：<strong>向比你更有技能、愿意告诉你真相的人求助</strong>。承认无知的人更容易提高（孔子：”知之为知之，不知为不知，是知也”）。</li>
+</ul>
+<h3 id="5-3-7-大特质：意愿（3）-技能（4）-智力"><a href="#5-3-7-大特质：意愿（3）-技能（4）-智力" class="headerlink" title="5.3 7 大特质：意愿（3）+ 技能（4）+ 智力"></a>5.3 7 大特质：意愿（3）+ 技能（4）+ 智力</h3><p>成功者与其他人的区别在于两点：<strong>意愿</strong>（愿意承担巨大挑战的驱动力）和<strong>技能</strong>（把雄心转化为成就的能力）。</p>
+<pre class="mermaid">flowchart TB
+    P["权力特质"] --&gt; Y["意愿"]
+    P --&gt; S["技能"]
+    Y --&gt; Y1["雄心&lt;br/&gt;驱动努力与牺牲"]
+    Y --&gt; Y2["精力&lt;br/&gt;感染他人/长时间工作/被提升"]
+    Y --&gt; Y3["专注&lt;br/&gt;聚焦行业/活动/关键任务"]
+    S --&gt; S1["自知之明与反省&lt;br/&gt;结构化自我反思、做笔记"]
+    S --&gt; S2["信心&lt;br/&gt;表现自信→被赋予权力"]
+    S --&gt; S3["换位思考&lt;br/&gt;读懂他人利益与感受"]
+    S --&gt; S4["化解冲突&lt;br/&gt;别人回避冲突，你能处理"]
+    P -.-&gt; IQ["智力：被严重高估&lt;br/&gt;(解释收入差异仅约4%)"]
+    style IQ fill:#ffebee,stroke:#c62828</pre>
+
+<h4 id="①-雄心（Ambition）"><a href="#①-雄心（Ambition）" class="headerlink" title="① 雄心（Ambition）"></a>① 雄心（Ambition）</h4><ul>
+<li>成功需要努力、勤奋、坚持不懈，需要雄心来驱动牺牲。</li>
+<li>林肯传记（古德温）：雄心是林肯成功的最重要素质，帮他克服贫寒出身与早期政治挫折。</li>
+<li>梅琳达（信用卡副总裁）：对目标的不懈专注让她”不纠结于当前的不足”，控制情绪、持续努力。</li>
+<li>理查德·戴利（芝加哥市长）：愿意耐心等待 30 多年，在政治机器中扮演螺丝钉。</li>
+</ul>
+<h4 id="②-精力（Energy）"><a href="#②-精力（Energy）" class="headerlink" title="② 精力（Energy）"></a>② 精力（Energy）</h4><p>精力对建立影响力有三个方面帮助：</p>
+<ol>
+<li><strong>感染力</strong>：情绪具有感染性，勤奋工作传达”这很重要”，激发他人努力。</li>
+<li><strong>长时间工作</strong>：天才研究显示”艰苦准备”是决定性因素（西蒙顿：个人表现差异主要来自投入时间）。</li>
+<li><strong>被提升</strong>：人们常提升精力充沛者（暗示责任感和忠诚）。梅琳达：”一个能每天工作 16 小时，一个只能 8 小时，晋升机会给谁很清楚。”</li>
+</ol>
+<blockquote>
+<p>精力可训练：严格的外科训练培养了劳拉·埃瑟曼的忍耐力；CEO 肯特·西里让助理安排健身时间。<strong>对所做之事投入，就更可能精力充沛。</strong></p>
+</blockquote>
+<h4 id="③-专注（Focus）"><a href="#③-专注（Focus）" class="headerlink" title="③ 专注（Focus）"></a>③ 专注（Focus）</h4><ul>
+<li>干草在放大镜下会被点燃——太阳光芒聚焦时更强大，追求权力同理。</li>
+<li>三个层面：<strong>专注一个行业&#x2F;公司</strong>（深入了解、建立实质人脉；标普 500 CEO 平均任期 15 年）；<strong>专注有限活动&#x2F;技能</strong>（范围窄→更快精通）；<strong>专注关键任务</strong>（把焦点集中在 5%～10% 最重要的活动上，如巴克莱银行弗农）。</li>
+<li>有才华者往往兴趣太多、无法选择，反而不专注。<strong>缩小焦点，把精力投入少数领域，更可能获得权力。</strong></li>
+</ul>
+<h4 id="④-自知之明与反省（Self-awareness）"><a href="#④-自知之明与反省（Self-awareness）" class="headerlink" title="④ 自知之明与反省（Self-awareness）"></a>④ 自知之明与反省（Self-awareness）</h4><ul>
+<li>乔·贝内杜切（39 岁成为消防员基金 CEO）：<strong>每周读一本非小说书 + 每次重大会议后做笔记</strong>（哪些做得好、哪些不好、人们说了什么、结果如何）。</li>
+<li>米奇·迈迪克（佛罗里达国际大学校长 23 年）：<strong>做笔记、记录决策与交流、反省</strong>，提升技巧。</li>
+<li>安迪·哈加登：有些人以为有 20 多年经验，其实只有 1 年经验重复了 20 多次。<strong>没有反省，就学不到东西。</strong></li>
+</ul>
+<h4 id="⑤-信心（Confidence）"><a href="#⑤-信心（Confidence）" class="headerlink" title="⑤ 信心（Confidence）"></a>⑤ 信心（Confidence）</h4><ul>
+<li>观察者会从你的举止中寻找线索，判断该给你多大权力；<strong>表现出信心 → 别人赋予你权力</strong>。</li>
+<li>神经外科医生弗朗西斯·康利：在病人面前自信地介绍治疗方案（即使自己也有不确定性），因为医生的自信能安抚病人。</li>
+<li>阿曼达案例：把”显得自以为是”的邮件发出后，公司同事<strong>喜欢她表现出的自信</strong>——因为那正是高管的行为方式。</li>
+<li>女性普遍难题：社会期望女性恭顺，导致薪酬谈判中低估自己（布伦达·梅杰研究）。<strong>所有不自信者都会少拿钱、少拿权。</strong></li>
+</ul>
+<h4 id="⑥-换位思考（Perspective-taking）"><a href="#⑥-换位思考（Perspective-taking）" class="headerlink" title="⑥ 换位思考（Perspective-taking）"></a>⑥ 换位思考（Perspective-taking）</h4><ul>
+<li>谈判培训建议就”利益”而非”立场”谈判——<strong>了解对方真正想要什么</strong>。</li>
+<li>林登·约翰逊成功根源：注意 99 个参议员同僚的细节（谁想要私人办公室、谁是醉鬼、谁想去哪次行程），从而准确预测投票。</li>
+<li>威廉·伊克斯（”移情理解”研究者）：能准确读出他人想法的人，最可能成为最圆滑的顾问、最老练的外交官、最有效的谈判者。</li>
+<li>劳拉·埃瑟曼的教训：只想着”做正确的事”会忽视他人视角；当她站在外科主任角度说”我理解你的观点，我会处理好”，立刻赢得支持。</li>
+</ul>
+<blockquote>
+<p><strong>记住教训</strong>：站在别人角度思考，专注于你的目标、不要转移注意力，是向目标推进的最好方式之一。</p>
+</blockquote>
+<h4 id="⑦-化解冲突的能力（Conflict-resolution）"><a href="#⑦-化解冲突的能力（Conflict-resolution）" class="headerlink" title="⑦ 化解冲突的能力（Conflict resolution）"></a>⑦ 化解冲突的能力（Conflict resolution）</h4><ul>
+<li>职场欺凌（大喊大叫、咆哮）之所以存在，是因为<strong>对作恶者往往非常有效</strong>——大多数人厌恶冲突、会妥协让步，而非挺身维护自己。</li>
+<li>拉姆·伊曼纽尔（奥巴马幕僚长）：火爆脾气恐吓对手，但从未完全失控。</li>
+<li>李光耀（新加坡国父）：”常常举止粗鲁、瞧不起人”，从不退缩。</li>
+<li>川又克二（日产）：用粗鲁行为做权力游戏——“我们感兴趣的东西他不一定感兴趣，但他感兴趣的东西我们必须要感兴趣。”</li>
+<li><strong>如果大多数人都想回避冲突，而你却能有效处理它，你就有了优势。</strong></li>
+</ul>
+<h3 id="5-4-别让聪明埋下溃败的种子（智力被高估）"><a href="#5-4-别让聪明埋下溃败的种子（智力被高估）" class="headerlink" title="5.4 别让聪明埋下溃败的种子（智力被高估）"></a>5.4 别让聪明埋下溃败的种子（智力被高估）</h3><ul>
+<li>智力是预测工作业绩最准确的指标，但<strong>工作业绩与获取权力关系很弱</strong>，且智力对工作业绩差异的解释一般不到 20%。</li>
+<li>智力与收入的相关性仅 0.2（约 4% 的收入差异可用智力解释）。</li>
+<li><strong>智力与在校成绩相关，但与职业生涯成功几乎无关</strong>。</li>
+<li>智力（尤其超过一定水平）可能导致不利于权力的行为：①过度自信、不与别人共事；②不关心别人的需要和感受（”无法理解别人为何想不到自己想到的”）；③带有胁迫性（胁迫短期有效，但不带来持久忠诚）。</li>
+<li>越战（《出类拔萃之辈》）、安然（《屋内聪明人》）的溃败都源于”聪明人”的过度自信与麻木。</li>
+</ul>
+<hr>
+<h2 id="6-第3章：起点决定高度（选对部门）"><a href="#6-第3章：起点决定高度（选对部门）" class="headerlink" title="6. 第3章：起点决定高度（选对部门）"></a>6. 第3章：起点决定高度（选对部门）</h2><p>你的职业生涯<strong>从哪里开始</strong>，会影响晋升速度与高度。但最常见的错误是：<strong>把自己定位在组织目前最有权势的核心部门</strong>。</p>
+<h3 id="6-1-为什么”最熟悉的不一定是最适合的”"><a href="#6-1-为什么”最熟悉的不一定是最适合的”" class="headerlink" title="6.1 为什么”最熟悉的不一定是最适合的”"></a>6.1 为什么”最熟悉的不一定是最适合的”</h3><ul>
+<li>SAP 的齐亚·优素福：无工学学位、不懂软件，却靠<strong>企业战略咨询部门</strong>（覆盖全公司的战略分析）进入高管层——因为他进入的是”公司未来需要的技能”所在。</li>
+<li>福特”神童们”：一群没造过车的年轻人进入<strong>财务部门</strong>，最终主导公司，因为当时福特最核心的问题是”会计与控制、财务纪律”。</li>
+<li><strong>财务部门掌权的深层原因</strong>：在重大决策（投资、新品开发）中发挥核心作用；控制信息流；用数字（而非产品）避免批评；控制绩效评估与晋升评级。</li>
+</ul>
+<blockquote>
+<p>关键：<strong>今天最重要的部门，将来未必重要。</strong> 寻找尚未充分开发、阻力小、未来会变得更重要的位置。</p>
+</blockquote>
+<h3 id="6-2-部门权力的两大来源"><a href="#6-2-部门权力的两大来源" class="headerlink" title="6.2 部门权力的两大来源"></a>6.2 部门权力的两大来源</h3><ol>
+<li><strong>部门凝聚力</strong>：共同仪式、规范、经验建立信任纽带；同心同德、协调一致是权力的重要来源。</li>
+<li><strong>提供关键资源的能力</strong>：金钱、技能、解决组织性问题的能力。当竞争因素变化时，问题变化 → 资金来源变化 → <strong>权力部门随之迁移</strong>。</li>
+</ol>
+<blockquote>
+<p>弗里格斯坦研究（CEO 背景变迁）：1900 年创业家 → 制造&#x2F;生产背景（生产工程问题）→ 20 年代营销&#x2F;销售背景（销路问题）→ 60 年代起财务背景（资本市场力量）。<strong>权力随时代问题而迁移。</strong></p>
+</blockquote>
+<h3 id="6-3-衡量部门权力的-3-大指标"><a href="#6-3-衡量部门权力的-3-大指标" class="headerlink" title="6.3 衡量部门权力的 3 大指标"></a>6.3 衡量部门权力的 3 大指标</h3><pre class="mermaid">flowchart LR
+    D["诊断部门权力"] --&gt; I1["相对薪酬&lt;br/&gt;起薪与高管薪酬"]
+    D --&gt; I2["办公室位置与设施&lt;br/&gt;是否靠近掌权者"]
+    D --&gt; I3["在委员会/高管层中的位置&lt;br/&gt;谁进董事会、谁当CEO"]
+    I1 --&gt; R["多指标指向一致→更有把握"]
+    I2 --&gt; R
+    I3 --&gt; R</pre>
+
+<ul>
+<li><strong>相对薪酬</strong>：在权力更大的部门起薪高约 6%（公用事业研究）；美国财务部门薪酬最高、德国研发最高、日本研发与人力资源最高。</li>
+<li><strong>办公室位置</strong>：越靠近掌权者越有权力。白宫顾问约翰·迪恩：”办公室搬迁到更小的地方，就是在走下坡路。”一位银行培训主管的办公室在总部几条街外的破烂建筑里——“他的办公室就说明了一切”。</li>
+<li><strong>委员会&#x2F;高管层位置</strong>：看 CEO 的背景、谁进入董事会。SAP 首位非技术 CEO（销售背景）利奥·阿波特克的上任，标志权力从技术向销售迁移。</li>
+</ul>
+<h3 id="6-4-两难：未知风险-vs-激烈竞争"><a href="#6-4-两难：未知风险-vs-激烈竞争" class="headerlink" title="6.4 两难：未知风险 vs 激烈竞争"></a>6.4 两难：未知风险 vs 激烈竞争</h3><ul>
+<li>进入有实权的大部门：收入与职业占优，但<strong>竞争最激烈</strong>（最优秀的人都去）。</li>
+<li>进入新兴小部门：风险未知，但<strong>阻力小、曝光高、能成为先驱</strong>（优素福进企业咨询团队、沃尔皮 1994 年进思科业务发展部时只有 2 人，后成最高管理层）。</li>
+<li>判断依据：你是组织内部创业者还是风险规避者。</li>
+<li>安·摩尔（时代公司 CEO）：不随大流去咨询&#x2F;投行，选择低薪的杂志财务部，后靠”夕阳产业”的脱颖而出成为 CEO。</li>
+</ul>
+<blockquote>
+<p>无论选什么，<strong>既了解当前谁有权，也预测权力将向哪里迁移</strong>，你会得到更好的结果。</p>
+</blockquote>
+<hr>
+<h2 id="7-第4章：成为最引人注目的那一个"><a href="#7-第4章：成为最引人注目的那一个" class="headerlink" title="7. 第4章：成为最引人注目的那一个"></a>7. 第4章：成为最引人注目的那一个</h2><h3 id="7-1-提出你的要求（请求即是恭维）"><a href="#7-1-提出你的要求（请求即是恭维）" class="headerlink" title="7.1 提出你的要求（请求即是恭维）"></a>7.1 提出你的要求（请求即是恭维）</h3><ul>
+<li>基思·法拉奇：接受德勤录用前，坚持要求”每年和主管在同一家餐厅共进晚餐一次”——<strong>提出要求常常会起作用</strong>。</li>
+<li>雷金纳德·刘易斯（哈佛法学院）：在填写申请书之前就被录取——因为<strong>最坏的结果不过是被拒绝</strong>，情况不会比不提出更糟。</li>
+<li><strong>人们低估别人提供帮助的可能性</strong>（弗林 &amp; 莱克研究）：<ul>
+<li>以为要请求 20 个陌生人才能有 5 人填问卷，实际只需约 10 个。</li>
+<li>以为要问 10 人才借到手机，实际每问 6.2 次就有 3 次成功。</li>
+<li>以为要问 7 人才有人陪走到体育馆，实际只需 2.3 次。</li>
+</ul>
+</li>
+<li><strong>人们低估了说”不”的代价</strong>：拒绝会违反”乐善好施”的规范、当面拒绝很尴尬、答应别人能巩固自己的权力。所以我们倾向于答应，几乎是自动反应。</li>
+<li><strong>请求就是恭维</strong>：奥巴马刚进参议院时，向 1&#x2F;3 的参议员寻求建议（包括对手），”好学生的角色为他赢得喜爱”。</li>
+<li><strong>增强恭维性的技巧</strong>：强调对方的重要性与业绩 + 指出你们之间的共同之处（哪怕是最不起眼的联系，如生日同一天、名字相同，都能大幅提高答应概率）。</li>
+<li>伊尚·古普塔案例：请求印度顶级企业家为他的书写几页——<strong>降低对方成本（只写一两页）+ 抬高对方地位（你的智慧不可或缺）+ 强调共同点（我也是企业家、也毕业于印度理工学院）</strong>，联系的人中只有四五人拒绝。</li>
+</ul>
+<h3 id="7-2-做引人注目的”基辛格”"><a href="#7-2-做引人注目的”基辛格”" class="headerlink" title="7.2 做引人注目的”基辛格”"></a>7.2 做引人注目的”基辛格”</h3><ul>
+<li>你需要<strong>建立个人品牌并宣传自己</strong>，克服”枪打出头鸟”和不爱自我宣传的天性。</li>
+<li>卡罗琳·肯尼迪案例：不愿自我宣传，最终放弃参议员职位竞争。</li>
+<li>基辛格：读 25 本书完成极难论文、写 383 页本科论文（催生”基辛格规则”）、故意晚到 15 分钟、把自己当高级教师——<strong>靠不同凡响建立声望</strong>。</li>
+<li>在日本同样有效：盛田昭夫无视惯例、本田宗一郎扔工具、长谷川一郎用反常做法引人注意——<strong>“表现得与众不同会引起好奇，让人想了解你。”</strong></li>
+<li><strong>反常规策略</strong>（格拉德威尔研究）：过去 200 年实力不匹配的战争中，强者胜率 72%；但弱者用非常规策略时胜率 64%，几乎减半。<strong>“当弱者选择不按巨人的规则玩游戏时，他们就赢了。”</strong></li>
+<li>规则往往有利于制定规则的人（已掌权者）。<strong>你还在通往权力的路上，不必相信”遵循规则”那套。</strong></li>
+</ul>
+<h3 id="7-3-谁说招人喜欢就能获得权力"><a href="#7-3-谁说招人喜欢就能获得权力" class="headerlink" title="7.3 谁说招人喜欢就能获得权力"></a>7.3 谁说招人喜欢就能获得权力</h3><ul>
+<li>人们用两个指标评估他人：<strong>友好</strong> 与 <strong>有能力</strong>。问题在于：显得有能力往往需要<strong>强硬甚至冷酷</strong>。</li>
+<li>特雷莎·阿马比尔研究《聪明但却残酷》：做出负面评论的人被视为更聪明、更有能力（即使评论质量并不更高）。<strong>招人喜欢者被看作温暖，但友好也被认为软弱甚至缺智。</strong></li>
+<li>马基雅维利：既让人害怕又让人喜欢最理想；但必须二选一时，<strong>选择让人害怕你</strong>。</li>
+<li>康多莉扎·赖斯：”人们可能反对你，但当他们意识到你可以伤害他们时，他们就会加入你这一边。”</li>
+<li><strong>“招人喜欢”可能带来权力，但权力一定会让你招人喜欢</strong>：人们希望与成功者沾光（西奥迪尼橄榄球队研究：赢球后学生更爱穿校服、更爱用”我们”）。</li>
+<li><strong>不是喜欢你才会联系你</strong>：是否招人喜欢与是否雇你无关，重要的是”他们是否对你有所帮助”。阿妮塔·希尔明知托马斯有问题仍保持联系，因为<strong>他对她的职业有帮助</strong>。</li>
+<li><strong>态度随行为产生</strong>（自我认知 + 认知失调理论）：即使为了利益与对手来往，时间久了也会真的更喜欢他们。<strong>敌人也可以成为密友</strong>（罗伯特·摩西与梅西）。</li>
+</ul>
+<hr>
+<h2 id="8-第5章：谁拥有资源，谁就有权力"><a href="#8-第5章：谁拥有资源，谁就有权力" class="headerlink" title="8. 第5章：谁拥有资源，谁就有权力"></a>8. 第5章：谁拥有资源，谁就有权力</h2><h3 id="8-1-资源-权力的核心来源"><a href="#8-1-资源-权力的核心来源" class="headerlink" title="8.1 资源 &#x3D; 权力的核心来源"></a>8.1 资源 &#x3D; 权力的核心来源</h3><ul>
+<li>威利·布朗（加州议长）：把筹得的资金分给同僚帮他们竞选——<strong>只有策略性地用资源帮助你需要的人，才能获得支持</strong>。反例：麦卡锡把 50 万美元全用于自己，很快下台。</li>
+<li>**”紧跟资金流向”**是调查权力的经典箴言。</li>
+<li>商界证据：CEO 薪酬与<strong>公司规模</strong>（控制的资源）相关性 &gt; 与业绩相关性（规模解释至少 40% 薪酬差异，业绩不足 5%）。这解释了为何 CEO 热衷并购扩大规模，即使并购多数损害股东利益。</li>
+</ul>
+<h3 id="8-2-权力与资源自我强化的循环"><a href="#8-2-权力与资源自我强化的循环" class="headerlink" title="8.2 权力与资源自我强化的循环"></a>8.2 权力与资源自我强化的循环</h3><pre class="mermaid">flowchart LR
+    R["拥有资源"] --&gt; A["聘请优秀顾问/进入董事会"]
+    A --&gt; I["获得信息与机会"]
+    I --&gt; R2["控制更多资源"]
+    R2 --&gt; P["吸引最优秀人才"]
+    P --&gt; R
+    style R fill:#fff3e0,stroke:#ef6c00</pre>
+
+<blockquote>
+<p><strong>权力和资源会带来更多的权力和资源</strong>——你的任务是找到进入这个循环的方法。</p>
+</blockquote>
+<h3 id="8-3-资源的两个含义"><a href="#8-3-资源的两个含义" class="headerlink" title="8.3 资源的两个含义"></a>8.3 资源的两个含义</h3><ol>
+<li><strong>选择能直接控制更多人员和更大预算的职位</strong>（进入创造价值的部门，而非消耗价值的部门）。</li>
+<li><strong>权力源自职位，而非你本人</strong>。离职后失去资源，别人的关注和重视会大幅减少（一位风投合伙人退休后的切身体会）。</li>
+</ol>
+<blockquote>
+<p><strong>记住教训</strong>：当你离开控制庞大资源的职位时，个人重要性和权力就丧失了。别把”别人对职位的恭维”误认为”对你这人的尊重”。</p>
+</blockquote>
+<h3 id="8-4-三个具体做法"><a href="#8-4-三个具体做法" class="headerlink" title="8.4 三个具体做法"></a>8.4 三个具体做法</h3><h4 id="做法一：尽可能善待他人（对人友善会带来影响力）"><a href="#做法一：尽可能善待他人（对人友善会带来影响力）" class="headerlink" title="做法一：尽可能善待他人（对人友善会带来影响力）"></a>做法一：尽可能善待他人（对人友善会带来影响力）</h4><ul>
+<li>威利·布朗赢得保守共和党议员支持，只因他<strong>公平对待他们、给予发言机会、听取意见</strong>。</li>
+<li>参议员特德·肯尼迪广交朋友（包括保守派），因他对人友善、善于倾听、参与对他人重要的事。</li>
+<li><strong>大多数人都喜欢谈论自己——让他们有机会这么做</strong>。做好的倾听者、提与对方有关的问题。</li>
+<li>如果你权力不大，很可能你有时间——<strong>用时间去善待他人、参与对他们重要的事</strong>。</li>
+</ul>
+<h4 id="做法二：做重要的小事"><a href="#做法二：做重要的小事" class="headerlink" title="做法二：做重要的小事"></a>做法二：做重要的小事</h4><ul>
+<li>弗兰克·斯坦顿（CBS 总裁）：靠收集”高层感兴趣的信息”（哪怕来自《世界年鉴》）让自己<strong>不可替代</strong>。做别人懒得做的小事，没人跟你抢，却能成为权力来源。</li>
+<li>迈克尔（商学院学生）：主动承担”招聘分析师”的苦差事，成为招聘活动的交流中枢，接触所有合伙人，树立乐于助人的名声，被录用者都认识他。</li>
+<li>卡伦（互联网公司）：组织高层会议、邀请外部名人展示，借此认识外部人士 + 加强内部联系。</li>
+</ul>
+<h4 id="做法三：积极寻找和利用资源-创造独一无二的资源"><a href="#做法三：积极寻找和利用资源-创造独一无二的资源" class="headerlink" title="做法三：积极寻找和利用资源 + 创造独一无二的资源"></a>做法三：积极寻找和利用资源 + 创造独一无二的资源</h4><ul>
+<li>吉姆（斯坦福斯隆课程学生）：把”介绍老板去商学院教课”变成资源，换来最高绩效评级和 CEO 直属职位承诺。</li>
+<li>克劳斯·施瓦布（世界经济论坛创始人）：32 岁组织了一次商界领袖会议，发展为预算超 1 亿美元的世界经济论坛。<strong>第一个创办会议的人自然获得垄断权。</strong></li>
+<li>海蒂·罗伊森（无技术背景，却成为软件行业权贵）：第一份工作（编辑公司新闻简报）要求接触全公司上下——<strong>把”需要广泛接触人”的工作变成人脉起点</strong>。</li>
+</ul>
+<blockquote>
+<p><strong>主动创造资源</strong>：去找演讲者、组织安排、创办会议，让人们方便地遇到彼此、了解有趣的东西、做生意——他们就会感谢你，你就创造了权力之路的资源。</p>
+</blockquote>
+<hr>
+<h2 id="9-第6章：关系，永恒的王道"><a href="#9-第6章：关系，永恒的王道" class="headerlink" title="9. 第6章：关系，永恒的王道"></a>9. 第6章：关系，永恒的王道</h2><h3 id="9-1-什么是人际关系网"><a href="#9-1-什么是人际关系网" class="headerlink" title="9.1 什么是人际关系网"></a>9.1 什么是人际关系网</h3><p>沃尔夫 &amp; 莫泽的定义：<strong>“旨在建立、维护和使用非正式关系的行为……本质是个体自愿寻找获取资源的途径并尽可能扩大优势。”</strong></p>
+<p>六类行为：建立&#x2F;维持&#x2F;使用 <strong>内部联系</strong> + 建立&#x2F;维持&#x2F;使用 <strong>外部联系</strong>。</p>
+<h3 id="9-2-关系是职业生涯发展的重要决定因素"><a href="#9-2-关系是职业生涯发展的重要决定因素" class="headerlink" title="9.2 关系是职业生涯发展的重要决定因素"></a>9.2 关系是职业生涯发展的重要决定因素</h3><ul>
+<li><strong>沃尔夫 &amp; 莫泽纵向研究</strong>（2001 年测量，2002&#x2F;2003 年跟踪）：人际关系影响职业生涯满意度、同期薪金、以及随时间推移的薪金增长；最重要的两个行为是**”维护外部联系”<strong>和</strong>“建立内部联系”**。</li>
+<li><strong>卡穆福研究</strong>（意大利 MBA）：人际关系能力在解释职业发展时<strong>排第二</strong>，仅次于运用技术的能力。</li>
+<li>关系促进成功的一个机制：<strong>曝光效应</strong>（建立关系 → 提高可见度 → 提升权力地位 → 更容易建立关系，良性循环）。</li>
+</ul>
+<h3 id="9-3-人际关系技能是可以提升的"><a href="#9-3-人际关系技能是可以提升的" class="headerlink" title="9.3 人际关系技能是可以提升的"></a>9.3 人际关系技能是可以提升的</h3><ul>
+<li>伯特与雷神公司”商业领袖项目”：参加人际关系诊断与利用培训者，绩效评估比对照组高 <strong>35%</strong>、晋升可能性高 <strong>43%</strong>、离职可能性低 <strong>42%</strong>。</li>
+</ul>
+<h3 id="9-4-发展关系需要的不是时间，而是规划"><a href="#9-4-发展关系需要的不是时间，而是规划" class="headerlink" title="9.4 发展关系需要的不是时间，而是规划"></a>9.4 发展关系需要的不是时间，而是规划</h3><ul>
+<li>法拉奇《别独自用餐》：吃饭、锻炼的时间都可以用来扩展人脉；40 岁生日开 7 个派对（7 个城市），更新与建立社交关系。</li>
+<li>海蒂·罗伊森：度假后把家庭信件+照片<strong>印刷 700 份</strong>寄出。印制商：”小姐，没有人有那么多朋友。”</li>
+<li><strong>策略性开展人际活动</strong>：列清单（你想结识的人、对你有帮助的组织），一项项检查，想办法结识背景更多样的人士。</li>
+<li>常见障碍：①需要努力；②觉得工具性地交友不真诚；③低估关系、高估业绩；④只和熟人交往的习惯。</li>
+<li>破解：<strong>付出额外努力认识新朋友</strong>。</li>
+</ul>
+<h3 id="9-5-不是每个人的价值对你都一样（弱联系-强联系）"><a href="#9-5-不是每个人的价值对你都一样（弱联系-强联系）" class="headerlink" title="9.5 不是每个人的价值对你都一样（弱联系 &gt; 强联系）"></a>9.5 不是每个人的价值对你都一样（弱联系 &gt; 强联系）</h3><ul>
+<li>格兰诺维特经典研究：<strong>对找工作最重要的社会关系是”弱联系”</strong>，而非强联系。</li>
+<li>原因：密友&#x2F;家人在同一圈子，信息冗余；弱联系更能带来新组织、新人、新信息。</li>
+<li><strong>最佳人际关系策略</strong>：认识大量来自各行各业的人（不同组织、行业、部门、地方），不必非常熟识。</li>
+<li>与地位高者往来：<strong>你不想冒险失去地位，就不该轻易在社会等级中向下移动</strong>（高等级投行不愿承接低等级业务，因会丧失优势地位）。</li>
+<li>朋友案例：同为培训师，报价 25 万美元 vs 2.5 万美元，差距在于”认识哪些大企业 CEO”——<strong>人们喜欢借由别人的荣耀提升自己</strong>。</li>
+</ul>
+<h3 id="9-6-让自己成为人际网络的中心（结构洞）"><a href="#9-6-让自己成为人际网络的中心（结构洞）" class="headerlink" title="9.6 让自己成为人际网络的中心（结构洞）"></a>9.6 让自己成为人际网络的中心（结构洞）</h3><ul>
+<li>网络中心位置带来好处：信息获取、正面绩效评级、工资增长。</li>
+<li>评估方法：别人是否向你咨询建议？所有信息传播路径中有多少经过你？</li>
+<li>基辛格：组建年轻分析家团队，让自己成为国家安全委员会与白宫之间信息流的<strong>必经节点</strong>。</li>
+<li>物理位置也很重要：风投分析师选合伙人办公室外的位置（没隐私），几个月后”几乎每个问题都要先经过我”，成为公司史上第一个毕业后即获分析师职位的人。</li>
+<li><strong>结构洞</strong>（罗纳德·伯特）：连接两个本无往来的群体，成为中介，从中获益。</li>
+<li>贤治（日本电力公司）：唯一同时拥有核工程学位 + MBA + 英语能力的人，成为工程部与国际业务部之间的桥梁，高级管理者开始征询他的意见。</li>
+<li><strong>关键发现</strong>：与中介人只有一步之遥的人，也没能获益。<strong>想获益，必须自己经营网络、自己占据中介位置。</strong></li>
+</ul>
+<h3 id="9-7-为工作选择最适宜的人际策略"><a href="#9-7-为工作选择最适宜的人际策略" class="headerlink" title="9.7 为工作选择最适宜的人际策略"></a>9.7 为工作选择最适宜的人际策略</h3><ul>
+<li>两种知识：<strong>明确知识</strong>（图表、公式、流程）vs <strong>隐性知识</strong>（经验、直觉）。</li>
+<li>汉森研究：需要隐性知识时，<strong>紧密联系的小型网络</strong>更重要（人们需花时间解释）；需要明确知识&#x2F;创新时，<strong>弱联系的大型网络</strong>更好（广泛探讨新信息）。</li>
+<li>开发新产品 → 大型弱联系网络；利用现有能力 → 小型紧密网络。</li>
+</ul>
+<pre class="mermaid">flowchart TB
+    N["人际关系策略"] --&gt; C1["紧密小网络&lt;br/&gt;适合隐性知识/利用现有能力"]
+    N --&gt; C2["弱联系大网络&lt;br/&gt;适合明确知识/创新/找信息"]
+    N --&gt; C3["占据结构洞&lt;br/&gt;连接两个本无往来的群体"]
+    N --&gt; C4["成为网络中心&lt;br/&gt;信息必经节点"]
+    style C3 fill:#fff3e0,stroke:#ef6c00
+    style C4 fill:#fff3e0,stroke:#ef6c00</pre>
+
+<hr>
+<h2 id="10-第7章：权力是”演”出来的，也是”说”出来的"><a href="#10-第7章：权力是”演”出来的，也是”说”出来的" class="headerlink" title="10. 第7章：权力是”演”出来的，也是”说”出来的"></a>10. 第7章：权力是”演”出来的，也是”说”出来的</h2><h3 id="10-1-领导力的秘诀就是表演"><a href="#10-1-领导力的秘诀就是表演" class="headerlink" title="10.1 领导力的秘诀就是表演"></a>10.1 领导力的秘诀就是表演</h3><ul>
+<li>奥利弗·诺斯（伊朗门事件）vs 唐纳德·肯尼迪（斯坦福经费丑闻）在听证会上的表现天壤之别：<ul>
+<li>诺斯：单独出席、穿军装、常用”我告诉&#x2F;我导致”、拒绝逃避，表现得<strong>掌控局面</strong>、义愤填膺 → 被视为强大，56% 受访者表示会聘用他。</li>
+<li>肯尼迪：带团队出席、冗长绕弯、承认”感到尴尬”、显得懦弱愧疚 → 不久后离任。</li>
+</ul>
+</li>
+<li>表达<strong>愤怒</strong>的人通常被视为更强大；表达悲伤&#x2F;内疚的人被视为地位更低。</li>
+<li>我们<strong>选择</strong>如何表现自己，这个选择对获取与保持权力至关重要。</li>
+</ul>
+<h3 id="10-2-“演”出权力的-6-大原则"><a href="#10-2-“演”出权力的-6-大原则" class="headerlink" title="10.2 “演”出权力的 6 大原则"></a>10.2 “演”出权力的 6 大原则</h3><pre class="mermaid">flowchart TB
+    A["演出的6大原则"] --&gt; P1["1. 表现信心&lt;br/&gt;(不知道时尤其要表现)"]
+    A --&gt; P2["2. 留意你的观众&lt;br/&gt;(放下手机,专注当下)"]
+    A --&gt; P3["3. 表现愤怒而非悲伤&lt;br/&gt;(愤怒=有能力)"]
+    A --&gt; P4["4. 注意姿势与手势&lt;br/&gt;(挺胸抬头,简短有力)"]
+    A --&gt; P5["5. 用记忆获取所需情感&lt;br/&gt;(回忆触发情感的事件)"]
+    A --&gt; P6["6. 设置舞台和管理环境&lt;br/&gt;(环境体现权力)"]</pre>
+
+<h4 id="原则一：表现信心（”欺骗”会变成现实）"><a href="#原则一：表现信心（”欺骗”会变成现实）" class="headerlink" title="原则一：表现信心（”欺骗”会变成现实）"></a>原则一：表现信心（”欺骗”会变成现实）</h4><ul>
+<li>彼得·尤伯罗思：”权力中有 20% 是被赋予的，80% 是自己获取的。”</li>
+<li>安迪·格鲁夫：”部分在于自律，部分在于欺骗。而欺骗会变成现实……如果你表现得自信，经过一段时间，你就变得更加自信。”</li>
+<li>英特尔”狼族学校”：让害羞的经理学习摆出主管面孔、大声喊出想法。</li>
+<li>格鲁夫的三个要点：①先表演，久了就不像表演（行为产生态度）；②情绪会传染；③情绪可自我强化（你微笑→别人微笑→你更快乐）。</li>
+</ul>
+<h4 id="原则二：留意你的观众（你总在”舞台”上）"><a href="#原则二：留意你的观众（你总在”舞台”上）" class="headerlink" title="原则二：留意你的观众（你总在”舞台”上）"></a>原则二：留意你的观众（你总在”舞台”上）</h4><ul>
+<li>加里·洛夫曼（凯撒娱乐 CEO）：员工一年只见他一次，即使疲惫也要表演出活力与投入。</li>
+<li>莫腾·汉森：课堂上一个疲惫的表情，被学生解读为”对演示不感兴趣”。</li>
+<li><strong>放下手机和笔记本</strong>：边看邮件边开会，传达的信号是”有别的事比关注你更重要”。努丽娅·钦奇拉：见面时关手机放一边，产生强烈效果。</li>
+</ul>
+<h4 id="原则三：表现愤怒，而不是悲伤和悔恨"><a href="#原则三：表现愤怒，而不是悲伤和悔恨" class="headerlink" title="原则三：表现愤怒，而不是悲伤和悔恨"></a>原则三：表现愤怒，而不是悲伤和悔恨</h4><ul>
+<li>泰登斯研究：人们认为愤怒者地位高、悲伤&#x2F;内疚者地位低；看克林顿作证视频（愤怒 vs 低头）——看愤怒版的人更支持他，认为他掌权。</li>
+<li>人们会给表达愤怒的求职者更高的职位和薪酬。<strong>愤怒 &#x3D; 占优势、强大、有能力、聪明</strong>（虽然不友好）。</li>
+<li>别人不愿冒犯你：”坏脾气是很强大的政治工具，因为大多数人不想与坏脾气对抗。”</li>
+<li>关于性别：研究结论不完全一致，但泰登斯建议<strong>强烈地表现愤怒、让对方处于防守状态，对男女都有效</strong>。</li>
+<li>果尔达·梅厄：”别这么谦虚，你还没有优秀到可以谦虚的地步。”</li>
+</ul>
+<h4 id="原则四：注意你的姿势和手势"><a href="#原则四：注意你的姿势和手势" class="headerlink" title="原则四：注意你的姿势和手势"></a>原则四：注意你的姿势和手势</h4><ul>
+<li>个头更高者赚钱更多、容貌悦人者收入更高，但<strong>你可以在现有基础上做很多</strong>：穿戴、发型、颜色、姿态。</li>
+<li>“举止有力”：挺胸抬头、笔直站立；向前迎向对方、站得近一些（传达权力）；背对&#x2F;后退（传达相反信号）。</li>
+<li>手势<strong>简短有力</strong>，不要画圈、不要挥舞双臂；直视眼睛 &#x3D; 力量 + 诚实 + 直率；低头&#x2F;目光躲闪 &#x3D; 缺乏自信&#x2F;遮遮掩掩。</li>
+</ul>
+<h4 id="原则五：用记忆获取所需的情感"><a href="#原则五：用记忆获取所需的情感" class="headerlink" title="原则五：用记忆获取所需的情感"></a>原则五：用记忆获取所需的情感</h4><ul>
+<li>需要表现没感觉到的情感时（不确定时表现信心、不耐烦时表现同情），<strong>回忆能触发该情感的时刻</strong>，再表现出来。这不是伪装，而是<strong>在另一个时间地点挖掘自己的真实感受</strong>。</li>
+<li>同时表现多种（甚至矛盾）情感需要更多练习，但原理相同。</li>
+</ul>
+<h4 id="原则六：设置舞台和管理环境"><a href="#原则六：设置舞台和管理环境" class="headerlink" title="原则六：设置舞台和管理环境"></a>原则六：设置舞台和管理环境</h4><ul>
+<li>环境体现权力与地位：律所不买廉价金属桌（”客户不会为廉价桌付高价”）；总统利用椭圆形办公室的象征地位影响来访者。</li>
+<li>尤伯罗思：增加会议次数、要求老板亲自出席、用课堂式分层会议室让老板仰视——<strong>用座位安排提醒老板”我是老师，你们是学生”</strong>。</li>
+</ul>
+<h3 id="10-3-“说”出权力的-3-大策略"><a href="#10-3-“说”出权力的-3-大策略" class="headerlink" title="10.3 “说”出权力的 3 大策略"></a>10.3 “说”出权力的 3 大策略</h3><pre class="mermaid">flowchart LR
+    T["说出的3大策略"] --&gt; S1["1. 打断&lt;br/&gt;(有权者打断,无权者被打断)"]
+    T --&gt; S2["2. 质疑讨论的前提&lt;br/&gt;(挑战隐含假设)"]
+    T --&gt; S3["3. 语言有说服力&lt;br/&gt;(5个语言技巧)"]</pre>
+
+<h4 id="策略一：打断"><a href="#策略一：打断" class="headerlink" title="策略一：打断"></a>策略一：打断</h4><ul>
+<li>有权者打断别人，权力小者被人打断。诺斯举起手指说”让我说完”，拒绝被打断；肯尼迪请求”我可以继续吗”并感谢对方允许。</li>
+</ul>
+<h4 id="策略二：质疑讨论的前提"><a href="#策略二：质疑讨论的前提" class="headerlink" title="策略二：质疑讨论的前提"></a>策略二：质疑讨论的前提</h4><ul>
+<li>莫罗奇 &amp; 博登研究水门听证会：权力的三个方面——①赢得直接争论；②决定议程（是否讨论某问题）；③决定人际互动的规则。</li>
+<li>占优势方通过<strong>质疑对方陈述背后的基本假设</strong>来施加影响。</li>
+<li>商务会议中，挑战”公司如何竞争、如何衡量成功、真正的对手是谁”等隐含假设，是激烈的权力游戏——<strong>把常识性问题摆上桌面，迫使大家重新讨论一贯假设</strong>。</li>
+</ul>
+<h4 id="策略三：语言有说服力（5-个语言技巧）"><a href="#策略三：语言有说服力（5-个语言技巧）" class="headerlink" title="策略三：语言有说服力（5 个语言技巧）"></a>策略三：语言有说服力（5 个语言技巧）</h4><ol>
+<li><strong>“我们”对”他们”</strong>：用共同纽带让受众相信你们观点相同（麦凯恩的”我的朋友”、”我们”）。抵御外来威胁是最有效的团结口号。</li>
+<li><strong>在重点处停顿</strong>，稍微延迟以鼓励赞同&#x2F;掌声。</li>
+<li><strong>三项结构列举法</strong>：让人觉得协调、完整、深思熟虑。</li>
+<li><strong>使用对比</strong>：用长度&#x2F;语法相似的词句做比较（”你希望医疗决定由你和医生做，还是由政府官员做？”）。</li>
+<li><strong>避免使用讲稿或笔记</strong>：不用笔记说明你掌握内容、话是自然说出的，还能保持目光接触。瓦伦蒂：”对于你熟知的主题，如果不用笔记讲不上 5 分钟，说明你做事没用心。”</li>
+</ol>
+<ul>
+<li>补充：<strong>适度使用幽默</strong>（拉什迪：”如果你让人们笑了，接下来你说什么他们都会接受”）。里根用幽默化解年龄质疑。</li>
+<li>句子结构也重要：布什用简单陈述句 + 重复（”我们的策略是成功的”），比克里的迂回句更有效——<strong>重复能强化逻辑点，甚至在没有逻辑点时制造出逻辑点的幻觉</strong>。</li>
+</ul>
+<hr>
+<h2 id="11-第8章：建立自己的声望"><a href="#11-第8章：建立自己的声望" class="headerlink" title="11. 第8章：建立自己的声望"></a>11. 第8章：建立自己的声望</h2><p><strong>核心逻辑</strong>：你的成就固然重要，但<strong>声望更重要</strong>。能创造良好印象的人，比”实际表现好但没留下印象”的人评分更高。一流声望让你从”竞争职位”变为”公司争相聘用你”（即使外部聘请效果常常不佳，公司仍愿花巨资聘请”企业救星”）。</p>
+<h3 id="11-1-留下第一印象的机会只有一次"><a href="#11-1-留下第一印象的机会只有一次" class="headerlink" title="11.1 留下第一印象的机会只有一次"></a>11.1 留下第一印象的机会只有一次</h3><ul>
+<li><p><strong>印象形成极快</strong>：11 毫秒内形成的印象与无时间限制时高度一致。非常短暂的接触就足以形成稳定印象。</p>
+</li>
+<li><p><strong>第一印象很准确</strong>（安贝迪 &amp; 罗森塔尔）：看教师不到 30 秒的无声视频评分，与学生季度末评分高度一致。</p>
+</li>
+<li><p><strong>第一印象为何持久</strong>（四个过程）：</p>
+<ol>
+<li><strong>注意力下降</strong>：对较早信息关注更密切，之后注意力下降。</li>
+<li><strong>认知漠视</strong>：一旦形成印象，就不承认与初印象不一致的信息。</li>
+<li><strong>行为动力</strong>：你以”喜欢&#x2F;看好”的方式对待对方，让他展示出才干——<strong>让印象成真</strong>。</li>
+<li><strong>偏见同化</strong>：把后来的信息解读成与原有信念一致（喜剧演员伪装”博士”演讲，观众把破绽解释为”自己不了解”）。</li>
+</ol>
+</li>
+<li><p><strong>两个实用推论</strong>：</p>
+<ol>
+<li>若你在某环境已留下坏印象，<strong>最好离开，去新环境展示正面品质</strong>（改变既有印象很难，且耗精力）。</li>
+<li><strong>把自己放进尽可能多的环境</strong>（大数定律）：你很有才华，环境多了，总有人看到；单一环境的评价更随机。</li>
+</ol>
+</li>
+</ul>
+<h3 id="11-2-精心策划和树立你的形象"><a href="#11-2-精心策划和树立你的形象" class="headerlink" title="11.2 精心策划和树立你的形象"></a>11.2 精心策划和树立你的形象</h3><ul>
+<li>奥巴马：一丝不苟地选择走访的教会、谨慎选择加入的律所。</li>
+<li>约翰·布朗（英国石油 CEO，性格内向）：把羞怯变成美德——<strong>控制见面机会，让每次会面都变得重要、利益攸关</strong>；展示聪明才智，树立才华声名。</li>
+<li><strong>要点</strong>：想清楚你要打造的声望的衡量标准，然后从时间安排到与谁建立联系，都确保符合你想表现的形象。</li>
+</ul>
+<h3 id="11-3-特别重视你在媒体中的形象"><a href="#11-3-特别重视你在媒体中的形象" class="headerlink" title="11.3 特别重视你在媒体中的形象"></a>11.3 特别重视你在媒体中的形象</h3><ul>
+<li>马塞洛（23 岁当总会计师）：写财务&#x2F;管理文章投稿给巴西刊物（记者正需要帮助）、主动代表公司接受媒体采访（同事视为浪费时间）→ 27 岁成首席财务总监，不到 30 岁被《未来的 CEO》杂志列入 10 名年轻管理者。</li>
+<li>努丽娅·钦奇拉：办会议邀请记者 → 一整版报道；接受采访、建立媒体关系（”每次采访我都安排时间，为想采访我的人提供良好服务”）。</li>
+<li><strong>写作提升知名度</strong>：法拉奇”写作帮你理清思路”；卡伦写博客 → 猎头找到她 → 未来老板只看博客 15 分钟就录用她。</li>
+<li>与媒体建立关系的最好方式：<strong>乐于为他们提供帮助和便利</strong>。</li>
+</ul>
+<h3 id="11-4-克服自我宣传的困境（让别人赞美你）"><a href="#11-4-克服自我宣传的困境（让别人赞美你）" class="headerlink" title="11.4 克服自我宣传的困境（让别人赞美你）"></a>11.4 克服自我宣传的困境（让别人赞美你）</h3><ul>
+<li>困境：不宣传自己 → 被认为无法胜任；自我宣传 → 被认为傲慢、不可信。</li>
+<li>破解：<strong>让别人来赞美你的能力</strong>（代理人、公关、猎头、同事）。</li>
+<li>实验：即使调查参与者知道代理人受你控制、有金钱交易，<strong>代理人的宣传仍比你的自我宣传可信得多</strong>。</li>
+<li>建议：<strong>不要舍不得花钱，雇人来代表你、吹捧你。</strong></li>
+</ul>
+<h3 id="11-5-谁说负面信息都是有害的"><a href="#11-5-谁说负面信息都是有害的" class="headerlink" title="11.5 谁说负面信息都是有害的"></a>11.5 谁说负面信息都是有害的</h3><ul>
+<li>拉里·萨默斯（哈佛校长）的”难以相处”名声反而帮他——<strong>因为你不顾缺点仍然选择了他，你就会为这个决策承担更多责任</strong>（”打预防针”效应）。</li>
+<li>只要缺点与核心声望无关、不过分到让人放弃你，<strong>缺陷反而强化人们对你承担的责任</strong>。</li>
+<li>“他就是这样一个人”——人们会无视你的缺点，而不是抱怨你。</li>
+</ul>
+<h3 id="11-6-形象创造现实"><a href="#11-6-形象创造现实" class="headerlink" title="11.6 形象创造现实"></a>11.6 形象创造现实</h3><ul>
+<li>沃尔皮在思科享有”可以成事”的名声 → 正面报道 → 名声成为自我实现的预言。</li>
+<li><strong>你不必拿声名去换取现实；卓著的声望可以帮你赢得出色的业绩，反之亦然。</strong></li>
+</ul>
+<hr>
+<h2 id="12-第9章：挫折也是一种财富"><a href="#12-第9章：挫折也是一种财富" class="headerlink" title="12. 第9章：挫折也是一种财富"></a>12. 第9章：挫折也是一种财富</h2><p><strong>总原则</strong>：无论你多努力、多有天赋，几乎每个人在权力之路上都会遇到障碍和挫折。<strong>重要的是如何应对。</strong></p>
+<h3 id="12-1-应对冲突的-8-条金律"><a href="#12-1-应对冲突的-8-条金律" class="headerlink" title="12.1 应对冲突的 8 条金律"></a>12.1 应对冲突的 8 条金律</h3><pre class="mermaid">flowchart TB
+    C["应对冲突8条金律"] --&gt; K1["1. 善待对手,给台阶下"]
+    C --&gt; K2["2. 不要给自己制造不必要的麻烦"]
+    C --&gt; K3["3. 与关键人物保持良好关系"]
+    C --&gt; K4["4. 坚持是胜利的前奏"]
+    C --&gt; K5["5. 多条战线并进"]
+    C --&gt; K6["6. 采取行动,抓住战机"]
+    C --&gt; K7["7. 奖励朋友,处罚敌人"]
+    C --&gt; K8["8. 为目标找到强大的支持者"]</pre>
+
+<ol>
+<li><strong>善待对手，给他们台阶下</strong>：强迫会遭遇反强迫（逆反心理）。把敌人收编成自己人（伊利诺伊大学用”女性地位委员会”收编抗议者）；或帮助对手调动到别处、给足面子（威利·布朗帮竞选对手进入国会）。<strong>“一旦人们没什么可失去，就会无所顾忌地打击你。”</strong></li>
+<li><strong>不要给自己制造不必要的麻烦</strong>：时刻问自己”胜利看上去是什么样子？”别为无关的事树敌（优素福：”重要的是争取活到’隔日再战’的那一天”）。</li>
+<li><strong>与关键人物保持良好关系</strong>：加里·洛夫曼每天花时间与不服他的 CFO 相处；优素福把焦点集中在<strong>数据与逻辑分析</strong>上，减少个人恩怨。<strong>“你需要谁的支持就去争取，不要在乎别人对你的态度或你自己的感觉。”</strong></li>
+<li><strong>坚持是胜利的前奏</strong>：坚持不懈像水侵蚀岩石，消磨反对者意志；留在游戏中，反对者会退休、离开、犯错，形势会变化。</li>
+<li><strong>多条战线并进</strong>：在一个背景中受挫，就在另一个背景建立权力基础，再反哺（埃瑟曼建立全国声望反哺本地）。</li>
+<li><strong>采取行动，抓住战机</strong>：迅速行动令对手措手不及。<strong>“如果你看到权力斗争将要发生，就不要等待”</strong>——等待时别人已组织支持者、安排投票。</li>
+<li><strong>奖励你的朋友，处罚你的敌人</strong>：任何能控制资源的人都会用它奖励帮助者、惩罚阻碍者。约翰·加德纳：”反对是可以的，但反对是有’后果’的。”</li>
+<li><strong>为你的目标找到强大的支持者</strong>：把目标与更高的社会价值挂钩（乳腺癌患者、学生、股东利益、公共设施），反对你就等于反对”天使”。</li>
+</ol>
+<h3 id="12-2-反败为胜的-3-大策略"><a href="#12-2-反败为胜的-3-大策略" class="headerlink" title="12.2 反败为胜的 3 大策略"></a>12.2 反败为胜的 3 大策略</h3><ol>
+<li><strong>不要放弃</strong>：克服尴尬的办法是<strong>尽快、尽可能多地和别人谈论发生的事</strong>——你会知道支持者比你以为的多；讲得越多，情绪越淡，才能清晰思考下一步。</li>
+<li><strong>继续做那些给你带来成功的事情</strong>：你的人力和社交资本属于特定领域，换领域会浪费已有资源（索南菲尔德继续做 CEO 社团，而非转行咨询）。</li>
+<li><strong>永远表现得你将赢得最后的胜利</strong>：人们喜欢与获胜者沾光；表现强大坚韧，让潜在盟友相信”帮你不白费”。<strong>“表现得你将会获得成功，是一种自我实现的预言。”</strong></li>
+</ol>
+<hr>
+<h2 id="13-第10章：为权力必须支付的-5-大成本"><a href="#13-第10章：为权力必须支付的-5-大成本" class="headerlink" title="13. 第10章：为权力必须支付的 5 大成本"></a>13. 第10章：为权力必须支付的 5 大成本</h2><blockquote>
+<p>“天下没有免费的午餐。”追求权力前，想清楚代价。</p>
+</blockquote>
+<pre class="mermaid">flowchart TB
+    COST["权力的5大成本"] --&gt; C1["1. 盛名之下的压力&lt;br/&gt;(被公众监督,表演更难,分心)"]
+    COST --&gt; C2["2. 丧失自主权&lt;br/&gt;(失去对日程表的控制)"]
+    COST --&gt; C3["3. 牺牲家庭和个人生活&lt;br/&gt;(女性代价更大)"]
+    COST --&gt; C4["4. 不是每个人都可以信任&lt;br/&gt;(越往上越多人觊觎你的位置)"]
+    COST --&gt; C5["5. 权力让人欲罢不能&lt;br/&gt;(离开时出现戒断反应)"]</pre>
+
+<ol>
+<li><strong>“盛名”之下的压力</strong>：高位者的一切（着装、住所、孩子、座驾）都被关注；在他人注视下，困难任务表现更差（社会促进效应）；形象管理分散精力（CEO 花 11% 时间在投资者关系上，超过产品开发）；”看起来不错”的压力让人不愿冒险创新。诺贝尔奖常标志职业生涯结束——声名加速能力衰退。</li>
+<li><strong>丧失自主权</strong>：马奇：”你可以拥有权力或自主权，但无法同时拥有两者。”日程被他人安排，失去思考和反省的时间。</li>
+<li><strong>牺牲家庭和个人生活</strong>：追求权力需要时间精力，必然挤压爱好、关系、家庭。女性代价更大（研究：婚姻生育对男性职业无影响或正面，对女性多为负面）。”<strong>你不能两者兼得。</strong>“</li>
+<li><strong>不是每个人都可以信任</strong>：权力越大、职位越高，越多人想得到你的位置。越往上，说”你是对的”的人越多 → 缺乏批判性思维 → 看不到真相。需要时刻辨别暗中破坏者。</li>
+<li><strong>权力让人欲罢不能</strong>：离开权力有生理+心理的”戒断反应”（尼克·宾克利：像硬性戒毒，难以入睡）；失去的不只是职位，还有社会角色、关系、关注。失业后死亡风险会上升。</li>
+</ol>
+<hr>
+<h2 id="14-第11章：警惕失去权力的-6-大因素"><a href="#14-第11章：警惕失去权力的-6-大因素" class="headerlink" title="14. 第11章：警惕失去权力的 6 大因素"></a>14. 第11章：警惕失去权力的 6 大因素</h2><pre class="mermaid">flowchart LR
+    L["失去权力的6大因素"] --&gt; F1["1. 要的太多,给的太少"]
+    L --&gt; F2["2. 过度信任"]
+    L --&gt; F3["3. 失去耐心"]
+    L --&gt; F4["4. 疲倦,放松警惕"]
+    L --&gt; F5["5. 时代变了,战术不变"]
+    L --&gt; F6["6. 对权力恋恋不舍"]</pre>
+
+<ol>
+<li><strong>要的太多，给的太少</strong>：权力导致”趋向”增加、”抑制”减少（伯克利甜饼研究：被随机指定打分者更可能多拿甜饼、张着嘴嚼、掉屑）。<strong>过度自信 + 缺乏敏感 → 忽视某些人的需要 → 其敌意制造麻烦。</strong> 破解：别让权力冲昏头脑（萨夫拉·卡茨：”我在这里帮助拉里”），保持洞察力和平衡（瑞士再保险主席回到阿尔卑斯山村，找回”7 岁时的自己”）。</li>
+<li><strong>过度信任</strong>：相信口头承诺、放松警惕 → 被人拆台（大卫·库尔特轻信麦科尔”分享权力”的承诺，合并后三周被除）。<strong>看对方做了什么，而非说了什么</strong>（合并协议中董事会席位从均分改为对方占优，就是信号）。</li>
+<li><strong>失去耐心</strong>：掌权者容易抑制解除、不再谨慎；但”自以为是的傻瓜”可能让你失去职位（迈迪克靠保持镇静、风度、魅力掌舵 23 年，克鲁因失去耐心被解雇）。</li>
+<li><strong>疲倦，让人放松警惕</strong>：疲惫时更易把愿望投射到现实、放松戒备。<strong>当你精力不佳、警惕下降时，无法有效抵抗夺位者——不如主动离开。</strong></li>
+<li><strong>时代变了，战术不变</strong>：人们（和公司）落入”能力陷阱”——用曾成功的方法，没注意到环境已变（纳德利暴君式开会引发公愤；摩西强拆手段在 50 年代失效；通用电气多元化金融结构过时）。<strong>权力降低敏感 + 环境变化 &#x3D; 失权。</strong></li>
+<li><strong>对权力恋恋不舍</strong>：所有人最终都会失去权力，但可以<strong>有尊严地离开</strong>（我妻子的建议：”在聚会结束之前离开”）。提前培养接班人、转去做其他事（韦尔奇退休后当作者&#x2F;演讲者），比被董事会强行赶走好。</li>
+</ol>
+<hr>
+<h2 id="15-第12—13章：踏上你的权力之旅"><a href="#15-第12—13章：踏上你的权力之旅" class="headerlink" title="15. 第12—13章：踏上你的权力之旅"></a>15. 第12—13章：踏上你的权力之旅</h2><h3 id="15-1-这是一个等级无处不在的社会"><a href="#15-1-这是一个等级无处不在的社会" class="headerlink" title="15.1 这是一个等级无处不在的社会"></a>15.1 这是一个等级无处不在的社会</h3><ul>
+<li>约 93% 的管理者同意”组织中普遍存在职场政治”；89% 同意”成功的管理者必定擅长职场政治”；75% 以上同意”爬得越高政治越浓”。</li>
+<li>等级结构在人类和动物社会（甚至鱼群）中无处不在。只要等级存在，向上爬、避免底层就是自然的事。</li>
+<li>两个事实：<ol>
+<li><strong>地位可跨背景”携带”</strong>（高盛领导者 → 参议员 → 州长），你在哪掌握权力不那么重要。</li>
+<li><strong>人们似乎喜欢等级</strong>（乔斯特：弱势群体也会为等级秩序辩护，维护稳定的社会等级）。</li>
+</ol>
+</li>
+</ul>
+<h3 id="15-2-成为权力较量中最大的赢家"><a href="#15-2-成为权力较量中最大的赢家" class="headerlink" title="15.2 成为权力较量中最大的赢家"></a>15.2 成为权力较量中最大的赢家</h3><ul>
+<li>责任与权力常常不一致（项目经理需要别人合作却无正式授权）。<strong>在缺乏直接权力时完成任务，需要影响力与职场政治技巧</strong>，而非只是技术。</li>
+<li>组织内部解决分歧只有两种方式：<strong>强加等级权威</strong>，或<strong>政治性地争夺权力</strong>。丘吉尔论民主的话同样适用于组织：职场政治虽混乱，但比独裁式管理更好（索罗维基《群体的智慧》：群体预测常胜过专家）。</li>
+</ul>
+<h3 id="15-3-通往权力之路"><a href="#15-3-通往权力之路" class="headerlink" title="15.3 通往权力之路"></a>15.3 通往权力之路</h3><ol>
+<li><strong>选择符合你天资和兴趣的环境</strong>（某工作需要的政治技巧是否适合你）。约翰·科特：”对很多人来说，成功的最大障碍不是缺乏才华或积极性，而是身陷错误的地方。”</li>
+<li>步骤：①对自己的长短处<strong>足够诚实</strong>；②<strong>不随大流</strong>（从众压力与信息性社会影响巨大）；③对工作和风险<strong>客观</strong>（别因高薪好头衔而忽视政治风险）。</li>
+<li>案例：一位商学院女士接受”即将上任的校长助理”职位，结果新校长被前任算计、未能上任，她一无所有。<strong>对职场政治风险必须有现实主义态度。</strong></li>
+</ol>
+<h3 id="15-4-不要轻易放弃自己的权力"><a href="#15-4-不要轻易放弃自己的权力" class="headerlink" title="15.4 不要轻易放弃自己的权力"></a>15.4 不要轻易放弃自己的权力</h3><ul>
+<li><strong>感觉自己强大 → 举止散发权力感 → 别人相应反应</strong>；反之亦然（”抑制性非语言行为”：缩成一团、含胸驼背）。</li>
+<li>放弃权力的几种方式：<ol>
+<li>对掌权者发泄真实情绪（记者对老板不满，只能换来负面看法）。</li>
+<li>扮演”受害者”角色（把问题归于外部、不可改变，等于把时间花在”不能成功”上）。</li>
+<li><strong>不进行尝试</strong>（保护自尊，但肯定得不到权力）。</li>
+</ol>
+</li>
+<li>梅琳达的面试智慧：说”和易相处的人合作更好”的求职者，通过界定外部困难<strong>放弃了自己的权力</strong>；而专注于”我能做什么”的人把时间花在”获得成功”上。</li>
+<li>埃莉诺·罗斯福：”<strong>如果没有你的同意，就没人可以让你觉得不如别人。</strong>“</li>
+</ul>
+<h3 id="15-5-照顾好自己，不要期待公正"><a href="#15-5-照顾好自己，不要期待公正" class="headerlink" title="15.5 照顾好自己，不要期待公正"></a>15.5 照顾好自己，不要期待公正</h3><ul>
+<li>鲍勃（CEO）案例：拒绝玩政治、相信董事会会公正选择，结果被野心勃勃的下属克里斯取代。<strong>“自己不努力的人，不会得到太多同情或支持。”</strong></li>
+<li>人们会跟”他们认为会获胜的人”结盟。<strong>如果你不支持你自己、不积极为自己的利益努力，很少有人会站在你这边。</strong></li>
+<li>那位不愿独自去开会的女士：”脑海中的声音在说这样做没有问题，但我不能让自己这样做”——这正是她获取权力路上的最大缺陷。<strong>同事也是晋升的竞争对手。</strong></li>
+</ul>
+<h3 id="15-6-小任务也有大功效"><a href="#15-6-小任务也有大功效" class="headerlink" title="15.6 小任务也有大功效"></a>15.6 小任务也有大功效</h3><ul>
+<li>马特（咨询公司新人）：主动把”新人与合伙人互相认识”的过程正式化，借此接触所有合伙人和新职员，建立深入关系。</li>
+<li>小步骤能提供重要资源、可见度和建立关系的机会。<strong>注意到小事情的人在获取权力中占据优势。</strong></li>
+</ul>
+<h3 id="15-7-一切会比你想象的容易"><a href="#15-7-一切会比你想象的容易" class="headerlink" title="15.7 一切会比你想象的容易"></a>15.7 一切会比你想象的容易</h3><ul>
+<li>权力游戏没有太多戏剧性，通常很”普遍”：抓住可用机会、填补领导力真空、提高可见度、建立联系。</li>
+<li>伍迪·艾伦：”<strong>80% 的成功都是自我表现。</strong>“</li>
+<li>别被”英雄式领导者”的故事吓退——那些故事不完整也不准确，且制造了”我能做到吗”的怀疑。<strong>本书的方法几乎任何组织中的任何人都能做到。</strong></li>
+<li>可以先在低风险、不重要的小事上试手（接管学生委员会），你会发现<strong>权力游戏没那么招人反感，甚至你会喜欢它</strong>——因为人往往喜欢做自己擅长的事。</li>
+</ul>
+<hr>
+<h2 id="16-核心金句"><a href="#16-核心金句" class="headerlink" title="16. 核心金句"></a>16. 核心金句</h2><ul>
+<li><strong>“只要让老板高兴了，业绩表现真的不重要；反过来说，如果你让他们不高兴，出色的业绩表现也救不了你。”</strong></li>
+<li><strong>“人们记住了你，就等于他们选择了你。”</strong></li>
+<li><strong>“权力和资源会带来更多的权力和资源。”</strong></li>
+<li><strong>“权力中有 20% 是被赋予的，有 80% 是自己获取的。”</strong></li>
+<li><strong>“招人喜欢可能带来权力，但权力一定会让你招人喜欢。”</strong></li>
+<li><strong>“当你变得成功而强大时，你就不再需要主动挺身而出；在职业生涯早期，你必须表现得与竞争对手不一样。”</strong></li>
+<li><strong>“别这么谦虚，你还没有优秀到可以谦虚的地步。”</strong>（果尔达·梅厄）</li>
+<li><strong>“当弱者选择不按巨人的规则玩游戏时，他们就赢了。”</strong>（格拉德威尔）</li>
+<li><strong>“如果你不支持你自己，没有积极地为你自己的利益而努力，那么很少会有人愿意站在你这边。”</strong></li>
+<li><strong>“如果没有你的同意，就没人可以让你觉得不如别人。”</strong>（埃莉诺·罗斯福）</li>
+<li><strong>“如果你不喜欢这些新闻，那就走出去自己制作一些新闻。”</strong>（斯库普·尼克斯特）</li>
+<li><strong>“在聚会结束之前离开。”</strong>（关于守住权力的尊严）</li>
+</ul>
+<hr>
+<h2 id="17-行动清单（把书变成行动）"><a href="#17-行动清单（把书变成行动）" class="headerlink" title="17. 行动清单（把书变成行动）"></a>17. 行动清单（把书变成行动）</h2><pre class="mermaid">flowchart TB
+    subgraph 立即做["立即做（本周）"]
+        A1["列出你的关键掌权者&lt;br/&gt;并搞清楚他们最在意什么"]
+        A2["主动向一位掌权者&lt;br/&gt;汇报你的成果/寻求建议"]
+        A3["开始做笔记&lt;br/&gt;每次会议后反省做得好与不好"]
+        A4["列一份人脉清单&lt;br/&gt;想结识的人和组织"]
+    end
+    subgraph 持续做["持续做（数月）"]
+        B1["练习自信的表演&lt;br/&gt;姿势/手势/语气/停顿"]
+        B2["主动做"重要的小事"&lt;br/&gt;成为不可替代的人"]
+        B3["经营弱联系与结构洞&lt;br/&gt;连接不同圈子"]
+        B4["让别人赞美你&lt;br/&gt;借助媒体/写作/代理人"]
+    end
+    subgraph 长期做["长期做（数年）"]
+        C1["选对部门与起点&lt;br/&gt;预测权力迁移方向"]
+        C2["打造7大特质&lt;br/&gt;雄心/精力/专注/反省/信心/换位/冲突"]
+        C3["建立声望&lt;br/&gt;第一印象+媒体形象+负面免疫"]
+        C4["守住权力&lt;br/&gt;警惕5大成本+6大失权因素"]
+    end
+    A1 --&gt; B1 --&gt; C1
+    A2 --&gt; B2 --&gt; C2
+    A3 --&gt; B3 --&gt; C3
+    A4 --&gt; B4 --&gt; C4</pre>
+
+<p><strong>最终总结</strong>：权力不是道德问题，而是<strong>生存与做事的前提</strong>。菲佛的立场冷静甚至冷酷：世界并不公正，组织并不关心你，等级无处不在，所以<strong>你必须照顾自己</strong>。而好消息是——<strong>通往权力的每一步都是可学习、可练习、可行动的具体技能</strong>，而且”一切会比你想象的容易”。关键是：<strong>大胆去竞逐，不要提前投降。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-22</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000005.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E6%88%90%E6%9E%9C%E7%AE%A1%E7%90%86%E3%80%8B/'>阅读笔记——《成果管理》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/22/%E8%AF%BB%E4%B9%A6/2610222200000004.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E9%9D%9E%E7%90%86%E6%80%A7%E7%B9%81%E8%8D%A3%E3%80%8B/">阅读笔记——《非理性繁荣》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

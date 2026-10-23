@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《财务报表分析与股票估值》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《财务报表分析与股票估值》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：4.1k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：14分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E4%B9%A6%E6%A0%B8%E5%BF%83%E4%B8%BB%E7%BA%BF%EF%BC%9A%E4%B8%80%E6%9D%A1%E4%B8%BB%E7%BA%BF%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%A0%87%E5%87%86"><span class="post-toc-text">一、全书核心主线：一条主线，一个标准</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E5%85%A8%E4%B9%A6%E6%9C%80%E6%9C%89%E4%BB%B7%E5%80%BC%E7%9A%84%E7%8B%AC%E5%88%9B%E8%A7%82%E7%82%B9%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="post-toc-text">二、全书最有价值的独创观点（重点）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E9%87%8D%E6%9E%84%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8-%E2%86%92-%E2%80%9C%E8%B5%84%E4%BA%A7%E8%B5%84%E6%9C%AC%E8%A1%A8%E2%80%9D%EF%BC%88%E7%AC%AC8%E7%AB%A0%EF%BC%89"><span class="post-toc-text">1. 重构资产负债表 → “资产资本表”（第8章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E9%87%8D%E6%9E%84%E5%88%A9%E6%B6%A6%E8%A1%A8-%E2%86%92-%E2%80%9C%E8%82%A1%E6%9D%83%E4%BB%B7%E5%80%BC%E5%A2%9E%E5%8A%A0%E8%A1%A8%E2%80%9D%EF%BC%88%E7%AC%AC9%E7%AB%A0%EF%BC%89"><span class="post-toc-text">2. 重构利润表 → “股权价值增加表”（第9章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%94%A8%E2%80%9D%E8%90%A5%E8%BF%90%E8%B5%84%E6%9C%AC%E9%95%BF%E6%9C%9F%E5%8C%96%E7%8E%87%E2%80%9D%E5%8F%96%E4%BB%A3%E6%B5%81%E5%8A%A8%E6%AF%94%E7%8E%87-%E9%80%9F%E5%8A%A8%E6%AF%94%E7%8E%87%EF%BC%88%E7%AC%AC8%E7%AB%A0%EF%BC%89"><span class="post-toc-text">3. 用”营运资本长期化率”取代流动比率&#x2F;速动比率（第8章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E8%87%AA%E7%94%B1%E7%8E%B0%E9%87%91%E6%B5%81%E8%AE%A1%E7%AE%97%EF%BC%9A%E5%8F%AA%E6%89%A3%E2%80%9D%E4%BF%9D%E5%85%A8%E6%80%A7%E8%B5%84%E6%9C%AC%E6%94%AF%E5%87%BA%E2%80%9D%EF%BC%88%E7%AC%AC15%E7%AB%A0%EF%BC%89"><span class="post-toc-text">4. 自由现金流计算：只扣”保全性资本支出”（第15章）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E5%88%86%E6%9E%90%E6%A1%86%E6%9E%B6%EF%BC%9A%E5%85%AC%E5%8F%B8%E6%88%98%E7%95%A5-%E6%89%A7%E8%A1%8C%E8%BF%87%E7%A8%8B-%E8%B4%A2%E6%8A%A5%E7%BB%93%E6%9E%9C%EF%BC%88%E7%AC%AC3%E3%80%814%E7%AB%A0%EF%BC%89"><span class="post-toc-text">三、分析框架：公司战略 + 执行过程 &#x3D; 财报结果（第3、4章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%88%98%E7%95%A5%E7%9A%84%E4%B8%A4%E4%B8%AA%E5%85%B3%E9%94%AE%E5%86%B3%E7%AD%96"><span class="post-toc-text">战略的两个关键决策</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F%E8%A1%A8%E5%88%86%E6%9E%90%EF%BC%9A%E7%9C%8B%E6%88%98%E7%95%A5%E3%80%81%E7%9C%8B%E8%83%BD%E5%8A%9B%EF%BC%88%E7%AC%AC6%E3%80%817%E7%AB%A0%EF%BC%89"><span class="post-toc-text">四、现金流量表分析：看战略、看能力（第6、7章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8A%95%E8%B5%84%E6%B4%BB%E5%8A%A8%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F-%E2%86%92-%E7%9C%8B%E6%88%98%E7%95%A5"><span class="post-toc-text">投资活动现金流量 → 看战略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AD%B9%E8%B5%84%E6%B4%BB%E5%8A%A8%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F-%E2%86%92-%E7%9C%8B%E8%B5%84%E6%9C%AC%E7%AE%A1%E7%90%86%E8%83%BD%E5%8A%9B"><span class="post-toc-text">筹资活动现金流量 → 看资本管理能力</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E8%B5%84%E4%BA%A7%E4%B8%8E%E8%B5%84%E6%9C%AC%E5%88%86%E6%9E%90%EF%BC%88%E7%AC%AC8%E7%AB%A0%EF%BC%89"><span class="post-toc-text">五、资产与资本分析（第8章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E8%82%A1%E6%9D%83%E4%BB%B7%E5%80%BC%E5%A2%9E%E5%8A%A0%E8%A1%A8%E5%88%86%E6%9E%90%EF%BC%88%E7%AC%AC9%E7%AB%A0%EF%BC%89"><span class="post-toc-text">六、股权价值增加表分析（第9章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E7%BB%BC%E5%90%88%E5%88%86%E6%9E%90%EF%BC%9A%E8%82%A1%E4%B8%9C%E6%9D%83%E7%9B%8A%E5%9B%9E%E6%8A%A5%E7%8E%87%E7%9A%84%E4%BA%94%E5%9B%A0%E7%B4%A0%E5%88%86%E8%A7%A3%EF%BC%88%E7%AC%AC10%E7%AB%A0%EF%BC%89"><span class="post-toc-text">七、综合分析：股东权益回报率的五因素分解（第10章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E5%9B%9E%E5%BD%92%E7%8E%B0%E9%87%91%EF%BC%9A%E7%BB%8F%E8%90%A5%E6%B4%BB%E5%8A%A8%E7%8E%B0%E9%87%91%E6%B5%81%EF%BC%88%E7%AC%AC11%E7%AB%A0%EF%BC%89"><span class="post-toc-text">八、回归现金：经营活动现金流（第11章）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B9%9D%E3%80%81%E4%BC%B0%E5%80%BC%E6%96%B9%E6%B3%95%E4%BD%93%E7%B3%BB%EF%BC%88%E7%AC%AC12-15%E7%AB%A0%EF%BC%89"><span class="post-toc-text">九、估值方法体系（第12~15章）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BB%B7%E6%A0%BC%E4%B8%8E%E4%BB%B7%E5%80%BC%EF%BC%88%E7%AC%AC12%E7%AB%A0%EF%BC%89"><span class="post-toc-text">价格与价值（第12章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%9B%B8%E5%AF%B9%E4%BC%B0%E5%80%BC%E6%B3%95%EF%BC%88%E7%AC%AC13%E7%AB%A0%EF%BC%89%E5%8F%8A%E5%B1%80%E9%99%90"><span class="post-toc-text">相对估值法（第13章）及局限</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%BB%9D%E5%AF%B9%E4%BC%B0%E5%80%BC%E6%B3%95%EF%BC%88%E7%AC%AC14%E3%80%8115%E7%AB%A0%EF%BC%89"><span class="post-toc-text">绝对估值法（第14、15章）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E3%80%81%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%E5%90%AF%E7%A4%BA%EF%BC%88%E7%AC%AC16%E7%AB%A0%EF%BC%8C19%E4%B8%AA%E6%A1%88%E4%BE%8B%EF%BC%89"><span class="post-toc-text">十、实战案例启示（第16章，19个案例）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%87%91%E5%8F%A5%E6%91%98%E5%BD%95"><span class="post-toc-text">十一、金句摘录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E4%B8%80%E5%8F%A5%E8%AF%9D%E6%80%BB%E7%BB%93"><span class="post-toc-text">十二、一句话总结</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 10 月</p>
+<p>最近读完了郭永清教授的《财务报表分析与股票估值》。这本书和市面上大多数财报书不太一样——它不满足于教你怎么算流动比率、速动比率这些指标，而是把三大报表<strong>重构</strong>成符合商业逻辑的样子，再用”自由现金流现值”这一条标准，把财报分析和股票估值彻底打通。下面是我整理的读书笔记。</p>
+<p>一句话概括全书：<strong>以”价值（自由现金流现值）”为唯一标准，把财务报表重构为”资产资本表 + 股权价值增加表”，从而打通”财报分析 → 股票估值”的完整路径。</strong></p>
+<h2 id="一、全书核心主线：一条主线，一个标准"><a href="#一、全书核心主线：一条主线，一个标准" class="headerlink" title="一、全书核心主线：一条主线，一个标准"></a>一、全书核心主线：一条主线，一个标准</h2><p>全书围绕一条逻辑链展开：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">公司战略 → 投资活动 → 资产结构 → 经营效率 → 利润 → 经营活动现金流 → 自由现金流 → 公司价值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>公司的终极目标：为价值而生。</strong></li>
+<li><strong>价值的唯一定义</strong>：一家公司在其余下寿命期内可以产生的现金的折现值。</li>
+<li><strong>创造价值的概括性描述</strong>：投入现金，收回更多的现金（现金 → 资产 → 更多的现金）。</li>
+<li>作者反复强调：<strong>“世界再大，价值只有上面这一个标准，其他都是伪标准！”</strong></li>
+</ul>
+<blockquote>
+<p>为什么不用”利润”作为价值标准？作者给出三条理由：①利润没考虑货币时间价值；②不同会计政策和估计会导致不同利润口径；③利润在权责发生制下存在人为调整空间。</p>
+</blockquote>
+<h2 id="二、全书最有价值的独创观点（重点）"><a href="#二、全书最有价值的独创观点（重点）" class="headerlink" title="二、全书最有价值的独创观点（重点）"></a>二、全书最有价值的独创观点（重点）</h2><p>这本书与市面上其他财报书最大的区别，在于作者提出了几套<strong>原创的分析工具</strong>，是整本书含金量最高的部分：</p>
+<h3 id="1-重构资产负债表-→-“资产资本表”（第8章）"><a href="#1-重构资产负债表-→-“资产资本表”（第8章）" class="headerlink" title="1. 重构资产负债表 → “资产资本表”（第8章）"></a>1. 重构资产负债表 → “资产资本表”（第8章）</h3><ul>
+<li><strong>问题</strong>：标准资产负债表按”流动性”划分资产和负债，缺陷有二：<ul>
+<li>分类武断（例如：变现能力更强的金融资产被归为”非流动资产”，而存货反而被归为”流动资产”）；</li>
+<li>与现金流量表无法建立清晰联系，管理者看不懂。</li>
+</ul>
+</li>
+<li><strong>重构方法</strong>：按”资产带来经济利益的方式”重新分类：<ul>
+<li>资产 &#x3D; <strong>金融资产 + 长期股权投资 + 经营资产</strong>（经营资产又分”长期经营资产”和”营运资本”）</li>
+<li>资本 &#x3D; <strong>股东权益 + 短期债务 + 长期债务</strong></li>
+<li>等式变为 <strong>资产 &#x3D; 资本</strong>（而非”资产 &#x3D; 负债 + 股东权益”）</li>
+</ul>
+</li>
+<li><strong>关键定义</strong>：营运资本 &#x3D; 营运资产（存货、应收账款、预付款项）- 营运负债（应付账款、预收款项、应付税费）。<strong>它只包括与经营活动有关的项目，把短期借款、金融资产等剔除在外。</strong></li>
+</ul>
+<h3 id="2-重构利润表-→-“股权价值增加表”（第9章）"><a href="#2-重构利润表-→-“股权价值增加表”（第9章）" class="headerlink" title="2. 重构利润表 → “股权价值增加表”（第9章）"></a>2. 重构利润表 → “股权价值增加表”（第9章）</h3><ul>
+<li><strong>问题</strong>：标准利润表把投资收益、公允价值变动等与经营活动无关的项目混入”营业利润”，还把财务费用（本质是资本成本）放在经营活动里。</li>
+<li><strong>重构方法</strong>：<ul>
+<li>息税前经营利润 &#x3D; 营业收入 - 营业成本 - 营业费用（营业费用不含财务费用）</li>
+<li>把财务费用单独拎出来，作为”债务资本成本”分析；</li>
+<li>引入核心指标 <strong>股权价值增加值 &#x3D; 净利润 - 股权资本 × 股东预期回报率</strong>。</li>
+</ul>
+</li>
+<li><strong>深刻洞见</strong>：净利润是”股权资本免费”的幻觉。德鲁克：”如果一家企业未能获得超出资本成本的利润，那么它就处于亏损状态。” <strong>会计利润必须经过”资本成本、现金流量、自由现金流”三次技术性调整，才能反映真实盈利能力。</strong></li>
+</ul>
+<h3 id="3-用”营运资本长期化率”取代流动比率-速动比率（第8章）"><a href="#3-用”营运资本长期化率”取代流动比率-速动比率（第8章）" class="headerlink" title="3. 用”营运资本长期化率”取代流动比率&#x2F;速动比率（第8章）"></a>3. 用”营运资本长期化率”取代流动比率&#x2F;速动比率（第8章）</h3><ul>
+<li><strong>问题</strong>：流动比率、速动比率的”理想值”（2和1）与现实严重背离——沃尔玛流动比率常年 0.83 左右、营运资本为负，却是世界500强；这些指标无法给出有效管理建议，还常与周转率指标结论矛盾。</li>
+<li><strong>新指标</strong>：营运资本长期化率 &#x3D;（长期资本 - 长期经营资产 - 长期股权投资）&#x2F; 营运资本</li>
+<li>它衡量的是”营运资本需求中有多少来自长期资本”，体现了”流动的本质在于流转运动，而非存量多少”。</li>
+</ul>
+<h3 id="4-自由现金流计算：只扣”保全性资本支出”（第15章）"><a href="#4-自由现金流计算：只扣”保全性资本支出”（第15章）" class="headerlink" title="4. 自由现金流计算：只扣”保全性资本支出”（第15章）"></a>4. 自由现金流计算：只扣”保全性资本支出”（第15章）</h3><ul>
+<li><strong>问题</strong>：传统口径”自由现金流 &#x3D; 经营活动现金流净额 - 全部资本性支出”，会错杀处于扩张期的好公司（成长期资本开支巨大，导致自由现金流为负，得出”公司没价值”的错误结论）。</li>
+<li><strong>作者观点</strong>：资本支出应拆分为：<ul>
+<li><strong>保全性资本支出</strong>（维持原有规模，如替换报废资产）→ 在算自由现金流时扣除；</li>
+<li><strong>扩张性资本支出</strong>（只要内含报酬率 &gt; 资本成本，就是对股东价值正效应）→ 不扣除。</li>
+</ul>
+</li>
+<li><strong>简化公式</strong>：经营资产自由现金流 ≈ 经营活动现金流量净额 - 折旧 - 摊销 - 长期资产处置损失。</li>
+</ul>
+<h2 id="三、分析框架：公司战略-执行过程-财报结果（第3、4章）"><a href="#三、分析框架：公司战略-执行过程-财报结果（第3、4章）" class="headerlink" title="三、分析框架：公司战略 + 执行过程 &#x3D; 财报结果（第3、4章）"></a>三、分析框架：公司战略 + 执行过程 &#x3D; 财报结果（第3、4章）</h2><ul>
+<li>财报生成是<strong>顺向过程</strong>：商业环境 → 公司战略 → 经济活动（投资&#x2F;筹资&#x2F;经营）→ 财报数字。</li>
+<li>财报分析是<strong>逆向过程</strong>：从数字反推会计质量 → 经济活动 → 战略 → 商业环境（像福尔摩斯破案）。</li>
+<li><strong>“行业决定公司的命，执行决定公司的运”</strong>：战略好 + 执行好 &#x3D; 财源滚滚；战略差 + 执行差 &#x3D; 死路一条。</li>
+</ul>
+<h3 id="战略的两个关键决策"><a href="#战略的两个关键决策" class="headerlink" title="战略的两个关键决策"></a>战略的两个关键决策</h3><ol>
+<li><strong>行业选择</strong>：行业在很大程度上决定财报结构。<ul>
+<li>轻资产公司（海康威视、茅台、万科）：流动资产为主，毛利率高；</li>
+<li>重资产公司（鞍钢、大秦铁路、航空公司）：固定资产为主，固定成本高、经营杠杆高、波动大；</li>
+<li>金融公司（浦发银行）：金融资产为主，高杠杆。</li>
+</ul>
+</li>
+<li><strong>竞争策略</strong>：<ul>
+<li><strong>总成本领先策略</strong>（赚苦力钱）：低毛利率、高资产周转率、严格费用控制。典型：春秋航空、格兰仕。</li>
+<li><strong>差异化策略</strong>（赚脑力钱）：高毛利率、强定价权、高研发&#x2F;品牌投入。典型：海康威视、贵州茅台、苹果。</li>
+<li>财报上最直观的区别：<strong>毛利率高低</strong>。</li>
+</ul>
+</li>
+</ol>
+<h2 id="四、现金流量表分析：看战略、看能力（第6、7章）"><a href="#四、现金流量表分析：看战略、看能力（第6、7章）" class="headerlink" title="四、现金流量表分析：看战略、看能力（第6、7章）"></a>四、现金流量表分析：看战略、看能力（第6、7章）</h2><h3 id="投资活动现金流量-→-看战略"><a href="#投资活动现金流量-→-看战略" class="headerlink" title="投资活动现金流量 → 看战略"></a>投资活动现金流量 → 看战略</h3><ul>
+<li><strong>长期资产新投资额</strong>（购建 - 处置 - 报废退役）&gt; 0 → 扩张战略；≈ 0 → 维持战略；&lt; 0 → 收缩战略。<ul>
+<li>案例：万华化学连续5年巨额购建，规模扩到4倍（扩张）；大秦铁路5年几乎零增长（维持）。</li>
+</ul>
+</li>
+<li><strong>净合并额</strong>（取得子公司支付现金 - 处置子公司收回现金）→ 看并购扩张还是收缩。<ul>
+<li>案例：上海家化口头上说”并购”，实际上2015年却卖了天江药业股权，说一套做一套 → 管理层最终下台。</li>
+</ul>
+</li>
+<li>注意例外：发行股份购买资产、融资租赁不体现在投资活动现金流里；劳动密集型&#x2F;银行业扩张靠经营活动而非投资活动。</li>
+</ul>
+<h3 id="筹资活动现金流量-→-看资本管理能力"><a href="#筹资活动现金流量-→-看资本管理能力" class="headerlink" title="筹资活动现金流量 → 看资本管理能力"></a>筹资活动现金流量 → 看资本管理能力</h3><ul>
+<li><strong>现金自给率 &#x3D; 经营活动现金流净额 &#x2F; 战略投资活动综合现金需求</strong>（&gt;1 为内涵式自我造血发展，&lt;1 需外源融资）。</li>
+<li><strong>筹资需求 &#x3D; 经营活动现金流净额 - 战略投资综合现金需求 + 期初金融资产</strong>。</li>
+<li><strong>筹资五大内容</strong>：<ol>
+<li><strong>资金成本</strong>（债务成本 &lt; 股权成本，加权平均资本成本 WACC）；</li>
+<li><strong>资本结构</strong>（作者实用建议：股债各 50%，财务杠杆倍数最好 &lt; 2）；</li>
+<li><strong>资金期限</strong>（长期资产须配长期资本，忌”短融长投”）；</li>
+<li><strong>筹资顺序</strong>（优序理论：内源 &gt; 债务 &gt; 股权）；</li>
+<li><strong>筹资时机</strong>（股价高时股权融资、股价低时债务融资；折扣价定增损害老股东）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="五、资产与资本分析（第8章）"><a href="#五、资产与资本分析（第8章）" class="headerlink" title="五、资产与资本分析（第8章）"></a>五、资产与资本分析（第8章）</h2><ul>
+<li><strong>资产类别结构</strong>：非金融公司应以经营资产为主，金融资产占 5%~10% 为宜（过多拉低收益率，应分红或回购）。</li>
+<li><strong>轻资产 vs 重资产</strong>：经营资产中营运资本为主 → 轻资产（变动成本高、经营杠杆低）；长期经营资产为主 → 重资产（固定成本高、经营杠杆高）。</li>
+<li><strong>资产&#x2F;资本匹配三策略</strong>：<ul>
+<li><strong>匹配策略</strong>（长期资产配长期资本）；</li>
+<li><strong>稳健策略</strong>（长期资本富余，有现金安全垫）；</li>
+<li><strong>激进策略</strong>（短期资本支持长期资产 &#x3D; 短融长投，极易陷入财务困境）。</li>
+</ul>
+</li>
+<li><strong>判断指标</strong>：长期融资净值 &#x3D; 长期借款 + 股东权益 - 长期经营资产 - 长期股权投资 - 长期营运资本（为负 &#x3D; 激进）。</li>
+</ul>
+<h2 id="六、股权价值增加表分析（第9章）"><a href="#六、股权价值增加表分析（第9章）" class="headerlink" title="六、股权价值增加表分析（第9章）"></a>六、股权价值增加表分析（第9章）</h2><ol>
+<li><strong>营业收入</strong>：看历史增长 + 未来空间，警惕收入确认问题。</li>
+<li><strong>营业成本</strong>：成本性态分析——<strong>亏损业务是否停产要看边际贡献</strong>（单价 &gt; 单位变动成本就应继续生产，因为能弥补固定成本）。</li>
+<li><strong>毛利&#x2F;毛利率</strong>：<strong>毛利率高低和稳定性 &#x3D; 护城河深浅</strong>（巴菲特）。经验判断：毛利率长期 &lt;15% 属过度竞争行业，15%~25% 属高度竞争，&gt;25% 且稳定 &#x3D; 有核心竞争力。</li>
+<li><strong>营业费用</strong>：重点不是总额下降，而是<strong>费用率（费用&#x2F;收入）稳定或下降</strong>。</li>
+<li><strong>利润质量</strong>：从息税前利润结构看——经营利润（质量最高）&gt; 长期股权投资收益 &gt; 金融资产收益（质量最低、波动大）。</li>
+<li><strong>财务成本负担率 &#x3D; 真实财务费用 &#x2F; 息税前利润</strong>：湖北宜化 92% → “整个公司都在给银行打工”。</li>
+<li><strong>股权价值增加值</strong>（见上）。</li>
+</ol>
+<h2 id="七、综合分析：股东权益回报率的五因素分解（第10章）"><a href="#七、综合分析：股东权益回报率的五因素分解（第10章）" class="headerlink" title="七、综合分析：股东权益回报率的五因素分解（第10章）"></a>七、综合分析：股东权益回报率的五因素分解（第10章）</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">股东权益回报率(ROE)</span><br><span class="line">= 息税前经营利润率          （经营活动盈利能力）</span><br><span class="line">  × 经营资产周转率          （资产使用效率）</span><br><span class="line">  × 财务成本效应比率        （财务费用负担）</span><br><span class="line">  × 财务杠杆倍数            （债务放大效应）</span><br><span class="line">  × 企业所得税效应比率      （税负）</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>财务杠杆是双刃剑</strong>：资产回报率 &gt; 借款利率时，举债放大 ROE；反之则侵蚀 ROE。举债同时增加了经营风险之外的财务风险。</li>
+<li><strong>债权人保障</strong>：债务&#x2F;股东权益 &lt; 1，利息保障倍数 &gt; 1。</li>
+</ul>
+<h2 id="八、回归现金：经营活动现金流（第11章）"><a href="#八、回归现金：经营活动现金流（第11章）" class="headerlink" title="八、回归现金：经营活动现金流（第11章）"></a>八、回归现金：经营活动现金流（第11章）</h2><ul>
+<li>核心信念：<strong>“现金流是公司的血液，财报是血管”，利润必须转化为现金。</strong></li>
+<li>三大含金量指标：<ul>
+<li><strong>营业收入现金含量</strong>（成熟期应 ≈ 1，含增值税后略 &gt; 1）；</li>
+<li><strong>成本费用付现率</strong>（成熟期应 &lt; 1，因含折旧摊销）；</li>
+<li><strong>经营利润现金含量 &#x2F; 净利润现金含量</strong>（成熟期应 &gt; 1，因间接法下现金流 &#x3D; 净利润 + 折旧摊销等）。</li>
+</ul>
+</li>
+<li><strong>经营活动现金流五种状态</strong>（从差到好）：<ol>
+<li>&lt; 0（靠消耗存量&#x2F;举债维持，经营危机）；</li>
+<li>&#x3D; 0（无法补偿非付现成本）；</li>
+<li><blockquote>
+<p>0 但不足补偿非付现成本；</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>0 恰能补偿非付现成本（简单再生产）；</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>0 且补偿后仍有剩余（良好，能支持扩张）——<strong>只有第5种才是健康状态</strong>。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="九、估值方法体系（第12-15章）"><a href="#九、估值方法体系（第12-15章）" class="headerlink" title="九、估值方法体系（第12~15章）"></a>九、估值方法体系（第12~15章）</h2><h3 id="价格与价值（第12章）"><a href="#价格与价值（第12章）" class="headerlink" title="价格与价值（第12章）"></a>价格与价值（第12章）</h3><ul>
+<li>短期价格偏离价值，长期价格回归价值（格雷厄姆：”短期是投票机，长期是称重机”）。</li>
+<li><strong>股票估值是艺术不是科学</strong>：只需判断”是否足够便宜”，不需要精确数值（”判断一位女士是否肥胖，不需要知道她的确切体重”）。</li>
+<li>两大投资原则：<strong>安全边际</strong>（保守估值基础上再打折）+ <strong>成组购买</strong>（分散化，组合投资）。</li>
+</ul>
+<h3 id="相对估值法（第13章）及局限"><a href="#相对估值法（第13章）及局限" class="headerlink" title="相对估值法（第13章）及局限"></a>相对估值法（第13章）及局限</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>适用</th>
+<th>主要缺陷</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>市盈率 PE</td>
+<td>盈利稳定公司</td>
+<td>亏损公司不适用；可比公司选择主观</td>
+</tr>
+<tr>
+<td>市净率 PB</td>
+<td>银行等金融业</td>
+<td>忽略资产创收能力差异</td>
+</tr>
+<tr>
+<td>市销率 PS</td>
+<td>所有公司（含亏损）</td>
+<td>忽略成本费用控制</td>
+</tr>
+<tr>
+<td>PEG</td>
+<td>成长股</td>
+<td>增长率预测难</td>
+</tr>
+</tbody></table>
+<ul>
+<li>结论：<strong>相对估值法用来”找便宜货”，绝对估值法用来”最终拍板”</strong>。</li>
+</ul>
+<h3 id="绝对估值法（第14、15章）"><a href="#绝对估值法（第14、15章）" class="headerlink" title="绝对估值法（第14、15章）"></a>绝对估值法（第14、15章）</h3><ul>
+<li>现金股利贴现模型（DDM）→ 受”股利无关论”挑战，适用面窄。</li>
+<li><strong>自由现金流贴现模型（FCF）</strong> → 作者的选择：<ul>
+<li>零增长模型、不变增长模型、<strong>两阶段模型</strong>（详细预测期 + 终值期）、三阶段模型。</li>
+</ul>
+</li>
+<li><strong>作者对 WACC 的独到处理</strong>：<ul>
+<li>资本结构权重用<strong>账面价值</strong>而非市场价值（口径一致，避免股价波动导致贴现率天天变）；</li>
+<li>股权资本成本统一取 <strong>9%</strong>（&#x3D; 5年期国债利率 + 4%~5% 风险溢价），<strong>不用 CAPM 和贝塔系数</strong>（作者认为贝塔系数是”荒谬的风险衡量”）；</li>
+<li>风险调整放在**分子（保守预测自由现金流）**而非分母（调贴现率）。</li>
+</ul>
+</li>
+<li><strong>估值步骤</strong>：<ol>
+<li>公司价值 &#x3D; 金融资产价值 + 长期股权投资价值 + 经营资产价值（经营资产用自由现金流现值）；</li>
+<li>股权价值 &#x3D; 公司价值 - 债务价值；</li>
+<li>股票价值 &#x3D; 股权价值 ×（1 - 少数股东权益比例）。</li>
+</ol>
+</li>
+</ul>
+<h2 id="十、实战案例启示（第16章，19个案例）"><a href="#十、实战案例启示（第16章，19个案例）" class="headerlink" title="十、实战案例启示（第16章，19个案例）"></a>十、实战案例启示（第16章，19个案例）</h2><p>作者用这套模型实战（2016~2017年），核心案例与结论：</p>
+<ul>
+<li><strong>万华化学</strong>：扩张期在建工程拉低资产回报率，但自由现金流持续为正，股价 17.65 元明显低估 → 买入信号（后为”波浪式前进”的大牛股）。</li>
+<li><strong>中国石化</strong>：周期性行业进入增长瓶颈，自由现金流稳定在 700 亿左右，4.5 元以下”胜过银行理财”。</li>
+<li><strong>乐视网</strong>：营运资本巨额负数是<strong>资产资本结构错配</strong>（短融长投、长期资本不足），而非供应链管理优势——市梦率 vs 自由现金流的反面教材。</li>
+<li><strong>海康威视 vs 大华股份</strong>：用来说明市净率的缺陷。</li>
+<li><strong>中银绒业</strong>：净利润与经营现金流长期背离、固定资产5年暴增30倍 → 财务舞弊红旗。</li>
+</ul>
+<p><strong>防范财报舞弊最简单的方法</strong>：拉长时间窗口到 5~10 年，很少有公司能连续造假十年；”净利润与经营现金流长期背离”是最明显的红旗。</p>
+<h2 id="十一、金句摘录"><a href="#十一、金句摘录" class="headerlink" title="十一、金句摘录"></a>十一、金句摘录</h2><ol>
+<li>“世界再大，价值只有一个标准：未来自由现金流的折现值，其他都是伪标准。”</li>
+<li>“行业决定公司的命，执行决定公司的运。”</li>
+<li>“利润是权责发生制下的账面结果，现金才是实实在在的银行账户余额。”</li>
+<li>“毛利率的高低和稳定性，反映一家公司护城河的深浅。”</li>
+<li>“股权资金不是免费的午餐——天下没有免费的午餐。”</li>
+<li>“短期是投票机，长期是称重机。”</li>
+<li>“判断一位女士是否肥胖，不需要知道她的确切体重”——估值只求近似。</li>
+<li>“为优秀的公司支付过高的代价，其危害不亚于买错了股票品种。”</li>
+<li>“财务杠杆是一柄双刃剑：资产回报率高于借款利率才应举债。”</li>
+<li>“会计利润必须经过资本成本、现金流量、自由现金流三次调整，才是真正的盈利能力。”</li>
+</ol>
+<h2 id="十二、一句话总结"><a href="#十二、一句话总结" class="headerlink" title="十二、一句话总结"></a>十二、一句话总结</h2><blockquote>
+<p>传统财报书教你”算指标”，这本书教你”建框架”——它把死板的三大报表重构为符合商业逻辑的<strong>资产资本表 + 股权价值增加表</strong>，再落到<strong>自由现金流贴现</strong>这一唯一的价值标准上，是一套真正能”知行合一”用于实战的财报分析与估值体系。</p>
+</blockquote>
+<p>其局限在于：部分结论（如统一9%股权成本、股债各50%）是实用主义的简化，且案例集中在2016~2017年A股，需结合当下环境自行验证。</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212350001909.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6%E3%80%8B%EF%BC%88%E7%AC%AC16%E7%89%88%EF%BC%89/'>阅读笔记——《组织行为学》（第16版）</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212130007329.%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E4%B9%8B%E7%BE%8E/">项目管理之美（The Art of Project Management）读书笔记</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

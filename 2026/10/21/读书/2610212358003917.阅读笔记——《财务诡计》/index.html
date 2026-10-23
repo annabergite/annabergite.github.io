@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《财务诡计》" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《财务诡计》
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：5.5k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：18分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%A0%B8%E5%BF%83%E6%96%B9%E6%B3%95%E8%AE%BA%EF%BC%9A%E4%B8%89%E5%BC%A0%E6%8A%A5%E8%A1%A8%E7%9A%84%E2%80%9D%E4%B8%89%E6%9D%83%E5%88%86%E7%AB%8B%E2%80%9D"><span class="post-toc-text">核心方法论：三张报表的”三权分立”</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC-1%E2%80%932-%E7%AB%A0%EF%BC%9A%E6%BB%8B%E7%94%9F%E8%B4%A2%E5%8A%A1%E6%AC%BA%E8%AF%88%E7%9A%84%E7%8E%AF%E5%A2%83"><span class="post-toc-text">第 1–2 章：滋生财务欺诈的环境</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AF%87%EF%BC%9A%E6%94%B6%E5%85%A5%E6%93%8D%E7%BA%B5%E7%B1%BB%E8%B4%A2%E5%8A%A1%E6%AC%BA%E8%AF%88%E6%89%8B%E6%B3%95%EF%BC%887-%E5%A4%A7%E9%AA%97%E6%9C%AF%EF%BC%89"><span class="post-toc-text">第二篇：收入操纵类财务欺诈手法（7 大骗术）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-1%EF%BC%9A%E8%BF%87%E6%97%A9%E8%AE%B0%E5%BD%95%E6%94%B6%E5%85%A5%EF%BC%88%E7%AC%AC-3-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 1：过早记录收入（第 3 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-2%EF%BC%9A%E8%99%9A%E6%9E%84%E6%94%B6%E5%85%A5%E5%B9%B6%E5%8A%A0%E4%BB%A5%E8%AE%B0%E5%BD%95%EF%BC%88%E7%AC%AC-4-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 2：虚构收入并加以记录（第 4 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-3%EF%BC%9A%E5%80%9F%E5%8A%A9%E4%B8%80%E6%AC%A1%E6%80%A7%E6%88%96%E4%B8%8D%E5%8F%AF%E6%8C%81%E7%BB%AD%E7%9A%84%E4%B8%9A%E5%8A%A1%E6%9D%A5%E5%A4%B8%E5%A4%A7%E6%89%80%E5%BE%97%EF%BC%88%E7%AC%AC-5-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 3：借助一次性或不可持续的业务来夸大所得（第 5 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-4%EF%BC%9A%E5%B0%86%E5%BD%93%E6%9C%9F%E8%B4%B9%E7%94%A8%E6%8E%A8%E8%BF%9F%E8%87%B3%E5%B0%86%E6%9D%A5%EF%BC%88%E7%AC%AC-6-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 4：将当期费用推迟至将来（第 6 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-5%EF%BC%9A%E8%BF%90%E7%94%A8%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95%E6%9D%A5%E6%8E%A9%E7%9B%96%E6%88%90%E6%9C%AC%E6%88%96%E4%BA%8F%E6%8D%9F%EF%BC%88%E7%AC%AC-7-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 5：运用其他方法来掩盖成本或亏损（第 7 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-6%EF%BC%9A%E5%B0%86%E5%BD%93%E6%9C%9F%E6%94%B6%E5%85%A5%E6%8E%A8%E8%BF%9F%E8%87%B3%E5%B0%86%E6%9D%A5%EF%BC%88%E7%AC%AC-8-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 6：将当期收入推迟至将来（第 8 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-7%EF%BC%9A%E5%B0%86%E6%9C%AA%E6%9D%A5%E8%B4%B9%E7%94%A8%E6%8F%90%E5%89%8D%E8%87%B3%E5%BD%93%E6%9C%9F%EF%BC%88%E7%AC%AC-9-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 7：将未来费用提前至当期（第 9 章）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AF%87%EF%BC%9A%E7%8E%B0%E9%87%91%E6%B5%81%E7%B1%BB%E8%B4%A2%E5%8A%A1%E6%AC%BA%E8%AF%88%E6%89%8B%E6%B3%95%EF%BC%884-%E5%A4%A7%E9%AA%97%E6%9C%AF%EF%BC%89"><span class="post-toc-text">第三篇：现金流类财务欺诈手法（4 大骗术）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-8%EF%BC%9A%E8%9E%8D%E8%B5%84%E7%8E%B0%E9%87%91%E6%B5%81%E5%85%A5%E8%BD%AC%E7%BB%8F%E8%90%A5%E7%8E%B0%E9%87%91%E6%B5%81%E5%85%A5%EF%BC%88%E7%AC%AC-10-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 8：融资现金流入转经营现金流入（第 10 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-9%EF%BC%9A%E7%BB%8F%E8%90%A5%E7%8E%B0%E9%87%91%E6%B5%81%E5%87%BA%E8%BD%AC%E6%8A%95%E8%B5%84%E7%8E%B0%E9%87%91%E6%B5%81%E5%87%BA%EF%BC%88%E7%AC%AC-11-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 9：经营现金流出转投资现金流出（第 11 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-10%EF%BC%9A%E5%80%9F%E5%8A%A9%E6%94%B6%E8%B4%AD-%E5%A4%84%E7%BD%AE%E4%B8%9A%E5%8A%A1%E5%A4%B8%E5%A4%A7%E7%BB%8F%E8%90%A5%E7%8E%B0%E9%87%91%E6%B5%81%EF%BC%88%E7%AC%AC-12-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 10：借助收购&#x2F;处置业务夸大经营现金流（第 12 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-11%EF%BC%9A%E5%80%9F%E5%8A%A9%E4%B8%8D%E5%8F%AF%E6%8C%81%E7%BB%AD%E7%9A%84%E4%B8%9A%E5%8A%A1%E5%A4%B8%E5%A4%A7%E7%BB%8F%E8%90%A5%E7%8E%B0%E9%87%91%E6%B5%81%EF%BC%88%E7%AC%AC-13-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 11：借助不可持续的业务夸大经营现金流（第 13 章）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AF%87%EF%BC%9A%E6%A0%B8%E5%BF%83%E6%8C%87%E6%A0%87%E7%B1%BB%E8%B4%A2%E5%8A%A1%E6%AC%BA%E8%AF%88%E6%89%8B%E6%B3%95%EF%BC%882-%E5%A4%A7%E9%AA%97%E6%9C%AF%EF%BC%89"><span class="post-toc-text">第四篇：核心指标类财务欺诈手法（2 大骗术）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-12%EF%BC%9A%E6%8F%90%E4%BE%9B%E5%A4%B8%E5%A4%A7%E4%B8%9A%E7%BB%A9%E7%9A%84%E8%AF%AF%E5%AF%BC%E6%80%A7%E6%8C%87%E6%A0%87%EF%BC%88%E7%AC%AC-14-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 12：提供夸大业绩的误导性指标（第 14 章）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%AA%97%E6%9C%AF-13%EF%BC%9A%E6%AD%AA%E6%9B%B2%E8%B5%84%E4%BA%A7%E8%B4%9F%E5%80%BA%E8%A1%A8%E6%8C%87%E6%A0%87%E6%8E%A9%E7%9B%96%E7%BB%8F%E8%90%A5%E4%B8%8B%E6%BB%91%EF%BC%88%E7%AC%AC-15-%E7%AB%A0%EF%BC%89"><span class="post-toc-text">骗术 13：歪曲资产负债表指标掩盖经营下滑（第 15 章）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7"><span class="post-toc-text">贯穿全书的分析工具</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%88%91%E7%9A%84%E5%87%A0%E7%82%B9%E6%84%9F%E6%82%9F"><span class="post-toc-text">我的几点感悟</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 10 月</p>
+<p>最近读完了霍华德·施利特（Howard M. Schilit）和杰里米·皮勒（Jeremy Perler）合著的《财务诡计：揭秘财务史上13大骗术44种手段》（<em>Financial Shenanigans</em>，原书第3版，机械工业出版社）。作者是法务会计（财务欺诈侦查）领域的权威——施利特创办了财务研究分析中心（CFRA），专门替投资者”抓假账”，后来被浑水做空中国概念股时经常引用的研究方法，很大程度就源自这本书的框架。</p>
+<p>这本书不是教你做财务报表，而是教你<strong>怎么识破别人在财务报表里做的假</strong>。全书分 5 篇 16 章，核心是把财务欺诈分成三大类：<strong>收入操纵（7 种骗术）、现金流造假（4 种骗术）、核心指标造假（2 种骗术）</strong>，合计 13 大骗术，每种骗术下又拆出若干具体手段，共 44 种。下面是我的读书笔记。</p>
+<hr>
+<h2 id="核心方法论：三张报表的”三权分立”"><a href="#核心方法论：三张报表的”三权分立”" class="headerlink" title="核心方法论：三张报表的”三权分立”"></a>核心方法论：三张报表的”三权分立”</h2><p>全书最有价值的一个框架，是作者用美国政府的”三权分立”来比喻三大财务报表的关系：</p>
+<blockquote>
+<p><strong>利润表、现金流量表、资产负债表三张报表互相制衡。如果其中一份报表造假，另外两份报表中必然会出现警告信号。</strong></p>
+</blockquote>
+<ul>
+<li>要发现<strong>收入操纵</strong>，去看资产负债表和现金流量表的异常变化；</li>
+<li>要发现<strong>现金流造假</strong>，去看利润表和资产负债表的异常变化；</li>
+<li>管理层提供的<strong>补充指标</strong>（非 GAAP 指标）是第四种制衡。</li>
+</ul>
+<p>这背后是一个朴素但常被忽视的道理：<strong>会计恒等式决定了”造假造不全”。</strong> 你可以在利润表上多记一笔收入，但这笔收入要么变成资产负债表上的应收账款（应收账款会异常增长），要么变不成现金（经营现金流会滞后于利润）。所以作者反复强调一个动作：<strong>对比净收入（NI）和经营现金流（CFFO），如果利润一路高歌但现金流跟不上，就要警觉。</strong></p>
+<hr>
+<h2 id="第-1–2-章：滋生财务欺诈的环境"><a href="#第-1–2-章：滋生财务欺诈的环境" class="headerlink" title="第 1–2 章：滋生财务欺诈的环境"></a>第 1–2 章：滋生财务欺诈的环境</h2><p>作者没有一上来就讲骗术，而是先讲”什么样的公司容易造假”，这是全书的底色：</p>
+<ul>
+<li><strong>缺乏制衡的管理层</strong>：独裁者凌驾于他人之上（南方保健的 CEO 斯克鲁士会逼会计”弥补”业绩差额）；家族企业把管理层和董事会塞满亲戚（阿德菲亚传播的里格斯家族）。</li>
+<li><strong>业绩”恰好”长期达标</strong>：一家公司连续 32 个季度”达到或超过华尔街预期”（讯宝科技），这本身就是信号——经营总有起伏，完美达标往往靠会计手段维持。</li>
+<li><strong>董事会不独立</strong>：让棒球教练、橄榄球明星当审计委员会委员；董事会批准明显不合理的薪酬方案（冠群公司一个持股计划让三名高管瓜分 11 亿美元）。</li>
+<li><strong>审计师失去独立性</strong>：安达信从安然一年拿 5200 万美元（其中一半是咨询费）；帕玛拉特因为意大利法律强制 9 年换审计师，才把前任审计师藏了多年的离岸假账暴露出来。</li>
+<li><strong>逃避监管审查</strong>：”走后门上市”（反向兼并壳公司）绕开 IPO 审查。</li>
+</ul>
+<p>还有一个经典的麦道夫案例，讲的是<strong>识别庞氏骗局的两条朴素原则</strong>：一是投资回报”超常稳定”（牛熊市都赚钱、从不月度亏损）不可信；二是”不收管理费”的基金不可信——<strong>“太好了就不能相信”</strong>。</p>
+<blockquote>
+<p>巴菲特引用病人的故事点题：病人不是问医生怎么治病，而是问”你能不能把我的 X 光片补一补”。补 X 光片不能治病，粉饰财务报表也不能挽救恶化的经营。<strong>麻烦终究会降临到那些用会计手段掩盖问题的人身上。</strong></p>
+</blockquote>
+<hr>
+<h2 id="第二篇：收入操纵类财务欺诈手法（7-大骗术）"><a href="#第二篇：收入操纵类财务欺诈手法（7-大骗术）" class="headerlink" title="第二篇：收入操纵类财务欺诈手法（7 大骗术）"></a>第二篇：收入操纵类财务欺诈手法（7 大骗术）</h2><p>收入操纵分两类：<strong>做大当期收入</strong>（骗术 1–5）和<strong>做大未来收入</strong>（骗术 6–7，把好业绩存起来、把坏费用提前）。</p>
+<h3 id="骗术-1：过早记录收入（第-3-章）"><a href="#骗术-1：过早记录收入（第-3-章）" class="headerlink" title="骗术 1：过早记录收入（第 3 章）"></a>骗术 1：过早记录收入（第 3 章）</h3><p>在”还没到确认收入的时候”就确认。核心是记住<strong>收入确认的四条件</strong>：交易客观存在、已提供产品或服务、价格可确定、收款有合理保障——任一不满足就不得确认。</p>
+<p>典型手段：</p>
+<ul>
+<li><strong>延长会计期间</strong>：冠群公司把季度最后一个月”改成”35 天，被戏称为”12 月 37 日”交易。</li>
+<li><strong>提前确认长期合同</strong>：冠群把 7 年许可合同的全部收入一次性确认，导致”长期未开票应收账款”暴增。</li>
+<li><strong>激进会计假设</strong>：施乐用 6%–8% 的贴现率（当地借款利率高达 20%）把巴西租赁收入提前确认，多记 7.57 亿美元。</li>
+<li><strong>安然的市场计价法</strong>：把公用事业的长期天然气供应合同当成”期货证券”记账，用内部模型”按需”确定价值（被戏称为”模型计价法”），4 年把收入从 100 亿做到 1000 亿美元——而同体量公司用了 10–31 年。</li>
+<li><strong>平衡支付协议、寄售、卖进 vs 卖通</strong>：装运不等于销售；在买方正式接受前记录收入都是危险信号。</li>
+</ul>
+<blockquote>
+<p><strong>核心警告信号：经营现金流滞后于净收入；应收账款（尤其长期未开票部分）增长快于收入增长；变更收入确认政策。</strong></p>
+</blockquote>
+<h3 id="骗术-2：虚构收入并加以记录（第-4-章）"><a href="#骗术-2：虚构收入并加以记录（第-4-章）" class="headerlink" title="骗术 2：虚构收入并加以记录（第 4 章）"></a>骗术 2：虚构收入并加以记录（第 4 章）</h3><p>比”过早”更胆大——干脆凭空造收入。</p>
+<ul>
+<li><strong>缺乏经济实质的交易</strong>：AIG 帮亮点公司设计”假保险”，把融资包装成保险理赔金；百富勤系统公司搞”停放”交易和互惠交易，最后重述时 13.4 亿美元收入砍掉 5.09 亿。</li>
+<li><strong>关联交易</strong>：新泰辉煌公司一半收入来自关联分销商南鹏科技，最后宣布”回购”2.5 万台电视、近 1 亿美元——因为根本没收到钱。</li>
+<li><strong>飞去来器（回力镖）式双向交易</strong>：讯宝科技给转销商付 1500 万美元”糖果”，换来 1000 万美元虚假收入——赔钱买收入。</li>
+<li><strong>毛收入 vs 净收入</strong>：安然把交易证券的”全部价值”确认为收入（正常只应确认经纪佣金），把公司”做”进千亿美元俱乐部。</li>
+</ul>
+<h3 id="骗术-3：借助一次性或不可持续的业务来夸大所得（第-5-章）"><a href="#骗术-3：借助一次性或不可持续的业务来夸大所得（第-5-章）" class="headerlink" title="骗术 3：借助一次性或不可持续的业务来夸大所得（第 5 章）"></a>骗术 3：借助一次性或不可持续的业务来夸大所得（第 5 章）</h3><p>魔术师的兔子是凭空变出来的，一次性收益也是。</p>
+<ul>
+<li><strong>IBM 1999 年</strong>：把出售全球网络业务给 AT&amp;T 的 40.57 亿美元所得，记成”销售及管理费用”的冲减项。调整后，IBM 该年营业利润实际是<strong>下降 14.1%</strong>，而非报告的”增长 30.2%”。</li>
+<li><strong>把一次性所得塞进经常性收入</strong>：波士顿鸡店把给加盟商的贷款利息记成”经营收入”，掩盖了核心餐馆业务亏损的事实。</li>
+<li><strong>把经营费用转到线下</strong>：阿尔卡特几乎每个季度都记”重组费用”，把日常经营成本冒充一次性费用。</li>
+<li><strong>把亏损转到”已中止业务”</strong>：像只记好杆数的高尔夫选手，把打进水里的杆数不算数。</li>
+</ul>
+<h3 id="骗术-4：将当期费用推迟至将来（第-6-章）"><a href="#骗术-4：将当期费用推迟至将来（第-6-章）" class="headerlink" title="骗术 4：将当期费用推迟至将来（第 6 章）"></a>骗术 4：将当期费用推迟至将来（第 6 章）</h3><p>把本该立即计入的费用”冻结”在资产负债表上当资产。作者用”德州两步舞”比喻：第一步支出记资产，第二步转费用——骗子就是赖在第一步不走。</p>
+<ul>
+<li><strong>世通公司</strong>：把数十亿美元”线路成本”（明确的经营费用）资本化，自由现金流从 +23 亿变成 −38 亿，两年虚增经营现金流近 50 亿美元，最终重述金额超 700 亿。</li>
+<li><strong>美国在线</strong>：把”用户获取成本”资本化并分 24 个月摊销，8 个季度里 6 个季度”由亏转盈”。</li>
+<li><strong>摊销&#x2F;折旧过慢</strong>：延长折旧年限（时代华纳电信把光纤从 15 年改 20 年，每季度多 490 万美元利润）；电影公司对失败影片迟迟不注销（Orion 制片厂 1985 年才注销 1982 年以来的烂片）。</li>
+<li><strong>不提减值准备</strong>：2008 金融危机前，美国银行业贷款损失准备金占贷款总额比例从 2.5% 一路降到 1.21% 的历史低位——不是风险没了，是利润被”省”出来了。</li>
+</ul>
+<blockquote>
+<p><strong>核心警告信号：资本支出意外暴增；出现新的、不寻常的资产账户；坏账&#x2F;存货过时准备金下降。</strong></p>
+</blockquote>
+<h3 id="骗术-5：运用其他方法来掩盖成本或亏损（第-7-章）"><a href="#骗术-5：运用其他方法来掩盖成本或亏损（第-7-章）" class="headerlink" title="骗术 5：运用其他方法来掩盖成本或亏损（第 7 章）"></a>骗术 5：运用其他方法来掩盖成本或亏损（第 7 章）</h3><p>连”资本化”都省了，直接不记费用。</p>
+<ul>
+<li><strong>不记录期末发票</strong>：兰特维公司在财年结束前几周”暂停”处理供应商账单，两年少记 1.27 亿美元费用。</li>
+<li><strong>供应商回扣造假</strong>：日升医疗让供应商预付 100 万美元”折扣”，代价是提高下一年采购价——把未来的钱挪到当期当利润。</li>
+<li><strong>期权回溯——“骗术之王”</strong>：高管倒签期权授予日期，让期权”仿佛”在股价低点就授予了。博通公司因此重述 22 亿美元补偿费用。作者说它最恶劣，因为其他骗术是间接、复杂地让管理层致富，期权回溯<strong>直接、必然地</strong>把钱装进口袋。</li>
+<li><strong>少提准备金 &#x2F; 转回费用</strong>：戴尔在关账前调整保修准备金和应计费用来”凑”季度目标；朗讯、施乐用”甜饼罐”准备金在需要时转回冲减费用。</li>
+<li><strong>养老金与自我保险假设</strong>：把养老金资产预期回报率从 6% 调到 10%（德尔福在市场下跌期用 10%），养老金费用就少了；纳威司达把员工预期寿命从 12 年改到 18 年，摊销期拉长，利润多了 2600 万美元。</li>
+</ul>
+<h3 id="骗术-6：将当期收入推迟至将来（第-8-章）"><a href="#骗术-6：将当期收入推迟至将来（第-8-章）" class="headerlink" title="骗术 6：将当期收入推迟至将来（第 8 章）"></a>骗术 6：将当期收入推迟至将来（第 8 章）</h3><p>公司为什么想<strong>少报</strong>利润？——为了”平滑”，把暴利存起来，在荒年拿出来，制造”稳定可预期”的假象。</p>
+<ul>
+<li><strong>微软的递延收入</strong>：1998–1999 年把未实现收入从 20 亿累积到 42 亿美元。</li>
+<li><strong>房地美 &#x2F; 房利美</strong>：通过衍生工具的不当分类，把数十亿美元盈利在不同季度间搬运，重述金额 50 亿（房地美）和 63 亿（房利美）。注意：它们其实是<strong>盈利、健康</strong>的公司，造假动机不是掩盖亏损，而是维护”盈利稳定可预测”的声誉。</li>
+<li><strong>收购前保留收入</strong>：3Com 收购美国机器人公司前，后者在两个月”残喘期”收入骤降（月均 760 万美元 vs 之前月均 2.3 亿）——把 6 亿多美元收入留给新东家。</li>
+</ul>
+<h3 id="骗术-7：将未来费用提前至当期（第-9-章）"><a href="#骗术-7：将未来费用提前至当期（第-9-章）" class="headerlink" title="骗术 7：将未来费用提前至当期（第 9 章）"></a>骗术 7：将未来费用提前至当期（第 9 章）</h3><p>玩”相反的一天”：先把未来的费用一次性计提掉（大洗澡），未来利润就漂亮了。</p>
+<ul>
+<li><strong>美国在线的 B 计划</strong>：先激进资本化把 3 亿多费用藏进资产，再一次性”大洗澡”注销 3.85 亿——反正放在线下，投资者不怎么看。</li>
+<li><strong>“杀手艾尔”邓拉普</strong>：上任日光公司先计提 3.376 亿美元重组费用（还夸大了 3500 万美元），把未来费用都提前埋掉，9 个月后经营所得从 400 万暴涨到 1.326 亿。这套”新任 CEO 剧本”——先大洗澡、再造盈利——是经典手法。</li>
+<li><strong>思科 2001 年</strong>：一次性注销 22.5 亿美元存货，超过整季度的销货成本，为未来高毛利铺路。</li>
+<li><strong>朗讯的甜饼罐</strong>：计提远超实际需要的重组准备金，3 年转出 4.42 亿美元冲减费用。</li>
+</ul>
+<hr>
+<h2 id="第三篇：现金流类财务欺诈手法（4-大骗术）"><a href="#第三篇：现金流类财务欺诈手法（4-大骗术）" class="headerlink" title="第三篇：现金流类财务欺诈手法（4 大骗术）"></a>第三篇：现金流类财务欺诈手法（4 大骗术）</h2><p>很多投资者以为”利润可以操纵，但现金流造不了假”。作者说这是**”老妇人的故事”<strong>——现金流照样能造假，而且更隐蔽。核心是”罗宾汉骗术”：劫富济贫，把现金在经营&#x2F;投资&#x2F;融资三个栏目之间搬运，因为</strong>投资者只盯着”经营现金流”这个”宠儿”**。</p>
+<h3 id="骗术-8：融资现金流入转经营现金流入（第-10-章）"><a href="#骗术-8：融资现金流入转经营现金流入（第-10-章）" class="headerlink" title="骗术 8：融资现金流入转经营现金流入（第 10 章）"></a>骗术 8：融资现金流入转经营现金流入（第 10 章）</h3><ul>
+<li><strong>德尔福</strong>：把 2 亿美元贵金属存货”卖”给银行，几周后再买回——本质是抵押贷款，却记成存货销售收入，全年经营现金流虚增 2 亿（实际仅 6800 万）。<strong>“虚假收入往往意味着虚假经营现金流。”</strong></li>
+<li><strong>安然</strong>：通过表外实体联签贷款，让实体用借款向安然”买商品”，把借款包装成经营现金流入。</li>
+<li><strong>出售应收账款</strong>：卡地纳健康出售 8 亿美元应收账款让季度现金流暴增 9.71 亿，但这是把未来的收款提前，不可持续；新美亚科技干脆<strong>偷偷</strong>出售（季度末 2.24 亿美元仍带追索权）；百富勤<strong>伪造</strong>应收账款出售——因为那些应收账款对应的销售本来就是假的。</li>
+<li><strong>信号</strong>：披露中”风险因素”用词的变化；公司披露新的、神秘的”会计决定”。</li>
+</ul>
+<h3 id="骗术-9：经营现金流出转投资现金流出（第-11-章）"><a href="#骗术-9：经营现金流出转投资现金流出（第-11-章）" class="headerlink" title="骗术 9：经营现金流出转投资现金流出（第 11 章）"></a>骗术 9：经营现金流出转投资现金流出（第 11 章）</h3><p>把”坏东西”藏到投资者不太看的”投资活动”栏目里。</p>
+<ul>
+<li><strong>环球电讯的飞去来器交易</strong>：和电信同行互相买卖等额网络容量，卖出记经营现金流入、买进记投资现金流出——“你帮我，我也帮你”，凭空做高经营现金流。</li>
+<li><strong>世通</strong>：把线路成本资本化，既虚增利润，又把经营现金流出挪到投资栏目——一箭双雕。</li>
+<li><strong>奈飞</strong>：把采购 DVD（本质是存货）记成投资活动现金流出，经营现金流被系统性夸大；而它的竞争对手百视达在 SEC 指导下改为记经营流出。<strong>同行业会计政策不一致，比较时必须调整。</strong></li>
+</ul>
+<h3 id="骗术-10：借助收购-处置业务夸大经营现金流（第-12-章）"><a href="#骗术-10：借助收购-处置业务夸大经营现金流（第-12-章）" class="headerlink" title="骗术 10：借助收购&#x2F;处置业务夸大经营现金流（第 12 章）"></a>骗术 10：借助收购&#x2F;处置业务夸大经营现金流（第 12 章）</h3><ul>
+<li><strong>“购物到腿软”的泰科和世通</strong>：1999–2002 年泰科收购 700 多家公司（290 亿美元）。收购的会计漏洞在于：买公司的钱记<strong>投资</strong>流出，但被收购公司的客户回款记<strong>经营</strong>流入——于是每收购一家，经营现金流就”白捡”一块。</li>
+<li><strong>泰科的”经销商联系费”</strong>：把支付经销商的客户获取费（本质是经营费用）记成投资支出，再让经销商返 200 美元”联系费”记成经营流入——凭空造出 7.19 亿美元虚假收入。</li>
+<li><strong>软银</strong>：出售调制解调器租赁业务时，把 8500 万日元拆成 4500 万”出售所得”（投资流入）+ 4000 万”未来服务预付款”（经营流入），后者占全年经营现金流的 69%。</li>
+<li><strong>关键工具</strong>：<strong>收购后自由现金流 &#x3D; 经营现金流 − 收购支出</strong>。泰科经营现金流看似强劲，扣掉收购后连年为负。</li>
+</ul>
+<h3 id="骗术-11：借助不可持续的业务夸大经营现金流（第-13-章）"><a href="#骗术-11：借助不可持续的业务夸大经营现金流（第-13-章）" class="headerlink" title="骗术 11：借助不可持续的业务夸大经营现金流（第 13 章）"></a>骗术 11：借助不可持续的业务夸大经营现金流（第 13 章）</h3><p>一次性”生还机会”，用完就没了。</p>
+<ul>
+<li><strong>家得宝</strong>：新 CEO 上任第一年把应付账款付款期从 22 天拉到 34 天、同时削减门店存货，经营现金流从 28 亿翻倍到 60 亿；第二年”增长”无法复制，回落到 48 亿。</li>
+<li><strong>EDS</strong>：向客户提前收 2 亿美元预付款（占上半年经营现金流 26%），却不说这是不可持续的。</li>
+<li><strong>太阳微系统</strong>：把微软反垄断和解的 20 亿美元一次性收入混进经营现金流，投资者若不看利润表的”线下”明细就会误判。</li>
+</ul>
+<hr>
+<h2 id="第四篇：核心指标类财务欺诈手法（2-大骗术）"><a href="#第四篇：核心指标类财务欺诈手法（2-大骗术）" class="headerlink" title="第四篇：核心指标类财务欺诈手法（2 大骗术）"></a>第四篇：核心指标类财务欺诈手法（2 大骗术）</h2><p>如果报表数据造假还骗不过去，公司就<strong>自己发明指标</strong>。</p>
+<h3 id="骗术-12：提供夸大业绩的误导性指标（第-14-章）"><a href="#骗术-12：提供夸大业绩的误导性指标（第-14-章）" class="headerlink" title="骗术 12：提供夸大业绩的误导性指标（第 14 章）"></a>骗术 12：提供夸大业绩的误导性指标（第 14 章）</h3><p>巴菲特的名言：<strong>就像弓箭手先把箭射到帆布上，再围着箭头画靶心。</strong></p>
+<ul>
+<li><strong>同店销售额</strong>：脆奶油甜甜圈和星巴克的”同店销售额”与”每店收入”出现背离（同店在涨、每店在跌），靠的是不断调整”可比店面库”的定义；星巴克经营恶化后干脆<strong>停止披露</strong>该指标。</li>
+<li><strong>EBITDA 和”调整后 EBITDA”</strong>：环球电讯从净亏损 1.2 亿一路”调整”到”扣除一次性费用后的现金 EBITDA”为正 400 万——把维护费、水电费、客户拖欠费都当”一次性”剔除。</li>
+<li><strong>伪称一次性所得为经常性</strong>：特朗普酒店把 1700 万美元一次性所得留在”预计业绩”里；通用汽车选择性”忘记”剔除 2.59 亿出售所得。</li>
+<li><strong>自定义现金流</strong>：德尔福的”营运现金流”16.36 亿 vs 实际经营现金流 2.68 亿，差 14 亿——名称只差两个字，含义天差地别。</li>
+</ul>
+<h3 id="骗术-13：歪曲资产负债表指标掩盖经营下滑（第-15-章）"><a href="#骗术-13：歪曲资产负债表指标掩盖经营下滑（第-15-章）" class="headerlink" title="骗术 13：歪曲资产负债表指标掩盖经营下滑（第 15 章）"></a>骗术 13：歪曲资产负债表指标掩盖经营下滑（第 15 章）</h3><ul>
+<li><strong>出售 &#x2F; 转化应收账款</strong>：新美亚靠出售应收账款让”应收账款周转天数”下降；讯宝科技让客户签期票，把应收账款转为”应收票据”，DSO 从 119 天”降”到 90 天——换个名字，问题还在。</li>
+<li><strong>变更指标计算方法</strong>：泰乐公司把 DSO 的计算从”期末余额法”改成”平均余额法”，应收账款激增期仍能报出漂亮的 DSO（+5 天而非 +16 天）。</li>
+<li><strong>转移存货</strong>：默克把 13%（后升到 25%）的存货归类到”其他资产”长期资产里；Tween Brands 发明”每平方英尺店内存货”这个新指标来掩盖总存货激增。</li>
+<li><strong>隐瞒减值</strong>：新世纪金融公司在次级贷款违约率飙升时反而降低贷款损失准备金，还把两个准备金合并披露，让投资者误以为准备金在增加——两个月后破产。</li>
+<li><strong>帕玛拉特（”欧洲的安然”）</strong>：用离岸实体隐瞒 79 亿欧元债务，把净值虚增 133 亿欧元。最后一个警告信号是审计师德勤拒绝背书某笔离岸基金交易。</li>
+</ul>
+<hr>
+<h2 id="贯穿全书的分析工具"><a href="#贯穿全书的分析工具" class="headerlink" title="贯穿全书的分析工具"></a>贯穿全书的分析工具</h2><ul>
+<li><strong>应收账款周转天数（DSO）</strong> &#x3D; 期末应收账款 &#x2F; 收入 × 天数。DSO 异常上升 &#x3D; 激进收入确认；<strong>异常下降</strong>同样要警惕（可能靠出售应收账款）。</li>
+<li><strong>存货周转天数（DSI）</strong> &#x3D; 期末存货 &#x2F; 销货成本 × 天数。存货暴增超过收入增长 &#x3D; 未来盈利压力。</li>
+<li><strong>应付账款周转天数（DSP）</strong>：突然延长 &#x3D; 靠拖欠供应商”做”现金流，不可持续。</li>
+<li><strong>自由现金流 &#x3D; 经营现金流 − 资本支出</strong>：世通把费用资本化后利润和经营现金流都漂亮，但自由现金流戳穿一切。</li>
+<li><strong>净收入 vs 经营现金流</strong>：两者长期背离是收入质量差的最重要信号。</li>
+<li><strong>脚注优先原则</strong>：大量关键信息（会计政策变更、关联交易、表外负债、养老金假设）都藏在脚注和”管理层讨论与分析”里，而不是三大报表主表里。</li>
+</ul>
+<hr>
+<h2 id="我的几点感悟"><a href="#我的几点感悟" class="headerlink" title="我的几点感悟"></a>我的几点感悟</h2><ol>
+<li><p><strong>“现金流不可造假”是最大的误区。</strong> 这本书最有价值的地方，就是打破了这个流行信念。投资者越迷信经营现金流，管理层就越有动力在现金流上做文章。任何”被市场当成圣杯”的指标，都会反过来变成被操纵的目标。</p>
+</li>
+<li><p><strong>造假不是从”做假账”开始的，是从”环境”开始的。</strong> 连续达标的文化、激进的薪酬激励、家族式控制、失去独立性的审计师——这些”滋生欺诈的环境”往往比具体手法更早出现，也更容易被外行发现。对投资人来说，<strong>先看治理，再看报表</strong>。</p>
+</li>
+<li><p><strong>“精确”不等于”准确”，定义权就是操纵权。</strong> 这本书反复出现同一类手法：改 DSO 的计算方法、改”同店销售额”的口径、发明”营运现金流”这种近义词指标。数字看起来依然精确到小数点，但含义已经被换了。读任何数据，第一问永远是：<strong>这个数是怎么算出来的？定义是什么？</strong></p>
+</li>
+<li><p><strong>三张报表制衡是个可以迁移的思维模型。</strong> 就像三权分立用”一个部门约束另一个部门”防止权力滥用，财务分析靠”一张报表约束另一张报表”发现造假。这种”任何系统都要有交叉验证”的思路，对做技术的人同样成立——<strong>单一数据源永远可以被骗，交叉验证才可靠。</strong></p>
+</li>
+<li><p><strong>和《项目管理之美》是同一枚硬币的两面。</strong> 那本书讲”如何把事做成”，这本书讲”如何识破别人没把事做好却装成做好了”。两本书底层都是同一种态度：<strong>对数字、承诺和”看起来很好”保持适度的怀疑，然后用工具去验证。</strong></p>
+</li>
+</ol>
+<hr>
+<p><strong>一句话总结：财务欺诈的核心只有一件事——管理层永远有”报喜不报忧”的强烈冲动；而识破它的方法也很朴素——记住三张报表会互相制衡、盯住”利润与现金流是否匹配”、以及永远先问一句”这个数字是怎么算出来的”。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212359001862.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E3%80%8B%EF%BC%88%E7%AC%AC14%E7%89%88%EF%BC%89/'>阅读笔记——《人力资源管理》（第14版）</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212350001909.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E7%BB%84%E7%BB%87%E8%A1%8C%E4%B8%BA%E5%AD%A6%E3%80%8B%EF%BC%88%E7%AC%AC16%E7%89%88%EF%BC%89/">阅读笔记——《组织行为学》（第16版）</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

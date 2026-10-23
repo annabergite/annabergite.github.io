@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="linux上gitlab runner部署文档" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    linux上gitlab runner部署文档
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-11-16</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.9k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：16分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%83%8C%E6%99%AF"><span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%83%A8%E7%BD%B2%E4%B8%8E%E9%AA%8C%E8%AF%81"><span class="post-toc-text">部署与验证</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%9B%E5%BB%BA-runner-%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95-sudo-mkdir-home-gitlab-runner-runner"><span class="post-toc-text">创建 runner 工作目录 sudo mkdir &#x2F;home&#x2F;gitlab-runner&#x2F;runner</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8D%B8%E8%BD%BD"><span class="post-toc-text">卸载</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%84%9A%E6%9C%AC%E5%88%86%E4%BA%AB"><span class="post-toc-text">脚本分享</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-ci-yml"><span class="post-toc-text">.gitlab-ci.yml</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#yml%E9%AA%8C%E8%AF%81%E5%B7%AE%E5%BC%82%E6%96%87%E4%BB%B6"><span class="post-toc-text">yml验证差异文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="post-toc-text">其他问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-runner%E5%AE%9E%E4%BE%8B%E5%9C%A8shell%E6%A8%A1%E5%BC%8F%E4%B8%8B%E6%80%8E%E4%B9%88%E5%8D%A0%E7%94%A8Centos%E8%B5%84%E6%BA%90%E7%9A%84"><span class="post-toc-text">gitlab runner实例在shell模式下怎么占用Centos资源的</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-CI-CD%E5%A6%82%E6%9E%9C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E5%8F%AF%E4%B8%8D%E5%8F%AF%E4%BB%A5%E9%98%BB%E6%AD%A2%E5%90%88%E5%B9%B6%E4%BB%BB%E5%8A%A1"><span class="post-toc-text">gitlab CI&#x2F;CD如果失败，可不可以阻止合并任务</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-CI-CD%EF%BC%8C%E5%A6%82%E6%9E%9C%E8%A6%81%E6%89%A7%E8%A1%8C%E8%84%9A%E6%9C%AC%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%E6%98%AFgitlab%E8%BF%99%E8%BE%B9%E5%8F%AF%E4%BB%A5%E6%8F%90%E4%BE%9B"><span class="post-toc-text">gitlab CI&#x2F;CD，如果要执行脚本，有哪些参数是gitlab这边可以提供</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%88%E5%B9%B6%E4%BB%BB%E5%8A%A1%E4%B8%8B%EF%BC%8C%E4%B8%A4%E4%B8%AA%E5%88%86%E6%94%AF%E9%83%BD%E6%9C%89%E8%84%9A%E6%9C%AC%EF%BC%8C%E6%94%B9%E7%94%A8%E5%93%AA%E4%B8%80%E4%B8%AA%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%BB%BB%E6%84%8F%E4%B8%80%E6%96%B9%E7%BC%BA%E5%B0%91%E8%84%9A%E6%9C%AC%EF%BC%8C%E8%AF%A5%E7%94%A8%E5%93%AA%E4%B8%80%E4%B8%AA"><span class="post-toc-text">合并任务下，两个分支都有脚本，改用哪一个，如果任意一方缺少脚本，该用哪一个</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-ci-yml%E4%BC%9A%E6%89%A7%E8%A1%8C%E6%9B%B4%E5%A4%9A%E8%84%9A%E6%9C%AC%EF%BC%8C%E8%BF%99%E4%BA%9B%E8%84%9A%E6%9C%AC-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E6%80%8E%E4%B9%88%E5%AD%98%E6%94%BE"><span class="post-toc-text">gitlab-ci.yml会执行更多脚本，这些脚本&#x2F;静态资源怎么存放</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88-GitLab-Runner-%E5%AE%89%E8%A3%85%E6%97%B6%E6%B2%A1%E6%9C%89-gitlab-runner-%E7%94%A8%E6%88%B7%E5%B0%B1%E6%97%A0%E6%B3%95%E6%B3%A8%E5%86%8C%EF%BC%9F%E8%BF%99%E4%B8%AA%E7%94%A8%E6%88%B7%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="post-toc-text">为什么 GitLab Runner 安装时没有 gitlab-runner 用户就无法注册？这个用户代表什么？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-ci-yml%E7%9A%84%E5%AE%8C%E6%95%B4%E5%85%8B%E9%9A%86%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D"><span class="post-toc-text">.gitlab-ci.yml的完整克隆是什么意思</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gitlab-runner%E6%8B%89%E4%BB%A3%E7%A0%81%E7%9A%84%E6%97%B6%E5%80%99%E6%9C%89%E4%BB%80%E4%B9%88%E7%BA%A7%E5%88%AB%E5%98%9B%EF%BC%8C%E6%AF%94%E5%A6%82%E4%B8%80%E4%B8%AA%E7%BA%A7%E5%88%AB%E5%8F%AA%E6%8B%89%E4%BB%A3%E7%A0%81%EF%BC%8C%E4%B8%80%E4%B8%AA%E7%BA%A7%E5%88%AB%E6%8A%8A%E5%85%A8%E9%83%A8%E7%9A%84%E4%BF%A1%E6%81%AF%E9%83%BD%E6%8B%89%E5%8F%96%E4%B8%8B%E6%9D%A5%EF%BC%9F%E5%A6%82%E6%9E%9C%E6%9C%89%E4%B8%8D%E5%90%8C%E7%BA%A7%E5%88%AB%EF%BC%8Cgitlabcicd%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8F%82%E6%95%B0%E8%BF%98%E4%BC%9A%E7%94%9F%E6%95%88%E5%90%97%EF%BC%9F%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AE%EF%BC%9F%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="post-toc-text">gitlab runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？如果有不同级别，gitlabcicd提供的参数还会生效吗？如何配置？如何选择？</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>目录如下，各位清按需取用</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>平常使用的CI&#x2F;CD主要是用Jenkins，git的本地hook，但是对于代码上传后执行差异代码优化这个技术场景流程场景来说：</p>
+<ul>
+<li>Jenkins流程只会做到全量排查，如果中途遇到问题代码导致失败，得不偿失，且一个仓库可能会有不再维护代码与无关代码，造成资源浪费</li>
+<li>git本地hook问题在于，更新时每个组员都需要做，并且git commit的时候可以通过–no-verify 规避本地check，同时如果直接在gitlab上面IDE直接修改，则本地git hook脚本不会执行<br>因此为了优化这一块的流水线，避免上述2个问题，我打算通过git合入时通过git 的CI&#x2F;CD，执行脚本分析差异化文件</li>
+</ul>
+<p>（本文因为离职后所有消息记录会被删除，因此图片是没有的，请见谅）</p>
+<h1 id="部署与验证"><a href="#部署与验证" class="headerlink" title="部署与验证"></a>部署与验证</h1><p>gitlab自带部署runner文档 <a href="">https://docs.gitlab.cn/docs/jh/install/</a> ，同时csdn也有对应的文档可以借鉴 <a href="">https://blog.csdn.net/qq_39826207&#x2F;article&#x2F;details&#x2F;144275485</a> 不过实际上我在开发时也遇到了一点问题，所以也可以通过以下方式部署：</p>
+<ul>
+<li>准备Linux环境（Centos为例）</li>
+<li>通过wget或者离线等方式获取gitlab runner的安装包</li>
+<li>”&#96;sh<br>创建专用用户（不创建 home 目录）<br>sudo useradd –comment ‘GitLab Runner’ –create-home gitlab-runner</li>
+</ul>
+<h1 id="创建-runner-工作目录-sudo-mkdir-home-gitlab-runner-runner"><a href="#创建-runner-工作目录-sudo-mkdir-home-gitlab-runner-runner" class="headerlink" title="创建 runner 工作目录 sudo mkdir &#x2F;home&#x2F;gitlab-runner&#x2F;runner"></a>创建 runner 工作目录 sudo mkdir &#x2F;home&#x2F;gitlab-runner&#x2F;runner</h1><p>sudo chown gitlab-runner:gitlab-runner &#x2F;home&#x2F;gitlab-runner&#x2F;runner</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">4. 初始化并启动 GitLab Runner（作为服务）</span><br><span class="line"></span><br><span class="line">   虽然使用二进制，但建议以系统服务方式运行。</span><br><span class="line"></span><br><span class="line">   1. 创建 systemd 服务文件</span><br><span class="line"></span><br><span class="line">      ```sh</span><br><span class="line">      sudo tee /etc/systemd/system/gitlab-runner.service &lt;&lt;EOF</span><br><span class="line">      [Unit]</span><br><span class="line">      Description=GitLab Runner</span><br><span class="line">      After=syslog.target network.target</span><br><span class="line">      ConditionFileIsExecutable=/usr/local/bin/gitlab-runner</span><br><span class="line">      </span><br><span class="line">      [Service]</span><br><span class="line">      StartLimitInterval=5</span><br><span class="line">      StartLimitBurst=10</span><br><span class="line">      ExecStart=/usr/local/bin/gitlab-runner run --working-directory /home/gitlab-runner/runner</span><br><span class="line">      SuccessExitStatus=0 143</span><br><span class="line">      Restart=always</span><br><span class="line">      RestartSec=5</span><br><span class="line">      KillMode=mixed</span><br><span class="line">      WorkingDirectory=/home/gitlab-runner/runner</span><br><span class="line">      User=gitlab-runner</span><br><span class="line">      Group=gitlab-runner</span><br><span class="line">      Environment=PATH=/bin:/usr/local/bin:/usr/bin</span><br><span class="line">      CacheDirectory=gitlab-runner</span><br><span class="line">      CacheDirectoryMode=0750</span><br><span class="line">      </span><br><span class="line">      [Install]</span><br><span class="line">      WantedBy=multi-user.target</span><br><span class="line">      EOF</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>重载 systemd 并启动服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl daemon-reexec</span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> gitlab-runner</span><br><span class="line"><span class="built_in">sudo</span> systemctl start gitlab-runner</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>检查服务状态</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl status gitlab-runner</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>注册GitLab Runner 到 GitLab 实例</p>
+<p>（如果是多次注册，则需要优先按照第一步切换成对应的gitlab用户进行命令操作，整个的安装流程，我按照官方流程没成功，和当前流程唯一的差别就是官方没有切换到gitlab用户）</p>
+<ol>
+<li><p>获取注册令牌<br>登录 GitLab Web 界面。<br>进入你的项目 → Settings → CI &#x2F; CD → Runners。<br>复制 Registration token（项目级 Runner）。<br>或者在 Admin Area → Overview → Runners 获取实例级令牌。</p>
+</li>
+<li><p>运行注册命令： 切换到 gitlab-runner 用户并注册：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> -u gitlab-runner -H /usr/local/bin/gitlab-runner register</span><br></pre></td></tr></table></figure>
+
+<p>按提示输入：</p>
+<ul>
+<li>GitLab instance URL: <a target="_blank" rel="noopener" href="https://gitlab.com(或你的自建/">https://gitlab.com（或你的自建</a> GitLab 地址）</li>
+<li>Registration token: 你复制的令牌</li>
+<li>Description: my-runner（自定义描述）</li>
+<li>Tags: linux,docker（可选，用于任务匹配）</li>
+<li>Executor: shell（或 docker, docker+machine 等）</li>
+<li>Default Docker image: alpine:latest（如果使用 docker executor）</li>
+</ul>
+</li>
+<li><p>按提示输入：</p>
+<ul>
+<li>GitLab instance URL: <a target="_blank" rel="noopener" href="https://gitlab.com(或你的自建/">https://gitlab.com（或你的自建</a> GitLab 地址）</li>
+<li>Registration token: 你复制的令牌</li>
+<li>Description: my-runner（自定义描述）</li>
+<li>Tags: linux,docker（可选，用于任务匹配）、</li>
+<li>Executor: shell（或 docker, docker+machine 等）</li>
+<li>Default Docker image: alpine:latest（如果使用 docker executor）</li>
+<li>注册成功后，配置会保存在 &#x2F;home&#x2F;gitlab-runner&#x2F;runner&#x2F;config.toml。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<p>验证注册： 在 GitLab Web 界面的 Runners 页面，应看到新注册的 Runner 处于“在线”状态。</p>
+<h1 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h1><p>有时候可能是安装错误，可能是需要迁移业务，需要现在原有的环境的服务，可以按照以下步骤</p>
+<ol>
+<li><p>停止并禁用服务</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> systemctl stop gitlab-runner</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">disable</span> gitlab-runner</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>删除服务文件</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /etc/systemd/system/gitlab-runner.service</span><br><span class="line">   sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除二进制文件和用户</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo rm /usr/local/bin/gitlab-runner</span><br><span class="line">   # -r 删除用户主目录</span><br><span class="line">   sudo userdel -r gitlab-runner  </span><br><span class="line"></span><br><span class="line">4. 清理残留文件（可选）</span><br><span class="line"></span><br><span class="line">   ```sh</span><br><span class="line">   sudo rm -rf /home/gitlab-runner</span><br></pre></td></tr></table></figure>
+
+<h1 id="脚本分享"><a href="#脚本分享" class="headerlink" title="脚本分享"></a>脚本分享</h1><h1 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="headerlink" title=".gitlab-ci.yml"></a>.gitlab-ci.yml</h1><p>这个是仓库全局的git CI&#x2F;CD的配置文件，根据触发阶段可以执行对应的script相关的脚本，在该脚本可以执行更多shell脚本，方便管理</p>
+<p>该例子是合入时执行2个脚本，可供参考</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">stages:</span><br><span class="line">  - check</span><br><span class="line"></span><br><span class="line"># 全局变量</span><br><span class="line">variables:</span><br><span class="line">  GIT_DEPTH: &quot;&quot;  # 完整克隆</span><br><span class="line"></span><br><span class="line"># 只在 Merge Request 时触发流水线（即“合入前检查”）</span><br><span class="line">workflow:</span><br><span class="line">  rules:</span><br><span class="line">    - if: &lt;!--MATH_PH_1--&gt;GITLAB_USER_EMAIL &lt;!--MATH_PH_2--&gt;CI_MERGE_REQUEST_TARGET_BRANCH_NAME =~ /^(main|develop)&lt;!--MATH_PH_3--&gt;# -ne 4 ]; then</span><br><span class="line">    echo &quot;Usage: &lt;!--MATH_PH_4--&gt;0 ucs-server dev@example.com feature/add-config main&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">NAMESPACE=&lt;!--MATH_PH_5--&gt;2</span><br><span class="line">SOURCE_BRANCH=&lt;!--MATH_PH_6--&gt;4</span><br><span class="line"></span><br><span class="line"># ================== 配置区 ==================</span><br><span class="line"># Checkstyle jar 包路径（请根据实际路径修改）</span><br><span class="line">CHECKSTYLE_JAR=&quot;./cloud/env/install/script/checkstyle.jar&quot;</span><br><span class="line"></span><br><span class="line"># Checkstyle 配置文件路径（checkstyle.xml）</span><br><span class="line">CHECKSTYLE_CONFIG=&quot;./cloud/env/install/script/checkstyle.xml&quot;</span><br><span class="line"></span><br><span class="line"># 临时文件用于保存 Checkstyle 输出</span><br><span class="line">CHECKSTYLE_LOG=&quot;/tmp/checkstyle_output_&lt;!--MATH_PH_7--&gt;_&lt;!--MATH_PH_8--&gt;SOURCE_BRANCH&#x27; and &#x27;&lt;!--MATH_PH_9--&gt;SOURCE_BRANCH&quot; &gt; /dev/null 2&gt;&amp;1; then</span><br><span class="line">    echo &quot;Error: Remote branch &#x27;origin/&lt;!--MATH_PH_10--&gt;TARGET_BRANCH&quot; &gt; /dev/null 2&gt;&amp;1; then</span><br><span class="line">    echo &quot;Error: Remote branch &#x27;origin/&lt;!--MATH_PH_11--&gt;file&quot; == *.java ]] &amp;&amp; [ -f &quot;&lt;!--MATH_PH_12--&gt;file&quot;)</span><br><span class="line">    fi</span><br><span class="line">done &lt; &lt;(git diff --name-only &quot;origin/&lt;!--MATH_PH_13--&gt;SOURCE_BRANCH)</span><br><span class="line"></span><br><span class="line"># 3. 检查是否有变更的 Java 文件</span><br><span class="line">if [ &lt;!--MATH_PH_14--&gt;TARGET_BRANCH&#x27; and &#x27;origin/&lt;!--MATH_PH_15--&gt;NAMESPACE: No Java changes&quot; &quot;&lt;!--MATH_PH_16--&gt;&#123;#CHANGED_JAVA_FILES[@]&#125; Java file(s) to check:&quot;</span><br><span class="line">printf &#x27;  %s\n&#x27; &quot;&lt;!--MATH_PH_17--&gt;CHECKSTYLE_JAR&quot; -c &quot;&lt;!--MATH_PH_18--&gt;&#123;CHANGED_JAVA_FILES[@]&#125;&quot; &gt; &quot;&lt;!--MATH_PH_19--&gt;(cat &quot;&lt;!--MATH_PH_20--&gt;OUTPUT&quot;</span><br><span class="line"></span><br><span class="line">    # 检查输出中是否包含违规信息（Checkstyle 通常会在有违规时输出内容）</span><br><span class="line">    if [[ -s &quot;&lt;!--MATH_PH_21--&gt;(echo &quot;&lt;!--MATH_PH_22--&gt;&#x27; | wc -l)&quot; -gt 0 ]]; then</span><br><span class="line">        echo &quot;Checkstyle found issues in changed Java files.&quot;</span><br><span class="line">        echo &quot;Checkstyle Report:&quot; | mail -s &quot;[FAIL] &lt;!--MATH_PH_23--&gt;EMAIL&quot; -A &quot;&lt;!--MATH_PH_24--&gt;CHECKSTYLE_LOG&quot;</span><br><span class="line">        exit 1  # 有违规 → 失败</span><br><span class="line">    else</span><br><span class="line">        echo &quot;All changed Java files passed Checkstyle.&quot;</span><br><span class="line">        echo &quot;No checkstyle violations found.&quot; | mail -s &quot;[OK] &lt;!--MATH_PH_25--&gt;EMAIL&quot;</span><br><span class="line">        rm -f &quot;&lt;!--MATH_PH_26--&gt;CHECKSTYLE_LOG&quot;</span><br><span class="line">    echo &quot;Checkstyle execution failed. See details.&quot; | mail -s &quot;[ERROR] &lt;!--MATH_PH_27--&gt;EMAIL&quot; -A &quot;&lt;!--MATH_PH_28--&gt;CHECKSTYLE_LOG&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h1 id="yml验证差异文件"><a href="#yml验证差异文件" class="headerlink" title="yml验证差异文件"></a>yml验证差异文件</h1><p>与上面的Java验证类似，就是查询差异文件yml与yaml，checkstyle有问题就返回0，无问题会返回1，gitlab合并检测会根据返回值判定流水线成功&#x2F;失败</p>
+<p>（如果是spring可以跳过所有的application.yml文件，因为yml 验证主要是为了交付给运维同事配置文件才会有的流水线步骤）</p>
+<p>原有脚本已经遗失，判断逻辑应当通过yamllint进行验证，根据输出产生行数&gt;0则有问题（需要ymlconf文件作为配置规则）</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line">if [ &lt;!--MATH_PH_29--&gt;0 &lt;namespace&gt; &lt;email&gt;&quot;</span><br><span class="line">    exit 1</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">NAMESPACE=&lt;!--MATH_PH_30--&gt;2</span><br><span class="line"></span><br><span class="line"># ================== 配置区 ==================</span><br><span class="line">TARGET_BRANCH=&quot;main&quot;  # 目标合并分支，可根据需要改为 dev、release 等</span><br><span class="line">CONFIG_FILE=&quot;./cloud/env/install/script/ymlconf&quot;</span><br><span class="line"># ===========================================</span><br><span class="line"></span><br><span class="line">echo &quot;🔍 Checking YAML files changed between current branch and &#x27;&lt;!--MATH_PH_31--&gt;file&quot; == *.yml || &quot;&lt;!--MATH_PH_32--&gt;file&quot; ]; then  # 确保文件存在（避免删除的文件）</span><br><span class="line">            CHANGED_YAML_FILES+=(&quot;&lt;!--MATH_PH_33--&gt;TARGET_BRANCH&quot;...HEAD)</span><br><span class="line"></span><br><span class="line"># 2. 检查是否有变更的 YAML 文件</span><br><span class="line">if [ &lt;!--MATH_PH_34--&gt;NAMESPACE: No YAML changes&quot; &quot;&lt;!--MATH_PH_35--&gt;&#123;#CHANGED_YAML_FILES[@]&#125; YAML file(s) to check:&quot;</span><br><span class="line">printf &#x27;  %s\n&#x27; &quot;&lt;!--MATH_PH_36--&gt;&#123;CHANGED_YAML_FILES[@]&#125;&quot;; do</span><br><span class="line">    echo &quot; linting &lt;!--MATH_PH_37--&gt;CONFIG_FILE&quot; &quot;&lt;!--MATH_PH_38--&gt;file&quot;</span><br><span class="line">        ERRORS_FOUND+=&quot;&lt;!--MATH_PH_39--&gt;(cat /tmp/yamllint.log)</span><br><span class="line">        ERRORS_FOUND+=&quot;\n\n&quot;</span><br><span class="line">    fi</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line"># 4. 处理结果</span><br><span class="line">if [ -n &quot;&lt;!--MATH_PH_40--&gt;ERRORS_FOUND&quot;</span><br><span class="line">    echo -e &quot;&lt;!--MATH_PH_41--&gt;NAMESPACE YAML file has syntax errors!&quot; &quot;&lt;!--MATH_PH_42--&gt;NAMESPACE: YAML lint passed&quot; &quot;$EMAIL&quot;</span><br><span class="line">    rm -f /tmp/yamllint.log</span><br><span class="line">    exit 0</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h1 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h1><h1 id="gitlab-runner实例在shell模式下怎么占用Centos资源的"><a href="#gitlab-runner实例在shell模式下怎么占用Centos资源的" class="headerlink" title="gitlab runner实例在shell模式下怎么占用Centos资源的"></a>gitlab runner实例在shell模式下怎么占用Centos资源的</h1><p>在 shell executor 模式下，GitLab Runner 的工作方式如下：</p>
+<ul>
+<li><p>直接在宿主机（Centos）上执行命令：Runner 会以运行它的用户身份（如 gitlab-runner 用户），在系统 shell 中直接执行 .gitlab-ci.yml 中定义的 script 命令。</p>
+</li>
+<li><p>资源占用特点：</p>
+</li>
+<li><p>CPU&#x2F;内存：由实际执行的脚本决定（如编译、测试、打包等），直接消耗宿主机资源。</p>
+</li>
+<li><p>磁盘：会在临时目录（默认 &#x2F;home&#x2F;gitlab-runner&#x2F;builds&#x2F;&#x2F;…）克隆代码并执行任务，任务结束后默认清理（可通过 builds_dir 配置）。</p>
+</li>
+<li><p>环境依赖：所有依赖（如 Python、Node.js、Docker CLI 等）必须预先安装在 Centos 系统中。</p>
+</li>
+<li><p>无隔离性：多个 job 共享同一系统环境，可能互相干扰（比如修改全局 PATH、写文件到 &#x2F;tmp）。</p>
+</li>
+<li><p>并发控制：通过 concurrent（全局）和 limit（每个 runner）控制同时运行的 job 数，避免资源耗尽。</p>
+</li>
+</ul>
+<p>建议：</p>
+<ul>
+<li>生产环境慎用 shell 模式，推荐用 docker 或 kubernetes 提供隔离。</li>
+<li>如果必须用 shell，确保 runner 用户权限最小化，并监控系统负载。</li>
+</ul>
+<h1 id="gitlab-CI-CD如果失败，可不可以阻止合并任务"><a href="#gitlab-CI-CD如果失败，可不可以阻止合并任务" class="headerlink" title="gitlab CI&#x2F;CD如果失败，可不可以阻止合并任务"></a>gitlab CI&#x2F;CD如果失败，可不可以阻止合并任务</h1><p>实现方式：</p>
+<ul>
+<li><p>启用“合并前必须通过流水线”：</p>
+</li>
+<li><p>进入项目 → Settings &gt; General &gt; Merge requests</p>
+</li>
+<li><p>勾选 Pipelines must succeed</p>
+</li>
+<li><p>（可选）勾选 Require approval from code owners</p>
+</li>
+<li><p>保护目标分支（如 main &#x2F; develop）：（这个对于有规模的开发团队，已经有CMO进行配置过了）</p>
+</li>
+<li><p>Settings &gt; Repository &gt; Protected Branches</p>
+</li>
+<li><p>对目标分支设置： - Allowed to merge: Maintainers（或指定角色） - Require status checks to pass before merging（如果启用了外部状态检查）</p>
+</li>
+<li><p>结果：</p>
+</li>
+<li><p>如果 CI pipeline 失败（任何 job 失败且未被 allow_failure: true 忽略），Merge 按钮变灰，无法合并。</p>
+</li>
+<li><p>即使有 Approver 同意，只要 pipeline 失败，也无法合并。 工作流程：</p>
+</li>
+<li><p>注册：Runner 向 GitLab Server 注册，获得唯一 token，并绑定到项目或 group。</p>
+</li>
+<li><p>轮询&#x2F;长连接：Runner 定期向 GitLab Server 的 &#x2F;jobs&#x2F;request API 发起请求（默认每几秒一次），询问是否有待处理的 job。</p>
+</li>
+<li><p>领取任务：当有匹配标签（tags）的 job 到来，Runner 领取任务（包含 .gitlab-ci.yml 中的 script、variables、artifacts 等信息）。</p>
+</li>
+<li><p>执行任务<br>：</p>
+</li>
+<li><p>根据配置的 executor（shell&#x2F;docker&#x2F;ssh&#x2F;k8s 等）启动执行环境；</p>
+</li>
+<li><p>克隆代码；</p>
+</li>
+<li><p>执行 before_script → script → after_script；</p>
+</li>
+<li><p>上传 artifacts&#x2F;logs；</p>
+</li>
+<li><p>上报状态（success&#x2F;failure）。</p>
+</li>
+<li><p>释放资源：任务结束，清理临时文件（除非配置保留）。</p>
+</li>
+</ul>
+<h1 id="gitlab-CI-CD，如果要执行脚本，有哪些参数是gitlab这边可以提供"><a href="#gitlab-CI-CD，如果要执行脚本，有哪些参数是gitlab这边可以提供" class="headerlink" title="gitlab CI&#x2F;CD，如果要执行脚本，有哪些参数是gitlab这边可以提供"></a>gitlab CI&#x2F;CD，如果要执行脚本，有哪些参数是gitlab这边可以提供</h1><p>GitLab 自动注入大量 预定义 CI&#x2F;CD 变量（Predefined Variables），你可以在脚本中直接使用，例如：</p>
+<p>常用内置变量示例：</p>
+<p>| 变量 | | 说明 |<br>| CI_COMMIT_REF_NAME | | 当前分支或 tag 名（如 main, v1.0） |<br>| CI_PROJECT_DIR | | CI 任务的工作目录（代码被 clone 到这里） |<br>| GITLAB_USER_EMAIL | | 触发 pipeline 的用户邮箱 |</p>
+<p>其他的像是两个分支的分支hash也可以通过git提供的参数获取到，用于差异文件的排查。更多的可以看官网 <a href="">https://docs.gitlab.com/ci/variables/predefined_variables&#x2F;</a></p>
+<h1 id="合并任务下，两个分支都有脚本，改用哪一个，如果任意一方缺少脚本，该用哪一个"><a href="#合并任务下，两个分支都有脚本，改用哪一个，如果任意一方缺少脚本，该用哪一个" class="headerlink" title="合并任务下，两个分支都有脚本，改用哪一个，如果任意一方缺少脚本，该用哪一个"></a>合并任务下，两个分支都有脚本，改用哪一个，如果任意一方缺少脚本，该用哪一个</h1><p>GitLab 的规则非常明确： 始终使用 source branch（源分支）中的 .gitlab-ci.yml 文件</p>
+<p>详细说明：</p>
+<ul>
+<li>当你创建一个从 feature → main 的 MR，</li>
+<li>GitLab 会 checkout feature 分支的代码，</li>
+<li>并读取 feature 分支根目录下的 .gitlab-ci.yml 来执行 pipeline。</li>
+<li>不会去读 main 分支的 .gitlab-ci.yml。</li>
+</ul>
+<p>| 情况 | | 使用哪个 .gitlab-ci.yml? |<br>| feature 有，main 有 | | ✅ 用 feature 的 |<br>| feature 有，main 没有 | | ✅ 用 feature 的 |<br>| feature 没有，main 有 | | ❌ pipeline 不会触发（因为 source branch 没有 .gitlab-ci.yml） |<br>| 两者都没有 | | ❌ 无 CI pipeline |</p>
+<h1 id="gitlab-ci-yml会执行更多脚本，这些脚本-静态资源怎么存放"><a href="#gitlab-ci-yml会执行更多脚本，这些脚本-静态资源怎么存放" class="headerlink" title="gitlab-ci.yml会执行更多脚本，这些脚本&#x2F;静态资源怎么存放"></a>gitlab-ci.yml会执行更多脚本，这些脚本&#x2F;静态资源怎么存放</h1><p>推荐将大资源（如git CI&#x2F;CD可以接入通过checkstyle.jar执行checkstyle，对应的jar文件）放在服务器上，其他的则可以放在各自的代码仓库内</p>
+<h1 id="为什么-GitLab-Runner-安装时没有-gitlab-runner-用户就无法注册？这个用户代表什么？"><a href="#为什么-GitLab-Runner-安装时没有-gitlab-runner-用户就无法注册？这个用户代表什么？" class="headerlink" title="为什么 GitLab Runner 安装时没有 gitlab-runner 用户就无法注册？这个用户代表什么？"></a>为什么 GitLab Runner 安装时没有 gitlab-runner 用户就无法注册？这个用户代表什么？</h1><p>当你通过官方方式安装 GitLab Runner（如 yum install gitlab-runner 或 dpkg -i gitlab-runner_xxx.deb），安装脚本会自动：</p>
+<ul>
+<li>创建系统用户 gitlab-runner</li>
+<li>以该用户身份运行 runner 服务</li>
+<li>Runner 在执行 job 时，所有命令都以 gitlab-runner 身份运行<br>所以如果手动的安装，可能会错过这一步，最终导致无法注册runner到gitlab上面</li>
+</ul>
+<h1 id="gitlab-ci-yml的完整克隆是什么意思"><a href="#gitlab-ci-yml的完整克隆是什么意思" class="headerlink" title=".gitlab-ci.yml的完整克隆是什么意思"></a>.gitlab-ci.yml的完整克隆是什么意思</h1><p>答案：GitLab 会完整克隆（checkout）源分支（source branch）的代码，并使用该分支中的 .gitlab-ci.yml 文件</p>
+<ul>
+<li><p>这个过程包括：</p>
+</li>
+<li><p>在 Runner 上执行 git clone</p>
+</li>
+<li><p>git checkout （例如 feature&#x2F;add-login 的最新 commit）</p>
+</li>
+<li><p>读取这个 commit 中的 .gitlab-ci.yml</p>
+</li>
+<li><p>按照它的定义执行 job</p>
+</li>
+</ul>
+<p>所以，“完整克隆”在这里的意思是：</p>
+<p>不是只复制 .gitlab-ci.yml 文件，而是把整个源分支的代码仓库完整拉下来，确保 CI 配置和代码版本严格一致。</p>
+<p>为什么重要？</p>
+<ul>
+<li>如果你修改了 .gitlab-ci.yml（比如加了一个测试 job），只有推送到 源分支 才会在 MR 中生效。</li>
+<li>目标分支（如 main）的 .gitlab-ci.yml完全不会被使用。</li>
+</ul>
+<h1 id="gitlab-runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？如果有不同级别，gitlabcicd提供的参数还会生效吗？如何配置？如何选择？"><a href="#gitlab-runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？如果有不同级别，gitlabcicd提供的参数还会生效吗？如何配置？如何选择？" class="headerlink" title="gitlab runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？如果有不同级别，gitlabcicd提供的参数还会生效吗？如何配置？如何选择？"></a>gitlab runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？如果有不同级别，gitlabcicd提供的参数还会生效吗？如何配置？如何选择？</h1><blockquote>
+<p><strong>gitlab runner拉代码的时候有什么级别嘛，比如一个级别只拉代码，一个级别把全部的信息都拉取下来？</strong></p>
+</blockquote>
+<p>GitLab Runner 在拉取代码时，确实支持“不同深度”的克隆（clone depth），但没有“只拉代码 &#x2F; 拉全部信息”这种二元级别。</p>
+<p>你可以通过以下方式控制 拉取多少 Git 历史（commit history）：</p>
+<ul>
+<li>浅克隆（shallow clone）：只拉最近 N 个 commit（默认行为）</li>
+<li>深克隆（full clone）：拉取完整历史（所有分支、tags、完整 commit graph）<br>注意：无论哪种方式，都会拉取完整的当前 commit 的文件内容（即“代码”）。</li>
+</ul>
+<p>所谓“只拉代码”其实是误解 —— 代码文件总是完整的，区别只在 历史记录是否完整。</p>
+<p>| 配置 | | 行为 | | 适用场景 |<br>| GIT_DEPTH: 1（默认） | | 浅克隆：只拉当前 commit + 最近 1 层历史 | | 快速构建、节省带宽 |<br>| GIT_DEPTH: 0 或未设置 | | 深克隆：拉取完整仓库历史（等价于 git clone –mirror） | | 需要 git log、git describe、计算版本号等 |<br>| GIT_DEPTH: 10 | | 拉最近 10 个 commit 的历史 | | 折中方案 |</p>
+<p>| 内容 | | 浅克隆（GIT_DEPTH&#x3D;1） | | 深克隆（GIT_DEPTH&#x3D;0） |<br>| 当前 commit 的所有文件 | | ✓ 完整 | | ✓ 完整 |<br>| .git 目录（本地 repo 元数据） | | ✓（但历史被截断） | | ✓ 完整 |<br>| 所有分支（refs&#x2F;heads&#x2F;<em>） | | ✗ 只有当前分支 | | ✓（需额外 fetch） |<br>| 所有 tags（refs&#x2F;tags&#x2F;</em>） | | ✗ 通常没有 | | ✓（需 git fetch –tags） |<br>| 完整 commit 历史 | | ✗ 只有最近 N 个 | | ✓ |<br>| 能否执行 git log？ | | ⚠️ 只能看到有限历史 | | ✓ 完整历史 |</p>
+<p>| 类型 | | 是否受影响 | | 说明 |<br>| 预定义变量（如 CI_COMMIT SHA, CI_PROJECT_DIR） | | ✗ 不受影响 | | 这些由 GitLab Server 提供，与 clone 方式无关 |<br>| 自定义 variables | | ✗ 不受影响 | | 在 YAML 或 UI 中定义 |<br>| Runner 注入的环境 | | ✗ 不受影响 | | 如 CI_JOB_TOKEN |<br>| | 脚本执行权限 | ✗ 不受影响 | 由 executor 和用户决定 | | | | | |<br>| Artifacts &#x2F; Cache | | ✗ 不受影响 | | 与 clone 深度无关 |</p>
+<p>| 场景 | | 推荐配置 |<br>| 普通构建、测试、部署 | | GIT_DEPTH: 1（默认，最快） |<br>| 需要生成版本号（如 v1.2.3-5-gabc123） | | GIT_DEPTH: 0 + git fetch –tags |<br>| 需要分析 commit 差异（如 changelog） | | GIT_DEPTH: 0 |<br>| 使用 Lerna &#x2F; Nx 等工具依赖 Git 历史 | | GIT_DEPTH: 0 |<br>| 节省 CI 时间和带宽 | | 保持默认（GIT_DEPTH: 1） |</p>
+<blockquote>
+<p><strong>GitLab CI 提供的参数还会生效吗？</strong></p>
+</blockquote>
+<p>会！完全不受影响。</p>
+<p>无论你用浅克隆还是深克隆，以下内容都 正常可用</p>
+<blockquote>
+<p>如何配置？</p>
+</blockquote>
+<p>GitLab CI 通过一个内置变量 GIT_DEPTH 控制克隆深度：</p>
+<p>如：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">variables:</span><br><span class="line">  GIT_DEPTH: 0  # 拉取完整历史</span><br><span class="line"></span><br><span class="line">build:</span><br><span class="line">  script:</span><br><span class="line">    - git log --oneline -n 5   # 只有 GIT_DEPTH &gt; 1 或 =0 时才有多个 commit</span><br><span class="line">    - git describe --tags      # 需要完整 tag 历史</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>默认行为是什么？</strong></p>
+</blockquote>
+<p>GIT_DEPTH: 1（浅克隆，高效）</p>
+<hr>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-11-16</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E5%BC%80%E5%8F%91/'>
+                            开发
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E7%94%9F%E6%B4%BB/2610212243009087.%E7%BB%99%E4%BB%96%E4%BA%BA%E6%8F%90%E4%BE%9B%E4%BB%B7%E5%80%BC%E4%B8%8E%E7%BB%99%E8%87%AA%E5%B7%B1%E6%8F%90%E4%BE%9B%E4%BB%B7%E5%80%BC%E7%9A%84%E6%9D%83%E8%A1%A1/'>给他人提供价值与给自己提供价值的权衡</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2025/08/05/%E5%BC%80%E5%8F%91/16.dyanmic-tp%E6%8E%A5%E5%85%A5SOP/">Dynamic-TP动态线程池部署SOP</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

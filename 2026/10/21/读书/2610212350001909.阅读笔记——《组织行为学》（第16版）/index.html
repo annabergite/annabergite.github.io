@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="阅读笔记——《组织行为学》（第16版）" />
+    <meta name="hexo-theme-A4" content="v2.0.1" />
+    <link rel="alternate icon" type="image/webp" href="/images/20261018-231127.jpeg">
+    <title>艾迪的技术之路 | 记录博客与成长</title>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/highlight/style1.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/a11y-dark.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/reset.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/markdown.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/fonts.css">
+
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/ui.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToTop.css">
+
+    
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/unicons.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+    
+
+    
+        
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/returnToLastPage.css">
+
+    
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/css/lightgallery-bundle.min.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+
+    
+
+
+
+    
+
+    <!-- <link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Regular/result.css" /> -->
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/@chinese-fonts/lxgwwenkai@3.0.0/dist/LXGWWenKai-Regular/result.css' /> 
+<!-- hexo injector head_end start --><style>pre.mermaid {  background: transparent;  border: none;  padding: 0;  margin: 1.2em 0;  display: flex;  justify-content: center;  overflow-x: auto;  line-height: normal;}pre.mermaid svg { max-width: 100%; height: auto; }</style><style>.plantuml-container { display: flex; justify-content: center; margin: 1.2em 0; overflow-x: auto; }.plantuml-container svg { max-width: 100%; height: auto !important; }.plantuml-container img.plantuml { max-width: 100%; height: auto; }</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+
+
+    <body>
+        
+        <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.80/darkreader.min.js"></script>
+        <script>
+            const drOptions = {
+                brightness: 100,
+                contrast: 95,
+                sepia: 10,
+                darkSchemeTextColor: '#e0e0e0',  // 粉笔白文字
+                darkSchemeBackgroundColor: '#1e1e1e', // 黑板灰背景
+                scrollbarStyle: 'native'
+            };
+
+            const savedTheme = localStorage.getItem('theme');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                DarkReader.enable(drOptions);
+            }
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const btn = document.createElement('button');
+                btn.innerText = '🌓';
+                // 按钮样式：仿照你之前的布局，放在右下角
+                btn.style.cssText = `
+                    position: fixed; 
+                    bottom: 40px; 
+                    left: 42px; 
+                    z-index: 9999;
+                    width: 44px; 
+                    height: 44px; 
+                    border-radius: 50%; 
+                    border: 1px solid #ccc;
+                    background: #f7f5ed; 
+                    color: #000;
+                    font-size: 22px; 
+                    cursor: pointer;
+                    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+                    transition: transform 0.2s, background-color 0.3s;
+                `;
+                // 根据当前状态初始化按钮颜色
+                if (DarkReader.isEnabled()) {
+                    btn.style.backgroundColor = '#1e1e1e';
+                    btn.style.color = '#fff';
+                }
+                btn.onmouseover = () => btn.style.transform = 'scale(1.1)';
+                btn.onmouseout = () => btn.style.transform = 'scale(1)';
+                document.body.appendChild(btn);
+                // 点击切换逻辑
+                btn.addEventListener('click', () => {
+                    if (DarkReader.isEnabled()) {
+                        DarkReader.disable();
+                        localStorage.setItem('theme', 'light');
+                        btn.style.backgroundColor = '#f7f5ed';
+                        btn.style.color = '#000';
+                    } else {
+                        DarkReader.enable(drOptions);
+                        localStorage.setItem('theme', 'dark');
+                        btn.style.backgroundColor = '#1e1e1e';
+                        btn.style.color = '#fff';
+                    }
+                });
+            });
+        </script>
+        
+        
+            
+                <div class="left-toc-container">
+                    <nav id="toc" class="bs-docs-sidebar"></nav>
+                </div>
+            
+        
+        <div class="paper">
+
+            
+
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/20261018-231127.jpeg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">艾迪的技术之路</a> 
+            <span class="description">记录博客与成长,Java，架构</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+            
+                <li><a href="/about/">关于</a></li>
+            
+        
+            
+                <li><a href="/tags/">标签</a></li>
+            
+        
+            
+                <li><a href="/categories/">分类</a></li>
+            
+        
+        <!-- 暂时注释掉，还需要调整css  -->
+    </ul>
+</div>
+
+                    
+                    
+
+                    
+                    
+
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    阅读笔记——《组织行为学》（第16版）
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2026-10-21</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：10分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%80%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E7%9A%84%E9%AA%A8%E6%9E%B6%EF%BC%9A%E4%B8%AA%E4%BD%93-%E2%86%92-%E7%BE%A4%E4%BD%93-%E2%86%92-%E7%BB%84%E7%BB%87%E7%B3%BB%E7%BB%9F"><span class="post-toc-text">一、这本书的骨架：个体 → 群体 → 组织系统</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%8C%E3%80%81%E5%AF%BC%E8%AE%BA%EF%BC%88%E7%AC%AC1%E7%AB%A0%EF%BC%89%EF%BC%9A%E5%87%A0%E4%B8%AA%E5%80%BC%E5%BE%97%E8%AE%B0%E4%BD%8F%E7%9A%84%E5%BA%95%E5%B1%82%E8%AE%A4%E7%9F%A5"><span class="post-toc-text">二、导论（第1章）：几个值得记住的底层认知</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-%E7%AE%A1%E7%90%86%E8%80%85%E5%81%9A%E4%BB%80%E4%B9%88"><span class="post-toc-text">1. 管理者做什么</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-%E4%B8%80%E4%B8%AA%E5%8F%8D%E7%9B%B4%E8%A7%89%E7%9A%84%E5%8F%91%E7%8E%B0%EF%BC%9A%E6%88%90%E5%8A%9F%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85-%E2%89%A0-%E6%9C%89%E6%95%88%E7%9A%84%E7%AE%A1%E7%90%86%E8%80%85"><span class="post-toc-text">2. 一个反直觉的发现：成功的管理者 ≠ 有效的管理者</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-%E7%B3%BB%E7%BB%9F%E7%A0%94%E7%A9%B6%E5%AE%8C%E5%96%84%E7%9B%B4%E8%A7%89%EF%BC%8C%E6%9D%83%E5%8F%98%E6%98%AF-OB-%E7%9A%84%E7%81%B5%E9%AD%82"><span class="post-toc-text">3. 系统研究完善直觉，权变是 OB 的灵魂</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-%E5%AF%B9-OB-%E6%9C%89%E8%B4%A1%E7%8C%AE%E7%9A%84%E5%AD%A6%E7%A7%91"><span class="post-toc-text">4. 对 OB 有贡献的学科</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%AA%E4%BD%93%E7%AF%87%EF%BC%88%E7%AC%AC2-8%E7%AB%A0%EF%BC%89%EF%BC%9A%E4%B8%80%E4%B8%AA%E4%BA%BA%E5%9C%A8%E5%B7%A5%E4%BD%9C%E9%87%8C%E6%98%AF%E6%80%8E%E4%B9%88%E2%80%9D%E8%BF%90%E8%BD%AC%E2%80%9D%E7%9A%84"><span class="post-toc-text">三、个体篇（第2~8章）：一个人在工作里是怎么”运转”的</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC2%E7%AB%A0-%E5%A4%9A%E5%85%83%E5%8C%96"><span class="post-toc-text">第2章 多元化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC3%E7%AB%A0-%E6%80%81%E5%BA%A6%E4%B8%8E%E5%B7%A5%E4%BD%9C%E6%BB%A1%E6%84%8F%E5%BA%A6"><span class="post-toc-text">第3章 态度与工作满意度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC4%E7%AB%A0-%E6%83%85%E7%BB%AA%E4%B8%8E%E5%BF%83%E5%A2%83"><span class="post-toc-text">第4章 情绪与心境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC5%E7%AB%A0-%E4%BA%BA%E6%A0%BC%E4%B8%8E%E4%BB%B7%E5%80%BC%E8%A7%82"><span class="post-toc-text">第5章 人格与价值观</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC6%E7%AB%A0-%E7%9F%A5%E8%A7%89%E4%B8%8E%E4%B8%AA%E4%BD%93%E5%86%B3%E7%AD%96"><span class="post-toc-text">第6章 知觉与个体决策</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC7%E3%80%818%E7%AB%A0-%E5%8A%A8%E6%9C%BA%EF%BC%88%E5%85%A8%E4%B9%A6%E7%9A%84%E9%87%8D%E5%A4%B4%E6%88%8F%EF%BC%89"><span class="post-toc-text">第7、8章 动机（全书的重头戏）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%9B%9B%E3%80%81%E7%BE%A4%E4%BD%93%E7%AF%87%EF%BC%88%E7%AC%AC9-14%E7%AB%A0%EF%BC%89%EF%BC%9A%E4%BA%BA%E5%87%91%E5%88%B0%E4%B8%80%E8%B5%B7%E4%BC%9A%E5%8F%91%E7%94%9F%E4%BB%80%E4%B9%88"><span class="post-toc-text">四、群体篇（第9~14章）：人凑到一起会发生什么</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC9%E7%AB%A0-%E7%BE%A4%E4%BD%93%E8%A1%8C%E4%B8%BA%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="post-toc-text">第9章 群体行为的基础</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC10%E7%AB%A0-%E5%B7%A5%E4%BD%9C%E5%9B%A2%E9%98%9F"><span class="post-toc-text">第10章 工作团队</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC11%E7%AB%A0-%E6%B2%9F%E9%80%9A"><span class="post-toc-text">第11章 沟通</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC12%E7%AB%A0-%E9%A2%86%E5%AF%BC%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%89"><span class="post-toc-text">第12章 领导（重点）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC13%E7%AB%A0-%E6%9D%83%E5%8A%9B%E4%B8%8E%E6%94%BF%E6%B2%BB"><span class="post-toc-text">第13章 权力与政治</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC14%E7%AB%A0-%E5%86%B2%E7%AA%81%E4%B8%8E%E8%B0%88%E5%88%A4"><span class="post-toc-text">第14章 冲突与谈判</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BA%94%E3%80%81%E7%BB%84%E7%BB%87%E7%B3%BB%E7%BB%9F%E7%AF%87%EF%BC%88%E7%AC%AC15-18%E7%AB%A0%EF%BC%89%EF%BC%9A%E7%B3%BB%E7%BB%9F%E6%80%8E%E4%B9%88%E5%A1%91%E9%80%A0%E4%BA%BA"><span class="post-toc-text">五、组织系统篇（第15~18章）：系统怎么塑造人</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC15%E7%AB%A0-%E7%BB%84%E7%BB%87%E7%BB%93%E6%9E%84%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="post-toc-text">第15章 组织结构的基础</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC16%E7%AB%A0-%E7%BB%84%E7%BB%87%E6%96%87%E5%8C%96"><span class="post-toc-text">第16章 组织文化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC17%E7%AB%A0-%E4%BA%BA%E5%8A%9B%E8%B5%84%E6%BA%90%E6%94%BF%E7%AD%96%E4%B8%8E%E5%AE%9E%E8%B7%B5"><span class="post-toc-text">第17章 人力资源政策与实践</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E7%AC%AC18%E7%AB%A0-%E7%BB%84%E7%BB%87%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%8E%8B%E5%8A%9B%E7%AE%A1%E7%90%86"><span class="post-toc-text">第18章 组织变革与压力管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AD%E3%80%81%E8%B4%AF%E7%A9%BF%E5%85%A8%E4%B9%A6%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="post-toc-text">六、贯穿全书的几个核心思想</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%83%E3%80%81%E8%BF%99%E6%9C%AC%E4%B9%A6%E6%9C%80%E2%80%9D%E5%80%BC%E9%92%B1%E2%80%9D%E7%9A%84%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E6%8B%BF%E5%8E%BB%E7%94%A8%EF%BC%89"><span class="post-toc-text">七、这本书最”值钱”的几个概念（可直接拿去用）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%AB%E3%80%81%E5%B1%80%E9%99%90%E4%B8%8E%E8%AF%BB%E6%B3%95%E5%BB%BA%E8%AE%AE"><span class="post-toc-text">八、局限与读法建议</span></a></li></ol>
+            
+        
+        <div class=".article-gallery"><p>2026 年 10 月</p>
+<p>最近把罗宾斯和贾奇合著的《组织行为学》（第16版，中国人民大学出版社）翻了一遍。这本是全球商学院用了三十多年的经典教材，国内管理类专业的”标准教科书”。它跟那种教你几个管理技巧的快餐书不一样——它是一套关于”人在组织里怎么想、怎么做、怎么被影响”的完整知识体系。下面是我的读书笔记。</p>
+<p>一句话概括：<strong>组织行为学（OB）研究”个体、群体、结构”三个层次对组织内行为的影响，目的是应用这些知识改善组织绩效。</strong></p>
+<h2 id="一、这本书的骨架：个体-→-群体-→-组织系统"><a href="#一、这本书的骨架：个体-→-群体-→-组织系统" class="headerlink" title="一、这本书的骨架：个体 → 群体 → 组织系统"></a>一、这本书的骨架：个体 → 群体 → 组织系统</h2><p>全书 18 章，分四篇，结构非常清晰，就是 OB 最著名的”三个分析层次”：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第I篇 导论        第1章 什么是组织行为学</span><br><span class="line">第II篇 个体       第2~8章  多元化/态度/情绪/人格/知觉/动机</span><br><span class="line">第III篇 群体      第9~14章 群体/团队/沟通/领导/权力/冲突</span><br><span class="line">第IV篇 组织系统   第15~18章 组织结构/组织文化/人力资源/变革与压力</span><br></pre></td></tr></table></figure>
+
+<p><strong>这是理解全书最关键的框架</strong>：任何一个组织现象，都可以放到”个体、群体、组织系统”这三个层次上去分析，三个层次层层嵌套、互相影响。比如”员工为什么离职”，可能是个体原因（态度、动机）、群体原因（领导、团队氛围），也可能是系统原因（薪酬制度、组织文化）。</p>
+<h2 id="二、导论（第1章）：几个值得记住的底层认知"><a href="#二、导论（第1章）：几个值得记住的底层认知" class="headerlink" title="二、导论（第1章）：几个值得记住的底层认知"></a>二、导论（第1章）：几个值得记住的底层认知</h2><h3 id="1-管理者做什么"><a href="#1-管理者做什么" class="headerlink" title="1. 管理者做什么"></a>1. 管理者做什么</h3><ul>
+<li><strong>法约尔的四职能</strong>：计划、组织、领导、控制。</li>
+<li><strong>明茨伯格的 10 种角色</strong>：人际角色（头面人物&#x2F;领导者&#x2F;联络人）、信息传递角色（监控者&#x2F;传播者&#x2F;发言人）、决策角色（创业者&#x2F;混乱处理者&#x2F;资源分配者&#x2F;谈判者）。</li>
+<li><strong>管理者的三种技能</strong>：技术技能、人际技能、概念技能。层级越高，人际和概念技能越重要。</li>
+</ul>
+<h3 id="2-一个反直觉的发现：成功的管理者-≠-有效的管理者"><a href="#2-一个反直觉的发现：成功的管理者-≠-有效的管理者" class="headerlink" title="2. 一个反直觉的发现：成功的管理者 ≠ 有效的管理者"></a>2. 一个反直觉的发现：成功的管理者 ≠ 有效的管理者</h3><p>卢森斯研究了 450 名管理者，发现：</p>
+<ul>
+<li><strong>“晋升最快”的管理者</strong>：把最多时间花在**社交（政治活动）**上，花在人力资源管理上最少；</li>
+<li><strong>“绩效最好”的管理者</strong>：把最多时间花在<strong>沟通</strong>上，社交最少。</li>
+</ul>
+<p>也就是说，”往上爬”和”把事做好”用的根本不是同一套功夫——这对”晋升靠业绩”的朴素假设是一记耳光。</p>
+<h3 id="3-系统研究完善直觉，权变是-OB-的灵魂"><a href="#3-系统研究完善直觉，权变是-OB-的灵魂" class="headerlink" title="3. 系统研究完善直觉，权变是 OB 的灵魂"></a>3. 系统研究完善直觉，权变是 OB 的灵魂</h3><ul>
+<li>每个人都是”业余行为研究者”，但靠直觉常常预测错误。要用**系统研究（systematic study）+ 循证管理（EBM）**来校正直觉。</li>
+<li><strong>OB 里没有绝对的真理</strong>：一切结论都受”权变变量”约束（例如”有挑战性的工作让人满意”只在特定人群、特定情境下成立）。没有放之四海而皆准的定律，这是 OB 区别于自然科学的地方。</li>
+</ul>
+<h3 id="4-对-OB-有贡献的学科"><a href="#4-对-OB-有贡献的学科" class="headerlink" title="4. 对 OB 有贡献的学科"></a>4. 对 OB 有贡献的学科</h3><p>心理学（个体层）、社会心理学（群体层）、社会学（群体与组织层）、人类学（文化层）——四个学科分别支撑不同分析层次。</p>
+<h2 id="三、个体篇（第2-8章）：一个人在工作里是怎么”运转”的"><a href="#三、个体篇（第2-8章）：一个人在工作里是怎么”运转”的" class="headerlink" title="三、个体篇（第2~8章）：一个人在工作里是怎么”运转”的"></a>三、个体篇（第2~8章）：一个人在工作里是怎么”运转”的</h2><h3 id="第2章-多元化"><a href="#第2章-多元化" class="headerlink" title="第2章 多元化"></a>第2章 多元化</h3><ul>
+<li><strong>表层多元化</strong>（性别、年龄、种族等可见特征）vs <strong>深层多元化</strong>（价值观、人格、能力等不可见特征）。深层多元化长期影响更大。</li>
+<li>核心观点：多元化是把双刃剑，管理得好是资产，管理不好是冲突来源。</li>
+</ul>
+<h3 id="第3章-态度与工作满意度"><a href="#第3章-态度与工作满意度" class="headerlink" title="第3章 态度与工作满意度"></a>第3章 态度与工作满意度</h3><ul>
+<li><strong>态度的三成分</strong>：认知（想法）、情感（感受）、行为（倾向）。</li>
+<li><strong>工作满意度</strong>：对工作的正面感受，它和绩效之间是中等相关、互为因果（不是简单的”满意就干得好”）。</li>
+<li>关联概念：组织承诺、工作投入、员工敬业度。</li>
+</ul>
+<h3 id="第4章-情绪与心境"><a href="#第4章-情绪与心境" class="headerlink" title="第4章 情绪与心境"></a>第4章 情绪与心境</h3><ul>
+<li><strong>情绪</strong>（针对具体对象、短暂强烈）vs <strong>心境</strong>（无特定对象、弥散持久）。</li>
+<li><strong>情绪劳动</strong>：工作中按组织要求表达特定情绪（空姐的微笑是劳动的一部分）。</li>
+<li><strong>情绪智力（EI）</strong>：戈尔曼提出的”识别和管理自己及他人情绪的能力”。</li>
+<li><strong>情感事件理论（AET）</strong>：日常的小事件累积成情绪，情绪再影响绩效和满意度。</li>
+</ul>
+<h3 id="第5章-人格与价值观"><a href="#第5章-人格与价值观" class="headerlink" title="第5章 人格与价值观"></a>第5章 人格与价值观</h3><ul>
+<li><strong>大五人格（Big Five）</strong>：尽责性、情绪稳定性、外倾性、开放性、宜人性。其中<strong>尽责性与工作绩效的相关最强</strong>（几乎对所有岗位都成立）。</li>
+<li>MBTI、价值观（工具价值观&#x2F;终极价值观）。</li>
+</ul>
+<h3 id="第6章-知觉与个体决策"><a href="#第6章-知觉与个体决策" class="headerlink" title="第6章 知觉与个体决策"></a>第6章 知觉与个体决策</h3><ul>
+<li><strong>归因理论</strong>：判断他人行为是”内因”还是”外因”，看三个因素——区别性、一致性、一贯性。要警惕<strong>基本归因错误</strong>（高估别人内因、低估外因）和<strong>自我服务偏差</strong>（自己的成功归内因、失败归外因）。</li>
+<li><strong>常见知觉偏差</strong>：选择性知觉、晕轮效应、对比效应、刻板印象。</li>
+<li><strong>决策</strong>：现实中人不是”完全理性”，而是<strong>有限理性</strong>（满意即可，不是最优），大量依赖直觉和启发式。</li>
+</ul>
+<h3 id="第7、8章-动机（全书的重头戏）"><a href="#第7、8章-动机（全书的重头戏）" class="headerlink" title="第7、8章 动机（全书的重头戏）"></a>第7、8章 动机（全书的重头戏）</h3><p><strong>早期理论</strong>：</p>
+<ul>
+<li>马斯洛需求层次、赫茨伯格双因素（保健因素 vs 激励因素）、麦克莱兰三种需要（成就&#x2F;权力&#x2F;归属）、麦格雷戈 X&#x2F;Y 理论。</li>
+</ul>
+<p><strong>当代理论（更被研究支持）</strong>：</p>
+<ul>
+<li><strong>自我决定理论</strong>：内在动机 vs 外在动机，外在奖励可能挤出内在动机；</li>
+<li><strong>目标设置理论</strong>：具体而有挑战性的目标 + 反馈，最能提升绩效；</li>
+<li><strong>自我效能感</strong>：相信自己能做好；</li>
+<li><strong>强化理论</strong>：行为由结果塑造；</li>
+<li><strong>公平理论</strong>：员工比较”投入-产出比”，不公平就调整行为；</li>
+<li><strong>期望理论</strong>：动机 &#x3D; 期望 × 手段 × 效价。</li>
+</ul>
+<p><strong>应用（第8章）</strong>：工作特征模型（JCM）——技能多样性、任务完整性、任务重要性、自主性、反馈，五个维度决定工作的激励潜力。</p>
+<h2 id="四、群体篇（第9-14章）：人凑到一起会发生什么"><a href="#四、群体篇（第9-14章）：人凑到一起会发生什么" class="headerlink" title="四、群体篇（第9~14章）：人凑到一起会发生什么"></a>四、群体篇（第9~14章）：人凑到一起会发生什么</h2><h3 id="第9章-群体行为的基础"><a href="#第9章-群体行为的基础" class="headerlink" title="第9章 群体行为的基础"></a>第9章 群体行为的基础</h3><ul>
+<li>群体发展<strong>五阶段模型</strong>：形成 → 震荡 → 规范 → 执行 → 解体。</li>
+<li>群体属性：角色、规范、地位、规模、凝聚力、多样性。</li>
+<li>两个经典负面现象：<strong>群体思维（groupthink）</strong>（为求一致压制异议）和<strong>社会惰化（social loafing）</strong>（人多了反而偷懒）。</li>
+</ul>
+<h3 id="第10章-工作团队"><a href="#第10章-工作团队" class="headerlink" title="第10章 工作团队"></a>第10章 工作团队</h3><ul>
+<li>群体 ≠ 团队：团队是<strong>目标一致、互相依赖、共同负责</strong>的群体。</li>
+<li>团队类型：问题解决型、自我管理型、跨职能型、虚拟团队。</li>
+<li>打造有效团队的要素：充分资源、结构、信任、绩效评估与奖励体系。</li>
+</ul>
+<h3 id="第11章-沟通"><a href="#第11章-沟通" class="headerlink" title="第11章 沟通"></a>第11章 沟通</h3><ul>
+<li>沟通的功能：控制、激励、情绪表达、信息传递。</li>
+<li>方向：下行、上行、横向。</li>
+<li><strong>有效沟通的障碍</strong>：过滤、选择性知觉、信息过载、情绪、语言、沉默、沟通焦虑。</li>
+</ul>
+<h3 id="第12章-领导（重点）"><a href="#第12章-领导（重点）" class="headerlink" title="第12章 领导（重点）"></a>第12章 领导（重点）</h3><p>领导理论的发展脉络，是一个不断”打补丁”的过程：</p>
+<ol>
+<li><strong>特质理论</strong>：找领导者的共同特质（大五人格中的外倾性、尽责性最相关，但特质不保证领导有效）；</li>
+<li><strong>行为理论</strong>：关注行为（如俄亥俄的”结构维度+关怀维度”）；</li>
+<li><strong>权变理论</strong>：费德勒模型——领导有效性取决于”领导风格与情境的匹配”；</li>
+<li><strong>领导-成员交换（LMX）</strong>：领导对”圈内人”和”圈外人”区别对待；</li>
+<li><strong>魅力型领导、变革型领导</strong>（vs 交易型领导）、<strong>真实型领导</strong>（道德与信任）。</li>
+</ol>
+<ul>
+<li>结论：<strong>领导是”权变”的，没有一种风格永远有效</strong>；变革型领导是当前研究最支持的风格。</li>
+</ul>
+<h3 id="第13章-权力与政治"><a href="#第13章-权力与政治" class="headerlink" title="第13章 权力与政治"></a>第13章 权力与政治</h3><ul>
+<li><strong>权力的基础</strong>：正式权力（法定权、强制权、奖赏权）+ 个人权力（专家权、参照权）。</li>
+<li><strong>权力来自依赖性</strong>：别人越依赖你，你权力越大。</li>
+<li><strong>政治行为</strong>：权术、印象管理，是组织中绕不开的”潜规则”。</li>
+</ul>
+<h3 id="第14章-冲突与谈判"><a href="#第14章-冲突与谈判" class="headerlink" title="第14章 冲突与谈判"></a>第14章 冲突与谈判</h3><ul>
+<li>冲突观的演变：传统观（冲突都是坏的）→ 人际关系观（冲突是自然的）→ <strong>相互作用观（适度的功能冲突是健康的）</strong>。</li>
+<li>谈判两种策略：<strong>分配式谈判</strong>（零和、争一块固定的蛋糕）vs <strong>整合式谈判</strong>（把蛋糕做大、双赢）。</li>
+</ul>
+<h2 id="五、组织系统篇（第15-18章）：系统怎么塑造人"><a href="#五、组织系统篇（第15-18章）：系统怎么塑造人" class="headerlink" title="五、组织系统篇（第15~18章）：系统怎么塑造人"></a>五、组织系统篇（第15~18章）：系统怎么塑造人</h2><h3 id="第15章-组织结构的基础"><a href="#第15章-组织结构的基础" class="headerlink" title="第15章 组织结构的基础"></a>第15章 组织结构的基础</h3><ul>
+<li>组织结构的六个要素：工作专门化、部门化、命令链、管理跨度、集权与分权、正规化。</li>
+<li>常见设计：简单结构、科层制、矩阵结构；新方案：虚拟组织、无边界组织。</li>
+</ul>
+<h3 id="第16章-组织文化"><a href="#第16章-组织文化" class="headerlink" title="第16章 组织文化"></a>第16章 组织文化</h3><ul>
+<li>组织文化是”组织成员共享的、区别于其他组织的意义系统”（创新、进取、结果导向、团队导向、稳定性等维度）。</li>
+<li>文化的功能：界定边界、传递认同、促进承诺、增强稳定、塑造态度行为。</li>
+<li>文化靠”筛选→高层示范→社会化”创建和维系，员工通过故事、仪式、物质象征、语言来学习。</li>
+</ul>
+<h3 id="第17章-人力资源政策与实践"><a href="#第17章-人力资源政策与实践" class="headerlink" title="第17章 人力资源政策与实践"></a>第17章 人力资源政策与实践</h3><ul>
+<li>招聘、甄选（信度与效度）、培训开发、绩效评估——HR 是把 OB 理论落地的制度化手段。</li>
+</ul>
+<h3 id="第18章-组织变革与压力管理"><a href="#第18章-组织变革与压力管理" class="headerlink" title="第18章 组织变革与压力管理"></a>第18章 组织变革与压力管理</h3><ul>
+<li>变革动力：环境、技术、竞争；变革阻力：习惯、安全感、经济利益、对未知的恐惧、选择性信息加工。</li>
+<li><strong>卢因三阶段模型</strong>：解冻 → 变革 → 再冻结。</li>
+<li><strong>工作压力</strong>：挑战性压力（有益）vs 阻碍性压力（有害），压力管理是管理者责任。</li>
+</ul>
+<h2 id="六、贯穿全书的几个核心思想"><a href="#六、贯穿全书的几个核心思想" class="headerlink" title="六、贯穿全书的几个核心思想"></a>六、贯穿全书的几个核心思想</h2><ol>
+<li><strong>权变思维</strong>：没有绝对正确的管理方式，一切看情境。这是 OB 的第一性原理。</li>
+<li><strong>用证据说话</strong>：反对”管理就是常识”，提倡系统研究和循证管理。</li>
+<li><strong>三个层次联动</strong>：个体问题往往有群体和系统根源，反之亦然。</li>
+<li><strong>人既是问题的来源，也是解决方案的来源</strong>——所以理解人，就是管理者最核心的能力。</li>
+</ol>
+<h2 id="七、这本书最”值钱”的几个概念（可直接拿去用）"><a href="#七、这本书最”值钱”的几个概念（可直接拿去用）" class="headerlink" title="七、这本书最”值钱”的几个概念（可直接拿去用）"></a>七、这本书最”值钱”的几个概念（可直接拿去用）</h2><ul>
+<li><strong>大五人格的”尽责性”</strong>：招聘时最该看的人格维度。</li>
+<li><strong>公平理论</strong>：员工的不满往往不是”我拿得少”，而是”我拿得比同事少”。</li>
+<li><strong>群体思维</strong>：开会时”一团和气”未必是好事，要有意识地安排”唱反调”的角色。</li>
+<li><strong>变革型领导</strong>：靠愿景、感召力、个性化关怀来带人，而非只靠奖罚。</li>
+<li><strong>整合式谈判</strong>：遇到冲突先想”能不能把蛋糕做大”，而不是先想”怎么分”。</li>
+<li><strong>情绪劳动</strong>：服务业员工的”职业微笑”是一种真实消耗，需要被管理。</li>
+</ul>
+<h2 id="八、局限与读法建议"><a href="#八、局限与读法建议" class="headerlink" title="八、局限与读法建议"></a>八、局限与读法建议</h2><ul>
+<li>它是<strong>教材</strong>，不是行动手册：概念密度大、案例是欧美背景，读完不会立刻”会管理”，但能给你一套分析组织的坐标系。</li>
+<li>理论多而杂，<strong>别指望记住所有理论</strong>，重点是掌握”三层次框架 + 权变思维”这两样，其余需要时再回来查。</li>
+<li>这一版（第16版）的特色模块——“观点碰撞””道德困境””神话还是科学””国际视角”——比正文更接地气，值得优先翻。</li>
+</ul>
+<p>一句话总结：<strong>这本书教你的不是”怎么管人”的招数，而是一套”看人、看群体、看组织”的思维框架——理解了”人为什么这样行为”，很多管理问题的答案会自己浮现出来。</strong></p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2026-10-21</span>
+            
+                <span>该篇文章被 annabergite</span>
+            
+            
+             
+                <span>归为分类:
+                    
+                    
+                        <a href='/categories/%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/'>
+                            阅读笔记
+                        </a>
+                    
+                </span>
+            
+        
+        </i>
+    </div>
+
+    
+        <div class="post-copyright">
+            <p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+        </div>
+    
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+                    <span>上一篇：<a href='/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212358003917.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A2%E5%8A%A1%E8%AF%A1%E8%AE%A1%E3%80%8B/'>阅读笔记——《财务诡计》</a></span>
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2026/10/21/%E8%AF%BB%E4%B9%A6/2610212345000056.%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0%E2%80%94%E2%80%94%E3%80%8A%E8%B4%A2%E5%8A%A1%E6%8A%A5%E8%A1%A8%E5%88%86%E6%9E%90%E4%B8%8E%E8%82%A1%E7%A5%A8%E4%BC%B0%E5%80%BC%E3%80%8B/">阅读笔记——《财务报表分析与股票估值》</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+
+     
+</div>
+
+
+
+
+                    
+
+                    <div class="footer">
+    
+        <span>
+            © 1949-2026 China
+
+            
+                
+            
+                
+                    / <a href="/friends/"> 友链 </a>
+                
+            
+                
+                    / <a href="/contact/"> 联系 </a>
+                
+            
+                
+                    / <a href="/support/"> 支持 </a>
+                
+            
+        </span>
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlight.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/highlightjs-line-numbers.js"></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+    
+<script src="/js/toc.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/randomHeaderContent.js"></script>
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToTop.js"></script>
+
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/returnToLastPage.js"></script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/hexo-theme-a4@2.0.1/source/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+<script type="text/javascript">
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager],
+            thumbnail: true,
+            zoom: true,
+            rotate: true,
+            autoplay: true,
+            fullScreen: true,
+            pager: false,
+            zoomFromOrigin: true,
+            actualSize: true,
+            enableZoomAfter: 300,
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1);
+    }
+</script>
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+
+        
+            
+<button class="search-trigger" type="button" data-search-open aria-label="搜索文章" title="搜索文章">
+    <i class="uil uil-search" aria-hidden="true"></i>
+</button>
+
+
+            
+
+<div class="site-search" id="site-search" hidden>
+    <div class="site-search-backdrop" data-search-close></div>
+    <section class="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title">
+        <header class="site-search-header">
+            <h2 id="site-search-title">搜索</h2>
+            <button class="site-search-close" type="button" data-search-close aria-label="关闭搜索" title="关闭搜索">
+                <i class="uil uil-times" aria-hidden="true"></i>
+            </button>
+        </header>
+        <input
+            id="site-search-input"
+            class="site-search-input"
+            type="search"
+            placeholder="输入标题或关键词"
+            autocomplete="off"
+            spellcheck="false"
+            data-search-provider="auto"
+            data-search-path="/search.xml"
+            data-search-limit="20"
+            data-algolia-application-id=""
+            data-algolia-api-key=""
+            data-algolia-index-name=""
+        >
+        <p class="site-search-status" id="site-search-status" aria-live="polite"></p>
+        <ul class="site-search-results" id="site-search-results"></ul>
+    </section>
+</div>
+
+
+
+        
+
+        <script defer src="/js/emojiHandler.js"></script>
+        <script defer src="/js/search.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                if (typeof wrapEmojis === 'function') {
+                    wrapEmojis('.paper');
+                }
+            });
+        </script>
+    <!-- hexo injector body_end start --><script defer src="/js/vendor/mermaid.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {  if (!window.mermaid) { return; }  mermaid.initialize({ startOnLoad: false, theme: "default" });  mermaid.run({ querySelector: ".mermaid" }).catch(function (error) {    console.error("Mermaid 渲染失败:", error);  });});</script><!-- hexo injector body_end end --></body>
+</html>

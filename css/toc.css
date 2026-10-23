@@ -5,6 +5,8 @@
   left: 1px;
   bottom: 110px;
   overflow-y: auto; /* 或者使用 overflow-y: scroll; */
+  overflow-x: hidden; /* 标题过长时由省略号截断，避免出现横向滚动 */
+  max-width: 260px; /* 限制目录宽度，超长标题用省略号显示 */
   max-height: -webkit-fill-available; /* 设置最大高度，可以根据需要进行调整 */
   position: fixed;
   scrollbar-width: none;
@@ -48,6 +50,16 @@
   padding: 0;
   border: none;
   line-height: 30px;
+}
+
+/* 目录项垂直排列，避免继承站点头部 .nav 的 flex 横向布局 */
+.bs-docs-sidebar ul.nav {
+  display: block;
+}
+
+/* 目录项不需要站点头部导航的右侧间距，避免省略号位置不一致 */
+.bs-docs-sidebar .nav li {
+  margin-right: 0;
 }
 
 
@@ -114,6 +126,10 @@
   font-weight: 400;
   border-left: 4px solid transparent;
   padding: 4px 20px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
